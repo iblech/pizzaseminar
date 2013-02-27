@@ -1,0 +1,164 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Spur}[1]{\operatorname{Spur}#1}
+\newcommand{\rank}[1]{\operatorname{rank}#1}
+\newcommand{\sgn}[1]{\operatorname{sgn}#1}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}[1]{\operatorname{GL}(#1)}
+\newcommand{\ORTH}[1]{\operatorname{O}(#1)}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Bild}{im}
+\DeclareMathOperator{\Kern}{ker}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\Zzwei}{\Z_2}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\pagestyle{empty}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 27. Februar 2013\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
+1. Übungsblatt
+\end{center}
+\vspace{2em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+\begin{list}{}{\labelwidth\wd\mybox \leftmargin\wd\mybox \itemsep 1.3em}
+\item[\textbf{Aufgabe 1:}]
+\begin{enumerate}
+\item Gib die Kategorie zu deinem Lieblingsgebiet an: Was sind ihre Objekte,
+was ihre Morphismen? Was sind ihre initialen und terminalen Objekte?
+\item Gib eine formale Definition folgender Kategorie:
+    \vspace{0.5em}
+    \[ \xymatrix{
+      & \bullet \ar[d] \ar@(ur,ul) \\
+      \bullet \ar[r] \ar@(ul,dl) & \bullet \ar@(dr,ur)
+    } \]
+Was genau sind also die Objekte und die Morphismen? Wie lautet die
+Kompositionsvorschrift?
+\item Zeige: Identitätsmorphismen in Kategorien sind eindeutig, d.\,h. sind
+$\id_X$ und $\widetilde{\id}_X$ beides Identitätsmorphismen für ein Objekt~$X$
+einer Kategorie~$\C$, so gilt~$\id_X = \widetilde{\id}_X$.
+\end{enumerate}
+
+\item[\textbf{Aufgabe 2:}]
+Sei~$f:X \to Y$ eine Abbildung zwischen Mengen.
+\begin{enumerate}
+\item Zeige: Es ist~$f$ genau dann ein Monomorphismus, wenn $f$
+injektiv ist.
+\item Zeige: Es ist~$f$ genau dann ein Epimorphismus, wenn $f$
+surjektiv ist.
+
+\emph{Tipp:} Widerspruchsbeweis oder geeignete Abbildungen nach $\mathcal{P}(\{\star\})
+= \{ \emptyset, \{ \star\} \}$ betrachten.
+\end{enumerate}
+
+\item[\textbf{Aufgabe 3:}]
+Seien $f:X \to Y$ und~$g:Y \to Z$ Morphismen einer beliebigen Kategorie~$\C$.
+\begin{enumerate}
+\item Zeige: Ist $g \circ f$ ein Monomorphismus, so ist auch $f$ ein
+Monomorphismus.
+\item Dein Beweis von a) funktioniert in allen Kategorien, daher auch
+in~$\C^\op$. Was besagt er dann?
+\end{enumerate}
+
+
+\item[\textbf{Aufgabe 4:}]
+Ein \emph{Isomorphismus} $f:X \to Y$ in einer Kategorie ist ein
+Morphismus, zu dem es einen Morphismus $g:Y \to X$ mit
+\[ g \circ f = \id_X, \quad f \circ g = \id_Y \]
+gibt. Statt "`$g$"' schreibt man auch "`$f^{-1}$"'.
+\begin{enumerate}
+\item Zeige: Die Isomorphismen in der Kategorie der Gruppen sind genau die
+üblichen Gruppenisomorphismen.
+\item Zeige: In beliebigen Kategorien sind Isomorphismen stets Mono- und
+Epimorphismen, aber die Umkehrung gilt nicht.
+
+\emph{Tipp:} Für die Rückrichtung kann man ein Gegenbeispiel in einer
+über\-schau\-ba\-ren Kategorie angeben.
+\end{enumerate}
+
+\item[\textbf{Aufgabe 5:}]
+Sei~$G$ eine Gruppe. Bastele auf sinnvolle Art und Weise aus~$G$ eine Kategorie
+-- so, dass die Gruppenverknüpfung eine Rolle spielt. (Diese Kategorie wird oft
+mit "`$BG$"' bezeichnet und ist in der algebraischen Topologie wichtig.)
+\end{list}
+
+\end{document}
