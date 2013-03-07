@@ -1,0 +1,246 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[all]{xy}
+
+\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{motto}[defn]{Motto}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\ZZ}{\mathbb{ZZ}}
+\newcommand{\QQ}{\mathbb{QQ}}
+\newcommand{\RR}{\mathbb{RR}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\freist}{\underline{\ \ }}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\ggT}{ggT}
+\newcommand{\op}{\mathrm{op}}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+%\newarrow{Equals}=====
+
+%\usepackage{geometry}
+%\geometry{tmargin=2cm,bmargin=4cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{2em}%
+\begin{center}%
+  \vskip 1em
+  {\LARGE Pizzaseminar zur Kategorientheorie}
+  \vskip 1.5em%
+  {\large
+   \lineskip .5em%
+    \begin{tabular}[t]{c}%
+      \today
+    \end{tabular}\par}%
+    \vskip 1em%
+\end{center}\par
+\par\vskip 1.5em
+
+\begin{center}\emph{Warnung:} Die vielen Beispiele, Erklärungen und Hintergründe
+fehlen bislang.\end{center}
+
+\tableofcontents
+
+\section[Was sollen Kategorien?]{Was sollen Kategorien? \hfill \small Ingo
+Blechschmidt}
+
+\begin{defn}
+Eine \emph{Kategorie}~$\C$ besteht aus
+\begin{enumerate}
+  \item einer Klasse von \emph{Objekten} $\Ob \C$,
+  \item zu je zwei Objekten $X,Y \in \Ob \C$ einer Klasse $\Hom_\C(X,Y)$ von
+  \emph{Morphismen} zwischen ihnen und
+  \item einer Kompositionsvorschrift:
+  \begin{align*}
+    \text{zu }\ & f \in \Hom_\C(X,Y) &
+    \text{zu }\ & f : X \to Y \\
+    \text{und }\ & g\in\Hom_\C(Y,Z) &
+    \text{und }\ & g : Y \to Z \\
+    \text{habe }\ & g\circ f\in\Hom_\C(X,Z), &
+    \text{habe }\ & g\circ f : X \to Z,
+  \end{align*}
+\end{enumerate}
+sodass
+\begin{enumerate}
+  \item die Komposition $\circ$ assoziativ ist und
+  \item es zu jedem $X \in \Ob\C$ einen \emph{Identitätsmorphismus} $\id_X
+  \in \Hom_\C(X,X)$ mit
+  \[ f \circ \id_X = f, \quad \id_X \circ g = g \]
+  für alle Morphismen $f,g$ gibt.
+\end{enumerate}
+\end{defn}
+
+\begin{motto}[fundamental]Kategorientheorie stellt \emph{Beziehungen zwischen
+Objekten} statt etwaiger innerer Struktur in den Vordergrund.\end{motto}
+
+\begin{defn}
+Ein Objekt~$X$ einer Kategorie~$\C$ heißt genau dann
+\begin{itemize}
+  \item \emph{initial}, wenn
+    \[ \forall Y \in \Ob \C{:}\ \exists! f : X \to Y. \]
+  \item \emph{terminal}, wenn
+    \[ \forall Y \in \Ob \C{:}\ \exists! f : Y \to X. \]
+\end{itemize}
+\end{defn}
+
+\begin{bsp}\begin{enumerate}
+\item In der Kategorie der Mengen ist genau die leere Menge initial und
+genau jede einelementige Menge terminal.
+\item In der Kategorie der $K$-Vektorräume ist der Nullvektorraum $K^0$ initial
+und terminal.
+\end{enumerate}\end{bsp}
+
+\begin{defn}
+Ein Morphismus $f:X \to Y$ einer Kategorie~$\C$ heißt genau dann
+\begin{itemize}
+  \item \emph{Monomorphismus}, \tabto{3.35cm}wenn für alle Objekte~$A \in \Ob \C$ \\
+  \tabto{3.35cm}und $p,q:A \to X$ gilt:
+  \[ f \circ p = f \circ q \quad\Longrightarrow\quad p = q. \]
+  \item \emph{Epimorphismus}, \tabto{3.35cm}wenn für alle Objekte~$A \in \Ob \C$ \\
+  \tabto{3.35cm}und $p,q:Y \to A$ gilt:
+  \[ p \circ f = q \circ f \quad\Longrightarrow\quad p = q. \]
+\end{itemize}
+\end{defn}
+
+\begin{bsp}\begin{enumerate}
+\item In den Kategorien der Mengen, Gruppen und $K$-Vektorräumen sind die
+Monomorphismen genau die injektiven und die Epimorphismen genau die
+surjektiven Abbildungen. Das ist jeweils eine interessante Erkenntnis über die
+Struktur dieser Kategorien und nicht ganz leicht zu zeigen.
+\item In der Kategorie der metrischen Räume mit stetigen Abbildungen gibt es
+Epimorphismen, die nicht surjektiv sind: nämlich alle stetigen Abbildungen mit
+dichtem Bild.
+\end{enumerate}\end{bsp}
+
+\begin{defn}
+Ein \emph{Isomorphismus} $f:X \to Y$ in einer Kategorie ist ein
+Morphismus, zu dem es einen Morphismus $g:Y \to X$ mit
+\[ g \circ f = \id_X, \quad f \circ g = \id_Y \]
+gibt. Statt "`$g$"' schreibt man auch "`$f^{-1}$"'. Existiert zwischen
+Objekten~$X$ und~$Y$ ein Isomorphismus, so heißen die Objekte \emph{zueinander
+isomorph}:
+$X \cong Y$.
+\end{defn}
+
+\begin{defn}
+Die zu einer Kategorie~$\C$ zugehörige \emph{duale Kategorie} $\C^\op$ ist
+folgende:
+\begin{align*}
+  \Ob \C^\op &:= \Ob \C \\
+  \Hom_{\C^\op}(X,Y) &:= \Hom_\C(Y,X)
+\end{align*}
+\end{defn}
+
+\begin{bsp}\begin{enumerate}
+\item Ein initiales Objekt in~$\C^\op$ ist ein terminales Objekt in~$\C$ und
+umgekehrt.
+\item Ein Epimorphismus in~$\C^\op$ ist ein Monomorphismus in~$\C$ und
+umgekehrt.
+\item Zwei Objekte sind genau dann in~$\C^\op$ zueinander isomorph, wenn sie es
+in~$\C$ sind.
+\end{enumerate}\end{bsp}
+
+
+\section[Produkte und Koprodukte]{Produkte und Koprodukte \hfill \small
+Matthias Hutzler}
+
+\begin{defn}Seien~$X$, $Y$ Objekte einer Kategorie~$\C$. Dann besteht ein
+\emph{Produkt} von~$X$ und~$Y$ aus
+\begin{enumerate}
+\item einem Objekt~$P \in \Ob \C$ und
+\item Morphismen $\pi_X : P \to X$, $\pi_Y : P \to Y$,
+\end{enumerate}
+sodass für jedes andere \emph{Möchtegern-Produkt}, also
+\begin{enumerate}
+\item jedem Objekt~$\widetilde P \in \Ob \C$ zusammen mit
+\item Morphismen $\widetilde \pi_X : \widetilde P \to X$, $\widetilde\pi_Y :
+\widetilde P \to Y$
+\end{enumerate}
+genau ein Morphismus $\psi : \widetilde P \to P$ existiert, der das Diagramm
+\[ \xymatrix{
+    & \widetilde P \ar[ld]_{\widetilde \pi_X} \ar@{-->}[dd]_\psi \ar[rd]^{\widetilde \pi_Y} \\
+  X & & Y \\
+    & P \ar[lu]^{\pi_X} \ar[ru]_{\pi_Y}
+  } \]
+kommutieren lässt, also die Gleichungen
+\begin{align*}
+  \pi_X \circ \psi &= \widetilde \pi_X \\
+  \pi_Y \circ \psi &= \widetilde \pi_Y
+\end{align*}
+erfüllt.
+\end{defn}
+
+\begin{motto}Ein Produkt ist ein bestes Möchtegern-Produkt.\end{motto}
+
+Analog definiert man das Produkt von~$n$ Objekten, $n \geq 0$; und dual
+definiert man das Koprodukt.
+
+\begin{bsp}\begin{enumerate}
+\item Das Produkt in der Kategorie der Mengen ist durch das kartesische Produkt
+gegeben.
+\item Das Produkt in der Kategorie der Gruppen ist durch das direkte Produkt
+mit der komponentenweisen Verknüpfung gegeben.
+\item Das Produkt in der von einer Quasiordnung induzierten Kategorie ist durch
+das Infimum gegeben, siehe Aufgabe~3 von Übungsblatt~2.
+\end{enumerate}\end{bsp}
+
+\begin{prop}Die Objektteile je zweier Produkte von Objekten~$X$, $Y$ sind
+zueinander isomorph.\end{prop}
+
+\begin{bem}Es gilt sogar noch mehr, siehe Aufgabe~2 von Übungsblatt~2.\end{bem}
+
+\begin{prop}Die Angabe eines Produkts von~$X$ und~$Y$ ist gleichwertig mit der
+Angabe eines Produkts von~$Y$ und~$X$.\end{prop}
+
+\begin{prop}Die Angabe eines Produkts von null vielen Objekten ist gleichwertig
+mit der Angabe eines terminalen Objekts.\end{prop}
+
+\end{document}
