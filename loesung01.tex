@@ -1,0 +1,249 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Spur}[1]{\operatorname{Spur}#1}
+\newcommand{\rank}[1]{\operatorname{rank}#1}
+\newcommand{\sgn}[1]{\operatorname{sgn}#1}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}[1]{\operatorname{GL}(#1)}
+\newcommand{\ORTH}[1]{\operatorname{O}(#1)}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Bild}{im}
+\DeclareMathOperator{\Kern}{ker}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\Zzwei}{\Z_2}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\usepackage{enumerate}
+
+\pagestyle{empty}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 8. März 2013\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
+Lösung zum 1. Übungsblatt
+\end{center}
+\vspace{2em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+%\begin{list}{}{\labelwidth\wd\mybox \leftmargin\wd\mybox \itemsep 1.3em}
+\begin{list}{}{\labelwidth0em \leftmargin0em \itemindent0.5em \itemsep 1.3em}
+\item[\textbf{Aufgabe 1:}]\mbox{}
+\begin{enumerate}
+\item Eine mögliche Antwort ist die Kategorie \textbf{Grp}, deren Objekte die Klasse aller
+Gruppen ist, und  die als Morphismen die Gruppenhomomorphismen mit der üblichen Komposition von Abbildungen besitzt. Initiale und terminale Objekte in \textbf{Grp} sind alle trivialen Gruppen.
+\item Wir nennen die Kategorie~$K$ und geben den Objekten und den Morphismen im Diagramm Namen und können mit diesen die Objekte, Morphismen und die Kompositionsvorschrift direkt angeben:\vspace{-2em}
+
+    ${\xymatrix{
+      & A \ar[d]^f \ar@(ur,ul)_{\id_A} \\
+      B \ar[r]^g \ar@(ul,dl)_{\id_B} & C \ar@(dr,ur)_{\id_C}
+    }}$
+    {\small
+    \setlength{\tabcolsep}{3pt}
+    $\vtop{\begin{tabular}{l l l}
+      \\
+      \\
+      $\Ob(K) = \{A, B, C\}$ & & \\
+      \noalign{\smallskip}
+      $\Hom(A, A) = \{\id_A\}$ & $\Hom(B, A) = \varnothing$ & $\Hom(C, B) = \varnothing$ \\
+      $\Hom(A, B) = \varnothing$ & $\Hom(B, B) = \{\id_B\}$ & $\Hom(C, B) = \varnothing$ \\
+      $\Hom(A, C) = \{f\}$ & $\Hom(B, C) = \{g\}$ & $\Hom(C, C) = \{\id_C\}$ \\
+      \noalign{\smallskip}
+      $\id_A \circ \id_A = \id_A$ & $\id_B \circ \id_B = \id_B$ & $\id_C \circ \id_C = \id_C$ \\
+      $f \circ \id_A = f$ & $g \circ \id_B = g$ & $\id_C \circ f = f$ \\
+      & & $\id_C \circ g = g$
+    \end{tabular}}$
+    }
+
+\item Angenommen $\id_X$ und $\widetilde{\id}_X$ sind beides Identitätsmorphismen für ein Objekt~$X$ einer Kategorie. Dann gilt für alle passende Morphismen $f$ und $g$
+
+  $f \circ \widetilde{\id}_X = f$ und $\id_X \circ g = g$.
+
+  Insbesondere ist $\id_X = \id_X \circ \widetilde{\id}_X = \widetilde{\id}_X$.
+\end{enumerate}
+
+\item[\textbf{Aufgabe 2:}]
+Sei~$f:X \to Y$ eine Abbildung zwischen Mengen.
+\begin{enumerate}
+\item $f$ injektiv $\Rightarrow$ $f$ Monomorphismus:
+
+  \begin{addmargin}{2em}
+    Seien $g, g':W \to X$ zwei Abbildungen mit $f \circ g = f \circ g'$. Zu zeigen: $g = g'$.
+    Sei dazu $w \in W$ beliebig. Dann ist $f(g(w)) = f(g'(w))$ und weil f injektiv ist,
+    $g(w) = g'(w)$ für alle $w \in W$.
+  \end{addmargin}
+
+  $f$ Monomorphismus $\Rightarrow$ $f$ injektiv:
+
+  \begin{addmargin}{2em}
+    Seien $x, x' \in X$ beliebig mit $f(x) = f(x')$. Zu zeigen: $x = x'$. Definiere dazu
+    \begin{align*}
+      g &\colon\{\star\} \to X, \enskip\star \mapsto x \\
+      g' &\colon\{\star\} \to X, \enskip\star \mapsto x'.
+    \end{align*}
+    Es gilt offensichtlicherweise $f \circ g = f \circ g'$ und da $f$ Monomorphismus ist,
+    auch $g = g'$. Also ist $x = g(\star) = g'(\star) = x'$.
+  \end{addmargin}
+
+\item $f$ surjektiv $\Rightarrow$ $f$ Epimorphismus:
+
+  \begin{addmargin}{2em}
+    Seien $g, g':Y \to Z$ zwei Abbildungen mit $g \circ f = g' \circ f$. Zu zeigen: $g = g'$.
+    Sei dazu $y \in Y$ beliebig. Da $f$ surjektiv ist, gibt es ein $x \in X$ mit $f(x) = y$. Rechne:
+    $$g(y) = g(f(x)) = (g \circ f)(x) = (g' \circ f)(x) = g'(f(x)) = g'(y)$$
+  \end{addmargin}
+
+  $f$ Epimorphismus $\Rightarrow$ $f$ surjektiv:
+
+  \begin{addmargin}{2em}
+    Sei $y \in Y$. Zu zeigen: $y \in \Bild(f)$. Definiere dazu
+    \begin{align*}
+      g&:Y \to \mathcal{P}(\{\star\}), \enskip\widetilde{y} \mapsto \{\star\} \\
+      g'&:Y \to \mathcal{P}(\{\star\}), \enskip\widetilde{y} \mapsto \{\star~|~\widetilde{y} \in \Bild(f) \}.
+    \end{align*}
+    Es gilt offensichtlicherweise $g \circ f = g' \circ f$ und da $f$ Epimorphismus ist,
+    auch $g = g'$. Also ist $\{\star\} = g(y) = g'(y) = \{\star~|~y \in \Bild(f)\}$ und damit beide Mengen gleich sind, muss $y \in \Bild(f)$ gelten.
+  \end{addmargin}
+\end{enumerate}
+
+\item[\textbf{Aufgabe 3:}]
+Seien $f:X \to Y$ und~$g:Y \to Z$ Morphismen einer beliebigen Kategorie~$\C$.
+\begin{enumerate}
+\item Zu zeigen: $f$ ist Monomorphismus, wenn $g \circ f$ Monomorphismus ist.
+  Seien dazu $h, h' : W \to X$ mit $f \circ h = f \circ h'$. Dann ist 
+  $g \circ f \circ h = g \circ f \circ h'$ und da $g \circ f$ Monomorphismus ist,
+  folgt $h = h'$ wie gewünscht.
+\item Die zu a) duale Aussage ist:
+
+  Seien $f:Y \to X$ und~$g:Z \to Y$ Morphismen einer beliebigen Kategorie. Wenn $f \circ g$ Epimorphismus ist, so ist auch $f$ Epimorphismus.
+\end{enumerate}
+
+
+\item[\textbf{Aufgabe 4:}]\mbox{}
+\begin{enumerate}
+\item $f$ Isomorphismus in \textbf{Grp} $\Rightarrow$ $f$ Gruppenisomorphismus:
+
+    \begin{addmargin}{2em}
+      Wenn $f$ Isomorphismus in \textbf{Grp} ist, so ist $f$ ein Gruppenhomomorphismus und besitzt eine Umkehrabbildung $f^{-1}$, ist also bijektiv. Damit ist $f$ nach Definition Gruppenisomorphismus.
+    \end{addmargin}
+
+  $f$ Gruppenisomorphismus $\Rightarrow$ $f$ Isomorphismus in \textbf{Grp}:
+
+    \begin{addmargin}{2em}
+      Da $f : H \to G$ Gruppenisomorphismus ist, ist $f$ insbesondere bijektiv und besitzt daher eine Umkehrabbildung $f^{-1}$.
+      Diese Umkehrabbildung ist sogar ein Gruppenhomomorphismus:
+      $$f^{-1}(h \circ \widetilde{h}) = f^{-1}(f(g) \circ f(\widetilde{g})) = f^{-1}(f(g \circ \widetilde{g})) = g \circ \widetilde{g} = f^{-1}(h) \circ f^{-1}(\widetilde{h})$$
+      Dabei haben wir verwendet, dass $f$ surjektiv ist, und daher $g, \widetilde{g} \in G$ existieren mit
+      $f(g) = h$ und $f(\widetilde{g}) = \widetilde{h}$. Damit befindet sich $f^{-1}$ auch in \textbf{Grp} und bildet dort das Inverse zu $f$.
+    \end{addmargin}
+\item
+  \emph{Beobachtung}: In jeder beliebigen Kategorie sind die Identitätsmorphismen sowohl Mono- als auch Epimorphismus, denn wenn $\id \circ f = \id \circ \widetilde{f}$ bzw. $g \circ \id = \widetilde{g} \circ \id$ gilt, folgt $f = \widetilde{f}$ bzw. $g = \widetilde{g}$ aus den Kategorienaxiomen.
+
+  Wenn $f$ Isomorphismus ist, so gibt es einen Morphismus $f^{-1}$ mit
+  \begin{enumerate}[(1)]
+    \item $f \circ f^{-1} = id$
+    \item $f^{-1} \circ f = id$
+  \end{enumerate}
+  Aus (1) folgt mit 3b), dass f Epimorphismus ist, und aus (2) folgt mit 3a), dass f Monomorphismus ist.
+
+  Die Umkehrung gilt nicht, wie folgendes Gegenbeispiel zeigt:
+
+  \begin{center}
+    ${\xymatrix{
+      & A \ar@(dl,ul)^{\id_A} \ar[r]^f & B \ar@(dr,ur)_{\id_B} \\
+    }}$
+  \end{center}
+
+  Hier ist $f$ Monomorphismus und Epimorphismus, da wir $f$ nur mit den Identitätsmorphismen $\id_A$ und $\id_B$ verknüpfen können und somit wieder $f$ erhalten. Allerdings ist $f$ kein Isomorphismus, da es keinen Morphismus von $B$ nach $A$ gibt.
+\end{enumerate}
+
+\item[\textbf{Aufgabe 5:}]
+Sei~$G$ eine Gruppe. Wir definieren die Kategorie $BG$ durch
+
+  \begin{enumerate}[(1)]
+    \item $\Ob(BG) = \{A\}$
+    \item $\Hom(A, A) = G$
+    \item Die Komposition in BG entspricht der Komposition der Gruppe.
+  \end{enumerate}
+
+  Diese Definition ergibt tatsächlich eine Kategorie, da die Komposition in jeder Gruppe assoziativ ist, und jede Gruppe ein neutrales Element besitzt, das in $BG$ den Identitätsmorphismus auf $A$ ergibt.
+  Diese Definition ist auch sinnvoll, da sich aus der Komposition von Morphismen wieder die gesamte Struktur der Gruppe ablesen lässt.
+\end{list}
+
+\end{document}
