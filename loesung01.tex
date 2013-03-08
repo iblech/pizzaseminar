@@ -82,17 +82,15 @@
 
 \usepackage{enumerate}
 
-\pagestyle{empty}
-
 %\newarrow{Equals}=====
 
 \usepackage{geometry}
-\geometry{tmargin=2cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+\geometry{tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
 
 \begin{document}
 
 \vspace*{-4em}
-\begin{flushright}Universität Augsburg \\ 8. März 2013\end{flushright}
+\begin{flushright}Universität Augsburg \\ 8. März 2013 \\ Tim Baumann\end{flushright}
 
 \begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
 Lösung zum 1. Übungsblatt
@@ -121,7 +119,7 @@ Gruppen ist, und  die als Morphismen die Gruppenhomomorphismen mit der üblichen
       \\
       $\Ob(K) = \{A, B, C\}$ & & \\
       \noalign{\smallskip}
-      $\Hom(A, A) = \{\id_A\}$ & $\Hom(B, A) = \varnothing$ & $\Hom(C, B) = \varnothing$ \\
+      $\Hom(A, A) = \{\id_A\}$ & $\Hom(B, A) = \varnothing$ & $\Hom(C, A) = \varnothing$ \\
       $\Hom(A, B) = \varnothing$ & $\Hom(B, B) = \{\id_B\}$ & $\Hom(C, B) = \varnothing$ \\
       $\Hom(A, C) = \{f\}$ & $\Hom(B, C) = \{g\}$ & $\Hom(C, C) = \{\id_C\}$ \\
       \noalign{\smallskip}
@@ -131,25 +129,25 @@ Gruppen ist, und  die als Morphismen die Gruppenhomomorphismen mit der üblichen
     \end{tabular}}$
     }
 
-\item Angenommen $\id_X$ und $\widetilde{\id}_X$ sind beides Identitätsmorphismen für ein Objekt~$X$ einer Kategorie. Dann gilt für alle passende Morphismen $f$ und $g$
-
-  $f \circ \widetilde{\id}_X = f$ und $\id_X \circ g = g$.
-
-  Insbesondere ist $\id_X = \id_X \circ \widetilde{\id}_X = \widetilde{\id}_X$.
+\item Angenommen $\id_X$ und $\widetilde{\id}_X$ sind beides
+Identitätsmorphismen für ein Objekt~$X$ einer Kategorie. Dann gilt für alle
+passenden (komponierbaren) Morphismen $f$ und $g$
+\[ \text{$f \circ \widetilde{\id}_X = f$ und $\id_X \circ g = g$.} \]
+Insbesondere ist $\id_X = \id_X \circ \widetilde{\id}_X = \widetilde{\id}_X$.
 \end{enumerate}
 
 \item[\textbf{Aufgabe 2:}]
 Sei~$f:X \to Y$ eine Abbildung zwischen Mengen.
 \begin{enumerate}
-\item $f$ injektiv $\Rightarrow$ $f$ Monomorphismus:
+\item Zu zeigen: $f$ injektiv $\Rightarrow$ $f$ Monomorphismus
 
   \begin{addmargin}{2em}
     Seien $g, g':W \to X$ zwei Abbildungen mit $f \circ g = f \circ g'$. Zu zeigen: $g = g'$.
     Sei dazu $w \in W$ beliebig. Dann ist $f(g(w)) = f(g'(w))$ und weil f injektiv ist,
-    $g(w) = g'(w)$ für alle $w \in W$.
+    $g(w) = g'(w)$.
   \end{addmargin}
 
-  $f$ Monomorphismus $\Rightarrow$ $f$ injektiv:
+  Zu zeigen: $f$ Monomorphismus $\Rightarrow$ $f$ injektiv
 
   \begin{addmargin}{2em}
     Seien $x, x' \in X$ beliebig mit $f(x) = f(x')$. Zu zeigen: $x = x'$. Definiere dazu
@@ -157,11 +155,11 @@ Sei~$f:X \to Y$ eine Abbildung zwischen Mengen.
       g &\colon\{\star\} \to X, \enskip\star \mapsto x \\
       g' &\colon\{\star\} \to X, \enskip\star \mapsto x'.
     \end{align*}
-    Es gilt offensichtlicherweise $f \circ g = f \circ g'$ und da $f$ Monomorphismus ist,
+    Es gilt offensichtlicherweise $f \circ g = f \circ g'$, und da $f$ Monomorphismus ist,
     auch $g = g'$. Also ist $x = g(\star) = g'(\star) = x'$.
   \end{addmargin}
 
-\item $f$ surjektiv $\Rightarrow$ $f$ Epimorphismus:
+\item Zu zeigen: $f$ surjektiv $\Rightarrow$ $f$ Epimorphismus
 
   \begin{addmargin}{2em}
     Seien $g, g':Y \to Z$ zwei Abbildungen mit $g \circ f = g' \circ f$. Zu zeigen: $g = g'$.
@@ -169,7 +167,7 @@ Sei~$f:X \to Y$ eine Abbildung zwischen Mengen.
     $$g(y) = g(f(x)) = (g \circ f)(x) = (g' \circ f)(x) = g'(f(x)) = g'(y)$$
   \end{addmargin}
 
-  $f$ Epimorphismus $\Rightarrow$ $f$ surjektiv:
+  Zu zeigen: $f$ Epimorphismus $\Rightarrow$ $f$ surjektiv
 
   \begin{addmargin}{2em}
     Sei $y \in Y$. Zu zeigen: $y \in \Bild(f)$. Definiere dazu
@@ -177,8 +175,8 @@ Sei~$f:X \to Y$ eine Abbildung zwischen Mengen.
       g&:Y \to \mathcal{P}(\{\star\}), \enskip\widetilde{y} \mapsto \{\star\} \\
       g'&:Y \to \mathcal{P}(\{\star\}), \enskip\widetilde{y} \mapsto \{\star~|~\widetilde{y} \in \Bild(f) \}.
     \end{align*}
-    Es gilt offensichtlicherweise $g \circ f = g' \circ f$ und da $f$ Epimorphismus ist,
-    auch $g = g'$. Also ist $\{\star\} = g(y) = g'(y) = \{\star~|~y \in \Bild(f)\}$ und damit beide Mengen gleich sind, muss $y \in \Bild(f)$ gelten.
+    Es gilt offensichtlicherweise $g \circ f = g' \circ f$, und da $f$ Epimorphismus ist,
+    auch $g = g'$. Also ist $\{\star\} = g(y) = g'(y) = \{\star~|~y \in \Bild(f)\}$ und da beide Mengen gleich sind, muss $y \in \Bild(f)$ gelten.
   \end{addmargin}
 \end{enumerate}
 
@@ -186,6 +184,7 @@ Sei~$f:X \to Y$ eine Abbildung zwischen Mengen.
 Seien $f:X \to Y$ und~$g:Y \to Z$ Morphismen einer beliebigen Kategorie~$\C$.
 \begin{enumerate}
 \item Zu zeigen: $f$ ist Monomorphismus, wenn $g \circ f$ Monomorphismus ist.
+
   Seien dazu $h, h' : W \to X$ mit $f \circ h = f \circ h'$. Dann ist 
   $g \circ f \circ h = g \circ f \circ h'$ und da $g \circ f$ Monomorphismus ist,
   folgt $h = h'$ wie gewünscht.
@@ -197,32 +196,36 @@ Seien $f:X \to Y$ und~$g:Y \to Z$ Morphismen einer beliebigen Kategorie~$\C$.
 
 \item[\textbf{Aufgabe 4:}]\mbox{}
 \begin{enumerate}
-\item $f$ Isomorphismus in \textbf{Grp} $\Rightarrow$ $f$ Gruppenisomorphismus:
+\item Für diese Aufgabe unterstellen wir die klassische Definition eines
+Gruppenisomorphismus als bijektiven Gruppenhomomorphismus.
+
+Zu zeigen: $f$ Isomorphismus in \textbf{Grp} $\Rightarrow$ $f$ Gruppenisomorphismus
 
     \begin{addmargin}{2em}
       Wenn $f$ Isomorphismus in \textbf{Grp} ist, so ist $f$ ein Gruppenhomomorphismus und besitzt eine Umkehrabbildung $f^{-1}$, ist also bijektiv. Damit ist $f$ nach Definition Gruppenisomorphismus.
     \end{addmargin}
 
-  $f$ Gruppenisomorphismus $\Rightarrow$ $f$ Isomorphismus in \textbf{Grp}:
+Zu zeigen: $f$ Gruppenisomorphismus $\Rightarrow$ $f$ Isomorphismus in \textbf{Grp}
 
     \begin{addmargin}{2em}
-      Da $f : H \to G$ Gruppenisomorphismus ist, ist $f$ insbesondere bijektiv und besitzt daher eine Umkehrabbildung $f^{-1}$.
+      Da $f : G \to H$ Gruppenisomorphismus ist, ist $f$ insbesondere bijektiv und besitzt daher eine Umkehrabbildung $f^{-1}$.
       Diese Umkehrabbildung ist sogar ein Gruppenhomomorphismus:
       $$f^{-1}(h \circ \widetilde{h}) = f^{-1}(f(g) \circ f(\widetilde{g})) = f^{-1}(f(g \circ \widetilde{g})) = g \circ \widetilde{g} = f^{-1}(h) \circ f^{-1}(\widetilde{h})$$
       Dabei haben wir verwendet, dass $f$ surjektiv ist, und daher $g, \widetilde{g} \in G$ existieren mit
       $f(g) = h$ und $f(\widetilde{g}) = \widetilde{h}$. Damit befindet sich $f^{-1}$ auch in \textbf{Grp} und bildet dort das Inverse zu $f$.
     \end{addmargin}
 \item
-  \emph{Beobachtung}: In jeder beliebigen Kategorie sind die Identitätsmorphismen sowohl Mono- als auch Epimorphismus, denn wenn $\id \circ f = \id \circ \widetilde{f}$ bzw. $g \circ \id = \widetilde{g} \circ \id$ gilt, folgt $f = \widetilde{f}$ bzw. $g = \widetilde{g}$ aus den Kategorienaxiomen.
+  \emph{Beobachtung}: In jeder beliebigen Kategorie sind die Identitätsmorphismen sowohl Mono- als auch Epimorphismen, denn wenn $\id \circ f = \id \circ \widetilde{f}$ bzw. $g \circ \id = \widetilde{g} \circ \id$ gilt, folgt $f = \widetilde{f}$ bzw. $g = \widetilde{g}$ aus den Kategorienaxiomen.
 
   Wenn $f$ Isomorphismus ist, so gibt es einen Morphismus $f^{-1}$ mit
   \begin{enumerate}[(1)]
-    \item $f \circ f^{-1} = id$
-    \item $f^{-1} \circ f = id$
+    \item $f \circ f^{-1} = \id$
+    \item $f^{-1} \circ f = \id$
   \end{enumerate}
-  Aus (1) folgt mit 3b), dass f Epimorphismus ist, und aus (2) folgt mit 3a), dass f Monomorphismus ist.
+  Aus Gleichung (1) folgt mit Aufgabe 3b), dass~$f$ Epimorphismus ist, und aus
+  Gleichung~(2) folgt mit Aufgabe 3a), dass~$f$ Monomorphismus ist.
 
-  Die Umkehrung gilt nicht, wie folgendes Gegenbeispiel zeigt:
+  Die Umkehrung gilt nicht, wie folgendes Gegenbeispielkategorie zeigt:
 
   \begin{center}
     ${\xymatrix{
@@ -230,20 +233,30 @@ Seien $f:X \to Y$ und~$g:Y \to Z$ Morphismen einer beliebigen Kategorie~$\C$.
     }}$
   \end{center}
 
-  Hier ist $f$ Monomorphismus und Epimorphismus, da wir $f$ nur mit den Identitätsmorphismen $\id_A$ und $\id_B$ verknüpfen können und somit wieder $f$ erhalten. Allerdings ist $f$ kein Isomorphismus, da es keinen Morphismus von $B$ nach $A$ gibt.
+  Hier ist $f$ Monomorphismus und Epimorphismus, da wir $f$ nur mit den
+  Iden\-ti\-täts\-mor\-phis\-men $\id_A$ und $\id_B$ verknüpfen können und somit wieder
+  $f$ erhalten. Allerdings ist $f$ kein Isomorphismus, da es keinen Morphismus
+  von $B$ nach $A$ gibt.
 \end{enumerate}
 
 \item[\textbf{Aufgabe 5:}]
 Sei~$G$ eine Gruppe. Wir definieren die Kategorie $BG$ durch
 
   \begin{enumerate}[(1)]
-    \item $\Ob(BG) = \{A\}$
-    \item $\Hom(A, A) = G$
+    \item $\Ob(BG) = \{\star\}$
+    \item $\Hom(\star, \star) = G$
     \item Die Komposition in BG entspricht der Komposition der Gruppe.
   \end{enumerate}
 
-  Diese Definition ergibt tatsächlich eine Kategorie, da die Komposition in jeder Gruppe assoziativ ist, und jede Gruppe ein neutrales Element besitzt, das in $BG$ den Identitätsmorphismus auf $A$ ergibt.
-  Diese Definition ist auch sinnvoll, da sich aus der Komposition von Morphismen wieder die gesamte Struktur der Gruppe ablesen lässt.
+  Diese Definition ergibt tatsächlich eine Kategorie, da die Komposition in~$G$
+  assoziativ ist, und das neutrale Element aus~$G$ den Identitätsmorphismus auf
+  $\star$ stellt.
+  Diese Definition ist auch sinnvoll, da sich aus der Komposition von
+  Morphismen wieder die gesamte Struktur der Gruppe ablesen lässt.
+
+  In der Kategorie~$BG$ ist jeder Morphismus invertierbar. Solche Kategorien
+  heißen auch \emph{Gruppoide}. Wir haben also (beinahe) gesehen: Gruppoide mit
+  nur einem Objekt sind "`dasselbe"' wie Gruppen.
 \end{list}
 
 \end{document}
