@@ -340,9 +340,9 @@ sodass für jedes andere \emph{Möchtegern-Produkt}, also
 \end{enumerate}
 genau ein Morphismus $\psi : \widetilde P \to P$ existiert, der das Diagramm
 \[ \xymatrix{
-    & \widetilde P \ar[ld]_{\widetilde \pi_X} \ar@{-->}[dd]_\psi \ar[rd]^{\widetilde \pi_Y} \\
+    & P \ar[ld]_{\pi_X} \ar[rd]^{\pi_Y} \\
   X & & Y \\
-    & P \ar[lu]^{\pi_X} \ar[ru]_{\pi_Y}
+    & \widetilde P \ar[lu]^{\widetilde \pi_X} \ar@{-->}[uu]_\psi \ar[ru]_{\widetilde \pi_Y}
   } \]
 kommutieren lässt, also die Gleichungen
 \begin{align*}
@@ -354,7 +354,10 @@ erfüllt.
 
 \begin{motto}Ein Produkt ist ein bestes Möchtegern-Produkt.\end{motto}
 
-Analog definiert man das Produkt von~$n$ Objekten, $n \geq 0$; und dual
+Statt~"`$P$"' schreibt man gerne~"`$X \times Y$"'; es muss aus dem Kontext klar
+werden, ob das Kreuzzeichen speziell das kartesische Produkt von Mengen
+oder das allgemeine kategorielle Produkt bezeichnen soll.
+Analog definiert man das Produkt von~$n$ Objekten, $n \geq 0$, und dual
 definiert man das Koprodukt.
 
 \begin{bsp}\begin{enumerate}
@@ -367,9 +370,52 @@ freie Produkt von Gruppen.
 der~$K$-Vektorräume sind durch die äußere direkte Summe gegeben. Produkte und
 Koprodukte von unendlich vielen Objekten unterscheiden sich allerdings.
 \item Das Produkt in der von einer Quasiordnung induzierten Kategorie ist durch
-das Infimum gegeben, siehe Aufgabe~3 von Übungsblatt~2. Dual ist das Koprodukt
+das Infimum gegeben. Dual ist das Koprodukt
 durchs Supremum gegeben.
 \end{enumerate}\end{bsp}
+\begin{proof}
+\begin{enumerate}
+\item Wir zeigen die Aussage über das kartesische Produkt. Seien also~$X$
+und~$Y$ Mengen. Dann wird das kartesische Produkt~$X \times Y$ vermöge der
+kanonischen Projektionsabbildungen
+\begin{align*}
+  \pi_X : X \times Y \to X,\ (x,y) \mapsto x \\
+  \pi_Y : X \times Y \to Y,\ (x,y) \mapsto y
+\end{align*}
+zu einem Möchtegern-Produkt von~$X$ und~$Y$:
+\[ \xymatrix{
+  & X \times Y \ar[ld]_{\pi_X} \ar[rd]^{\pi_Y} \\
+  X & & Y
+} \]
+Um zu zeigen, dass dieses Möchtegern-Produkt ein tatsächliches Produkt von~$X$
+und~$Y$ ist, müssen wir noch die universelle Eigenschaft nachweisen. Sei also
+ein Möchtegern-Produkt~$(X \leftarrow \widetilde P \to Y)$ gegeben. Dann müssen
+wir nachweisen, dass es genau einen Morphismus~$\psi:\widetilde P \to X \times
+Y$ gibt, der die beiden Dreiecke im Diagramm
+\[ \xymatrix{
+    & X \times Y \ar[ld]_{\pi_X} \ar[rd]^{\pi_Y} \\
+  X & & Y \\
+    & \widetilde P \ar[lu]^{\widetilde \pi_X} \ar@{-->}[uu]_\psi \ar[ru]_{\widetilde \pi_Y}
+  } \]
+kommutieren lässt. Ausgeschreiben besagen die Kommutativitätsbedingungen, dass
+für alle~$p \in \widetilde P$ die Gleichungen
+\begin{align*}
+  \text{(erste Komponente von $\psi(p)$)} &= \widetilde \pi_X(p) \\
+  \text{(zweite Komponente von $\psi(p)$)} &= \widetilde \pi_Y(p)
+\end{align*}
+gelten sollen.
+Es ist klar, dass diese beiden Bedingung genau durch eine Abbildung~$\psi$
+erfüllt werden, nämlich durch
+\[ \psi : \widetilde P \to X \times Y,\ p \mapsto (\widetilde \pi_X(p),
+\widetilde \pi_Y(p)). \]
+\item Der Produkt-Fall geht analog: Zusätzlich kann man jetzt voraussetzen,
+dass~$\widetilde \pi_X$ und~$\widetilde \pi_Y$ Gruppenhomomorphismen sind; im
+Gegenzug muss man aber nachweisen, dass die konstruierte Abbildung~$\psi$ ein
+Gruppenhomomorphismus wird.
+\item Übungsaufgabe.
+\item Siehe Übungsblatt 2, Aufgabe 3. \qedhere
+\end{enumerate}
+\end{proof}
 
 \begin{prop}Die Objektteile je zweier Produkte von Objekten~$X$, $Y$ sind
 zueinander isomorph.\end{prop}
@@ -381,5 +427,53 @@ Angabe eines Produkts von~$Y$ und~$X$.\end{prop}
 
 \begin{prop}Die Angabe eines Produkts von null vielen Objekten ist gleichwertig
 mit der Angabe eines terminalen Objekts.\end{prop}
+
+
+\section[Funktoren]{Funktoren \hfill \small Felicitas Hörmann}
+
+\emph{Werbung:} Wir werden verstehen, was Funktoren sind und wie man über
+Funktoren anschaulich denken kann. Beispiele werden demonstrieren, dass
+man das Funktorkonzept als Verallgemeinerung der Konzepte der Abbildungen
+zwischen Mengen, der Gruppenhomomorphismen zwischen Gruppen und monotonen
+Abbildungen zwischen Quasiordnungen auffassen kann. Alle weiteren Vorträge
+werden auf diesem aufbauen.
+
+
+\section[Natürliche Transformationen]{Natürliche Transformationen \hfill \small
+Tim Baumann}
+
+\emph{Werbung:} Wir werden verstehen, was natürliche Transformationen sind,
+weshalb ihre Definition ganz einfach ist und wozu man sie benötigt. Ihre
+Bedeutung werden wir aus verschiedenen Blickwinkeln beleuchten. Mit natürlichen
+Transformationen können wir dann auch Funktorkategorien definieren, die für das
+Yoneda-Lemma später sehr wichtig sind.
+
+
+\section[Limiten und Kolimiten]{Limiten und Kolimiten \hfill \small
+Martin Baur und Kathrin Gimmi}
+
+\emph{Werbung:} Wir verstehen, was allgemeine Limiten und Kolimiten von
+Diagrammen sind. Dazu wird es viele Beispiele geben, unter anderem die uns
+schon bekannten Produkte und Koprodukte. Speziell sind sog. filtrierte
+Kolimiten wichtig, da diese in der täglichen Praxis oft vorkommen und besonders
+schöne Eigenschaften haben. Abschließend werden wir die Frage diskutieren, wie
+man Kategorien, denen es an Limiten oder Kolimiten mangelt, vervollständigen
+kann.
+
+
+\section[Das Yoneda-Lemma]{Das Yoneda-Lemma \hfill \small Justin Gassner}
+
+\emph{Werbung:} Wir werden das fundamentale Yoneda-Lemma und seine Korollare
+verstehen. Dazu werden wir zunächst eine hilfreiche Intuition von sog. Prägarben auf
+Kategorien entwickeln und verstehen, welche Signifikanz die Darstellbarkeit von
+Prägarben hat. Dann können wir die Yoneda-Einbettung kennenlernen, ihre
+Eigenschaften studieren und sehen, wozu sie nützlich ist. Das fundamentale
+Motto der Kategorientheorie wird damit zu einem formalen Theorem.
+
+
+\section[Adjungierte Funktoren]{Adjungierte Funktoren \hfill \small Peter
+Uebele}
+
+\emph{Werbung:} Kommt noch!
 
 \end{document}
