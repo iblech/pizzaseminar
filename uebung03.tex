@@ -1,0 +1,205 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Spur}[1]{\operatorname{Spur}#1}
+\newcommand{\rank}[1]{\operatorname{rank}#1}
+\newcommand{\sgn}[1]{\operatorname{sgn}#1}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}[1]{\operatorname{GL}(#1)}
+\newcommand{\ORTH}[1]{\operatorname{O}(#1)}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Bild}{im}
+\DeclareMathOperator{\Kern}{ker}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\Zzwei}{\Z_2}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\pagestyle{empty}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=2cm,lmargin=2.8cm,rmargin=2.8cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 13. März 2013\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
+3. Übungsblatt
+\end{center}
+\vspace{1.5em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+\begin{list}{}{\labelwidth0em \leftmargin0em \itemindent0.5em \itemsep 2.0em}
+\item[\textbf{Aufgabe 1:}]
+"`Funktoren bewahren Isomorphien"':
+Sei~$F : \C \to \D$ ein Funktor zwischen Kategorien~$\C$, $\D$ und seien~$X$
+und~$Y$ Objekte von~$\C$. Zeige:
+\[ X \cong Y \quad\Longrightarrow\quad F(X) \cong F(Y). \]
+
+\item[\textbf{Aufgabe 2:}]
+Sei~$f:P \to Q$ eine \emph{monotone} Abbildung zwischen Quasiordnungen~$P$,
+$Q$, d.\,h. für alle~$x,y \in P$ gilt
+\[ \text{$x \preceq y$ in $P$} \ \Longrightarrow\ \text{$f(x) \sqsubseteq f(y)$
+in~$Q$}. \]
+Überlege, wie man daraus einen Funktor $BP \to BQ$ der zugehörigen Kategorien
+aus Aufgabe~3 von Blatt~2 basteln kann. Wieso sind die Funktoraxiome erfüllt?
+
+\item[\textbf{Aufgabe 3:}]
+Ein Funktor~$F : \C \to \D$ heißt\ldots
+\begin{enumerate}
+\item \emph{treu}, wenn für je zwei parallele Morphismen~$f,g$ in~$\C$ (d.\,h.
+Morphismen mit gleicher Quelle und gleichem Ziel) gilt:
+$F(f) = F(g) \quad\Longrightarrow\quad f = g.$
+\item \emph{voll}, wenn es für alle Objekte~$X,Y \in \C$ und jeden
+Morphismus~$h : F(X) \to F(Y)$ in~$\D$ einen Morphismus $f:X \to Y$ in~$\C$
+mit $F(f) = h$ gibt.
+\item \emph{essenziell surjektiv}, wenn es für jedes Objekt~$Z \in \Ob \D$ ein
+Objekt~$X \in \Ob \C$ mit
+$F(X) \cong Z$ gibt.
+\end{enumerate}
+Untersuche einen Funktor deiner Wahl daraufhin, ob er treu, voll oder essenziell
+surjektiv ist.
+
+\item[\textbf{Aufgabe 4:}]
+Sei~$\C$ eine Kategorie und~$A \in \Ob \C$ ein Objekt. Wir nehmen an, dass wir
+für jedes Objekt~$X \in \Ob \C$ ein bestimmtes Produkt~$A \times X \in \Ob \C$
+gegeben haben. Überlege, wie man die unvollständige Zuordnungsvorschrift
+\[ \begin{array}{@{}rrcl@{}}
+  F{:} & \C &\longrightarrow& \C \\
+  & X &\longmapsto& A \times X
+\end{array} \]
+zu einer Funktordefinition ausweiten kann. Wie kann man~$F$ auf Morphismen
+definieren? Wieso sind die Funktoraxiome erfüllt?
+
+\small
+\item[\textbf{Projektaufgabe:}]
+Sei~$\C$ eine Kategorie und~$A \in \Ob \C$ ein Objekt. Der \emph{kovariante
+Hom-Funktor zu~$A$} ist definiert als
+\[ \begin{array}{@{}rrcl@{}}
+  \widehat A{:} & \C &\longrightarrow& \Set \\
+  & X &\longmapsto& \Hom_\C(A,X) \\
+  & (f: X \to Y) &\longmapsto& f_\star,
+\end{array} \]
+wobei~$f_\star$ die Abbildung
+\[ \begin{array}{@{}rrcl@{}}
+  f_\star{:} & \Hom_\C(A,X) &\longrightarrow& \Hom_\C(A,Y) \\
+  & g &\longmapsto& f \circ g
+\end{array} \]
+ist. Zeige als Hinführung auf den Yoneda-Vortrag, dass~$\widehat A$ tatsächlich
+ein Funktor ist.
+\end{list}
+
+\end{document}
+
+\item[\textbf{Aufgabe 2:}]
+Sei~$F:\C\to\C$ ein Endofunktor auf einer Kategorie~$\C$. Wir definieren
+folgende Kategorie der \emph{$F$-Algebren}:
+\begin{align*}
+  \text{Objekte: } & \text{Diagramme der Form $F(A) \to A$ in~$\C$} \\
+  \text{Morphismen: } &
+    \Hom(F(A) \xra{\alpha} A, F(B) \xra{\beta} B) := \left\{
+      f:A \to B \,\middle|\,
+\vcenter{\xymatrix{
+  F(A) \ar[r]^\alpha \ar[d]_{F(f)} & A \ar[d]^f \\
+  F(B) \ar[r]_\beta & B
+}} \right\}
+\end{align*}
+\begin{enumerate}
+\item Zeige das \emph{Theorem von Lambek}: Ist~$F(A) \xra{\alpha} A$ eine
+initiale~$F$-Algebra, so ist~$\alpha$ ein Isomorphismus. [Die Umkehrung gilt
+nicht.]
+\item Sei speziell~$\C := \Set$ und~$F$ der Funktor
+\[ F(X) := 1 \coprod X \]
+mit~$1 := \{ \star \}$. Zeige, dass die Abbildung
+\[\begin{array}{@{}rcl@{}}
+  F(\NN) &\longrightarrow& \NN \\
+  \star &\longmapsto& 0 \\
+  n &\longmapsto& n+1
+\end{array}\]
+eine initiale~$F$-Algebra ist. Damit hast du die induktive Struktur der
+natürlichen Zahlen charakterisiert!
+\end{enumerate}
+\end{list}
+
+% Gruppenzentrum kein Funktor
+% Bifunktoren
+% Split-Epis bleiben unter beliebigen Funktoren erhalten
+% Datenbanken?
+
+\end{document}
