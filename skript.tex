@@ -48,6 +48,7 @@
 \newcommand{\QQ}{\mathbb{QQ}}
 \newcommand{\RR}{\mathbb{RR}}
 \newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\freist}{\underline{\ \ }}
@@ -438,6 +439,22 @@ zwischen Mengen, der Gruppenhomomorphismen zwischen Gruppen und monotonen
 Abbildungen zwischen Quasiordnungen auffassen kann. Alle weiteren Vorträge
 werden auf diesem aufbauen.
 
+\begin{defn}Ein \emph{Funktor}~$F : \C \to \D$ zwischen Kategorien~$\C$, $\D$
+besteht aus
+\begin{enumerate}
+\item einer Vorschrift, die jedem Objekt~$X \in \Ob \C$ ein Objekt~$F(X) \in \Ob \D$
+zuordnet, und
+\item einer Vorschrift, die jedem Morphismus~$f:X \to Y$ in~$\C$ einen
+Morphismus~$F(f) : F(X) \to F(Y)$ zuordnet,
+\end{enumerate}
+sodass
+\begin{enumerate}
+\item $F(\id_X) = \id_{F(X)}$ für alle Objekte~$X \in \Ob \C$ und
+\item $F(g \circ f) = F(g) \circ F(f)$ für alle passenden Morphismen $g$, $f$
+in~$\C$.
+\end{enumerate}
+\end{defn}
+
 
 \section[Natürliche Transformationen]{Natürliche Transformationen \hfill \small
 Tim Baumann}
@@ -446,7 +463,8 @@ Tim Baumann}
 weshalb ihre Definition ganz einfach ist und wozu man sie benötigt. Ihre
 Bedeutung werden wir aus verschiedenen Blickwinkeln beleuchten. Mit natürlichen
 Transformationen können wir dann auch Funktorkategorien definieren, die für das
-Yoneda-Lemma später sehr wichtig sind.
+Yoneda-Lemma später sehr wichtig sind. Außerdem können wir definieren, wann
+zwei Kategorien zueinander äquivalent sind.
 
 
 \section[Limiten und Kolimiten]{Limiten und Kolimiten \hfill \small
