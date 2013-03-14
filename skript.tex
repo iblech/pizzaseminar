@@ -97,8 +97,8 @@
 \end{center}\par
 \par\vskip 1.5em
 
-\begin{center}\emph{Warnung:} Die vielen Beispiele, Erklärungen und Hintergründe
-fehlen bislang.\end{center}
+\begin{center}\emph{in Entstehung befindlich} \\
+\TeX{}er: Tim Baumann, Ingo Blechschmidt, Justin Gassner, Matthias Hutzler\end{center}
 
 \tableofcontents
 
@@ -321,7 +321,9 @@ $X \cong Y$.
 
 \begin{bem}\label{gleichheitobj}In den meisten Kategorien ist die Frage, ob
 Objekte~$X,Y$ tatsächlich gleich (statt nur isomorph) sind, keine interessante
-Frage. Das ausführen und beispielhaft belegen!\end{bem}
+Frage: Denn für alle praktischen Belange sind schon zueinander isomorphe
+Objekte "`gleich gut"'. Diesen Gedanken werden wir noch manche Male aufgreifen
+und weiter entwickeln.\end{bem}
 
 
 \subsubsection*{Die duale Kategorie}
@@ -459,12 +461,13 @@ mit der Angabe eines terminalen Objekts.\end{prop}
 
 \section[Funktoren]{Funktoren \hfill \small Felicitas Hörmann}
 
-\emph{Werbung:} Wir werden verstehen, was Funktoren sind und wie man über
-Funktoren anschaulich denken kann. Beispiele werden demonstrieren, dass
-man das Funktorkonzept als Verallgemeinerung der Konzepte der Abbildungen
-zwischen Mengen, der Gruppenhomomorphismen zwischen Gruppen und monotonen
-Abbildungen zwischen Quasiordnungen auffassen kann. Alle weiteren Vorträge
-werden auf diesem aufbauen.
+So, wie es Gruppenhomomorphismen zwischen Gruppen gibt, gibt es Funktoren
+zwischen Kategorien. Ihre beeindruckendste Anwendung liegt darin, dass sie
+zwischen unterschiedlichen Teilgebieten der Mathematik vermitteln können -- das
+ist ein Grundgedanke der algebraischen Topologie. Man verwendet sie aber auch,
+um verschiedene Arten von Konstruktionen übersichtlich zu organisieren und
+einen sinnvollen Rahmen für die Frage nach "`bestmöglichen"' Konstruktionen mit
+vorgegebenem Ziel zu haben.
 
 \begin{defn}Ein \emph{Funktor}~$F : \C \to \D$ zwischen Kategorien~$\C$, $\D$
 besteht aus
@@ -491,6 +494,7 @@ von Objekten in~$\D$ gilt. Aber wie schon in Bemerkung~\ref{gleichheitobj}
 festgehalten, ist das keine sinnvolle Aussage.
 \end{bem}
 
+\begin{prop}
 Ein Funktor überführt kommutative Diagramme in Diagramme:
 \[ \vcenter{ \xymatrix@=8ex{
   X \ar[r]^{f} \ar[rd]_{h} & Y \ar[d]^{g} \\
@@ -501,7 +505,10 @@ Ein Funktor überführt kommutative Diagramme in Diagramme:
   F(X) \ar[r]^{F(f)} \ar[rd]_{F(h)} & F(Y) \ar[d]^{F(g)} \\
   & F(Z)
 } } \]
-Denn gilt $h = g \circ f$, so folgt~$F(h) = F(g \circ f) = F(g) \circ F(f)$.
+\end{prop}
+\begin{proof}
+Gilt $h = g \circ f$, so folgt~$F(h) = F(g \circ f) = F(g) \circ F(f)$.
+\end{proof}
 
 
 \subsection{Funktoren als Diagramme}
@@ -587,7 +594,7 @@ Vergissfunktoren:
   \item Der Funktor
   \[ V : \Man \to \Top, \quad M \mapsto M, \]
   die einer Mannigfaltigkeit ihren zugrundeliegenden topologischen Raum
-  zuordnet, vergisst (geometrische) Struktur.
+  zuordnet, vergisst (differentialgeometrische) Struktur.
   \item Der Funktor
   \[ V : \AbGrp \to \Grp, \quad (G,\circ) \mapsto (G,\circ), \quad f \mapsto f. \]
   vergisst die \emph{Eigenschaft} der Gruppenverknüpfung $\circ$, kommutativ zu sein.
@@ -706,6 +713,65 @@ Analog kann man Funktoren~$BG \to K\text{-}\Vect$ untersuchen. Solche haben
 auch einen klassischen Namen: Das sind sog. \emph{Gruppendarstellungen}.
 
 
+\subsection{Funktoren als Datenbanken}
+
+Wir wollen an einem Beispiel zeigen, dass auch so konkrete Dinge wie
+Datenbanken aus der Informatik kategoriell verstanden werden können. Etwa gibt
+das zugrundeliegende Datenbankschema der 0815/Datenbank aus Tafel~\ref{db0815}
+Anlass zu folgender Kategorie~$\C$:
+
+\[ \xymatrixcolsep{5pc} \xymatrixrowsep{5pc} \xymatrix{
+  \text{Angestellte}
+    \ar@(ul,ur)^{\text{Vorg.}}
+    \ar[r]^{\text{Abt.}}
+    \ar@/^2pc/[d]^{\text{Nachname}}
+    \ar@/_2pc/[d]_{\text{Vorname}}
+  & \text{Abteilung}
+    \ar@/^3pc/[dl]^{\text{Titel}} \\
+  \text{String}
+} \]
+
+Die Tabelleninhalte kann man dann über einen Funktor~$\C \to \Set$ kodieren,
+der jedes Objekt (also jeden Tabellennamen) auf die Menge der Primärschlüssel
+ihrer Zeilen und jeden Morphismus (also jeden Spaltennamen) auf die
+entsprechende Abbildung zwischen den Primärschlüsseln der beteiligten Tabellen
+abbildet.
+
+Gewisse einfache Integritätsbedingungen kann man über die Angabe eines
+geeigneten Kompositionsgesetzes in~$\C$ kodieren. Wenn man etwa ausdrücken
+möchte, dass der Sekretär einer Abteilung selbst in dieser sitzt, kann man
+\[ \text{Abt.} \circ \text{Sekretär} = \id_{\text{Abteilung}} :
+  \text{Abteilung} \to \text{Abteilung} \]
+definieren. Diese Sichtweise auf Datenbanken ist unter Anderem für das
+Verständnis von Datenmigrierung bei Schemaänderungen hilfreich. Details hat
+David Spivak erforscht~\cite{spivak1,spivak2,spivak3}.
+
+\begin{figure}
+  \begin{center}
+    \small
+    \begin{tabular}{|l||l|l|l|l|}
+      \hline
+      \multicolumn{5}{|c|}{Angestellte} \\ \hline
+      \textbf{Nr.} & \textbf{Vorname} & \textbf{Nachname} & \textbf{Vorg.} & \textbf{Abt.} \\ \hline
+      101 & David & Hilbert & 103 & q10 \\
+      102 & Bertrand & Russel & 102 & x02 \\
+      103 & Alan & Turing & 103 & q10 \\
+      \hline
+    \end{tabular}
+    \quad
+    \begin{tabular}{|l||l|l|}
+      \hline
+      \multicolumn{3}{|c|}{Abteilung} \\ \hline
+      \textbf{Nr.} & \textbf{Titel} & \textbf{Sekretär} \\ \hline
+      q10 & Vertrieb & 101 \\
+      x02 & Produktion & 102 \\
+      \hline
+    \end{tabular}
+  \end{center}
+
+  \caption{\label{db0815}Ein Standardbeispiel einer Datenbank.}
+\end{figure}
+
 \subsection{Hom-Funktoren}
 
 \begin{defn}
@@ -740,6 +806,34 @@ ko- oder kontravarianten Hom-Funktors schon bis auf Isomorphie eindeutig
 bestimmt ist.
 
 
+\subsection{Weitere Beispiele}
+
+\begin{enumerate}
+\item Den Prozess des Differenzierens glatter Abbildungen zwischen
+Mannigfaltigkeiten kann man als Funktor auffassen, der jeder Mannigfaltigkeit
+ihr Tangentialbündel und jeder glatter Abbildung ihr Differential zuordnet:
+\[ \begin{array}{@{}rcl@{}}
+  \Man &\longrightarrow& \Man \\
+  M &\longmapsto& TM \\
+  f &\longmapsto& Df
+\end{array} \]
+Es gibt auch eine "`lokale Version"', wenn man die Kategorie der
+\emph{punktierten glatten Mannigfaltigkeiten}~$\Man_\star$ betrachtet: Die
+Objekte dieser Kategorie sind Tupel $(M,x)$ aus einer Mannigfaltigkeit und
+einem ausgezeichneten Basispunkt~$x \in M$, Morphismen sind
+basispunkterhaltende glatte Abbildungen. Dann hat man den Funktor
+\[ \begin{array}{@{}rcl@{}}
+  \Man_\star &\longrightarrow& \RR\text{-}\Vect \\
+  (M,x) &\longmapsto& T_x M \\
+  f &\longmapsto& d_x f.
+\end{array} \]
+In beiden Fällen ist das zweite Funktoraxiom gerade deswegen erfüllt, weil die
+Kettenregel gilt!
+
+\item Hier könnte dein Beispiel stehen.
+\end{enumerate}
+
+
 \subsection{Die Kategorie der Kategorien}
 
 Nach dem fundamentalen Motto der Kategorientheorie sollen wir die Beziehungen
@@ -772,6 +866,15 @@ der es nicht nur Morphismen (Funktoren) zwischen Objekten (Kategorien), sondern
 auch "`höhere Morphismen"', sog. 2-Morphismen (hier natürliche
 Transformationen), zwischen den gewöhnlichen (1-)Morphismen gibt.
 \end{bem}
+
+% TODO:
+% * Was bedeutet Vorschrift in der Funktordefinition?
+%   * Eindeutigkeit der Zuordnung
+% * Rückfrage, dass keine Kommutativitätsbedingung vorhanden ist
+% * I darf beim konstanten Funktor auch leer sein
+% * Gegenbspfkt.: Komplement, V |-> Menge seiner Basen
+% * Q/R-Struktur
+% * BG: Basisraum
 
 
 \section[Natürliche Transformationen]{Natürliche Transformationen \hfill \small
