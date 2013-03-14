@@ -12,6 +12,10 @@
 \usepackage{lmodern}
 \usepackage{tabto}
 
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{literatur}
+
 \usepackage[all]{xy}
 
 \usepackage{hyperref}
@@ -40,15 +44,18 @@
 \widowpenalty=10000
 \displaywidowpenalty=10000
 
+\newcommand{\xra}[1]{\xrightarrow{#1}}
 \newcommand{\lra}{\longrightarrow}
 \newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
 \newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
 
-\newcommand{\ZZ}{\mathbb{ZZ}}
-\newcommand{\QQ}{\mathbb{QQ}}
-\newcommand{\RR}{\mathbb{RR}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\I}{\mathcal{I}}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\freist}{\underline{\ \ }}
@@ -58,6 +65,11 @@
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Grp}{\mathrm{Grp}}
 \newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\AbGrp}{\mathrm{AbGrp}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Man}{\mathrm{Man}}
+\newcommand{\Top}{\mathrm{Top}}
 
 \newcommand{\XXX}[1]{\textcolor{red}{#1}}
 
@@ -236,6 +248,11 @@ aller Klassen kann man aber nicht sprechen.
 \begin{motto}[fundamental]Kategorientheorie stellt \emph{Beziehungen zwischen
 Objekten} statt etwaiger innerer Struktur in den Vordergrund.\end{motto}
 
+\begin{defn}Eine Kategorie~$\C$ heißt \emph{lokal klein}, wenn ihre Hom-Klassen
+jeweils schon Mengen (statt echte Klassen) sind. Eine Kategorie~$\C$ heißt
+\emph{klein}, wenn zusätzlich auch ihre Klasse von Objekten schon eine Menge
+bildet.\end{defn}
+
 
 \subsubsection*{Initiale und terminale Objekte}
 
@@ -302,6 +319,10 @@ isomorph}:
 $X \cong Y$.
 \end{defn}
 
+\begin{bem}\label{gleichheitobj}In den meisten Kategorien ist die Frage, ob
+Objekte~$X,Y$ tatsächlich gleich (statt nur isomorph) sind, keine interessante
+Frage. Das ausführen und beispielhaft belegen!\end{bem}
+
 
 \subsubsection*{Die duale Kategorie}
 
@@ -361,6 +382,9 @@ oder das allgemeine kategorielle Produkt bezeichnen soll.
 Analog definiert man das Produkt von~$n$ Objekten, $n \geq 0$, und dual
 definiert man das Koprodukt.
 
+
+\subsection{Beispiele}
+
 \begin{bsp}\begin{enumerate}
 \item Das Produkt in der Kategorie der Mengen ist durch das kartesische Produkt
 gegeben, das Koprodukt durch die disjunkt-gemachte Vereinigung.
@@ -418,6 +442,9 @@ Gruppenhomomorphismus wird.
 \end{enumerate}
 \end{proof}
 
+
+\subsection{Erste Eigenschaften}
+
 \begin{prop}Die Objektteile je zweier Produkte von Objekten~$X$, $Y$ sind
 zueinander isomorph.\end{prop}
 
@@ -450,10 +477,301 @@ Morphismus~$F(f) : F(X) \to F(Y)$ zuordnet,
 sodass
 \begin{enumerate}
 \item $F(\id_X) = \id_{F(X)}$ für alle Objekte~$X \in \Ob \C$ und
-\item $F(g \circ f) = F(g) \circ F(f)$ für alle passenden Morphismen $g$, $f$
+\item $F(g \circ f) = F(g) \circ F(f)$ für alle komponierbaren Morphismen $g$, $f$
 in~$\C$.
 \end{enumerate}
 \end{defn}
+\begin{bem}Quelle und Ziel der abgebildeten Morphismen~$F(f)$ sind also durch
+den Objektteil des Funktors schon vorgegeben. Es ist nicht sinnvoll, von der
+Gleichheit von Funktoren~$F,G : \C \to \D$ zu sprechen -- denn das würde
+naheliegenderweise ja die Aussage umfassen, dass für alle Objekte~$X \in \Ob \C$ die
+Gleichheit
+\[ F(X) = G(X) \]
+von Objekten in~$\D$ gilt. Aber wie schon in Bemerkung~\ref{gleichheitobj}
+festgehalten, ist das keine sinnvolle Aussage.
+\end{bem}
+
+Ein Funktor überführt kommutative Diagramme in Diagramme:
+\[ \vcenter{ \xymatrix@=8ex{
+  X \ar[r]^{f} \ar[rd]_{h} & Y \ar[d]^{g} \\
+  & Z
+} }
+\qquad \overset{F}{\longmapsto} \qquad
+\vcenter{ \xymatrix@=8ex{
+  F(X) \ar[r]^{F(f)} \ar[rd]_{F(h)} & F(Y) \ar[d]^{F(g)} \\
+  & F(Z)
+} } \]
+Denn gilt $h = g \circ f$, so folgt~$F(h) = F(g \circ f) = F(g) \circ F(f)$.
+
+
+\subsection{Funktoren als Diagramme}
+
+Es sei $\I$ die durch die folgende Skizze gegebene Kategorie und $\C$ eine beliebige Kategorie.
+
+\[ \xymatrix{
+  & \bullet_1 \ar[d] \ar@(ur,ul) \\
+  \bullet_2 \ar[r] \ar@(ul,dl) & \bullet_3 \ar@(dr,ur)
+} \]
+
+Um einen Funktor $F : \I \to \C$ anzugeben, muss man
+\begin{enumerate}
+  \item Objekte~$X_1 = F(\bullet_1)$, $X_2 = F(\bullet_2)$ und~$X_3 =
+  F(\bullet_3)$ in~$\C$ und
+  \item Morphismen $f:X_1 \to X_3$ und $g:X_2 \to X_3$ in~$\C$
+\end{enumerate}
+spezifizieren. Ein solcher Funktor ist also durch ein Diagramm der Form
+
+\[ \xymatrix{
+  & X_1 \ar[d]^f \ar@(ur,ul) \\
+  X_2 \ar[r]_g \ar@(ul,dl) & X_3 \ar@(dr,ur)
+} \]
+in~$\C$ gegeben. Da diese Überlegung analog mit anderen Kategorien~$\I$
+funktioniert, sehen wir folgendes Motto:
+\begin{motto}Funktoren~$\I \to \C$ sind~$\I$-förmige Diagramme
+in~$\C$.\end{motto}
+
+
+\subsection{Langweilige Funktoren}
+
+\begin{enumerate}
+  \item Für jede Kategorie $\C$ gibt es den \emph{Identitätsfunktor}
+  \[ F : \C \to \C, \quad X \mapsto X, \quad f \mapsto f. \]
+  \item Für ein festes Object $\heartsuit \in \C$ hat man den \emph{konstanten Funktor}
+  \[ F : \I \to \C, \quad X \mapsto \heartsuit, \quad f \mapsto \id_\heartsuit. \]
+\end{enumerate}
+
+Diese Funktoren als solche sind langweilig. Interessant sind aber natürliche
+Transformationen zwischen ihnen -- das werden wir im folgenden Vortrag sehen.
+
+
+\subsection{Kontravariante Funktoren}
+
+Wie kann man sich einen Funktor $F : \C^\op \to \D$ vorstellen?
+\begin{enumerate}
+  \item Objekte $X \in \Ob \C^\op = \Ob \C$ werden auf Objekte $F(X) \in \mathcal{D}$
+  abgebildet.
+  \item Morphismen $f : X \to Y$ in $\C^\op$ (d.\,h. $f : Y \to X$ in~$\C$)
+  werden auf Morphismen $F(f) : F(X) \to F(Y)$ in $\mathcal{D}$ abgebildet.
+\end{enumerate}
+Das zweite Funktoraxiom lautet für Morphismen~$X \xra{f} Y \xra{g} Z$
+in~$\C^\op$
+\[ F(g \circ f) = F(f \bullet g) = F(f) \circ F(g), \] 
+wobei wir zur Verdeutlichung "`$\circ$"' für die Komposition in $\C$ und
+"`$\bullet$"' in $\C^\op$ schreiben. Die Zuordnung
+\[ \begin{array}{@{}rcl@{}}
+  \C &\longrightarrow& \D \\
+  X  &\longmapsto& F(X) \\
+  f  &\longmapsto& F(f)
+\end{array} \]
+ist also kein Funktor in unserem Sinne, da er Quelle und Ziel von Morphismen
+vertauscht und das zweite Funktoraxiom dann nur in entsprechend umgekehrter
+Kompositionsreihenfolge erfüllt. Solche Zuordnen sind trotzdem wichtig; sie
+heißen \emph{kontravariante Funktoren}.
+
+
+\subsection{Vergissfunktoren}
+
+Die bekannten Strukturen in der Mathematik organisieren sich in einer
+Hierarchie. Zwischen den Kategorien verschiedener Stufen hat man sog.
+Vergissfunktoren:
+
+\begin{enumerate}
+  \item Der Funktor
+  \[ V : \Grp \to \Set, \quad (G,\circ) \mapsto G, \quad f \mapsto f. \]
+  bildet Gruppen auf ihre zugrundeliegenden Mengen und Gruppenhomomorphismen
+  auf ihre zugrundeliegenden Mengenabbildung ab. Er vergisst also die
+  \emph{Struktur} der Gruppenverknüpfung.
+  \item Der Funktor
+  \[ V : \mathbb{R}\text{-}\Vect \to \AbGrp, \quad (V,+,\cdot) \mapsto (V,+), \quad f \mapsto f. \]
+  vergisst ebenfalls algebraische Struktur, nämlich die Skalarmultiplikation.
+  \item Der Funktor
+  \[ V : \Man \to \Top, \quad M \mapsto M, \]
+  die einer Mannigfaltigkeit ihren zugrundeliegenden topologischen Raum
+  zuordnet, vergisst (geometrische) Struktur.
+  \item Der Funktor
+  \[ V : \AbGrp \to \Grp, \quad (G,\circ) \mapsto (G,\circ), \quad f \mapsto f. \]
+  vergisst die \emph{Eigenschaft} der Gruppenverknüpfung $\circ$, kommutativ zu sein.
+  \item Schreibe $1$ für die Kategorie mit $\Ob = \lbrace \bullet \rbrace$ und $\Hom(\bullet,\bullet) = \lbrace \id_\bullet \rbrace$. Der Funktor
+  \[ V : \Set \to 1, \quad M \mapsto \bullet, \quad f \mapsto \id_\bullet \]
+  vergisst \emph{stuff}, also Zeug.
+\end{enumerate}
+
+Obwohl die Vergissfunktoren beinahe tautologisch definiert sind, sind sie aus
+zwei Gründen wichtig: Zum einen ist es eine interessante Frage, inwieweit
+man die Vergissfunktoren umkehren kann -- wie man etwa aus einer Menge eine
+Gruppe machen kann. Wie diese Frage zu präzisieren und zu beantworten ist,
+werden wir im Vortrag über adjungierte Funktoren lernen.
+
+Zum anderen ist es wichtig zu wissen, ob ein Vergissfunktor Produkte (oder
+allgemeinere Limiten) bewahrt. Etwa gilt für Vektorräume~$U, W$ und den
+Vergissfunktor~$V:\RR\text{-}\Vect$, dass
+\[ V(U \times W) \cong V(U) \times V(W), \]
+aber
+\[ V(U \coprod W) \not\cong V(U) \coprod V(W). \]
+Was das genau bedeutet, werden wir im Vortrag über Limiten sehen.
+
+
+\subsection{Funktoren aus algebraischen Konstruktionen}
+
+Zu jedem Ring~$R$ gibt es seinen Polynomring~$R[X]$ der formalen Polynome mit
+Koeffizienten aus~$R$,
+\[ R[X] = \Bigl\{ \sum_{i=0}^n a_i X^i \,\Big|\, a_0,\ldots,a_n \in R, n \geq 0
+\Bigr\}. \]
+Diese Konstruktion kann man zu einem Funktor erheben, den sog.
+\emph{Polynomringfunktor} $F : \Ring \to \Ring$: Dieser ordnet einem Ring $R$
+den Polynomring $R[X]$ und einem Ringhomomorphismus $f : R \to S$ folgenden
+induzierten Ringhomomorphismus zu:
+\[ F(f) : R[X] \to S[X], \quad \sum a_n X^n \mapsto \sum f(a_n) X^n. \]
+
+\begin{bem}Algebraiker kann man daran erkennen, dass sie im Gegensatz zu
+Analytikern die Polynomvariable groß schreiben.\end{bem}
+
+Fast jede algebraische Konstruktion kann man auf diese Art und Weise behandeln.
+
+
+\subsection{Funktoren und Mengen}
+
+Zu jeder Menge $M$ gibt es die \emph{diskrete Kategorie} $DM$:
+\begin{align*}
+  \Ob DM &:= M \\
+  \Hom_{DM}(m,\tilde{m}) &:=
+  \left\{ \id_m \,\middle|\, m = \tilde m \right\}
+\intertext{Die Angabe der Morphismenmengen ist etwas kryptisch geschrieben, ausführlich
+kann man die Definition auch wie folgt angeben:}
+  \Hom_{DM}(m,\tilde{m}) &:=
+  \begin{cases}
+    \lbrace \id_m \rbrace, & \text{falls $m = \tilde{m}$} \\
+    \emptyset, & \text{sonst}
+  \end{cases}
+\end{align*}
+Sind nun $M$ und $N$ zwei Mengen und $\varphi : M \to N$ eine Abbildung, so ist
+\[ DM \to DN, \quad m \mapsto \varphi(m), \quad \id_m \mapsto \id_{\varphi(m)} \]
+ein Funktor. [Hier fehlt eine Skizze.] Somit sehen wir folgendes Motto:
+\begin{motto}Das Funktorkonzept verallgemeinert das Konzept der Abbildung
+zwischen Mengen.\end{motto}
+
+\subsubsection*{Potenzmengenfunktoren}
+
+Der \emph{kovariante Potenzmengenfunktor} $\mathcal{P} : \Set \to \Set$ ordnet einer Menge $M$ die Potenzmenge $\mathcal{P}(M)$ zu und einer Abbildung $f : M \to N$ die Abbildung
+\[ \mathcal{P}(f) : \mathcal{P}(M) \to \mathcal{P}(N), \quad U \mapsto f[U], \]
+wobei $f[U] := \left\{ f(u) : u \in U \right\}$ ist.
+
+Definiert man $\mathcal{P}(f)$ stattdessen durch $U \mapsto f[U]^c$
+(Komplement), so erhält man keinen Funktor.
+
+Außerdem gibt es noch den \emph{kontravarianten Potenzmengenfunktor}
+$\mathcal{P} : \Set^\op \to \Set$, der ebenfalls jeder Menge~$M$ ihre
+Potenzmenge, aber jeder Abbildung~$f : M \to N$ die \emph{Urbild}abbildung
+\[ \mathcal{P}(f) : \mathcal{P}(N) \to \mathcal{P}(M), \quad V \mapsto
+f^{-1}[V] \]
+zuordnet, wobei~$f^{-1}[V] := \left\{ x \in M \,|\, f(x) \in V \right\}$.
+Dieser ist sehr bedeutsam, denn er zeigt die Äquivalenz der dualen
+Kategorie~$\Set^\op$ mit der Kategorie vollständiger atomischer boolescher
+Algebren, siehe~\cite[Thm.~2.4]{oosten}. Was "`Äquivalenz"' bedeutet, werden
+wir im folgenden Kapitel lernen.
+
+
+\subsection{Funktoren und Gruppen}
+
+Es sei ein Gruppenhomomorphismus $\varphi : G \to H$ gegeben. Dann ist
+  \[ f : BG \to BH, \quad \bullet \mapsto \bullet, \quad g \mapsto \varphi(g) \]
+ein Funktor. (Zur Konstruktion der Kategorien $BG$ und $BH$ siehe Übungsblatt~1, Aufgabe~5.)
+Denn das erste Funktoraxiom ist erfüllt,
+\[
+  F(\id_\bullet) = F(e_G) = \varphi(e_G) = e_H = \id_\bullet,
+\]
+und das zweite ebenso: Für alle Morphismen~$g, \tilde g : \bullet \to \bullet$
+(d.\,h. für alle Gruppenelemente~$g, \tilde g \in G$) gilt
+\[
+  F(\tilde{g} \circ g) = F(\tilde{g} \cdot g) = \varphi(\tilde{g} \cdot g) =
+  \varphi(\tilde{g}) \cdot \varphi(g) = \varphi(\tilde{g}) \circ \varphi(g) =
+  F(\tilde{g}) \circ F(g). \]
+Damit sehen wir folgendes Motto:
+\begin{motto}Das Funktorkonzept verallgemeinert das Konzept des
+Gruppenhomomorphismus.\end{motto}
+
+\subsubsection*{Gruppenwirkungen}
+
+Was muss man angeben, um einen Funktor $F : BG \to \Set$ zu spezifizieren? Eine
+Menge $M := \varphi(\bullet)$ und zu jedem $g \in G$ eine Abbildung $\varphi_g : M \to M$, sodass
+\[ \varphi_{\id_\bullet} = \id_M \quad \text{und} \quad \varphi_{g \circ h} = \varphi_g \circ \varphi_h \]
+für alle $g, h \in G$ gilt. Mit der Schreibweise $\varphi_g(x) =: g \cdot x$, $g \in G$, $x \in X$, wird dies zu
+\[ e \cdot x = x \quad \text{und} \quad (g \circ h) \cdot x = g \cdot (h \cdot x).\]
+Eine solche Struktur bestehend aus einer Menge~$M$ und einer
+Multiplikationsabbildung~$G \times M \to M$, die diese Axiome erfüllt, ist eine
+sog. \emph{Gruppenwirkung von~$G$}. Wir sehen also: Funktoren~$BG \to \Set$
+sind "`dasselbe"' wie Gruppenwirkungen von~$G$.
+
+Analog kann man Funktoren~$BG \to K\text{-}\Vect$ untersuchen. Solche haben
+auch einen klassischen Namen: Das sind sog. \emph{Gruppendarstellungen}.
+
+
+\subsection{Hom-Funktoren}
+
+\begin{defn}
+Sei $\C$ eine Kategorie und $A \in \Ob \C$. Dann ist\ldots
+\begin{enumerate}
+  \item der \emph{kovariante Hom-Funktor zu $A$} der Funktor
+    \[ \begin{array}{@{}rrcl@{}}
+      \Hom_\C(A,\freist): & \C &\longrightarrow& \Set \\
+      & X &\longmapsto& \Hom_\C(A,X) \\
+      & (f:X \to Y) &\longmapsto& f_\star
+    \end{array} \]
+  \item und der \emph{kontravariante Hom-Funktor zu~$A$} der Funktor
+    \[ \begin{array}{@{}rrcl@{}}
+      \Hom_\C(\freist,A): & \C^\op &\longrightarrow& \Set \\
+      & X &\longmapsto& \Hom_\C(X,A) \\
+      & (f:X \xra{\C} Y) &\longmapsto& f^\star.
+    \end{array} \]
+\end{enumerate}
+Dabei sind die Abbildungen~$f_\star, f^\star$ wie folgt definiert:
+\[ \begin{array}{@{}rrcl@{}}
+  f_\star: & \Hom_\C(A,X) &\longrightarrow& \Hom_\C(A,Y) \\
+  & g &\longmapsto& f \circ g \\
+  \\
+  f^\star: & \Hom_\C(Y,A) &\longrightarrow& \Hom_\C(X,A) \\
+  & g &\longmapsto& g \circ f
+\end{array} \]
+\end{defn}
+
+Die Hom-Funktoren kodieren die Beziehungen von~$A$ mit den Objekten aus~$\C$.
+Das zentrale \emph{Yoneda-Lemma} wird uns sagen, dass~$A$ durch Kenntnis des
+ko- oder kontravarianten Hom-Funktors schon bis auf Isomorphie eindeutig
+bestimmt ist.
+
+
+\subsection{Die Kategorie der Kategorien}
+
+Nach dem fundamentalen Motto der Kategorientheorie sollen wir die Beziehungen
+zwischen Untersuchungsgegenständen ernst nehmen und daher die von ihnen
+gebildete \emph{Kategorie} betrachten. Als wir bisher Kategorientheorie
+betrieben haben, haben wir dieses Motto bezogen auf Kategorien selbst aber
+sträflich vernachlässigt! Diesen Missstand behebt folgende Definition.
+\begin{defn}
+Die Kategorie $\Cat$ der (kleinen) Kategorien besteht aus:
+\begin{align*}
+  \Ob \Cat &:= \text{Klasse aller (kleinen) Kategorien} \\
+  \Hom_\Cat(\C,\mathcal{D}) &:= \text{Klasse der Funktoren zwischen $\C$ und $\mathcal{D}$}
+\end{align*}
+\end{defn}
+Die Verkettung~$G \circ F : \C \to \E$ zweier Funktoren~$F : \C \to \D$ und~$G
+: \D \to \E$ ist dabei als der Funktor
+\[ \begin{array}{@{}rrcl@{}}
+  G \circ F: & \C &\longrightarrow& \E \\
+  & X &\longmapsto& G(F(X)) \\
+  & f &\longmapsto& G(F(f))
+\end{array} \]
+definiert.
+
+\begin{bem}Ironischerweise ist es keine gute Idee, die so definierte
+Kategorie~$\Cat$ zu untersuchen: Denn in Kategorien muss es sinnvoll sein, von
+der Gleichheit zweier Morphismen zu sprechen -- der Gleichheitsbegriff zwischen
+Funktoren ist aber, wie eingangs schon bemerkt, nicht interessant. Tatsächlich ist
+die Kategorie~$\Cat$ nur eine erste Approximation an eine sog. 2-Kategorie, in
+der es nicht nur Morphismen (Funktoren) zwischen Objekten (Kategorien), sondern
+auch "`höhere Morphismen"', sog. 2-Morphismen (hier natürliche
+Transformationen), zwischen den gewöhnlichen (1-)Morphismen gibt.
+\end{bem}
 
 
 \section[Natürliche Transformationen]{Natürliche Transformationen \hfill \small
@@ -493,5 +811,9 @@ Motto der Kategorientheorie wird damit zu einem formalen Theorem.
 Uebele}
 
 \emph{Werbung:} Kommt noch!
+
+
+\nocite{*}
+\printbibliography
 
 \end{document}
