@@ -113,14 +113,13 @@ $ genau ein Morphismus~$h:P\to X$ existieren, sodass folgendes Diagramm kommutie
 $\xymatrix{
  & X \ar[dl]_{\id_X} \ar[dr]^{\mathrm{!}} &\\
 X & & 1\\
- & P \ar[ul]^f \ar[ur]_g \ar[uu]^h &
+ & P \ar[ul]^f \ar[ur]_g \ar@{-->}[uu]^h &
 }$
 \end{center}
 
 Existenz von~$h$:\\
 Setze $h:=f$. Es gilt also $\id_X\circ h=h=f$. (Das linke Dreieck kommutiert.) Und da $!\circ h$ und $
-g$ zwei Morphismen~$P\to 1$ sind (und $1$ terminal ist), gilt auch $!\circ h=g$. (Das rechte Dreieck k
-ommutiert.)
+g$ zwei Morphismen~$P\to 1$ sind (und $1$ terminal ist), gilt auch $!\circ h=g$. (Das rechte Dreieck kommutiert.)
 
 Eindeutigkeit von~$h$:\\
 Für jedes~$h:P\to X$, das das Diagramm kommutieren lässt, gilt: $\id_X\circ h=f$. Es folgt also sofort
@@ -130,7 +129,7 @@ Für jedes~$h:P\to X$, das das Diagramm kommutieren lässt, gilt: $\id_X\circ h=
 \item
 Die duale Aussage lautet:\\
 Besitzt $C$ ein initiales Objekt~$0$, so gilt
-\[X \coprod 0 \cong X\] % Bin nicht sicher, ob hier \amalg als Symbol für des Koprodukt nicht besser wäre
+\[X \amalg 0 \cong X.\] % Bin nicht sicher, ob hier \amalg als Symbol für des Koprodukt nicht besser wäre
 ($X$ kann mit den Morphismen $\id_X:X\to X$ und $!:0\to X$ als Koprodukt von $X$ und $0$ dienen.)
 \end{enumerate}
 \end{list}
