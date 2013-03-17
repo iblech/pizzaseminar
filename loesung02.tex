@@ -1,0 +1,137 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Spur}[1]{\operatorname{Spur}#1}
+\newcommand{\rank}[1]{\operatorname{rank}#1}
+\newcommand{\sgn}[1]{\operatorname{sgn}#1}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}[1]{\operatorname{GL}(#1)}
+\newcommand{\ORTH}[1]{\operatorname{O}(#1)}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Bild}{im}
+\DeclareMathOperator{\Kern}{ker}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\Zzwei}{\Z_2}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\usepackage{enumerate}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 16. März 2013 \\ Matthias Hutzler\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
+Lösung zum 2. Übungsblatt
+\end{center}
+\vspace{2em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+%\begin{list}{}{\labelwidth\wd\mybox \leftmargin\wd\mybox \itemsep 1.3em}
+\begin{list}{}{\labelwidth0em \leftmargin0em \itemindent0.5em \itemsep 1.3em}
+\item[\textbf{Aufgabe 1:}]\mbox{}
+\begin{enumerate}
+\item 
+Zu zeigen: Es gibt Morphismen $X\to X$ und $X\to 1$, mit denen $X$ ein Produkt von $X$ und $1$ ist.
+
+Wähle als Morphismen $\id_X:X\to X$ und den (da $1$ terminales Objekt ist) eindeutig bestimmten Morphismus~$!:X\to 1$. Nun muss für jedes Möchtegern-Produkt~$P$ mit den Morphismen $f:P\to X$ und $g:P\to 1
+$ genau ein Morphismus~$h:P\to X$ existieren, sodass folgendes Diagramm kommutiert:
+\begin{center}
+$\xymatrix{
+ & X \ar[dl]_{\id_X} \ar[dr]^{\mathrm{!}} &\\
+X & & 1\\
+ & P \ar[ul]^f \ar[ur]_g \ar@{-->}[uu]^h &
+}$
+\end{center}
+
+Existenz von~$h$:\\
+Setze $h:=f$. Es gilt also $\id_X\circ h=h=f$. (Das linke Dreieck kommutiert.) Und da $!\circ h$ und $
+g$ zwei Morphismen~$P\to 1$ sind (und $1$ terminal ist), gilt auch $!\circ h=g$. (Das rechte Dreieck kommutiert.)
+
+Eindeutigkeit von~$h$:\\
+Für jedes~$h:P\to X$, das das Diagramm kommutieren lässt, gilt: $\id_X\circ h=f$. Es folgt also sofort
+ $h=f$.
+
+
+\item
+Die duale Aussage lautet:\\
+Besitzt $C$ ein initiales Objekt~$0$, so gilt
+\[X \amalg 0 \cong X.\] % Bin nicht sicher, ob hier \amalg als Symbol für des Koprodukt nicht besser wäre
+($X$ kann mit den Morphismen $\id_X:X\to X$ und $!:0\to X$ als Koprodukt von $X$ und $0$ dienen.)
+\end{enumerate}
+\end{list}
+
+\end{document}
