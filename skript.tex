@@ -166,7 +166,7 @@ Von folgenden Konzepten hat man im Gefühl, dass sie in einem gewissen Sinn
     $\leq$ & $\geq$ \\
     injektiv & surjektiv \\
     $\{\star\}$ & $\emptyset$ \\
-    $\times$ & $\coprod$ \\
+    $\times$ & $\amalg$ \\
     ggT & kgV \\
     $\cap$ & $\cup$ \\
     Teilmenge & Faktormenge
@@ -495,7 +495,7 @@ festgehalten, ist das keine sinnvolle Aussage.
 \end{bem}
 
 \begin{prop}
-Ein Funktor überführt kommutative Diagramme in Diagramme:
+Ein Funktor überführt kommutative Diagramme in kommutative Diagramme:
 \[ \vcenter{ \xymatrix@=8ex{
   X \ar[r]^{f} \ar[rd]_{h} & Y \ar[d]^{g} \\
   & Z
@@ -579,7 +579,7 @@ heißen \emph{kontravariante Funktoren}.
 \subsection{Vergissfunktoren}
 
 Die bekannten Strukturen in der Mathematik organisieren sich in einer
-Hierarchie. Zwischen den Kategorien verschiedener Stufen hat man sog.
+Hierarchie. Zwischen den Kategorien zu Strukturen verschiedener Stufen hat man sog.
 Vergissfunktoren:
 
 \begin{enumerate}
@@ -603,6 +603,11 @@ Vergissfunktoren:
   vergisst \emph{stuff}, also Zeug.
 \end{enumerate}
 
+Die Unterscheidung zwischen Eigenschaft, Struktur und Zeug stammt übrigens
+von Teilnehmern eines Seminars über
+Quantengravitation~\cite[Abschn.~2.4]{lectures-on-n-categories}, siehe
+auch~\cite{ncatlab:stuff}.
+
 Obwohl die Vergissfunktoren beinahe tautologisch definiert sind, sind sie aus
 zwei Gründen wichtig: Zum einen ist es eine interessante Frage, inwieweit
 man die Vergissfunktoren umkehren kann -- wie man etwa aus einer Menge eine
@@ -614,7 +619,7 @@ allgemeinere Limiten) bewahrt. Etwa gilt für Vektorräume~$U, W$ und den
 Vergissfunktor~$V:\RR\text{-}\Vect \to \Set$, dass
 \[ V(U \times W) \cong V(U) \times V(W), \]
 aber
-\[ V(U \coprod W) \not\cong V(U) \coprod V(W). \]
+\[ V(U \amalg W) \not\cong V(U) \amalg V(W). \]
 Was das genau bedeutet, werden wir im Vortrag über Limiten sehen.
 
 
