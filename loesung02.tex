@@ -90,7 +90,7 @@
 \begin{document}
 
 \vspace*{-4em}
-\begin{flushright}Universität Augsburg \\ 16. März 2013 \\ Matthias Hutzler\end{flushright}
+\begin{flushright}Universität Augsburg \\ 19. März 2013 \\ Matthias Hutzler\end{flushright}
 
 \begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
 Lösung zum 2. Übungsblatt
@@ -131,6 +131,111 @@ Die duale Aussage lautet:\\
 Besitzt $C$ ein initiales Objekt~$0$, so gilt
 \[X \amalg 0 \cong X.\]
 ($X$ kann mit den Morphismen $\id_X:X\to X$ und $!:0\to X$ als Koprodukt von $X$ und $0$ dienen.)
+\end{enumerate}
+
+\item[\textbf{Aufgabe 2:}]\mbox{}
+\begin{enumerate}
+\item
+Seien $T_1$ und $T_2$ zwei terminale Objekte einer Kategorie~$C$.\\
+Zu zeigen: Es gibt genau einen Isomorphismus~$T_1\to T_2$.
+
+Sei $f$ der eindeutig bestimmte Morphismus~$T_1\to T_2$ und $g$ der eindeutig bestimmte Morphismus~$T_2\to T_1$.
+\begin{center}
+$\xymatrix{
+T_1\ar@<0.2em>[r]^f & T_2\ar@<0.2em>[l]^g
+}$
+\end{center}
+Sowohl $g\circ f$ als auch $\id_{T_1}$ sind Morphismen~$T_1\to T_2$, also gilt $g\circ f=\id_{T_1}$ (denn $T_1$ ist terminal). Analog gilt $f\circ g=\id_{T_2}$ (da $T_2$ terminal ist). Wir dürfen also schreiben $g=f^{-1}$ und $f$ ist ein Isomorphismus.\\
+Die Eindeutigkeit des Isomorphismus $f$ folgt direkt daraus, dass $T_2$ ein terminales Objekt ist.
+
+\item
+Die Definition eines terminalen Objektes lautet angewandt auf die Kategorie der Möchtegern-Produkte von $X$ und $Y$:\\
+\emph{
+Ein terminales Objekt ist ein Diagramm der Form \mbox{$X\leftarrow R\to Y$}, sodass für jedes Diagramm der Form \mbox{$X\leftarrow Q\to Y$} genau ein Morphismus \mbox{$(X\leftarrow Q\to Y)$} $\to$ \mbox{$(X\leftarrow R\to Y)$} existiert.
+}
+
+Ein Morphismus \mbox{$(X\leftarrow Q\to Y)$} $\to$ \mbox{$(X\leftarrow R\to Y)$} ist dabei ein kommutatives Diagramm folgender Form (wobei $h:Q\to R$ beliebig ist):
+\begin{center}
+$\xymatrix{
+ & Q \ar[ld]\ar[rd]\ar@{-->}[dd]_h & \\
+X & & Y \\
+ & R \ar[lu]\ar[ru] &
+}$
+\end{center}
+Da in diesem Diagramm aber bereits alle Objekte und Morphismen außer $h$ vorgegeben sind, lassen sich die Morphismen \mbox{$(X\leftarrow Q\to Y)$} $\to$ \mbox{$(X\leftarrow R\to Y)$} (in der Kategorie der Möchtegern-Produkte von $X$ und $Y$) mit denjenigen Morphismen $h:Q\to R$ (in der Kategorie $C$) identifizieren, die das obige Diagramm kommutieren lassen.
+
+Eine weitere äquivalente Definition (und zwar mit den Begriffen der Kategorie $C$) eines terminalen Objektes der Kategorie der Möchtegern-Produkte von $X$ und $Y$ lautet also:\\
+\emph{
+Ein Objekt $R$ zusammen mit zwei Morphismen $R\to X$ und $R\to Y$, sodass für jedes Objekt $Q$ zusammen mit zwei Morphismen $Q\to X$ und $Q\to Y$ genau ein Morphismus $h:Q\to R$ existiert, der obiges Diagramm kommutieren lässt.
+}\\
+(Das entspricht genau der Definition eines Produktes von $X$ und $Y$ in $C$.)
+
+Dies zeigt in Kombination mit Teilaufgabe a), dass das Produkt von zwei Objekten einer Kategorie eindeutig bis auf eindeutige Isomorphie ist.
+\end{enumerate}
+
+
+\item[\textbf{Aufgabe 3:}]\mbox{}
+\begin{enumerate}
+\item
+Die Objekte der Kategorie~$C$ seien gerade die Elemente von $X$.
+\begin{align*}
+\Ob C := X
+\end{align*}
+Von einem Objekt~$a$ zu einem Objekt~$b$ soll es genau dann genau einen Morphismus geben, wenn $a\preceq b$ gilt. (Diesen Morphismus nennen wir dann "`$a\preceq b$"'.) Ansonsten soll es keinen Morphismus~$a\to b$ geben.
+\begin{align*}
+\Hom(a,b) :=
+\begin{cases}
+\{\text{"`$a\preceq b$"'}\} & \text{falls } a\preceq b \\
+\emptyset & \text{ansonsten}
+\end{cases}
+\end{align*}
+Da nun zwischen zwei Objekten (in einer Richtung) immer höchstens ein Morphismus existiert, gibt es für die Definition der Verknüpfungsvorschrift nur eine Möglichkeit: Wir definieren für beliebige Objekte $a,b,c\in \Ob C$ und Morphismen $\text{"`$a\preceq b$"'}:a\to b$ und $\text{"`$b\preceq c$"'}:b\to c$:
+\begin{align*}
+\text{"`$b\preceq c$"'}\circ \text{"`$a\preceq b$"'} := \text{"`$a\preceq c$"'}
+\end{align*}
+(Dass dieser Morphismus existiert, folgt direkt aus der Transitivität der Relation~$\preceq$.)
+
+Zu jedem Objekt $a$ lässt sich ein Identitätsmorphismus finden, nämlich "`$a\preceq a$"', denn $\preceq$ ist auch reflexiv. Dass jeder Morphismus bei Verknüpfung mit "`$a\preceq a$"' unverändert bleibt, ist klar, da hier Morphismen durch Quelle und Ziel bereits eindeutig bestimmt sind. Aus demselben Grund ist die Verknüpfung von Morphismen assoziativ. Damit sind alle Kategorienaxiome erfüllt.
+
+Ein kleiner Ausschitt der Kategorie, die auf diese Weise aus der Menge der ganzen Zahlen mit der Teilbarkeitsrelation entsteht, sieht wie folgt aus (Identitäsmorphismen weggelassen):
+\begin{center}
+$\xymatrix {
+ & & 1\ar@<0.25ex>[r] \ar[dddll]\ar[dddl] \ar[dd]\ar[ddr] \ar[ddrrr]\ar[ddrrrr] \ar[dddrr]\ar[dddrrr] & -1\ar@<0.25ex>[l] \ar[dddlll]\ar[dddll] \ar[ddl]\ar[dd] \ar[ddrr]\ar[ddrrr] \ar[dddr]\ar[dddrr] & & & \\ \\
+ & & 2\ar@<0.25ex>[r] \ar[dll]\ar[dl] \ar[drr]\ar[drrr] & -2\ar@<0.25ex>[l] \ar[dlll]\ar[dll] \ar[dr]\ar[drr] & & 3\ar@<0.25ex>[r] \ar[dl]\ar[d] & -3\ar@<0.25ex>[l] \ar[dll]\ar[dl]\\
+4\ar@<0.25ex>[r] & -4\ar@<0.25ex>[l] & & & 6\ar@<0.25ex>[r] & -6\ar@<0.25ex>[l] & & &
+}$
+\end{center}
+
+
+\item
+Zwei Objekte $a$, $b$ einer solchen Kategorie sind genau dann isomorph, wenn sowohl $a\preceq b$ als auch $b\preceq a$ gilt.
+\begin{align*}
+a\cong b \quad \Longleftrightarrow \quad a\preceq b\wedge b \preceq a
+\end{align*}
+\begin{itemize}
+\item["`$\Rightarrow$"':] Wenn $a$ und $b$ isomorph sind, muss es Morphismen $a\to b$ und $b\to a$ geben. Also gilt $a\preceq b$ und $b\preceq a$.
+\item["`$\Leftarrow$"':] Es existieren die Morphismen "`$a\preceq b$"' und "`$b\preceq a$"'. Diese sind offensichtlich Isomorphismen, denn: $\text{"`$b\preceq a$"'}\circ\text{"`$a\preceq b$"'}$ ist ein Morphismus $a\to a$, also identisch mit $\id_a$ und $\text{"`$a\preceq b$"'}\circ\text{"`$b\preceq a$"'}$ ist ein Morphismus $b\to b$, also identisch mit $\id_b$.
+\end{itemize}
+
+
+\item
+\begin{align*}
+p\in X\text{ Infimum von }a,b\in X :\Leftrightarrow\\
+\forall x\in X{:}\quad x\preceq a \wedge x\preceq b \Longleftrightarrow x\preceq p
+\end{align*}
+Zu zeigen:
+\begin{center}
+$p$ ist Infimum von $a$ und $b$. $\Longleftrightarrow$\\
+Es gibt Morphismen, mit denen $p$ ein Produkt $a\times b$ in $C$ ist.
+\end{center}
+\begin{itemize}
+\item["`$\Rightarrow$"':] Da $\preceq$ reflexiv ist, also $p\preceq p$ gilt, folgt aus der Definition des Infimums (von rechts nach links), dass die Morphismen "`$p\preceq a$"' und "`$p\preceq b$"' existieren. Mit diesen Morphismen ist p tatsächlich ein Produkt von $a$ und $b$, denn:\\
+Sei $q\in X$ mit "`$q\preceq a$"' und "`$q\preceq b$"' beliebiges Möchtegernprodukt von $a$ und~$b$. Dann gilt nach Definition des Infimums (von links nach rechts) $q\preceq p$ und die Gleichungen $\text{"`$p\preceq a$"'}\circ\text{"`$q\preceq p$"'}=\text{"`$q\preceq a$"'}$ und $\text{"`$p\preceq b$"'}\circ\text{"`$q\preceq p$"'}=\text{"`$q\preceq b$"'}$ sind offensichtlich erfüllt.
+\item["`$\Leftarrow$"':] Sei $x\in X$ beliebig.\\
+Falls $x\preceq a$ und $x\preceq b$ gilt, so ist $x$ mit "`$x\preceq a$"' und "`$x\preceq b$"' Möchtegernprodukt von $a$ und $b$, es existiert also der Morphismus "`$x\preceq p$"'.\\
+Außerdem müssen die Morphismen "`$p\preceq a$"' und "`$p\preceq b$"' existieren (mit denen $p$ Produkt von $a$ und $b$ ist), sodass aus $x\preceq p$ auch $x\preceq a$ und $x\preceq b$ folgt.\\
+Damit ist $p$ Infimum von $a$ und $b$.
+\end{itemize}
 \end{enumerate}
 \end{list}
 
