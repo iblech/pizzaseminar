@@ -1,0 +1,178 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Spur}[1]{\operatorname{Spur}#1}
+\newcommand{\rank}[1]{\operatorname{rank}#1}
+\newcommand{\sgn}[1]{\operatorname{sgn}#1}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}[1]{\operatorname{GL}(#1)}
+\newcommand{\ORTH}[1]{\operatorname{O}(#1)}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Bild}{im}
+\DeclareMathOperator{\Kern}{ker}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\Zzwei}{\Z_2}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\pagestyle{empty}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 20. März 2013\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
+4. Übungsblatt
+\end{center}
+\vspace{1.5em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+\begin{list}{}{\labelwidth0em \leftmargin0em \itemindent0.5em \itemsep 2.0em}
+\item[\textbf{Aufgabe 1:}]
+Sei~$\Id_\Set : \Set \to \Set$ der Identitätsfunktor auf~$\Set$, $P : \Set \to
+\Set$ der (kovariante) Potenzmengenfunktor und~$K : \Set
+\to \Set$ der Funktor
+\[ \begin{array}{@{}rrcl@{}}
+  & X &\longmapsto& X \times X \\
+  & f &\longmapsto& f \times f := ((a,b) \mapsto (f(a),f(b))).
+\end{array} \]
+\begin{enumerate}
+\item
+Zeige: Es gibt nur eine einzige natürliche Transformation $\eta : \Id_\Set
+\Rightarrow \Id_\Set$, nämlich
+\[ \eta_X : X \to X,\ x \mapsto x. \]
+\item
+Zeige: Es gibt nur eine einzige natürliche Transformation $\omega : \Id_\Set
+\Rightarrow K$, nämlich
+\[ \omega_X : X \to X \times X,\ x \mapsto (x,x). \]
+\emph{Tipp für a) und b):} Betrachte geeignete Abbildungen $1 \to X$, $\star
+\mapsto x$.
+\item
+Zeige: Es gibt keine natürliche Transformation $P \Rightarrow \Id_\Set$, wohl
+aber eine in die andere Richtung.
+\item Wir nehmen an, dass wir für jede nichtleere Menge~$X$ ein bestimmtes
+Element~$a_X \in X$ gegeben haben. Zeige:
+Die Setzung
+$\tau_X : X \to X,\ x \mapsto a_X$
+definiert \emph{nicht} eine natürliche Transformation~$\Id_\C \Rightarrow \Id_\C$,
+wobei~$\C$ die Kategorie der nichtleeren Mengen und beliebigen Abbildungen
+bezeichnet.
+\item
+Welche natürlichen Transformationen $\Id_\C \Rightarrow \Id_\C$ gibt es,
+wenn~$\C$ die Kategorie der reellen Vektorräume bezeichnet?
+\end{enumerate}
+
+\item[\textbf{Aufgabe 2:}]\mbox{}
+\begin{enumerate}
+\item
+Sei~$F : \C \to \D$ eine Äquivalenz von Kategorien, mit Quasi-Inversem~$G : \D
+\to \C$. Sei~$X$ ein Objekt von~$\C$. Zeige:
+$\text{$X$ initial in~$\C$} \quad\Longleftrightarrow\quad
+  \text{$F(X)$ initial in~$\D$.}$
+\item
+Seien nun~$X$ und~$Y$ Objekte einer Kategorie~$\E$. Zeige, dass die Kategorie der
+Möchtegern-Produkte von~$X$ und~$Y$ äquivalent zur Kategorie der
+Möchtegern-Produkte von~$Y$ und~$X$ ist. Welche bekannte Aussage folgt daher
+mit a)?
+\end{enumerate}
+
+\item[\textbf{Aufgabe 3:}]
+Sei~$\C$ die Kategorie mit
+\begin{align*}
+  \Ob \C &:= \{ \R^n \,|\, n \geq 0 \}, \\
+  \Hom_\C(\R^n, \R^m) &:= \R^{m \times n},
+\end{align*}
+wobei die Morphismenverkettung durch die Matrixmultiplikation gegeben ist.
+Zeige: Die Kategorie~$\C$ ist äquivalent zur Kategorie der
+endlich-dimensionalen~$\R$-Vektorräume.
+
+\emph{Tipp:} Wähle für jeden endlich-dimensionalen Vektorraum~$V$ einen Iso
+$\eta_V : \R^{\dim V} \to V$.
+
+\item[\textbf{Projektaufgabe:}]
+Sei~$\varphi : A \to B$ ein Morphismus in einer lokal kleinen Kategorie~$\C$.
+Bastele daraus eine natürliche Transformation der Hom-Funktoren
+\[ \Hom_\C(\freist, A) \Longrightarrow \Hom_\C(\freist, B). \]
+\end{list}
+
+\end{document}

@@ -95,6 +95,16 @@
 \geometry{tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
 
 \begin{document}
+\[ \xymatrix@=8ex{
+  && (X \times Y) \times Z \ar@/_/[dl] \ar@/^/[ddrr] \\
+ & X \times Y \ar@/_/[ld] \ar@/^/[rd] && \text{$\phantom{X \times Y}$} \\
+ X && Y && Z \\
+ &&& P'
+  \ar@/^2pc/@{-->}[lluu]^f
+  \ar@/^2pc/[lllu] \ar@/_/[lu] \ar@/_/[ru]
+  \ar@{-->}[luuu]^g
+} \]
+\end{document}
 
 \vspace*{-4em}
 \begin{flushright}Universität Augsburg \\ 19. März 2013 \\ Matthias Hutzler\end{flushright}
@@ -241,6 +251,26 @@ Falls $x\preceq a$ und $x\preceq b$ gilt, so ist $x$ mit "`$x\preceq a$"' und "`
 Außerdem müssen die Morphismen "`$p\preceq a$"' und "`$p\preceq b$"' existieren (mit denen $p$ Produkt von $a$ und $b$ ist), sodass aus $x\preceq p$ auch $x\preceq a$ und $x\preceq b$ folgt.\\
 Damit ist $p$ Infimum von $a$ und $b$.
 \end{itemize}
+\end{enumerate}
+
+
+\item[\textbf{Aufgabe 4:}]\mbox{}
+\begin{enumerate}
+\item
+Sei~$X \times Y$ ein Produkt von~$X$ und~$Y$ und~$(X \times Y) \times Z$ ein
+Produkt von~$X \times Y$ und~$Z$, mit Projektionsmorphismen wie oberen
+Teil des folgenden Diagramms:
+\[ \xymatrix@=8ex{
+  && (X \times Y) \times Z \ar@/_/[dl] \ar@/^/[ddrr] \\
+ & X \times Y \ar@/_/[ld] \ar@/^/[rd] && \text{$\phantom{X \times Y}$} \\
+ X && Y && Z \\
+ &&& P'
+  \ar@/^2pc/@{-->}[lluu]^f
+  \ar@/^2pc/[lllu] \ar@/_/[lu] \ar@/_/[ru]
+  \ar@{-->}[luuu]^g
+} \]
+So wird ersichtlich, wie~$(X \times Y) \times Z$ zu einem
+Möchtegern-Dreier-Produkt von~$X$, $Y$ und~$Z$ wird: Seine 
 \end{enumerate}
 \end{list}
 
