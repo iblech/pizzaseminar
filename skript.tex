@@ -97,8 +97,8 @@
 \end{center}\par
 \par\vskip 1.5em
 
-\begin{center}\emph{in Entstehung befindlich} \\
-\TeX{}er: Tim Baumann, Ingo Blechschmidt, Justin Gassner, Matthias Hutzler\end{center}
+\begin{center}\emph{in Entstehung befindlich} \\ \ \\
+\TeX{}er: Tim Baumann, Ingo Blechschmidt, Justin Gassner, Lukas Graf, Matthias Hutzler\end{center}
 
 \tableofcontents
 
@@ -121,6 +121,7 @@ kennt man\ldots
   \item das Minimum von Zahlen: $\min\{n,m\}$,
   \item den größten gemeinsamen Teiler von Zahlen: $\ggT(n,m)$,
   \item den Paartyp in Programmiersprachen: \texttt{(a,b)},
+  \item den Produktautomat zweier endlicher Automaten,
   \item den Mutterknoten zweier Knoten in einem Graph.
 \end{itemize}
 Die Ähnlichkeit untereinander ist mal mehr, mal weniger deutlich. Nur mit
@@ -150,6 +151,7 @@ speziell zugeschnittener Isomorphiebegriff vorkommt: Etwa können\ldots
   \item zwei Gruppen $G,H$ \tabto{4.63cm} isomorph sein,
   \item zwei top. Räume $X,Y$ \tabto{4.63cm} homöomorph sein,
   \item zwei Zahlen $n,m$ \tabto{4.63cm} gleich sein,
+  \item zwei endliche Automaten isomorph sein,
   \item zwei Typen \texttt{a}, \texttt{b} \tabto{4.63cm} sich verlustfrei ineinander umwandeln lassen.
 \end{itemize}
 All dies sind Spezialfälle des allgemeinen \emph{kategoriellen
@@ -166,7 +168,7 @@ Von folgenden Konzepten hat man im Gefühl, dass sie in einem gewissen Sinn
     $\leq$ & $\geq$ \\
     injektiv & surjektiv \\
     $\{\star\}$ & $\emptyset$ \\
-    $\times$ & $\amalg$ \\
+    $\times$ & $\coprod$ \\
     ggT & kgV \\
     $\cap$ & $\cup$ \\
     Teilmenge & Faktormenge
@@ -279,10 +281,10 @@ betont ihre innere Struktur, während eine Definition als initiales bzw.
 terminales Objekt die besonderen Beziehungen zu allen Mengen hervorhebt.
 \item In der Kategorie der $K$-Vektorräume ist der Nullvektorraum $K^0$ initial
 und terminal.
-\item Viele kategorielle Konstruktionen realisiert man als initiales oder
+\end{enumerate}\end{bsp}
+Viele kategorielle Konstruktionen realisiert man als initiales oder
 terminales Objekt in einer geeigneten Kategorie von Möchtegern-Konstruktionen.
 Ein erstes Beispiel dazu werden wir im folgenden Kapitel über Produkte finden.
-\end{enumerate}\end{bsp}
 
 
 \subsubsection*{Mono-, Epi- und Isomorphismen}
@@ -495,7 +497,7 @@ festgehalten, ist das keine sinnvolle Aussage.
 \end{bem}
 
 \begin{prop}
-Ein Funktor überführt kommutative Diagramme in kommutative Diagramme:
+Ein Funktor überführt kommutative Diagramme in Diagramme:
 \[ \vcenter{ \xymatrix@=8ex{
   X \ar[r]^{f} \ar[rd]_{h} & Y \ar[d]^{g} \\
   & Z
@@ -579,7 +581,7 @@ heißen \emph{kontravariante Funktoren}.
 \subsection{Vergissfunktoren}
 
 Die bekannten Strukturen in der Mathematik organisieren sich in einer
-Hierarchie. Zwischen den Kategorien zu Strukturen verschiedener Stufen hat man sog.
+Hierarchie. Zwischen den Kategorien verschiedener Stufen hat man sog.
 Vergissfunktoren:
 
 \begin{enumerate}
@@ -603,11 +605,6 @@ Vergissfunktoren:
   vergisst \emph{stuff}, also Zeug.
 \end{enumerate}
 
-Die Unterscheidung zwischen Eigenschaft, Struktur und Zeug stammt übrigens
-von Teilnehmern eines Seminars über
-Quantengravitation~\cite[Abschn.~2.4]{lectures-on-n-categories}, siehe
-auch~\cite{ncatlab:stuff}.
-
 Obwohl die Vergissfunktoren beinahe tautologisch definiert sind, sind sie aus
 zwei Gründen wichtig: Zum einen ist es eine interessante Frage, inwieweit
 man die Vergissfunktoren umkehren kann -- wie man etwa aus einer Menge eine
@@ -619,7 +616,7 @@ allgemeinere Limiten) bewahrt. Etwa gilt für Vektorräume~$U, W$ und den
 Vergissfunktor~$V:\RR\text{-}\Vect \to \Set$, dass
 \[ V(U \times W) \cong V(U) \times V(W), \]
 aber
-\[ V(U \amalg W) \not\cong V(U) \amalg V(W). \]
+\[ V(U \coprod W) \not\cong V(U) \coprod V(W). \]
 Was das genau bedeutet, werden wir im Vortrag über Limiten sehen.
 
 
@@ -780,8 +777,7 @@ David Spivak erforscht~\cite{spivak1,spivak2,spivak3}.
 \subsection{Hom-Funktoren}
 
 \begin{defn}
-Sei $\C$ eine lokal kleine Kategorie (sodass ihre Hom-Klassen sogar schon
-Hom-Mengen sind) und $A \in \Ob \C$. Dann ist\ldots
+Sei $\C$ eine Kategorie und $A \in \Ob \C$. Dann ist\ldots
 \begin{enumerate}
   \item der \emph{kovariante Hom-Funktor zu $A$} der Funktor
     \[ \begin{array}{@{}rrcl@{}}
@@ -893,6 +889,30 @@ Transformationen können wir dann auch Funktorkategorien definieren, die für da
 Yoneda-Lemma später sehr wichtig sind. Außerdem können wir definieren, wann
 zwei Kategorien zueinander äquivalent sind.
 
+\begin{defn}Eine \emph{natürliche Transformation} $\eta : F \Rightarrow G$
+zwischen Funktoren $F, G : \C \to \D$ besteht aus
+\begin{enumerate}
+\item[] einem Morphismus~$\eta_X : F(X) \to G(X)$ für jedes Objekt~$X \in \Ob \C$
+\end{enumerate}
+sodass
+\begin{enumerate}
+\item[]
+für alle Morphismen $f : X \to Y$ in~$\C$ das Diagramm
+\[ \xymatrix{
+  F(X) \ar[r]^{F(f)} \ar[d]_{\eta_X} & F(Y) \ar[d]_{\eta_Y} \\
+  G(X) \ar[r]^{G(f)} & G(Y)
+} \]
+kommutiert.
+\end{enumerate}
+\end{defn}
+
+% "konstante natürliche Trafo"
+% weniger Abbildungen --> mehr Trafos!
+% F ==> G ohne G ==> F
+% eta_G Gruppenhomo? Andere Möglichkeiten?
+% Bsp. für Äquivalenzen, die keine Isos sind
+% Grund, wieso Isos schlecht (übel) sind
+% indiskrete Kategorie muss bewohnt sein, damit das stimmt
 
 \section[Limiten und Kolimiten]{Limiten und Kolimiten \hfill \small
 Martin Baur und Kathrin Gimmi}
@@ -921,6 +941,12 @@ Uebele}
 
 \emph{Werbung:} Kommt noch!
 
+
+\section[Kombinatorische Spezies]{Kombinatorische Spezies \hfill \small
+Simon Kapfer}
+
+\section[Topologische Quantenfeldtheorien]{Topologische Quantenfeldtheorien \hfill \small
+Sven Prüfer}
 
 \nocite{*}
 \printbibliography
