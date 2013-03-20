@@ -6,6 +6,7 @@
 \usepackage[ngerman]{babel}
 
 \usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+\usepackage{mathabx}
 
 %\usepackage[small,nohug]{diagrams}
 %\diagramstyle[labelstyle=\scriptstyle]
@@ -107,10 +108,12 @@
 
 \begin{list}{}{\labelwidth0em \leftmargin0em \itemindent0.5em \itemsep 2.0em}
 \item[\textbf{Aufgabe 1:}]
-"`Funktoren bewahren Isomorphien"':
+"`Funktoren bewahren Isomorphie"':
 Sei~$F : \C \to \D$ ein Funktor zwischen Kategorien~$\C$, $\D$ und seien~$X$
 und~$Y$ Objekte von~$\C$. Zeige:
 \[ X \cong Y \quad\Longrightarrow\quad F(X) \cong F(Y). \]
+Zeige ferner, dass die Umkehrung ebenfalls gilt, wenn~$F$ voll und treu ist (siehe
+Aufgabe~3).
 
 \item[\textbf{Aufgabe 2:}]
 Sei~$f:P \to Q$ eine \emph{monotone} Abbildung zwischen Quasiordnungen~$P$,
@@ -129,12 +132,12 @@ $F(f) = F(g) \quad\Longrightarrow\quad f = g.$
 \item \emph{voll}, wenn es für alle Objekte~$X,Y \in \C$ und jeden
 Morphismus~$h : F(X) \to F(Y)$ in~$\D$ einen Morphismus $f:X \to Y$ in~$\C$
 mit $F(f) = h$ gibt.
-\item \emph{essenziell surjektiv}, wenn es für jedes Objekt~$Z \in \Ob \D$ ein
+\item \emph{wesentlich surjektiv}, wenn es für jedes Objekt~$Z \in \Ob \D$ ein
 Objekt~$X \in \Ob \C$ mit
 $F(X) \cong Z$ gibt.
 \end{enumerate}
-Untersuche einen Funktor deiner Wahl daraufhin, ob er treu, voll oder essenziell
-surjektiv ist.
+Untersuche einen Funktor deiner Wahl daraufhin, ob er treu, voll oder
+wesentlich surjektiv ist.
 
 \item[\textbf{Aufgabe 4:}]
 Sei~$\C$ eine Kategorie und~$A \in \Ob \C$ ein Objekt. Wir nehmen an, dass wir
@@ -149,10 +152,10 @@ definieren? Wieso sind die Funktoraxiome erfüllt?
 
 \small
 \item[\textbf{Projektaufgabe:}]
-Sei~$\C$ eine lokal kleine Kategorie und~$A \in \Ob \C$ ein Objekt. Der \emph{kovariante
+Sei~$\C$ eine Kategorie und~$A \in \Ob \C$ ein Objekt. Der \emph{kovariante
 Hom-Funktor zu~$A$} ist definiert als
 \[ \begin{array}{@{}rrcl@{}}
-  \widehat A{:} & \C &\longrightarrow& \Set \\
+  \widecheck A{:} & \C &\longrightarrow& \Set \\
   & X &\longmapsto& \Hom_\C(A,X) \\
   & (f: X \to Y) &\longmapsto& f_\star,
 \end{array} \]
@@ -161,7 +164,7 @@ wobei~$f_\star$ die Abbildung
   f_\star{:} & \Hom_\C(A,X) &\longrightarrow& \Hom_\C(A,Y) \\
   & g &\longmapsto& f \circ g
 \end{array} \]
-ist. Zeige als Hinführung auf den Yoneda-Vortrag, dass~$\widehat A$ tatsächlich
+ist. Zeige als Hinführung auf den Yoneda-Vortrag, dass~$\widecheck A$ tatsächlich
 ein Funktor ist.
 \end{list}
 
