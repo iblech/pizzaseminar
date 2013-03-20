@@ -58,6 +58,7 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
 \newcommand{\freist}{\underline{\ \ }}
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\ggT}{ggT}
@@ -904,6 +905,17 @@ für alle Morphismen $f : X \to Y$ in~$\C$ das Diagramm
 } \]
 kommutiert.
 \end{enumerate}
+\end{defn}
+
+\begin{defn}
+Eine \emph{Kategorienäquivalenz} zwischen Kategorien~$\C$ und~$\D$ besteht aus
+Funktoren
+\[ \xymatrix{\C \ar@/^/[r]^F & \D, \ar@/^/[l]^G} \]
+die zueinander \emph{quasi-invers} sind, d.\,h. dass die Kompositionen von~$F$
+und~$G$ jeweils natürlich isomorph zu den entsprechenden Identitätsfunktoren
+sind:
+\[ G \circ F \cong \Id_\C, \qquad F \circ G \cong \Id_\D. \]
+Die Kategorien~$\C$ und~$\D$ heißen dann \emph{zueinander äquivalent}.
 \end{defn}
 
 % "konstante natürliche Trafo"
