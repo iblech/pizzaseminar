@@ -94,17 +94,9 @@
 \usepackage{geometry}
 \geometry{tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
 
+\definecolor{grey}{rgb}{0.8,0.8,0.8}
+
 \begin{document}
-\[ \xymatrix@=8ex{
-  && (X \times Y) \times Z \ar@/_/[dl] \ar@/^/[ddrr] \\
- & X \times Y \ar@/_/[ld] \ar@/^/[rd] && \text{$\phantom{X \times Y}$} \\
- X && Y && Z \\
- &&& P'
-  \ar@/^2pc/@{-->}[lluu]^f
-  \ar@/^2pc/[lllu] \ar@/_/[lu] \ar@/_/[ru]
-  \ar@{-->}[luuu]^g
-} \]
-\end{document}
 
 \vspace*{-4em}
 \begin{flushright}Universität Augsburg \\ 19. März 2013 \\ Matthias Hutzler\end{flushright}
@@ -258,19 +250,102 @@ Damit ist $p$ Infimum von $a$ und $b$.
 \begin{enumerate}
 \item
 Sei~$X \times Y$ ein Produkt von~$X$ und~$Y$ und~$(X \times Y) \times Z$ ein
-Produkt von~$X \times Y$ und~$Z$, mit Projektionsmorphismen wie oberen
-Teil des folgenden Diagramms:
+Produkt von~$X \times Y$ und~$Z$, mit Projektionsmorphismen wie im oberen
+und durchgezogenen Teil des folgenden Diagramms:
 \[ \xymatrix@=8ex{
   && (X \times Y) \times Z \ar@/_/[dl] \ar@/^/[ddrr] \\
  & X \times Y \ar@/_/[ld] \ar@/^/[rd] && \text{$\phantom{X \times Y}$} \\
  X && Y && Z \\
- &&& P'
+ &&& P
   \ar@/^2pc/@{-->}[lluu]^f
   \ar@/^2pc/[lllu] \ar@/_/[lu] \ar@/_/[ru]
   \ar@{-->}[luuu]^g
 } \]
 So wird ersichtlich, wie~$(X \times Y) \times Z$ zu einem
-Möchtegern-Dreier-Produkt von~$X$, $Y$ und~$Z$ wird: Seine 
+Möchtegern-Dreier-Produkt von~$X$, $Y$ und~$Z$ wird: Sein Projektionsmorphismus
+auf~$Z$ steht direkt dran und seine Projektionen auf~$X$ und~$Y$ ergeben sich
+als Komposition.
+
+\newcommand{\hil}[1]{\color{black}{#1}}
+
+Zum Nachweis der universellen Eigenschaft sei ein beliebiges
+Möchtegern-Dreier-Produkt~$P$ gegeben. Wir müssen zeigen, dass es dann genau
+einen Morphismus~$g : P \to (X \times Y) \times Z$ gibt, der die drei Dreiecke
+\begin{equation}\label{diags}
+  \scalebox{0.45}{\color{grey}{
+    $\vcenter{\xymatrix@=4ex{
+      && \hil{(X \times Y) \times Z} \ar@/_/@[black][dl] \ar@/^/[ddrr] \\
+     & \hil{X \times Y} \ar@/_/@[black][ld] \ar@/^/[rd] && \text{$\phantom{X \times Y}$} \\
+     \hil{X} && Y && Z \\
+     &&& \hil{P}
+      \ar@/^2pc/@{-->}[lluu]^f
+      \ar@/^2pc/@[black][lllu] \ar@/_/[lu] \ar@/_/[ru]
+      \ar@{-->}@[black][luuu]^g
+    }}
+    \quad
+    \vcenter{\xymatrix@=4ex{
+      && \hil{(X \times Y) \times Z} \ar@/_/@[black][dl] \ar@/^/[ddrr] \\
+     & \hil{X \times Y} \ar@/_/[ld] \ar@/^/@[black][rd] && \text{$\phantom{X \times Y}$} \\
+     X && \hil{Y} && Z \\
+     &&& \hil{P}
+      \ar@/^2pc/@{-->}[lluu]^f
+      \ar@/^2pc/[lllu] \ar@/_/@[black][lu] \ar@/_/[ru]
+      \ar@{-->}@[black][luuu]^g
+    }}
+    \quad
+    \vcenter{\xymatrix@=4ex{
+      && \hil{(X \times Y) \times Z} \ar@/_/[dl] \ar@/^/@[black][ddrr] \\
+     & X \times Y \ar@/_/[ld] \ar@/^/[rd] && \text{$\phantom{X \times Y}$} \\
+     X && Y && \hil{Z} \\
+     &&& \hil{P}
+      \ar@/^2pc/@{-->}[lluu]^f
+      \ar@/^2pc/[lllu] \ar@/_/[lu] \ar@/_/@[black][ru]
+      \ar@{-->}@[black][luuu]^g
+    }}$
+  }}
+\end{equation}
+kommutieren lässt. Dazu treffen wir zunächst die Beobachtung, dass~$P$ zu einem
+Möchtegern-Produkt von~$X$ und~$Y$ wird. Da~$X \times Y$ ein tatsächliches
+Produkt ist, gibt es daher genau einen Morphismus~$f: P \to X \times Y$, der
+die beiden Teildreiecke des Diagramms
+\[
+  \scalebox{0.5}{\color{grey}{\xymatrix@=4ex{
+    && (X \times Y) \times Z \ar@/_/[dl] \ar@/^/[ddrr] \\
+   & \hil{X \times Y} \ar@/_/@[black][ld] \ar@/^/@[black][rd] && \text{$\phantom{X \times Y}$} \\
+   \hil{X} && \hil{Y} && Z \\
+   &&& \hil{P}
+    \ar@/^2pc/@{-->}@[black][lluu]^f
+    \ar@/^2pc/@[black][lllu] \ar@/_/@[black][lu] \ar@/_/[ru]
+    \ar@{-->}[luuu]^g
+  }}}
+\]
+kommutieren lässt. Auf diese Weise wird~$P$ zu einem Möchtegern-Produkt von~$X
+\times Y$ und~$Z$, womit folgt, dass es genau einen Morphismus~$g:P \to (X \times Y)
+\times Z$ gibt, der die beiden Teildreiecke des Diagramms
+\[ \scalebox{0.5}{\color{grey}{\xymatrix@=4ex{
+  && \hil{(X \times Y) \times Z} \ar@/_/@[black][dl] \ar@/^/@[black][ddrr] \\
+ & \hil{X \times Y} \ar@/_/[ld] \ar@/^/[rd] && \text{$\phantom{X \times Y}$} \\
+ X && Y && \hil{Z} \\
+ &&& \hil{P}
+  \ar@/^2pc/@{-->}@[black][lluu]^f
+  \ar@/^2pc/[lllu] \ar@/_/[lu] \ar@/_/@[black][ru]
+  \ar@{-->}@[black][luuu]^g
+}}} \]
+kommutieren lässt. Da die Kommutativität des linken Teildreiecks
+gleichbedeutend mit der Kommutativität der ersten beiden Diagramme
+in~\eqref{diags} ist (wieso?), folgt damit die Behauptung.
+
+\item Das Dreier-Produkt ist offensichtlich bis auf Isomorphie kommutativ,
+da~$X$, $Y$ und~$Z$ völlig symmetrisch in die Definition eingehen:
+\[ X \times Y \times Z \ \cong\  X \times Z \times Y \ \cong\  Y \times Z \times X
+\ \cong\  \cdots. \]
+Mit Teil~a) folgen daher unmittelbar Gesetze wie
+\[ X \times Y \times Z \ \cong\  (X \times Y) \times Z \ \cong\  (X \times Z) \times Y \ \cong\  (Y \times Z) \times
+X \ \cong\  \cdots. \]
+Da die symmetrisch umgedrehte Aussage von~a) ebenfalls gilt, folgen auch die
+Isomorphiebeziehungen
+\[ X \times Y \times Z \ \cong\  X \times (Y \times Z) \ \cong\  X \times (Z \times Y) \ \cong\  Y \times (Z
+\times X) \ \cong\  \cdots. \]
 \end{enumerate}
 \end{list}
 
