@@ -1,0 +1,194 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+\usepackage{permute}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+
+\theoremstyle{remark}
+\newtheorem*{satz}{Satz}
+\newtheorem*{bsp}{Beispiel}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Spur}[1]{\operatorname{Spur}#1}
+\newcommand{\rank}[1]{\operatorname{rank}#1}
+\newcommand{\sgn}[1]{\operatorname{sgn}#1}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}[1]{\operatorname{GL}(#1)}
+\newcommand{\ORTH}[1]{\operatorname{O}(#1)}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Bild}{im}
+\DeclareMathOperator{\Kern}{ker}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\Zzwei}{\Z_2}
+
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\AbGrp}{\mathrm{AbGrp}}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\usepackage{enumerate}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 25. März 2013 \\ Tim Baumann\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
+Lösung zum 3. Übungsblatt
+\end{center}
+\vspace{2em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+\begin{list}{}{\labelwidth0em \leftmargin0em \itemindent0.5em \itemsep 1.3em}
+\item[\textbf{Aufgabe 1:}]\mbox{}
+
+Wenn $X$ isomorph zu $Y$ in $\C$ ist, so gibt es Morphismen $f : X \to Y$ und $g : Y \to X$ mit $g \circ f = \id_X$ und $f \circ g = \id_Y$.
+Die Morphismen $F(f):F(X) \to F(Y)$ und $F(g):F(Y) \to F(X)$ sind invers zueinander, da aus den Funktoraxiomen $F(g) \circ F(f) = F(g \circ f) = F(\id_X) = \id_{F(X)}$ und analog
+$F(f) \circ F(g) = \id_{F(Y)}$ folgt. Somit ist $F(X)$ isomorph zu~$F(Y)$.
+
+Falls umgekehrt $F(X)$ isomorph zu $F(Y)$ ist, also Morphismen $f : F(X) \to F(Y)$ und $g : F(Y) \to F(X)$ existieren, die auf beide Arten miteinander verknüpft die Identität ergeben, und der Funktor $F$ zusätzlich volltreu ist, so besitzen $f$ und $g$ eindeutig bestimmte Urbilder $\widetilde{f} : X \to Y$ und $\widetilde{g} : Y \to X$ mit $F(\widetilde{f}) = f$ und $F(\widetilde{g}) = g$ (die Existenz folgt dabei aus der Vollheit, die Eindeutigkeit aus der Treue von $F$). Da
+$F(\widetilde{g} \circ \widetilde{f}) = F(\widetilde{g}) \circ F(\widetilde{f}) = \id_{F(X)} = F(\id_X)$ gilt, also das Bild von $(\widetilde{g} \circ \widetilde{f})$ unter $F$ gleich dem Bild von $\id_X$ ist, folgt aus der Treue von $F$, dass $\widetilde{g} \circ \widetilde{f} = \id_X$ ist. Parallel erhält man $\widetilde{f} \circ \widetilde{g} = \id_Y$. Da~$\widetilde{f}$ und $\widetilde{g}$ also invers zueinander sind, ist $X$ isomorph zu $Y$.
+
+\item[\textbf{Aufgabe 2:}]\mbox{}
+
+Seien $BP$ und $BQ$ die aus den Quasiordnungen $P$ und $Q$ konstruierten Kategorien, deren Objekte die Elemente der jeweiligen Ordnungsrelation sind, und zwischen zwei Objekten~$a$ und~$b$ genau dann ein Morphismus "`$a \preceq b$"' existiert, wenn $a \preceq b$ gilt und $f:P \to Q$ eine monotone Abbildung zwischen $P$ und $Q$.
+Wir basteln einen Funktor $F$ durch
+
+\[ \begin{array}{@{}rcl@{}}
+  BP &\longrightarrow& BQ\\
+  x  &\longmapsto& f(x)\\
+  \text{"`$x \preceq y$"'} &\longmapsto& \text{"`$f(x) \sqsubseteq f(y)$"'}
+\end{array} \]
+
+Wir müssen noch begründen, dass diese Definiton überhaupt Sinn ergibt, also der Morphismus "`$f(x) \sqsubseteq f(y)$"' tatsächlich existiert, wenn "`$x \preceq y$"' existiert. Das ist klar, denn übertragen aus der Sprache der Kategorien entspricht dies der Eigenschaft von $f$, monoton zu sein.
+
+Außerdem ist zu zeigen, dass die Funktoraxiome erfüllt sind. Wir machen folgende Beobachtung: In den Kategorien $BP$ und $BQ$ existiert zwischen zwei Objekten höchstens ein Morphismus. Dadurch sind alle Morphismen mit gleichem Start- und Zielobjekt bereits zueinander identisch und der einzige Morphismus von einem Objekt zu sich selbst ist der Identitätsmorphismus. Solche Kategorien werden auch als \emph{dünn} bezeichnet. Wir können diesen Teil der Aufgabe sogar etwas allgemeiner begründen:\\
+
+
+\begin{satz}
+  Sei $\C$ eine beliebige und $\D$ eine dünne Kategorie und $G : \C \to \D$ eine Zuordnung von Objekten in $\C$ zu Objekten in $\D$ und von Morphismen aus $Hom(X, Y)$ zu Morphismen aus $Hom(F(X), F(Y))$. Dann ist $G$ ein Funktor.
+\end{satz}
+
+\begin{proof}
+Wir müssen die Funktoraxiome nachprüfen:
+\begin{enumerate}
+\item Seien $f : X \to Y$ und $g : Y \to Z$ Morphismen aus $C$. Da die Morphismen $F(g \circ f)$ und $F(g) \circ F(f)$ beide von $F(X)$ nach $F(Z)$ laufen, sind sie bereits identisch.
+\item $F(\id_X) = \id_{F(X)}$, da es nur einen Morphismus von $F(X)$ nach $F(X)$, nämlich den Identitätsmorphismus, gibt.\qedhere
+\end{enumerate}
+\end{proof}
+
+\item[\textbf{Aufgabe 3:}]\mbox{}
+
+\begin{enumerate}
+\item Potenzfunktor\enskip$P : \Set \to \Set, \enskip M \mapsto \mathcal{P}(M), \enskip f \mapsto f[\cdot]$
+
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{ r c p{12cm} }
+  treu: & \cmark &\\
+  voll: & \xmark & Tipp: Betrachte $f:\mathcal{P}(\{\star\}) \to \mathcal{P}(\{\star\}),\ p \mapsto \emptyset$\\
+  wes. surj.: & \xmark & Die leere Menge und allgemeiner alle Mengen, deren Kardinalität nicht Zweierpotenz ist, sind nicht zu einem Objekt im Bild von $P$ isomorph.
+\end{tabular}
+
+\item Vergissfunktor $V : \Grp \to \Set$
+
+\begin{tabular}{ r c p{12cm} }
+  treu: & \cmark &\\
+  voll: & \xmark & Nicht jede Abbildung zwischen Gruppen ist Gruppenhomomorphismus.\\
+  wes. surj.: & \xmark & Die leere Menge ist nicht zu einem Objekt im Bild von $V$ isomorph, da jede Gruppe mindestens ein Element enthält.
+\end{tabular}
+
+\item Vergissfunktor $V : \AbGrp \to \Grp$
+
+\begin{tabular}{ r c p{12cm} }
+  treu: & \cmark &\\
+  voll: & \cmark &$\Hom_\AbGrp(G, H) = \Hom_\Grp(G, H) = \{ f : G \to H \mid f\ \text{Gruppenhomo} \}$\\
+  wes. surj.: & \xmark & \emph{Behauptung}: Die symmetrische Gruppe $S_3$ ist nicht zu einer abelschen Gruppe isomorph.\\
+  & & \emph{Beweis}: Angenommen, $f:S_3 \to G$ ist ein Gruppenisomorphismus und $G$ eine abelsche Gruppe. Dann ist $f((1\;2) \circ (2\;3)) = f((1\;2)) \circ f((2\;3)) = f((2\;3)) \circ f((1\;2)) = f((2\;3) \circ (1\;2))$. Da aber $(1\;2) \circ (2\;3) \ne (2\;3) \circ (1\;2)$, ist dies ein Widerspruch zur Injektivität von $f$.
+\end{tabular}
+
+\item Gruppenhomomorphismus $\phi : G \to H$ als Funktor $B\phi : BG \to BH$
+
+\begin{tabular}{ r c p{12cm} }
+  treu: & & genau dann, wenn $\phi$ injektiv ist\\
+  voll: & & genau dann, wenn $\phi$ surjektiv ist\\
+  wes. surj.: & \cmark & Klar, da $BH$ aus nur einem Objekt besteht.
+\end{tabular}
+\end{enumerate}
+
+\item[\textbf{Aufgabe 4:}]
+
+\item[\textbf{Projektaufgabe:}]
+
+\end{list}
+
+\end{document}
