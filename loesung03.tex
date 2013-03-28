@@ -100,7 +100,7 @@
 \begin{document}
 
 \vspace*{-4em}
-\begin{flushright}Universität Augsburg \\ 25. März 2013 \\ Tim Baumann\end{flushright}
+\begin{flushright}Universität Augsburg \\ 28. März 2013 \\ Tim Baumann\end{flushright}
 
 \begin{center}\Large \textbf{Pizzaseminar zur Kategorientheorie} \\
 Lösung zum 3. Übungsblatt
@@ -123,9 +123,9 @@ $F(\widetilde{g} \circ \widetilde{f}) = F(\widetilde{g}) \circ F(\widetilde{f}) 
 
 \item[\textbf{Aufgabe 2:}]\mbox{}
 
-Seien $BP$ und $BQ$ die aus den Quasiordnungen $P$ und $Q$ konstruierten Kategorien, deren Objekte die Elemente der jeweiligen Ordnungsrelation sind, und zwischen zwei Objekten~$a$ und~$b$ genau dann ein Morphismus "`$a \preceq b$"' existiert, wenn $a \preceq b$ gilt und $f:P \to Q$ eine monotone Abbildung zwischen $P$ und $Q$.
-Wir basteln einen Funktor $F$ durch
+Seien $BP$ und $BQ$ die aus den Quasiordnungen $P$ und $Q$ konstruierten Kategorien, deren Objekte die Elemente der~$P$ und~$Q$ zugrundeliegenden Mengen sind, und die zwischen Objekten~$a$ und~$b$ genau dann einen Morphismus "`$a \preceq b$"' enthält, wenn $a \preceq b$ gilt. Sei ferner $f:P \to Q$ eine monotone Abbildung zwischen $P$ und $Q$.
 
+Wir basteln einen Funktor $F$ durch
 \[ \begin{array}{@{}rcl@{}}
   BP &\longrightarrow& BQ\\
   x  &\longmapsto& f(x)\\
@@ -137,35 +137,35 @@ Wir müssen noch begründen, dass diese Definiton überhaupt Sinn ergibt, also d
 Außerdem ist zu zeigen, dass die Funktoraxiome erfüllt sind. Wir machen folgende Beobachtung: In den Kategorien $BP$ und $BQ$ existiert zwischen zwei Objekten höchstens ein Morphismus. Dadurch sind alle Morphismen mit gleichem Start- und Zielobjekt bereits zueinander identisch und der einzige Morphismus von einem Objekt zu sich selbst ist der Identitätsmorphismus. Solche Kategorien werden auch als \emph{dünn} bezeichnet. Damit können wir diesen Teil der Aufgabe sogar etwas allgemeiner begründen:\\
 
 
-\begin{satz}
-  Sei $\C$ eine beliebige und $\D$ eine dünne Kategorie und $G : \C \to \D$ eine Zuordnung von Objekten in $\C$ zu Objekten in $\D$ und von Morphismen aus $\Hom(X, Y)$ zu Morphismen aus $\Hom(F(X), F(Y))$. Dann ist $G$ ein Funktor.
-\end{satz}
+\begin{prop}
+  Sei $\C$ eine beliebige und $\D$ eine dünne Kategorie und $G : \C \to \D$ eine Zuordnung von Objekten in $\C$ zu Objekten in $\D$ und von Morphismen aus $\Hom_\C(X, Y)$ zu Morphismen aus $\Hom_\D(F(X), F(Y))$. Dann ist $G$ ein Funktor.
+\end{prop}
 
 \begin{proof}
 Wir müssen die Funktoraxiome nachprüfen:
 \begin{enumerate}
 \item $F(\id_X) = \id_{F(X)}$, da es nur einen Morphismus von $F(X)$ nach $F(X)$, nämlich den Identitätsmorphismus, gibt.
-\item Seien $f : X \to Y$ und $g : Y \to Z$ Morphismen aus $C$. Da die Morphismen $F(g \circ f)$ und $F(g) \circ F(f)$ beide von $F(X)$ nach $F(Z)$ laufen, sind sie bereits identisch.\qedhere
+\item Seien $f : X \to Y$ und $g : Y \to Z$ Morphismen in $\C$. Da die Morphismen $F(g \circ f)$ und $F(g) \circ F(f)$ beide von $F(X)$ nach $F(Z)$ laufen, sind sie bereits identisch.\qedhere
 \end{enumerate}
 \end{proof}
 
 \item[\textbf{Aufgabe 3:}]\mbox{}
 
 \begin{enumerate}
-\item Potenzfunktor\enskip$P : \Set \to \Set, \enskip M \mapsto \mathcal{P}(M), \enskip f \mapsto f[\cdot]$
+\item Potenzmengenfunktor\enskip$P : \Set \to \Set, \enskip M \mapsto \mathcal{P}(M), \enskip f \mapsto f[\cdot]$
 
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{ r c p{12cm} }
   treu: & \cmark &\\
-  voll: & \xmark & Hinweis: Betrachte $f:\mathcal{P}(\{\star\}) \to \mathcal{P}(\{\star\}),\ p \mapsto \emptyset$\\
-  wes. surj.: & \xmark & Die leere Menge und allgemeiner alle Mengen, deren Kardinalität nicht Zweierpotenz ist, sind nicht zu einem Objekt im Bild von $P$ isomorph.
+  voll: & \xmark & Hinweis: Betrachte $f:\mathcal{P}(\{\star\}) \to \mathcal{P}(\{\star\}),\ U \mapsto \emptyset$\\
+  wes. surj.: & \xmark & Die leere Menge und allgemeiner alle Mengen, deren Kardinalität keine Zweierpotenz ist, sind nicht zu Objekten im Bild von $P$ isomorph.
 \end{tabular}
 
 \item Vergissfunktor $V : \Grp \to \Set$
 
 \begin{tabular}{ r c p{12cm} }
   treu: & \cmark &\\
-  voll: & \xmark & Nicht jede Abbildung zwischen Gruppen ist Gruppenhomomorphismus.\\
+  voll: & \xmark & Nicht jede (mengentheoretische) Abbildung zwischen Gruppen ist Gruppenhomomorphismus.\\
   wes. surj.: & \xmark & Die leere Menge ist nicht zu einem Objekt im Bild von $V$ isomorph, da jede Gruppe mindestens ein Element enthält.
 \end{tabular}
 
@@ -174,8 +174,9 @@ Wir müssen die Funktoraxiome nachprüfen:
 \begin{tabular}{ r c p{12cm} }
   treu: & \cmark &\\
   voll: & \cmark &$\Hom_\AbGrp(G, H) = \Hom_\Grp(G, H) = \{ f : G \to H \mid f\ \text{Gruppenhomo} \}$\\
-  wes. surj.: & \xmark & \emph{Behauptung}: Die symmetrische Gruppe $S_3$ ist nicht zu einer abelschen Gruppe isomorph.\\
-  & & \emph{Beweis}: Angenommen, $f:S_3 \to G$ ist ein Gruppenisomorphismus und $G$ eine abelsche Gruppe. Dann ist $f((1\;2) \circ (2\;3)) = f((1\;2)) \circ f((2\;3)) = f((2\;3)) \circ f((1\;2)) = f((2\;3) \circ (1\;2))$. Da aber $(1\;2) \circ (2\;3) \ne (2\;3) \circ (1\;2)$, ist dies ein Widerspruch zur Injektivität von $f$.
+  wes. surj.: & \xmark & Nichtkommutative Gruppen können nicht isomorph zu kommutativen Gruppen sein, denn Kommutativität bleibt als rein gruppentheoretische Eigenschaft unter Isomorphie erhalten. Man kann auch ein ganz explizites Beispiel angeben: \\
+  & & \emph{Behauptung:} Die symmetrische Gruppe $S_3$ ist nicht zu einer abelschen Gruppe isomorph.\\
+  & & \emph{Beweis:} Angenommen, $f:S_3 \to G$ ist ein Gruppenisomorphismus und $G$ eine abelsche Gruppe. Dann ist $f((1\;2) \circ (2\;3)) = f((1\;2)) \circ f((2\;3)) = f((2\;3)) \circ f((1\;2)) = f((2\;3) \circ (1\;2))$. Da aber $(1\;2) \circ (2\;3) \ne (2\;3) \circ (1\;2)$, ist dies ein Widerspruch zur Injektivität von $f$.
 \end{tabular}
 
 \item Gruppenhomomorphismus $\phi : G \to H$ als Funktor $B\phi : BG \to BH$
@@ -183,83 +184,76 @@ Wir müssen die Funktoraxiome nachprüfen:
 \begin{tabular}{ r c p{12cm} }
   treu: & & genau dann, wenn $\phi$ injektiv ist\\
   voll: & & genau dann, wenn $\phi$ surjektiv ist\\
-  wes. surj.: & \cmark & Klar, da $BH$ aus nur einem Objekt besteht.
+  wes. surj.: & \cmark & Klar, da $BH$ aus nur einem Objekt besteht und dieses von~$B\phi$ auch getroffen wird.
 \end{tabular}
 \end{enumerate}
 
+\newpage
 \item[\textbf{Aufgabe 4:}]\mbox{}
 
 %\newcommand{\hil}[1]{\color{black}{#1}}
 
-Wir vervollständingen die Zuordnungszuschrift zu einer Funktordefinition:
+Wir vervollständigen die Zuordnungszuschrift zu einer Funktordefinition:
 \[ \begin{array}{@{}rrcl@{}}
   F{:} & \C &\longrightarrow& \C \\
   & X &\longmapsto& A \times X\\
   & f &\longmapsto& \id_A \times f
 \end{array} \]
 
-Dabei bezeichnen wir mit $(\id_A \times f)$ den eindeutig bestimmten Morphismus, der folgendes Diagramm kommutieren lässt (die Existenz und Eindeutigkeit folgen daraus, dass $(A \times X)$ Möchtegern-Produkt von $A$ und $Y$ ist):
-
+Dabei bezeichnen wir mit $(\id_A \times f)$ den eindeutig bestimmten Morphismus, der das Diagramm
 \[ \xymatrix{
   & A \times X \ar@/_1pc/[ddl] \ar@/^1pc/[dr] \ar@{-->}[ddd]^{\id_A \times f}\\
   && X \ar[d]^f\\
   A && Y\\
   & A \times Y \ar@/^/[ul] \ar@/_/[ur]
 } \]
+kommutieren lässt. Die Existenz und Eindeutigkeit folgen dabei daraus, dass $A \times X$ Möchtegern-Produkt von $A$ und $Y$ ist.
 
-\emph{Bemerkung:} In $\Set$, $\Grp$, $\AbGrp$ und $\mathrm{\mathbb{R}\text{-}Vect}$ ist $(\id_A \times f)$ definiert durch
-
+\emph{Bemerkung:} In $\Set$, $\Grp$, $\AbGrp$ und $\mathrm{\mathbb{R}\text{-}Vect}$ ist $(\id_A \times f)$ durch
 \[ \begin{array}{ rcl }
   A \times X &\longrightarrow& A \times Y\\
-  (a, x)     &\longmapsto&     (a, f(x)).
+  (a, x)     &\longmapsto&     (a, f(x))
 \end{array} \]
+gegeben. Es gibt mehrere Möglichkeiten, das zu begründen: Es ist plausibel; der angegebene Morphismus lässt in der Tat das Diagramm kommutieren; schaut man in den Beweis der universellen Eigenschaft des kartesischen Produkts, erhält man in der Situation hier genau den angegebenen Morphismus.
 
 Wir müssen noch nachweisen, dass die Funktoraxiome erfüllt sind. Dazu betrachten wir zunächst folgendes Diagramm:
-
 \[ \xymatrix{
   & A \times X \ar@/_1pc/[ddl]_{p_A} \ar@/^1pc/[dr]^{p_X} \ar@{-->}[ddd]\\
   && X \ar[d]^{\id_X}\\
   A && X\\
   & A \times X \ar@/^/[ul]^{p_A} \ar@/_/[ur]_{p_X}
 } \]
-
 Da $\id_{A \times X}$ obiges Diagramm kommutieren lässt, gilt $F(\id_X) = \id_A \times \id_X = \id_{A \times X}$ (warum?).
 
 Zum Nachweis des zweiten Funktoraxioms seien Morphismen $f:X \to Y$ und $g:Y \to Z$ gegeben. Nach Definition lassen $\id_A \times f$ und $\id_A \times g$ folgendes Diagramm kommutieren:
-
 \[ \xymatrix@=7ex{
   & A \times X \ar@/_/[ldd] \ar@/^/[rdd] \ar@{-->}[rr]^{\id_A \times f} && A \times Y \ar@/_/[llldd] \ar@/^/[rdd] \ar@{-->}[rr]^{\id_A \times g} && A \times Z \ar@/^/[rdd] \ar@/_/[llllldd]\\
   \\
   A && X \ar[rr]^{f} && Y \ar[rr]^{g} && Z
 } \]
 
-\pagebreak
-
-Insbesondere kommutiert
-
+Insbesondere kommutiert daher folgendes "`zusammengeschnürtes"' Diagramm:
 \[ \xymatrix@=7ex{
   & A \times X \ar@/_/[ldd] \ar@/^/[rdd] \ar@{-->}[rr]^{(\id_A \times g)\;\circ\;(\id_A \times f)} && A \times Z \ar@/_/[llldd] \ar@/^/[rdd]\\
   \\
   A && X \ar[rr]^{g\;\circ\;f} && Z
 } \]
-
-Nach Definition wird obiges Diagramm auch von $\id_A \times (g \circ f)$ anstelle von $(\id_A \times g)\;\circ\;(\id_A \times f)$ zum Kommutieren gebracht. Da $\id_A \times (g \circ f)$ aber eindeutig bestimmt ist, gilt die Gleichung
+Nach Definition wird dieses Diagramm auch von $\id_A \times (g \circ f)$ anstelle von $(\id_A \times g)\;\circ\;(\id_A \times f)$ zum Kommutieren gebracht. Da $\id_A \times (g \circ f)$ aber mit dieser Eigenschaft eindeutig bestimmt ist, gilt die Gleichung
 \[F(g) \circ F(f) = (\id_A \times g)\;\circ\;(\id_A \times f) = \id_A \times (g \circ f) = F(g \circ f). \]
+
+\emph{Bemerkung:} Man hat vielleicht die Sorge, dass bei anderer Wahl der Produkte~$A \times X$, $X \in \Ob \C$, ein völlig anderer Funktor herauskommt. Dem ist nicht so: Unterschiedliche Produktwahlen führen zu isomorphen Funktoren. (Übungsaufgabe!)
+
+\emph{Bemerkung:} Wir werden später sehen, dass der hier konstruierte Funktor eine besondere Eigenschaft erfüllt, die ihn auch schon bis auf Isomorphie auszeichnet: Es ist rechtsadjungiert zu einem gewissen Diagonalfunktor. In der Tat ist diese Charakterisierung eine andere Möglichkeit, Produkte (und allgemeiner Limiten) zu definieren -- und zwar auf eine "`globale"' Art und Weise (für alle Objekte gleichzeitig).
 
 \item[\textbf{Projektaufgabe:}]\mbox{}
 
-Sei $m~\in~Hom_C(A, X)$ beliebig. Dann ist
-\[ (\id_X)_\star(m) = \id_X \circ m = m = \id_{Hom_C(A, X)}(m). \]
-Da $m$ beliebig war, gilt das erste Funktoraxiom $\widecheck{A}(\id_X) = \id_{\widecheck{A}(X)}$.
+Sei $m \in \Hom_\C(A, X)$ beliebig. Dann ist
+\[ (\id_X)_\star(m) = \id_X \circ m = m = \id_{\Hom_\C(A, X)}(m). \]
+Da $m$ beliebig war, gilt das erste Funktoraxiom: $\widecheck{A}(\id_X) = \id_{\widecheck{A}(X)}$.
 
-Für das zweite Funktoraxiom seien $f:X \to Y$ und $g:Y \to Z$ gegeben. Wir rechnen:
-\[ (g_\star \circ f_\star)(m) = g_\star(f \circ m) = g \circ (f \circ m) = (g \circ f) \circ m = (g \circ f)_\star(m)\]
+Für das zweite Funktoraxiom seien $f:X \to Y$ und $g:Y \to Z$ gegeben. Wir rechnen für alle~$m \in \Hom_\C(A,X)$:
+\[ (g_\star \circ f_\star)(m) = g_\star(f_\star(m)) = g_\star(f \circ m) = g \circ (f \circ m) = (g \circ f) \circ m = (g \circ f)_\star(m)\]
 Somit gilt wie gewünscht $\widecheck{A}(g) \circ \widecheck{A}(f) = \widecheck{A}(g \circ f)$.
-
-%\begin{enumerate}
-%\end{enumerate}
-
-\[ F() \]
 
 \end{list}
 
