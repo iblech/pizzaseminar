@@ -77,6 +77,10 @@
 \renewcommand*\theenumi{\alph{enumi}}
 \renewcommand{\labelenumi}{\theenumi)}
 
+\newcommand\subsubsubsection[1]{\subsubsection*{#1}}
+
+\setcounter{tocdepth}{2}
+
 %\newarrow{Equals}=====
 
 %\usepackage{geometry}
@@ -169,7 +173,7 @@ Von folgenden Konzepten hat man im Gefühl, dass sie in einem gewissen Sinn
     $\leq$ & $\geq$ \\
     injektiv & surjektiv \\
     $\{\star\}$ & $\emptyset$ \\
-    $\times$ & $\coprod$ \\
+    $\times$ & $\amalg$ \\
     ggT & kgV \\
     $\cap$ & $\cup$ \\
     Teilmenge & Faktormenge
@@ -331,6 +335,9 @@ und weiter entwickeln.\end{bem}
 
 \subsubsection*{Die duale Kategorie}
 
+Aus jeder Kategorie~$\C$ kann man durch "`Umdrehen aller Pfeile"' eine weitere
+Kategorie erhalten, die sogenannte duale Kategorie von~$\C$:
+
 \begin{defn}
 Die zu einer Kategorie~$\C$ zugehörige \emph{duale Kategorie} $\C^\op$ ist
 folgende:
@@ -340,14 +347,21 @@ folgende:
 \end{align*}
 \end{defn}
 
+Das ist ein rein formaler Prozess, der mit dem Invertieren bijektiver
+Abbildungen nichts zu tun hat. Die duale Kategorie ist nützlich, um sich der
+Dualität mancher kategorieller Konzepte gewahr zu werden:
+
 \begin{bsp}\begin{enumerate}
 \item Ein initiales Objekt in~$\C^\op$ ist ein terminales Objekt in~$\C$ und
 umgekehrt.
 \item Ein Epimorphismus in~$\C^\op$ ist ein Monomorphismus in~$\C$ und
 umgekehrt.
 \item Zwei Objekte sind genau dann in~$\C^\op$ zueinander isomorph, wenn sie es
-in~$\C$ sind.
+in~$\C$ sind. Isomorphie ist also ein \emph{selbstduales} Konzept.
 \end{enumerate}\end{bsp}
+
+Spannend ist es, wenn duale Kategorien durch andere, natürlich
+auftretende Kategorien beschrieben werden können.
 
 
 \section[Produkte und Koprodukte]{Produkte und Koprodukte \hfill \small
@@ -498,7 +512,7 @@ festgehalten, ist das keine sinnvolle Aussage.
 \end{bem}
 
 \begin{prop}
-Ein Funktor überführt kommutative Diagramme in Diagramme:
+Ein Funktor überführt kommutative Diagramme in kommutative Diagramme:
 \[ \vcenter{ \xymatrix@=8ex{
   X \ar[r]^{f} \ar[rd]_{h} & Y \ar[d]^{g} \\
   & Z
@@ -540,18 +554,7 @@ funktioniert, sehen wir folgendes Motto:
 \begin{motto}Funktoren~$\I \to \C$ sind~$\I$-förmige Diagramme
 in~$\C$.\end{motto}
 
-
-\subsection{Langweilige Funktoren}
-
-\begin{enumerate}
-  \item Für jede Kategorie $\C$ gibt es den \emph{Identitätsfunktor}
-  \[ F : \C \to \C, \quad X \mapsto X, \quad f \mapsto f. \]
-  \item Für ein festes Object $\heartsuit \in \C$ hat man den \emph{konstanten Funktor}
-  \[ F : \I \to \C, \quad X \mapsto \heartsuit, \quad f \mapsto \id_\heartsuit. \]
-\end{enumerate}
-
-Diese Funktoren als solche sind langweilig. Interessant sind aber natürliche
-Transformationen zwischen ihnen -- das werden wir im folgenden Vortrag sehen.
+% XXX: gerichtete Graphen sind Funktoren (* ==> *) --> Set.
 
 
 \subsection{Kontravariante Funktoren}
@@ -579,10 +582,25 @@ Kompositionsreihenfolge erfüllt. Solche Zuordnen sind trotzdem wichtig; sie
 heißen \emph{kontravariante Funktoren}.
 
 
-\subsection{Vergissfunktoren}
+\subsection{Beispiele für Funktoren}
+
+\subsubsection{Langweilige Funktoren}
+
+\begin{enumerate}
+  \item Für jede Kategorie $\C$ gibt es den \emph{Identitätsfunktor}
+  \[ F : \C \to \C, \quad X \mapsto X, \quad f \mapsto f. \]
+  \item Für ein festes Object $\heartsuit \in \C$ hat man den \emph{konstanten Funktor}
+  \[ F : \I \to \C, \quad X \mapsto \heartsuit, \quad f \mapsto \id_\heartsuit. \]
+\end{enumerate}
+
+Diese Funktoren als solche sind langweilig. Interessant sind aber natürliche
+Transformationen zwischen ihnen -- das werden wir im folgenden Vortrag sehen.
+
+
+\subsubsection{Vergissfunktoren}
 
 Die bekannten Strukturen in der Mathematik organisieren sich in einer
-Hierarchie. Zwischen den Kategorien verschiedener Stufen hat man sog.
+Hierarchie. Zwischen den Kategorien zu Strukturen verschiedener Stufen hat man sog.
 Vergissfunktoren:
 
 \begin{enumerate}
@@ -606,6 +624,11 @@ Vergissfunktoren:
   vergisst \emph{stuff}, also Zeug.
 \end{enumerate}
 
+Die Unterscheidung zwischen Eigenschaft, Struktur und Zeug stammt übrigens
+von Teilnehmern eines Seminars über
+Quantengravitation~\cite[Abschn.~2.4]{lectures-on-n-categories}, siehe
+auch~\cite{ncatlab:stuff}.
+
 Obwohl die Vergissfunktoren beinahe tautologisch definiert sind, sind sie aus
 zwei Gründen wichtig: Zum einen ist es eine interessante Frage, inwieweit
 man die Vergissfunktoren umkehren kann -- wie man etwa aus einer Menge eine
@@ -617,11 +640,11 @@ allgemeinere Limiten) bewahrt. Etwa gilt für Vektorräume~$U, W$ und den
 Vergissfunktor~$V:\RR\text{-}\Vect \to \Set$, dass
 \[ V(U \times W) \cong V(U) \times V(W), \]
 aber
-\[ V(U \coprod W) \not\cong V(U) \coprod V(W). \]
+\[ V(U \amalg W) \not\cong V(U) \amalg V(W). \]
 Was das genau bedeutet, werden wir im Vortrag über Limiten sehen.
 
 
-\subsection{Funktoren aus algebraischen Konstruktionen}
+\subsubsection{Funktoren aus algebraischen Konstruktionen}
 
 Zu jedem Ring~$R$ gibt es seinen Polynomring~$R[X]$ der formalen Polynome mit
 Koeffizienten aus~$R$,
@@ -639,7 +662,7 @@ Analytikern die Polynomvariable groß schreiben.\end{bem}
 Fast jede algebraische Konstruktion kann man auf diese Art und Weise behandeln.
 
 
-\subsection{Funktoren und Mengen}
+\subsubsection{Funktoren und Mengen}
 
 Zu jeder Menge $M$ gibt es die \emph{diskrete Kategorie} $DM$:
 \begin{align*}
@@ -660,7 +683,7 @@ ein Funktor. [Hier fehlt eine Skizze.] Somit sehen wir folgendes Motto:
 \begin{motto}Das Funktorkonzept verallgemeinert das Konzept der Abbildung
 zwischen Mengen.\end{motto}
 
-\subsubsection*{Potenzmengenfunktoren}
+\subsubsubsection{Potenzmengenfunktoren}
 
 Der \emph{kovariante Potenzmengenfunktor} $\mathcal{P} : \Set \to \Set$ ordnet einer Menge $M$ die Potenzmenge $\mathcal{P}(M)$ zu und einer Abbildung $f : M \to N$ die Abbildung
 \[ \mathcal{P}(f) : \mathcal{P}(M) \to \mathcal{P}(N), \quad U \mapsto f[U], \]
@@ -681,7 +704,7 @@ Algebren, siehe~\cite[Thm.~2.4]{oosten}. Was "`Äquivalenz"' bedeutet, werden
 wir im folgenden Kapitel lernen.
 
 
-\subsection{Funktoren und Gruppen}
+\subsubsection{Funktoren und Gruppen}
 
 Es sei ein Gruppenhomomorphismus $\varphi : G \to H$ gegeben. Dann ist
   \[ f : BG \to BH, \quad \bullet \mapsto \bullet, \quad g \mapsto \varphi(g) \]
@@ -700,7 +723,7 @@ Damit sehen wir folgendes Motto:
 \begin{motto}Das Funktorkonzept verallgemeinert das Konzept des
 Gruppenhomomorphismus.\end{motto}
 
-\subsubsection*{Gruppenwirkungen}
+\subsubsubsection{Gruppenwirkungen}
 
 Was muss man angeben, um einen Funktor $F : BG \to \Set$ zu spezifizieren? Eine
 Menge $M := \varphi(\bullet)$ und zu jedem $g \in G$ eine Abbildung $\varphi_g : M \to M$, sodass
@@ -716,7 +739,7 @@ Analog kann man Funktoren~$BG \to K\text{-}\Vect$ untersuchen. Solche haben
 auch einen klassischen Namen: Das sind sog. \emph{Gruppendarstellungen}.
 
 
-\subsection{Funktoren als Datenbanken}
+\subsubsection{Funktoren als Datenbanken}
 
 Wir wollen an einem Beispiel zeigen, dass auch so konkrete Dinge wie
 Datenbanken aus der Informatik kategoriell verstanden werden können. Etwa gibt
@@ -775,10 +798,11 @@ David Spivak erforscht~\cite{spivak1,spivak2,spivak3}.
   \caption{\label{db0815}Ein Standardbeispiel einer Datenbank.}
 \end{figure}
 
-\subsection{Hom-Funktoren}
+\subsubsection{Hom-Funktoren}
 
 \begin{defn}
-Sei $\C$ eine Kategorie und $A \in \Ob \C$. Dann ist\ldots
+Sei $\C$ eine lokal kleine Kategorie (sodass ihre Hom-Klassen sogar schon
+Hom-Mengen sind) und $A \in \Ob \C$. Dann ist\ldots
 \begin{enumerate}
   \item der \emph{kovariante Hom-Funktor zu $A$} der Funktor
     \[ \begin{array}{@{}rrcl@{}}
@@ -809,7 +833,7 @@ ko- oder kontravarianten Hom-Funktors schon bis auf Isomorphie eindeutig
 bestimmt ist.
 
 
-\subsection{Weitere Beispiele}
+\subsubsection{Weitere Beispiele}
 
 \begin{enumerate}
 \item Den Prozess des Differenzierens glatter Abbildungen zwischen
