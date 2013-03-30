@@ -65,3 +65,4 @@
 \newcommand{\GL}[1]{\operatorname{GL}(#1)}
 \DeclareMathOperator{\Ob}{Ob}
 \newcommand{\freist}{\underline{\ \ }}
+\newcommand{\op}{\mathrm{op}}
