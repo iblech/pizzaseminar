@@ -1,0 +1,66 @@
+\documentclass{pizzablatt}
+
+\begin{document}
+
+\maketitle{5}{3. April 2013}
+
+\textbf{XXX: Hier fehlt noch eine spannende \emph{konkrete} Aufgabe!}
+
+\begin{aufgabe}{Spitze schon im Diagramm}
+Sei~$F:\D \to \C$ ein Diagramm in einer Kategorie~$\C$. Besitze~$\D$ ein
+terminales Objekt~$T$.
+Zeige per Hand oder mit dem Kriterium aus Aufgabe~3, dass dann
+schon~$F(T)$ selbst zu einem Kolimes von~$F$ wird.
+\end{aufgabe}
+
+\begin{aufgabe}{Monomorphe natürliche Transformationen}
+\begin{enumerate}
+\item Sei~$f:X \to Y$ ein Morphismus einer Kategorie. Zeige, dass~$f$ genau
+dann ein Monomorphismus ist, wenn das Diagramm
+\[ \xymatrix{
+  X \ar[r]^\id \ar[d]_\id & X \ar[d]^f \\
+  X \ar[r]_f & Y
+} \]
+ein Faserproduktdiagramm ist.
+\item Sei~$\eta : F \Rightarrow G$ eine natürliche Transformation zwischen
+Funktoren $F, G : \C \to \D$. Besitze~$\D$ alle Faserprodukte. Zeige: $\eta$
+ist genau dann ein Monomorphismus in~$\Funct(\C,\D)$, wenn alle
+Komponenten~$\eta_X$ Monomorphismen in~$\D$ sind.
+\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}{Kofinale Unterdiagramme}\small
+In der Analysis gibt es folgende Mottos: \emph{Das Weglassen endlich vieler Folgeglieder
+ändert nicht das Konvergenzverhalten. Teilfolgen konvergenter Folgen
+konvergieren ebenfalls, und zwar gegen denselben Grenzwert.} Diese Mottos
+wollen wir auf (Ko-)Limiten in der Kategorientheorie übertragen.
+
+Dazu nennen wir einen Funktor $H : \D_0 \to \D$ genau dann \emph{kofinal}, wenn
+für alle~$d \in \Ob\D$\ldots
+\begin{enumerate}
+\item[1.] ein Objekt $d_0 \in \Ob\D_0$ und ein Morphismus $d \to
+H(d_0)$ in~$\D$ existiert und
+\item[2.] für je zwei solcher Morphismen ein Objekt~$\widetilde d_0 \in \Ob\D_0$ und
+Morphismen $d_0 \to \widetilde d_0$, $d_0' \to \widetilde d_0$ existieren, deren Bilder
+unter~$H$ das Diagramm
+\[ \xymatrix{
+  d_0 \ar[r] \ar[d] & H(d_0) \ar@{-->}[d] \\
+  H(d_0') \ar@{-->}[r] & H(\widetilde d_0)
+} \]
+kommutieren lassen.
+\end{enumerate}
+Etwa ist der Inklusionsfunktor~$B (2\NN) \to B(\NN)$ kofinal, wenn~$\NN$ die
+Menge der natürlichen Zahlen mit ihrer gewöhnlichen Ordnung und~$2\NN$ die
+Teilordnung der geraden Zahlen bezeichnet.
+
+Sei nun~$F : \D \to \C$ ein~$\D$-förmiges Diagramm in einer Kategorie~$\C$.
+\begin{enumerate}
+\item
+Zeige: Die Kategorie der Kokegel von~$F$ ist äquivalent zur Kategorie der
+Kokegel von~$F \circ H$.
+\item Was folgt daher über das Verhältnis der Kolimiten von~$F$ und~$F \circ
+H$?
+\end{enumerate}
+\end{aufgabe}
+
+\end{document}
