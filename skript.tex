@@ -924,12 +924,22 @@ sodass
 \item[]
 für alle Morphismen $f : X \to Y$ in~$\C$ das Diagramm
 \[ \xymatrix{
-  F(X) \ar[r]^{F(f)} \ar[d]_{\eta_X} & F(Y) \ar[d]_{\eta_Y} \\
+  F(X) \ar[r]^{F(f)} \ar[d]_{\eta_X} & F(Y) \ar[d]^{\eta_Y} \\
   G(X) \ar[r]^{G(f)} & G(Y)
 } \]
 kommutiert.
 \end{enumerate}
 \end{defn}
+
+\begin{prop}Eine natürliche Transformation~$\eta$ ist genau dann ein
+Isomorphismus (d.\,h. besitzt eine inverse natürliche Transformation), wenn
+alle Komponenten~$\eta_X$, $X \in \Ob\C$, Isomorphismen sind.\end{prop}
+
+Invertierbare natürliche Transformationen heißen auch \emph{natürliche
+Isomorphismen}.
+
+\begin{defn}Zwei Funktoren heißen \emph{zueinander (natürlich) isomorph}, wenn
+es einen natürlichen Isomorphismus zwischen ihnen gibt.\end{defn}
 
 \begin{defn}
 Eine \emph{Kategorienäquivalenz} zwischen Kategorien~$\C$ und~$\D$ besteht aus
