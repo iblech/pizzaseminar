@@ -69,6 +69,8 @@
 \newcommand{\AbGrp}{\mathrm{AbGrp}}
 \newcommand{\Ring}{\mathrm{Ring}}
 \newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Funct}{\mathrm{Funct}}
+\newcommand{\Eins}{\mathbf{1}}
 \newcommand{\Man}{\mathrm{Man}}
 \newcommand{\Top}{\mathrm{Top}}
 
@@ -913,6 +915,127 @@ Bedeutung werden wir aus verschiedenen Blickwinkeln beleuchten. Mit natürlichen
 Transformationen können wir dann auch Funktorkategorien definieren, die für das
 Yoneda-Lemma später sehr wichtig sind. Außerdem können wir definieren, wann
 zwei Kategorien zueinander äquivalent sind.
+
+\begin{defn}Eine \emph{natürliche Transformation} $\eta : F \Rightarrow G$
+zwischen Funktoren $F, G : \C \to \D$ besteht aus
+\begin{enumerate}
+\item[] einem Morphismus~$\eta_X : F(X) \to G(X)$ für jedes Objekt~$X \in \Ob \C$
+\end{enumerate}
+sodass
+\begin{enumerate}
+\item[]
+für alle Morphismen $f : X \to Y$ in~$\C$ das Diagramm
+\[ \xymatrix{
+  F(X) \ar[r]^{F(f)} \ar[d]_{\eta_X} & F(Y) \ar[d]_{\eta_Y} \\
+  G(X) \ar[r]^{G(f)} & G(Y)
+} \]
+kommutiert.
+\end{enumerate}
+\end{defn}
+
+\begin{motto}
+Die Komponenten von $\eta$ sind gleichmäßig über alle $X \in \Ob\C$ definiert.
+\end{motto}
+
+\begin{bsp}
+\begin{enumerate}
+\item 
+Seien $F, G: \Set \to \Set$ Funktoren mit
+\[ \begin{array}{@{}rrcl@{}}
+  F: & X &\longmapsto& X \\
+  & f &\longmapsto& f \\
+  G: & X &\longmapsto& X \times X \\
+  & f:X\to Y &\longmapsto& (X \times X \to Y \times Y: (x_1,x_2) \mapsto (f(x_1),f(x_2)) \\
+\end{array} \]
+Dann ist $\eta$ mit $\eta_X: X \to X \times X: x \mapsto (x,x)$ eine natürliche Transformation.
+
+\item
+Jede Gruppe ist \emph{natürlich isomorph} zu ihrer entgegengesetzten Gruppe, d.h. es gibt eine natürliche Transformation zwischen dem Identitätsfunktor in der Kategorie der Gruppen und dem Funktor $F: \Grp \to \Grp: G \mapsto G^\op, f \mapsto f$.  
+\begin{proof}
+ Wir definieren $\eta$ komponentenweise über $\eta_G : G \to G^\op: g \mapsto g^{-1}$ (dies ist ein Gruppenhomomorphismus). Damit gilt für $g \in G$
+\[ \xymatrix{
+  g \ar@{|->}^f[rr] \ar@{|->}^{\eta_G}[d] & & f(g) \ar@{|->}^{\eta_H}[d] \\
+  g^{-1} \ar@{|->}^f[r]  & f(g^{-1}) \ar@{=}_{\text{f Gruppenhom.}}[r] & (f(g))^{-1}
+} \]
+und das Diagramm
+\[ \xymatrix{
+  \Id(G)=G \ar[r]^{f} \ar[d]_{\eta_G} & H=\Id(H) \ar[d]_{\eta_H} \\
+  F(G)=G^\op \ar[r]^{f} & H^\op=F(H)
+} \]
+kommutiert. Also ist $\eta: \Id \Rightarrow F$ tatsächlich eine natürliche Transformation.
+\end{proof}
+\end{enumerate}
+\end{bsp}
+
+\begin{ueberlegung}
+Hat man drei Funktoren $F,G,H: \C \to \D$ und zwei natürliche Transformationen $\alpha: F \Rightarrow G, \beta: G \Rightarrow H$:
+\[ \xymatrix{\C \ar@/^1.7em/[rr]^F_{\Downarrow \alpha} \ar[rr]^G \ar@/_1.7em/[rr]^{\Downarrow \beta}_H & & \D} \]
+Dann können wir $\alpha$ und $\beta$ zu eine natürlichen Transformation $\beta \circ \alpha: F \Rightarrow H$ verknüpfen:
+\[ \xymatrix{
+  F(X) \ar[r]^{F(f)} \ar[d]_{\alpha_X} \ar@/_ 1cm/[dd]_{(\beta \circ \alpha)_X := \beta_X \circ \alpha_X} & F(Y) \ar[d]_{\alpha_Y} \ar@/^ 1cm/[dd]^{\beta_Y \circ \alpha_Y =: (\beta \circ \alpha)_Y} \\
+  G(X) \ar[r]^{G(f)} \ar[d]_{\beta_X} & G(Y) \ar[d]_{\beta_Y} \\
+  H(X) \ar[r]^{H(f)} & H(Y)
+} \]
+Außerdem gibt es eine natürliche Identitätstransformation $\Id : F \Rightarrow F$ mit $Id_X := id_{F(X)}$
+Damit wird folgende Definition möglich:
+\end{ueberlegung}
+
+\begin{defn}
+Die \emph{Funktorkategorie} $\Funct(\C,\D)$ zu zwei Kategorien $\C$ und $\D$ ist die Kategorie mit Funktoren $F: \C \to \D$ als Objekten und natürlichen Transformationen als Morphismen.
+\end{defn}
+
+\begin{defn}
+Eine \emph{Kategorienäquivalenz} zwischen Kategorien~$\C$ und~$\D$ besteht aus
+Funktoren
+\[ \xymatrix{\C \ar@/^/[r]^F & \D, \ar@/^/[l]^G} \]
+die zueinander \emph{quasi-invers} sind, d.\,h. dass die Kompositionen von~$F$
+und~$G$ jeweils natürlich isomorph zu den entsprechenden Identitätsfunktoren
+sind:
+\[ G \circ F \cong \Id_\C, \qquad F \circ G \cong \Id_\D. \]
+Die Kategorien~$\C$ und~$\D$ heißen dann \emph{zueinander äquivalent}.
+\end{defn}
+
+\begin{lemma}\label{natTransIsoLemma}
+Seien $\C,\D$ Kategorien, $F,G: \C \to \D$ Funktoren und $\alpha: F \Rightarrow G$ eine natürliche Transformation. Dann ist $\alpha$ genau dann ein Isomorphismus, wenn $\alpha_X$ für alle $X \in \Ob\C$ ein Isomorphismus ist.
+\end{lemma}
+
+\begin{proof} Zu zeigen ist also: $\alpha$ Isomorphismus in der
+Funktorkategorie $\Funct(\C,\D) \Leftrightarrow \forall X \in \Ob\C: \alpha_x$ ist Isomorphismus in der Kategorie $\D$
+\begin{itemize}
+% Name für die "Identitätstransformation F => F? Hab sie hier einfach mal Id_F genannt...
+\item[\glqq$\Rightarrow$\grqq] $\alpha$ ist ein Isomorphismus, also existiert ein Morphismus $\alpha^{-1}$ mit $\alpha \circ \alpha^{-1} = \Id_F$, $\alpha^{-1} \circ \alpha = \Id_G$ und es gilt für jedes $X \in \Ob\C$:
+\begin{align*}
+	\id_{F(X)} = (\Id_F)_X = (\alpha \circ \alpha^{-1})_X = \alpha_X \circ \alpha^{-1}_X \\	
+	\id_{G(X)} = (\Id_G)_X = (\alpha^{-1} \circ \alpha)_X = \alpha^{-1}_X \circ \alpha_X
+\end{align*}
+Also ist $\alpha_X$ ein Isomorphismus in $\D$.
+\item[\glqq$\Leftarrow$\grqq] Wir definieren $\beta: G \Rightarrow F$ über $\beta_X = (\alpha_X)^{-1}$. Dann gilt sicher $\alpha \circ \beta = \Id_F$ und $\beta \circ \alpha = \Id_G$. Bleibt noch zu zeigen, dass $\beta$ auch eine natürliche Transformation ist:
+\begin{align*}
+	&\forall f: X \to Y: G(f) \circ \alpha_X = \alpha_Y \circ F(f) \\
+	\Rightarrow &(\alpha_Y)^{-1} \circ G(f) \circ \alpha_X \circ (\alpha_X)^{-1} = (\alpha_Y)^{-1} \circ \alpha_Y \circ F(f) \circ (\alpha_X)^{-1} \\
+	\Rightarrow &(\alpha_Y)^{-1} \circ G(f) = F(f) \circ (\alpha_X)^{-1} \\
+	\Rightarrow &\beta_Y \circ G(f) = F(f) \circ \beta_X \\
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\begin{bsp}
+Die Kategorie $\Eins$, die nur aus einem Element (1) sowie dessen Identitätsmorphismus besteht, und eine beliebige bewohnte \emph{indiskrete Kategorie} $\C$ (d.h. eine Kategorie, in der gilt: $\forall X, Y \in \Ob\C: \exists! f: X \to Y$) sind äquivalent. 
+\begin{proof}
+Wähle ein $K \in \Ob \C$ (das ist möglich, da $\C$ \emph{bewohnt} ist) und definiere die beiden Funktoren $F, G$:
+\[ \begin{array}{@{}rrrr@{}}
+  F: & \Eins \to \C: & 1 \mapsto K, & \id_1 \mapsto id_K \\
+  G: & \C \to \Eins: & X \mapsto 1, & f \mapsto id_1 \
+\end{array} \]
+Da es nur einen einzigen Funktor von $\Eins$ nach $\Eins$ gibt, ist klar, dass $G \circ F \cong \Id_\Eins$ gilt. Noch zu zeigen ist also, dass auch $F \circ G \cong \Id_\C$ gilt. \\
+Wir definieren dazu eine natürliche Transformation $\eta: F \circ G \Rightarrow \Id_\C$. Dabei verwenden wir für jedes $X \in \C$ als $\eta_X$ den \emph{eindeutige}n Morphismus $(F\circ G) (X) \to \Id_\C(X)$:
+\[ \xymatrix{
+  K = (F \circ G)(X) \ar[r]^{(F \circ G)(f)=id_K} \ar[d]_{\eta_X} & (F \circ G)(Y) = K \ar[d]_{\eta_Y} \\
+  X = \Id_\C (X) \ar[r]^{\Id_\C(f)=f} & \Id_\C (Y) = Y
+} \]
+Da in einer indiskreten Kategorie alle Morphismen Isomorphismen sind, ist insbesondere jedes $\eta_X$ ein Isomorphismus und damit ist, nach Lemma \ref{natTransIsoLemma}, auch $\eta$ ein Isomorphismus.
+\end{proof}
+\end{bsp}
 
 \begin{defn}Eine \emph{natürliche Transformation} $\eta : F \Rightarrow G$
 zwischen Funktoren $F, G : \C \to \D$ besteht aus
