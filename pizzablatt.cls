@@ -5,7 +5,7 @@
 
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[ngerman]{babel}
-\RequirePackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+\RequirePackage{amsmath,amsthm,amssymb,amscd,color,graphicx,stmaryrd}
 \usepackage[all]{xy}
 \RequirePackage[protrusion=true,expansion=true]{microtype}
 \RequirePackage{lmodern}
@@ -27,11 +27,19 @@
   \end{center}
   \vspace{1.5em}}
 
+\newlength{\aufgabenskip}
+\setlength{\aufgabenskip}{2.0em}
+
 \newcounter{aufgabennummer}
 \newenvironment{aufgabe}[1]{
   \addtocounter{aufgabennummer}{1}
   \textbf{Aufgabe \theaufgabennummer.} \emph{#1} \par
-}{\vspace{2.0em}}
+}{\vspace{\aufgabenskip}}
+
+\newenvironment{aufgabe*}[1]{
+  \addtocounter{aufgabennummer}{1}
+  \textbf{Aufgabe \theaufgabennummer*.} \emph{#1} \par
+}{\vspace{\aufgabenskip}}
 
 \renewcommand*\theenumi{\alph{enumi}}
 \renewcommand{\labelenumi}{\theenumi)}
@@ -42,7 +50,7 @@
 
 \newcommand{\lra}{\longrightarrow}
 \newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
-\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+\newcommand{\lthra}{\relbar\joinrel\twoheadrightarrow}
 \newcommand{\xra}[1]{\xrightarrow{#1}}
 
 \renewcommand{\i}{\mathrm{i}}
