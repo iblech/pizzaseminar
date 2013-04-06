@@ -7,6 +7,9 @@ Prägarben hat. Dann können wir die Yoneda-Einbettung kennenlernen, ihre
 Eigenschaften studieren und sehen, wozu sie nützlich ist. Das fundamentale
 Motto der Kategorientheorie wird damit zu einem formalen Theorem.
 
+
+\subsection{Prägarben als ideelle Objekte}
+
 Sei in diesem Abschnitt~$\C$ eine lokal kleine Kategorie.
 
 \begin{defn}Funktoren~$\C^\op \to \Set$ heißen auch \emph{Prägarben
@@ -23,7 +26,7 @@ auf~$\C$ beschreibt die Beziehungen aller Objekte~$A$ von~$\C$ mit einem
 eingebildeten, fiktiven, ideellen Objekt~$\heartsuit$: Wir stellen uns die
 Menge~$F(A)$ als Menge der Morphismen~$A \to \heartsuit$ vor.\end{motto}
 
-Die Prägarbenkategorie~$\hat\C$ enthält stets mindestens eine
+Die Prägarbenkategorie~$\widehat\C$ enthält stets mindestens eine
 nicht-darstellbare Prägarbe, und zwar die initiale Prägarbe
 \[ \begin{array}{@{}rrcl@{}}
   0 : & \C^\op &\longrightarrow& \Set \\
@@ -34,6 +37,9 @@ nicht-darstellbare Prägarbe, und zwar die initiale Prägarbe
 \begin{proof}Sei~$0 \cong \Hom_\C(\freist,X)$ für ein Objekt~$X\in\Ob\C$.
 Dann folgt~$\Hom_\C(X,X) \cong 0(X) = \emptyset$ im Widerspruch zu
 $\id_X \in \Hom_\C(X,X)$.\end{proof}
+
+
+\subsection{Die Yoneda-Einbettung}
 
 Der volle Hom-Funktor geht von~$\C^\op \times \C$ zu~$\Set$. Aus diesem kann
 man durch Curryfizierung einen Funktor~$\C \to \Funct(\C^\op,\Set)$ basteln:
@@ -61,3 +67,6 @@ Die Yoneda-Einbettung hat folgende wichtige Eigenschaften:
 \end{enumerate}\end{prop}
 Vermöge~$Y$ können wir~$\C$ also als volle Unterkategorie der Kategorie der
 fiktiven, ideellen Objekte ansehen.
+
+
+\subsection{Das Yoneda-Lemma}

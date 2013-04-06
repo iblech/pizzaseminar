@@ -133,9 +133,9 @@ In der Kategorie der Mengen kann das Faserprodukt durch die Konstruktion
 gegeben werden.
 
 Man hat zwei vorschiedene Vorstellungen des Faserprodukts, die unterschiedliche
-Aspekte betonen: Zum einen bilden die Objekte~$X$ und~$Y$ die Ausgangsbasis. Dann
-stellt man als Faserprodukt das Objekt~$X \times_Z Y$ vor und sieht es als eine
-Art "`verallgemeinertes Produkt"' an.
+Aspekte betonen: Zum einen kann man die Objekte~$X$ und~$Y$ als Ausgangsbasis
+ansehen. Dann stellt man sich als Faserprodukt das Objekt~$X \times_Z Y$ vor
+und sieht es als eine Art "`verallgemeinertes Produkt"' an.
 
 Zum anderen kann man sich aber auch den Morphismus~$g$ als Ausgangspunkt
 vorstellen. Als Ergebnis betont man dann nicht das Objekt~$X \times_Z Y$
@@ -170,11 +170,47 @@ stabil sind. Das ist etwa in der Kategorie der Mengen und allen abelschen
 Kategorien der Fall.\end{bem}
 
 
+\subsubsection*{Terminale Objekte}
+
+Sei speziell~$\I = \mathbf{0}$ die leere Kategorie und~$F:\I \to \C$ das
+einzige~$\I$-förmige Diagramm in~$\C$. Kegel von~$F$ sind dann einfach Objekte
+von~$\C$ und Morphismen solcher Kegel Morphismen zwischen diesen Objekten; die
+Kategorie der Kegel von~$F$ ist also~$\C$ selbst.
+
+Damit ist klar: Limiten von~$F$ sind dasselbe wie terminale Objekte von~$\C$.
+
+
+\subsubsection*{Differenzkerne (Equalizer)}
+
+Sei speziell~$\I$ die Kategorie mit zwei Objekten und zwei parallelen
+Morphismen:
+\[ \xymatrix{
+  \reflectbox{$\bullet \rotatebox{90}{$\circlearrowright$}$}
+  \ar@/^/[r] \ar@/_/[r] & \bullet
+  \rotatebox{90}{$\circlearrowleft$}
+} \]
+Diagramme~$\I \to \C$ sind dann durch die Angabe zweier paralleler Morphismen
+$f,g:X \to Y$ in~$\C$ gegeben. Ein Limes eines solchen Diagramms heißt dann
+\emph{Differenzkern} (Equalizer) von~$f$ und~$g$.
+
+In der Kategorie der Mengen kann der Differenzkern durch die Konstruktion
+\[ \mathrm{Eq}(f,g) := \{ x \in X \,|\, f(x) = g(x) \} \subseteq X \]
+gegeben werden. Genauso funktioniert es in der Kategorie der $K$-Vektorräume,
+wenn man diese Menge mit der Untervektorraumstruktur versieht; dann kann man
+auch kürzer
+\[ \mathrm{Eq}(f,g) = \ker(f - g) \]
+schreiben und so die Begriffsherkunft verstehen.
+
+
+\subsection{Zusammenhang mit dem Limesbegriff in der Analysis}
+
+\subsection{Existenz von Limiten}
+
 \subsection{Limiten in Funktorkategorien}
 
 In diesem Abschnitt wollen wir untersuchen, wie Limiten in
 Funktorkategorien~$\Funct(\C,\D)$ aussehen. Sei dazu ein Diagramm
-\[ F : \I \longrightarrow \Funct(\C,\D) \]
+$F : \I \longrightarrow \Funct(\C,\D)$
 gegeben. Durch "`Nachschaltung der Evaluierungsfunktoren"' erhält man aus
 diesem Diagramm für jedes Objekt~$X \in \Ob\C$ jeweils ein Diagramm in~$\D$:
 \[ \begin{array}{@{}rrcl@{}}
@@ -187,10 +223,23 @@ besitzen, können wir (wie in Aufgabe~4 von Übungsblatt~3) einen Funktor
   L : & \C &\longrightarrow& \D \\
   & X &\longmapsto& \lim F_X
 \end{array} \]
-basteln. Dann hat man folgende Beobachtung:
+basteln. Dann gilt:
 \begin{prop}
 Der so konstruierte Funktor~$L$ wird (mit welchen Projektionen?) ein Limes des Diagramms~$F$.
 \end{prop}
+Etwas ungenau kann man diesen Zusammenhang auch über die Formel
+\[ (\lim F)(X) = \lim F_X = \lim_i F(i)(X) \]
+ausdrücken. Als Motto kann man daher festhalten:
+\begin{motto}Besitzt~$\D$ $\I$-förmige Limiten, so werden~$\I$-förmige Limiten
+in der Funktorkategorie~$\Funct(\C,\D)$ punktweise berechnet. In diesem Fall
+gilt also:
+Ein Kegel eines Diagramms~$F : \I \to \Funct(\C,\D)$ ist genau dann ein Limes,
+wenn sein Bild unter allen Auswertungsfunktoren~$\ev_X : \Funct(\C,\D) \to \D$,
+$X \in \Ob\C$, jeweils ein Limes ist.
+\end{motto}
+
+
+\subsection{Bewahrung von (Ko-)Limiten}
 
 
 \subsection{Kofinale Unterdiagramme}
