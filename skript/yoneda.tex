@@ -1,0 +1,63 @@
+\section[Das Yoneda-Lemma]{Das Yoneda-Lemma \hfill \small Justin Gassner}
+
+\emph{Werbung:} Wir werden das fundamentale Yoneda-Lemma und seine Korollare
+verstehen. Dazu werden wir zunächst eine hilfreiche Intuition von sog. Prägarben auf
+Kategorien entwickeln und verstehen, welche Signifikanz die Darstellbarkeit von
+Prägarben hat. Dann können wir die Yoneda-Einbettung kennenlernen, ihre
+Eigenschaften studieren und sehen, wozu sie nützlich ist. Das fundamentale
+Motto der Kategorientheorie wird damit zu einem formalen Theorem.
+
+Sei in diesem Abschnitt~$\C$ eine lokal kleine Kategorie.
+
+\begin{defn}Funktoren~$\C^\op \to \Set$ heißen auch \emph{Prägarben
+auf~$\C$}. Die Kategorie der Prägarben auf~$\C$ (mit natürlichen
+Transformationen als Morphismen) ist~$\widehat\C := \Funct(\C^\op,\Set)$.
+\end{defn}
+
+\begin{defn}Eine Prägarbe~$F:\C^\op\to\Set$ auf~$\C$ heißt genau dann
+\emph{darstellbar}, wenn es ein Objekt~$X \in \Ob\C$ mit $F \cong
+\Hom_\C(\freist,X)$ gibt.\end{defn}
+
+\begin{motto}Eine beliebige (nicht unbedingt darstellbare) Prägarbe~$F$
+auf~$\C$ beschreibt die Beziehungen aller Objekte~$A$ von~$\C$ mit einem
+eingebildeten, fiktiven, ideellen Objekt~$\heartsuit$: Wir stellen uns die
+Menge~$F(A)$ als Menge der Morphismen~$A \to \heartsuit$ vor.\end{motto}
+
+Die Prägarbenkategorie~$\hat\C$ enthält stets mindestens eine
+nicht-darstellbare Prägarbe, und zwar die initiale Prägarbe
+\[ \begin{array}{@{}rrcl@{}}
+  0 : & \C^\op &\longrightarrow& \Set \\
+  & A &\longmapsto& \emptyset \\
+  & f &\longmapsto& \id_\emptyset.
+\end{array} \]
+\begin{prop}Die initiale Prägarbe ist nicht darstellbar.\end{prop}
+\begin{proof}Sei~$0 \cong \Hom_\C(\freist,X)$ für ein Objekt~$X\in\Ob\C$.
+Dann folgt~$\Hom_\C(X,X) \cong 0(X) = \emptyset$ im Widerspruch zu
+$\id_X \in \Hom_\C(X,X)$.\end{proof}
+
+Der volle Hom-Funktor geht von~$\C^\op \times \C$ zu~$\Set$. Aus diesem kann
+man durch Curryfizierung einen Funktor~$\C \to \Funct(\C^\op,\Set)$ basteln:
+\[ \begin{array}{@{}rrcl@{}}
+  Y : & \C &\longrightarrow& \widehat\C \\
+  & X &\longmapsto& \widehat X := \Hom_\C(\freist,X) \\
+  & f &\longmapsto& \widehat f
+\end{array} \]
+Die Komponenten der natürlichen Transformation~$\widehat f$ sind dabei
+für~$f: X \to Y$ durch
+\[ \begin{array}{@{}rrcl@{}}
+  (\widehat f)_A : & \Hom_\C(A,X) &\longrightarrow& \Hom_\C(A,Y) \\
+  & g &\longmapsto& f \circ g
+\end{array} \]
+gegeben.
+
+\begin{defn}Der Funktor~$Y:\C\to\widehat\C$ heißt \emph{Yoneda-Einbettung}
+von~$\C$.\end{defn}
+
+Die Yoneda-Einbettung hat folgende wichtige Eigenschaften:
+\begin{prop}\begin{enumerate}
+\item $Y$ ist treu und voll.
+\item $Y$ erhält Limiten (aber kaum Kolimiten).
+\item $Y$ ist dicht (siehe Aufgabe~2 von Übungsblatt~6).
+\end{enumerate}\end{prop}
+Vermöge~$Y$ können wir~$\C$ also als volle Unterkategorie der Kategorie der
+fiktiven, ideellen Objekte ansehen.

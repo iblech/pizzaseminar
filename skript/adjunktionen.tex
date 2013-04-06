@@ -1,0 +1,44 @@
+\section[Adjungierte Funktoren]{Adjungierte Funktoren \hfill \small Peter
+Uebele}
+
+% XXX: adjungierte Funktoren in der Logik!
+
+
+%Erinnerung: Äquivalenz von Kategorien $\cC, \cD$:\\
+%$\exists F:\cD\rightarrow \cC$, $G:\cC\rightarrow \cD$ inverse Funktoren, d.h.
+%$F\circ G\cong id_\cC$ und $G\circ G\cong id_\cD$
+
+%\paragraph{Idee:} Hin- und herschieben von Morphismen zwischen $\cC, \cD$.\\
+%$\rightsquigarrow$ Verallgemeinerung, s.d. $\cC,\cD$ nicht mehr äquivalent sein
+%müssen.
+\begin{defn}
+Seien $F:\D\to\C$, $G:\C\to\D$ Funktoren. Genau dann heißt
+\begin{itemize}
+\item 
+$F$ \emph{links-adjungiert zu} $G$ bzw.
+\item 
+$G$ \emph{rechts-adjungiert zu} $F$,
+\end{itemize}
+in Zeichen: $F \dashv G$, wenn es eine in~$X \in \C$ und~$Y \in \D$ natürliche
+Isomorphie
+\[ \Hom_\C(FY,X) \cong \Hom_\D(Y,GX) \]
+gibt.
+\end{defn}
+Dabei ist \emph{natürlich} gemäß Bemerkung~\ref{interpretnat} zu verstehen:
+Linke und rechte Seiten der Isomorphie sind als Funktoren
+\[ \begin{array}{@{}rrcl@{}}
+  \Hom_\C(F\freist,\freist) :&
+    \D^\op \times \C &\longrightarrow& \Set \\
+  & (Y,X) &\longmapsto& \Hom_\C(FY, X) \\\\
+  \Hom_\D(\freist,G\freist) :&
+    \D^\op \times \C &\longrightarrow& \Set \\
+  & (Y,X) &\longmapsto& \Hom_\D(Y, GX)
+\end{array} \]
+zu verstehen. Die Natürlichkeitsbedingung bedeutet dann, dass
+für alle Morphismen $f:X\rightarrow X'$ in~$\C$ und
+$g:Y'\rightarrow Y$ in~$\D$ das Diagramm
+\[ \xymatrix{
+  \Hom_\C(FY,X) \ar[d]_\cong \ar[r] & \Hom_\C(FY',X') \ar[d]^\cong \\
+  \Hom_\D(Y,GX) \ar[r] & \Hom_\D(Y',GX')
+} \]
+kommutiert.

@@ -1,0 +1,110 @@
+\section[Produkte und Koprodukte]{Produkte und Koprodukte \hfill \small
+Matthias Hutzler}
+
+\begin{defn}Seien~$X$, $Y$ Objekte einer Kategorie~$\C$. Dann besteht ein
+\emph{Produkt} von~$X$ und~$Y$ aus
+\begin{enumerate}
+\item einem Objekt~$P \in \Ob \C$ und
+\item Morphismen $\pi_X : P \to X$, $\pi_Y : P \to Y$,
+\end{enumerate}
+sodass für jedes andere \emph{Möchtegern-Produkt}, also
+\begin{enumerate}
+\item jedem Objekt~$\widetilde P \in \Ob \C$ zusammen mit
+\item Morphismen $\widetilde \pi_X : \widetilde P \to X$, $\widetilde\pi_Y :
+\widetilde P \to Y$
+\end{enumerate}
+genau ein Morphismus $\psi : \widetilde P \to P$ existiert, der das Diagramm
+\[ \xymatrix{
+    & P \ar[ld]_{\pi_X} \ar[rd]^{\pi_Y} \\
+  X & & Y \\
+    & \widetilde P \ar[lu]^{\widetilde \pi_X} \ar@{-->}[uu]_\psi \ar[ru]_{\widetilde \pi_Y}
+  } \]
+kommutieren lässt, also die Gleichungen
+\begin{align*}
+  \pi_X \circ \psi &= \widetilde \pi_X \\
+  \pi_Y \circ \psi &= \widetilde \pi_Y
+\end{align*}
+erfüllt.
+\end{defn}
+
+\begin{motto}Ein Produkt ist ein bestes Möchtegern-Produkt.\end{motto}
+
+Statt~"`$P$"' schreibt man gerne~"`$X \times Y$"'; es muss aus dem Kontext klar
+werden, ob das Kreuzzeichen speziell das kartesische Produkt von Mengen
+oder das allgemeine kategorielle Produkt bezeichnen soll.
+Analog definiert man das Produkt von~$n$ Objekten, $n \geq 0$, und dual
+definiert man das Koprodukt.
+
+
+\subsection{Beispiele}
+
+\begin{bsp}\begin{enumerate}
+\item Das Produkt in der Kategorie der Mengen ist durch das kartesische Produkt
+gegeben, das Koprodukt durch die disjunkt-gemachte Vereinigung.
+\item Das Produkt in der Kategorie der Gruppen ist durch das direkte Produkt
+mit der komponentenweisen Verknüpfung gegeben, das Koprodukt durch das sog.
+freie Produkt von Gruppen.
+\item Produkt und Koprodukt endlich vieler Objekte in der Kategorie
+der~$K$-Vektorräume sind durch die äußere direkte Summe gegeben. Produkte und
+Koprodukte von unendlich vielen Objekten unterscheiden sich allerdings.
+\item Das Produkt in der von einer Quasiordnung induzierten Kategorie ist durch
+das Infimum gegeben. Dual ist das Koprodukt
+durchs Supremum gegeben.
+\end{enumerate}\end{bsp}
+\begin{proof}
+\begin{enumerate}
+\item Wir zeigen die Aussage über das kartesische Produkt. Seien also~$X$
+und~$Y$ Mengen. Dann wird das kartesische Produkt~$X \times Y$ vermöge der
+kanonischen Projektionsabbildungen
+\begin{align*}
+  \pi_X : X \times Y \to X,\ (x,y) \mapsto x \\
+  \pi_Y : X \times Y \to Y,\ (x,y) \mapsto y
+\end{align*}
+zu einem Möchtegern-Produkt von~$X$ und~$Y$:
+\[ \xymatrix{
+  & X \times Y \ar[ld]_{\pi_X} \ar[rd]^{\pi_Y} \\
+  X & & Y
+} \]
+Um zu zeigen, dass dieses Möchtegern-Produkt ein tatsächliches Produkt von~$X$
+und~$Y$ ist, müssen wir noch die universelle Eigenschaft nachweisen. Sei also
+ein Möchtegern-Produkt~$(X \leftarrow \widetilde P \to Y)$ gegeben. Dann müssen
+wir nachweisen, dass es genau einen Morphismus~$\psi:\widetilde P \to X \times
+Y$ gibt, der die beiden Dreiecke im Diagramm
+\[ \xymatrix{
+    & X \times Y \ar[ld]_{\pi_X} \ar[rd]^{\pi_Y} \\
+  X & & Y \\
+    & \widetilde P \ar[lu]^{\widetilde \pi_X} \ar@{-->}[uu]_\psi \ar[ru]_{\widetilde \pi_Y}
+  } \]
+kommutieren lässt. Ausgeschreiben besagen die Kommutativitätsbedingungen, dass
+für alle~$p \in \widetilde P$ die Gleichungen
+\begin{align*}
+  \text{(erste Komponente von $\psi(p)$)} &= \widetilde \pi_X(p) \\
+  \text{(zweite Komponente von $\psi(p)$)} &= \widetilde \pi_Y(p)
+\end{align*}
+gelten sollen.
+Es ist klar, dass diese beiden Bedingung genau durch eine Abbildung~$\psi$
+erfüllt werden, nämlich durch
+\[ \psi : \widetilde P \to X \times Y,\ p \mapsto (\widetilde \pi_X(p),
+\widetilde \pi_Y(p)). \]
+\item Der Produkt-Fall geht analog: Zusätzlich kann man jetzt voraussetzen,
+dass~$\widetilde \pi_X$ und~$\widetilde \pi_Y$ Gruppenhomomorphismen sind; im
+Gegenzug muss man aber nachweisen, dass die konstruierte Abbildung~$\psi$ ein
+Gruppenhomomorphismus wird.
+\item Übungsaufgabe.
+\item Siehe Übungsblatt 2, Aufgabe 3. \qedhere
+\end{enumerate}
+\end{proof}
+
+
+\subsection{Erste Eigenschaften}
+
+\begin{prop}Die Objektteile je zweier Produkte von Objekten~$X$, $Y$ sind
+zueinander isomorph.\end{prop}
+
+\begin{bem}Es gilt sogar noch mehr, siehe Aufgabe~2 von Übungsblatt~2.\end{bem}
+
+\begin{prop}Die Angabe eines Produkts von~$X$ und~$Y$ ist gleichwertig mit der
+Angabe eines Produkts von~$Y$ und~$X$.\end{prop}
+
+\begin{prop}Die Angabe eines Produkts von null vielen Objekten ist gleichwertig
+mit der Angabe eines terminalen Objekts.\end{prop}

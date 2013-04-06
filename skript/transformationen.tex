@@ -1,0 +1,324 @@
+\section[Natürliche Transformationen]{Natürliche Transformationen \hfill \small
+Tim Baumann}
+
+\emph{Werbung:} Wir werden verstehen, was natürliche Transformationen sind,
+weshalb ihre Definition ganz einfach ist und wozu man sie benötigt. Ihre
+Bedeutung werden wir aus verschiedenen Blickwinkeln beleuchten. Mit natürlichen
+Transformationen können wir dann auch Funktorkategorien definieren, die für das
+Yoneda-Lemma später sehr wichtig sind. Außerdem können wir definieren, wann
+zwei Kategorien zueinander äquivalent sind.
+
+\textbf{XXX:} Hier fehlt noch Motivation für das Konzept.
+
+\begin{defn}Eine \emph{natürliche Transformation} $\eta : F \Rightarrow G$
+zwischen Funktoren $F, G : \C \to \D$ besteht aus
+\begin{enumerate}
+\item[] einem Morphismus~$\eta_X : F(X) \to G(X)$ für jedes Objekt~$X \in \Ob \C$
+\end{enumerate}
+sodass
+\begin{enumerate}
+\item[]
+für alle Morphismen $f : X \to Y$ in~$\C$ das Diagramm
+\[ \xymatrix{
+  F(X) \ar[r]^{F(f)} \ar[d]_{\eta_X} & F(Y) \ar[d]^{\eta_Y} \\
+  G(X) \ar[r]_{G(f)} & G(Y)
+} \]
+kommutiert.
+\end{enumerate}
+\end{defn}
+
+\begin{motto}
+Die Komponenten einer natürlichen Transformation sind \emph{gleichmäßig} über
+alle Objekte $X \in \Ob\C$ definiert.
+\end{motto}
+
+
+\subsection{Beispiele für natürliche Transformationen}
+
+
+\subsubsection*{Erste Beispiele mit Mengen}
+
+Seien $\Id_\Set, K: \Set \to \Set$ die Funktoren mit
+\[ \begin{array}{@{}rrcl@{}}
+  \Id_\Set: & X &\longmapsto& X \\
+  & f &\longmapsto& f \\\\
+  K: & X &\longmapsto& X \times X \\
+  & f:X\to Y &\longmapsto& (X \times X \to Y \times Y,\ (x_1,x_2) \mapsto (f(x_1),f(x_2)).
+\end{array} \]
+
+Dann kann man folgende Beobachtungen treffen:
+
+\begin{enumerate}
+\item Natürlich gibt es für jede konkrete Menge~$X$ im Allgemeinen viele
+Abbildungen
+\[ X \longrightarrow X. \]
+Aber es gibt nur eine natürliche Transformation~$\eta : \Id_\Set \Rightarrow
+\Id_\Set$, nämlich die mit
+\[ \eta_X : X \longrightarrow X,\ x \longmapsto x. \]
+Wir sehen das Motto in diesem Beispiel bestätigt: Denn der
+Funktionsterm von~$\eta_X$ ist in der Tat gleichmäßig definiert, es kommt keine
+Fallunterscheidung über~$X$ vor.
+\item Analog gibt es für jede konkrete Menge~$X$ im Allgemeinen viele
+Abbildungen~$X \to X \times X$ (also~$\Id_\Set(X) \to K(X)$). Aber es gibt nur
+eine einzige natürliche Transformation $\eta : \Id_\Set \Rightarrow K$, nämlich
+die mit
+\[ \eta_X: X \to X \times X,\ x \mapsto (x,x) \]
+für alle Mengen~$X$. Auch hier ist das Motto bestätigt.
+\item Für konkrete Mengen~$X$ gibt es im Allgemeinen viele Abbildungen
+\[ \P(X) \longrightarrow X, \]
+aber es gibt keine natürliche Transformation $\P \Rightarrow \Id_\Set$.
+Auch dieser Sachverhalt illustriert das Motto: Denn uns fällt kein
+Abbildungsterm ein, der ohne Fallunterscheidung über~$X$ Funktionen des
+Typs~$\P(X) \to X$ definieren könnte.
+\end{enumerate}
+
+
+\subsubsection*{Entgegengesetzte Gruppe}
+
+In der Gruppentheorie trifft man folgende Beobachtung: \emph{Jede
+Gruppe~$(G,\circ)$ ist natürlich isomorph zu ihrer entgegengesetzten Gruppe
+$(G^\op,\bullet)$.}
+Dabei hat~$G^\op$ dieselben Elemente wie~$G$, die
+Gruppenverknüpfung~$\bullet$ ist aber
+genau anders herum definiert,
+\[ g \bullet h := h \circ g. \]
+In der Tat ist die Abbildung
+\[ \begin{array}{@{}rrcl@{}}
+  \eta_G : & G &\longrightarrow& G^\op \\
+  & g &\longmapsto& g^{-1}
+\end{array} \]
+bijektiv und auch wirklich ein Gruppenhomomorphismus, da für alle~$g,h \in G$
+die Rechnung
+\[ \eta_G(g \circ h) = (g \circ h)^{-1} = h^{-1} \circ g^{-1} =
+  g^{-1} \bullet h^{-1} = \eta_G(g) \bullet \eta_G(h) \]
+gilt. Ohne den Begriff der natürlichen Transformation kann man aber nicht
+verstehen, wieso dieser Isomorphismus das Prädikat \emph{natürlich} verdient
+hat: Man kann sich nur mit der Aussage begnügen, der Isomorphismus sei
+\emph{kanonisch} definiert; das ist jedoch ein informaler Begriff.
+
+Kategoriell verstehen wir: Die Isomorphismen~$\eta_G$ sind Komponenten einer
+natürlichen Transformation, und zwar einer vom Identitätsfunktor auf~$\Grp$ in
+den "`entgegengesetzte Gruppe"'-Funktor~$F$:
+\[ \begin{array}{@{}rrcl@{}}
+  F : & \Grp &\longrightarrow& \Grp \\
+  & G &\longmapsto& G^\op \\
+  & f &\longmapsto& f^\op
+\end{array} \]
+Der Gruppenhomomorphismus~$f^\op$ ist als Abbildung derselbe wie~$f$; durch das
+doppelte Bilden der entgegengesetzten Gruppen ist er auch wirklich ein
+Gruppenhomomorphismus. Das Natürlichkeitsdiagramm
+\[ \xymatrixcolsep{4pc}\xymatrixrowsep{4pc}\xymatrix{
+  \Id_\Grp(G)=G \ar[rr]^{f} \ar[d]_{\eta_G} && H=\Id_\Grp(H) \ar[d]_{\eta_H} \\
+  F(G)=G^\op \ar[rr]_{f^\op} && H^\op=F(H)
+} \]
+kommutiert tatsächlich, wie eine Diagrammjagd zeigt:
+\[ \xymatrixcolsep{4pc}\xymatrixrowsep{4pc}\xymatrix{
+  g \ar@{|->}^f[rr] \ar@{|->}^{\eta_G}[d] & & f(g) \ar@{|->}^{\eta_H}[d] \\
+  g^{-1} \ar@{|->}^f[r]  & f(g^{-1}) \ar@{=}_{\text{$f$ Homo}}[r] & (f(g))^{-1}
+} \]
+
+
+\begin{bem}\label{interpretnat}%
+Manchmal findet man Aussagen der Art "`es gibt eine natürliche Abbildung
+von $\ldots$ nach $\ldots$"' in der Literatur. Damit ist dann oft gemeint, dass
+man Quelle und Ziel als Auswertungen zweier Funktoren verstehen kann und dass
+zwischen diesen Funktoren eine natürliche Transformation verläuft.\end{bem}
+
+\textbf{XXX:} Es fehlt noch ein weiteres Beispiel:
+"`Doppeldualraum"'
+
+
+\subsection{Funktorkategorien}
+
+\begin{defn}
+Seien Funktoren $F,G,H: \C \to \D$ und natürliche Transformationen $\alpha: F
+\Rightarrow G$ und $\beta: G \Rightarrow H$ gegeben:
+\[ \xymatrix{\C \ar@/^1.7em/[rr]^F_{\Downarrow \alpha} \ar[rr]^G \ar@/_1.7em/[rr]^{\Downarrow \beta}_H & & \D} \]
+Dann heißt $\beta \circ \alpha:F \Rightarrow G$ die \emph{(vertikale)
+Verkettung} von~$\alpha$ und~$\beta$ und ist komponentenweise durch
+\[ (\beta \circ \alpha)_X := \beta_X \circ \alpha_X : F(X) \to H(X) \]
+gegeben.
+\end{defn}
+
+\begin{prop}Die so definierte Zuordnung~$\beta \circ \alpha$ ist in der Tat
+eine natürliche Transformation.\end{prop}
+\begin{proof}Da für alle~$f:X \to Y$ in~$\C$ die beiden Teilquadrate
+im Diagramm
+\[ \xymatrix{
+  F(X) \ar[r]^{F(f)} \ar[d]_{\alpha_X} \ar@/_ 1cm/[dd]_{(\beta \circ \alpha)_X := \beta_X \circ \alpha_X} & F(Y) \ar[d]_{\alpha_Y} \ar@/^ 1cm/[dd]^{\beta_Y \circ \alpha_Y =: (\beta \circ \alpha)_Y} \\
+  G(X) \ar[r]^{G(f)} \ar[d]_{\beta_X} & G(Y) \ar[d]_{\beta_Y} \\
+  H(X) \ar[r]^{H(f)} & H(Y)
+} \]
+kommutieren, kommutiert auch das äußere Rechteck. Das ist gerade das
+Natür\-lich\-keits\-dia\-gramm für~$\beta\circ\alpha$.
+\end{proof}
+
+Außerdem gibt es für jeden Funktor~$F:\C\to\D$ eine natürliche
+Identitätstransformation $\id_F : F \Rightarrow F$ mit $\Id_X := id_{F(X)}$.
+Damit wird folgende Definition möglich:
+\begin{defn}
+Die \emph{Funktorkategorie} $\Funct(\C,\D)$ zu zwei Kategorien $\C$ und $\D$
+ist die Kategorie mit Funktoren $F: \C \to \D$ als Objekten und natürlichen
+Transformationen als Morphismen.
+\end{defn}
+
+\textbf{XXX:} Es fehlt noch eine Bemerkung über die horizontale Verkettung von
+natürlichen Transformationen.
+
+\begin{lemma}\label{natTransIsoLemma}
+Seien $\C,\D$ Kategorien, $F,G: \C \to \D$ Funktoren und $\alpha: F \Rightarrow
+G$ eine natürliche Transformation. Dann ist $\alpha$ genau dann ein
+Isomorphismus in der Funktorkategorie~$\Funct(\C,\D)$, wenn alle Komponenten
+$\alpha_X$, $X \in \Ob\C$, jeweils Isomorphismen in~$\D$ sind.
+\end{lemma}
+
+\begin{proof}\begin{itemize}
+\item[\glqq$\Rightarrow$\grqq] Sei $\alpha$ ein Isomorphismus, dann existiert
+also eine natürliche Transformation $\alpha^{-1}$ mit $\alpha \circ \alpha^{-1}
+= \id_F$, $\alpha^{-1} \circ \alpha = \id_G$. Das bedeutet, dass für jedes $X
+\in \Ob\C$ die Gleichheiten
+\begin{align*}
+	\id_{F(X)} = (\id_F)_X = (\alpha \circ \alpha^{-1})_X = \alpha_X \circ \alpha^{-1}_X \\	
+	\id_{G(X)} = (\id_G)_X = (\alpha^{-1} \circ \alpha)_X = \alpha^{-1}_X \circ \alpha_X
+\end{align*}
+gelten. Also sind die Komponenten $\alpha_X$ jeweils Isomorphismen in $\D$.
+\item[\glqq$\Leftarrow$\grqq] Seien alle Komponenten~$\alpha_X$ invertierbar.
+Dann können wir versuchen, eine inverse natürliche Transformation $\beta: G
+\Rightarrow F$ über die Setzung
+\[ \beta_X := (\alpha_X)^{-1} : G(X) \to F(X) \]
+zu definieren. Sicher gilt dann $\alpha \circ \beta = \id_F$ und $\beta \circ \alpha
+= \id_G$, aber es bleibt noch zu zeigen, dass $\beta$ auch wirklich eine natürliche
+Transformation ist. Dazu rechnen wir für jeden Morphismus~$f: X \to Y$ die
+Natürlichkeitsbedingung nach:
+\begin{align*}
+  & G(f) \circ \alpha_X = \alpha_Y \circ F(f) \\
+  \Longrightarrow{}& (\alpha_Y)^{-1} \circ G(f) \circ \alpha_X \circ (\alpha_X)^{-1} = (\alpha_Y)^{-1} \circ \alpha_Y \circ F(f) \circ (\alpha_X)^{-1} \\
+  \Longrightarrow{}& (\alpha_Y)^{-1} \circ G(f) = F(f) \circ (\alpha_X)^{-1} \\
+  \Longrightarrow{}& \beta_Y \circ G(f) = F(f) \circ \beta_X \qedhere
+\end{align*}
+\end{itemize}
+\end{proof}
+
+\begin{defn}
+Invertierbare natürliche Transformationen heißen auch \emph{natürliche
+Isomorphismen}, und Funktoren, zwischen denen ein natürlicher Isomorphismus
+verläuft, heißen \emph{zueinander (natürlich) isomorph}.
+\end{defn}
+
+
+\subsection{Kategorienäquivalenzen}
+
+\begin{defn}
+Eine \emph{Kategorienäquivalenz} zwischen Kategorien~$\C$ und~$\D$ besteht aus
+Funktoren
+\[ \xymatrix{\C \ar@/^/[r]^F & \D, \ar@/^/[l]^G} \]
+die zueinander \emph{quasi-invers} sind, d.\,h. dass die Kompositionen von~$F$
+und~$G$ jeweils natürlich isomorph zu den entsprechenden Identitätsfunktoren
+sind:
+\[ G \circ F \cong \Id_\C, \qquad F \circ G \cong \Id_\D. \]
+Die Kategorien~$\C$ und~$\D$ heißen dann \emph{zueinander äquivalent}:
+$\C \simeq \D.$
+\end{defn}
+
+Es gibt auch das Konzept der \emph{Isomorphie von Kategorien}. Da fordert man,
+dass es Funktoren
+\scalebox{0.6}{$\xymatrix{\C \ar@/^/[r]^F & \D
+\ar@/^/[l]^G}$} gibt, die
+zueinander nicht nur quasi-invers, sondern tatsächlich invers sind, d.\,h. die
+Beziehungen
+\[ G \circ F = \Id_\C, \qquad F \circ G = \Id_\D \]
+erfüllen. Das ist aber in den meisten Fällen kein gutes Konzept:
+Denn wie schon in Bemerkung~\ref{gleichheitfunktoren} festgehalten, ist die
+Gleichheit von Funktoren eine böse Bedingung. In der Tat sind die meisten in
+der Natur vorkommenden Kategorienäquivalenzen auch "`nur"' Äquivalenzen, keine
+Isomorphismen. Kommt doch mal ein Isomorphismus von Kategorien vor, so ist das
+meist ein überhaupt nicht tiefsinniger "`technischer Zufall"', der nur an
+geeigneten Wahlen bestimmter Definitionen liegt.
+
+Wieso man Äquivalenzen von Kategorien untersucht, liegt in folgendem
+Motto begründet:
+\begin{motto}\label{mottoeqv}%
+Sei~$\varphi$ eine mathematische Aussage über Kategorien, die
+sich nur unter Verwendung der Konzepte \emph{Objekt}, \emph{Morphismus},
+\emph{Verkettung von Morphismen} und \emph{Gleichheit von Morphismen}
+formulieren lässt. Sind dann~$\C$ und~$\D$ zueinander äquivalente Kategorien,
+so gilt~$\varphi$ genau dann in~$\C$, wenn~$\varphi$ in~$\D$ gilt.
+\end{motto}
+Beispiele für Aussagen dieser Art sind etwa:
+\begin{itemize}
+\item Die Kategorie besitzt ein initiales Objekt.
+\item Je zwei parallele Morphismen sind gleich.
+\item Jeder Morphismus in ein initiales Objekt ist sogar schon ein
+Isomorphismus.
+\end{itemize}
+Beispiele für Aussagen, die über die Reichweite des Mottos hinausgehen, sind:
+\begin{itemize}
+\item Die Kategorie besitzt genau ein Objekt.
+\item Die Kategorie besitzt genau ein initiales Objekt.
+\item Sind zwei Objekte zueinander isomorph, so sind sie schon gleich.
+\item Je zwei Morphismen (egal zwischen welchen Objekten) sind gleich.
+\end{itemize}
+Man erachtet es nicht als schlimm, dass diese Aussagen nicht unter Äquivalenz
+erhalten bleiben. Denn wegen der vorkommenden Vergleiche von Objekten auf Gleichheit
+handelt es sich sowieso um böse Aussagen.
+
+\begin{bem}Mit Techniken aus der formalen Logik kann man Motto~\ref{mottoeqv}
+auch rigoros beweisen. Das ist nicht besonders schwer, die Hauptschwierigkeit
+liegt darin, den Begriff \emph{Aussage} präzise zu definieren.\end{bem}
+
+\begin{bsp}Die duale Kategorie~$\Set^\op$ kann nicht zu~$\Set$ äquivalent sein.
+Denn in~$\Set$ ist jeder Morphismus in ein initiales Objekt schon ein
+Isomorphismus, in~$\Set^\op$ aber nicht.\end{bsp}
+
+\begin{bsp}
+Die Kategorie $\Eins$, die nur aus einem Objekt~$\star$ sowie dessen
+Iden\-ti\-täts\-mor\-phis\-mus besteht, ist zu jeder bewohnten
+\emph{indiskreten Kategorie} $\C$ (d.\,h. einer solchen, die mindestens ein
+Objekt besitzt und in der zwischen je zwei Objekten genau ein Morphismus
+verläuft) äquivalent. 
+\end{bsp}
+\begin{proof}
+Da~$\C$ bewohnt ist, gibt es ein Objekt $K \in \Ob \C$. Dann können wir die Funktoren
+\[ \begin{array}{@{}rrcl@{}}
+  F: & \Eins &\longrightarrow& \C \\
+  & \star &\longmapsto& K \\
+  & \id_\star &\longmapsto& \id_K \\\\
+  G: & \C &\longrightarrow& \Eins \\
+  & X &\longmapsto& \star \\
+  & f &\longmapsto& \id_\star
+\end{array} \]
+definieren.
+Da es nur einen einzigen Funktor von $\Eins$ nach $\Eins$ gibt (obacht! Es ist schlecht, das zu sagen), ist klar, dass $G \circ F \cong \Id_\Eins$ gilt. Noch zu zeigen ist also, dass auch $F \circ G \cong \Id_\C$ gilt.
+
+Dazu definieren eine natürliche Transformation $\eta: F \circ G \Rightarrow
+\Id_\C$, die sich als natürlicher Isomorphismus herausstellen wird. Dabei
+verwenden wir für jedes $X \in \C$ als $\eta_X$ den \emph{eindeutigen}
+Morphismus $(F\circ G) (X) \to \Id_\C(X)$. Da diese Definition gleichmäßig
+in~$X$ ist, erwarten wir, dass die Natürlichkeitsbedingung erfüllt ist; und das
+ist auch in der Tat der Fall:
+\[ \xymatrixcolsep{5pc}\xymatrixrowsep{5pc}\xymatrix{
+  K = (F \circ G)(X) \ar[r]^{(F \circ G)(f)=\id_K} \ar[d]_{\eta_X} & (F \circ G)(Y) = K \ar[d]^{\eta_Y} \\
+  X = \Id_\C (X) \ar[r]_{\Id_\C(f)=f} & \Id_\C (Y) = Y
+} \]
+Da in einer indiskreten Kategorie alle Morphismen Isomorphismen sind, ist
+insbesondere jede Komponente~$\eta_X$ ein Isomorphismus, und damit ist nach
+Lemma \ref{natTransIsoLemma} auch $\eta$ selbst ein Isomorphismus.
+\end{proof}
+
+\begin{bem}Wer topologische Räume kennt, fühlt sich durch das Beispiel
+vielleicht an folgende Beobachtung erinnert: Bewohnte topologische Räume, in
+denen je zwei Punkte bis auf Homotopie durch genau einen Weg miteinander
+verbunden werden können, sind zusammenziehbar. Die Ähnlichkeit ist nicht nur
+formal: Jedem topologischen Raum kann man sein \emph{Fundamentalgruppoid}
+zuordnen, das ist die Kategorie, deren Objekte durch die Punkte des Raums und
+deren Morphismen durch die Homotopieklassen von Wegen gegeben sind. Der
+Fundamentalgruppoid eines Raums, der obige Eigenschaft erfüllt, ist
+indiskret.\end{bem}
+% XXX: Da fehlt noch mehr!
+
+% "konstante natürliche Trafo"
+% weniger Abbildungen --> mehr Trafos!
+% F ==> G ohne G ==> F
+% eta_G Gruppenhomo? Andere Möglichkeiten?
+% Bsp. für Äquivalenzen, die keine Isos sind
+% Grund, wieso Isos schlecht (übel) sind

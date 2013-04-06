@@ -1,0 +1,128 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+\usepackage{array}
+\usepackage{comment}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{literatur}
+
+\usepackage[all]{xy}
+
+\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{motto}[defn]{Motto}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\renewcommand{\I}{\mathcal{I}}
+\renewcommand{\P}{\mathcal{P}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\freist}{\underline{\ \ }}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\ggT}{ggT}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\AbGrp}{\mathrm{AbGrp}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Funct}{\mathrm{Funct}}
+\newcommand{\Eins}{\mathbf{1}}
+\newcommand{\Man}{\mathrm{Man}}
+\newcommand{\Top}{\mathrm{Top}}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\newcommand\subsubsubsection[1]{\subsubsection*{#1}}
+\definecolor{grey}{rgb}{0.7,0.7,0.7}
+
+\setcounter{tocdepth}{2}
+
+%\newarrow{Equals}=====
+
+%\usepackage{geometry}
+%\geometry{tmargin=2cm,bmargin=4cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{2em}%
+\begin{center}%
+  \vskip 1em
+  {\LARGE Pizzaseminar zur Kategorientheorie}
+  \vskip 1.5em%
+  {\large
+   \lineskip .5em%
+    \begin{tabular}[t]{c}%
+      \today
+    \end{tabular}\par}%
+    \vskip 1em%
+\end{center}\par
+\par\vskip 1.5em
+
+\begin{center}\emph{in Entstehung befindlich} \\ \ \\
+\TeX{}er: Tim Baumann, Ingo Blechschmidt, Justin Gassner, Lukas Graf, Maximilian Huber, Matthias Hutzler\end{center}
+
+\tableofcontents
+
+\input{was-sollen-kategorien}
+\input{produkte}
+\input{funktoren}
+\input{transformationen}
+\input{limiten}
+\input{yoneda}
+\input{adjunktionen}
+
+\nocite{*}
+\printbibliography
+
+\end{document}

@@ -1,0 +1,217 @@
+\section[Limiten und Kolimiten]{Limiten und Kolimiten \hfill \small
+Kathrin Gimmi}
+
+\emph{Werbung:} Wir verstehen, was allgemeine Limiten und Kolimiten von
+Diagrammen sind. Dazu wird es viele Beispiele geben, unter anderem die uns
+schon bekannten Produkte und Koprodukte. Speziell sind sog. filtrierte
+Kolimiten wichtig, da diese in der täglichen Praxis oft vorkommen und besonders
+schöne Eigenschaften haben. Abschließend werden wir die Frage diskutieren, wie
+man Kategorien, denen es an Limiten oder Kolimiten mangelt, vervollständigen
+kann.
+
+In diesem Abschnitt wollen wir Funktoren~$\I \to \C$ auch als~($\I$-förmige)
+Diagramme bezeichnen.
+
+\begin{defn}Ein \emph{Kegel} eines Diagramms~$F : \I \to \C$ besteht aus
+\begin{enumerate}
+\item einem Objekt~$K \in \Ob \C$ (der sog. \emph{Kegelspitze}) zusammen mit
+\item jeweils einem Morphismus~$\pi_i : K \to F(i)$ für jedes Objekt~$i \in \Ob\I$,
+\end{enumerate}
+sodass
+für alle Morphismen~$f : i \to j$ in~$\I$ die Dreiecke
+\[ \xymatrix{
+  & K \ar[ld]_{\pi_i} \ar[rd]^{\pi_j} \\
+  F(i) \ar[rr]_{F(f)} && F(j)
+} \]
+kommutieren.
+\end{defn}
+Die Notation etwas missbrauchend werden Kegel oft nur nach ihrer Kegelspitze
+genannt, obwohl die Morphismen~$\pi_i$ mit zum Datum gehören.
+Die Morphismen~$\pi_i$ werden manchmal als Projektionsmorphismen
+bezeichnet, der Grund dafür wird beim ersten Beispiel klar werden.
+
+\begin{defn}Ein \emph{Morphismus von Kegeln $K \to \widetilde K$} eines Diagramms~$F$ besteht aus
+\begin{enumerate}
+\item[] einem Morphismus der Kegelspitzen $\psi : K \to \widetilde K$ in~$\C$
+\end{enumerate}
+sodass
+\begin{enumerate}
+\item[]
+für alle~$i \in \Ob\I$ die Dreiecke
+\[ \xymatrix{
+  K \ar[rr]^{\psi} \ar[rd]_{\pi_i} && \widetilde K \ar[ld]^{\widetilde\pi_i} \\
+  & F(i)
+} \]
+kommutieren.
+\end{enumerate}
+\end{defn}
+Abbildung~\ref{kegel} erklärt die Herkunft des Begriffs "`Kegel"'.
+
+\begin{figure}
+  \[
+    \xymatrix{
+      K \ar@[grey]@{-->}[rrrrr]
+      \ar@[grey][dddr] \ar@[grey][dddrrr] \ar@[grey][dddrrrr] \ar@[grey][ddddrr] &&&&&
+      \widetilde K \ar@[grey][dddl] \ar@[grey][dddll] \ar@[grey][dddllll]
+      \ar@[grey][ddddlll]
+      \\\\\\
+      & F(i) \ar[rr] \ar[rd] && F(j) \ar[r] \ar[ld] & F(\ell) \\
+      & & F(k)
+    }
+  \]
+  \caption{\label{kegel}Zwei Kegel und ein Kegelmorphismus zwischen ihnen.}
+\end{figure}
+
+Kegelmorphismen kann man auf die offensichtliche Art und Weise miteinander
+verketten (einfach die Morphismen der Kegelspitzen verketten). Daher ist es
+sinnvoll, von der \emph{Kategorie der Kegel} zu einem festen
+Diagramm~$F:\I\to\C$ zu sprechen. Terminale Objekte dieser Kategorie haben
+einen besonderen Namen:
+\begin{defn}Ein \emph{Limes} eines Diagramms~$F:\I\to\C$ ist ein terminales
+Objekt in der Kategorie der Kegel zu~$F$.\end{defn}
+Da allgemein terminale Objekte einer Kategorie bis auf eindeutige Isomorphie
+eindeutig sind (siehe Aufgabe~2 von Übungsblatt~2), folgt sofort folgende
+Beobachtung:
+\begin{prop}Limiten sind bis auf eindeutige Isomorphie eindeutig. Die
+Kegelspitzen von Limiten sind zumindest bis auf Isomorphie eindeutig.\end{prop}
+
+Für ein anschauliches Verständnis von Limiten sind zwei Mottos wichtig:
+\begin{motto}Ein Limes eines Diagramms ist ein bestes
+(größtmöglichstes) Objekt, welches das Diagramm zu einem Kegel ergänzt.
+\end{motto}
+\emph{Größtmöglich} ist dabei nicht im wörtlichen Sinn, wie er etwa in der Kategorie
+der Mengen vorstellbar ist, zu interpretieren, sondern nur so zu verstehen,
+als dass jeder andere Kegel
+(Möchtegern-Limes) einen Morphismus in den Limes hinein besitzt.
+
+\begin{motto}\label{limessubsumiert}
+Ein Limes subsumiert das gesamte Diagramm zu einem einzelnen Objekt (der
+Kegelspitze) -- zumindest, was Morphismen in das Diagramm hinein
+angeht.\end{motto}
+Das ist so verstehen: Immer, wenn man einen Morphismus aus einem
+Objekt~$\widetilde K$ "`in das Diagramm hinein"' gegeben hat (d.\,h. einen Kegel des Diagramms
+gegeben hat), induziert die universelle Eigenschaft einen Morphismus
+aus~$\widetilde K$ in den Limes.  Umgekehrt kann man aus jedem solchen
+Morphismus durch Nachschaltung der Projektionen einen Kegel erhalten.
+Dieses Motto werden wir sogar formal beweisen können: siehe
+Proposition~\ref{homstetig}.
+
+
+\subsection{Beispiele für Limiten}
+
+\subsubsection*{Produkte}
+
+Sei speziell~$\I = \mathbf{2}$ die Kategorie mit genau zwei Objekten und nur
+den Iden\-ti\-täts\-mor\-phis\-men:
+\[ \xymatrix{\bullet \ar@(ul,ur) & \bullet \ar@(ul,ur)} \]
+Dann sind Diagramme~$\I \to \C$ einfach durch die Angabe zweier Objekte
+von~$\C$ gegeben. Kegel solcher Diagramme haben wir früher schon untersucht:
+unter dem Namen \emph{Möchtegern-Produkte}. Entsprechend sind Limiten
+solcher Diagramme schlichtweg Produkte.
+
+\subsubsection*{Faserprodukte (Pullbacks)}
+
+Sei speziell~$\I$ die Kategorie
+\[ \xymatrix{
+  & \bullet \ar[d] \ar@(ur,ul) \\
+  \bullet \ar[r] \ar@(ul,dl) & \bullet. \ar@(dr,ur)
+} \]
+Limiten von~$\I$-förmigen Diagrammen werden auch \emph{Faserprodukte} genannt
+und konventionsmäßig gerne als sog. \emph{Faserprodukt-} oder
+\emph{Pullbackdiagramm} skizziert:
+\[ \xymatrix{
+  \ar @{} [dr] |{\begin{array}{l}\lrcorner\ \ \ \ \ \ \ \ \ \\\\\end{array}}
+  X \times_Z Y \ar[r] \ar[d] & Y \ar[d]^g \\
+  X \ar[r]_f & Z
+} \]
+Dabei steht die Kegelspitze des Limes oben links. Der dritte
+Projektionsmorphismus (auf~$Z$) ist nicht eingezeichnet, da er sowieso gleich
+der Komposition des Wegs über~$X$ (oder über~$Y$) sein muss.
+
+In der Kategorie der Mengen kann das Faserprodukt durch die Konstruktion
+\[ X \times_Z Y := \{ (x,y) \in X \times Y \,|\, f(x) = g(y) \} \subseteq X \times Y \]
+gegeben werden.
+
+Man hat zwei vorschiedene Vorstellungen des Faserprodukts, die unterschiedliche
+Aspekte betonen: Zum einen bilden die Objekte~$X$ und~$Y$ die Ausgangsbasis. Dann
+stellt man als Faserprodukt das Objekt~$X \times_Z Y$ vor und sieht es als eine
+Art "`verallgemeinertes Produkt"' an.
+
+Zum anderen kann man sich aber auch den Morphismus~$g$ als Ausgangspunkt
+vorstellen. Als Ergebnis betont man dann nicht das Objekt~$X \times_Z Y$
+alleine, sondern den Morphismus~$X \times_Z Y \to X$. Diesen bezeichnet man
+dann auch als \emph{Rückzug (Pullback)} von~$g$ längs~$f$ oder
+\emph{Basiswechsel} von~$g$ nach~$X$.
+
+\begin{bsp}Sei~$g:Y \to Z$ eine Abbildung von Mengen. Sei~$U \subseteq Y$ eine
+Teilmenge. Dann passt das Urbild~$g^{-1}[U]$ in ein Pullbackdiagramm:
+\[ \xymatrix{
+  \ar @{} [dr] |{\begin{array}{l}\lrcorner\ \ \ \ \ \ \ \ \ \\\\\end{array}}
+  g^{-1}[U] \ar@{^{(}->}[r] \ar[d] & Y \ar[d]^f \\
+  U \ar@{^{(}->}[r] & Z
+} \]
+\end{bsp}
+Dieser Standpunkt wird unter anderem in der algebraischen Geometrie verwendet. Da
+sind dann \emph{Stabilitätsaussagen} wichtig: Hat ein Morphismus eine bestimmte
+Eigenschaft, so hat sein Rückzug längs Morphismen einer bestimmten Klasse
+dieselbe Eigenschaft.
+
+\begin{bsp}Sei ein Pullbackdiagramm der Form
+\[ \xymatrix{
+  \ar @{} [dr] |{\begin{array}{l}\lrcorner\ \ \ \ \ \ \ \ \ \\\\\end{array}}
+  X \times_Z Y \ar[r]^{f'} \ar[d]_{g'} & Y \ar[d]^g \\
+  X \ar[r]_f & Z
+} \]
+in einer beliebigen Kategorie gegeben. Wenn~$g$ ein Monomorphismus ist, dann auch~$g'$.
+Man sagt: \emph{Monomorphismen sind unter Rückzug stabil.}
+\end{bsp}
+\begin{bem}Es ist etwas besonderes, wenn auch Epimorphismen unter Rückzug
+stabil sind. Das ist etwa in der Kategorie der Mengen und allen abelschen
+Kategorien der Fall.\end{bem}
+
+
+\subsection{Limiten in Funktorkategorien}
+
+In diesem Abschnitt wollen wir untersuchen, wie Limiten in
+Funktorkategorien~$\Funct(\C,\D)$ aussehen. Sei dazu ein Diagramm
+\[ F : \I \longrightarrow \Funct(\C,\D) \]
+gegeben. Durch "`Nachschaltung der Evaluierungsfunktoren"' erhält man aus
+diesem Diagramm für jedes Objekt~$X \in \Ob\C$ jeweils ein Diagramm in~$\D$:
+\[ \begin{array}{@{}rrcl@{}}
+  F_X : & \I &\longrightarrow& \D \\
+  & i &\longmapsto& F(i)(X)
+\end{array} \]
+Wenn wir voraussetzen, dass all diese Diagramme jeweils einen Limes~$\lim F_X$ in~$\D$
+besitzen, können wir (wie in Aufgabe~4 von Übungsblatt~3) einen Funktor
+\[ \begin{array}{@{}rrcl@{}}
+  L : & \C &\longrightarrow& \D \\
+  & X &\longmapsto& \lim F_X
+\end{array} \]
+basteln. Dann hat man folgende Beobachtung:
+\begin{prop}
+Der so konstruierte Funktor~$L$ wird (mit welchen Projektionen?) ein Limes des Diagramms~$F$.
+\end{prop}
+
+
+\subsection{Kofinale Unterdiagramme}
+
+\begin{defn}
+Wir nennen einen Funktor $H : \D_0 \to \D$ genau dann \emph{kofinal}, wenn
+für alle~$d \in \Ob\D$\ldots
+\begin{enumerate}
+\item[1.] ein Objekt $d_0 \in \Ob\D_0$ und ein Morphismus $d \to
+H(d_0)$ in~$\D$ existiert und
+\item[2.] für je zwei solcher Morphismen ein Objekt~$\widetilde d_0 \in \Ob\D_0$ und
+Morphismen $d_0 \to \widetilde d_0$, $d_0' \to \widetilde d_0$ existieren, deren Bilder
+unter~$H$ das Diagramm
+\[ \xymatrix{
+  d_0 \ar[r] \ar[d] & H(d_0) \ar@{-->}[d] \\
+  H(d_0') \ar@{-->}[r] & H(\widetilde d_0)
+} \]
+kommutieren lassen.
+\end{enumerate}
+\end{defn}
+
+Etwa ist der Inklusionsfunktor~$B (2\NN) \to B(\NN)$ kofinal, wenn~$\NN$ die
+Menge der natürlichen Zahlen mit ihrer gewöhnlichen Ordnung und~$2\NN$ die
+Teilordnung der geraden Zahlen bezeichnet.
