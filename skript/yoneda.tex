@@ -21,7 +21,8 @@ Transformationen als Morphismen) ist~$\widehat\C := \Funct(\C^\op,\Set)$.
 \emph{darstellbar}, wenn es ein Objekt~$X \in \Ob\C$ mit $F \cong
 \Hom_\C(\freist,X)$ gibt.\end{defn}
 
-\begin{motto}Eine beliebige (nicht unbedingt darstellbare) Prägarbe~$F$
+\begin{motto}\label{praegarbeideell}%
+Eine beliebige (nicht unbedingt darstellbare) Prägarbe~$F$
 auf~$\C$ beschreibt die Beziehungen aller Objekte~$A$ von~$\C$ mit einem
 eingebildeten, fiktiven, ideellen Objekt~$\heartsuit$: Wir stellen uns die
 Menge~$F(A)$ als Menge der Morphismen~$A \to \heartsuit$ vor.\end{motto}
@@ -42,31 +43,73 @@ $\id_X \in \Hom_\C(X,X)$.\end{proof}
 \subsection{Die Yoneda-Einbettung}
 
 Der volle Hom-Funktor geht von~$\C^\op \times \C$ zu~$\Set$. Aus diesem kann
-man durch Curryfizierung einen Funktor~$\C \to \Funct(\C^\op,\Set)$ basteln:
+man durch Curryfizierung einen Funktor~$\C \to \Funct(\C^\op,\Set)$ basteln,
 \[ \begin{array}{@{}rrcl@{}}
   Y : & \C &\longrightarrow& \widehat\C \\
   & X &\longmapsto& \widehat X := \Hom_\C(\freist,X) \\
-  & f &\longmapsto& \widehat f
+  & f &\longmapsto& \widehat f,
 \end{array} \]
-Die Komponenten der natürlichen Transformation~$\widehat f$ sind dabei
-für~$f: X \to Y$ durch
+wobei die Komponenten der natürlichen Transformation~$\widehat f$ durch
+Nachkomponieren mit~$f$ wirken:
 \[ \begin{array}{@{}rrcl@{}}
   (\widehat f)_A : & \Hom_\C(A,X) &\longrightarrow& \Hom_\C(A,Y) \\
   & g &\longmapsto& f \circ g
 \end{array} \]
-gegeben.
 
 \begin{defn}Der Funktor~$Y:\C\to\widehat\C$ heißt \emph{Yoneda-Einbettung}
 von~$\C$.\end{defn}
 
-Die Yoneda-Einbettung hat folgende wichtige Eigenschaften:
-\begin{prop}\begin{enumerate}
-\item $Y$ ist treu und voll.
-\item $Y$ erhält Limiten (aber kaum Kolimiten).
-\item $Y$ ist dicht (siehe Aufgabe~2 von Übungsblatt~6).
-\end{enumerate}\end{prop}
-Vermöge~$Y$ können wir~$\C$ also als volle Unterkategorie der Kategorie der
-fiktiven, ideellen Objekte ansehen.
+Die Yoneda-Einbettung hat viele gute Eigenschaften, etwa\ldots
+\begin{enumerate}
+\item ist sie treu und voll,
+\item erhält Limiten (aber kaum Kolimiten) und
+\item ist dicht.
+\end{enumerate}
+Vermöge der ersten Eigenschaft können wir daher~$\C$ als volle Unterkategorie
+der Kategorie der ideellen Objekte ansehen. Im Bild der Vervollständigung der
+rationalen Zahlen lautet die analoge Aussage, dass die Inklusion~$\QQ \to \RR$
+tatsächlich injektiv ist. Der Beweis ist eine einfache
+Anwendung des noch folgenden Yoneda-Lemmas.
+
+Eigenschaft~b) drückt aus, dass Limesbildung verträglich mit dem Übergang von
+tat\-säch\-li\-chen Objekten von~$\C$ zu ideellen Objekten ist. Analog erhält auch die
+Inklusion~$\QQ \to \RR$ Limiten.
+
+Die Yoneda-Einbettung ist im Allgemeinen weit entfernt davon, wesentlich
+surjektiv zu sein. Konkret haben wir gesehen, dass die initiale Prägarbe
+niemals isomorph zu einem Objekt der Form~$Y(X)$ ist. In Analogie ist die
+Inklusion~$\QQ \to \RR$ weit entfernt davon, surjektiv zu sein. Es ist
+allerdings jede reelle Zahl Limes rationaler Zahlen -- und so ist es hier auch:
+Eigenschaft~c) besagt, dass jede Prägarbe auf kanonische Art und Weise Kolimes
+darstellbarer Prägarben ist. Für eine genaue Formulierung siehe Aufgabe~3 von
+Übungsblatt~6.
 
 
 \subsection{Das Yoneda-Lemma}
+
+\begin{lemma}[Yoneda-Lemma]Es gibt eine in~$X \in \Ob \C$ und~$F \in \Ob \widehat \C$
+natürliche Bijektion
+\[ \Hom_{\widehat\C}(\Hom_\C(\freist, X), F) \cong F(X). \]
+\end{lemma}
+\begin{proof}Siehe Aufgabe~1 von Übungsblatt~6.\end{proof}
+Linke und rechte Seite der Isomorphie können als Auswertungen der Funktoren
+\[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}rl@{}}
+  L : \C^\op \times \widehat\C \longrightarrow \Set, &
+  (X,F) \longmapsto \Hom_{\widehat\C}(\Hom_\C(\freist,X), F)
+  \\
+  R : \C^\op \times \widehat\C \longrightarrow \Set, &
+  (X,F) \longmapsto F(X)
+\end{array} \]
+an der Stelle~$(X,F)$ angesehen werden. Bei~$\C^\op \times \widehat\C$ handelt
+es sich um die Produktkategorie aus Definition~\ref{productcat}.
+Das Prädikat \emph{natürlich} im Yoneda-Lemma bezieht
+sich darauf, dass diese beide Funktoren zueinander natürlich isomorph sind.
+
+\begin{bsp}Für eine Prägarbe~$F$ haben wir uns in
+Motto~\ref{praegarbeideell} die Menge~$F(A)$ als Menge der Morphismen von~$A$
+in ein ideelles Objekt~$\heartsuit$ vorgestellt. Natürlich können wir
+nicht~"`$\Hom_\C(A,\heartsuit)$"' schreiben, da~$\heartsuit$ nicht wirklich ein
+Objekt von~$\C$ ist; aber in der Prägarbenkategorie gibt es die Morphismenmenge
+$\Hom_{\widehat\C}(\widehat A,F)$, und nach dem Yoneda-Lemma ist diese isomorph
+zu~$F(A)$. In diesem Sinn gilt also~$\heartsuit = F$ und das Motto ist sogar formal
+korrekt.\end{bsp}

@@ -19,13 +19,12 @@ $F$ \emph{links-adjungiert zu} $G$ bzw.
 \item 
 $G$ \emph{rechts-adjungiert zu} $F$,
 \end{itemize}
-in Zeichen: $F \dashv G$, wenn es eine in~$X \in \C$ und~$Y \in \D$ natürliche
-Isomorphie
+in Zeichen: $F \dashv G$, wenn es eine in~$X \in \Ob\C$ und~$Y \in \Ob\D$ natürliche
+Isomorphie gibt:
 \[ \Hom_\C(FY,X) \cong \Hom_\D(Y,GX) \]
-gibt.
 \end{defn}
 Dabei ist \emph{natürlich} gemäß Bemerkung~\ref{interpretnat} zu verstehen:
-Linke und rechte Seiten der Isomorphie sind als Funktoren
+Linke und rechte Seiten der Isomorphie sind als Auswertungen der Funktoren
 \[ \begin{array}{@{}rrcl@{}}
   \Hom_\C(F\freist,\freist) :&
     \D^\op \times \C &\longrightarrow& \Set \\
@@ -34,7 +33,7 @@ Linke und rechte Seiten der Isomorphie sind als Funktoren
     \D^\op \times \C &\longrightarrow& \Set \\
   & (Y,X) &\longmapsto& \Hom_\D(Y, GX)
 \end{array} \]
-zu verstehen. Die Natürlichkeitsbedingung bedeutet dann, dass
+zu lesen. Die Natürlichkeitsbedingung bedeutet dann, dass
 für alle Morphismen $f:X\rightarrow X'$ in~$\C$ und
 $g:Y'\rightarrow Y$ in~$\D$ das Diagramm
 \[ \xymatrix{
@@ -42,3 +41,145 @@ $g:Y'\rightarrow Y$ in~$\D$ das Diagramm
   \Hom_\D(Y,GX) \ar[r] & \Hom_\D(Y',GX')
 } \]
 kommutiert.
+
+\begin{bsp}Sei~$F:\D \to \C$ quasi-invers zu~$G:\C \to \D$ (im Sinne von
+Definition~\ref{cateqv}). Dann ist~$F$ links- und rechts-adjungiert
+zu~$G$.\end{bsp}
+Das Konzept zueinander adjungierter Funktoren ist also eine Verallgemeinerung
+des Konzepts zueinander quasi-inverser Funktoren: Auch, wenn ein Funktor kein
+Quasi-Inverses besitzt, kann man dennoch fragen, inwieweit man ihn zumindest
+\emph{so gut wie möglich} invertieren kann. Das folgende Beispiel~\cite{smith}
+soll diesen Gedanken illustrieren.
+
+\begin{bsp}Sei~$i:\ZZ \to \QQ$ die Inklusion der ganzen in die rationalen Zahlen,
+aufgefasst als partiell geordnete Mengen. Diese Abbildung besitzt keine
+monotone Umkehrabbildung, aber zwei Beinahe-Inverse, nämlich die Auf- und
+Abrundungsfunktionen:
+\[ \begin{array}{@{}rrcl@{}}
+  \lceil \freist \rceil : & \QQ &\longrightarrow& \ZZ \\
+  & x &\longmapsto& \lceil x \rceil = \text{(kleinste ganze Zahl $\geq x$)} \\\\
+  \lfloor \freist \rfloor : & \QQ &\longrightarrow& \ZZ \\
+  & x &\longmapsto& \lfloor x \rfloor = \text{(größte ganze Zahl $\leq x$)}
+\end{array} \]
+Die von diesen monotonen Abbildungen induzierten Funktoren erfüllen tatsächlich
+die Adjunktionsbeziehungen
+\[ B\lceil\freist\rceil \dashv Bi \dashv B\lfloor\freist\rfloor, \]
+siehe Aufgabe~1 von Übungsblatt~7.\end{bsp}
+
+\begin{bsp}Sei~$K$ ein Körper (oder Ring), $U : \Vect{K} \to \Set$ der
+Vergissfunktor und~$F : \Set \to \Vect{K}$ der Funktor, der jeder Menge~$X$
+den sog. \emph{freien Vektorraum über~$X$}
+\[ F(X) := \Biggl\{ \sum_{i=1}^n \lambda_i x_i \,\Bigg|\,
+  n \geq 0, \lambda_1, \ldots, \lambda_n \in K, x_1, \ldots, x_n \in X \Biggr\} \]
+zuordnet. Dessen Elemente sind sog. formale (endliche) Linearkombinationen der
+Elemente von~$X$; addiert wird also nicht wirklich, man notiert lediglich vor
+jedes Element aus~$X$ einen Koeffizienten aus~$K$.\footnote{In konstruktiver
+Mathematik realisiert man~$F(X)$ als Menge von Wörtern über~$K \times X$ modulo
+einer geeigneten Äquivalenzrelation, wenn man nicht voraussetzen möchte,
+dass~$X$ als Menge diskret ist.} Die Elemente von~$X$ bilden dann eine Basis
+von~$F(X)$.
+Ist~$f : X \to X'$ eine Abbildung, so ist die induzierte
+Abbildung durch
+\[ F(f) : F(X) \to F(X'),\ \sum_{i=1}^n \lambda_i x_i \mapsto
+  \sum_{i=1}^n \lambda_i f(x_i) \]
+gegeben und tatsächlich linear.
+\end{bsp}
+
+\endinput
+
+$k$ Körper, $Vect_k \overset{U}{\rightarrow}Set$ Vergissfunktor\\
+$Set\underset{F}{\rightarrow Vekt_k}$ \emph{freier Funktor}
+$\underset{\mbox{Menge}}{X}\mapsto FX=\{\sum_{n=1}^N\lambda_ix_i\}$ endli.
+Linearkombination von Elementen aus $X$. $S$ ist Basis von $FX$.\\
+\[
+(X\overset{f}{\rightarrow}X')\mapsto Ff
+\]
+wobei $Ff$ eine lineare Abbildung ist, die durch $x_i\mapsto f(x_i)$ gegeben
+ist.
+\[Ff(\sum^{N}_{i=1}{\lambda_ix_i})=\sum^{N}_{i=1}{\lambda_i}f(x_i)\]
+\end{exmp}
+\paragraph{Beh:} $F\dashv U$
+\begin{proof}
+\[
+\Hom_\cC(FY,V)  \overset{?}{\cong} \Hom_\cC(Y,UV)
+\]
+wobei 
+\begin{itemize}
+\item $\Hom_\cC(FY,V)\bydef\{\mbox{lin. Abb }FY\rightarrow V\}$
+\item $\Hom_\cC(Y,UV)\bydef\{\mbox{bel. Abb. }Y\rightarrow V\}\ni \phi$
+\end{itemize}
+\[
+\phi \mapsto \big( \sum^{N}_{i=1}{\lambda_iy_i}\mapsto
+\sum^{N}_{i=1}{\lambda_i\phi(y_i)} \big)
+\]
+bijektiv, da jede lineare Abbildung eindeutig durch die Basis festgelegt ist.
+
+Natürlich in $Y$ und $V$: $f:V\mapsto V'$ und $g:Y\mapsto Y'$
+\begin{center}
+\begin{tikzpicture} [scale=3.3, descr/.style={fill=white,inner sep=2.5pt} ]
+\matrix (m) [
+  matrix of math nodes
+  , row sep=3em
+  , column sep=2em
+  %, text height=3em
+  %, text depth=0.25em
+]
+{
+  \big(\lambda_iy_i\mapsto\sum\lambda_i\phi(y_i)\big) & & & & \phi\\
+  & \Hom_\cC(FY,V)   & \cong & \Hom_\cC(Y,UV)   & \\
+  & \Hom_\cC(FY',V') & \cong & \Hom_\cC(Y',UV') & \\
+  \big( \sum\lambda_iy_i'\mapsto\sum\lambda_if(\phi(g(y_i')))
+    \big)& & & & Uf\circ\phi\circ g\\
+};
+\path[->,font=\scriptsize,>=angle 90]
+(m-2-2) edge node[right]{$\Hom(Fg,f)$} (m-3-2)
+(m-2-4) edge node[left]{$\Hom(g,Gf)$} (m-3-4)
+;
+
+\path[>=stealth,|->]
+(m-1-5) edge (m-1-1) 
+(m-1-5) edge (m-4-5)
+(m-1-1) edge (m-4-1)
+(m-4-5) edge (m-4-1) 
+;
+\end{tikzpicture}
+\end{center}
+\end{proof}
+
+\begin{exmp}
+\[
+U:Cat \rightarrow Set
+\]
+\begin{align*}
+L: & Set \rightarrow Kat\\
+  & X \mapsto \mbox{diskrete Kategorie auf $X$ (d.h. nur
+Identitätsmorphismen)}\\
+R: & Set \rightarrow Cat\\
+  & X \mapsto \mbox{indiskrete Kategorie auf $X$(d.h. zwischen je zwei
+Objekten genau ein Morphismus)}
+\end{align*}
+\paragraph{Beh:}
+\begin{enumerate}
+\item $L\dashv U$
+\item $U\dashv R$
+\end{enumerate}
+\paragraph{zu 1.} $C=Cat$, $D=Set$
+$\Hom_{Cat}(LX,\cC)\cong\Hom_{Set}(X,U\cC)$
+wobei
+\begin{itemize}
+\item 
+$\Hom_{Cat}(LX,\cC)\bydef\{\mbox{Funktoren }LX\rightarrow \cC \}$
+\item 
+$\Hom_{Set}(X,U\cC)\bydef\{\mbox{Abbildungen } X\rightarrow Obj(\cC)\}$
+\end{itemize}
+\paragraph{zu 2.}
+$\Hom_{Set}(U\cC,X)\cong\Hom_{Cat}(\cC,RX)$
+wobei
+\begin{itemize}
+\item 
+$\Hom_{Set}(U\cC,X)\bydef\{\mbox{Abbildungen } Obj(\cC)\rightarrow X\}$
+\item 
+$\Hom_{Cat}(\cC,RX)\bydef\{\mbox{Funktoren }\cC\rightarrow RX \}$
+\end{itemize}
+bijektiv, da Morphismen in $RX$ durch Quelle und Ziel eindeutig bestimmt
+\end{exmp}

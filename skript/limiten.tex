@@ -126,7 +126,9 @@ und konventionsmäßig gerne als sog. \emph{Faserprodukt-} oder
 } \]
 Dabei steht die Kegelspitze des Limes oben links. Der dritte
 Projektionsmorphismus (auf~$Z$) ist nicht eingezeichnet, da er sowieso gleich
-der Komposition des Wegs über~$X$ (oder über~$Y$) sein muss.
+der Komposition des Wegs über~$X$ (oder über~$Y$) sein muss. Wenn eine
+Kategorie jedes~$\I$-förmige Diagramm zu einem Faserproduktdiagramm ergänzt
+werden kann, sagt man auch, dass die Kategorie "`alle Faserprodukte besitzt"'.
 
 In der Kategorie der Mengen kann das Faserprodukt durch die Konstruktion
 \[ X \times_Z Y := \{ (x,y) \in X \times Y \,|\, f(x) = g(y) \} \subseteq X \times Y \]
@@ -206,6 +208,36 @@ schreiben und so die Begriffsherkunft verstehen.
 
 \subsection{Existenz von Limiten}
 
+\begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{(ko-)vollständig}, wenn
+jedes kleine Diagramm in~$\C$ einen (Ko-)Limes besitzt. Dabei heißt ein
+Diagramm~$\I \to \C$ genau dann \emph{klein}, wenn seine Indexkategorie~$\I$
+klein ist (d.\,h. wenn die Objekt- und Morphismenklassen sogar schon Mengen
+bilden).\end{defn}
+
+\begin{prop}Die Kategorie der Mengen ist vollständig und kovollständig:
+Ist~$F:\I\to\Set$ ein kleines Diagramm, so wird die Menge
+\begin{align*}
+  \lim F &:= \Bigl\{ (x_i)_{i\in\Ob\I} \in \prod_{i \in \Ob\I} F(i) \ \Big|\
+  \text{$F(f)(x_i) = x_j$ für alle~$f:i \to j$ in~$\I$} \Bigr\}
+\intertext{vermöge der kanonischen Projektionsabbildungen zu einem Limes
+von~$F$ und}
+  \colim F &:= \Biggl(\coprod_{i \in \Ob\I} F(i)\Biggr)\Big/{\sim},
+\end{align*}
+wobei~$({\sim})$ die feinste Äquivalenzrelation mit
+\[ \text{für alle $f : i \to j$ in~$\I$, $x \in F(i)$:}\quad
+  \langle i, x \rangle \sim \langle j, F(f)(x) \rangle \]
+ist, zu einem Kolimes von~$F$.
+\end{prop}
+\begin{proof}
+Die Äquivalenzrelation~$({\sim})$ kann definiert werden als Schnitt über alle
+Äqui\-va\-lenz\-re\-la\-tio\-nen auf~$\coprod_{i \in \Ob\I} F(i)$, die die angegebene
+Bedingung erfüllen. Dann kann man die Behauptungen nachrechnen.
+\end{proof}
+
+\textbf{XXX:} Hier fehlt der Satz über die Berechnung von Limiten aus Produkten
+und Differenzkernen.
+
+
 \subsection{Limiten in Funktorkategorien}
 
 In diesem Abschnitt wollen wir untersuchen, wie Limiten in
@@ -240,6 +272,9 @@ $X \in \Ob\C$, jeweils ein Limes ist.
 
 
 \subsection{Bewahrung von (Ko-)Limiten}
+
+
+\subsection{Vertauschung von (Ko-)Limiten}
 
 
 \subsection{Kofinale Unterdiagramme}

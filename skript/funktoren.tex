@@ -133,7 +133,7 @@ Vergissfunktoren:
   auf ihre zugrundeliegenden Mengenabbildung ab. Er vergisst also die
   \emph{Struktur} der Gruppenverknüpfung.
   \item Der Funktor
-  \[ V : \RR\text{-}\Vect \to \AbGrp, \quad (V,+,\cdot) \mapsto (V,+), \quad f \mapsto f. \]
+  \[ V : \Vect{\RR} \to \AbGrp, \quad (V,+,\cdot) \mapsto (V,+), \quad f \mapsto f. \]
   vergisst ebenfalls algebraische Struktur, nämlich die Skalarmultiplikation.
   \item Der Funktor
   \[ V : \Man \to \Top, \quad M \mapsto M, \]
@@ -160,7 +160,7 @@ werden wir im Vortrag über adjungierte Funktoren lernen.
 
 Zum anderen ist es wichtig zu wissen, ob ein Vergissfunktor Produkte (oder
 allgemeinere Limiten) bewahrt. Etwa gilt für Vektorräume~$U, W$ und den
-Vergissfunktor~$V:\RR\text{-}\Vect \to \Set$, dass
+Vergissfunktor~$V:\Vect{\RR} \to \Set$, dass
 \[ V(U \times W) \cong V(U) \times V(W), \]
 aber
 \[ V(U \amalg W) \not\cong V(U) \amalg V(W). \]
@@ -258,7 +258,7 @@ Multiplikationsabbildung~$G \times M \to M$, die diese Axiome erfüllt, ist eine
 sog. \emph{Gruppenwirkung von~$G$}. Wir sehen also: Funktoren~$BG \to \Set$
 sind "`dasselbe"' wie Gruppenwirkungen von~$G$.
 
-Analog kann man Funktoren~$BG \to K\text{-}\Vect$ untersuchen. Solche haben
+Analog kann man Funktoren~$BG \to \Vect{K}$ untersuchen. Solche haben
 auch einen klassischen Namen: Das sind sog. \emph{Gruppendarstellungen}.
 
 
@@ -373,7 +373,7 @@ Objekte dieser Kategorie sind Tupel $(M,x)$ aus einer Mannigfaltigkeit und
 einem ausgezeichneten Basispunkt~$x \in M$, Morphismen sind
 basispunkterhaltende glatte Abbildungen. Dann hat man den Funktor
 \[ \begin{array}{@{}rcl@{}}
-  \Man_\star &\longrightarrow& \RR\text{-}\Vect \\
+  \Man_\star &\longrightarrow& \Vect{\RR} \\
   (M,x) &\longmapsto& T_x M \\
   f &\longmapsto& d_x f.
 \end{array} \]
@@ -416,6 +416,9 @@ der es nicht nur Morphismen (Funktoren) zwischen Objekten (Kategorien), sondern
 auch "`höhere Morphismen"', sog. 2-Morphismen (hier natürliche
 Transformationen), zwischen den gewöhnlichen (1-)Morphismen gibt.
 \end{bem}
+
+\textbf{XXX:} Hier das Produkt in~$\Cat$ thematisieren.
+\begin{defn}\label{productcat}\ldots\end{defn}
 
 % TODO:
 % * Was bedeutet Vorschrift in der Funktordefinition?

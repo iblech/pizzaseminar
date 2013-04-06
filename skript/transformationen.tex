@@ -208,7 +208,7 @@ verläuft, heißen \emph{zueinander (natürlich) isomorph}.
 
 \subsection{Kategorienäquivalenzen}
 
-\begin{defn}
+\begin{defn}\label{cateqv}
 Eine \emph{Kategorienäquivalenz} zwischen Kategorien~$\C$ und~$\D$ besteht aus
 Funktoren
 \[ \xymatrix{\C \ar@/^/[r]^F & \D, \ar@/^/[l]^G} \]
@@ -266,7 +266,8 @@ handelt es sich sowieso um böse Aussagen.
 auch rigoros beweisen. Das ist nicht besonders schwer, die Hauptschwierigkeit
 liegt darin, den Begriff \emph{Aussage} präzise zu definieren.\end{bem}
 
-\begin{bsp}Die duale Kategorie~$\Set^\op$ kann nicht zu~$\Set$ äquivalent sein.
+\begin{bsp}\label{setopset}%
+Die duale Kategorie~$\Set^\op$ kann nicht zu~$\Set$ äquivalent sein.
 Denn in~$\Set$ ist jeder Morphismus in ein initiales Objekt schon ein
 Isomorphismus, in~$\Set^\op$ aber nicht.\end{bsp}
 
@@ -315,6 +316,18 @@ deren Morphismen durch die Homotopieklassen von Wegen gegeben sind. Der
 Fundamentalgruppoid eines Raums, der obige Eigenschaft erfüllt, ist
 indiskret.\end{bem}
 % XXX: Da fehlt noch mehr!
+
+\begin{aufg}Zeige, dass folgende
+Kategorien jeweils nicht zueinander äquivalent sind:
+\begin{enumerate}
+\item $\Grp$ und $\Set$
+\item $\AbGrp$ und $\Grp$
+\item Die Kategorie der Ringe und die der Körper
+\end{enumerate}
+In diesen Fällen würde man natürlich auch keine Äquivalenz erwarten. Es ist
+aber ähnlich wie in Beispiel~\ref{setopset} interessant, welche kategoriellen
+Eigenschaften die Unterscheidung möglich machen.
+\end{aufg}
 
 % "konstante natürliche Trafo"
 % weniger Abbildungen --> mehr Trafos!
