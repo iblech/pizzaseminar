@@ -6,6 +6,7 @@
 
 \usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
 \usepackage{array}
+\usepackage{comment}
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
@@ -52,10 +53,12 @@
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
 \newcommand{\I}{\mathcal{I}}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
+\renewcommand{\I}{\mathcal{I}}
 \renewcommand{\P}{\mathcal{P}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\id}{\mathrm{id}}
@@ -81,6 +84,7 @@
 \renewcommand{\labelenumi}{\theenumi)}
 
 \newcommand\subsubsubsection[1]{\subsubsection*{#1}}
+\definecolor{grey}{rgb}{0.7,0.7,0.7}
 
 \setcounter{tocdepth}{2}
 
@@ -106,7 +110,7 @@
 \par\vskip 1.5em
 
 \begin{center}\emph{in Entstehung befindlich} \\ \ \\
-\TeX{}er: Tim Baumann, Ingo Blechschmidt, Justin Gassner, Lukas Graf, Matthias Hutzler\end{center}
+\TeX{}er: Tim Baumann, Ingo Blechschmidt, Justin Gassner, Lukas Graf, Maximilian Huber, Matthias Hutzler\end{center}
 
 \tableofcontents
 
@@ -918,6 +922,8 @@ Transformationen können wir dann auch Funktorkategorien definieren, die für da
 Yoneda-Lemma später sehr wichtig sind. Außerdem können wir definieren, wann
 zwei Kategorien zueinander äquivalent sind.
 
+\textbf{XXX:} Hier fehlt noch Motivation für das Konzept.
+
 \begin{defn}Eine \emph{natürliche Transformation} $\eta : F \Rightarrow G$
 zwischen Funktoren $F, G : \C \to \D$ besteht aus
 \begin{enumerate}
@@ -1026,10 +1032,14 @@ kommutiert tatsächlich, wie eine Diagrammjagd zeigt:
 } \]
 
 
-\begin{bem}Manchmal findet man Aussagen der Art "`es gibt eine natürliche Abbildung
+\begin{bem}\label{interpretnat}%
+Manchmal findet man Aussagen der Art "`es gibt eine natürliche Abbildung
 von $\ldots$ nach $\ldots$"' in der Literatur. Damit ist dann oft gemeint, dass
 man Quelle und Ziel als Auswertungen zweier Funktoren verstehen kann und dass
 zwischen diesen Funktoren eine natürliche Transformation verläuft.\end{bem}
+
+\textbf{XXX:} Es fehlt noch ein weiteres Beispiel:
+"`Doppeldualraum"'
 
 
 \subsection{Funktorkategorien}
@@ -1065,6 +1075,9 @@ Die \emph{Funktorkategorie} $\Funct(\C,\D)$ zu zwei Kategorien $\C$ und $\D$
 ist die Kategorie mit Funktoren $F: \C \to \D$ als Objekten und natürlichen
 Transformationen als Morphismen.
 \end{defn}
+
+\textbf{XXX:} Es fehlt noch eine Bemerkung über die horizontale Verkettung von
+natürlichen Transformationen.
 
 \begin{lemma}\label{natTransIsoLemma}
 Seien $\C,\D$ Kategorien, $F,G: \C \to \D$ Funktoren und $\alpha: F \Rightarrow
@@ -1118,7 +1131,7 @@ und~$G$ jeweils natürlich isomorph zu den entsprechenden Identitätsfunktoren
 sind:
 \[ G \circ F \cong \Id_\C, \qquad F \circ G \cong \Id_\D. \]
 Die Kategorien~$\C$ und~$\D$ heißen dann \emph{zueinander äquivalent}:
-$\C \equiv \D.$
+$\C \simeq \D.$
 \end{defn}
 
 Es gibt auch das Konzept der \emph{Isomorphie von Kategorien}. Da fordert man,
@@ -1136,7 +1149,7 @@ Isomorphismen. Kommt doch mal ein Isomorphismus von Kategorien vor, so ist das
 meist ein überhaupt nicht tiefsinniger "`technischer Zufall"', der nur an
 geeigneten Wahlen bestimmter Definitionen liegt.
 
-Der Grund, wieso man Äquivalenz von Kategorien untersucht, liegt in folgendem
+Wieso man Äquivalenzen von Kategorien untersucht, liegt in folgendem
 Motto begründet:
 \begin{motto}\label{mottoeqv}%
 Sei~$\varphi$ eine mathematische Aussage über Kategorien, die
@@ -1226,7 +1239,7 @@ indiskret.\end{bem}
 
 
 \section[Limiten und Kolimiten]{Limiten und Kolimiten \hfill \small
-Martin Baur und Kathrin Gimmi}
+Kathrin Gimmi}
 
 \emph{Werbung:} Wir verstehen, was allgemeine Limiten und Kolimiten von
 Diagrammen sind. Dazu wird es viele Beispiele geben, unter anderem die uns
@@ -1236,6 +1249,189 @@ schöne Eigenschaften haben. Abschließend werden wir die Frage diskutieren, wie
 man Kategorien, denen es an Limiten oder Kolimiten mangelt, vervollständigen
 kann.
 
+In diesem Abschnitt wollen wir Funktoren~$\I \to \C$ auch als~($\I$-förmige)
+Diagramme bezeichnen.
+
+\begin{defn}Ein \emph{Kegel} eines Diagramms~$F : \I \to \C$ besteht aus
+\begin{enumerate}
+\item einem Objekt~$K \in \Ob \C$ (der sog. \emph{Kegelspitze}) zusammen mit
+\item jeweils einem Morphismus~$\pi_i : K \to F(i)$ für jedes Objekt~$i \in \Ob\I$,
+\end{enumerate}
+sodass
+für alle Morphismen~$f : i \to j$ in~$\I$ die Dreiecke
+\[ \xymatrix{
+  & K \ar[ld]_{\pi_i} \ar[rd]^{\pi_j} \\
+  F(i) \ar[rr]_{F(f)} && F(j)
+} \]
+kommutieren.
+\end{defn}
+Die Notation etwas missbrauchend werden Kegel oft nur nach ihrer Kegelspitze
+genannt, obwohl die Morphismen~$\pi_i$ mit zum Datum gehören.
+Die Morphismen~$\pi_i$ werden manchmal als Projektionsmorphismen
+bezeichnet, der Grund dafür wird beim ersten Beispiel klar werden.
+
+\begin{defn}Ein \emph{Morphismus von Kegeln $K \to \widetilde K$} eines Diagramms~$F$ besteht aus
+\begin{enumerate}
+\item[] einem Morphismus der Kegelspitzen $\psi : K \to \widetilde K$ in~$\C$
+\end{enumerate}
+sodass
+\begin{enumerate}
+\item[]
+für alle~$i \in \Ob\I$ die Dreiecke
+\[ \xymatrix{
+  K \ar[rr]^{\psi} \ar[rd]_{\pi_i} && \widetilde K \ar[ld]^{\widetilde\pi_i} \\
+  & F(i)
+} \]
+kommutieren.
+\end{enumerate}
+\end{defn}
+Abbildung~\ref{kegel} erklärt die Herkunft des Begriffs "`Kegel"'.
+
+\begin{figure}
+  \[
+    \xymatrix{
+      K \ar@[grey]@{-->}[rrrrr]
+      \ar@[grey][dddr] \ar@[grey][dddrrr] \ar@[grey][dddrrrr] \ar@[grey][ddddrr] &&&&&
+      \widetilde K \ar@[grey][dddl] \ar@[grey][dddll] \ar@[grey][dddllll]
+      \ar@[grey][ddddlll]
+      \\\\\\
+      & F(i) \ar[rr] \ar[rd] && F(j) \ar[r] \ar[ld] & F(\ell) \\
+      & & F(k)
+    }
+  \]
+  \caption{\label{kegel}Zwei Kegel und ein Kegelmorphismus zwischen ihnen.}
+\end{figure}
+
+Kegelmorphismen kann man auf die offensichtliche Art und Weise miteinander
+verketten (einfach die Morphismen der Kegelspitzen verketten). Daher ist es
+sinnvoll, von der \emph{Kategorie der Kegel} zu einem festen
+Diagramm~$F:\I\to\C$ zu sprechen. Terminale Objekte dieser Kategorie haben
+einen besonderen Namen:
+\begin{defn}Ein \emph{Limes} eines Diagramms~$F:\I\to\C$ ist ein terminales
+Objekt in der Kategorie der Kegel zu~$F$.\end{defn}
+Da allgemein terminale Objekte einer Kategorie bis auf eindeutige Isomorphie
+eindeutig sind (siehe Aufgabe~2 von Übungsblatt~2), folgt sofort folgende
+Beobachtung:
+\begin{prop}Limiten sind bis auf eindeutige Isomorphie eindeutig. Die
+Kegelspitzen von Limiten sind zumindest bis auf Isomorphie eindeutig.\end{prop}
+
+Für ein anschauliches Verständnis von Limiten sind zwei Mottos wichtig:
+\begin{motto}Ein Limes eines Diagramms ist ein bestes
+(größtmöglichstes) Objekt, welches das Diagramm zu einem Kegel ergänzt.
+\end{motto}
+\emph{Größtmöglich} ist dabei nicht im wörtlichen Sinn, wie er etwa in der Kategorie
+der Mengen vorstellbar ist, zu interpretieren, sondern nur so zu verstehen,
+als dass jeder andere Kegel
+(Möchtegern-Limes) einen Morphismus in den Limes hinein besitzt.
+
+\begin{motto}\label{limessubsumiert}
+Ein Limes subsumiert das gesamte Diagramm zu einem einzelnen Objekt (der
+Kegelspitze) -- zumindest, was Morphismen in das Diagramm hinein
+angeht.\end{motto}
+Das ist so verstehen: Immer, wenn man einen Morphismus aus einem
+Objekt~$\widetilde K$ "`in das Diagramm hinein"' gegeben hat (d.\,h. einen Kegel des Diagramms
+gegeben hat), induziert die universelle Eigenschaft einen Morphismus
+aus~$\widetilde K$ in den Limes.  Umgekehrt kann man aus jedem solchen
+Morphismus durch Nachschaltung der Projektionen einen Kegel erhalten.
+Dieses Motto werden wir sogar formal beweisen können: siehe
+Proposition~\ref{homstetig}.
+
+
+\subsection{Beispiele für Limiten}
+
+\subsubsection*{Produkte}
+
+Sei speziell~$\I = \mathbf{2}$ die Kategorie mit genau zwei Objekten und nur
+den Iden\-ti\-täts\-mor\-phis\-men:
+\[ \xymatrix{\bullet \ar@(ul,ur) & \bullet \ar@(ul,ur)} \]
+Dann sind Diagramme~$\I \to \C$ einfach durch die Angabe zweier Objekte
+von~$\C$ gegeben. Kegel solcher Diagramme haben wir früher schon untersucht:
+unter dem Namen \emph{Möchtegern-Produkte}. Entsprechend sind Limiten
+solcher Diagramme schlichtweg Produkte.
+
+\subsubsection*{Faserprodukte (Pullbacks)}
+
+Sei speziell~$\I$ die Kategorie
+\[ \xymatrix{
+  & \bullet \ar[d] \ar@(ur,ul) \\
+  \bullet \ar[r] \ar@(ul,dl) & \bullet. \ar@(dr,ur)
+} \]
+Limiten von~$\I$-förmigen Diagrammen werden auch \emph{Faserprodukte} genannt
+und konventionsmäßig gerne als sog. \emph{Faserprodukt-} oder
+\emph{Pullbackdiagramm} skizziert:
+\[ \xymatrix{
+  \ar @{} [dr] |{\begin{array}{l}\lrcorner\ \ \ \ \ \ \ \ \ \\\\\end{array}}
+  X \times_Z Y \ar[r] \ar[d] & Y \ar[d]^g \\
+  X \ar[r]_f & Z
+} \]
+Dabei steht die Kegelspitze des Limes oben links. Der dritte
+Projektionsmorphismus (auf~$Z$) ist nicht eingezeichnet, da er sowieso gleich
+der Komposition des Wegs über~$X$ (oder über~$Y$) sein muss.
+
+In der Kategorie der Mengen kann das Faserprodukt durch die Konstruktion
+\[ X \times_Z Y := \{ (x,y) \in X \times Y \,|\, f(x) = g(y) \} \subseteq X \times Y \]
+gegeben werden.
+
+Man hat zwei vorschiedene Vorstellungen des Faserprodukts, die unterschiedliche
+Aspekte betonen: Zum einen bilden die Objekte~$X$ und~$Y$ die Ausgangsbasis. Dann
+stellt man als Faserprodukt das Objekt~$X \times_Z Y$ vor und sieht es als eine
+Art "`verallgemeinertes Produkt"' an.
+
+Zum anderen kann man sich aber auch den Morphismus~$g$ als Ausgangspunkt
+vorstellen. Als Ergebnis betont man dann nicht das Objekt~$X \times_Z Y$
+alleine, sondern den Morphismus~$X \times_Z Y \to X$. Diesen bezeichnet man
+dann auch als \emph{Rückzug (Pullback)} von~$g$ längs~$f$ oder
+\emph{Basiswechsel} von~$g$ nach~$X$.
+
+\begin{bsp}Sei~$g:Y \to Z$ eine Abbildung von Mengen. Sei~$U \subseteq Y$ eine
+Teilmenge. Dann passt das Urbild~$g^{-1}[U]$ in ein Pullbackdiagramm:
+\[ \xymatrix{
+  \ar @{} [dr] |{\begin{array}{l}\lrcorner\ \ \ \ \ \ \ \ \ \\\\\end{array}}
+  g^{-1}[U] \ar@{^{(}->}[r] \ar[d] & Y \ar[d]^f \\
+  U \ar@{^{(}->}[r] & Z
+} \]
+\end{bsp}
+Dieser Standpunkt wird unter anderem in der algebraischen Geometrie verwendet. Da
+sind dann \emph{Stabilitätsaussagen} wichtig: Hat ein Morphismus eine bestimmte
+Eigenschaft, so hat sein Rückzug längs Morphismen einer bestimmten Klasse
+dieselbe Eigenschaft.
+
+\begin{bsp}Sei ein Pullbackdiagramm der Form
+\[ \xymatrix{
+  \ar @{} [dr] |{\begin{array}{l}\lrcorner\ \ \ \ \ \ \ \ \ \\\\\end{array}}
+  X \times_Z Y \ar[r]^{f'} \ar[d]_{g'} & Y \ar[d]^g \\
+  X \ar[r]_f & Z
+} \]
+in einer beliebigen Kategorie gegeben. Wenn~$g$ ein Monomorphismus ist, dann auch~$g'$.
+Man sagt: \emph{Monomorphismen sind unter Rückzug stabil.}
+\end{bsp}
+\begin{bem}Es ist etwas besonderes, wenn auch Epimorphismen unter Rückzug
+stabil sind. Das ist etwa in der Kategorie der Mengen und allen abelschen
+Kategorien der Fall.\end{bem}
+
+
+\subsection{Kofinale Unterdiagramme}
+
+\begin{defn}
+Wir nennen einen Funktor $H : \D_0 \to \D$ genau dann \emph{kofinal}, wenn
+für alle~$d \in \Ob\D$\ldots
+\begin{enumerate}
+\item[1.] ein Objekt $d_0 \in \Ob\D_0$ und ein Morphismus $d \to
+H(d_0)$ in~$\D$ existiert und
+\item[2.] für je zwei solcher Morphismen ein Objekt~$\widetilde d_0 \in \Ob\D_0$ und
+Morphismen $d_0 \to \widetilde d_0$, $d_0' \to \widetilde d_0$ existieren, deren Bilder
+unter~$H$ das Diagramm
+\[ \xymatrix{
+  d_0 \ar[r] \ar[d] & H(d_0) \ar@{-->}[d] \\
+  H(d_0') \ar@{-->}[r] & H(\widetilde d_0)
+} \]
+kommutieren lassen.
+\end{enumerate}
+\end{defn}
+
+Etwa ist der Inklusionsfunktor~$B (2\NN) \to B(\NN)$ kofinal, wenn~$\NN$ die
+Menge der natürlichen Zahlen mit ihrer gewöhnlichen Ordnung und~$2\NN$ die
+Teilordnung der geraden Zahlen bezeichnet.
 
 \section[Das Yoneda-Lemma]{Das Yoneda-Lemma \hfill \small Justin Gassner}
 
@@ -1246,12 +1442,515 @@ Prägarben hat. Dann können wir die Yoneda-Einbettung kennenlernen, ihre
 Eigenschaften studieren und sehen, wozu sie nützlich ist. Das fundamentale
 Motto der Kategorientheorie wird damit zu einem formalen Theorem.
 
+Sei in diesem Abschnitt~$\C$ eine lokal kleine Kategorie.
+
+\begin{defn}Funktoren~$\C^\op \to \Set$ heißen auch \emph{Prägarben
+auf~$\C$}. Die Kategorie der Prägarben auf~$\C$ (mit natürlichen
+Transformationen als Morphismen) ist~$\widehat\C := \Funct(\C^\op,\Set)$.
+\end{defn}
+
+\begin{defn}Eine Prägarbe~$F:\C^\op\to\Set$ auf~$\C$ heißt genau dann
+\emph{darstellbar}, wenn es ein Objekt~$X \in \Ob\C$ mit $F \cong
+\Hom_\C(\freist,X)$ gibt.\end{defn}
+
+\begin{motto}Eine beliebige (nicht unbedingt darstellbare) Prägarbe~$F$
+auf~$\C$ beschreibt die Beziehungen aller Objekte~$A$ von~$\C$ mit einem
+eingebildeten, fiktiven, ideellen Objekt~$\heartsuit$: Wir stellen uns die
+Menge~$F(A)$ als Menge der Morphismen~$A \to \heartsuit$ vor.\end{motto}
+
+Die Prägarbenkategorie~$\hat\C$ enthält stets mindestens eine
+nicht-darstellbare Prägarbe, und zwar die initiale Prägarbe
+\[ \begin{array}{@{}rrcl@{}}
+  0 : & \C^\op &\longrightarrow& \Set \\
+  & A &\longmapsto& \emptyset \\
+  & f &\longmapsto& \id_\emptyset.
+\end{array} \]
+\begin{prop}Die initiale Prägarbe ist nicht darstellbar.\end{prop}
+\begin{proof}Sei~$0 \cong \Hom_\C(\freist,X)$ für ein Objekt~$X\in\Ob\C$.
+Dann folgt~$\Hom_\C(X,X) \cong 0(X) = \emptyset$ im Widerspruch zu
+$\id_X \in \Hom_\C(X,X)$.\end{proof}
+
+Der volle Hom-Funktor geht von~$\C^\op \times \C$ zu~$\Set$. Aus diesem kann
+man durch Curryfizierung einen Funktor~$\C \to \Funct(\C^\op,\Set)$ basteln:
+\[ \begin{array}{@{}rrcl@{}}
+  Y : & \C &\longrightarrow& \widehat\C \\
+  & X &\longmapsto& \widehat X := \Hom_\C(\freist,X) \\
+  & f &\longmapsto& \widehat f
+\end{array} \]
+Die Komponenten der natürlichen Transformation~$\widehat f$ sind dabei
+für~$f: X \to Y$ durch
+\[ \begin{array}{@{}rrcl@{}}
+  (\widehat f)_A : & \Hom_\C(A,X) &\longrightarrow& \Hom_\C(A,Y) \\
+  & g &\longmapsto& f \circ g
+\end{array} \]
+gegeben.
+
+\begin{defn}Der Funktor~$Y:\C\to\widehat\C$ heißt \emph{Yoneda-Einbettung}
+von~$\C$.\end{defn}
+
+Die Yoneda-Einbettung hat folgende wichtige Eigenschaften:
+\begin{prop}\begin{enumerate}
+\item $Y$ ist treu und voll.
+\item $Y$ erhält Limiten (aber kaum Kolimiten).
+\item $Y$ ist dicht (siehe Aufgabe~2 von Übungsblatt~6).
+\end{enumerate}\end{prop}
+Vermöge~$Y$ können wir~$\C$ also als volle Unterkategorie der Kategorie der
+fiktiven, ideellen Objekte ansehen.
+
 
 \section[Adjungierte Funktoren]{Adjungierte Funktoren \hfill \small Peter
 Uebele}
 
-\emph{Werbung:} Kommt noch!
+% XXX: adjungierte Funktoren in der Logik!
 
+
+%Erinnerung: Äquivalenz von Kategorien $\cC, \cD$:\\
+%$\exists F:\cD\rightarrow \cC$, $G:\cC\rightarrow \cD$ inverse Funktoren, d.h.
+%$F\circ G\cong id_\cC$ und $G\circ G\cong id_\cD$
+
+%\paragraph{Idee:} Hin- und herschieben von Morphismen zwischen $\cC, \cD$.\\
+%$\rightsquigarrow$ Verallgemeinerung, s.d. $\cC,\cD$ nicht mehr äquivalent sein
+%müssen.
+\begin{defn}
+Seien $F:\D\to\C$, $G:\C\to\D$ Funktoren. Genau dann heißt
+\begin{itemize}
+\item 
+$F$ \emph{links-adjungiert zu} $G$ bzw.
+\item 
+$G$ \emph{rechts-adjungiert zu} $F$,
+\end{itemize}
+in Zeichen: $F \dashv G$, wenn es eine in~$X \in \C$ und~$Y \in \D$ natürliche
+Isomorphie
+\[ \Hom_\C(FY,X) \cong \Hom_\D(Y,GX) \]
+gibt.
+\end{defn}
+Dabei ist \emph{natürlich} gemäß Bemerkung~\ref{interpretnat} zu verstehen:
+Linke und rechte Seiten der Isomorphie sind als Funktoren
+\[ \begin{array}{@{}rrcl@{}}
+  \Hom_\C(F\freist,\freist) :&
+    \D^\op \times \C &\longrightarrow& \Set \\
+  & (Y,X) &\longmapsto& \Hom_\C(FY, X) \\\\
+  \Hom_\D(\freist,G\freist) :&
+    \D^\op \times \C &\longrightarrow& \Set \\
+  & (Y,X) &\longmapsto& \Hom_\D(Y, GX)
+\end{array} \]
+zu verstehen. Die Natürlichkeitsbedingung bedeutet dann, dass
+für alle Morphismen $f:X\rightarrow X'$ in~$\C$ und
+$g:Y'\rightarrow Y$ in~$\D$ das Diagramm
+\[ \xymatrix{
+  \Hom_\C(FY,X) \ar[d]_\cong \ar[r] & \Hom_\C(FY',X') \ar[d]^\cong \\
+  \Hom_\D(Y,GX) \ar[r] & \Hom_\D(Y',GX')
+} \]
+kommutiert.
+
+
+\nocite{*}
+\printbibliography
+
+\end{document}
+\begin{tikzpicture} [scale=3.3, descr/.style={fill=white,inner sep=2.5pt} ]
+\matrix (m) [
+  matrix of math nodes
+  , row sep=3em
+  , column sep=3em
+  %, text height=3em
+  %, text depth=0.25em
+]
+{
+  \Hom_\cC(FY,X)   & \cong & \Hom_\cC(Y,GX)   & \phi\\
+  \Hom_\cC(FY',X') & \cong & \Hom_\cC(Y',GX') & Gf\circ\phi\circ g\\
+};
+\path[->,font=\scriptsize,>=angle 90]
+(m-1-1) edge node[right]{$\Hom(Fg,f)$} (m-2-1)
+(m-1-3) edge node[left]{$\Hom(g,Gf)$} (m-2-3)
+;
+
+\path[>=stealth,|->]
+(m-1-4) edge (m-2-4)
+;
+\end{tikzpicture}
+\end{center}
+kommutiert.
+
+\end{document}
+\begin{exmp}
+$k$ Körper, $Vect_k \overset{U}{\rightarrow}Set$ Vergissfunktor\\
+$Set\underset{F}{\rightarrow Vekt_k}$ \emph{freier Funktor}
+$\underset{\mbox{Menge}}{X}\mapsto FX=\{\sum_{n=1}^N\lambda_ix_i\}$ endli.
+Linearkombination von Elementen aus $X$. $S$ ist Basis von $FX$.\\
+\[
+(X\overset{f}{\rightarrow}X')\mapsto Ff
+\]
+wobei $Ff$ eine lineare Abbildung ist, die durch $x_i\mapsto f(x_i)$ gegeben
+ist.
+\[Ff(\sum^{N}_{i=1}{\lambda_ix_i})=\sum^{N}_{i=1}{\lambda_i}f(x_i)\]
+\end{exmp}
+\paragraph{Beh:} $F\dashv U$
+\begin{proof}
+\[
+\Hom_\cC(FY,V)  \overset{?}{\cong} \Hom_\cC(Y,UV)
+\]
+wobei 
+\begin{itemize}
+\item $\Hom_\cC(FY,V)\bydef\{\mbox{lin. Abb }FY\rightarrow V\}$
+\item $\Hom_\cC(Y,UV)\bydef\{\mbox{bel. Abb. }Y\rightarrow V\}\ni \phi$
+\end{itemize}
+\[
+\phi \mapsto \big( \sum^{N}_{i=1}{\lambda_iy_i}\mapsto
+\sum^{N}_{i=1}{\lambda_i\phi(y_i)} \big)
+\]
+bijektiv, da jede lineare Abbildung eindeutig durch die Basis festgelegt ist.
+
+Natürlich in $Y$ und $V$: $f:V\mapsto V'$ und $g:Y\mapsto Y'$
+\begin{center}
+\begin{tikzpicture} [scale=3.3, descr/.style={fill=white,inner sep=2.5pt} ]
+\matrix (m) [
+  matrix of math nodes
+  , row sep=3em
+  , column sep=2em
+  %, text height=3em
+  %, text depth=0.25em
+]
+{
+  \big(\lambda_iy_i\mapsto\sum\lambda_i\phi(y_i)\big) & & & & \phi\\
+  & \Hom_\cC(FY,V)   & \cong & \Hom_\cC(Y,UV)   & \\
+  & \Hom_\cC(FY',V') & \cong & \Hom_\cC(Y',UV') & \\
+  \big( \sum\lambda_iy_i'\mapsto\sum\lambda_if(\phi(g(y_i')))
+    \big)& & & & Uf\circ\phi\circ g\\
+};
+\path[->,font=\scriptsize,>=angle 90]
+(m-2-2) edge node[right]{$\Hom(Fg,f)$} (m-3-2)
+(m-2-4) edge node[left]{$\Hom(g,Gf)$} (m-3-4)
+;
+
+\path[>=stealth,|->]
+(m-1-5) edge (m-1-1) 
+(m-1-5) edge (m-4-5)
+(m-1-1) edge (m-4-1)
+(m-4-5) edge (m-4-1) 
+;
+\end{tikzpicture}
+\end{center}
+\end{proof}
+
+\begin{exmp}
+\[
+U:Cat \rightarrow Set
+\]
+\begin{align*}
+L: & Set \rightarrow Kat\\
+  & X \mapsto \mbox{diskrete Kategorie auf $X$ (d.h. nur
+Identitätsmorphismen)}\\
+R: & Set \rightarrow Cat\\
+  & X \mapsto \mbox{indiskrete Kategorie auf $X$(d.h. zwischen je zwei
+Objekten genau ein Morphismus)}
+\end{align*}
+\paragraph{Beh:}
+\begin{enumerate}
+\item $L\dashv U$
+\item $U\dashv R$
+\end{enumerate}
+\paragraph{zu 1.} $C=Cat$, $D=Set$
+$\Hom_{Cat}(LX,\cC)\cong\Hom_{Set}(X,U\cC)$
+wobei
+\begin{itemize}
+\item 
+$\Hom_{Cat}(LX,\cC)\bydef\{\mbox{Funktoren }LX\rightarrow \cC \}$
+\item 
+$\Hom_{Set}(X,U\cC)\bydef\{\mbox{Abbildungen } X\rightarrow Obj(\cC)\}$
+\end{itemize}
+\paragraph{zu 2.}
+$\Hom_{Set}(U\cC,X)\cong\Hom_{Cat}(\cC,RX)$
+wobei
+\begin{itemize}
+\item 
+$\Hom_{Set}(U\cC,X)\bydef\{\mbox{Abbildungen } Obj(\cC)\rightarrow X\}$
+\item 
+$\Hom_{Cat}(\cC,RX)\bydef\{\mbox{Funktoren }\cC\rightarrow RX \}$
+\end{itemize}
+bijektiv, da Morphismen in $RX$ durch Quelle und Ziel eindeutig bestimmt
+\end{exmp}
+\begin{thm}
+$F:\cC\rightarrow\cD$ links-adjungiert zu $G:\cD\rightarrow\cD$, dann gilt:
+\begin{itemize}
+\item $F$ erhält Kolimiten von $D$
+\item $G$ erhält Limiten von $C$
+\end{itemize}
+\end{thm}
+\paragraph{Folgerung:}
+\begin{itemize}
+\item $U:Vect_k\rightarrow Set$ erhält Limiten, aber nicht Kolimiten und hat
+somit keine rechts-adjungierte Funktoren
+\item $U:Cat \rightarrow Set$ erhält Limiten und Kolimiten
+\end{itemize}
+\begin{proof}
+Sei $I\overset{D}{\rightarrow}\cD$ ein Diagramm, mit Limes
+$\underset{I}{\underleftarrow\lim}D$.
+\begin{align*}
+\Hom_\cD(Y,G\underset{I}{\underleftarrow\lim}D_i)
+  &\cong \Hom_\cC(FY,\underset{I}{\underleftarrow\lim}D_i)\\
+  &\cong \underset{I}{\underleftarrow\lim}\Hom_\cC(FY,D_i)\\
+  &\cong \underset{I}{\underleftarrow\lim}\Hom_\cD(Y,GD_i)\\
+  &\cong \Hom_\cD(Y,\underset{I}{\underleftarrow\lim}GD_i)\\
+\end{align*}
+$\rightsquigarrow$ Natürlich in $Y$
+$\overset{\mbox{Yoneda Lemma}}{\rightsquigarrow}$
+$G\underset{I}{\underleftarrow\lim}D_i\cong
+\underset{I}{\underleftarrow\lim}GD_i$.
+\end{proof}
+\begin{exmp}
+$\cC=Grp$, $\cD=Grp^2=Grp\times Grp$
+\begin{align*}
+F: & Grp^2\rightarrow Grp &\mbox{Produktfunktor}\\
+  & (G_1,G_2) \mapsto G_1\times G_2\\
+G: & Grp \rightarrow Grp^2 &\mbox{Diagonalfunktor}\\
+  & G \mapsto (G,G)
+\end{align*}
+\paragraph{Beh:} $F\vdash G$
+\[
+\Hom_{Grp^2}((G,G),(H_1,H_2))\cong \Hom_{Grp}(G,H_1\times H_2)
+\]
+wobei
+\begin{itemize}
+\item $\Hom_{Grp^2}((G,G),(H_1,H_2))=\{\mbox{Gruppen-Homomorphismen}\}$
+\item $ \Hom_{Grp}(G,H_1\times H_2) =\{G\rightarrow H_1\times H_2 \mbox{
+Gruppen-Homomorphismen}\}$
+\end{itemize}
+\end{exmp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{ Kombinatorische Spezies }
+
+Was wollen Kombinatoriker?
+$\rightsquigarrow$ Strukturen Zählen\\
+\begin{exmp}
+Auf wieviele Arten kann man $n$ bunte Steine auf einer Schildkröte
+verteilen?
+\end{exmp}
+\paragraph{Modellierung}
+\begin{itemize}
+\item Wir haben eine \emph{Struktur}
+\item die von \emph{Grundelementen} abhängt
+\end{itemize}
+\paragraph{ad 2)}: Es kommt nicht darauf an, ob steine, Zahlen, etc. entscheidend ist nur
+ihre Anzahl.
+\begin{defn}
+Kategorie $\cB$:
+\begin{itemize}
+\item $Obj \cB=$ endliche Mengen
+\item $Morph \cB=$ Bijektive Abbildungen
+\end{itemize}
+\end{defn}
+\paragraph{ad 1):} Kategorie von \emph{Strukturen} (nicht so wichtig, muss
+reihhaltig genug sein)\\
+zB.: \underline{FinSet}, $\cB$
+\paragraph{Abhängigkeit der Struktur von $\cB$} $\rightsquigarrow$ Funktor
+\begin{defn}
+Eine \emph{kombinatorische Spezies} ist ein Funktor $\cF:\cB\rightarrow\FinSet$
+\end{defn}
+\begin{exmp}
+\begin{itemize}
+\item Spezies der zyklischen Ordnungen
+\begin{align*}
+\mathcal{C}yc: &A \mapsto \{ a\rightarrow b\rightarrow\dots\rightarrow a\mid A=\{a,b,\dots\}\}
+\end{align*}
+\item Spezies $\mathcal{S}eq_k$ mit $k\in\N$
+\begin{align*}
+\mathcal{S}eq_k: A\mapsto \{\underset{k}{\underbrace{ \underbracket{a}\,\,\,
+\underbracket{b,c}\,\,\,\dots }}\mid A=\{a,b,c,\dots\} \}
+\end{align*}
+\end{itemize}
+\end{exmp}
+Kombinatoriker wollen die Anzahl von Strukturen in der Abhängigkeit von der
+Anzhal der Elemente in $A$ zählen
+\begin{itemize}
+\item Zu einer Spezies $\cF$ definiere $f_n:=|\cF(\{1,\dots,b\})|$ und
+(exponentiell) \emph{erzeugende Funktionen}
+\[
+F=\sum_{n\geq0}f_n\cdot\frac{x^n}{n!}=f_0+f_1x+\frac{1}{2}f_2x^2
+  +\frac{1}{6}f_3x^3+\dots
+\]
+\end{itemize}
+\begin{exmp}
+\begin{itemize}
+\item zu $\mathcal{C}yc$
+\begin{align*}
+cyc_n=\frac{n!}{n}=(n-1)! \,, n\geq 1& & cyc_0=0
+\end{align*}
+Erzeugende Funktionen 
+\[
+Cyc=\sum_{n\geq
+1}\frac{(n-1)!}{n!}x^n)=x+\frac{x^2}{2}+\frac{x^3}{3}+\dots=-ln(1-x)
+\]
+\item zu $\mathcal{S}eq_k$
+\begin{align*}
+2bsp_n=k^n\\
+2Bsp=\sum_{n\geq0}\frac{k^n}{n!}x^n=\exp(kx)
+\end{align*}
+\end{itemize}
+\end{exmp}
+\begin{exmp}
+\begin{itemize}
+\item $\mathcal{X}$: Spezies der Einelementigen Menge
+\[
+\mathcal{X}: A\mapsto \begin{cases}
+\{\star\} & ,\mbox{falls }|A|=1\\
+\emptyset & ,\mbox{sonst}
+\end{cases}
+\]
+$X=x$
+\item $\textbf 1$: Spezies der $0$-elementigen Menge
+\[
+\textbf 1:A\mapsto \begin{cases}
+\{\star\} & ,\mbox{falls }A=\emptyset\\
+\emptyset & ,\mbox{sonst}
+\end{cases}
+\]
+$1=1$
+\item $\sE$: Spezies der Menge
+\[
+\sE:A\mapsto A
+\]
+$e_0=1$, $e_1=1$, $e_2=1$ $\dots$
+\[
+E=1\frac{x^0}{0!}+1\frac{x}{1!}+1\frac{x^2}{2!}+\dots=1+x+\frac{x^2}{2}+\dots
+  =\exp(x)
+\]
+\item $\mathcal{P}erm=$ Spezies der Permmutationen\\
+$perm_0=1$, $perm_1=1$, $perm_n=n!$\\
+\[
+Perm=\sum_{n\geq0}\frac{n!}{n!}x^n=\frac{1}{1-x}
+\]
+\end{itemize}
+\end{exmp}
+\begin{bem}
+Erzeugende Funktionen kann man addieren, malnehmen, ineinander einsetzen, \dots
+\end{bem}
+$\rightsquigarrow$ was bedeutet das für Spezies?
+\paragraph{zu $+$}
+\begin{align*}
++: &\mbox{Disjukte Vereinigung von Spezies}\\
+\cF+\cG: &A\mapsto \cF(A)\amalg \cG(A)
+\end{align*}
+$\cE^+$: Spezies der nichtleeren Mengen
+\[
+\cE = 1+ \sE^+
+\]
+%TODO: hier fehlt erklärung
+% ist entweder leer oder nicht leer
+und deshalb: $E^+=\exp(x)-1$
+\paragraph{zu $\cdot$}
+\begin{align*}
+\cdot: &\mbox{Paarbildung}\\
+\end{align*}
+erzeugende Funktionen: 
+\begin{align*}
+\sum_{n\geq 0}f_n\frac{x^n}{n!}\sum_{n>0}g_n\frac{x^n}{n!} 
+  &=\sum_{n\geq 0}\big( \sum_{k+l=n}\frac{n!}{k!l!}f_kg_l \big) \frac{x^n}{n!}
+& (Cauchy-Produkt)
+\end{align*}
+\[
+\cF\cdot\cG:A\mapsto \coprod_{B\dot\amalg C}\cF(B)\times \cG(C)
+\]
+lies als \emph{und}
+\begin{exmp}
+Injektionen von $\{1,\dots,4\}$ nach $A$:\\
+Injektion = Bijektiong aufs Bild \underline{und} Rest
+\[
+\mathcal{I}nj_4=\mathcal{P}erm_4\cdot\sE
+\]
+\[
+\,^4Inj=\frac{4!x^4}{4!}\cdot\exp(x)
+\]
+\end{exmp}
+\begin{exmp}
+Fixpunktfreie Permutationen $\mathcal{D}er$
+\[
+\mathcal{P}erm = \sE \cdot \mathcal{D}er
+\]
+$\frac{1}{1-x}=exp(x)Der$ $\Rightarrow$ $Der=\frac{exp(-x)}{1-x}$
+\end{exmp}
+\paragraph{zu Spezies einsetzen}
+$\cF(\cG)$ lies als \emph{von}
+\begin{exmp}
+Partitionen (=Zerlegungen) einer Menge\\
+eine Zerlegung ist eine Menge von (Uner-) nicht leeren Mengen
+\[
+\mathcal{P}art=\sE(\sE^+)
+\]
+und die Erzeugende Funktion
+\[
+Part=\exp(\exp(x)-1)
+\]
+\end{exmp}
+\begin{exmp}[Binäre Bäume]
+\begin{center}
+\begin{tikzpicture} [scale=3.3, descr/.style={fill=white,inner sep=2.5pt} ]
+\matrix (m) [
+  matrix of math nodes
+  , row sep=3em
+  , column sep=2em
+  %, text height=3em
+  %, text depth=0.25em
+]
+{
+   &  &         &         & \textcolor{red}{\bullet}\\
+   &  &         & \textcolor{blue}{\bullet} &            &
+\textcolor{green}{\bullet} \\
+   &  & \textcolor{orange}{\bullet} &         & \textcolor{purple}{\bullet} \\
+   &  &         & \textcolor{brown}{\bullet} &            &
+\textcolor{pink}{\bullet} \\
+};
+\path
+(m-1-5) edge (m-2-6)
+(m-1-5) edge (m-2-4)
+(m-2-4) edge (m-3-5)
+(m-2-4) edge (m-3-3)
+(m-3-5) edge (m-4-6)
+(m-3-5) edge (m-4-4)
+;
+\end{tikzpicture}
+\end{center}
+\[
+\mathcal{B}in\mathcal{T}ree= X + X\cdot \mathcal{B}in\mathcal{T}ree \cdot
+\mathcal{B}in\mathcal{T}ree
+\]
+erzeugende Funktionen
+$BT=X+X\cdot BT^2$ und damit
+\begin{align*}
+X\cdot BT^2-BT+X&= 0\\
+BT &= \frac{1}{2x}(1-\sqrt(1^2-4x^2))
+\end{align*}
+
+\end{exmp}
+Weiterführende Literatur:
+\begin{itemize}
+\item Sedgewick / Flajolet: Analytic Combinatorics
+\end{itemize}
+\paragraph{Was macht man, wenn man die Farben nicht unterscheidet?}
+\begin{align*}
+\cB': &Obj=\mbox{endl. Mengen}\\
+  &Morph: \Hom(A,B)= \begin{cases}
+\{\star\} & ,\mbox{falls }|A|=|B|\\
+\emptyset & ,\mbox{sonst}
+\end{cases}
+\end{align*}
+Erzeugende Funktionen; $F'=\sum_{n\geq0}f_n\frac{x^n}{1}$ \emph{gewöhnliche
+erzeugende Funktionen}\\
+\begin{itemize}
+\item $+, \cdot$: interpretation wie bisher
+\item einsetzen: geht nicht gut
+\end{itemize}
+\begin{exmp}
+Spezies der Karnickel (nach Fibonacci)\\
+Wollen die Anzahl der Möglichkeiten für Karnickel nach $n$ Jahren, wenn am
+Anfang $1$ vorhanden ist
+\[
+\mathcal{K}=1+K\cdot \overbox{X}{1 Jahr warten} + K\cdot \overbox{X^2}{2 Jahre}
+\]
+$K=1+xK+x^2K$\\
+$\Rightarrow$ $K=\frac{1}{1-x-x^2}$
+\end{exmp}
 
 \section[Kombinatorische Spezies]{Kombinatorische Spezies \hfill \small
 Simon Kapfer}
