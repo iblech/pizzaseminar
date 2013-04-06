@@ -1,0 +1,52 @@
+\documentclass{pizzablatt}
+
+\begin{document}
+
+\maketitle{7}{4. April 2013}
+
+\begin{aufgabe}{Auf- und Abrundung}
+Wir betrachten die drei monotonen Abbildungen
+\[ \begin{array}{@{}rrclrcl@{}}
+  \lceil\freist\rceil: & \QQ &\longrightarrow& \ZZ, &
+  x &\longmapsto& \text{Aufrundung von~$x$ := (kleinste ganze Zahl~$\geq x$)} \\
+  i: & \ZZ &\longrightarrow& \QQ, &
+  z &\longmapsto& z \\
+  \lfloor\freist\rfloor: & \QQ &\longrightarrow& \ZZ, &
+  x &\longmapsto& \text{Abrundung von~$x$ := (größte ganze Zahl~$\leq x$)}
+\end{array} \]
+und ihre gemäß Aufgabe~2 von Übungsblatt~3 induzierten Funktoren
+\[ \xymatrixcolsep{7pc}\xymatrix{
+  B\QQ
+    \ar@/^1.4pc/[r]^{B\lceil\freist\rceil}
+    \ar@/_1.4pc/[r]_{B\lfloor\freist\rfloor}
+  & B\ZZ. \ar[l]^{Bi}
+} \]
+\begin{enumerate}
+\item Mache dir klar, dass für alle~$x \in \QQ$ und~$y \in \ZZ$ gilt:
+\[ \lceil x \rceil \leq y \quad\Longleftrightarrow\quad
+  x \leq i(y). \]
+Welche analoge Beziehung gilt zwischen~$i$ und~$\lfloor\freist\rfloor$?
+\item Zeige: $B\lceil\freist\rceil \dashv Bi \dashv B\lfloor\freist\rfloor$.
+\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}{Freie Monoide}
+Ein \emph{Monoid} besteht aus einer Menge~$M$, einer assoziativen
+zweistelligen Verknüpfung~$\circ$ und einem neutralen Element~$e$; Monoiden
+darf es also anders als Gruppen an Inversen fehlen. Monoidhomomorphismen müssen
+die Verknüpfung und das neutrale Element bewahren.
+\begin{enumerate}
+\item
+Sei~$X$ eine Menge. Ein \emph{Wort} über~$X$ ist eine endliche Folge von
+Elementen aus~$X$. Wir haben keine Angst vor dem leeren Wort. Wie wird die
+Menge~$F(X)$ der Wörter über~$X$ zu einem Monoid?
+\item Ergänze die Konstruktion aus~a) zu einem Funktor der Kategorie der
+Monoide in die Kategorie der Mengen.
+\item Zeige, dass der so gebastelte Funktor linksadjungiert zum Vergissfunktor
+ist.
+\end{enumerate}
+\end{aufgabe}
+
+\emph{Eine weitere Aufgabe kommt später online.}
+
+\end{document}
