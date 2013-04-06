@@ -1410,6 +1410,29 @@ stabil sind. Das ist etwa in der Kategorie der Mengen und allen abelschen
 Kategorien der Fall.\end{bem}
 
 
+\subsection{Limiten in Funktorkategorien}
+
+In diesem Abschnitt wollen wir untersuchen, wie Limiten in
+Funktorkategorien~$\Funct(\C,\D)$ aussehen. Sei dazu ein Diagramm
+\[ F : \I \longrightarrow \Funct(\C,\D) \]
+gegeben. Durch "`Nachschaltung der Evaluierungsfunktoren"' erhält man aus
+diesem Diagramm für jedes Objekt~$X \in \Ob\C$ jeweils ein Diagramm in~$\D$:
+\[ \begin{array}{@{}rrcl@{}}
+  F_X : & \I &\longrightarrow& \D \\
+  & i &\longmapsto& F(i)(X)
+\end{array} \]
+Wenn wir voraussetzen, dass all diese Diagramme jeweils einen Limes~$\lim F_X$ in~$\D$
+besitzen, können wir (wie in Aufgabe~4 von Übungsblatt~3) einen Funktor
+\[ \begin{array}{@{}rrcl@{}}
+  L : & \C &\longrightarrow& \D \\
+  & X &\longmapsto& \lim F_X
+\end{array} \]
+basteln. Dann hat man folgende Beobachtung:
+\begin{prop}
+Der so konstruierte Funktor~$L$ wird (mit welchen Projektionen?) ein Limes des Diagramms~$F$.
+\end{prop}
+
+
 \subsection{Kofinale Unterdiagramme}
 
 \begin{defn}
