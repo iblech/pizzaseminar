@@ -7,7 +7,7 @@
 \begin{aufgabe}{Das Yoneda-Lemma}
 Sei~$\C$ eine lokal kleine Kategorie und~$\widehat \C := \Funct(\C^\op,\Set)$
 ihre Prägarbenkategorie. Wir wollen in mehreren Schritten das \emph{Yoneda-Lemma}
-beweisen, demnach wir eine in~$X \in \Ob \C$ und~$F \in \widehat \C$
+beweisen, demnach wir eine in~$X \in \Ob \C$ und~$F \in \Ob \widehat \C$
 natürliche Bijektion
 \begin{equation}\label{bij}\Hom_{\widehat\C}(\Hom_\C(\freist, X), F) \cong F(X)
 \end{equation}
@@ -38,7 +38,23 @@ Morphismen wirken, und zeige, dass sie zueinander isomorph sind.
 \end{enumerate}
 \end{aufgabe}
 
-\textbf{Hier fehlen noch weitere und interessante Aufgaben. Werden
-nachgereicht!}
+\begin{aufgabe}{Dichtheit der Yoneda-Einbettung}
+Sei~$F:\C\to\D$ ein Funktor. Dann wird jedes Objekt~$Y \in \Ob\D$ auf
+kanonische Art und Weise (welche?) zu einem Kokegel des Diagramms
+\[ F/Y \longrightarrow \C \stackrel{F}{\longrightarrow} \D. \]
+Der Funktor~$F$ heißt genau dann \emph{dicht}, wenn diese Kokegel sogar
+Kolimiten sind. Die Kategorie~$F/Y$ ist dabei folgende \emph{Kommakategorie}:
+\begin{align*}
+  \text{Objekte: } & \text{alle Morphismen $F(X) \xra{p} Y$ in~$\D$, $X \in \Ob\C$} \\
+  \text{Morphismen: } &
+    \Hom(F(X) \xra{p} Y, F(\widetilde X) \xra{\tilde p} Y) := \\ &
+      \quad\left\{ X \xra{f} \widetilde X \,\middle|\, \text{$
+        \vcenter{\xymatrix{
+          F(X) \ar[rr]^{F(f)} \ar[rd]_p && F(\widetilde X) \ar[dl]^{\tilde p} \\
+          & Y
+        }}$ kommutiert} \right\}
+\end{align*}
+Zeige: Die Yoneda-Einbettung~$\C \to \widehat\C$ ist dicht.
+\end{aufgabe}
 
 \end{document}
