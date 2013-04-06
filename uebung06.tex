@@ -38,23 +38,53 @@ Morphismen wirken, und zeige, dass sie zueinander isomorph sind.
 \end{enumerate}
 \end{aufgabe}
 
+\begin{aufgabe}{Cayley-Einbettung}
+Der Satz von Cayley aus der Gruppentheorie besagt, dass sich jede Gruppe~$G$ in
+eine symmetrische Gruppe (der Gruppe der Bijektionen einer bestimmten Menge)
+einbetten lässt. Genauer gibt es stets folgenden injektiven
+Gruppenhomomorphismus:
+\[ \begin{array}{@{}rcl@{}}
+  G &\longrightarrow& \operatorname{Sym}(G) := \{ \varphi : G \to G \,|\,
+  \text{$\varphi$ bijektiv} \} \\
+  g &\longmapsto& g \circ \freist
+\end{array} \]
+
+Vergleiche diese Einbettung mit der Yoneda-Einbettung für~$\C := BG$.
+Erinnere dich dazu daran, wodurch Funktoren~$(BG)^\op \to \Set$ schon gegeben
+sind.
+\end{aufgabe}
+
+\emph{Bitte wenden!}
+
+\newpage
+
 \begin{aufgabe}{Dichtheit der Yoneda-Einbettung}
-Sei~$F:\C\to\D$ ein Funktor. Dann wird jedes Objekt~$Y \in \Ob\D$ auf
+Sei~$H:\C\to\D$ ein Funktor. Dann wird jedes Objekt~$Y \in \Ob\D$ auf
 kanonische Art und Weise (welche?) zu einem Kokegel des Diagramms
-\[ F/Y \longrightarrow \C \stackrel{F}{\longrightarrow} \D. \]
-Der Funktor~$F$ heißt genau dann \emph{dicht}, wenn diese Kokegel sogar
-Kolimiten sind. Die Kategorie~$F/Y$ ist dabei folgende \emph{Kommakategorie}:
+\[ H/Y \stackrel{U}{\longrightarrow} \C \stackrel{H}{\longrightarrow} \D. \]
+Der Funktor~$H$ heißt genau dann \emph{dicht}, wenn diese Kokegel sogar
+Kolimiten sind. Die Kategorie~$H/Y$ ist dabei die sog. \emph{Kommakategorie}
 \begin{align*}
-  \text{Objekte: } & \text{alle Morphismen $F(X) \xra{p} Y$ in~$\D$, $X \in \Ob\C$} \\
+  \text{Objekte: } & \text{alle Morphismen $H(X) \xra{p} Y$ in~$\D$, $X \in \Ob\C$} \\
   \text{Morphismen: } &
-    \Hom(F(X) \xra{p} Y, F(\widetilde X) \xra{\tilde p} Y) := \\ &
+    \Hom(H(X) \xra{p} Y, H(\widetilde X) \xra{\tilde p} Y) := \\ &
       \quad\left\{ X \xra{f} \widetilde X \,\middle|\, \text{$
         \vcenter{\xymatrix{
-          F(X) \ar[rr]^{F(f)} \ar[rd]_p && F(\widetilde X) \ar[dl]^{\tilde p} \\
+          H(X) \ar[rr]^{H(f)} \ar[rd]_p && H(\widetilde X) \ar[dl]^{\tilde p} \\
           & Y
-        }}$ kommutiert} \right\}
+        }}$ kommutiert} \right\}\!,
 \end{align*}
+und der Funktor~$U : H/Y \to \C$ der Vergissfunktor
+\[ \begin{array}{@{}rrcl@{}}
+  U : & H/Y &\longrightarrow& \C \\
+  & (H(X) \xra{p} Y) &\longmapsto& X \\
+  & (X \xra{f} \widetilde X) &\longmapsto& f.
+\end{array} \]
 Zeige: Die Yoneda-Einbettung~$\C \to \widehat\C$ ist dicht.
+
+\emph{Bemerkung:} Um das zum Ausdruck zu bringen, schreibt man auch für
+Prägarben~$F$ auf~$\C$
+\[ F \cong \int^{X \in \C} \Hom_\C(\freist,X) \otimes F(X). \]
 \end{aufgabe}
 
 \end{document}
