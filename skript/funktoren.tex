@@ -417,8 +417,29 @@ auch "`höhere Morphismen"', sog. 2-Morphismen (hier natürliche
 Transformationen), zwischen den gewöhnlichen (1-)Morphismen gibt.
 \end{bem}
 
-\textbf{XXX:} Hier das Produkt in~$\Cat$ thematisieren.
-\begin{defn}\label{productcat}\ldots\end{defn}
+Die Kategorie~$\Cat$ besitzt Produkte. Diese können durch die Konstruktion in
+folgender Definition gegeben werden:
+\begin{defn}\label{productcat}
+Die \emph{Produktkategorie~$\C \times \D$} zweier Kategorien~$\C$ und~$\D$ ist
+die Kategorie mit
+\begin{align*}
+  \text{Objekte: } & \text{Paare $(X,Y)$ mit~$X \in \Ob\C$, $Y \in \Ob\D$} \\
+  \text{Morphismen: } &
+    \Hom_{\C \times \D}((X,Y), (\widetilde X, \widetilde Y)) := \\
+  & \qquad
+      \Hom_\C(X,\widetilde X) \times \Hom_\D(Y,\widetilde Y) =
+      \{ (f, g) \,|\, f : X \to \widetilde X,\ g : Y \to \widetilde Y \}.
+\end{align*}
+Die Kompositionsvorschrift wird von der in~$\C$ und~$\D$ induziert.
+\end{defn}
+\begin{prop}Das kategorielle Produkt in~$\Cat$ ist durch die
+Produktkategoriekonstruktion mit den offensichtlichen Projektionsfunktoren
+gegeben.\end{prop}
+Im Kapitel über adjungierte Funktoren werden wir einen tieferen Grund dafür
+kennenlernen (Korollar~\ref{vergissstetig}\ref{vergisscat}), wieso zur
+Definition der Produktkategorie das kartesische Produkt von Klassen verwendet
+wird.
+
 
 % TODO:
 % * Was bedeutet Vorschrift in der Funktordefinition?
