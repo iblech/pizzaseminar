@@ -1,6 +1,10 @@
 \section[Adjungierte Funktoren]{Adjungierte Funktoren \hfill \small Peter
 Uebele}
 
+%\emph{Werbung:} Adjungierte Funktoren treten überall in der Mathematik auf. In
+%diesem Abschnitt wollen und es gibt viele
+%Möglichkeiten...
+
 % XXX: adjungierte Funktoren in der Logik!
 
 
@@ -15,9 +19,9 @@ Uebele}
 Seien $F:\D\to\C$, $G:\C\to\D$ Funktoren. Genau dann heißt
 \begin{itemize}
 \item 
-$F$ \emph{links-adjungiert zu} $G$ bzw.
+$F$ \emph{linksadjungiert zu} $G$ bzw.
 \item 
-$G$ \emph{rechts-adjungiert zu} $F$,
+$G$ \emph{rechtsadjungiert zu} $F$,
 \end{itemize}
 in Zeichen: $F \dashv G$, wenn es eine in~$X \in \Ob\C$ und~$Y \in \Ob\D$ natürliche
 Isomorphie gibt:
@@ -43,7 +47,7 @@ $g:Y'\rightarrow Y$ in~$\D$ das Diagramm
 kommutiert.
 
 \begin{bsp}Sei~$F:\D \to \C$ quasi-invers zu~$G:\C \to \D$ (im Sinne von
-Definition~\ref{cateqv}). Dann ist~$F$ links- und rechts-adjungiert
+Definition~\ref{cateqv}). Dann ist~$F$ links- und rechtsadjungiert
 zu~$G$.\end{bsp}
 Das Konzept zueinander adjungierter Funktoren ist also eine Verallgemeinerung
 des Konzepts zueinander quasi-inverser Funktoren: Auch, wenn ein Funktor kein
@@ -82,104 +86,117 @@ Ist~$f : X \to X'$ eine Abbildung, so ist die induzierte
 Abbildung durch
 \[ F(f) : F(X) \to F(X'),\ \sum_{i=1}^n \lambda_i x_i \mapsto
   \sum_{i=1}^n \lambda_i f(x_i) \]
-gegeben und tatsächlich linear.
+gegeben und tatsächlich linear. Dann gilt:
 \end{bsp}
-
-\endinput
-
-$k$ Körper, $Vect_k \overset{U}{\rightarrow}Set$ Vergissfunktor\\
-$Set\underset{F}{\rightarrow Vekt_k}$ \emph{freier Funktor}
-$\underset{\mbox{Menge}}{X}\mapsto FX=\{\sum_{n=1}^N\lambda_ix_i\}$ endli.
-Linearkombination von Elementen aus $X$. $S$ ist Basis von $FX$.\\
-\[
-(X\overset{f}{\rightarrow}X')\mapsto Ff
-\]
-wobei $Ff$ eine lineare Abbildung ist, die durch $x_i\mapsto f(x_i)$ gegeben
-ist.
-\[Ff(\sum^{N}_{i=1}{\lambda_ix_i})=\sum^{N}_{i=1}{\lambda_i}f(x_i)\]
-\end{exmp}
-\paragraph{Beh:} $F\dashv U$
+\begin{prop}Der so definierte Funktor~$F$ ist
+linksadjungiert zum Vergissfunktor~$U$.
+\end{prop}
 \begin{proof}
+Wir geben den in~$Y \in \Ob\Set$ und~$V \in \Ob\Vect{K}$ natürlichen
+Isomorphismus explizit an:
+\[ \begin{array}{@{}rcl@{}}
+  \Hom_{\Vect{K}}(F(Y), V) &\longrightarrow& \Hom_\Set(Y, U(V)) \\
+  \varphi &\longmapsto& \varphi|_Y
+\end{array} \]
+Die Bijektivität dieser Zuordnung drückt gerade aus, dass die Werte auf einer
+Basis genügen, um eine lineare Abbildung eindeutig festzulegen. Die
+Natürlichkeitsbedingung besagt, dass für alle~$f:V \to V'$ in~$\Vect{K}$ und~$g:Y' \to Y$
+das Diagramm
+\[ \xymatrix{
+  \Hom_{\Vect{K}}(F(Y),V) \ar[r] \ar[d]_\cong & \Hom_{\Vect{K}}(FY',U(V')) \ar[d]^\cong \\
+  \Hom_\Set(Y,U(V)) \ar[r] & \Hom_\Set(Y',U(V'))
+} \]
+kommutiert, d.\,h. dass für alle~$\varphi \in \Hom_{\Vect{K}}(F(Y),V)$ die Gleichung
 \[
-\Hom_\cC(FY,V)  \overset{?}{\cong} \Hom_\cC(Y,UV)
+  (f \circ \varphi \circ F(g))|_{Y'} = f \circ \varphi|_Y \circ g
 \]
-wobei 
-\begin{itemize}
-\item $\Hom_\cC(FY,V)\bydef\{\mbox{lin. Abb }FY\rightarrow V\}$
-\item $\Hom_\cC(Y,UV)\bydef\{\mbox{bel. Abb. }Y\rightarrow V\}\ni \phi$
-\end{itemize}
-\[
-\phi \mapsto \big( \sum^{N}_{i=1}{\lambda_iy_i}\mapsto
-\sum^{N}_{i=1}{\lambda_i\phi(y_i)} \big)
-\]
-bijektiv, da jede lineare Abbildung eindeutig durch die Basis festgelegt ist.
-
-Natürlich in $Y$ und $V$: $f:V\mapsto V'$ und $g:Y\mapsto Y'$
-\begin{center}
-\begin{tikzpicture} [scale=3.3, descr/.style={fill=white,inner sep=2.5pt} ]
-\matrix (m) [
-  matrix of math nodes
-  , row sep=3em
-  , column sep=2em
-  %, text height=3em
-  %, text depth=0.25em
-]
-{
-  \big(\lambda_iy_i\mapsto\sum\lambda_i\phi(y_i)\big) & & & & \phi\\
-  & \Hom_\cC(FY,V)   & \cong & \Hom_\cC(Y,UV)   & \\
-  & \Hom_\cC(FY',V') & \cong & \Hom_\cC(Y',UV') & \\
-  \big( \sum\lambda_iy_i'\mapsto\sum\lambda_if(\phi(g(y_i')))
-    \big)& & & & Uf\circ\phi\circ g\\
-};
-\path[->,font=\scriptsize,>=angle 90]
-(m-2-2) edge node[right]{$\Hom(Fg,f)$} (m-3-2)
-(m-2-4) edge node[left]{$\Hom(g,Gf)$} (m-3-4)
-;
-
-\path[>=stealth,|->]
-(m-1-5) edge (m-1-1) 
-(m-1-5) edge (m-4-5)
-(m-1-1) edge (m-4-1)
-(m-4-5) edge (m-4-1) 
-;
-\end{tikzpicture}
-\end{center}
+erfüllt ist. Das ist offensichtlich der Fall.
 \end{proof}
 
-\begin{exmp}
-\[
-U:Cat \rightarrow Set
-\]
-\begin{align*}
-L: & Set \rightarrow Kat\\
-  & X \mapsto \mbox{diskrete Kategorie auf $X$ (d.h. nur
-Identitätsmorphismen)}\\
-R: & Set \rightarrow Cat\\
-  & X \mapsto \mbox{indiskrete Kategorie auf $X$(d.h. zwischen je zwei
-Objekten genau ein Morphismus)}
-\end{align*}
-\paragraph{Beh:}
+\begin{bsp}Der Vergissfunktor~$U : \Cat \to \Set$, der einer kleinen Kategorie
+ihre Menge von Objekten zuordnet, besitzt sowohl einen Links-, als auch einen
+Rechtsadjungierten, nämlich
+\[ \begin{array}{@{}rrclrcl@{}}
+  L : & \Set &\longrightarrow& \Cat, & X &\longmapsto& \text{diskrete Kategorie auf~$X$,} \\
+  R : & \Set &\longrightarrow& \Cat, & X &\longmapsto& \text{indiskrete Kategorie auf~$X$.}
+\end{array} \]
+Denn man hat natürliche Isomorphismen
+\[ \Hom_\Cat(L(X), \E) \cong \Hom_\Set(X, \Ob\E)
+  \quad\text{und}\quad
+  \Hom_\Set(\Ob\E, Y) \cong \Hom_\Cat(\E, R(Y)). \]
+\end{bsp}
+
+\begin{bsp}Analog hat der Vergissfunktor~$U : \Top \to \Set$, der jedem
+topologischen Raum seine zugrundeliegende Menge von Punkten zuordnet, einen
+Links- und Rechtsadjungierten: die Konstruktion des diskreten bzw. indiskreten
+topologischen Raums auf einer Menge.\end{bsp}
+
+\begin{prop}
+Sei $F:\C\to\D$ linksadjungiert zu $G:\D\to\C$. Dann gilt:
 \begin{enumerate}
-\item $L\dashv U$
-\item $U\dashv R$
+\item $F$ erhält Kolimiten von $\D$.
+\item $G$ erhält Limiten von $\C$.
 \end{enumerate}
-\paragraph{zu 1.} $C=Cat$, $D=Set$
-$\Hom_{Cat}(LX,\cC)\cong\Hom_{Set}(X,U\cC)$
+\end{prop}
+
+\begin{kor}
+\begin{enumerate}
+\item Der Vergissfunktor $U:\Vect{K} \to \Set$ erhält Limiten.
+Da er aber nicht Kolimiten erhält (Beispiel~\ref{vectvergiss}), kann er keinen
+Rechtsadjungierten besitzen.
+\item Der Vergissfunktor $U:\Cat \to \Set$ erhält Limiten und Kolimiten.
+\item Der Vergissfunktor $U:\Top \to \Set$ erhält Limiten und Kolimiten.
+\end{enumerate}
+\end{kor}
+
+\begin{proof}[Beweis der Proposition]
+Der übliche Beweis geht so: Sei $D:\I\to\D$ ein Diagramm, mit Limes~$\lim_i D(i)$.
+Dann folgt aus der in~$Y \in \Ob\D$ natürlichen Isomorphiekette
+\begin{align*}
+  \Hom_\D(Y,G(\lim_i D(i))) &\cong
+  \Hom_\C(F(Y),\lim_i D(i)) \cong
+  \lim_i \Hom_\C(F(Y), D(i)) \\
+  & \cong
+  \lim_i \Hom_\D(Y, G(D(i))) \cong
+  \Hom_\D(Y, \lim_i G(D(i)))
+\end{align*}
+mit dem Yoneda-Lemma die Behauptung: $G(\lim_i D(i)) \cong \lim_i G(D(i))$.
+
+Dieser Beweis hat aber noch zwei Lücken: Zum einen wurde die Existenz des
+Limes~$\lim_i G(D(i))$ ohne Beweis verwendet, zum anderen wurde nur die
+Isomorphie der Kegelspitzen nachgewiesen; das ist aber eine schwächere Aussage
+als die eigentliche Behauptung der Limesbewahrung. Es gibt verschiedene
+Möglichkeiten, die Lücken zu schließen, siehe etwa~\cite{gaillard,lin}.
+%Sei~$\lim_i D(i)$ Limes eines Diagramms~$D:\I\to\D$, zusammen mit den
+%Projektionsmorphismen~$\pi_i : \lim_i D(i) \to D(i)$. Wir müssen nachweisen, dass
+%der induzierte Kegel bestehend aus den Morphismen
+%\[ G(\pi_i) : G(\lim_i D(i)) \longrightarrow G(D(i)) \]
+%ein Limes ist. Sei dazu ein beliebiger Kegel~$K$ bestehend aus Morphismen
+%\[ \mu_i : K \longrightarrow G(D(i)) \]
+%gegeben. Dann induziert für jedes Objekt~$Y \in \D$ der Hom-Funktor einen Kegel
+%\[ (\mu_i)_\star : \Hom_\D(Y,K) \longrightarrow \Hom_D(Y,G(D(i))). \]
+%Das obige Argument zeigt zumindest, dass~$\Hom_\D(A,G(\lim_i D(i)))$ zusammen
+%mit den induzierten Projektionsmorphismen ein Limes (in~$\Set$) ist.
+\end{proof}
+
+\endinput
+\begin{exmp}
+$\cC=Grp$, $\cD=Grp^2=Grp\times Grp$
+\begin{align*}
+F: & Grp^2\rightarrow Grp &\mbox{Produktfunktor}\\
+  & (G_1,G_2) \mapsto G_1\times G_2\\
+G: & Grp \rightarrow Grp^2 &\mbox{Diagonalfunktor}\\
+  & G \mapsto (G,G)
+\end{align*}
+\paragraph{Beh:} $F\vdash G$
+\[
+\Hom_{Grp^2}((G,G),(H_1,H_2))\cong \Hom_{Grp}(G,H_1\times H_2)
+\]
 wobei
 \begin{itemize}
-\item 
-$\Hom_{Cat}(LX,\cC)\bydef\{\mbox{Funktoren }LX\rightarrow \cC \}$
-\item 
-$\Hom_{Set}(X,U\cC)\bydef\{\mbox{Abbildungen } X\rightarrow Obj(\cC)\}$
+\item $\Hom_{Grp^2}((G,G),(H_1,H_2))=\{\mbox{Gruppen-Homomorphismen}\}$
+\item $ \Hom_{Grp}(G,H_1\times H_2) =\{G\rightarrow H_1\times H_2 \mbox{
+Gruppen-Homomorphismen}\}$
 \end{itemize}
-\paragraph{zu 2.}
-$\Hom_{Set}(U\cC,X)\cong\Hom_{Cat}(\cC,RX)$
-wobei
-\begin{itemize}
-\item 
-$\Hom_{Set}(U\cC,X)\bydef\{\mbox{Abbildungen } Obj(\cC)\rightarrow X\}$
-\item 
-$\Hom_{Cat}(\cC,RX)\bydef\{\mbox{Funktoren }\cC\rightarrow RX \}$
-\end{itemize}
-bijektiv, da Morphismen in $RX$ durch Quelle und Ziel eindeutig bestimmt
 \end{exmp}
+\endinput
