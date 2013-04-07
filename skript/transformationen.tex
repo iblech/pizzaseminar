@@ -128,6 +128,36 @@ zwischen diesen Funktoren eine natürliche Transformation verläuft.\end{bem}
 "`Doppeldualraum"'
 
 
+\subsubsection*{Determinante}
+
+In der linearen Algebra lernt man die Determinante von Matrizen kennen. Diese
+ist bezüglich des Grundrings (oder Grundkörpers) gleichmäßig definiert -- das
+erkennt man entweder an der laplacesche Entwicklungsformel oder an der
+Charakterisierung als eindeutige multilineare Abbildung mit gewissen
+Eigenschaften.
+
+Unserem Motto zufolge sollte die Determinantenabbildung daher
+auch als natürliche Transformation verstanden werden können. Das ist in der Tat
+der Fall: Für festes~$n \geq 0$ haben wir zwei Funktoren von der Kategorie der
+Ringe in die Kategorie der Monoide, nämlich
+\begin{enumerate}
+\item den Funktor, der jedem Ring~$R$ den multiplikativen Monoid der~$(n \times
+n)$-Matrizen über~$R$ zuordnet, und
+\item den Funktor, der jedem Ring~$R$ seinen zugrundeliegenden multiplikativen
+Monoid zuordnet.
+\end{enumerate}
+Die Determinante ist eine natürliche Transformation zwischen diesen beiden
+Funktoren; das Natürlichkeitsdiagramm
+\[ \xymatrix{
+  R^{n \times n} \ar[r] \ar[d]_\det & S^{n \times n} \ar[d]^\det \\
+  R \ar[r] & S
+} \]
+besagt für Ringhomomorphismen~$f : R \to S$, dass es keine Rolle spielt, ob man
+eine Matrix über~$R$ als Matrix mit Koeffizienten in~$S$ interpretiert und dann
+die Determinante nimmt, oder ob man umgekehrt zuerst die Determinante als
+Element von~$R$ berechnet und dann in den Ring~$S$ transportiert.
+
+
 \subsection{Funktorkategorien}
 
 \begin{defn}
