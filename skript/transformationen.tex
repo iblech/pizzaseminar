@@ -359,6 +359,42 @@ aber ähnlich wie in Beispiel~\ref{setopset} interessant, welche kategoriellen
 Eigenschaften die Unterscheidung möglich machen.
 \end{aufg}
 
+...Charakterisieren...
+
+\begin{lemma}\label{equivVolltreuWesSurj} Sei $F : \C \to \D$ eine Äquivalenz von
+Kategorien mit Quasi-Inversem $G : \D \to \C$. Dann sind $F$ und $G$ volltreu und
+wesentlich surjektiv.
+...die Umkehrung gilt auch...
+\end{lemma}
+\begin{proof}
+Seien $\eta:G \circ F \Rightarrow \Id_{\C}$ und $\mu:F \circ G \Rightarrow \Id_{\D}$ die natürlichen Isomorphismen der Kategorienäquivalenz. Dann ist jedes $A \in \Ob \C$ isomorph zu $G(F(A))$ mit dem Isomorphismus $\eta_{A}:G(F(A)) \to A$ und der Funktor $G$ damit wesentlich surjektiv.
+
+Es kommutiert für alle $\xymatrixcolsep{1pc}\xymatrix{ A \ar[r]^{f} & B} \in C$ das erweiterte Natürlichkeitsdiagramm von~$\eta$:
+\[ \xymatrixcolsep{4pc}\xymatrixrowsep{4pc}\xymatrix{
+GFA \ar@<1ex>[d]^{\eta_{A}} \ar[r]^{G(F(f))} & GFB \ar@<1ex>[d]^{\eta_{B}} \\
+A \ar@<1ex>[u]^{\eta_{A}^{-1}} \ar[r]^{f} & B \ar@<1ex>[u]^{\eta_{B}^{-1}}
+} \]
+
+Hieraus kann man direkt ablesen, dass $(G \circ F):\Hom(A, B) \to \Hom(GFA, GFB)$ eine Bijektion mit Umkehrabbildung
+  \[ g : \Hom(GFA, GFB) \to \Hom(A, B),\ m \mapsto \eta_{B} \circ m \circ \eta_{A}^{-1} \]
+ist. Insbesondere sind für alle $A, B \in \Ob \C$ der Funktor
+\[ F:\Hom(A, B) \to \Hom(FA, FB) \]
+injektiv und
+\[ G : \Hom(FA, FB) \to \Hom(GFA, GFB) \]
+surjektiv auf Hom-Mengen. Wir können sogar zeigen, dass $G$ ist surjektiv auf $\Hom(E, P)$ für alle $E, P \in \Ob \D$ ist. Sei dazu $f \in \Hom(GE, GP)$ beliebig. Dann ist
+\begin{align*}
+f &= G(\mu_{P}) \circ \underbrace{(G(\mu_{P}^{-1}) \circ f \circ G(\mu_{E}))}_{\in\,\Hom(GFGE, GFGP)} \circ G(\mu_{E}^{-1})\\
+&= G(\mu_{P}) \circ G(h) \circ G(\mu_{E}^{-1})\\
+&= G(\underbrace{\mu_{P} \circ h \circ \mu_{E}^{-1}}_{\in\,Hom(E, P)})
+\end{align*}
+Dabei haben wir im zweiten Schritt ausgenützt, dass, wie schon bewiesen,
+  \[ G:\Hom(FGE, FGP) \to \Hom(GFGE, GFGP) \]
+surjektiv ist.
+
+Da die Vorraussetzungen symmetrisch in $F$ und $G$ sind, ist $F$ auch surjektiv und $G$ injektiv auf Hom-Mengen und $G$ wesentlich surjektiv. Nach Definition sind $F$ und $G$ damit volltreu.
+\end{proof}
+
+
 % "konstante natürliche Trafo"
 % weniger Abbildungen --> mehr Trafos!
 % F ==> G ohne G ==> F

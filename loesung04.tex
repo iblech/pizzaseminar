@@ -64,7 +64,7 @@
 \newcommand{\RP}{\mathbb{R}\mathrm{P}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Set}{\mathrm{Set}}
-\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Vect}[1]{#1\text{-}\mathrm{Vect}}
 \newcommand{\MP}{\mathrm{MP}}
 \newcommand{\Spur}[1]{\operatorname{Spur}#1}
 \newcommand{\rank}[1]{\operatorname{rank}#1}
@@ -121,18 +121,18 @@ Lösung zum 4. Übungsblatt
 \item Sei $M$ eine Menge, $m \in M$ beliebig und $\eta:\Id_{\Set} \Rightarrow \Id_{\Set}$ eine natürliche Transformation. Wir wollen beweisen, dass $\eta_{M}(m) = m$ ist. Wir definieren dazu $1 := \{ \heartsuit \}$ und $f : 1 \to M, \heartsuit \mapsto m$. Die Aussage folgt nun durch eine Diagrammjagd im Natürlichkeitsdiagramm von $\eta$:
 \[ \xymatrixcolsep{2pc}\xymatrix{
   \heartsuit \ar@{|->}[dddd] \ar@{|->}[rrrr] &&&& f(\heartsuit) = m \ar@{|->}[ddd] \\
-  & 1 \ar[dd]^{\eta_{1}} \ar[rr]^{f} && M \ar[dd]^{\eta_{M}} \\
+  & 1 \ar[dd]_{\eta_{1}} \ar[rr]^{f} && M \ar[dd]^{\eta_{M}} \\
   \\
-  & 1 \ar[rr]^{f} && M & \eta_{M}(m) \ar@{=}@/^1pc/[dl] \\
+  & 1 \ar[rr]_{f} && M & \eta_{M}(m) \ar@{=}@/^1pc/[dl] \\
   \eta_{1}(\heartsuit) = \heartsuit \ar@{|->}[rrr] &&& f(\heartsuit) = m
 } \]
 
 \item Sei $M$ eine Menge, $m \in M$ beliebig und $\omega : \Id_{\Set} \Rightarrow K$ eine natürliche Transformation. Wir wollen wieder den gleichen Trick wie in Teilaufgabe \emph{a)} anwenden. Dazu definieren wir wie oben $f : 1 \to M,\ \heartsuit \mapsto m$ und führen dann eine Diagrammjagd durch:
 \[ \xymatrixcolsep{2pc}\xymatrix{
   \heartsuit \ar@{|->}[dddd] \ar@{|->}[rrrr] &&&& f(\heartsuit) = m \ar@{|->}[ddd] \\
-  & 1 \ar[dd]^{\omega_{1}} \ar[rr]^{f} && M \ar[dd]^{\omega_{M}} \\
+  & 1 \ar[dd]_{\omega_{1}} \ar[rr]^{f} && M \ar[dd]^{\omega_{M}} \\
   \\
-  & 1 \times 1 \ar[rr]^{f \times f} && M \times M & \omega_{M}(m) \ar@{=}@/^1pc/[dl] \\
+  & 1 \times 1 \ar[rr]_{f \times f} && M \times M & \omega_{M}(m) \ar@{=}@/^1pc/[dl] \\
   \omega_{1}(\heartsuit) = (\heartsuit, \heartsuit) \ar@{|->}[rrr] &&& (m, m)
 } \]
 
@@ -143,19 +143,24 @@ In die andere Richtung gibt es eine natürliche Transformation $\eta : \Id_{\Set
 Wir müssen noch die Natürlichkeit überprüfen. Seien dazu $X, Y$ Mengen und $f : X \to Y$ eine Abbildung. Wir machen eine Diagrammjagd, dieses Mal aber um die Kommutativität des Diagramms zu beweisen:
 \[ \xymatrixcolsep{2pc}\xymatrix{
   x  \ar@{|->}[dddd] \ar@{|->}[rrrr] &&&& f(x) \ar@{|->}[ddd] \\
-  & X \ar[dd]^{\eta_{X}} \ar[rr]^{f} && Y \ar[dd]^{\eta_{Y}} \\
+  & X \ar[dd]_{\eta_{X}} \ar[rr]^{f} && Y \ar[dd]^{\eta_{Y}} \\
   \\
-  & \Pset(X) \ar[rr]^{f[\cdot]} && \Pset(Y) & \{f(x)\} \ar@{=}@/^1pc/[dl] \\
+  & \Pset(X) \ar[rr]_{f[\cdot]} && \Pset(Y) & \{f(x)\} \ar@{=}@/^1pc/[dl] \\
   \{ x \} \ar@{|->}[rrr] &&& f[\{ x \}]
 } \]
+
+\emph{Bemerkung:} Es gibt noch andere natürliche Transformationen~$\Id_\Set
+\Rightarrow P$, etwa die, jedes Element einer jeder Menge auf die leere
+Teilmenge schickt. In klassischer Logik gibt es dann keine weiteren natürlichen
+Transformationen.
 
 \item Betrachte die Menge $M := \{1, 2\}$. Sei $f : 1 \to M$ die Funktion, die
 $\heartsuit$ auf das Element aus $M$ schickt, das nicht das ausgewählte Element $a_M$ ist.
 Wenn $\tau$ eine natürliche Transformation wäre, müsste folgendes Diagramm kommutieren:
 \[ \xymatrixcolsep{2pc}\xymatrix{
-  1 \ar[dd]^{\tau_{1}} \ar[rr]^{f} && M \ar[dd]^{\tau_{M}} \\
+  1 \ar[dd]_{\tau_{1}} \ar[rr]^{f} && M \ar[dd]^{\tau_{M}} \\
   \\
-  1 \ar[rr]^{f} && M
+  1 \ar[rr]_{f} && M
 } \]
 
 Dieses Diagramm kommutiert aber gerade nicht, da $\tau_{M}$ die Funktion ist, die
@@ -169,20 +174,32 @@ alles konstant auf $a_M$ schickt und wir $f$ geschickterweise so gewählt haben,
 
 \item In der Kategorie der reellen Vektorräume gibt es für jedes $\lambda \in \R$ die
 natürliche Transformation $\mu$ gegeben durch
-\[ \mu_{V} : V \to V,\ v \mapsto \lambda v \]
-wie man leicht nachrechnet, wenn man sich an die Eigenschaften von linearen Funktionen
+\[ \mu_{V} : V \to V,\ v \mapsto \lambda v, \]
+wie man leicht nachrechnet, wenn man sich an die Eigenschaften von linearen Abbildungen
 erinnert.
 
-Sind das schon alle natürliche Transformationen von $\Id_{\R{-}\Vect}$ nach $\Id_{\R{-}\Vect}$? Angenommen, wir haben eine solche natürliche Transformation $\eta$ gegeben. Sei $V$ ein reeller Vektorraum und $v \in V$ beliebig. Wir definieren die lineare Abbildung $f : \R \to V,\ r \mapsto rv$ und betrachten das Natürlichkeitsdiagramm von $\eta$:
+Sind das schon alle natürliche Transformationen von $\Id_{\Vect{\R}}$ nach $\Id_{\Vect{\R}}$? Angenommen, wir haben eine solche natürliche Transformation $\eta$ gegeben. Sei $V$ ein reeller Vektorraum und $v \in V$ beliebig. Wir definieren die lineare Abbildung $f : \R \to V,\ r \mapsto rv$ und betrachten das Natürlichkeitsdiagramm von $\eta$:
 \[ \xymatrixcolsep{2pc}\xymatrix{
   1  \ar@{|->}[dddd] \ar@{|->}[rrrr] &&&& f(1) = v \ar@{|->}[ddd] \\
-  & \R \ar[dd]^{\eta_{\R}} \ar[rr]^{f} && V \ar[dd]^{\eta_{V}} \\
+  & \R \ar[dd]_{\eta_{\R}} \ar[rr]^{f} && V \ar[dd]^{\eta_{V}} \\
   \\
-  & \R \ar[rr]^{f} && V & \eta_{V}(v) \ar@{=}@/^1pc/[dl] \\
+  & \R \ar[rr]_{f} && V & \eta_{V}(v) \ar@{=}@/^1pc/[dl] \\
   \eta_{\R}(1) = \lambda, \lambda \in \R \ar@{|->}[rrr] &&& f(\lambda) = \lambda v
 } \]
 Dadurch sehen wir, dass $\eta$ tatsächlich die Form $\eta_{V}(v) = \lambda v$
 für ein festes $\lambda\,\in\,\R$ besitzen muss.
+
+\emph{Bemerkung:} Die Kategorie~$\Vect{\R}$ ist eine sogenannte abelsche
+Kategorie. In jeder abelschen Kategorie wird der
+Monoid~$\operatorname{End}(\Id)$ der Endomorphismen der
+Identitätstransformation auf kanonische Art und Weise zu einem Ring. Die
+Argumentation zeigt dann (fast):
+\[ \operatorname{End}(\Id_{\Vect{\R}}) \cong \R. \]
+Allgemeiner gilt das für beliebige (kommutative) Ringe~$R$. Das ist eine
+Möglichkeit, folgendes Motto der Ringtheorie zu verstehen:
+\begin{center}Studiere einen Ring dadurch, indem du seine Kategorie von Modul
+untersuchst!\end{center}
+
 \end{enumerate}
 
 \item[\textbf{Aufgabe 2:}]\mbox{}
@@ -190,46 +207,13 @@ für ein festes $\lambda\,\in\,\R$ besitzen muss.
 \begin{enumerate}
 \item
 
-Mit folgendem Lemma lassen sich diese und viele weitere ähnliche Aussagen elegant beweisen:
+Mit dem Lemma aus dem Skript, dass Kategorienäquivalenzen volltreu und wesentlich surjektiv sind, lassen sich diese und viele weitere ähnliche Aussagen elegant beweisen:
 
-\begin{lemma}\label{equivVolltreuWesSurj} Sei $F : \C \to \D$ eine Äquivalenz von
-Kategorien mit Quasi-Inversem $G : \D \to \C$. Dann sind $F$ und $G$ volltreu und
-wesentlich surjektiv.
-\end{lemma}
-
-\begin{proof}
-Seien $\eta:G \circ F \Rightarrow \Id_{\C}$ und $\mu:F \circ G \Rightarrow \Id_{\D}$ die natürlichen Isomorphismen der Kategorienäquivalenz. Dann ist jedes $A \in \Ob \C$ isomorph zu $G(F(A))$ mit dem Isomorphismus $\eta_{A}:G(F(A)) \to A$ und der Funktor $G$ damit wesentlich surjektiv.
-
-Es kommutiert für alle $\xymatrixcolsep{1pc}\xymatrix{ A \ar[r]^{f} & B} \in C$ das erweiterte Natürlichkeitsdiagramm von~$\eta$:
-\[ \xymatrixcolsep{4pc}\xymatrixrowsep{4pc}\xymatrix{
-GFA \ar@<1ex>[d]^{\eta_{A}} \ar[r]^{G(F(f))} & GFB \ar@<1ex>[d]^{\eta_{B}} \\
-A \ar@<1ex>[u]^{\eta_{A}^{-1}} \ar[r]^{f} & B \ar@<1ex>[u]^{\eta_{B}^{-1}}
-} \]
-
-Hieraus kann man direkt ablesen, dass $(G \circ F):\Hom(A, B) \to \Hom(GFA, GFB)$ eine Bijektion mit Umkehrabbildung
-  \[ g : \Hom(GFA, GFB) \to \Hom(A, B),\ m \mapsto \eta_{B} \circ m \circ \eta_{A}^{-1} \]
-ist. Insbesondere sind für alle $A, B \in \Ob \C$ der Funktor
-\[ F:\Hom(A, B) \to \Hom(FA, FB) \]
-injektiv und
-\[ G : \Hom(FA, FB) \to \Hom(GFA, GFB) \]
-surjektiv auf Hom-Mengen. Wir können sogar zeigen, dass $G$ ist surjektiv auf $\Hom(E, P)$ für alle $E, P \in \Ob \D$ ist. Sei dazu $f \in \Hom(GE, GP)$ beliebig. Dann ist
-\begin{IEEEeqnarray*}{rCl}
-f &=& G(\mu_{P}) \circ \underbrace{(G(\mu_{P}^{-1}) \circ f \circ G(\mu_{E}))}_{\in\,\Hom(GFGE, GFGP)} \circ G(\mu_{E}^{-1})\\
-&=& G(\mu_{P}) \circ G(h) \circ G(\mu_{E}^{-1})\\
-&=& G(\underbrace{\mu_{P} \circ h \circ \mu_{E}^{-1}}_{\in\,Hom(E, P)})
-\end{IEEEeqnarray*}
-Dabei haben wir im zweiten Schritt ausgenützt, dass, wie schon bewiesen,
-  \[ G:\Hom(FGE, FGP) \to \Hom(GFGE, GFGP) \]
-surjektiv ist.
-
-Da die Vorraussetzungen symmetrisch in $F$ und $G$ sind, ist $F$ auch surjektiv und $G$ injektiv auf Hom-Mengen und $G$ wesentlich surjektiv. Nach Definition sind $F$ und $G$ damit volltreu.
-\end{proof}
-
-Zum Beweis der eigentlichen Aufgabe: Sei $0$ initiales Objekt in $\C$ und $X \in \Ob D$ beliebig. Wir wollen zeigen, dass $FX$ initial in $\D$ ist, es also genau einen Morphismus von $F0$ nach $X$ gibt.
+Sei $0$ initiales Objekt in $\C$ und $X \in \Ob D$ beliebig. Wir wollen zeigen, dass $FX$ initial in $\D$ ist, es also genau einen Morphismus von $F0$ nach $X$ gibt.
 Da $X$ isomorph zu $FGX$ und der Funktor $F$ volltreu ist, haben wir eine Bijektion
 \[ \Hom(F0, X) \cong \Hom(F0, FGX) \cong \Hom(0, GX). \]
 Weil $0$ initial ist, enthält die rechte Hom-Menge und somit auch die linke Hom-Menge genau einen Morphismus.
-\item Wir bezeichnen die Kategorie der Möchtegern-Produkte von $X$ und $Y$ mit $\MP_{X,Y}$, die der Möchtegernprodukte von $Y$ und $X$ mit $\MP_{Y,X}$. Da Möchtegern-Produkte von $X$ und $Y$ aus Symmetriegründen auch Möchtegernprodukte von $Y$ und $X$ sind, können wir den Funktor $F : \MP_{X,Y} \to \MP_{Y,X}$ definieren:
+\item Wir bezeichnen die Kategorie der Möchtegern-Produkte von $X$ und $Y$ mit $\MP_{X,Y}$, die der Möchtegernprodukte von $Y$ und $X$ mit $\MP_{Y,X}$. Da Möchtegern-Produkte von $X$ und $Y$ aus Symmetriegründen auch Möchtegernprodukte von $Y$ und $X$ sind (genauer: als solche angesehen werden können), können wir den Funktor $F : \MP_{X,Y} \to \MP_{Y,X}$ definieren:
 \[ \begin{array}{@{}rcl@{}}
   \left(\vcenter{\xymatrix{X & \ar[l]_{\pi_X} Q \ar[r]^{\pi_Y} & Y}}\right) & \longmapsto & \left(\vcenter{\xymatrix{Y & \ar[l]_{\pi_Y} Q \ar[r]^{\pi_X} & X}}\right) \\\\
   \left(\vcenter{\xymatrix{
@@ -245,7 +229,7 @@ Weil $0$ initial ist, enthält die rechte Hom-Menge und somit auch die linke Hom
   }}\right)
 \end{array} \]
 
-Den zu $F$ quasi-inversen Funktor $G:\MP_{Y,X} \to \MP_{X,Y}$ definieren wir genau spiegelverkehrt zu $F$. Wie man leicht nachprüft, ergeben $F$ und $G$ eine Äquivalenz von $\MP_{X,Y}$ und $\MP_{Y,X}$ wobei die natürlichen Transformationen zwischen $F$ und $G$ nur aus den Identitätsmorphismen bestehen.
+Den zu $F$ quasi-inversen Funktor $G:\MP_{Y,X} \to \MP_{X,Y}$ definieren wir genau spiegelverkehrt zu $F$. Wie man leicht nachprüft, ergeben $F$ und $G$ eine Äquivalenz von $\MP_{X,Y}$ und $\MP_{Y,X}$, wobei die natürlichen Transformationen zwischen $F$ und $G$ nur aus den Identitätsmorphismen bestehen.
 
 Ein initiales Objekt in $\MP_{X,Y}$ ist ein Produkt von $X$ und $Y$, ein initiales Objekt in $\MP_{Y,X}$ ein Produkt von $Y$ und $X$. Mit Teilaufgabe a) folgt, dass ein Produkt von $X$ und $Y$ auch ein Produkt von $Y$ und $X$ ist und umgekehrt.
 
@@ -253,36 +237,37 @@ Ein initiales Objekt in $\MP_{X,Y}$ ist ein Produkt von $X$ und $Y$, ein initial
 
 \item[\textbf{Aufgabe 3:}]\mbox{}
 
-Wähle für jeden endlichdimensionalen Vektorraum $V$ eine feste Basis $(b_1, \ldots, b_{\dim V})$ und definiere das Koordinatensystem $\eta_V$ bezüglich dieser Basis durch die Setzung
+Wähle für jeden endlich-dimensionalen Vektorraum $V$ eine feste Basis $(b_1, \ldots, b_{\dim V})$ und definiere das Koordinatensystem $\eta_V$ bezüglich dieser Basis durch die Setzung
 \[ \eta_V:\R^{\dim V} \to V,\ e_i \mapsto b_i. \]
-Zwischen der Numerikerkategorie $\C$ und der $\R{-}\Vect_{\mathrm{FD}}$ verlaufen die Funktoren
+Zwischen der Numerikerkategorie $\C$ und der $\Vect{\R}_{\mathrm{fd}}$ verlaufen die Funktoren
 \[ \begin{array}{@{}rcrcl@{}}
-  F &:& \C & \longrightarrow & \R{-}\Vect_{\mathrm{FD}}\\
+  F &:& \C & \longrightarrow & \Vect{\R}_{\mathrm{fd}}\\
   && \R^{n} & \longmapsto & \R^{n}\\
   && M \in \R^{m \times n} & \longmapsto & \text{die von der Matrix $M$ dargestellte lineare Abbildung}\\
   &&&& \text{zwischen $\R^n$ und $\R^m$ bezüglich der kanonischen Basen}\\\\
-  G &:& \R{-}\Vect_{\mathrm{FD}} & \longrightarrow & \C\\
+  G &:& \Vect{\R}_{\mathrm{fd}} & \longrightarrow & \C\\
   && V & \longmapsto & \R^{\dim V}\\
-  && (f:V \to W) & \longmapsto & \eta_W^{-1} \circ f \circ \eta_V \text{ (bzw. die Matrix dieser Abbildung)}
+  && (f:V \to W) & \longmapsto & \eta_W^{-1} \circ f \circ \eta_V \text{ (bzw. die Matrix dieser Abbildung).}
 \end{array} \]
-Diese Funktoren bilden eine Äquivalenz zwischen den beiden Kategorien, da folgende Natürlichkeitsdiagramme für alle $(\xymatrix{V \ar[r]^f & W}) \in \R{-}\Vect_{\mathrm{FD}}$ bzw. $(\xymatrix{\R^n \ar[r]^M & \R^m}) \in \C$ offensichtlicherweise kommutieren:
+Diese Funktoren bilden eine Äquivalenz zwischen den beiden Kategorien, da folgende Natürlichkeitsdiagramme für alle $(V \xrightarrow{f} W) \in \Vect{\R}_{\mathrm{fd}}$ bzw. $(\R^n \xrightarrow{M} \R^m) \in \C$ offensichtlicherweise kommutieren:
 \[ \xymatrixcolsep{7pc}\xymatrixrowsep{3pc}
 \xymatrix{
-  GFV \ar[d]^{\eta_V} \ar[r]^{GFM = \eta_W^{-1} \circ M \circ \eta_V} & GFW \ar[d]^{\eta_W}\\
-  \R^{n} \ar[r]^{M} & \R^{m}
+  GFV \ar[d]_{\eta_V} \ar[r]^{GFM = \eta_W^{-1} \circ M \circ \eta_V} & GFW \ar[d]^{\eta_W}\\
+  \R^{n} \ar[r]_{M} & \R^{m}
 }
 \quad
 \xymatrix{
-  FGV \ar[d]^{\eta_V} \ar[r]^{FGf = \eta_W^{-1} \circ f \circ \eta_V} & FGW \ar[d]^{\eta_W}\\
-  V \ar[r]^{f} & W
+  FGV \ar[d]_{\eta_V} \ar[r]^{FGf = \eta_W^{-1} \circ f \circ \eta_V} & FGW \ar[d]^{\eta_W}\\
+  V \ar[r]_{f} & W
 } \]
 
+\newpage
 \item[\textbf{Projektaufgabe:}]\mbox{}
 
-Wir haben einen Morphismus $\varphi:A \to B$ gegeben und wollen eine natürliche Transformation $\eta:\Hom_{\C}(\freist, A) \Rightarrow \Hom_{\C}(\freist, B)$ finden, d.h. es muss für alle $f:Y \to X$ aus $\C$ das Natürlichkeitsdiagramm kommutieren:
+Wir haben einen Morphismus $\varphi:A \to B$ gegeben und wollen eine natürliche Transformation $\eta:\Hom_{\C}(\freist, A) \Rightarrow \Hom_{\C}(\freist, B)$ finden, d.\,h. es muss für alle $f:Y \to X$ aus $\C$ das Natürlichkeitsdiagramm kommutieren:
 \[ \xymatrixcolsep{5pc}\xymatrixrowsep{3pc}\xymatrix{
-  \Hom_{\C}(X, A) \ar[d]^{\eta_X} \ar[r]^{g\ \mapsto\ g \circ f} & \Hom_{\C}(Y, A) \ar[d]^{\eta_Y} \\
-  \Hom_{\C}(X, B) \ar[r]^{g\ \mapsto\ g \circ f} & \Hom_{\C}(Y, B)
+  \Hom_{\C}(X, A) \ar[d]_{\eta_X} \ar[r]^{g\ \mapsto\ g \circ f} & \Hom_{\C}(Y, A) \ar[d]^{\eta_Y} \\
+  \Hom_{\C}(X, B) \ar[r]_{g\ \mapsto\ g \circ f} & \Hom_{\C}(Y, B)
 } \]
 Wir setzen $\eta_{Z} := (g \mapsto \phi \circ g)$. Wenn wir nun einen Morphismus $p:X \to A$ im Diagramm von oben links nach unten rechts verfolgen, erhalten wir einerseits $((\varphi \circ p) \circ f)$ und andererseits
 $(\varphi \circ (p \circ f))$. Aufgrund der Assoziativität der Verknüpfung von Morphismen sind diese Ergebnisse gleich und das Diagramm kommutiert wie gewünscht.
