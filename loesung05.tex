@@ -1,7 +1,6 @@
 \documentclass{pizzablatt}
 
 \geometry{tmargin=3cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
-\usepackage[retainorgcmds]{IEEEtrantools}
 
 \begin{document}
 
@@ -16,16 +15,16 @@ Wie sieht ein Diagramm $F:\D \to \C$ mit terminalem Objekt $T$ in $\D$ aus? Beis
 } \]
 Die Behauptung ist zunächst, dass $F(T)$ Kokegel dieses Diagramms ist. Dazu müssen wir erstmal angeben, mit welchen Morphismen $F(T)$ zum Kokegel wird, also für alle $X \in \Ob \D$ einen Morphismus von $F(X)$ nach $F(T)$ finden. Hierzu nutzen wir aus, dass $T$ terminal in $\D$ ist, es also einen eindeutigen Morphismus $f_X:X \to T$ für alle $X \in \Ob \D$ gibt. Wenn wir nun $F$ auf $f_X$ anwenden, haben wir einen solchen Morphismus. Alle relevanten Dreiecke kommutieren, da sie schon in $\D$ kommutieren. Insbesondere haben wir zwischen $F(T)$ (im obigen Diagramm) und \textcolor{blue}{$F(T)$} (unserer Kokegelspitze) der Identitätsmorphismus \textcolor{blue}{$\id_{F(T)}$}. Effektiv haben wir einen Teil des Diagramms dupliziert.
 
-Als nächstes müssen wir die universelle Eigenschaft nachprüfen. Sei dazu $K$ mit geigneten Morphismen eine weiterer Kokegel, wie im folgenden Diagramm dargestellt:
+Als nächstes müssen wir die universelle Eigenschaft nachprüfen. Sei dazu $K$ mit geeigneten Morphismen eine weiterer Kokegel, wie im folgenden Diagramm dargestellt:
 \[ \xymatrix{
   F(A) \ar@/^/[rr] \ar@/_/[dr] \ar@/_1pc/[ddr] \ar@/_0.5pc/@[blue][ddd] \ar@/^2.7pc/@[red][dddrr] && F(B) \ar@/_/[dl] \ar@/^/[ddl] \ar@/_3pc/@[blue][llddd] \ar@/^1pc/@[red][ddd] \\
   & F(C) \ar@/_0.25pc/[d] \ar@/_0.5pc/@[blue][ldd] \ar@/^0.5pc/@[red][rdd] \\
-  & F(T) \ar@[blue][ld]_{\color{blue}{id}} \ar@[red][rd]^{\color{red}{f}} \\
+  & F(T) \ar@[blue][ld]_{\color{blue}{\id}} \ar@[red][rd]^{\color{red}{f}} \\
   \color{blue}{F(T)} \ar@{-->}[rr] && \color{red}{K}
 } \]
-Wir sollen zeigen, dass es für den gestrichelten Morphismus im Diagramm genau eine Möglichkeit gibt. Die Eindeutigkeit ist einfach: wenn es einen solchen Morphismus $g$ gibt, dann bringt er insbesondere das untererste Dreieck im obigen Diagramm, bestehend aus den zwei beschrifteten Morphismen und dem gestrichelten Morphismus, zum Kommutieren, was ausgeschrieben soviel bedeutet wie
+Wir sollen zeigen, dass es für den gestrichelten Morphismus im Diagramm genau eine Möglichkeit gibt. Die Eindeutigkeit ist einfach: wenn es einen solchen Morphismus $g$ gibt, dann bringt er insbesondere das unterste Dreieck im obigen Diagramm, bestehend aus den zwei beschrifteten Morphismen und dem gestrichelten Morphismus, zum Kommutieren, was ausgeschrieben soviel bedeutet wie
 \[ f = g \circ \id_{F(T)} = g. \]
-Der Morphismus $f$ lässt in der Tat alle Dreiecke bestehend aus blauem, roten und gestrichelten Morphismus ($= f$) kommutieren: denn alle blauen Morphismen im obigen Diagramm befinden sich auch als schwarze Morphismen im Diagramm und alle blau-rot-gestrichelten Dreiecke sind auch schon einmal als schwarz-rot-rote Dreiecke im Diagramm, die nach Annahme kommutieren.
+Der Morphismus $f$ lässt in der Tat alle Dreiecke bestehend aus blauem, roten und gestrichelten Morphismus ($= f$) kommutieren: Denn alle blauen Morphismen im obigen Diagramm befinden sich auch als schwarze Morphismen im Diagramm und alle blau-rot-gestrichelten Dreiecke sind auch schon einmal als schwarz-rot-rote Dreiecke im Diagramm, die nach Annahme kommutieren.
 \end{aufgabe}
 
 \begin{aufgabe}{}
@@ -39,16 +38,16 @@ Der Morphismus $f$ lässt in der Tat alle Dreiecke bestehend aus blauem, roten u
   \\
   & K[X] \ar@{-->}[r] & S
 } \]
-Die Behauptung ist nun, dass es eine eindeutige lineare Abbildung $\xymatrix{K[X] \ar@{-->}[r]^{u} & S}$ gibt, die obiges Diagramm kommutieren lässt. Die Kommutativität des linken blau-rot-gestrichelten Dreiecks bedeutet, dass $u$, wenn existent, für Polynome 0-ten Grades (konstante Polynome) mit $s_0$ übereinstimmen muss, die Kommutativitäts des nächsten blau-rote-gestrichelten Dreiecks besagt, dass $u$ für Polynome mit Grad 1 mit $s_1$ übereinstimmen muss usw. Wenn $u$ existiert, muss es also folgende Definition haben:
+Die Behauptung ist nun, dass es eine eindeutige lineare Abbildung $\xymatrix{K[X] \ar@{-->}[r]^{u} & S}$ gibt, die obiges Diagramm kommutieren lässt. Die Kommutativität des linken blau-rot-gestrichelten Dreiecks bedeutet, dass $u$, wenn existent, für Polynome 0-ten Grades (konstante Polynome) mit $s_0$ übereinstimmen muss, die Kommutativitäts des nächsten blau-rot-gestrichelten Dreiecks besagt, dass $u$ für Polynome mit Grad 1 mit $s_1$ übereinstimmen muss usw. Wenn $u$ existiert, muss es also folgende Definition haben:
 \[ u(p) := s_n(p),\ \text{wobei $n$ der Grad des Polynoms $p$ sei} \]
 Das so definierte $u$ ist sogar linear, wie folgende Überlegung zeigt: Die Inklusionsabbildungen $s_n$ sind abwärtskompatibel in dem Sinne, dass für alle $m \geq n$ gilt:
-\[ s_m|_{P[X]_n} = s_n. \]
-Dies folgt aus der Kommutativität der schwarz-rot-roten Dreiecke. Seien nun $p_1, p_2 \in P[X]$ beliebige Polynome mit Grad $n$ und $\widetilde{n}$. Dann ist der Grad $m$ von $p_1 + p_2$ höchstens $\max\{n, \widetilde{n}\}$. Es folgt mit der Abwärtskompatibilität wie gewünscht
-\begin{IEEEeqnarray*}{rl}
+\[ s_m|_{K[X]_n} = s_n. \]
+Dies folgt aus der Kommutativität der schwarz-rot-roten Dreiecke. Seien nun $p_1, p_2 \in K[X]$ beliebige Polynome mit Grad $n$ und $\widetilde{n}$. Dann ist der Grad $m$ von $p_1 + p_2$ höchstens $\max\{n, \widetilde{n}\}$. Es folgt mit der Abwärtskompatibilität wie gewünscht
+\begin{align*}
 u(p_{1}) + u(p_{2}) & = s_{n}(p_{1}) + s_{\widetilde{n}}(p_{2}) = s_{\max\{n, \widetilde{n}\}}(p_{1}) + s_{\max\{n, \widetilde{n}\}}(p_{2}) \\
 &= s_{\max\{n, \widetilde{n}\}}(p_{1} + p_{2}) = s_{m}(p_{1} + p_{2}) = u(p_{1} + p_{2})
-\end{IEEEeqnarray*}
-Eine ähnliche Überlegung zeigt, dass $u$ mit der Skalarmultiplikation verträglich ist. Somit ist $u$ tatsächlich linear, eindeutig und lässt obiges Diagramm kommutieren.
+\end{align*}
+Eine ähnliche Überlegung zeigt, dass $u$ mit der Skalarmultiplikation verträglich ist. Somit ist $u$ tatsächlich linear und eindeutig mit der Eigenschaft, obiges Diagramm kommutieren zu lassen.
 
 \item Der Vektorraum der formalen Potenzreihen $K\llbracket X \rrbracket$ wird zu einem Kegel des Diagramms mit den linearen Abbildungen $k_n : K\llbracket X \rrbracket \to K[X]_{n}$, die von einer formalen Potenzreihe nur die Monome mit Grad $\leq n$ nehmen. Angenommen, $Q$ ist ein weiterer Kegel mit Abbildungen $q_n:P \to K[X]_{n}$ über dem Diagramm:
 \[ \xymatrixcolsep{4pc}\xymatrixrowsep{4pc}\xymatrix {
@@ -58,15 +57,15 @@ Eine ähnliche Überlegung zeigt, dass $u$ mit der Skalarmultiplikation verträg
 } \]
 Zu zeigen ist, dass es eine eindeutige lineare Abbildung $\xymatrix{K[X] \ar@{-->}[r]^{u} & S}$ gibt, die obiges Diagramm kommutieren lässt. Angenommen, es gibt so ein $u$. Betrachte zunächst das blau-rot-gestrichelte Dreieck mit $K[X]_{0}$ ganz rechts. Dessen Kommutativität sagt, dass für jedes $p \in P$ der erste Term der formalen Potenzreihe $u(p)$ mit $q_{0}(p)$ übereinstimmt, die Kommutativität des blau-rot-gestrichelten mit $K[X]_{1}$, dass außerdem der zweite Term von $u(p)$ mit dem zweiten Term von $q_{1}(p)$ übereinstimmt usw. Oder, anders ausgedrückt, $u$ muss folgende Identität erfüllen:
 \[ u(p) = q_{0}(p) + \sum_{n=1}^{\infty} \left(q_{n}(p) - q_{n-1}(p)\right) \]
-Eine so festgelegte Abbildung $u$ ist wohldefiniert und die einzige lineare Abbildung, die obiges Diagramm kommutieren lässt. Somit ist $K\llbracket X \rrbracket$ Kegel des Diagramms.
+Eine so festgelegte Abbildung $u$ ist wohldefiniert und die einzige lineare Abbildung, die obiges Diagramm kommutieren lässt. Somit ist $K\llbracket X \rrbracket$ Limes des Diagramms.
 \end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}{}
 \begin{enumerate}
-\item Angenommen, $f:X \to Y$ ist ein Monomorphismus. Wir stellen zunächst fest, dass das Diagramm aus der Angabe offensichtlich kommutiert, also ein Möchte\-gern\-faser\-produkt\-diagramm ist. Sei nun $P$ ein weiteres Möchtegernfaserprodukt.
+\item Angenommen, $f:X \to Y$ ist ein Monomorphismus. Wir stellen zunächst fest, dass das Diagramm aus der Angabe offensichtlich kommutiert, also ein Möchte\-gern-Faser\-produkt\-diagramm ist. Sei nun $P$ ein weiteres Möchtegern-Faserprodukt.
 \[ \xymatrix{
-  P \ar@/_1pc/[ddr]^{g_{1}} \ar@/^1pc/[rrd]^{g_{2}} \ar@{-->}[rd] \\
+  P \ar@/_1pc/[ddr]_{g_{1}} \ar@/^1pc/[rrd]^{g_{2}} \ar@{-->}[rd] \\
   & \ar @{} [dr] |{\begin{array}{l}\lrcorner\ \ \ \ \ \ \\\\\end{array}}
   X \ar[r]^\id \ar[d]_\id & X \ar[d]^f \\
   & X \ar[r]_f & Y
@@ -74,13 +73,13 @@ Eine so festgelegte Abbildung $u$ ist wohldefiniert und die einzige lineare Abbi
 Daraus, dass das äußere Diagramm kommutiert, dürfen wir schließen, dass
 \[ f \circ g_{1} = f \circ g_{2} \]
 und weil $f$ Monomorphismus ist, folgt $g_{1} = g_{2}$.
-Wenn wir im obigen Diagramm für den gestrichelten Pfeil $g_{1}$ (a.k.a. $g_{2}$) einsetzen, kommutiert das Diagramm. Das ist auch die einzige Wahl, die wir haben, denn die Kommutativität des linken Dreiecks sagt ausgeschrieben
-\[ g_{1} = id_{X} \circ \varphi = \varphi, \]
+Wenn wir im obigen Diagramm für den gestrichelten Pfeil $g_{1}$ (a.\,k.\,a. $g_{2}$) einsetzen, kommutiert das Diagramm. Das ist auch die einzige Wahl, die wir haben, denn die Kommutativität des linken Dreiecks sagt ausgeschrieben
+\[ g_{1} = \id_{X} \circ \varphi = \varphi, \]
 wobei $\varphi$ den gestrichelten Morphismus bezeichnet.
 
-Falls umgekehrt das Diagramm aus der Angabe ein Ko\-faser\-produkt\-diagramm ist, so wollen wir folgern, dass $f$ ein Monomorphismus ist. Seien dazu ein Objekt $Z$ und $h_{1}, h_{2} : Z \to X$ mit $f \circ h_{1} = f \circ h_{2}$ gegeben. Das Objekt $Z$ ist ein Möchte\-gern\-ko\-faser\-produkt:
+Falls umgekehrt das Diagramm aus der Angabe ein Faser\-produkt\-diagramm ist, so wollen wir folgern, dass $f$ ein Monomorphismus ist. Seien dazu ein Objekt~$Z$ und Morphismen~$h_{1}, h_{2} : Z \to X$ mit $f \circ h_{1} = f \circ h_{2}$ gegeben. Das Objekt $Z$ wird damit zu einem Möchte\-gern-Faser\-produkt:
 \[ \xymatrix{
-  Z \ar@/_1pc/[ddr]^{h_{1}} \ar@/^1pc/[rrd]^{h_{2}} \ar@{-->}[rd]^{u} \\
+  Z \ar@/_1pc/[ddr]_{h_{1}} \ar@/^1pc/[rrd]^{h_{2}} \ar@{-->}[rd]^{u} \\
   & \ar @{} [dr] |{\begin{array}{l}\lrcorner\ \ \ \ \ \ \\\\\end{array}}
   X \ar[r]^\id \ar[d]_\id & X \ar[d]^f \\
   & X \ar[r]_f & Y
