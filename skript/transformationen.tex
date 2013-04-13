@@ -296,6 +296,9 @@ handelt es sich sowieso um böse Aussagen.
 auch rigoros beweisen. Das ist nicht besonders schwer, die Hauptschwierigkeit
 liegt darin, den Begriff \emph{Aussage} präzise zu definieren.\end{bem}
 
+
+\subsubsection*{Beispiele für Kategorienäquivalenzen}
+
 \begin{bsp}\label{setopset}%
 Die duale Kategorie~$\Set^\op$ kann nicht zu~$\Set$ äquivalent sein.
 Denn in~$\Set$ ist jeder Morphismus in ein initiales Objekt schon ein
@@ -347,6 +350,15 @@ Fundamentalgruppoid eines Raums, der obige Eigenschaft erfüllt, ist
 indiskret.\end{bem}
 % XXX: Da fehlt noch mehr!
 
+\begin{bsp}Die Kategorie der endlich-dimensionalen~$K$-Vektorräume ist
+äquivalent zu folgender sehr konkreten Kategorie:
+\begin{align*}
+  \text{Objekte: } & n \in \mathbb{N} \\
+  \text{Morphismen: } & \Hom(n,m) := K^{m \times n} \\
+  \text{Verkettung: } & \text{gegeben durch Matrixmultiplikation}
+\end{align*}
+\end{bsp}
+
 \begin{aufg}Zeige, dass folgende
 Kategorien jeweils nicht zueinander äquivalent sind:
 \begin{enumerate}
@@ -359,39 +371,47 @@ aber ähnlich wie in Beispiel~\ref{setopset} interessant, welche kategoriellen
 Eigenschaften die Unterscheidung möglich machen.
 \end{aufg}
 
-...Charakterisieren...
 
+\subsubsection*{Charakterisierung von Kategorienäquivalenzen}
+
+Funktoren, die Bestandteil einer Kategorienäquivalenz sind, kann man auch ohne
+Bezug auf ihr Quasi-Inverses charakterisieren:
 \begin{lemma}\label{equivVolltreuWesSurj} Sei $F : \C \to \D$ eine Äquivalenz von
 Kategorien mit Quasi-Inversem $G : \D \to \C$. Dann sind $F$ und $G$ volltreu und
-wesentlich surjektiv.
-...die Umkehrung gilt auch...
+wesentlich surjektiv. Die Umkehrung gilt auch, falls der umgebende logische
+Rahmen erlaubt, zu jedem Objekt aus~$\C$ bzw.~$\D$ ein Urbild (bis auf
+Isomorphie) in~$\D$ bzw.~$\C$ zu wählen.
 \end{lemma}
-\begin{proof}
-Seien $\eta:G \circ F \Rightarrow \Id_{\C}$ und $\mu:F \circ G \Rightarrow \Id_{\D}$ die natürlichen Isomorphismen der Kategorienäquivalenz. Dann ist jedes $A \in \Ob \C$ isomorph zu $G(F(A))$ mit dem Isomorphismus $\eta_{A}:G(F(A)) \to A$ und der Funktor $G$ damit wesentlich surjektiv.
+\begin{proof}Wir beweisen nur die Hinrichtung.
+Seien $\eta:G \circ F \Rightarrow \Id_{\C}$ und $\mu:F \circ G \Rightarrow
+\Id_{\D}$ die natürlichen Isomorphismen der Kategorienäquivalenz. Dann ist
+jedes Objekt $A \in \Ob \C$ isomorph zu $G(F(A))$ mit dem Isomorphismus
+$\eta_{A}:G(F(A)) \to A$ und der Funktor $G$ damit wesentlich surjektiv.
 
-Es kommutiert für alle $\xymatrixcolsep{1pc}\xymatrix{ A \ar[r]^{f} & B} \in C$ das erweiterte Natürlichkeitsdiagramm von~$\eta$:
+Es kommutiert für alle $(A \xra{f} B) \in \C$ das erweiterte Natürlichkeitsdiagramm von~$\eta$:
 \[ \xymatrixcolsep{4pc}\xymatrixrowsep{4pc}\xymatrix{
 GFA \ar@<1ex>[d]^{\eta_{A}} \ar[r]^{G(F(f))} & GFB \ar@<1ex>[d]^{\eta_{B}} \\
-A \ar@<1ex>[u]^{\eta_{A}^{-1}} \ar[r]^{f} & B \ar@<1ex>[u]^{\eta_{B}^{-1}}
+A \ar@<1ex>[u]^{\eta_{A}^{-1}} \ar[r]_{f} & B \ar@<1ex>[u]^{\eta_{B}^{-1}}
 } \]
 
 Hieraus kann man direkt ablesen, dass $(G \circ F):\Hom(A, B) \to \Hom(GFA, GFB)$ eine Bijektion mit Umkehrabbildung
   \[ g : \Hom(GFA, GFB) \to \Hom(A, B),\ m \mapsto \eta_{B} \circ m \circ \eta_{A}^{-1} \]
-ist. Insbesondere sind für alle $A, B \in \Ob \C$ der Funktor
+ist. Insbesondere ist für alle $A, B \in \Ob \C$ die Abbildung
 \[ F:\Hom(A, B) \to \Hom(FA, FB) \]
 injektiv und
 \[ G : \Hom(FA, FB) \to \Hom(GFA, GFB) \]
-surjektiv auf Hom-Mengen. Wir können sogar zeigen, dass $G$ ist surjektiv auf $\Hom(E, P)$ für alle $E, P \in \Ob \D$ ist. Sei dazu $f \in \Hom(GE, GP)$ beliebig. Dann ist
+surjektiv. Wir können sogar zeigen, dass $G$ surjektiv auf $\Hom(E, P)$ für alle $E, P \in \Ob \D$ ist. Sei dazu $f \in \Hom(GE, GP)$ beliebig. Dann ist
 \begin{align*}
 f &= G(\mu_{P}) \circ \underbrace{(G(\mu_{P}^{-1}) \circ f \circ G(\mu_{E}))}_{\in\,\Hom(GFGE, GFGP)} \circ G(\mu_{E}^{-1})\\
 &= G(\mu_{P}) \circ G(h) \circ G(\mu_{E}^{-1})\\
 &= G(\underbrace{\mu_{P} \circ h \circ \mu_{E}^{-1}}_{\in\,Hom(E, P)})
 \end{align*}
-Dabei haben wir im zweiten Schritt ausgenützt, dass, wie schon bewiesen,
+Um das passende Urbild~$h$ im zweiten Schritt zu erhalten, haben wir die schon
+bewiesene Surjektivität der Abbildung
   \[ G:\Hom(FGE, FGP) \to \Hom(GFGE, GFGP) \]
-surjektiv ist.
+ausgenutzt.
 
-Da die Vorraussetzungen symmetrisch in $F$ und $G$ sind, ist $F$ auch surjektiv und $G$ injektiv auf Hom-Mengen und $G$ wesentlich surjektiv. Nach Definition sind $F$ und $G$ damit volltreu.
+Da die Vorraussetzungen symmetrisch in $F$ und $G$ sind, ist $F$ auch surjektiv und $G$ injektiv auf Hom-Mengen und $F$ wesentlich surjektiv. Nach Definition sind $F$ und $G$ damit volltreu.
 \end{proof}
 
 
