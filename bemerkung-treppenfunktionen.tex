@@ -1,0 +1,68 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath,amssymb}
+\usepackage[all]{xy}
+\usepackage[protrusion=true,expansion=true]{microtype}
+\usepackage{lmodern}
+\usepackage{hyperref}
+
+\newcommand{\RR}{\mathbb{R}}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\section*{Bemerkung zu Treppenfunktionen in der Analysis~II}
+
+Es gibt eine sehr elegante Art und Weise, um den Integralbegriff kategoriell zu
+definieren. Das macht diese Notiz nicht. Wir können aber den konventionellen
+Zugang, wie er gerade in der Analysis-II-Vorlesung gelehrt wird, kategoriell
+verstehen.
+
+Dazu beobachten wir, dass wir auf der Menge der Zerlegungen eines festen
+Intervalls~$[a,b]$ sogar eine Partialordnung definieren können:
+\[ Z \preceq Z' \quad:\Longleftrightarrow\quad
+  \text{$Z'$ ist feiner als~$Z$}
+  \quad:\Longleftrightarrow\quad
+  Z \subseteq Z'. \]
+Somit können wir die Zerlegungen von~$[a,b]$ sogar zu einer \emph{Kategorie}
+organisieren. (Diese ist sogar \emph{filtriert}, da es wenigstens eine
+Zerlegung gibt und je zwei zu einer gemeinsamen verfeinert werden können.)
+
+Zu jeder Zerlegung~$Z$ haben wir den Vektorraum
+\[ T_Z := \{ f : [a,b] \to \RR \,|\, \text{$f$ konstant auf
+den inneren Teilstücken von~$Z$} \} \]
+der Treppenfunktionen zu~$Z$. Ist~$Z'$ eine feinere Zerlegung, haben wir die
+kanonische Inklusionsabbildung
+$T_Z \longrightarrow T_{Z'}$.
+Somit liegt hier tatsächlich ein \emph{Diagramm} (Funktor) vor:
+\[ \begin{array}{@{}rcl@{}}
+  \text{Kategorie der Zerlegungen von $[a,b]$}
+    &\longrightarrow& \RR\text{-}\mathrm{Vect} \\
+  Z &\longmapsto& T_Z.
+\end{array} \]
+Der \emph{Kolimes} dieses Diagramms ist gerade der Vektorraum aller
+Treppenfunktionen auf~$[a,b]$.
+Wie kommt nun Integration ins Spiel? Jeder der Vektorräume~$T_Z$ erlaubt die
+kanonische Integrationsabbildung
+\[ \begin{array}{@{}rcl@{}}
+  T_Z &\longrightarrow& \RR \\
+  f &\longmapsto&
+    \sum_{j=1}^n \text{(Wert von~$f$ auf~$(x_{j-1},x_j)$)} \cdot (x_j - x_{j-1}),
+\end{array} \]
+wobei~$Z = \{ x_0 < \cdots < x_n \}$. Diese Abbildungen sind miteinander in dem
+Sinn verträglich, als dass für~$Z \preceq Z'$ das Diagramm
+\[ \xymatrix{
+  T_Z \ar[rr] \ar[dr] && T_{Z'} \ar[dl] \\
+  & \RR
+} \]
+kommutiert. Diese Abbildungen definieren also tatsächlich einen \emph{Kokegel}!
+Da~$T_{[a,b]}$ der initiale Kokegel ist, wird somit eine Abbildung
+\[ T_{[a,b]} \longrightarrow \RR \]
+induziert. Das ist die Integrationsabbildung für Treppenfunktionen aus der
+Analysis~II.
+
+\end{document}

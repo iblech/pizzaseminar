@@ -74,14 +74,16 @@ so folgte~$\Hom_\C(X,X) \cong 0(X) = \emptyset$ im Widerspruch zu
 $\id_X \in \Hom_\C(X,X)$.\end{proof}
 
 
-\subsubsection{Partielle Beziehungsinformationen}
+\subsection{Partielle Beziehungsinformationen}
 
 Um ein besseres Gefühl dafür zu entwickeln, wie viel Information in
 darstellbaren Prägarben~$\Hom_\C(\freist,X)$ kodiert ist, wollen wir
 konkrete Beispiele betrachten.
 
-\begin{itemize}
-\item Sei~$X$ eine Menge, also ein Objekt von~$\Set$. Als Menge ohne besondere
+
+\subsubsection*{\ldots bei Mengen}
+
+Sei~$X$ eine Menge, also ein Objekt von~$\Set$. Als Menge ohne besondere
 Zusatzstruktur kennt man~$X$ offensichtlich schon dann, wenn man seine Elemente
 kennt. Diese stehen in natürlicher Bijektion zu Abbildungen~$1 \to X$, wobei~$1
 := \{ \star \}$ ein terminales Objekt der Kategorie~$\Set$ bezeichnet: Denn zu
@@ -91,49 +93,84 @@ und umgekehrt spezifiziert jede solche Abbildung~$f$ ein Element~$f(\star) \in X
 Die Beziehungen der speziellen Menge~$1$ zu~$X$ genügen also schon, um~$X$ zu
 beschreiben;~$\widehat X(1)$ legt~$X$ fest.
 
-\item Sei~$G$ eine Gruppe, also ein Objekt von~$\Grp$. In Analogie zum
+
+\subsubsection*{\ldots bei Gruppen}
+
+Sei~$G$ eine Gruppe, also ein Objekt von~$\Grp$. In Analogie zum
 Mengenfall kann man fragen, welche Information in der Menge~$\widehat G(1)$
 kodiert sind. Dabei bezeichnet~"`$1$"' jetzt ein terminales Objekt von~$\Grp$,
 etwa obige Menge~$1$ versehen mit der einzig möglichen Gruppenstruktur. Da aber
 Gruppenhomomorphismen das neutrale Element bewahren müssen, gibt es nur einen
 einzigen Morphismus~$1 \to G$ in~$\Grp$ -- der, der das neutrale Element von~$1$ auf das
-neutrale Element von~$G$ schickt. Diese Information legt~$G$ also überhaupt
+neutrale Element von~$G$ schickt. Die Menge solcher Morphismen legt~$G$ also überhaupt
 noch nicht fest.
 
 Mehr Informationen stecken in den Beziehungen der Gruppe~$\ZZ$ zu~$G$, also in
 den Elementen von~$\widehat G(\ZZ)$. Denn die Gruppenhomomorphismen~$\ZZ \to G$
-stehen in natürlicher Bijektion zu den Elementen von~$G$ (da man einen solchen
+stehen in natürlicher Bijektion zu den Elementen von~$G$, da man einen solchen
 Homomorphismus durch Vorgabe des Bilds eines der beiden Erzeuger von~$\ZZ$
-schon eindeutig festlegen kann). Somit kodiert~$\widehat G(\ZZ)$ also zumindest
+schon eindeutig festlegen kann. Somit kodiert~$\widehat G(\ZZ)$ also zumindest
 die Information über die Elemente von~$G$.
 
 Partielle Information über die Gruppenstruktur kann man etwa durch Betrachtung
 von~$\widehat G(\ZZ/(n))$ erhalten: Gruppenhomomorphismen~$\ZZ/(n) \to G$
-stehen nämlich in natürlicher Bijektion zu den Gruppenelementen, deren
+stehen nämlich in natürlicher Bijektion zu denjenigen Gruppenelementen, deren
 Ordnung~$n$ teilt.
 
-\item Sei~$X$ ein topologischer Raum oder ein strukturierteres geometrisches
+
+\subsubsection*{\ldots bei topologischen Räumen}
+
+Sei~$X$ ein topologischer Raum oder ein strukturierteres geometrisches
 Objekt, wie etwa eine Mannigfaltigkeit oder ein Schema. Dann lassen sich die Elemente
 von~$\widehat X(A)$ besonders anschaulich darstellen, denn das Bild eines
 Morphismus~$A \to X$ sieht wie eine "`deformierte Version"' von~$A$ aus.
 
-Ist etwa~$A = [0,1]$ das reelle Einheitsintervall, so beschreiben Morphismen~$A
+Ist etwa~$I = [0,1]$ das reelle Einheitsintervall, so beschreiben Morphismen~$I
 \to X$ einfach Kurven in~$X$. Geschlossene Schleifen lassen sich ähnlich
-verstehen: sie sind Morphismen~$S^1 \to X$, wobei~$S^1$ die Einheitskreislinie
+verstehen: Sie sind Morphismen~$S^1 \to X$, wobei~$S^1$ die Einheitskreislinie
 bezeichnet.
 
-% ...zwei Abb. * --> [0,1]
+Die Punkte von~$X$ stehen in kanonischer Bijektion zu den Elementen
+von~$\widehat X(1)$, wobei~$1$ den terminalen topologischen Raum bestehend aus
+genau einem Punkt bezeichnet. Zwischen~$1$ und~$I$ bestehen die beiden
+(langweiligen) stetigen Abbildungen
+\begin{align*}
+  1 \longrightarrow I,\ \star \longmapsto 0, \\
+  1 \longrightarrow I,\ \star \longmapsto 1.
+\end{align*}
+Interessant ist allerdings, welche Abbildungen~$\widehat X(I) \to \widehat X(1)$
+sie induzieren: Nämlich die Abbildungen, die jeder Kurve ihren Anfangs- bzw.
+Endpunkt zuordnet. Auf diese Weise erhält man also partielle Information über
+die Topologie von~$X$; beispielsweise genügt die Kenntnis dieser Abbildungen,
+um herauszufinden, ob~$X$ wegzusammenhängend ist.
+
 % kann man was zu simplizialen Mengen sagen?
-\end{itemize}
+
+\begin{bem}In der algebraischen Geometrie hat der Funktor~$\widehat X =
+\Hom(\freist,X)$, wenn~$X$ ein in der algebraischen Geometrie untersuchten
+Raum ist (wie etwa ein Schema oder ein Stack), einen besonderen Namen: Er heißt
+\emph{Punktefunktor von~$X$}. Oft wird in modernen Zugängen auf diese Funktoren
+die Betonung gelegt, denn im Sinne Yonedas genügen sie, um~$X$
+festzulegen, und sind oftmals einfacher zu verstehen als explizite
+Beschreibungen der inneren Struktur von~$X$. Etwa benötigt man zur expliziten
+Konstruktion des~$n$-dimensionalen projektiven Raums entweder die sog.
+Proj-Konstruktion oder Verklebekünste und affine Überdeckunsschemata, der
+Punktefunktor kann aber ganz leicht beschrieben werden:
+\[ \Hom(A, \PP^n) \cong \text{Rang-1-Quotienten von~$\O_A^{n+1}$ modulo
+Isomorphie}. \]
+\end{bem}
 
 
 \subsection{Die Yoneda-Einbettung}
 
+Jedes Objekt~$X$ kann man durch Übergang zur darstellbaren
+Prägarbe~$\Hom_\C(\freist,X)$ auch als ideelles Objekt betrachten. Diese
+Zuordnung kann man zu einem Funktor~$\C \to \widehat\C$ ausdehnen:
 Der volle Hom-Funktor geht von~$\C^\op \times \C$ zu~$\Set$. Aus diesem kann
-man durch Curryfizierung einen Funktor~$\C \to \Funct(\C^\op,\Set)$ basteln,
+man durch Curryfizierung einen Funktor~$\C \to \Funct(\C^\op,\Set) = \widehat\C$ basteln,
 \[ \begin{array}{@{}rrcl@{}}
   Y : & \C &\longrightarrow& \widehat\C \\
-  & X &\longmapsto& \widehat X := \Hom_\C(\freist,X) \\
+  & X &\longmapsto& \Hom_\C(\freist,X) =: \widehat X \\
   & f &\longmapsto& \widehat f,
 \end{array} \]
 wobei die Komponenten der natürlichen Transformation~$\widehat f$ durch
@@ -173,8 +210,20 @@ Eigenschaft~c) besagt, dass jede Prägarbe auf kanonische Art und Weise Kolimes
 darstellbarer Prägarben ist. Für eine genaue Formulierung siehe Aufgabe~3 von
 Übungsblatt~6.
 
+\begin{bem}Vielleicht fühlt man sich wegen der Kontravarianz von Prägarben ein
+wenig unwohl. Diese ist leider nicht vermeidbar: Wenn man nicht Prägarben (also
+Funktoren~$\C^\op \to \Set$) sondern \emph{Koprägarben} (also Funktoren~$\C \to
+\Set$) betrachtet, tritt die Kontravarianz dann beim Einbettungsfunktor auf:
+\[ \C^\op \longrightarrow \Funct(\C,\Set),\ X \longmapsto \Hom_\C(X,\freist).  \]
+\end{bem}
+
 
 \subsection{Das Yoneda-Lemma}
+
+Folgendes Lemma ist das zelebrierte Yoneda-Lemma. Es gibt eine sehr konkrete
+Antwort auf die Frage, wie Morphismen (natürliche Transformationen) aus
+darstellbaren Prägarben heraus aussehen:
+% XXX: Geschichte!
 
 \begin{lemma}[Yoneda-Lemma]Es gibt eine in~$X \in \Ob \C$ und~$F \in \Ob \widehat \C$
 natürliche Bijektion
@@ -221,6 +270,31 @@ Die vom Beweis des Yoneda-Lemmas gelieferte Bijektion (bzw. ihre
 Umkehrabbildung) ist gerade die untersuchte Abbildung.
 \end{proof}
 
+\begin{kor}Für je zwei Objekte~$A$, $B$ von~$\C$ sind äquivalent:
+\[ A \cong B \quad\Longleftrightarrow\quad \widehat A \cong \widehat B. \]
+\end{kor}
+\begin{proof}Folgt aus der Volltreuheit der Yoneda-Einbettung und der
+allgemeinen Übungs\-auf\-ga\-be~1 von Blatt 3.\end{proof}
+
+In der Kategorientheorie wird dieses Korollar sehr häufig verwendet, da man
+oftmals die Prägarben~$\widehat A$ besser versteht als die Objekte~$A$ selbst.
+Folgendes Beispiel soll das illustrieren:
+\begin{bsp}Seien~$A$ und~$B$ Objekte einer Kategorie~$\C$, in der je zwei
+Objekte ein Produkt besitzen. Dann haben wir schon in Proposition~\ref{propkomm}
+gesehen, dass~$A \times B$ isomorph zu~$B \times A$ ist. Eine Argumentation im
+Yoneda-Style geht so:
+\begin{align*}
+  \Hom_\C(\freist, A \times B) &\cong
+  \Hom_\C(\freist, A) \times \Hom_\C(\freist, B) \\
+  &\cong \Hom_\C(\freist, B) \times \Hom_\C(\freist, A) \cong
+  \Hom_\C(\freist, B \times A), \\[0.5em]
+  \omit\rlap{$\stackrel{\text{\tiny Yoneda}}{\Longrightarrow} A \times B \cong B \times A.$}
+\end{align*}
+Dabei haben wir die Stetigkeit des Hom-Funktors in der zweiten Variable (siehe
+Proposition~\ref{homstetig}) und die bekannte Kommutativität des kartesischen
+Produkts von Mengen bis auf Isomorphie verwendet.
+\end{bsp}
+
 \begin{bem}In der Vollheit der Yoneda-Einbettung sehen wir abermals das Motto
 natürlicher Transformationen, gleichmäßig über alle Objekte der Kategorie
 definiert zu sein, bestätigt (Motto~\ref{nattrafoglm}): Jede natürliche
@@ -229,7 +303,7 @@ notwendigerweise die gleichmäßige Form
 \[ \eta_X(f) = \varphi \circ f \]
 für einen festen Morphismus~$\varphi \in \Hom_\C(A,B)$.\end{bem}
 
-% kontravarianz vermeidbar
+
+\subsection{Freie Kovervollständigung}
 
 % Benötigt man "lokal klein" bei Funct(C,D)?
-% "Punktefunktor"
