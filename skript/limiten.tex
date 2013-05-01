@@ -276,6 +276,100 @@ $X \in \Ob\C$, jeweils ein Limes ist.
 
 \subsection{Vertauschung von (Ko-)Limiten}
 
+\begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{filtriert}, wenn jedes
+endliche Diagramm in~$\C$ (d.\,h. jeder Funktor~$\I \to \C$ mit~$\I$ einer
+Kategorie, deren Objekt- und Morphismenklassen endlich sind) einen Kokegel
+besitzt.\end{defn}
+Man fordert von diesen Kokegeln keinerlei Universalitätseigenschaft, diese
+Kokegel müssen also nicht unbedingt Kolimiten sein. Auch das leere Diagramm
+soll dieser Definition nach einen Kokegel besitzen. Man kann die Definition
+auch mit elementaren Begriffen formulieren:
+
+\begin{prop}\label{charakterisierungfiltriert}%
+Eine Kategorie~$\C$ ist genau dann filtriert, wenn
+\begin{itemize}
+\item sie ein Objekt enthält,
+\item für je zwei Objekte~$X,Y\in\Ob\C$ ein Objekt~$Z\in\Ob\C$ zusammen mit
+zwei Morphismen $X \to Z$, $Y \to Z$ existiert und
+\item für je zwei parallele Morphismen $f, g : X \to Y$ in~$\C$ ein Objekt~$Z$
+und ein Morphismus~$h : Y \to Z$ mit~$h \circ f = h \circ g$ existiert.
+\end{itemize}
+\end{prop}
+
+\begin{aufg}Beweise Proposition~\ref{charakterisierungfiltriert}.\end{aufg}
+
+Eine wichtige Bezugsquelle (und historisch der Ausgangspunkt für das Konzept
+filtrierter Kategorien) sind \emph{gerichtete Mengen}:
+\begin{defn}Eine \emph{gerichtete Menge} ist eine Quasiordnung, in der jede
+endliche Familie von Elementen eine obere Schranke besitzt.\end{defn}
+Äquivalent ist eine gerichtete Menge eine Quasiordnung, die mindestens ein
+Element enthält und in der je zwei Elemente eine obere Schranke besitzen.
+\begin{prop}Die von einer Quasiordnung~$P$ induzierte Kategorie~$BP$ ist genau
+dann filtriert, wenn~$P$ gerichtet ist.\end{prop}
+
+\begin{bsp}\begin{enumerate}
+\item Die Kategorie~$B\NN$ ist filtriert:
+\[ 0 \lra 1 \lra 2 \lra 3 \lra \cdots \]
+In dieser Skizze fehlen natürlich viele Morphismen, etwa der von~$0$ direkt
+nach~$2$. Historisch wurden Limiten und Kolimiten über Diagramme dieser Form
+als erstes untersucht.
+
+Der Vektorraum~$K[X]$ der Polynome über einem Körper~$K$ (oder einem Ring) ist
+ein Beispiel für einen solchen Kolimes, siehe Übungsblatt~5, Aufgabe~2. Ein
+interessanteres Beispiel ist der Ring der ganzen~$p$-adischen Zahlen: Dieser
+ist Limes des Diagramms
+\[ \cdots \lra \ZZ/(p^2) \lra \ZZ/(p^1) \lra \ZZ/(p^0) \]
+in der Kategorie der Ringe.
+
+\item Die Teilbarkeitsordnung auf~$\NN_{\geq 1}$ induziert ebenfalls eine
+filtrierte Kategorie (Abbildung~\ref{teilbarkeitsordnung}). Diese wird etwa
+in der Zahlentheorie verwendet, um den sog. \emph{Prüferring}~$\widehat\ZZ$ zu
+definieren: Er ist Limes des Diagramms
+\[ \begin{array}{@{}rcl@{}}
+  n &\longmapsto& \ZZ/(n) \\
+  (n \mid m) &\longmapsto& (\ZZ/(m) \to \ZZ/(n), [x] \mapsto [x]).
+\end{array} \]
+
+\item Sei~$x$ ein Punkt eines topologischen Raums~$X$. Dann organisieren sich
+die offenen Mengen von~$X$, die~$x$ enthalten, vermöge der umgekehrten
+Inklusionsbeziehung zu einer gerichteten Menge, und induzieren daher eine
+filtrierte Kategorie. In der Garbentheorie verwendet man Kolimiten über
+Diagramme dieser Form, um den sog. \emph{Halm} einer Garbe an der Stelle~$x$ zu
+definieren.
+
+\item Ein Beispiel, das nicht von einer gerichteten Menge induziert wird, ist
+folgendes: Sei~$X$ eine feste Menge. Dann ist die Kategorie~$\Set_\mathrm{fp}/X$ mit
+\begin{align*}
+  \text{Objekte: } & \text{Abbildungen $I \to X$ mit $I$ endlich} \\
+  \text{Morphismen: } &
+    \Hom(I \to X, J \to X) := \\ & \left\{
+    \text{(kommutative) Diagramme der Form $\vcenter{\xymatrix{
+       I \ar[rr] \ar[dr] & & J \ar[ld] \\
+       & X
+      }}$} \right\}
+\end{align*}
+filtriert. Relevant ist diese Kategorie insofern, als dass der Kolimes des
+kanonischen Funktors
+\[ \Set_\mathrm{fp}/X \longrightarrow \Set,\ (I \to X) \longmapsto I \]
+gerade~$X$ ist (eigentlich: durch~$X$ gegeben werden kann). Auf diese Weise
+kann man also jede Menge als Kolimes endlicher Mengen schreiben.
+Analog kann man jeden Vektorraum als Kolimes endlich-dimensionaler Vektorräume
+und jeden Modul als Kolimes endlich-präsentierter Moduln schreiben. Diese
+Beobachtungen sind der Ausgangspunkt der Theorie \emph{zugänglicher Kategorien}.
+\end{enumerate}\end{bsp}
+
+\begin{aufg}Formuliere präzise und beweise folgende Aussage:
+Jeder~$K$-Vektorraum~$V$ ist Kolimes all der
+endlich-dimensionalen~$K$-Vektorräume, die in~$V$ hinein abbilden.
+\end{aufg}
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.35]{teilbarkeitsordnung.png}
+  %\input{teilbarkeitsordnung.tex}
+  \caption{\label{teilbarkeitsordnung}Die von der Teilbarkeitsordnung auf den
+  positiven natürlichen Zahlen induzierte Kategorie (Ausschnitt).}
+\end{figure}
 
 \subsection{Kofinale Unterdiagramme}
 

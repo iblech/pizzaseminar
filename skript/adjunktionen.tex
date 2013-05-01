@@ -70,7 +70,16 @@ die Adjunktionsbeziehungen
 \[ B\lceil\freist\rceil \dashv Bi \dashv B\lfloor\freist\rfloor, \]
 siehe Aufgabe~1 von Übungsblatt~7.\end{bsp}
 
-\begin{bsp}Sei~$K$ ein Körper (oder Ring), $U : \Vect{K} \to \Set$ der
+
+\subsection{Beispiele für adjungierte Funktoren}
+
+Wenn man einmal gelernt hat, adjungierte Funktoren zu erkennen, so trifft man
+ständig auf sie. Im Folgenden wollen wir eine lächerlich kurze Beispielliste
+aus verschiedenen Teilgebieten der Mathematik zusammenstellen.
+
+\subsubsection*{Beispiel aus der Algebra: Freie Konstruktionen}
+
+Sei~$K$ ein Körper (oder Ring), $U : \Vect{K} \to \Set$ der
 Vergissfunktor und~$F : \Set \to \Vect{K}$ der Funktor, der jeder Menge~$X$
 den sog. \emph{freien Vektorraum über~$X$}
 \[ F(X) := \Biggl\{ \sum_{i=1}^n \lambda_i x_i \,\Bigg|\,
@@ -86,10 +95,26 @@ Ist~$f : X \to X'$ eine Abbildung, so ist die induzierte
 Abbildung durch
 \[ F(f) : F(X) \to F(X'),\ \sum_{i=1}^n \lambda_i x_i \mapsto
   \sum_{i=1}^n \lambda_i f(x_i) \]
-gegeben und tatsächlich linear. Dann gilt:
-\end{bsp}
-\begin{prop}Der so definierte Funktor~$F$ ist
-linksadjungiert zum Vergissfunktor~$U$.
+gegeben und tatsächlich linear.
+
+Die Konstruktion des freien Vektorraums über einer Menge~$X$ ist die
+\emph{ökonomischste Art und Weise}, um aus der Menge~$X$ einen
+Vektorraum~$F(X)$ zu basteln: Denn wenn die Elemente~$x \in X$ zu Vektoren
+werden sollen, müssen in~$F(X)$ auch Linearkombinationen von ihnen enthalten
+sein; weitere Vektoren werden von den Vektorraumaxiomen aber nicht gefordert.
+Ferner sollten in~$F(X)$ genau die Rechenregeln erfüllt sein, die von den
+Vektorraumaxiomen vorgeschrieben werden, aber keine willkürlichen
+weiteren\footnote{Das ist eine gute anschauliche Vorstellung, man kann sie
+allerdings nicht zu wörtlich nehmen: Etwa folgt aus den Vektorraumaxiomen für
+kein~$n \geq 0$ die Aussage "`der Vektorraum ist~$n$-dimensional"', da es ja
+Vektorräume beliebiger Dimension gibt. Aber für endliches~$X$ erfüllt~$F(X)$
+diese Aussage doch, für~$n = |X|$. Nur wenn man bereit ist, den Topos, in dem man
+arbeitet, zu wechseln, kann man einen völlig generischen Vektorraum
+konstruieren.}. Die im vorherigen Absatz gegebene Konstruktion
+bewerkstelligt das gerade. Formal kann man das durch folgende Adjunktionsbeziehung
+ausdrücken:
+\begin{prop}Der Funktor~$F$ ist
+linksadjungiert zum Vergissfunktor~$U$, d.\,h. $F \dashv U$.
 \end{prop}
 \begin{proof}
 Wir geben den in~$Y \in \Ob\Set$ und~$V \in \Ob\Vect{K}$ natürlichen
@@ -113,7 +138,21 @@ kommutiert, d.\,h. dass für alle~$\varphi \in \Hom_{\Vect{K}}(F(Y),V)$ die Glei
 erfüllt ist. Das ist offensichtlich der Fall.
 \end{proof}
 
-\begin{bsp}Der Vergissfunktor~$U : \Cat \to \Set$, der einer kleinen Kategorie
+Auf ähnliche Art und Weise kann man viele \emph{freie Konstruktionen}
+durchführen: freie Monoide (siehe Übungsblatt~7, Aufgabe~2), freie Gruppen,
+freie Ringe, \ldots; manche Theorien lassen aber auch keine freien
+Konstruktionen zu, etwa die der Körper (siehe Übungsblatt~7, Aufgabe~3). Im
+Rahmen der universellen Algebra ist dieses Phänomen vollständig verstanden (und
+nicht besonders schwer).
+
+\begin{aufg}Wie kann der freie Ring über einer Menge~$X$ realisiert werden?
+\emph{Ring} soll dabei, wie sonst in diesem Skript auch, genauer
+\emph{kommutativer Ring mit Eins} bedeuten.\end{aufg}
+
+
+\subsubsection*{Beispiel aus der Kategorientheorie}
+
+Der Vergissfunktor~$U : \Cat \to \Set$, der einer kleinen Kategorie
 ihre Menge von Objekten zuordnet, besitzt sowohl einen Links-, als auch einen
 Rechtsadjungierten, nämlich
 \[ \begin{array}{@{}rrclrcl@{}}
@@ -124,12 +163,70 @@ Denn man hat natürliche Isomorphismen
 \[ \Hom_\Cat(L(X), \E) \cong \Hom_\Set(X, \Ob\E)
   \quad\text{und}\quad
   \Hom_\Set(\Ob\E, Y) \cong \Hom_\Cat(\E, R(Y)). \]
-\end{bsp}
 
-\begin{bsp}Analog hat der Vergissfunktor~$U : \Top \to \Set$, der jedem
+% Limitenfunktor
+
+
+\subsubsection*{Beispiel aus der Topologie}
+
+Analog hat der Vergissfunktor~$U : \Top \to \Set$, der jedem
 topologischen Raum seine zugrundeliegende Menge von Punkten zuordnet, einen
 Links- und Rechtsadjungierten: die Konstruktion des diskreten bzw. indiskreten
-topologischen Raums auf einer Menge.\end{bsp}
+topologischen Raums auf einer Menge.
+
+
+\subsubsection*{Beispiel aus der Logik}
+
+Lawvere hat beobachtet, dass existenzielle und
+universelle Quantifikation als Links- bzw. Rechtsadjungierte interpretiert
+werden können:
+\[ \exists \dashv f^* \dashv \forall. \]
+Hier ist nicht der Platz, um in den Hintergrund einzuführen, um diese
+zelebrierte Adjunktionskette formal zu diskutieren. Aber eine intuitive Analyse ist durchaus
+möglich. Dazu müssen wir zunächst verstehen, wie Logiker die fundamentale
+Schlussregel für den Existenzquantor ausdrücken:
+\begin{center}
+  \def\labelSpacing{8pt}
+  \Axiom$\exists y\mathpunct{:}\,\! \varphi\ \fCenter\seq{\vec x} \psi$\doubleLine
+  \RightLabel{\scriptsize (wenn~$y$ nicht in~$\psi$ vorkommt)}
+  \LeftLabel{\phantom{\scriptsize (wenn~$y$ nicht in~$\psi$ vorkommt)}}
+  \UnaryInf$\varphi\ \fCenter\seq{\vec x, y} \psi$
+  \DisplayProof
+\end{center}
+Der Doppelstrich deutet an, dass diese Regel sowohl von oben nach unten als
+auch umgekehrt angewendet werden kann. Ausformuliert besagt sie:
+\begin{indentblock}
+Seien~$x_1,\ldots,x_n$ (kurz~$\vec x$) sowie~$y$ Variablen.
+Sei~$\varphi$ eine logische Formel in den Variablen~$\vec x$ sowie~$y$ und
+sei~$\psi$ eine logische Formel in~$\vec x$. Genau dann
+kann man
+\[ \text{im Kontext der Variablen~$\vec x$ aus $\exists y{:}\ \varphi$ die
+Aussage~$\psi$ folgern,} \]
+wenn man
+\[ \text{im Kontext der Variablen~$\vec x, y$ aus $\varphi$ die Aussage~$\psi$
+folgern kann.} \]
+\end{indentblock}
+Mit anderen Worten: Wenn man die Aussage~$\exists y{:}\ \varphi$ als
+Voraussetzung gegeben hat und aus ihr die Aussage~$\psi$ folgern möchte, dann
+kann man die Existenz eines Werts~$y$, das die Eigenschaft~$\varphi$ hat,
+voraussetzen und unter diesem Kontext die Aussage~$\psi$ folgern. Umgekehrt
+geht es auch. Diese Schlussregel wendet man also ständig an, man reflektiert
+sie nur selten.
+
+Unter dem Doppelstrich wird die Formel~$\psi$, in der die Variable~$y$ nicht
+vorkommt, im Kontext~$\vec x, y$ betrachtet. Diesen Prozess modelliert man in
+einem geeigneten Sinn als Rückzug längs eines Projektionsmorphismus~$X_1 \times
+\cdots \times X_n \times Y \to X_1 \times \cdots \times X_n$, wobei~$X_i$ die
+Typen der Variablen~$x_i$ und~$Y$ der Typ von~$y$ ist. So lässt sich die
+Schlussregel für den Existenzquantor also auch als Ausdruck einer
+Adjunktionsbeziehung verstehen:
+\[ \Hom_{\vec x}(\exists y{:}\, \varphi,\ \psi) \cong
+  \Hom_{\vec x, y}(\varphi,\ \psi). \]
+
+\begin{aufg}Formuliere die fundamentale Schlussregel für den
+Allquantor.\end{aufg}
+
+% XXX: Syntax vs. Semantik
 
 
 \subsection{Zusammenspiel von adjungierten Funktoren und (Ko-)Limiten}
@@ -142,7 +239,7 @@ Sei $F:\C\to\D$ linksadjungiert zu $G:\D\to\C$. Dann gilt:
 \end{enumerate}
 \end{prop}
 
-\begin{kor}\label{vergissstetig}
+\begin{bsp}\label{vergissstetig}
 \begin{enumerate}
 \item Der Vergissfunktor $U:\Vect{K} \to \Set$ erhält Limiten.
 Da er aber nicht Kolimiten erhält (Beispiel~\ref{vectvergiss}), kann er keinen
@@ -150,7 +247,7 @@ Rechtsadjungierten besitzen.
 \item \label{vergisscat}Der Vergissfunktor $U:\Cat \to \Set$ erhält Limiten und Kolimiten.
 \item Der Vergissfunktor $U:\Top \to \Set$ erhält Limiten und Kolimiten.
 \end{enumerate}
-\end{kor}
+\end{bsp}
 
 \begin{proof}[Beweis der Proposition]
 Der übliche Beweis geht so: Sei $D:\I\to\D$ ein Diagramm, mit Limes~$\lim_i D(i)$.
@@ -181,6 +278,22 @@ Möglichkeiten, die Lücken zu schließen, siehe etwa~\cite{gaillard,lin}.
 %Das obige Argument zeigt zumindest, dass~$\Hom_\D(A,G(\lim_i D(i)))$ zusammen
 %mit den induzierten Projektionsmorphismen ein Limes (in~$\Set$) ist.
 \end{proof}
+
+
+\subsection{Kriterien für die Existenz eines adjungierten Funktors}
+
+
+\subsection{Weitere Aspekte}
+
+Zu einem abgerundeten Verständnis von Adjunktionen gehören noch folgende
+Aspekte:
+\begin{itemize}
+\item Eins und Koeins von Adjunktionen
+\item Monaden aus Adjunktionen
+% XXX
+\end{itemize}
+Diese können hier nicht behandelt werden, sind aber nachzulesen in XXX.
+
 
 \endinput
 \begin{exmp}
