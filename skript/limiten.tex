@@ -289,7 +289,7 @@ von~$Y$ miteinander.
 \subsection{Filtrierte Limiten und Kolimiten}
 
 Der diskrete Charakter der vergangenen Beispiele liegt in der Form der
-vrwendeten Indexkategorien begründet: Diese haben keine Ähnlichkeit mit den
+verwendeten Indexkategorien begründet: Diese haben keine Ähnlichkeit mit den
 Folgen der Analysis. Bei \emph{filtrierten} Indexkategorien ist das anders, und
 die Vorstellung, dass sich die Objekte des Diagramms dem (Ko-)Limes beliebig
 genau annähern, ist wieder sehr tragfähig.
@@ -388,7 +388,41 @@ endlich-dimensionalen~$K$-Vektorräume, die in~$V$ hinein abbilden.
   \caption{\label{teilbarkeitsordnung}Die von der Teilbarkeitsordnung auf den
   positiven natürlichen Zahlen induzierte Kategorie (Ausschnitt).}
 \end{figure}
+
+
 \subsection{Zusammenhang mit dem Limesbegriff in der Analysis}
+
+Zum aus der Analysis vertrauten Limesbegriff ist der kategorielle Begriff
+insofern verwandt, als dass bei beiden Konzepten die Vorstellung der immer
+besser werdenden Approximation tragfähig ist: Die Glieder einer Folge
+nähern sich beliebig genau dem Grenzwert an, die Objekte eines filtrierten
+Diagramms approximieren immer besser den Kolimes des Diagramms.
+
+Man kann sich aber auch die präzise Frage stellen, ob man den Limes einer reellen
+Zahlenfolge tatsächlich als kategoriellen Limes oder Kolimes in einer
+geeigneten Kategorie verstehen kann. Die folgende Proposition gibt darauf eine
+partielle Antwort:
+
+\begin{prop}Sei~$(x_n)_n$ eine monoton steigende Folge reeller Zahlen. Genau dann
+konvergiert diese Folge gegen eine Zahl~$x \in \RR$, wenn das Diagramm
+\[ \begin{array}{@{}rcl@{}}
+  \NN &\longrightarrow& B\RR \\
+  n &\longmapsto& x_n \\
+  \text{"`$n \leq m$"'} &\longmapsto& \text{"`$x_n \leq x_m$"'}
+\end{array} \]
+mit den eindeutigen Morphismen das Objekt~$x \in B\RR$ als Kolimes besitzt.
+\end{prop}
+Dabei ist mit~$B\RR$ die von der üblichen Ordnung auf~$\RR$ induzierte
+Kategorie gemeint. Grenzwerte monoton steigender Folgen lassen sich also
+kategoriell als Kolimiten verstehen, und dual lassen sich auch Grenzwerte
+monoton fallender Folgen als kategorielle Limiten interpretieren. Für
+allgemeine Folgen gibt es aber (wohl) keine solche Übersetzung. Das ist auch
+anschaulich plausibel: Den Grenzwert einer monoton steigenden Folge kann man
+unter allen reellen Zahlen allein über seine Ordnungsbeziehungen (also kategoriell!) zu
+den Folgegliedern charakterisieren, nämlich als ihr Supremum. Für den Grenzwert
+einer allgemeinen Folge ist eine solche Charakterisierung dagegen nicht
+möglich, stattdessen muss tatsächlich die metrische Struktur beachtet werden.
+
 
 \subsection{Existenz von Limiten}
 
