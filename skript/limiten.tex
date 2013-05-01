@@ -12,6 +12,9 @@ kann.
 In diesem Abschnitt wollen wir Funktoren~$\I \to \C$ auch als~($\I$-förmige)
 Diagramme bezeichnen.
 
+
+\subsection{(Ko-)Kegel und (Ko-)Limiten}
+
 \begin{defn}Ein \emph{Kegel} eines Diagramms~$F : \I \to \C$ besteht aus
 \begin{enumerate}
 \item einem Objekt~$K \in \Ob \C$ (der sog. \emph{Kegelspitze}) zusammen mit
@@ -97,7 +100,69 @@ Dieses Motto werden wir sogar formal beweisen können: siehe
 Proposition~\ref{homstetig}.
 
 
-\subsection{Beispiele für Limiten}
+\subsubsection*{Das duale Konzept: Kokegel und Kolimiten}
+
+Kegel und Limiten in der dualen Kategorie~$\C^\op$ haben einen eigenen Namen:
+sie heißen Kokegel und Kolimiten in~$\C$. Die allgemeine Theorie ist völlig
+analog -- dual -- zu der von Kegeln und Kolimiten, um Missverständnisse zu
+vermeiden halten wir trotzdem explizit die Definitionen fest. Die formale
+Ähnlichkeit darf nicht dazu verleiten, Limiten und Kolimiten über einen Kamm zu
+scheren: In konkreten Anwendungen fühlen sich die beiden Konzepte völlig
+unterschiedlich an.
+
+\begin{defn}Ein \emph{Kokegel} eines Diagramms~$F : \I \to \C$ besteht aus
+\begin{enumerate}
+\item einem Objekt~$K \in \Ob \C$ (der sog. \emph{Kokegelspitze}) zusammen mit
+\item jeweils einem Morphismus~$\iota_i : F(i) \to K$ für jedes Objekt~$i \in \Ob\I$,
+\end{enumerate}
+sodass
+für alle Morphismen~$f : i \to j$ in~$\I$ die Dreiecke
+\[ \xymatrix{
+  F(i) \ar[rd]_{\iota_i} \ar[rr]^{F(f)} && F(j) \ar[ld]^{\iota_j} \\
+  & K
+} \]
+kommutieren.
+\end{defn}
+
+\begin{defn}Ein \emph{Morphismus von Kokegeln $K \to \widetilde K$} eines Diagramms~$F$ besteht aus
+\begin{enumerate}
+\item[] einem Morphismus der Kokegelspitzen $\psi : K \to \widetilde K$ in~$\C$
+\end{enumerate}
+sodass
+\begin{enumerate}
+\item[]
+für alle~$i \in \Ob\I$ die Dreiecke
+\[ \xymatrix{
+  & F(i) \ar[ld]_{\iota_i} \ar[rd]^{\widetilde\iota_i} \\
+  K \ar[rr]_{\psi} && \widetilde K
+} \]
+kommutieren.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}Ein \emph{Kolimes} eines Diagramms~$F:\I\to\C$ ist ein initiales
+Objekt in der Kategorie der Kokegel zu~$F$.\end{defn}
+
+\begin{motto}Ein Kolimes eines Diagramms ist ein bestes
+(kleinstmögliches) Objekt, welches das Diagramm zu einem Kokegel ergänzt.
+\end{motto}
+
+\begin{motto}
+Ein Kolimes subsumiert das gesamte Diagramm zu einem einzelnen Objekt (der
+Kokegelspitze) -- zumindest, was Morphismen aus das Diagramm heraus
+angeht.\end{motto}
+
+
+\subsection{Beispiele für Limiten und Kolimiten}
+
+Für spezielle Wahlen der Indexkategorie~$\I$ erkennt man im Konzept
+Konzept~$\I$-förmiger Limiten viele bekannte Konstruktionen wieder, das sollen
+die folgenden Beispiele illustrieren. Diese haben einen eher diskreten Charakter
+und erwecken nicht das aus der Analysis vertraute Gefühl des beliebig genauen
+Approximierens; wer dieses sucht, wird erst im übernächsten Abschnitt fündig
+werden, in dem wir das Konzept \emph{filtrierter} Limiten und Kolimiten
+behandeln.
+
 
 \subsubsection*{Produkte}
 
@@ -108,6 +173,9 @@ Dann sind Diagramme~$\I \to \C$ einfach durch die Angabe zweier Objekte
 von~$\C$ gegeben. Kegel solcher Diagramme haben wir früher schon untersucht:
 unter dem Namen \emph{Möchtegern-Produkte}. Entsprechend sind Limiten
 solcher Diagramme schlichtweg Produkte.
+
+Dual dazu sind Kolimiten solcher Diagramme schlichtweg Koprodukte.
+
 
 \subsubsection*{Faserprodukte (Pullbacks)}
 
@@ -176,10 +244,13 @@ Kategorien der Fall.\end{bem}
 
 Sei speziell~$\I = \mathbf{0}$ die leere Kategorie und~$F:\I \to \C$ das
 einzige~$\I$-förmige Diagramm in~$\C$. Kegel von~$F$ sind dann einfach Objekte
-von~$\C$ und Morphismen solcher Kegel Morphismen zwischen diesen Objekten; die
+von~$\C$ und Morphismen solcher Kegel sind Morphismen zwischen diesen Objekten; die
 Kategorie der Kegel von~$F$ ist also~$\C$ selbst.
 
 Damit ist klar: Limiten von~$F$ sind dasselbe wie terminale Objekte von~$\C$.
+
+Genauso ist auch die Kategorie der Kokegel von~$F$ einfach~$\C$, Kolimiten
+von~$F$ sind daher dasselbe wie initiale Objekte von~$\C$.
 
 
 \subsubsection*{Differenzkerne (Equalizer)}
@@ -203,78 +274,25 @@ auch kürzer
 \[ \mathrm{Eq}(f,g) = \ker(f - g) \]
 schreiben und so die Begriffsherkunft verstehen.
 
-
-\subsection{Zusammenhang mit dem Limesbegriff in der Analysis}
-
-\subsection{Existenz von Limiten}
-
-\begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{(ko-)vollständig}, wenn
-jedes kleine Diagramm in~$\C$ einen (Ko-)Limes besitzt. Dabei heißt ein
-Diagramm~$\I \to \C$ genau dann \emph{klein}, wenn seine Indexkategorie~$\I$
-klein ist (d.\,h. wenn die Objekt- und Morphismenklassen sogar schon Mengen
-bilden).\end{defn}
-
-\begin{prop}Die Kategorie der Mengen ist vollständig und kovollständig:
-Ist~$F:\I\to\Set$ ein kleines Diagramm, so wird die Menge
-\begin{align*}
-  \lim F &:= \Bigl\{ (x_i)_{i\in\Ob\I} \in \prod_{i \in \Ob\I} F(i) \ \Big|\
-  \text{$F(f)(x_i) = x_j$ für alle~$f:i \to j$ in~$\I$} \Bigr\}
-\intertext{vermöge der kanonischen Projektionsabbildungen zu einem Limes
-von~$F$ und}
-  \colim F &:= \Biggl(\coprod_{i \in \Ob\I} F(i)\Biggr)\Big/{\sim},
-\end{align*}
-wobei~$({\sim})$ die feinste Äquivalenzrelation mit
-\[ \text{für alle $f : i \to j$ in~$\I$, $x \in F(i)$:}\quad
-  \langle i, x \rangle \sim \langle j, F(f)(x) \rangle \]
-ist, zu einem Kolimes von~$F$.
-\end{prop}
-\begin{proof}
-Die Äquivalenzrelation~$({\sim})$ kann definiert werden als Schnitt über alle
-Äqui\-va\-lenz\-re\-la\-tio\-nen auf~$\coprod_{i \in \Ob\I} F(i)$, die die angegebene
-Bedingung erfüllen. Dann kann man die Behauptungen nachrechnen.
-\end{proof}
-
-\textbf{XXX:} Hier fehlt der Satz über die Berechnung von Limiten aus Produkten
-und Differenzkernen.
+Dual dazu kann man den Kolimes solcher Diagramme~$\I \to \C$ verstehen: Statt
+das Objekt~$X$ zu einem Unterobjekt~$\mathrm{Eq}(f,g)$ zu verkleinern, um die
+Morphismen~$f$ und~$g$ gleich zu machen, kann man auch zu einem sog. Quotienten
+von~$Y$ übergehen. In der Kategorie der Mengen kann der \emph{Kodifferenzkern}
+etwa durch die Konstruktion
+\[ \mathrm{CoEq}(f,g) := Y/{\sim} \]
+gegeben werden, wobei~$({\sim})$ die feinste Äquivalenzrelation auf~$Y$ mit
+\[ \text{$f(x) \sim g(x)$ für alle~$x \in X$} \]
+ist. Für jedes~$x \in X$ identifiziert man also die Elemente~$f(x)$ und~$g(x)$
+von~$Y$ miteinander.
 
 
-\subsection{Limiten in Funktorkategorien}
+\subsection{Filtrierte Limiten und Kolimiten}
 
-In diesem Abschnitt wollen wir untersuchen, wie Limiten in
-Funktorkategorien~$\Funct(\C,\D)$ aussehen. Sei dazu ein Diagramm
-$F : \I \longrightarrow \Funct(\C,\D)$
-gegeben. Durch "`Nachschaltung der Evaluierungsfunktoren"' erhält man aus
-diesem Diagramm für jedes Objekt~$X \in \Ob\C$ jeweils ein Diagramm in~$\D$:
-\[ \begin{array}{@{}rrcl@{}}
-  F_X : & \I &\longrightarrow& \D \\
-  & i &\longmapsto& F(i)(X)
-\end{array} \]
-Wenn wir voraussetzen, dass all diese Diagramme jeweils einen Limes~$\lim F_X$ in~$\D$
-besitzen, können wir (wie in Aufgabe~4 von Übungsblatt~3) einen Funktor
-\[ \begin{array}{@{}rrcl@{}}
-  L : & \C &\longrightarrow& \D \\
-  & X &\longmapsto& \lim F_X
-\end{array} \]
-basteln. Dann gilt:
-\begin{prop}
-Der so konstruierte Funktor~$L$ wird (mit welchen Projektionen?) ein Limes des Diagramms~$F$.
-\end{prop}
-Etwas ungenau kann man diesen Zusammenhang auch über die Formel
-\[ (\lim F)(X) = \lim F_X = \lim_i F(i)(X) \]
-ausdrücken. Als Motto kann man daher festhalten:
-\begin{motto}Besitzt~$\D$ $\I$-förmige Limiten, so werden~$\I$-förmige Limiten
-in der Funktorkategorie~$\Funct(\C,\D)$ punktweise berechnet. In diesem Fall
-gilt also:
-Ein Kegel eines Diagramms~$F : \I \to \Funct(\C,\D)$ ist genau dann ein Limes,
-wenn sein Bild unter allen Auswertungsfunktoren~$\ev_X : \Funct(\C,\D) \to \D$,
-$X \in \Ob\C$, jeweils ein Limes ist.
-\end{motto}
-
-
-\subsection{Bewahrung von (Ko-)Limiten}
-
-
-\subsection{Vertauschung von (Ko-)Limiten}
+Der diskrete Charakter der vergangenen Beispiele liegt in der Form der
+vrwendeten Indexkategorien begründet: Diese haben keine Ähnlichkeit mit den
+Folgen der Analysis. Bei \emph{filtrierten} Indexkategorien ist das anders, und
+die Vorstellung, dass sich die Objekte des Diagramms dem (Ko-)Limes beliebig
+genau annähern, ist wieder sehr tragfähig.
 
 \begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{filtriert}, wenn jedes
 endliche Diagramm in~$\C$ (d.\,h. jeder Funktor~$\I \to \C$ mit~$\I$ einer
@@ -370,6 +388,78 @@ endlich-dimensionalen~$K$-Vektorräume, die in~$V$ hinein abbilden.
   \caption{\label{teilbarkeitsordnung}Die von der Teilbarkeitsordnung auf den
   positiven natürlichen Zahlen induzierte Kategorie (Ausschnitt).}
 \end{figure}
+\subsection{Zusammenhang mit dem Limesbegriff in der Analysis}
+
+\subsection{Existenz von Limiten}
+
+\begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{(ko-)vollständig}, wenn
+jedes kleine Diagramm in~$\C$ einen (Ko-)Limes besitzt. Dabei heißt ein
+Diagramm~$\I \to \C$ genau dann \emph{klein}, wenn seine Indexkategorie~$\I$
+klein ist (d.\,h. wenn die Objekt- und Morphismenklassen sogar schon Mengen
+bilden).\end{defn}
+
+\begin{prop}Die Kategorie der Mengen ist vollständig und kovollständig:
+Ist~$F:\I\to\Set$ ein kleines Diagramm, so wird die Menge
+\begin{align*}
+  \lim F &:= \Bigl\{ (x_i)_{i\in\Ob\I} \in \prod_{i \in \Ob\I} F(i) \ \Big|\
+  \text{$F(f)(x_i) = x_j$ für alle~$f:i \to j$ in~$\I$} \Bigr\}
+\intertext{vermöge der kanonischen Projektionsabbildungen zu einem Limes
+von~$F$ und}
+  \colim F &:= \Biggl(\coprod_{i \in \Ob\I} F(i)\Biggr)\Big/{\sim},
+\end{align*}
+wobei~$({\sim})$ die feinste Äquivalenzrelation mit
+\[ \text{für alle $f : i \to j$ in~$\I$, $x \in F(i)$:}\quad
+  \langle i, x \rangle \sim \langle j, F(f)(x) \rangle \]
+ist, zu einem Kolimes von~$F$.
+\end{prop}
+\begin{proof}
+Die Äquivalenzrelation~$({\sim})$ kann definiert werden als Schnitt über alle
+Äqui\-va\-lenz\-re\-la\-tio\-nen auf~$\coprod_{i \in \Ob\I} F(i)$, die die angegebene
+Bedingung erfüllen. Dann kann man die Behauptungen nachrechnen.
+\end{proof}
+
+\textbf{XXX:} Hier fehlt der Satz über die Berechnung von Limiten aus Produkten
+und Differenzkernen.
+
+
+\subsection{Limiten in Funktorkategorien}
+
+In diesem Abschnitt wollen wir untersuchen, wie Limiten in
+Funktorkategorien~$\Funct(\C,\D)$ aussehen. Sei dazu ein Diagramm
+$F : \I \longrightarrow \Funct(\C,\D)$
+gegeben. Durch "`Nachschaltung der Evaluierungsfunktoren"' erhält man aus
+diesem Diagramm für jedes Objekt~$X \in \Ob\C$ jeweils ein Diagramm in~$\D$:
+\[ \begin{array}{@{}rrcl@{}}
+  F_X : & \I &\longrightarrow& \D \\
+  & i &\longmapsto& F(i)(X)
+\end{array} \]
+Wenn wir voraussetzen, dass all diese Diagramme jeweils einen Limes~$\lim F_X$ in~$\D$
+besitzen, können wir (wie in Aufgabe~4 von Übungsblatt~3) einen Funktor
+\[ \begin{array}{@{}rrcl@{}}
+  L : & \C &\longrightarrow& \D \\
+  & X &\longmapsto& \lim F_X
+\end{array} \]
+basteln. Dann gilt:
+\begin{prop}
+Der so konstruierte Funktor~$L$ wird (mit welchen Projektionen?) ein Limes des Diagramms~$F$.
+\end{prop}
+Etwas ungenau kann man diesen Zusammenhang auch über die Formel
+\[ (\lim F)(X) = \lim F_X = \lim_i F(i)(X) \]
+ausdrücken. Als Motto kann man daher festhalten:
+\begin{motto}Besitzt~$\D$ $\I$-förmige Limiten, so werden~$\I$-förmige Limiten
+in der Funktorkategorie~$\Funct(\C,\D)$ punktweise berechnet. In diesem Fall
+gilt also:
+Ein Kegel eines Diagramms~$F : \I \to \Funct(\C,\D)$ ist genau dann ein Limes,
+wenn sein Bild unter allen Auswertungsfunktoren~$\ev_X : \Funct(\C,\D) \to \D$,
+$X \in \Ob\C$, jeweils ein Limes ist.
+\end{motto}
+
+
+\subsection{Bewahrung von (Ko-)Limiten}
+
+
+\subsection{Vertauschung von (Ko-)Limiten}
+
 
 \subsection{Kofinale Unterdiagramme}
 
