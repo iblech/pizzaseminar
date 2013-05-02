@@ -426,11 +426,28 @@ möglich, stattdessen muss tatsächlich die metrische Struktur beachtet werden.
 
 \subsection{Existenz von Limiten}
 
+In der Analysis ist die Forderung an eine Folge, zu konvergieren, eine große
+Einschränkung: Sogar in vollständigen metrischen Räumen, wie etwa dem der
+reellen Zahlen, konvergieren nicht alle Folgen, sondern nur die, die die
+Cauchy-Bedingung erfüllen. Metrische Räume, in denen tatsächlich alle Folgen
+konvergieren, enthalten zwangsläufig höchstens einen Punkt und sind daher
+uninteressant.
+
+Entsprechend ist es ein im Allgemein schwieriges Problem, die Konvergenz oder
+Divergenz einer Folge zu entscheiden oder sogar ihren Grenzwert zu berechnen.
+In der Kategorientheorie dagegen ist die Situation viel besser [langweiliger?]: Viele
+bedeutsame Kategorien enthalten Limiten und Kolimiten \emph{aller} Diagramme
+(welche nur eine mengentheoretischen Größenbedingung erfüllen müssen).
+
 \begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{(ko-)vollständig}, wenn
 jedes kleine Diagramm in~$\C$ einen (Ko-)Limes besitzt. Dabei heißt ein
 Diagramm~$\I \to \C$ genau dann \emph{klein}, wenn seine Indexkategorie~$\I$
 klein ist (d.\,h. wenn die Objekt- und Morphismenklassen sogar schon Mengen
 bilden).\end{defn}
+
+Etwa ist das archetypische Beispiel einer Kategorie, die der Mengen,
+vollständig und kovollständig. Man kann sogar explizit die Limiten und
+Kolimiten angeben:
 
 \begin{prop}Die Kategorie der Mengen ist vollständig und kovollständig:
 Ist~$F:\I\to\Set$ ein kleines Diagramm, so wird die Menge
@@ -452,8 +469,29 @@ Die Äquivalenzrelation~$({\sim})$ kann definiert werden als Schnitt über alle
 Bedingung erfüllen. Dann kann man die Behauptungen nachrechnen.
 \end{proof}
 
-\textbf{XXX:} Hier fehlt der Satz über die Berechnung von Limiten aus Produkten
-und Differenzkernen.
+Wenn man die Vollständigkeit oder Kovollständigkeit einer Kategorie zeigen
+möchte, ist es hilfreich zu wissen, dass sich allgemeine Limiten und Kolimiten
+aus gewissen Grundbausteinen zusammenbauen lassen. Folgende Proposition ist
+eine aus einer ganzen Reihe ähnlicher Beobachtungen dazu:
+\begin{prop}\label{limitengrundbausteine}%
+Genau dann enthält eine Kategorie~$\C$ alle endlichen Limiten (d.\,h. Limiten
+von Diagrammen mit endlicher Indexkategorie), wenn
+\begin{itemize}
+\item sie ein terminales Objekt enthält,
+\item je zwei Objekte ein Produkt besitzen und
+\item je zwei paralelle Morphismen einen Differenzkern besitzen.
+\end{itemize}
+\end{prop}
+Die duale Aussage gilt natürlich ebenfalls: Endliche Kolimiten lassen sich aus
+initialen Objekten, Koprodukten und Kodifferenzkernen zusammenbasteln.
+
+\begin{aufg}Zeige in klassischer Logik folgendes bekanntes Resultat von Freyd:
+Enthält eine kleine Kategorie tatsächlich \emph{alle} Limiten (nicht nur alle
+kleinen), dann wird sie von einer Quasiordnung induziert, d.\,h. je zwei
+parallele Morphismen sind gleich.  Tipp: Bilde ein über die Menge aller
+Morphismen induziertes Produkt.\end{aufg}
+
+\begin{aufg}Beweise Proposition~\ref{limitengrundbausteine}.\end{aufg}
 
 
 \subsection{Limiten in Funktorkategorien}
@@ -489,7 +527,61 @@ $X \in \Ob\C$, jeweils ein Limes ist.
 \end{motto}
 
 
-\subsection{Bewahrung von (Ko-)Limiten}
+\subsection{Bewahrung von Limiten und Kolimiten}
+
+In der Analysis ist es eine wichtige Frage, ob eine Abbildung~$f$ Limiten
+erhält, ob also die Bildfolge einer konvergenten Folge wieder konvergiert, und
+zwar gegen das Bild des Grenzwerts. Eine analoge Begriffsbildung gibt es in der
+Kategorientheorie:
+
+\begin{defn}Sei~$\I$ eine Indexkategorie. Ein Funktor~$F:\C\to\D$ \emph{erhält
+genau dann~$\I$-förmige Limiten}, wenn für jedes Diagramm~$D:\I\to\C$ und jeden
+Limes~$K$ dieses Diagramms
+\[ \xymatrix{
+  & K \ar[ld] \ar[rd] \\
+  D(i) \ar[rr] && D(j)
+} \]
+der Bildkegel unter~$F$
+\[ \xymatrix{
+  & F(K) \ar[ld] \ar[rd] \\
+  F(D(i)) \ar[rr] && F(D(j))
+} \]
+ein Limes des Diagramms~$F \circ D : \I \to \D$ ist.
+\end{defn}
+
+Dabei genügt es nicht, dass das Bild~$F(K)$ der Kegelspitze mit irgendwelchen
+neuen Morphismen zu einem Limes von~$F \circ D$ wird. Dual definiert man das
+Konzept der Erhaltung von Kolimiten.
+
+\begin{bsp}Der Vergissfunktor~$U : \Vect{\RR} \to \Set$ erhält Produkte, d.\,h.
+Limiten der Form $\bullet\ \bullet$. Koprodukte erhält er aber nie: Ist
+\[ \xymatrix{
+  V \ar[rd] && W \ar[ld] \\
+  & V \oplus W
+} \]
+ein Koproduktdiagramm in der Kategorie der~$\RR$-Vektorräume, so ist das Bild
+dieses Diagramms in der Kategorie der Mengen sicher kein Koproduktdiagramm.
+Denn die Inklusionsabbildungen~$V \to V \oplus W$, $W \to V \oplus W$ haben
+beide das Element~$(0,0)$ in ihrer Wertemenge; die Injektionen in ein
+Koprodukt in~$\Set$ hinein haben aber stets disjunktes Bild.
+\end{bsp}
+
+\begin{defn}Ein Funktor heißt genau dann \emph{(ko-)stetig}, wenn er alle
+kleinen (Ko"~)Li\-mi\-ten, d.\,h. alle~$\I$-förmigen Limiten mit~$\I$ einer kleinen
+Indexkategorie, erhält.\end{defn}
+
+In vielen Situationen gibt es einen tieferen Grund, wieso ein Funktor Limiten
+oder Kolimiten erhält: Er kann ein sog. rechts- bzw. linksadjungierter Funktor
+sein. Das ist etwa beim Vergissfunktor aus dem Beispiel der Fall und erlaubt
+ganz ohne explizite Rechnungen als Nachweis sogar die Erhaltung aller Limiten
+überhaupt zu folgern.  Wir diskutieren das im Kapitel über adjungierte
+Funktoren in Proposition~\ref{limitenbeiadjunktionen}.
+
+\begin{bem}In der Analysis gibt es verschiedene stärke Varianten des bloßen
+Konvergenzbegriffs: Etwa kann man die Konvergenzgeschwindigkeit vorgeben.
+Auch in der Kategorientheorie gibt es stärkere Limesbegriffe: Etwa ist ein
+\emph{absoluter Limes} einer, der unter \emph{allen} Funktoren überhaupt
+erhalten bleibt.\end{bem}
 
 
 \subsection{Vertauschung von (Ko-)Limiten}
