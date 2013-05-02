@@ -164,7 +164,7 @@ werden, in dem wir das Konzept \emph{filtrierter} Limiten und Kolimiten
 behandeln.
 
 
-\subsubsection*{Produkte}
+\subsubsection*{Produkte und Koprodukte}
 
 Sei speziell~$\I = \mathbf{2}$ die Kategorie mit genau zwei Objekten und nur
 den Iden\-ti\-täts\-mor\-phis\-men:
@@ -240,7 +240,7 @@ stabil sind. Das ist etwa in der Kategorie der Mengen und allen abelschen
 Kategorien der Fall.\end{bem}
 
 
-\subsubsection*{Terminale Objekte}
+\subsubsection*{Terminale Objekte und initiale Objekte}
 
 Sei speziell~$\I = \mathbf{0}$ die leere Kategorie und~$F:\I \to \C$ das
 einzige~$\I$-förmige Diagramm in~$\C$. Kegel von~$F$ sind dann einfach Objekte
@@ -253,7 +253,7 @@ Genauso ist auch die Kategorie der Kokegel von~$F$ einfach~$\C$, Kolimiten
 von~$F$ sind daher dasselbe wie initiale Objekte von~$\C$.
 
 
-\subsubsection*{Differenzkerne (Equalizer)}
+\subsubsection*{Differenzkerne (Equalizer) und Kodifferenzkerne}
 
 Sei speziell~$\I$ die Kategorie mit zwei Objekten und zwei parallelen
 Morphismen:
@@ -424,7 +424,7 @@ einer allgemeinen Folge ist eine solche Charakterisierung dagegen nicht
 möglich, stattdessen muss tatsächlich die metrische Struktur beachtet werden.
 
 
-\subsection{Existenz von Limiten}
+\subsection{Existenz von Limiten und Kolimiten}
 
 In der Analysis ist die Forderung an eine Folge, zu konvergieren, eine große
 Einschränkung: Sogar in vollständigen metrischen Räumen, wie etwa dem der
@@ -494,7 +494,7 @@ Morphismen induziertes Produkt.\end{aufg}
 \begin{aufg}Beweise Proposition~\ref{limitengrundbausteine}.\end{aufg}
 
 
-\subsection{Limiten in Funktorkategorien}
+\subsection{Limiten und Kolimiten in Funktorkategorien}
 
 In diesem Abschnitt wollen wir untersuchen, wie Limiten in
 Funktorkategorien~$\Funct(\C,\D)$ aussehen. Sei dazu ein Diagramm
@@ -553,7 +553,8 @@ Dabei genügt es nicht, dass das Bild~$F(K)$ der Kegelspitze mit irgendwelchen
 neuen Morphismen zu einem Limes von~$F \circ D$ wird. Dual definiert man das
 Konzept der Erhaltung von Kolimiten.
 
-\begin{bsp}Der Vergissfunktor~$U : \Vect{\RR} \to \Set$ erhält Produkte, d.\,h.
+\begin{bsp}\label{vectvergiss}%
+Der Vergissfunktor~$U : \Vect{\RR} \to \Set$ erhält Produkte, d.\,h.
 Limiten der Form $\bullet\ \bullet$. Koprodukte erhält er aber nie: Ist
 \[ \xymatrix{
   V \ar[rd] && W \ar[ld] \\
