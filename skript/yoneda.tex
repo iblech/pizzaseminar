@@ -306,6 +306,75 @@ für einen festen Morphismus~$\varphi \in \Hom_\C(A,B)$.\end{bem}
 
 \subsection{Freie Kovervollständigung}
 
+Sei~$\C$ eine kleine Kategorie. Dann erfüllt die
+Prägarbenkategorie~$\widehat\C$ folgende universelle Eigenschaft:
+
+\begin{prop}\label{freiekovervollst}
+Sei~$\D$ eine beliebige kovollständige Kategorie und~$P:\C\to\D$ ein Funktor.
+Dann gibt es einen kostetigen Funktor~$\overline P:\widehat\C\to\D$ (vorgestellt als
+Fortsetzung von~$P$ auf die Prägarbenkategorie) sodass das Diagramm
+\[ \xymatrix{
+  \C \ar[rrr]^P \ar[rd]_Y &&& \D \\
+  & \widehat\C \ar[rru]_{\overline P}
+} \]
+bis auf natürliche Isomorphie kommutiert (d.\,h. dass ein natürlicher
+Isomorphismus~$\eta : \overline{P} \circ Y
+\Rightarrow P$ existiert), und für je zwei
+solcher Paare~$(\overline{P},\eta)$ und~$(\overline{P}',\eta')$ existiert genau
+ein natürlicher Isomorphismus~$\overline{P} \Rightarrow \overline{P}'$, der
+mit~$\eta$ und~$\eta'$ verträglich ist.
+\end{prop}
+Die Kommutativitäts- und Eindeutigkeitsaussagen sind notgedrungen nicht ganz so
+knapp formuliert, wie man es üblicherweise von universellen Eigenschaften
+gewohnt ist. Das liegt daran, weil man in einer naiveren Formulierung von der
+Gleichheit gewisser Funktoren sprechen würde -- wie in
+Bemerkung~\ref{gleichheitfunktoren} festgehalten, ist das aber keine gute Idee.
+Etwas formaler ausgedrückt handelt es sich bei der Aussage der Proposition um eine sog.
+\emph{2-universelle Eigenschaft}, da man in der 2-Kategorie der Kategorien
+arbeitet.
+\begin{proof}[Beweis der Proposition]
+Wir können die Fortsetzung~$\overline{P}$ explizit angeben:
+\[ \begin{array}{@{}rrcl@{}}
+  \overline{P} : & \widehat\C &\longrightarrow& \D \\
+  & F &\longmapsto& \colim\limits_{s \in F(X)} P(X)
+\end{array} \]
+Genauer sieht die Indexkategorie, über die der Kolimes gebildet wird, wie folgt
+aus:
+\begin{align*}
+  \text{Objekte: } & \text{Paare $\langle X \in \Ob\C, s \in F(X) \rangle$} \\
+  \text{Morphismen: } & \Hom(\langle X,s \rangle, \langle Y,t \rangle) :=
+    \{ X \xra{f} Y \,|\, F(f)(t) = s \}
+\end{align*}
+Den natürlichen Isomorphismus~$\eta : \overline{P} \circ Y \Rightarrow P$
+erhält man aus der Beobachtung, dass für darstellbare Prägarben~$F = \Hom_\C(\freist,A)$ die
+Indexkategorie~$\langle A, \id_A \rangle$ als terminales Objekt enthält und der
+Kolimes~$\overline{P}(\Hom_\C(\freist,A))$ daher isomorph zu~$P(A)$ ist. Der
+Rest des Beweises ist eine gute Übungsaufgabe und findet sich in Dialogform
+auch in~\cite{ncatlab:free-cocompletion}.
+\end{proof}
+
+Die Aussage der Proposition ist mit der in Aufgabe~3 von Übungsblatt~6
+formulierten Dichtheit der Yoneda-Einbettung sofort plausibel: Jede Prägarbe
+ist in kanonischer Weise Kolimes repräsentierbarer Prägarben, und auf diesen
+ist~$\overline{P}$ durch die Maßgabe, Fortsetzung von~$P$ zu sein, vorgegeben.
+
+Anschaulich besagt die Proposition, dass die Prägarbenkategorie~$\widehat\C$
+die \emph{freie Kovervollständigung} von~$\C$ ist, also aus~$\C$ dadurch
+entsteht, indem man (künstlich) Kolimiten zu allen kleinen Diagrammen hinzufügt
+-- und bereits existierende Kolimiten in~$\C$ zerstört. Daraus kann man ein
+weiteres Motto über Prägarben extrahieren:
+\begin{motto}Eine Prägarbe~$F$ auf~$\C$ ist eine abstrakte Bastelanleitung für einen
+Kolimes: Ist ein Funktor~$P:\C\to\D$ in eine kovollständige Kategorie gegeben,
+gibt die Prägarbe~$F$ vor, wie man die Bilder~$P(X)$ für~$X \in \Ob\C$ zu einem
+Objekt aus~$\D$ verkleben kann.
+\end{motto}
+
+\begin{bem}
+Durch eine leichte Abwandlung der Konstruktion ist es auch möglich, die
+Kategorie~$\C$ \emph{unter Bewahrung} bereits vorhandener Kolimiten zu
+verkovollständigen.
+\end{bem}
+
 % Benötigt man "lokal klein" bei Funct(C,D)?
 
 % Gruppenobjekte
