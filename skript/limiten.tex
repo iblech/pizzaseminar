@@ -286,6 +286,12 @@ ist. Für jedes~$x \in X$ identifiziert man also die Elemente~$f(x)$ und~$g(x)$
 von~$Y$ miteinander.
 
 
+\subsubsection*{Spannendere Beispiele}
+
+Im folgenden Abschnitt wird es ein paar spannendere Beispiele geben, bei denen
+der Limes- oder Kilimes ein interessantes Objekt ist.
+
+
 \subsection{Filtrierte Limiten und Kolimiten}
 
 Der diskrete Charakter der vergangenen Beispiele liegt in der Form der
@@ -324,22 +330,55 @@ endliche Familie von Elementen eine obere Schranke besitzt.\end{defn}
 Element enthält und in der je zwei Elemente eine obere Schranke besitzen.
 \begin{prop}Die von einer Quasiordnung~$P$ induzierte Kategorie~$BP$ ist genau
 dann filtriert, wenn~$P$ gerichtet ist.\end{prop}
+\begin{proof}Wenn man die Definition der Filtriertheit entfaltet, steht sofort
+die Behauptung da.\end{proof}
 
-\begin{bsp}\begin{enumerate}
-\item Die Kategorie~$B\NN$ ist filtriert:
+
+\subsubsection*{Das historisch motivierende Beispiel}
+
+Die Kategorie~$B\NN$ ist filtriert:
 \[ 0 \lra 1 \lra 2 \lra 3 \lra \cdots \]
 In dieser Skizze fehlen natürlich viele Morphismen, etwa der von~$0$ direkt
-nach~$2$. Historisch wurden Limiten und Kolimiten über Diagramme dieser Form
+nach~$2$. Historisch wurden Limiten und Kolimiten von Diagrammen dieser Form
 als erstes untersucht.
 
+\begin{enumerate}
+\item
 Der Vektorraum~$K[X]$ der Polynome über einem Körper~$K$ (oder einem Ring) ist
-ein Beispiel für einen solchen Kolimes, siehe Übungsblatt~5, Aufgabe~2. Ein
-interessanteres Beispiel ist der Ring der ganzen~$p$-adischen Zahlen: Dieser
-ist Limes des Diagramms
-\[ \cdots \lra \ZZ/(p^2) \lra \ZZ/(p^1) \lra \ZZ/(p^0) \]
-in der Kategorie der Ringe.
+ein Beispiel für einen solchen Kolimes, siehe Übungsblatt~5, Aufgabe~2.
 
-\item Die Teilbarkeitsordnung auf~$\NN_{\geq 1}$ induziert ebenfalls eine
+\item Ein interessanteres Beispiel ist der Ring der~$p$-adischen Ganzzahlen,
+wobei~$p$ eine Primzahl ist: Dieser ist Limes des Diagramms
+\[ \cdots \lra \ZZ/(p^2) \lra \ZZ/(p^1) \lra \ZZ/(p^0) \]
+in der Kategorie der Ringe. Da der Limes Projektionsabbildungen zu
+den~$\ZZ/(p^i)$ besitzt, kann man sich ein Element des Limes als \emph{ideelle
+Zahl} vorstellen, von der man die Reste bezüglich aller Potenzen~$p^i$ kennt.
+Zu diesen gehören die gewöhnlichen Ganzzahlen, aber auch kuriose neue Zahlen:
+Denn die~$p^i$-Reste gewöhnlicher Ganzzahlen werden sich für genügend
+großes~$i$ stabilisieren, aber die Reste~$p$-adischer Zahlen sind dieser Bedingung
+nicht unterworfen.
+
+Bedeutsam sind die~$p$-adischen Zahlen in der Zahlentheorie, da man ein wichtiges
+\emph{lokal-zu-global-Prinzip} mit ihnen formulieren kann: Eine
+\emph{quadratische Form} $\sum_{i,j} a_{ij} X_i X_j$ mit rationalen
+Koeffizienten besitzt genau dann eine rationale Nullstelle (neben der
+trivialen~$(0,\ldots,0)$), wenn sie in den reellen Zahlen und
+allen~$p$-adischen (Bruch-)Zahlen~$\QQ_p$ jeweils eine nichttriviale Nullstelle
+besitzt. Diese Aussage ist Gegenstand des zelebrierten
+Hasse-Minkowski-Theorems.
+% XXX: Trennung!
+
+[Ist~$p$ keine Primzahl, so kann man immer noch die~$p$-adischen Ganzzahlen
+betrachten -- diese werden dann aber keinen Integritätsbereich bilden, sondern
+Nullteiler enthalten. Dagegen beobachtet man im Primzahlfall, dass bis auf die
+Null jedes Element regulär ist, und dass sogar die meisten Elemente bezüglich
+der Multiplikation invertierbar sind -- nur die Vielfachen von~$p$ nicht.]
+\end{enumerate}
+
+
+\subsubsection*{Beispiel mit der Teilbarkeitsordnung der natürlichen Zahlen}
+
+Die Teilbarkeitsordnung auf~$\NN_{\geq 1}$ induziert ebenfalls eine
 filtrierte Kategorie (Abbildung~\ref{teilbarkeitsordnung}). Diese wird etwa
 in der Zahlentheorie verwendet, um den sog. \emph{Prüferring}~$\widehat\ZZ$ zu
 definieren: Er ist Limes des Diagramms
@@ -347,15 +386,28 @@ definieren: Er ist Limes des Diagramms
   n &\longmapsto& \ZZ/(n) \\
   (n \mid m) &\longmapsto& (\ZZ/(m) \to \ZZ/(n), [x] \mapsto [x]).
 \end{array} \]
+Elemente des Prüferrings kann man sich wie bei den~$p$-adischen Zahlen als
+\emph{ideelle Ganzzahlen} vorstellen, wobei sich \emph{ideell} jetzt darauf
+bezieht, dass man von einem Element des Prüferrings die Reste modulo
+\emph{aller} positiven Zahlen kennt. Das ist insofern ideell, als dass man zwar
+mit dem chinesischen Restsatz zu \emph{endlich vielen} vorgegebenen (in sich
+konsistenten) Resten eine passende gewöhnliche Ganzzahl finden kann, zu
+unendlich vielen Resten das aber nur äußerst selten möglich ist.
 
-\item Sei~$x$ ein Punkt eines topologischen Raums~$X$. Dann organisieren sich
+
+\subsubsection*{Topologisches Beispiel}
+
+Sei~$x$ ein Punkt eines topologischen Raums~$X$. Dann organisieren sich
 die offenen Mengen von~$X$, die~$x$ enthalten, vermöge der umgekehrten
 Inklusionsbeziehung zu einer gerichteten Menge, und induzieren daher eine
 filtrierte Kategorie. In der Garbentheorie verwendet man Kolimiten über
 Diagramme dieser Form, um den sog. \emph{Halm} einer Garbe an der Stelle~$x$ zu
 definieren.
 
-\item Ein Beispiel, das nicht von einer gerichteten Menge induziert wird, ist
+
+\subsubsection*{Ausschöpfung durch endliche Objekte}
+
+Ein Beispiel, das nicht von einer gerichteten Menge induziert wird, ist
 folgendes: Sei~$X$ eine feste Menge. Dann ist die Kategorie~$\Set_\mathrm{fp}/X$ mit
 \begin{align*}
   \text{Objekte: } & \text{Abbildungen $I \to X$ mit $I$ endlich} \\
@@ -367,19 +419,25 @@ folgendes: Sei~$X$ eine feste Menge. Dann ist die Kategorie~$\Set_\mathrm{fp}/X$
       }}$} \right\}
 \end{align*}
 filtriert. Relevant ist diese Kategorie insofern, als dass der Kolimes des
-kanonischen Funktors
+kanonischen Diagramms
 \[ \Set_\mathrm{fp}/X \longrightarrow \Set,\ (I \to X) \longmapsto I \]
 gerade~$X$ ist (eigentlich: durch~$X$ gegeben werden kann). Auf diese Weise
 kann man also jede Menge als Kolimes endlicher Mengen schreiben.
 Analog kann man jeden Vektorraum als Kolimes endlich-dimensionaler Vektorräume
 und jeden Modul als Kolimes endlich-präsentierter Moduln schreiben. Diese
 Beobachtungen sind der Ausgangspunkt der Theorie \emph{zugänglicher Kategorien}.
-\end{enumerate}\end{bsp}
 
 \begin{aufg}Formuliere präzise und beweise folgende Aussage:
 Jeder~$K$-Vektorraum~$V$ ist Kolimes all der
 endlich-dimensionalen~$K$-Vektorräume, die in~$V$ hinein abbilden.
 \end{aufg}
+
+In klassischer Logik kann man außerdem zeigen, dass jeder Vektorraum der
+Kolimes seiner endlich-dimensionalen Unterräume ist. Da sich dieses Resultat
+aber nicht auf allgemeinere Situationen überträgt (etwa beim Wunsch, jeden
+Modul als Kolimes endlich-präsentierter Moduln schreiben zu wollen, ober beim
+Wunsch, in einem intuitionistischen Kontext arbeiten zu wollen), sollte man
+sich lieber die Formulierung der Aufgabe merken.
 
 \begin{figure}
   \centering
@@ -437,7 +495,7 @@ Entsprechend ist es ein im Allgemein schwieriges Problem, die Konvergenz oder
 Divergenz einer Folge zu entscheiden oder sogar ihren Grenzwert zu berechnen.
 In der Kategorientheorie dagegen ist die Situation viel besser [langweiliger?]: Viele
 bedeutsame Kategorien enthalten Limiten und Kolimiten \emph{aller} Diagramme
-(welche nur eine mengentheoretischen Größenbedingung erfüllen müssen).
+(welche nur eine mengentheoretische Größenbedingung erfüllen müssen).
 
 \begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{(ko-)vollständig}, wenn
 jedes kleine Diagramm in~$\C$ einen (Ko-)Limes besitzt. Dabei heißt ein
