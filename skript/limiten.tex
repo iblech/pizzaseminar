@@ -648,6 +648,20 @@ Auch in der Kategorientheorie gibt es stärkere Limesbegriffe: Etwa ist ein
 erhalten bleibt.\end{bem}
 
 
+\subsubsection{Stetigkeit des Hom-Funktors}
+
+Sei~$A$ ein Objekt einer lokal kleinen Kategorie~$\C$; dann haben wir in
+Definition~\ref{defhomfunktor} den kovarianten Hom-Funktor
+\[ \Hom_\C(A, \freist) : \C \longrightarrow \Set,\ X \longmapsto \Hom_\C(A,X) \]
+eingeführt. Dieser Funktor ist stets stetig:
+\begin{prop}Der kovariante Hom-Funktor~$\Hom_\C(A,\freist)$ ist stetig, d.\,h.
+für alle kleinen Diagramme~$F : \I \to \C$ mit existierendem Limes ist die
+kanonische Abbildung
+\[ \lim_i \Hom_\C(A, F(i)) \stackrel{\cong}{\longrightarrow} \Hom_\C(A, \lim_i F(i)) \]
+ist bijektiv. Stimmt die Reihenfolge?
+\end{prop}
+
+
 \subsection{Vertauschung von (Ko-)Limiten}
 
 Limiten vertauschen stets mit Limiten, und dual vertauschen Kolimiten stets mit Kolimiten:
