@@ -103,12 +103,13 @@ Proposition~\ref{homstetig}.
 \subsubsection*{Das duale Konzept: Kokegel und Kolimiten}
 
 Kegel und Limiten in der dualen Kategorie~$\C^\op$ haben einen eigenen Namen:
-sie heißen Kokegel und Kolimiten in~$\C$. Die allgemeine Theorie ist völlig
+Sie heißen Kokegel und Kolimiten in~$\C$. Die allgemeine Theorie ist völlig
 analog -- dual -- zu der von Kegeln und Kolimiten, um Missverständnisse zu
 vermeiden halten wir trotzdem explizit die Definitionen fest. Die formale
 Ähnlichkeit darf nicht dazu verleiten, Limiten und Kolimiten über einen Kamm zu
 scheren: In konkreten Anwendungen fühlen sich die beiden Konzepte völlig
-unterschiedlich an.
+unterschiedlich an -- denn die duale Kategorie~$\C^\op$ fühlt sich völlig
+anders an als~$\C$.
 
 \begin{defn}Ein \emph{Kokegel} eines Diagramms~$F : \I \to \C$ besteht aus
 \begin{enumerate}
@@ -149,8 +150,12 @@ Objekt in der Kategorie der Kokegel zu~$F$.\end{defn}
 
 \begin{motto}
 Ein Kolimes subsumiert das gesamte Diagramm zu einem einzelnen Objekt (der
-Kokegelspitze) -- zumindest, was Morphismen aus das Diagramm heraus
+Kokegelspitze) -- zumindest, was Morphismen aus dem Diagramm heraus
 angeht.\end{motto}
+
+\begin{bem}Die formale Dualitätsbeziehung zu Limiten ist folgende: Ein Kokegel eines
+Diagramms~$F : \I \to \C$ ist gleichwertig zu einem Kegel des induzierten
+Diagrams~$\I^\op \to \C^\op$.\end{bem}
 
 
 \subsection{Beispiele für Limiten und Kolimiten}
@@ -645,12 +650,33 @@ erhalten bleibt.\end{bem}
 
 \subsection{Vertauschung von (Ko-)Limiten}
 
+Limiten vertauschen stets mit Limiten, und dual vertauschen Kolimiten stets mit Kolimiten:
+\begin{prop}
+Sei~$F : \I \times \J \to \C$ ein Diagramm in~$\C$. Sei für jedes Objekt~$i \in
+\Ob\I$ jeweils ein Limes~$L_i := \lim_j F(i, \freist)$ gegeben, und sei ferner
+ein Limes~$L := \lim_i L_i$ gegeben. Dann ist~$L$ in kanonischer Art und Weise
+auch ein Limes~$\lim_{(i,j)} F(i,j)$... genaue Aussage bei nLab nachlesen!
+\end{prop}
+
+Allerdings vertauschen im Allgemeinen Limiten nicht mit Kolimiten und
+umgekehrt. In einem wichtigen Spezialfall stimmt es aber doch:
+\begin{prop}\emph{Filtrierte} Kolimiten vertauschen mit Limiten (nach Set!
+genaue Aussage nachlesen).
+\end{prop}
+
 
 \subsection{Kofinale Unterdiagramme}
 
+In der Analysis gibt es folgende Mottos: \emph{Das Weglassen endlich vieler Folgeglieder
+ändert nicht das Konvergenzverhalten. Teilfolgen konvergenter Folgen
+konvergieren ebenfalls, und zwar gegen denselben Grenzwert.} Analoge Mottos
+gibt es auch in der Kategorientheorie; an die Stelle der zur Festlegung einer
+Teilfolge~$(a_{n_k})_k$ verwendeten Abbildung~$k \mapsto n_k$ treten
+\emph{kofinale Funktoren}:
+
 \begin{defn}
 Wir nennen einen Funktor $H : \D_0 \to \D$ genau dann \emph{kofinal}, wenn
-für alle~$d \in \Ob\D$\ldots
+für alle Objekte~$d \in \Ob\D$\ldots
 \begin{enumerate}
 \item[1.] ein Objekt $d_0 \in \Ob\D_0$ und ein Morphismus $d \to
 H(d_0)$ in~$\D$ existiert und
@@ -668,6 +694,36 @@ kommutieren lassen.
 Etwa ist der Inklusionsfunktor~$B (2\NN) \to B(\NN)$ kofinal, wenn~$\NN$ die
 Menge der natürlichen Zahlen mit ihrer gewöhnlichen Ordnung und~$2\NN$ die
 Teilordnung der geraden Zahlen bezeichnet.
+
+\begin{prop}
+Sei~$H : \D_0 \to \D$ ein kofinaler Funktor und~$F : \D \to \C$
+ein~$\D$-förmiges Diagramm in einer Kategorie~$\C$. Dann gilt:
+\begin{enumerate}
+\item Die Kategorie der Kokegel von~$F$ ist äquivalent zur Kategorie der
+Kokegel von~$F \circ H$.
+\item Die Angabe eines Kolimes von~$F$ ist gleichwertig mit der Angabe eines
+Kolimes von~$F \circ H$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Der erste Teil ist Gegenstand von Aufgabe~4 von Übungsblatt 5. Die zweite
+Aussage folgt sofort aus dem ersten, da ja ein Kolimes von~$F$ bzw.~$F \circ H$
+als initiales Objekt in der entsprechenden Kokegelkategorie definiert ist.
+\end{proof}
+
+Natürlich gilt die duale Aussage für Limiten: Ist in der Situation der
+Proposition der Funktor~$H$ aufgefasst als Funktor~$\D_0^\op \to \D^\op$
+kofinal, so ist die Angabe eines Limes von~$F$ gleichwertig mit der Angabe
+eines Limes von~$F \circ H$.
+
+\begin{bsp}Wir haben die~$p$-adischen Ganzzahlen als Limes des Diagramms
+\[ \cdots \lra \ZZ/(p^2) \lra \ZZ/(p^1) \lra \ZZ/(p^0) \]
+definiert. Genauso gut, wenn auch ein wenig willkürlich, hätten wir sie als
+Limes des Diagramms
+\[ \cdots \lra \ZZ/(p^5) \lra \ZZ/(p^4) \lra \ZZ/(p^3) \]
+definieren können.\end{bsp}
+
+% XXX: Der Kapitelname ist schlecht. Müssen nämlich nicht wirklich Unterdiagramme sein!
 
 % Hom linksexakt
 
