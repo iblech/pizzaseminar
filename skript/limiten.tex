@@ -12,6 +12,9 @@ kann.
 In diesem Abschnitt wollen wir Funktoren~$\I \to \C$ auch als~($\I$-förmige)
 Diagramme bezeichnen.
 
+
+\subsection{(Ko-)Kegel und (Ko-)Limiten}
+
 \begin{defn}Ein \emph{Kegel} eines Diagramms~$F : \I \to \C$ besteht aus
 \begin{enumerate}
 \item einem Objekt~$K \in \Ob \C$ (der sog. \emph{Kegelspitze}) zusammen mit
@@ -97,9 +100,76 @@ Dieses Motto werden wir sogar formal beweisen können: siehe
 Proposition~\ref{homstetig}.
 
 
-\subsection{Beispiele für Limiten}
+\subsubsection*{Das duale Konzept: Kokegel und Kolimiten}
 
-\subsubsection*{Produkte}
+Kegel und Limiten in der dualen Kategorie~$\C^\op$ haben einen eigenen Namen:
+Sie heißen Kokegel und Kolimiten in~$\C$. Die allgemeine Theorie ist völlig
+analog -- dual -- zu der von Kegeln und Kolimiten, um Missverständnisse zu
+vermeiden halten wir trotzdem explizit die Definitionen fest. Die formale
+Ähnlichkeit darf nicht dazu verleiten, Limiten und Kolimiten über einen Kamm zu
+scheren: In konkreten Anwendungen fühlen sich die beiden Konzepte völlig
+unterschiedlich an -- denn die duale Kategorie~$\C^\op$ fühlt sich völlig
+anders an als~$\C$.
+
+\begin{defn}Ein \emph{Kokegel} eines Diagramms~$F : \I \to \C$ besteht aus
+\begin{enumerate}
+\item einem Objekt~$K \in \Ob \C$ (der sog. \emph{Kokegelspitze}) zusammen mit
+\item jeweils einem Morphismus~$\iota_i : F(i) \to K$ für jedes Objekt~$i \in \Ob\I$,
+\end{enumerate}
+sodass
+für alle Morphismen~$f : i \to j$ in~$\I$ die Dreiecke
+\[ \xymatrix{
+  F(i) \ar[rd]_{\iota_i} \ar[rr]^{F(f)} && F(j) \ar[ld]^{\iota_j} \\
+  & K
+} \]
+kommutieren.
+\end{defn}
+
+\begin{defn}Ein \emph{Morphismus von Kokegeln $K \to \widetilde K$} eines Diagramms~$F$ besteht aus
+\begin{enumerate}
+\item[] einem Morphismus der Kokegelspitzen $\psi : K \to \widetilde K$ in~$\C$
+\end{enumerate}
+sodass
+\begin{enumerate}
+\item[]
+für alle~$i \in \Ob\I$ die Dreiecke
+\[ \xymatrix{
+  & F(i) \ar[ld]_{\iota_i} \ar[rd]^{\widetilde\iota_i} \\
+  K \ar[rr]_{\psi} && \widetilde K
+} \]
+kommutieren.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}Ein \emph{Kolimes} eines Diagramms~$F:\I\to\C$ ist ein initiales
+Objekt in der Kategorie der Kokegel zu~$F$.\end{defn}
+
+\begin{motto}Ein Kolimes eines Diagramms ist ein bestes
+(kleinstmögliches) Objekt, welches das Diagramm zu einem Kokegel ergänzt.
+\end{motto}
+
+\begin{motto}
+Ein Kolimes subsumiert das gesamte Diagramm zu einem einzelnen Objekt (der
+Kokegelspitze) -- zumindest, was Morphismen aus dem Diagramm heraus
+angeht.\end{motto}
+
+\begin{bem}Die formale Dualitätsbeziehung zu Limiten ist folgende: Ein Kokegel eines
+Diagramms~$F : \I \to \C$ ist gleichwertig zu einem Kegel des induzierten
+Diagrams~$\I^\op \to \C^\op$.\end{bem}
+
+
+\subsection{Beispiele für Limiten und Kolimiten}
+
+Für spezielle Wahlen der Indexkategorie~$\I$ erkennt man im Konzept
+Konzept~$\I$-förmiger Limiten viele bekannte Konstruktionen wieder, das sollen
+die folgenden Beispiele illustrieren. Diese haben einen eher diskreten Charakter
+und erwecken nicht das aus der Analysis vertraute Gefühl des beliebig genauen
+Approximierens; wer dieses sucht, wird erst im übernächsten Abschnitt fündig
+werden, in dem wir das Konzept \emph{filtrierter} Limiten und Kolimiten
+behandeln.
+
+
+\subsubsection*{Produkte und Koprodukte}
 
 Sei speziell~$\I = \mathbf{2}$ die Kategorie mit genau zwei Objekten und nur
 den Iden\-ti\-täts\-mor\-phis\-men:
@@ -108,6 +178,9 @@ Dann sind Diagramme~$\I \to \C$ einfach durch die Angabe zweier Objekte
 von~$\C$ gegeben. Kegel solcher Diagramme haben wir früher schon untersucht:
 unter dem Namen \emph{Möchtegern-Produkte}. Entsprechend sind Limiten
 solcher Diagramme schlichtweg Produkte.
+
+Dual dazu sind Kolimiten solcher Diagramme schlichtweg Koprodukte.
+
 
 \subsubsection*{Faserprodukte (Pullbacks)}
 
@@ -172,17 +245,20 @@ stabil sind. Das ist etwa in der Kategorie der Mengen und allen abelschen
 Kategorien der Fall.\end{bem}
 
 
-\subsubsection*{Terminale Objekte}
+\subsubsection*{Terminale Objekte und initiale Objekte}
 
 Sei speziell~$\I = \mathbf{0}$ die leere Kategorie und~$F:\I \to \C$ das
 einzige~$\I$-förmige Diagramm in~$\C$. Kegel von~$F$ sind dann einfach Objekte
-von~$\C$ und Morphismen solcher Kegel Morphismen zwischen diesen Objekten; die
+von~$\C$ und Morphismen solcher Kegel sind Morphismen zwischen diesen Objekten; die
 Kategorie der Kegel von~$F$ ist also~$\C$ selbst.
 
 Damit ist klar: Limiten von~$F$ sind dasselbe wie terminale Objekte von~$\C$.
 
+Genauso ist auch die Kategorie der Kokegel von~$F$ einfach~$\C$, Kolimiten
+von~$F$ sind daher dasselbe wie initiale Objekte von~$\C$.
 
-\subsubsection*{Differenzkerne (Equalizer)}
+
+\subsubsection*{Differenzkerne (Equalizer) und Kodifferenzkerne}
 
 Sei speziell~$\I$ die Kategorie mit zwei Objekten und zwei parallelen
 Morphismen:
@@ -203,16 +279,238 @@ auch kürzer
 \[ \mathrm{Eq}(f,g) = \ker(f - g) \]
 schreiben und so die Begriffsherkunft verstehen.
 
+Dual dazu kann man den Kolimes solcher Diagramme~$\I \to \C$ verstehen: Statt
+das Objekt~$X$ zu einem Unterobjekt~$\mathrm{Eq}(f,g)$ zu verkleinern, um die
+Morphismen~$f$ und~$g$ gleich zu machen, kann man auch zu einem sog. Quotienten
+von~$Y$ übergehen. In der Kategorie der Mengen kann der \emph{Kodifferenzkern}
+etwa durch die Konstruktion
+\[ \mathrm{CoEq}(f,g) := Y/{\sim} \]
+gegeben werden, wobei~$({\sim})$ die feinste Äquivalenzrelation auf~$Y$ mit
+\[ \text{$f(x) \sim g(x)$ für alle~$x \in X$} \]
+ist. Für jedes~$x \in X$ identifiziert man also die Elemente~$f(x)$ und~$g(x)$
+von~$Y$ miteinander.
+
+
+\subsubsection*{Spannendere Beispiele}
+
+Im folgenden Abschnitt wird es ein paar spannendere Beispiele geben, bei denen
+der Limes- oder Kilimes ein interessantes Objekt ist.
+
+
+\subsection{Filtrierte Limiten und Kolimiten}
+
+Der diskrete Charakter der vergangenen Beispiele liegt in der Form der
+verwendeten Indexkategorien begründet: Diese haben keine Ähnlichkeit mit den
+Folgen der Analysis. Bei \emph{filtrierten} Indexkategorien ist das anders, und
+die Vorstellung, dass sich die Objekte des Diagramms dem (Ko-)Limes beliebig
+genau annähern, ist wieder sehr tragfähig.
+
+\begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{filtriert}, wenn jedes
+endliche Diagramm in~$\C$ (d.\,h. jeder Funktor~$\I \to \C$ mit~$\I$ einer
+Kategorie, deren Objekt- und Morphismenklassen endlich sind) einen Kokegel
+besitzt.\end{defn}
+Man fordert von diesen Kokegeln keinerlei Universalitätseigenschaft, diese
+Kokegel müssen also nicht unbedingt Kolimiten sein. Auch das leere Diagramm
+soll dieser Definition nach einen Kokegel besitzen. Man kann die Definition
+auch mit elementaren Begriffen formulieren:
+
+\begin{prop}\label{charakterisierungfiltriert}%
+Eine Kategorie~$\C$ ist genau dann filtriert, wenn
+\begin{itemize}
+\item sie ein Objekt enthält,
+\item für je zwei Objekte~$X,Y\in\Ob\C$ ein Objekt~$Z\in\Ob\C$ zusammen mit
+zwei Morphismen $X \to Z$, $Y \to Z$ existiert und
+\item für je zwei parallele Morphismen $f, g : X \to Y$ in~$\C$ ein Objekt~$Z$
+und ein Morphismus~$h : Y \to Z$ mit~$h \circ f = h \circ g$ existiert.
+\end{itemize}
+\end{prop}
+
+\begin{aufg}Beweise Proposition~\ref{charakterisierungfiltriert}.\end{aufg}
+
+Eine wichtige Bezugsquelle (und historisch der Ausgangspunkt für das Konzept
+filtrierter Kategorien) sind \emph{gerichtete Mengen}:
+\begin{defn}Eine \emph{gerichtete Menge} ist eine Quasiordnung, in der jede
+endliche Familie von Elementen eine obere Schranke besitzt.\end{defn}
+Äquivalent ist eine gerichtete Menge eine Quasiordnung, die mindestens ein
+Element enthält und in der je zwei Elemente eine obere Schranke besitzen.
+\begin{prop}Die von einer Quasiordnung~$P$ induzierte Kategorie~$BP$ ist genau
+dann filtriert, wenn~$P$ gerichtet ist.\end{prop}
+\begin{proof}Wenn man die Definition der Filtriertheit entfaltet, steht sofort
+die Behauptung da.\end{proof}
+
+
+\subsubsection*{Das historisch motivierende Beispiel}
+
+Die Kategorie~$B\NN$ ist filtriert:
+\[ 0 \lra 1 \lra 2 \lra 3 \lra \cdots \]
+In dieser Skizze fehlen natürlich viele Morphismen, etwa der von~$0$ direkt
+nach~$2$. Historisch wurden Limiten und Kolimiten von Diagrammen dieser Form
+als erstes untersucht.
+
+\begin{enumerate}
+\item
+Der Vektorraum~$K[X]$ der Polynome über einem Körper~$K$ (oder einem Ring) ist
+ein Beispiel für einen solchen Kolimes, siehe Übungsblatt~5, Aufgabe~2.
+
+\item Ein interessanteres Beispiel ist der Ring der~$p$-adischen Ganzzahlen,
+wobei~$p$ eine Primzahl ist: Dieser ist Limes des Diagramms
+\[ \cdots \lra \ZZ/(p^2) \lra \ZZ/(p^1) \lra \ZZ/(p^0) \]
+in der Kategorie der Ringe. Da der Limes Projektionsabbildungen zu
+den~$\ZZ/(p^i)$ besitzt, kann man sich ein Element des Limes als \emph{ideelle
+Zahl} vorstellen, von der man die Reste bezüglich aller Potenzen~$p^i$ kennt.
+Zu diesen gehören die gewöhnlichen Ganzzahlen, aber auch kuriose neue Zahlen:
+Denn die~$p^i$-Reste gewöhnlicher Ganzzahlen werden sich für genügend
+großes~$i$ stabilisieren, aber die Reste~$p$-adischer Zahlen sind dieser Bedingung
+nicht unterworfen.
+
+Bedeutsam sind die~$p$-adischen Zahlen in der Zahlentheorie, da man ein wichtiges
+\emph{lokal-zu-global-Prinzip} mit ihnen formulieren kann: Eine
+\emph{quadratische Form} $\sum_{i,j} a_{ij} X_i X_j$ mit rationalen
+Koeffizienten besitzt genau dann eine rationale Nullstelle (neben der
+trivialen~$(0,\ldots,0)$), wenn sie in den reellen Zahlen und
+allen~$p$-adischen (Bruch-)Zahlen~$\QQ_p$ jeweils eine nichttriviale Nullstelle
+besitzt. Diese Aussage ist Gegenstand des zelebrierten
+Hasse-Minkowski-Theorems.
+% XXX: Trennung!
+
+[Ist~$p$ keine Primzahl, so kann man immer noch die~$p$-adischen Ganzzahlen
+betrachten -- diese werden dann aber keinen Integritätsbereich bilden, sondern
+Nullteiler enthalten. Dagegen beobachtet man im Primzahlfall, dass bis auf die
+Null jedes Element regulär ist, und dass sogar die meisten Elemente bezüglich
+der Multiplikation invertierbar sind -- nur die Vielfachen von~$p$ nicht.]
+\end{enumerate}
+
+
+\subsubsection*{Beispiel mit der Teilbarkeitsordnung der natürlichen Zahlen}
+
+Die Teilbarkeitsordnung auf~$\NN_{\geq 1}$ induziert ebenfalls eine
+filtrierte Kategorie (Abbildung~\ref{teilbarkeitsordnung}). Diese wird etwa
+in der Zahlentheorie verwendet, um den sog. \emph{Prüferring}~$\widehat\ZZ$ zu
+definieren: Er ist Limes des Diagramms
+\[ \begin{array}{@{}rcl@{}}
+  n &\longmapsto& \ZZ/(n) \\
+  (n \mid m) &\longmapsto& (\ZZ/(m) \to \ZZ/(n), [x] \mapsto [x]).
+\end{array} \]
+Elemente des Prüferrings kann man sich wie bei den~$p$-adischen Zahlen als
+\emph{ideelle Ganzzahlen} vorstellen, wobei sich \emph{ideell} jetzt darauf
+bezieht, dass man von einem Element des Prüferrings die Reste modulo
+\emph{aller} positiven Zahlen kennt. Das ist insofern ideell, als dass man zwar
+mit dem chinesischen Restsatz zu \emph{endlich vielen} vorgegebenen (in sich
+konsistenten) Resten eine passende gewöhnliche Ganzzahl finden kann, zu
+unendlich vielen Resten das aber nur äußerst selten möglich ist.
+
+
+\subsubsection*{Topologisches Beispiel}
+
+Sei~$x$ ein Punkt eines topologischen Raums~$X$. Dann organisieren sich
+die offenen Mengen von~$X$, die~$x$ enthalten, vermöge der umgekehrten
+Inklusionsbeziehung zu einer gerichteten Menge, und induzieren daher eine
+filtrierte Kategorie. In der Garbentheorie verwendet man Kolimiten über
+Diagramme dieser Form, um den sog. \emph{Halm} einer Garbe an der Stelle~$x$ zu
+definieren.
+
+
+\subsubsection*{Ausschöpfung durch endliche Objekte}
+
+Ein Beispiel, das nicht von einer gerichteten Menge induziert wird, ist
+folgendes: Sei~$X$ eine feste Menge. Dann ist die Kategorie~$\Set_\mathrm{fp}/X$ mit
+\begin{align*}
+  \text{Objekte: } & \text{Abbildungen $I \to X$ mit $I$ endlich} \\
+  \text{Morphismen: } &
+    \Hom(I \to X, J \to X) := \\ & \left\{
+    \text{(kommutative) Diagramme der Form $\vcenter{\xymatrix{
+       I \ar[rr] \ar[dr] & & J \ar[ld] \\
+       & X
+      }}$} \right\}
+\end{align*}
+filtriert. Relevant ist diese Kategorie insofern, als dass der Kolimes des
+kanonischen Diagramms
+\[ \Set_\mathrm{fp}/X \longrightarrow \Set,\ (I \to X) \longmapsto I \]
+gerade~$X$ ist (eigentlich: durch~$X$ gegeben werden kann). Auf diese Weise
+kann man also jede Menge als Kolimes endlicher Mengen schreiben.
+Analog kann man jeden Vektorraum als Kolimes endlich-dimensionaler Vektorräume
+und jeden Modul als Kolimes endlich-präsentierter Moduln schreiben. Diese
+Beobachtungen sind der Ausgangspunkt der Theorie \emph{zugänglicher Kategorien}.
+
+\begin{aufg}Formuliere präzise und beweise folgende Aussage:
+Jeder~$K$-Vektorraum~$V$ ist Kolimes all der
+endlich-dimensionalen~$K$-Vektorräume, die in~$V$ hinein abbilden.
+\end{aufg}
+
+In klassischer Logik kann man außerdem zeigen, dass jeder Vektorraum der
+Kolimes seiner endlich-dimensionalen Unterräume ist. Da sich dieses Resultat
+aber nicht auf allgemeinere Situationen überträgt (etwa beim Wunsch, jeden
+Modul als Kolimes endlich-präsentierter Moduln schreiben zu wollen, ober beim
+Wunsch, in einem intuitionistischen Kontext arbeiten zu wollen), sollte man
+sich lieber die Formulierung der Aufgabe merken.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.35]{teilbarkeitsordnung.png}
+  %\input{teilbarkeitsordnung.tex}
+  \caption{\label{teilbarkeitsordnung}Die von der Teilbarkeitsordnung auf den
+  positiven natürlichen Zahlen induzierte Kategorie (Ausschnitt).}
+\end{figure}
+
 
 \subsection{Zusammenhang mit dem Limesbegriff in der Analysis}
 
-\subsection{Existenz von Limiten}
+Zum aus der Analysis vertrauten Limesbegriff ist der kategorielle Begriff
+insofern verwandt, als dass bei beiden Konzepten die Vorstellung der immer
+besser werdenden Approximation tragfähig ist: Die Glieder einer Folge
+nähern sich beliebig genau dem Grenzwert an, die Objekte eines filtrierten
+Diagramms approximieren immer besser den Kolimes des Diagramms.
+
+Man kann sich aber auch die präzise Frage stellen, ob man den Limes einer reellen
+Zahlenfolge tatsächlich als kategoriellen Limes oder Kolimes in einer
+geeigneten Kategorie verstehen kann. Die folgende Proposition gibt darauf eine
+partielle Antwort:
+
+\begin{prop}Sei~$(x_n)_n$ eine monoton steigende Folge reeller Zahlen. Genau dann
+konvergiert diese Folge gegen eine Zahl~$x \in \RR$, wenn das Diagramm
+\[ \begin{array}{@{}rcl@{}}
+  \NN &\longrightarrow& B\RR \\
+  n &\longmapsto& x_n \\
+  \text{"`$n \leq m$"'} &\longmapsto& \text{"`$x_n \leq x_m$"'}
+\end{array} \]
+mit den eindeutigen Morphismen das Objekt~$x \in B\RR$ als Kolimes besitzt.
+\end{prop}
+Dabei ist mit~$B\RR$ die von der üblichen Ordnung auf~$\RR$ induzierte
+Kategorie gemeint. Grenzwerte monoton steigender Folgen lassen sich also
+kategoriell als Kolimiten verstehen, und dual lassen sich auch Grenzwerte
+monoton fallender Folgen als kategorielle Limiten interpretieren. Für
+allgemeine Folgen gibt es aber (wohl) keine solche Übersetzung. Das ist auch
+anschaulich plausibel: Den Grenzwert einer monoton steigenden Folge kann man
+unter allen reellen Zahlen allein über seine Ordnungsbeziehungen (also kategoriell!) zu
+den Folgegliedern charakterisieren, nämlich als ihr Supremum. Für den Grenzwert
+einer allgemeinen Folge ist eine solche Charakterisierung dagegen nicht
+möglich, stattdessen muss tatsächlich die metrische Struktur beachtet werden.
+
+
+\subsection{Existenz von Limiten und Kolimiten}
+
+In der Analysis ist die Forderung an eine Folge, zu konvergieren, eine große
+Einschränkung: Sogar in vollständigen metrischen Räumen, wie etwa dem der
+reellen Zahlen, konvergieren nicht alle Folgen, sondern nur die, die die
+Cauchy-Bedingung erfüllen. Metrische Räume, in denen tatsächlich alle Folgen
+konvergieren, enthalten zwangsläufig höchstens einen Punkt und sind daher
+uninteressant.
+
+Entsprechend ist es ein im Allgemein schwieriges Problem, die Konvergenz oder
+Divergenz einer Folge zu entscheiden oder sogar ihren Grenzwert zu berechnen.
+In der Kategorientheorie dagegen ist die Situation viel besser [langweiliger?]: Viele
+bedeutsame Kategorien enthalten Limiten und Kolimiten \emph{aller} Diagramme
+(welche nur eine mengentheoretische Größenbedingung erfüllen müssen).
 
 \begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{(ko-)vollständig}, wenn
 jedes kleine Diagramm in~$\C$ einen (Ko-)Limes besitzt. Dabei heißt ein
 Diagramm~$\I \to \C$ genau dann \emph{klein}, wenn seine Indexkategorie~$\I$
 klein ist (d.\,h. wenn die Objekt- und Morphismenklassen sogar schon Mengen
 bilden).\end{defn}
+
+Etwa ist das archetypische Beispiel einer Kategorie, die der Mengen,
+vollständig und kovollständig. Man kann sogar explizit die Limiten und
+Kolimiten angeben:
 
 \begin{prop}Die Kategorie der Mengen ist vollständig und kovollständig:
 Ist~$F:\I\to\Set$ ein kleines Diagramm, so wird die Menge
@@ -234,11 +532,32 @@ Die Äquivalenzrelation~$({\sim})$ kann definiert werden als Schnitt über alle
 Bedingung erfüllen. Dann kann man die Behauptungen nachrechnen.
 \end{proof}
 
-\textbf{XXX:} Hier fehlt der Satz über die Berechnung von Limiten aus Produkten
-und Differenzkernen.
+Wenn man die Vollständigkeit oder Kovollständigkeit einer Kategorie zeigen
+möchte, ist es hilfreich zu wissen, dass sich allgemeine Limiten und Kolimiten
+aus gewissen Grundbausteinen zusammenbauen lassen. Folgende Proposition ist
+eine aus einer ganzen Reihe ähnlicher Beobachtungen dazu:
+\begin{prop}\label{limitengrundbausteine}%
+Genau dann enthält eine Kategorie~$\C$ alle endlichen Limiten (d.\,h. Limiten
+von Diagrammen mit endlicher Indexkategorie), wenn
+\begin{itemize}
+\item sie ein terminales Objekt enthält,
+\item je zwei Objekte ein Produkt besitzen und
+\item je zwei paralelle Morphismen einen Differenzkern besitzen.
+\end{itemize}
+\end{prop}
+Die duale Aussage gilt natürlich ebenfalls: Endliche Kolimiten lassen sich aus
+initialen Objekten, Koprodukten und Kodifferenzkernen zusammenbasteln.
+
+\begin{aufg}Zeige in klassischer Logik folgendes bekanntes Resultat von Freyd:
+Enthält eine Kategorie tatsächlich \emph{alle} Limiten (nicht nur alle
+kleinen), dann wird sie von einer Quasiordnung induziert, d.\,h. je zwei
+parallele Morphismen sind gleich. Tipp: Bilde ein über die Menge aller
+Morphismen induziertes Produkt.\end{aufg}
+
+\begin{aufg}Beweise Proposition~\ref{limitengrundbausteine}.\end{aufg}
 
 
-\subsection{Limiten in Funktorkategorien}
+\subsection{Limiten und Kolimiten in Funktorkategorien}
 
 In diesem Abschnitt wollen wir untersuchen, wie Limiten in
 Funktorkategorien~$\Funct(\C,\D)$ aussehen. Sei dazu ein Diagramm
@@ -271,111 +590,107 @@ $X \in \Ob\C$, jeweils ein Limes ist.
 \end{motto}
 
 
-\subsection{Bewahrung von (Ko-)Limiten}
+\subsection{Bewahrung von Limiten und Kolimiten}
+
+In der Analysis ist es eine wichtige Frage, ob eine Abbildung~$f$ Limiten
+erhält, ob also die Bildfolge einer konvergenten Folge wieder konvergiert, und
+zwar gegen das Bild des Grenzwerts. Eine analoge Begriffsbildung gibt es in der
+Kategorientheorie:
+
+\begin{defn}Sei~$\I$ eine Indexkategorie. Ein Funktor~$F:\C\to\D$ \emph{erhält
+genau dann~$\I$-förmige Limiten}, wenn für jedes Diagramm~$D:\I\to\C$ und jeden
+Limes~$K$ dieses Diagramms
+\[ \xymatrix{
+  & K \ar[ld] \ar[rd] \\
+  D(i) \ar[rr] && D(j)
+} \]
+der Bildkegel unter~$F$
+\[ \xymatrix{
+  & F(K) \ar[ld] \ar[rd] \\
+  F(D(i)) \ar[rr] && F(D(j))
+} \]
+ein Limes des Diagramms~$F \circ D : \I \to \D$ ist.
+\end{defn}
+
+Dabei genügt es nicht, dass das Bild~$F(K)$ der Kegelspitze mit irgendwelchen
+neuen Morphismen zu einem Limes von~$F \circ D$ wird. Dual definiert man das
+Konzept der Erhaltung von Kolimiten.
+
+\begin{bsp}\label{vectvergiss}%
+Der Vergissfunktor~$U : \Vect{\RR} \to \Set$ erhält Produkte, d.\,h.
+Limiten der Form $\bullet\ \bullet$. Koprodukte erhält er aber nie: Ist
+\[ \xymatrix{
+  V \ar[rd] && W \ar[ld] \\
+  & V \oplus W
+} \]
+ein Koproduktdiagramm in der Kategorie der~$\RR$-Vektorräume, so ist das Bild
+dieses Diagramms in der Kategorie der Mengen sicher kein Koproduktdiagramm.
+Denn die Inklusionsabbildungen~$V \to V \oplus W$, $W \to V \oplus W$ haben
+beide das Element~$(0,0)$ in ihrer Wertemenge; die Injektionen in ein
+Koprodukt in~$\Set$ hinein haben aber stets disjunktes Bild.
+\end{bsp}
+
+\begin{defn}Ein Funktor heißt genau dann \emph{(ko-)stetig}, wenn er alle
+kleinen (Ko"~)Li\-mi\-ten, d.\,h. alle~$\I$-förmigen Limiten mit~$\I$ einer kleinen
+Indexkategorie, erhält.\end{defn}
+
+In vielen Situationen gibt es einen tieferen Grund, wieso ein Funktor Limiten
+oder Kolimiten erhält: Er kann ein sog. rechts- bzw. linksadjungierter Funktor
+sein. Das ist etwa beim Vergissfunktor aus dem Beispiel der Fall und erlaubt
+ganz ohne explizite Rechnungen als Nachweis sogar die Erhaltung aller Limiten
+überhaupt zu folgern.  Wir diskutieren das im Kapitel über adjungierte
+Funktoren in Proposition~\ref{limitenbeiadjunktionen}.
+
+\begin{bem}In der Analysis gibt es verschiedene stärke Varianten des bloßen
+Konvergenzbegriffs: Etwa kann man die Konvergenzgeschwindigkeit vorgeben.
+Auch in der Kategorientheorie gibt es stärkere Limesbegriffe: Etwa ist ein
+\emph{absoluter Limes} einer, der unter \emph{allen} Funktoren überhaupt
+erhalten bleibt.\end{bem}
+
+
+\subsubsection{Stetigkeit des Hom-Funktors}
+
+Sei~$A$ ein Objekt einer lokal kleinen Kategorie~$\C$; dann haben wir in
+Definition~\ref{defhomfunktor} den kovarianten Hom-Funktor
+\[ \Hom_\C(A, \freist) : \C \longrightarrow \Set,\ X \longmapsto \Hom_\C(A,X) \]
+eingeführt. Dieser Funktor ist stets stetig:
+\begin{prop}Der kovariante Hom-Funktor~$\Hom_\C(A,\freist)$ ist stetig, d.\,h.
+für alle kleinen Diagramme~$F : \I \to \C$ mit existierendem Limes ist die
+kanonische Abbildung
+\[ \lim_i \Hom_\C(A, F(i)) \stackrel{\cong}{\longrightarrow} \Hom_\C(A, \lim_i F(i)) \]
+ist bijektiv. Stimmt die Reihenfolge?
+\end{prop}
 
 
 \subsection{Vertauschung von (Ko-)Limiten}
 
-\begin{defn}Eine Kategorie~$\C$ heißt genau dann \emph{filtriert}, wenn jedes
-endliche Diagramm in~$\C$ (d.\,h. jeder Funktor~$\I \to \C$ mit~$\I$ einer
-Kategorie, deren Objekt- und Morphismenklassen endlich sind) einen Kokegel
-besitzt.\end{defn}
-Man fordert von diesen Kokegeln keinerlei Universalitätseigenschaft, diese
-Kokegel müssen also nicht unbedingt Kolimiten sein. Auch das leere Diagramm
-soll dieser Definition nach einen Kokegel besitzen. Man kann die Definition
-auch mit elementaren Begriffen formulieren:
-
-\begin{prop}\label{charakterisierungfiltriert}%
-Eine Kategorie~$\C$ ist genau dann filtriert, wenn
-\begin{itemize}
-\item sie ein Objekt enthält,
-\item für je zwei Objekte~$X,Y\in\Ob\C$ ein Objekt~$Z\in\Ob\C$ zusammen mit
-zwei Morphismen $X \to Z$, $Y \to Z$ existiert und
-\item für je zwei parallele Morphismen $f, g : X \to Y$ in~$\C$ ein Objekt~$Z$
-und ein Morphismus~$h : Y \to Z$ mit~$h \circ f = h \circ g$ existiert.
-\end{itemize}
+Limiten vertauschen stets mit Limiten, und dual vertauschen Kolimiten stets mit Kolimiten:
+\begin{prop}
+Sei~$F : \I \times \J \to \C$ ein Diagramm in~$\C$. Sei für jedes Objekt~$i \in
+\Ob\I$ jeweils ein Limes~$L_i := \lim_j F(i, \freist)$ gegeben, und sei ferner
+ein Limes~$L := \lim_i L_i$ gegeben. Dann ist~$L$ in kanonischer Art und Weise
+auch ein Limes~$\lim_{(i,j)} F(i,j)$... genaue Aussage bei nLab nachlesen!
 \end{prop}
 
-\begin{aufg}Beweise Proposition~\ref{charakterisierungfiltriert}.\end{aufg}
+Allerdings vertauschen im Allgemeinen Limiten nicht mit Kolimiten und
+umgekehrt. In einem wichtigen Spezialfall stimmt es aber doch:
+\begin{prop}\emph{Filtrierte} Kolimiten vertauschen mit Limiten (nach Set!
+genaue Aussage nachlesen).
+\end{prop}
 
-Eine wichtige Bezugsquelle (und historisch der Ausgangspunkt für das Konzept
-filtrierter Kategorien) sind \emph{gerichtete Mengen}:
-\begin{defn}Eine \emph{gerichtete Menge} ist eine Quasiordnung, in der jede
-endliche Familie von Elementen eine obere Schranke besitzt.\end{defn}
-Äquivalent ist eine gerichtete Menge eine Quasiordnung, die mindestens ein
-Element enthält und in der je zwei Elemente eine obere Schranke besitzen.
-\begin{prop}Die von einer Quasiordnung~$P$ induzierte Kategorie~$BP$ ist genau
-dann filtriert, wenn~$P$ gerichtet ist.\end{prop}
-
-\begin{bsp}\begin{enumerate}
-\item Die Kategorie~$B\NN$ ist filtriert:
-\[ 0 \lra 1 \lra 2 \lra 3 \lra \cdots \]
-In dieser Skizze fehlen natürlich viele Morphismen, etwa der von~$0$ direkt
-nach~$2$. Historisch wurden Limiten und Kolimiten über Diagramme dieser Form
-als erstes untersucht.
-
-Der Vektorraum~$K[X]$ der Polynome über einem Körper~$K$ (oder einem Ring) ist
-ein Beispiel für einen solchen Kolimes, siehe Übungsblatt~5, Aufgabe~2. Ein
-interessanteres Beispiel ist der Ring der ganzen~$p$-adischen Zahlen: Dieser
-ist Limes des Diagramms
-\[ \cdots \lra \ZZ/(p^2) \lra \ZZ/(p^1) \lra \ZZ/(p^0) \]
-in der Kategorie der Ringe.
-
-\item Die Teilbarkeitsordnung auf~$\NN_{\geq 1}$ induziert ebenfalls eine
-filtrierte Kategorie (Abbildung~\ref{teilbarkeitsordnung}). Diese wird etwa
-in der Zahlentheorie verwendet, um den sog. \emph{Prüferring}~$\widehat\ZZ$ zu
-definieren: Er ist Limes des Diagramms
-\[ \begin{array}{@{}rcl@{}}
-  n &\longmapsto& \ZZ/(n) \\
-  (n \mid m) &\longmapsto& (\ZZ/(m) \to \ZZ/(n), [x] \mapsto [x]).
-\end{array} \]
-
-\item Sei~$x$ ein Punkt eines topologischen Raums~$X$. Dann organisieren sich
-die offenen Mengen von~$X$, die~$x$ enthalten, vermöge der umgekehrten
-Inklusionsbeziehung zu einer gerichteten Menge, und induzieren daher eine
-filtrierte Kategorie. In der Garbentheorie verwendet man Kolimiten über
-Diagramme dieser Form, um den sog. \emph{Halm} einer Garbe an der Stelle~$x$ zu
-definieren.
-
-\item Ein Beispiel, das nicht von einer gerichteten Menge induziert wird, ist
-folgendes: Sei~$X$ eine feste Menge. Dann ist die Kategorie~$\Set_\mathrm{fp}/X$ mit
-\begin{align*}
-  \text{Objekte: } & \text{Abbildungen $I \to X$ mit $I$ endlich} \\
-  \text{Morphismen: } &
-    \Hom(I \to X, J \to X) := \\ & \left\{
-    \text{(kommutative) Diagramme der Form $\vcenter{\xymatrix{
-       I \ar[rr] \ar[dr] & & J \ar[ld] \\
-       & X
-      }}$} \right\}
-\end{align*}
-filtriert. Relevant ist diese Kategorie insofern, als dass der Kolimes des
-kanonischen Funktors
-\[ \Set_\mathrm{fp}/X \longrightarrow \Set,\ (I \to X) \longmapsto I \]
-gerade~$X$ ist (eigentlich: durch~$X$ gegeben werden kann). Auf diese Weise
-kann man also jede Menge als Kolimes endlicher Mengen schreiben.
-Analog kann man jeden Vektorraum als Kolimes endlich-dimensionaler Vektorräume
-und jeden Modul als Kolimes endlich-präsentierter Moduln schreiben. Diese
-Beobachtungen sind der Ausgangspunkt der Theorie \emph{zugänglicher Kategorien}.
-\end{enumerate}\end{bsp}
-
-\begin{aufg}Formuliere präzise und beweise folgende Aussage:
-Jeder~$K$-Vektorraum~$V$ ist Kolimes all der
-endlich-dimensionalen~$K$-Vektorräume, die in~$V$ hinein abbilden.
-\end{aufg}
-
-\begin{figure}
-  \centering
-  \includegraphics[scale=0.35]{teilbarkeitsordnung.png}
-  %\input{teilbarkeitsordnung.tex}
-  \caption{\label{teilbarkeitsordnung}Die von der Teilbarkeitsordnung auf den
-  positiven natürlichen Zahlen induzierte Kategorie (Ausschnitt).}
-\end{figure}
 
 \subsection{Kofinale Unterdiagramme}
 
+In der Analysis gibt es folgende Mottos: \emph{Das Weglassen endlich vieler Folgeglieder
+ändert nicht das Konvergenzverhalten. Teilfolgen konvergenter Folgen
+konvergieren ebenfalls, und zwar gegen denselben Grenzwert.} Analoge Mottos
+gibt es auch in der Kategorientheorie; an die Stelle der zur Festlegung einer
+Teilfolge~$(a_{n_k})_k$ verwendeten Abbildung~$k \mapsto n_k$ treten
+\emph{kofinale Funktoren}:
+
 \begin{defn}
 Wir nennen einen Funktor $H : \D_0 \to \D$ genau dann \emph{kofinal}, wenn
-für alle~$d \in \Ob\D$\ldots
+für alle Objekte~$d \in \Ob\D$\ldots
 \begin{enumerate}
 \item[1.] ein Objekt $d_0 \in \Ob\D_0$ und ein Morphismus $d \to
 H(d_0)$ in~$\D$ existiert und
@@ -393,6 +708,36 @@ kommutieren lassen.
 Etwa ist der Inklusionsfunktor~$B (2\NN) \to B(\NN)$ kofinal, wenn~$\NN$ die
 Menge der natürlichen Zahlen mit ihrer gewöhnlichen Ordnung und~$2\NN$ die
 Teilordnung der geraden Zahlen bezeichnet.
+
+\begin{prop}
+Sei~$H : \D_0 \to \D$ ein kofinaler Funktor und~$F : \D \to \C$
+ein~$\D$-förmiges Diagramm in einer Kategorie~$\C$. Dann gilt:
+\begin{enumerate}
+\item Die Kategorie der Kokegel von~$F$ ist äquivalent zur Kategorie der
+Kokegel von~$F \circ H$.
+\item Die Angabe eines Kolimes von~$F$ ist gleichwertig mit der Angabe eines
+Kolimes von~$F \circ H$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+Der erste Teil ist Gegenstand von Aufgabe~4 von Übungsblatt 5. Die zweite
+Aussage folgt sofort aus dem ersten, da ja ein Kolimes von~$F$ bzw.~$F \circ H$
+als initiales Objekt in der entsprechenden Kokegelkategorie definiert ist.
+\end{proof}
+
+Natürlich gilt die duale Aussage für Limiten: Ist in der Situation der
+Proposition der Funktor~$H$ aufgefasst als Funktor~$\D_0^\op \to \D^\op$
+kofinal, so ist die Angabe eines Limes von~$F$ gleichwertig mit der Angabe
+eines Limes von~$F \circ H$.
+
+\begin{bsp}Wir haben die~$p$-adischen Ganzzahlen als Limes des Diagramms
+\[ \cdots \lra \ZZ/(p^2) \lra \ZZ/(p^1) \lra \ZZ/(p^0) \]
+definiert. Genauso gut, wenn auch ein wenig willkürlich, hätten wir sie als
+Limes des Diagramms
+\[ \cdots \lra \ZZ/(p^5) \lra \ZZ/(p^4) \lra \ZZ/(p^3) \]
+definieren können.\end{bsp}
+
+% XXX: Der Kapitelname ist schlecht. Müssen nämlich nicht wirklich Unterdiagramme sein!
 
 % Hom linksexakt
 

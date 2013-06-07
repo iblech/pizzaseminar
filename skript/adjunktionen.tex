@@ -91,11 +91,10 @@ Mathematik realisiert man~$F(X)$ als Menge von Wörtern über~$K \times X$ modul
 einer geeigneten Äquivalenzrelation, wenn man nicht voraussetzen möchte,
 dass~$X$ als Menge diskret ist.} Die Elemente von~$X$ bilden dann eine Basis
 von~$F(X)$.
-Ist~$f : X \to X'$ eine Abbildung, so ist die induzierte
-Abbildung durch
+Eine Abbildung~$f : X \to X'$ von Mengen induziert eine lineare Abbildung
+zwischen den zugehörigen freien Vektorräumen:
 \[ F(f) : F(X) \to F(X'),\ \sum_{i=1}^n \lambda_i x_i \mapsto
-  \sum_{i=1}^n \lambda_i f(x_i) \]
-gegeben und tatsächlich linear.
+  \sum_{i=1}^n \lambda_i f(x_i). \]
 
 Die Konstruktion des freien Vektorraums über einer Menge~$X$ ist die
 \emph{ökonomischste Art und Weise}, um aus der Menge~$X$ einen
@@ -104,14 +103,14 @@ werden sollen, müssen in~$F(X)$ auch Linearkombinationen von ihnen enthalten
 sein; weitere Vektoren werden von den Vektorraumaxiomen aber nicht gefordert.
 Ferner sollten in~$F(X)$ genau die Rechenregeln erfüllt sein, die von den
 Vektorraumaxiomen vorgeschrieben werden, aber keine willkürlichen
-weiteren\footnote{Das ist eine gute anschauliche Vorstellung, man kann sie
+weiteren. Die im vorherigen Absatz gegebene Konstruktion
+bewerkstelligt das gerade\footnote{Das ist eine gute anschauliche Vorstellung, man kann sie
 allerdings nicht zu wörtlich nehmen: Etwa folgt aus den Vektorraumaxiomen für
 kein~$n \geq 0$ die Aussage "`der Vektorraum ist~$n$-dimensional"', da es ja
 Vektorräume beliebiger Dimension gibt. Aber für endliches~$X$ erfüllt~$F(X)$
 diese Aussage doch, für~$n = |X|$. Nur wenn man bereit ist, den Topos, in dem man
 arbeitet, zu wechseln, kann man einen völlig generischen Vektorraum
-konstruieren.}. Die im vorherigen Absatz gegebene Konstruktion
-bewerkstelligt das gerade. Formal kann man das durch folgende Adjunktionsbeziehung
+konstruieren.}. Formal kann man das durch folgende Adjunktionsbeziehung
 ausdrücken:
 \begin{prop}Der Funktor~$F$ ist
 linksadjungiert zum Vergissfunktor~$U$, d.\,h. $F \dashv U$.
@@ -181,8 +180,9 @@ Lawvere hat beobachtet, dass existenzielle und
 universelle Quantifikation als Links- bzw. Rechtsadjungierte interpretiert
 werden können:
 \[ \exists \dashv f^* \dashv \forall. \]
-Hier ist nicht der Platz, um in den Hintergrund einzuführen, um diese
-zelebrierte Adjunktionskette formal zu diskutieren. Aber eine intuitive Analyse ist durchaus
+Hier ist nicht der Platz, um in den nötigen Hintergrund einzuführen, sodass wir
+diese
+zelebrierte Adjunktionskette formal diskutieren könnten. Aber eine intuitive Analyse ist durchaus
 möglich. Dazu müssen wir zunächst verstehen, wie Logiker die fundamentale
 Schlussregel für den Existenzquantor ausdrücken:
 \begin{center}
@@ -208,7 +208,7 @@ folgern kann.} \]
 \end{indentblock}
 Mit anderen Worten: Wenn man die Aussage~$\exists y{:}\ \varphi$ als
 Voraussetzung gegeben hat und aus ihr die Aussage~$\psi$ folgern möchte, dann
-kann man die Existenz eines Werts~$y$, das die Eigenschaft~$\varphi$ hat,
+kann man die Existenz eines Werts~$y$, der die Eigenschaft~$\varphi$ hat,
 voraussetzen und unter diesem Kontext die Aussage~$\psi$ folgern. Umgekehrt
 geht es auch. Diese Schlussregel wendet man also ständig an, man reflektiert
 sie nur selten.
@@ -223,6 +223,7 @@ Adjunktionsbeziehung verstehen:
 \[ \Hom_{\vec x}(\exists y{:}\, \varphi,\ \psi) \cong
   \Hom_{\vec x, y}(\varphi,\ \psi). \]
 
+
 \begin{aufg}Formuliere die fundamentale Schlussregel für den
 Allquantor.\end{aufg}
 
@@ -231,7 +232,7 @@ Allquantor.\end{aufg}
 
 \subsection{Zusammenspiel von adjungierten Funktoren und (Ko-)Limiten}
 
-\begin{prop}
+\begin{prop}\label{limitenbeiadjunktionen}%
 Sei $F:\C\to\D$ linksadjungiert zu $G:\D\to\C$. Dann gilt:
 \begin{enumerate}
 \item $F$ erhält Kolimiten von $\C$.
@@ -266,7 +267,8 @@ Dieser Beweis hat aber noch zwei Lücken: Zum einen wurde die Existenz des
 Limes~$\lim_i G(D(i))$ ohne Beweis verwendet, zum anderen wurde nur die
 Isomorphie der Kegelspitzen nachgewiesen; das ist aber eine schwächere Aussage
 als die eigentliche Behauptung der Limesbewahrung. Es gibt verschiedene
-Möglichkeiten, die Lücken zu schließen, siehe etwa~\cite{gaillard,lin}.
+Möglichkeiten, die Lücken zu schließen, siehe etwa~\cite{gaillard,lin}; es ist
+eine gute Übungsaufgabe, das auszuführen.
 %Sei~$\lim_i D(i)$ Limes eines Diagramms~$D:\I\to\D$, zusammen mit den
 %Projektionsmorphismen~$\pi_i : \lim_i D(i) \to D(i)$. Wir müssen nachweisen, dass
 %der induzierte Kegel bestehend aus den Morphismen
@@ -285,7 +287,7 @@ Möglichkeiten, die Lücken zu schließen, siehe etwa~\cite{gaillard,lin}.
 
 \subsection{Weitere Aspekte}
 
-Zu einem abgerundeten Verständnis von Adjunktionen gehören noch folgende
+Zu einem abgerundeten Verständnis von Adjunktionen gehören mindestens noch folgende
 Aspekte:
 \begin{itemize}
 \item Eins und Koeins von Adjunktionen
@@ -318,3 +320,5 @@ Gruppen-Homomorphismen}\}$
 \endinput
 
 % XXX: Wie WÜRDE ein Rechtsadjungierter zu U : Vect --> Set aussehen?
+
+% Aufgaben: http://people.mpim-bonn.mpg.de/carchedi/HW2.pdf 2(a)(b)

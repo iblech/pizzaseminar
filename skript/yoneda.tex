@@ -276,11 +276,11 @@ Umkehrabbildung) ist gerade die untersuchte Abbildung.
 \begin{proof}Folgt aus der Volltreuheit der Yoneda-Einbettung und der
 allgemeinen Übungs\-auf\-ga\-be~1 von Blatt 3.\end{proof}
 
-In der Kategorientheorie wird dieses Korollar sehr häufig verwendet, da man
+Dieses Korollar setzt man häufig ein, da man
 oftmals die Prägarben~$\widehat A$ besser versteht als die Objekte~$A$ selbst.
 Folgendes Beispiel soll das illustrieren:
 \begin{bsp}Seien~$A$ und~$B$ Objekte einer Kategorie~$\C$, in der je zwei
-Objekte ein Produkt besitzen. Dann haben wir schon in Proposition~\ref{propkomm}
+Objekte ein Produkt besitzen. Dann haben wir schon in Proposition~\ref{prodkomm}
 gesehen, dass~$A \times B$ isomorph zu~$B \times A$ ist. Eine Argumentation im
 Yoneda-Style geht so:
 \begin{align*}
@@ -292,7 +292,9 @@ Yoneda-Style geht so:
 \end{align*}
 Dabei haben wir die Stetigkeit des Hom-Funktors in der zweiten Variable (siehe
 Proposition~\ref{homstetig}) und die bekannte Kommutativität des kartesischen
-Produkts von Mengen bis auf Isomorphie verwendet.
+Produkts von Mengen bis auf Isomorphie verwendet; wir kannten zwar nicht das
+Produkt~$A \times B$ (was auch immer das bedeutet), wohl aber die zugeordnete
+Prägarbe~$\Hom_\C(\freist, A \times B)$.
 \end{bsp}
 
 \begin{bem}In der Vollheit der Yoneda-Einbettung sehen wir abermals das Motto
@@ -301,11 +303,121 @@ definiert zu sein, bestätigt (Motto~\ref{nattrafoglm}): Jede natürliche
 Transformation~$\eta : \Hom_\C(\freist,A) \Rightarrow \Hom_\C(\freist,B)$ hat
 notwendigerweise die gleichmäßige Form
 \[ \eta_X(f) = \varphi \circ f \]
-für einen festen Morphismus~$\varphi \in \Hom_\C(A,B)$.\end{bem}
+für einen festen (von~$X \in \Ob\C$ unabhängigen) Morphismus~$\varphi \in \Hom_\C(A,B)$.\end{bem}
 
 
 \subsection{Freie Kovervollständigung}
 
+Sei~$\C$ eine kleine Kategorie. Dann erfüllt die
+Prägarbenkategorie~$\widehat\C$ folgende universelle Eigenschaft:
+
+\begin{prop}\label{freiekovervollst}
+Sei~$\D$ eine beliebige kovollständige Kategorie und~$P:\C\to\D$ ein Funktor.
+Dann gibt es einen kostetigen Funktor~$\overline P:\widehat\C\to\D$ (vorgestellt als
+Fortsetzung von~$P$ auf die Prägarbenkategorie) sodass das Diagramm
+\[ \xymatrix{
+  \C \ar[rrr]^P \ar[rd]_Y &&& \D \\
+  & \widehat\C \ar[rru]_{\overline P}
+} \]
+bis auf natürliche Isomorphie kommutiert (d.\,h. dass ein natürlicher
+Isomorphismus~$\eta : \overline{P} \circ Y
+\Rightarrow P$ existiert), und für je zwei
+solcher Paare~$(\overline{P},\eta)$ und~$(\overline{P}',\eta')$ existiert genau
+ein natürlicher Isomorphismus~$\overline{P} \Rightarrow \overline{P}'$, der
+mit~$\eta$ und~$\eta'$ verträglich ist.
+\end{prop}
+Die Kommutativitäts- und Eindeutigkeitsaussagen sind notgedrungen nicht ganz so
+knapp formuliert, wie man es üblicherweise von universellen Eigenschaften
+gewohnt ist. Das liegt daran, weil man in einer naiveren Formulierung von der
+Gleichheit gewisser Funktoren sprechen würde -- wie in
+Bemerkung~\ref{gleichheitfunktoren} festgehalten, ist das aber keine gute Idee.
+Etwas formaler ausgedrückt handelt es sich bei der Aussage der Proposition um eine sog.
+\emph{2-universelle Eigenschaft}, da man in der \emph{2-Kategorie} der Kategorien
+arbeitet.
+\begin{proof}[Beweis der Proposition]
+Wir können die Fortsetzung~$\overline{P}$ explizit angeben:
+\[ \begin{array}{@{}rrcl@{}}
+  \overline{P} : & \widehat\C &\longrightarrow& \D \\
+  & F &\longmapsto& \colim\limits_{s \in F(X)} P(X)
+\end{array} \]
+Genauer sieht die Indexkategorie, über die der Kolimes gebildet wird, wie folgt
+aus:
+\begin{align*}
+  \text{Objekte: } & \text{Paare $\langle X \in \Ob\C, s \in F(X) \rangle$} \\
+  \text{Morphismen: } & \Hom(\langle X,s \rangle, \langle Y,t \rangle) :=
+    \{ X \xra{f} Y \,|\, F(f)(t) = s \}
+\end{align*}
+Den natürlichen Isomorphismus~$\eta : \overline{P} \circ Y \Rightarrow P$
+erhält man aus der Beobachtung, dass für darstellbare Prägarben~$F = \Hom_\C(\freist,A)$ die
+Indexkategorie~$\langle A, \id_A \rangle$ als terminales Objekt enthält und der
+Kolimes~$\overline{P}(\Hom_\C(\freist,A))$ daher isomorph zu~$P(A)$ ist. Der
+Rest des Beweises ist eine gute Übungsaufgabe und findet sich in Dialogform
+auch in~\cite{ncatlab:free-cocompletion}.
+\end{proof}
+
+Die Aussage der Proposition ist mit der in Aufgabe~3 von Übungsblatt~6
+formulierten Dichtheit der Yoneda-Einbettung sofort plausibel: Jede Prägarbe
+ist in kanonischer Weise Kolimes repräsentierbarer Prägarben, und auf diesen
+ist~$\overline{P}$ durch die Maßgabe, Fortsetzung von~$P$ zu sein, vorgegeben.
+
+Anschaulich besagt die Proposition, dass die Prägarbenkategorie~$\widehat\C$
+die \emph{freie Kovervollständigung} von~$\C$ ist, also aus~$\C$ dadurch
+entsteht, indem man (künstlich) Kolimiten zu allen kleinen Diagrammen hinzufügt
+-- und etwaige bereits existierende Kolimiten in~$\C$ dabei zerstört. Daraus kann man ein
+weiteres Motto über Prägarben extrahieren:
+\begin{motto}Eine Prägarbe~$F$ auf~$\C$ ist eine abstrakte Bastelanleitung für einen
+Kolimes: Ist ein Funktor~$P:\C\to\D$ in eine kovollständige Kategorie gegeben,
+gibt die Prägarbe~$F$ vor, wie man die Bilder~$P(X)$ für~$X \in \Ob\C$ zu einem
+Objekt aus~$\D$ verkleben kann.
+\end{motto}
+
+\begin{bem}
+Durch eine leichte Abwandlung der Konstruktion ist es auch möglich, die
+Kategorie~$\C$ \emph{unter Bewahrung} bereits vorhandener Kolimiten zu
+verkovollständigen. Außerdem ist es möglich,~$\C$ nicht kovollständig, sondern
+vollständig zu machen: Dazu dualisiert man (d.\,h. wechselt von~$\C$
+zu~$\C^\op$), führt dann die Kovervollständigung
+aus, und dualisiert erneut.
+\end{bem}
+
+
+\subsection{Analogie zu Distributionen in der Funktionalanalysis}
+
+In physikalischen und technischen Anwendungen der Mathematik ist die sog.
+\emph{Deltadistribution}~$\delta$ nützlich. Diese erfüllt die kuriose
+Rechenregel
+\[ \int_{-\infty}^\infty \delta(x) f(x) \,dx = f(0) \]
+für alle glatten Funktionen~$f : \RR \to \RR$ mit kompaktem Träger, die in
+diesem Kontext auch als \emph{Testfunktionen}~$f \in \D$ bezeichnet werden.
+
+\begin{aufg}Zeige, dass es keine Funktion~$\delta : \RR \to \RR$ gibt, die
+diese Rechenregel erfüllt, wenn man das Integral formal etwa als Riemann- oder
+Lebesgue-Integral versteht.\end{aufg}
+
+Ungeachtet dieses Faktums erfreut sich die Deltadistribution trotzdem großer
+Beliebtheit; es wäre daher eine Schande, nur wegen dieses formalen Problems die
+Augen vor ihr zu verschließen. Tatsächlich ist es im Rahmen der
+Funktionalanalysis gelungen, die Deltadistribution (und andere Ausdrücke ihrer
+Art) formal zu verstehen: Sie ist zwar keine eigenständige Funktion, aber man
+kann erklären, wie sie sich mit Testfunktionen multipliziert \emph{unter dem
+Integral} verhält. Man versteht die linke Seite der Rechenregel also lediglich
+als Kurzschreibweise für die Anwendung von~$f$ auf einen geeigneten Operator:
+\[ \int_{-\infty}^\infty \delta(x) f(x) \,dx =: A(f), \]
+wobei~$A : \D \to \RR$ durch~$A(f) := f(0)$ definiert ist. Die Abbildung~$A$
+ist linear und stetig, wenn man auf dem Raum der Testfunktionen eine geeignete
+Topologie wählt.
+
+Als Motto kann man festhalten: Die Deltadistribution ist zwar keine Funktion,
+aber eine \emph{ideelle Funktion} -- durch die Rechenregel kennt man ihre
+Beziehungen zu tatsächlichen Funktionen. Ganz offensichtlich ist dieses Motto
+nur eine Instanz unseres allgemeinen Mottos über Prägarben
+(Motto~\ref{praegarbeideell})!
+% Habe ich gelernt von
+% https://www.math.umass.edu/~mirkovic/A.COURSE.notes/1.AlgebraicGeometry/B.Chapters/5.pdf.
+% Ursprüngliche Quelle herausfinden!
+
 % Benötigt man "lokal klein" bei Funct(C,D)?
 
 % Gruppenobjekte
+
+% Ersatz für lim_i F(i): lim_i Hom(__, F(i))!
