@@ -1,0 +1,494 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
+\usepackage{bussproofs}
+\usepackage{array}
+\usepackage{comment}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{literatur}
+
+\usepackage[all]{xy}
+
+\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{axiom}[defn]{Axiom}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{motto}[defn]{Motto}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+\newtheorem{aufg}[defn]{Aufgabe}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\renewcommand{\I}{\mathcal{I}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\freist}{\underline{\ \ }}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\im}{im}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}[1]{{#1\text{-}\mathrm{Vect}}}
+\newcommand{\AbGrp}{\mathrm{AbGrp}}
+\newcommand{\Ring}{\mathrm{Ring}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Funct}{\mathrm{Funct}}
+\newcommand{\Eins}{\mathbf{1}}
+\newcommand{\Man}{\mathrm{Man}}
+\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\newcommand\subsubsubsection[1]{\subsubsection*{#1}}
+\definecolor{grey}{rgb}{0.7,0.7,0.7}
+
+\setcounter{tocdepth}{2}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+%\newarrow{Equals}=====
+
+%\usepackage{geometry}
+%\geometry{tmargin=2cm,bmargin=4cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{2em}%
+\begin{center}%
+  \vskip 1em
+  {\LARGE Pizzaseminar zu konstruktiver Mathematik}
+  \vskip 1.5em%
+  {\large
+   \lineskip .5em%
+    \begin{tabular}[t]{c}%
+      \today
+    \end{tabular}\par}%
+    \vskip 1em%
+\end{center}\par
+\par\vskip 1.5em
+
+\begin{center}\emph{in Entstehung befindlich, nur grobe Zusammenfassung}
+\end{center}
+
+\tableofcontents
+
+\section{Was ist konstruktive Mathematik?}
+
+\begin{prop}Es gibt irrationale Zahlen~$x,y$, sodass~$x^y$ rational ist.
+\end{prop}
+\begin{proof}[Beweis 1] Die Zahl~$\sqrt{2}^{\sqrt{2}}$ ist rational oder nicht
+rational. Setze im ersten Fall~$x := \sqrt{2}$, $y := \sqrt{2}$. Setze im
+zweiten Fall~$x := \sqrt{2}^{\sqrt{2}}$, $y := \sqrt{2}$.
+\end{proof}
+\begin{proof}[Beweis 2] Setze~$x := \sqrt{2}$ und~$y := \log_{\sqrt{2}} 3$.
+Dann
+ist die Potenz~$x^y = 3$ sicher rational. Die Irrationalität von~$y$ lässt sich
+sogar einfacher als die von~$\sqrt{2}$ beweisen:
+Gelte~$y = p/q$ mit~$p, q \in \ZZ$.
+Dann folgt $3^2 = 2^p / 2^q$, also~$2^q \cdot 3^2 = 2^p$. Das ist ein
+Widerspruch zum Satz über die eindeutige Primfaktorzerlegung, denn auf der linken
+Seite kommt der Primfaktor~$3$ vor, auf der rechten aber nicht.
+\end{proof}
+
+Der erste Beweis war \emph{unkonstruktiv}: Einem interessierten Gegenüber kann
+man immer noch nicht ein Zahlenpaar mit den gewünschten Eigenschaften nennen.
+Der zweite Beweis dagegen war konstruktiv: Die Existenzbehauptung wurde durch
+explizite Konstruktion eines Beispiels nachgewiesen.
+
+Es stellt sich heraus, dass von den vielen Schlussregeln klassischer Logik genau
+ein Axiom für die Zulässigkeit unkonstruktiver Argumente verantwortlich ist,
+nämlich das \emph{Prinzip vom ausgeschlossenen Dritten}:
+\begin{axiom}[vom ausgeschlossenen Dritten, LEM]Für jede Aussage~$\varphi$ gilt: $\varphi \vee
+\neg\varphi$.\end{axiom}
+Unter konstruktiver Mathematik im engeren Sinn, genauer
+\emph{intuitionistischer Logik}, versteht man daher klassische Logik ohne LEM.
+Das \emph{Prinzip der Doppelnegationselimination}, demnach man für jede
+Aussage~$\varphi$ voraussetzen darf, dass~$\neg\neg\varphi \Rightarrow \varphi$
+gilt, ist zu LEM äquivalent (Übungsaufgabe) und kann daher ebenfalls nicht
+verwendet werden.
+
+In konstruktiver Mathematik behauptet man \emph{nicht}, dass das
+Prinzip vom ausgeschlossenen Dritten falsch wäre: Intuitionistische Logik ist
+abwärtskompatibel zu klassischer Logik -- jede konstruktiv nachweisbare Aussage
+gilt auch klassisch -- und manche konkrete Instanzen des Prinzips lassen sich
+sogar konstruktiv zeigen (siehe Proposition~\ref{natdiskret} für ein Beispiel).
+Stattdessen verwendet man das Prinzip einfach
+nur nicht. (Tatsächlich kann man leicht zeigen, dass es keine Gegenbeispiele
+des Prinzips geben kann: Für jede Aussage~$\varphi$ gilt~$\neg(\neg\varphi
+\wedge \neg\neg\varphi)$.)
+
+\begin{bem}Manche Dozenten erzählen Erstsemestern folgende Lüge: Eine Aussage
+erkennt man daran, dass sie einen eindeutigen Wahrheitswert hat. Diese
+Charakterisierung mag bei klassischer Logik noch vertretbar sein, ist aber in
+einem konstruktiven Kontext offensichtlich unsinnig. Stattdessen erkennt man
+eine Aussage daran, dass sie rein von ihrer grammatikalischen Struktur her ein
+Aussagesatz ist (und natürlich dass alle vorkommenden Begriffe eine klare
+Bedeutung haben).\end{bem}
+
+\begin{bem}In konstruktiver Mengenlehre muss man auf das Auswahlaxiom
+verzichten, denn in Gegenwart des restlichen Axiome impliziert dieses das
+Prinzip vom ausgeschlossenen Dritten.\end{bem}
+% XXX: Beweis einfügen
+
+
+\subsection{Widerspruchsbeweise vs. Beweise von Negationen}
+
+Ein übliches Gerücht über konstruktive Mathematik besagt, dass der Begriff
+\emph{Widerspruch} konstruktiv generell verboten ist. Dem ist nicht so. Man
+muss zwischen zwei für das klassische Auge sehr ähnlich aussehenden
+Beweisfiguren unterscheiden:
+\begin{enumerate}
+\item[1.] "`Angenommen, es gilt~$\neg\varphi$. Dann \ldots, Widerspruch; also
+gilt~$\neg(\neg\varphi)$ und somit~$\varphi$."'
+\item[2.] "`Angenommen, es gilt~$\psi$. Dann \ldots, Widerspruch; also
+gilt~$\neg\psi$."'
+\end{enumerate}
+Argumente der ersten Form sind tatsächlich Widerspruchsbeweise und daher
+konstruktiv nicht pauschal zulässig -- wenn man nicht anderweitig für die
+untersuchte Aussage~$\varphi$ begründen
+kann, dass aus ihrer Doppelnegation schon sie selbst folgt, beweist ein
+solches Argument nur die Gültigkeit von~$\neg\neg\varphi$; das ist konstruktiv
+schwächer als~$\varphi$.
+
+Argumente der zweiten Form sind dagegen konstruktiv völlig einwandfrei: Sie
+sind Beweise negierter Aussagen und nicht Widerspruchsbeweise im eigentlichen
+Sinn. Die Zulässigkeit erklärt sich direkt nach Definition:
+Die Negation wird (übrigens auch in klassischer Logik) als
+\[ \neg\psi :\equiv (\psi \Rightarrow \bot) \]
+festgelegt. Dabei steht~"`$\bot$"' für \emph{Falschheit}, eine kanonische falsche
+Aussage. Wer mag, kann~$1 = 0$ oder~$\lightning$ denken.
+
+
+\subsection{Informale Bedeutung logischer Aussagen}
+
+\subsubsection*{\ldots über Belege}
+
+Die Ablehnung des Prinzips vom ausgeschlossenen Dritten erscheint uns durch
+unsere klassische Ausbildung als völlig verrückt: \emph{Offensichtlich} ist
+doch jede Aussage entweder wahr oder falsch! Die Verwunderung löst sich auf,
+wenn man akzeptiert, dass konstruktiver Mathematiker zwar dieselbe
+\emph{logische Sprache} verwenden ($\wedge, \vee, \Rightarrow, \neg, \forall,
+\exists$), aber eine andere Bedeutung im Sinn haben:
+
+\begin{center}
+\vspace{-1em}
+\setlength{\extrarowheight}{0.3em}
+\begin{tabular}{@{}r@{\quad}p{6.0cm}@{\quad}p{6.6cm}}
+  & \underline{klassische Logik} & \underline{intuitionistische Logik} \\[0.5em]
+  Aussage $\varphi$ & Die Aussage $\varphi$ gilt. & Wir haben Beleg für $\varphi$. \\
+  $\bot$ & Es stimmt Falschheit. & Wir haben Beleg für Falschheit. \\
+  $\varphi \wedge \psi$ & $\varphi$ und $\psi$ stimmen. & Wir haben Beleg für~$\varphi$ und für~$\psi$. \\
+  $\varphi \vee \psi$ & $\varphi$ oder $\psi$ stimmt. & Wir haben Beleg für~$\varphi$ oder für~$\psi$. \\
+  $\varphi \Rightarrow \psi$ & Sollte~$\varphi$ stimmen, dann auch~$\psi$. &
+  Aus Belegen für~$\varphi$ können wir (gleichmäßig) Belege für~$\psi$ konstruieren. \\
+  $\neg\varphi$ &
+    $\varphi$ stimmt nicht. &
+    Es kann keinen Beleg für~$\varphi$ geben. \\
+  $\forall x \in X{:}\ \varphi(x)$ & Für alle $x \in X$ stimmt jeweils~$\varphi(x).$ &
+    Wir können (gleichmäßig) für alle~$x \in X$ Belege für~$\varphi(x)$ konstruieren. \\
+  $\exists x \in X{:}\ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x \in X$, für das~$\varphi(x)$
+  stimmt. & {\raggedright
+    Wir haben ein~$x \in X$ zusammen mit Beleg für~$\varphi(x).$} \\
+  $\varphi \vee \neg\varphi$ &
+    $\varphi$ stimmt oder stimmt nicht. &
+    Wir haben Beleg für~$\varphi$ oder für~$\neg\varphi$.
+\end{tabular}
+\end{center}
+% XXX: Gleichmäßigkeit thematisieren
+
+Unter dieser Interpretation (die übrigens auf Brouwer, Heyting und Kolmogorov
+zurückgeht) meint das Prinzip vom ausgeschlossenen Dritten, dass wir für jede
+Aussage Beleg für sie oder ihre Negation haben. Das ist aber offensichtlich
+nicht der Fall.
+
+Die Interpretation von~$\neg\neg\varphi$ ist, dass es keinen Beleg
+für~$\neg\varphi$ gibt. Daraus folgt natürlich noch nicht, dass wir tatsächlich
+Beleg für~$\varphi$ haben; gewissermaßen ist eine solche Aussage~$\varphi$ nur
+"`potenziell wahr"'.
+
+\begin{bsp}Wenn wir wissen, dass sich unser Haustürschlüssel irgendwo in der
+Wohnung befinden muss (da wir ihn letzte Nacht verwendet haben, um die Tür
+aufzusperren), wir ihn momentan aber nicht finden, so können wir konstruktiv
+nur die doppelt negierte Aussage
+\[ \neg\neg (\exists x{:}\ \text{der Schlüssel befindet sich an Position~$x$})
+\]
+vertreten.\end{bsp}
+
+
+\subsubsection*{\ldots über Berechenbarkeit}
+
+Es gibt noch eine zweite Interpretation, die beim Verständnis konstruktiver
+Mathematik sehr hilfreich ist:
+\begin{motto}Eine Aussage gilt konstruktiv genau dann, wenn es ein
+Computerprogramm gibt, welches sie in endlicher Zeit bezeugt.\end{motto}
+Etwa ist mit dieser Interpretation klar, dass die formale Aussage
+\[ \forall n \in \NN{:}\ \exists p \geq n{:}\ \text{$p$ ist eine Primzahl}, \]
+eine Formulierung der Unendlichkeit der Primzahlen, auch konstruktiv
+stimmt: Denn man kann leicht ein Computerprogramm angeben, das eine natürliche
+Zahl~$n$ als Eingabe erwartet und dann, etwa über die Sieb-Methode von
+Eratosthenes, eine Primzahl~$p \geq n$ produziert (zusammen mit einem Nachweis,
+dass~$p$ tatsächlich prim ist).
+
+\begin{bem}Das Motto kann man tatsächlich zu einem formalen Theorem
+präzisieren, das ist Gegenstand der gefeierten
+Curry--Howard-Korrespondenz.\end{bem}
+
+
+\section{Beispiele}
+
+\subsection{Diskretheit der natürlichen Zahlen}
+
+Manche konkrete Instanzen des Prinzips vom ausgeschlossenen Dritten lassen sich
+konstruktiv nachweisen:
+
+\begin{prop}\label{natdiskret}Für beliebige natürlichen Zahlen~$x,y \in \NN$
+gilt: $x = y \vee \neg(x = y)$.\end{prop}
+\begin{proof}Das ist konstruktiv \emph{nicht} klar, aber beweisbar durch eine
+Doppelinduktion.\end{proof}
+
+Diese Eigenschaft wird auch als Diskretheit der Menge der natürlichen Zahlen
+bezeichnet: Allgemein heißt eine Menge~$X$ genau dann \emph{diskret}, wenn für
+alle~$x,y \in X$ die Aussage~$x = y \vee \neg(x = y)$ gilt. Klassisch ist jede
+Menge diskret.
+
+Die reellen Zahlen sind in diesem Sinne nicht diskret. Das macht
+man sich am einfachsten über die algorithmische Interpretation klar: Es kann
+kein Computerprogramm geben, dass \emph{in endlicher Zeit} zwei reelle Zahlen
+auf Gleichheit testet. Denn in endlicher Zeit kann ein Programm nur endlich viele
+Nachkommaziffern (besser: endlich viele rationale Approximationen) abfragen;
+haben die beiden zu vergleichenden Zahlen dieselben Nachkommaziffern, so kann
+sich das Programm in endlicher Zeit nie sicher sein, ob irgendwann doch noch
+eine Abweichung auftreten wird.
+
+Für algebraische Zahlen gilt die analoge Aussage aber übrigens schon: Man kann ein
+Programm angeben, dass zwei algebraische Zahlen~$x,y$ zusammen mit \emph{Zeugen}
+ihrer Algebraizität, also Polynomgleichungen mit rationalen Koeffizienten
+und~$x$ bzw.~$y$ als Lösung, als Eingabe erwartet und dann entscheidet, ob~$x$
+und~$y$ gleich sind oder nicht. Der Beweis ist nicht trivial, aber auch nicht
+fürchterlich kompliziert; siehe etwa Proposition~1.6 in~\cite{nw:algebra}.
+
+
+\subsection{Minima von Teilmengen der natürlichen Zahlen}
+
+In klassischer Logik gilt folgendes Minimumsprinzip:
+\begin{prop}[in klassischer Logik]Sei~$U \subseteq \NN$ eine bewohnte
+Teilmenge. Dann enthält~$U$ ein kleinstes Element.\end{prop}
+In konstruktiver Mathematik kann man diese Aussage nicht zeigen -- wegen der
+Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät kann man zwar auch nicht ihr Gegenteil
+nachweisen, aber man kann folgendes sog. \emph{brouwersches Gegenbeispiel}
+anführen:
+\begin{prop}Besitze jede bewohnte Teilmenge der natürlichen Zahlen ein Minimum.
+Dann gilt das Prinzip vom ausgeschlossenen Dritten.\end{prop}
+\begin{proof}Sei~$\varphi$ eine beliebige Aussage. Wir müssen zeigen,
+dass~$\varphi$ oder~$\neg\varphi$ gilt. Dazu definieren wir die Teilmenge
+\[ U := \{ n \in \NN \,|\, n = 1 \vee \varphi \}. \]
+Die Zugehörigkeitsbedingung ist etwas komisch, da die Aussage~$\varphi$ ja
+nicht von der frischen Variable~$n$ abhängt, aber völlig okay. Da~$U$
+sicherlich bewohnt ist (durch~$1 \in U$), besitzt~$U$ nach Voraussetzung ein
+Minimum~$z \in U$.
+
+Wegen der diskutierten Diskretheit der natürlichen Zahlen gilt~$z = 0$ oder~$z
+\neq 0$. Im ersten Fall folgt~$\varphi$ (denn~$0 \in U$ ist gleichbedeutend
+mit~$0 = 1 \vee \varphi$), im zweiten Fall folgt~$\neg\varphi$ (denn
+wenn~$\varphi$ gälte, wäre~$U = \NN$ und somit~$z = 0$ im Widerspruch zu~$z
+\neq 0$).\end{proof}
+
+Unter einer klassisch trivialerweise erfüllten Zusatzbedingung lässt sich das
+Prinzip retten:
+\begin{defn}Eine Teilmenge~$U \subseteq X$ heißt genau dann
+\emph{herauslösbar}, wenn für alle~$x \in X$ gilt: $x \in U \vee \neg(x \in
+U)$.\end{defn}
+\begin{prop}Sei~$U \subseteq \NN$ eine bewohnte und herauslösbare Teilmenge.
+Dann enthält~$U$ ein kleinstes Element.\end{prop}
+\begin{proof}Da~$U$ bewohnt ist, liegt eine Zahl~$n$ in~$U$. Da ferner~$U$
+diskret ist, gilt für jede Zahl~$0 \leq m \leq n$: $m \in U$ oder~$m \not\in
+U$. Daher können wir diese Zahlen der Reihe nach durchgehen; die erste Zahl
+mit~$m \in U$ ist das gesuchte Minimum.
+\end{proof}
+Weg mag, kann diesen Beweis auch präzisieren und einen formalen
+Induktionsbeweis führen. Gut erkennbar ist, wie im Beweis ein expliziter
+Algorithmus zur Findung des Minimums enthalten ist.
+
+
+\subsection{Potenzmengen}
+
+Klassisch ist die Potenzmenge der einelementigen Menge~$\{\star\}$ völlig
+langweilig: Sie enthält genau zwei Elemente, nämlich die leere Teilmenge
+und~$\{\star\}$ selbst. Konstruktiv lässt sich das nicht zeigen, die
+Potenzmenge hat (potenziell!) viel mehr Struktur. Das ist Gegenstand einer
+Übungsaufgabe.
+
+
+\section{Nutzen konstruktiver Mathematik}
+
+\paragraph{Spaß.} Konstruktive Mathematik macht Spaß!
+
+\paragraph{Philosophie.}
+Konstruktive Logik ist philosophisch einfacher zu rechtfertigen als
+klassische Logik.
+% XXX: ausführen
+
+\paragraph{Eleganzassistenz.}
+Konstruktive Mathematik kann einen dabei unterstützen, Aussagen, Beweise und
+ganze Theoriegebäude eleganter zu formulieren. Etwa hat man klassisch oft
+\emph{Angst vor Spezialfällen} wie etwa der leeren Menge, einem
+nulldimensionalen Vektorraum oder einer leeren Mannigfaltigkeit. Aussagen
+formuliert dann nur für nichtleere Mengen, nichttriviale Vektorräume und so
+weiter. Tatsächlich sind diese Einschränkungen aber oftmals gar nicht notwendig
+-- in konstruktiver Mathematik wird man insofern darauf aufmerksam gemacht, als
+dass der Nachweis, dass diese Einschränkungen in bestimmten Fällen erfüllt
+sind, nicht mehr trivial ist, sondern Nachdenken erfordert.
+
+Ein anderes Beispiel liefert folgende Proposition, die oft als Übungsaufgabe in
+einer Anfängervorlesung gestellt wird:
+\begin{prop}Sei~$f : X \to Y$ eine Abbildung und~$f^{-1}[\freist] : \P(Y) \to
+\P(X)$ die Urbildoperation (welche eine Teilmenge~$U \in \P(Y)$ auf~$\{ x \in X
+\,|\, f(x) \in U \}$ schickt). Dann gilt: Genau dann ist~$f$ surjektiv,
+wenn~$f^{-1}[\freist]$ injektiv ist.
+\end{prop}
+\begin{proof}[Beweis der Rückrichtung (umständlich, nur klassisch zulässig)]
+Angenommen, die Abbildung~$f$ ist nicht surjektiv. Dann gibt es Element~$y \in
+Y$, welches nicht im Bild von~$f$ liegt. Wenn wir die spezielle
+Teilmenge~$\{y\} \in \P(Y)$ betrachten, sehen wir
+\[ f^{-1}[\{y\}] = \emptyset = f^{-1}[\emptyset]. \]
+Wegen der vorausgesetzten Injektivität folgt~$\{y\} = \emptyset$; das ist ein
+Widerspruch.\end{proof}
+\begin{proof}[Beweis der Rückrichtung (elegant, auch konstruktiv zulässig)]
+Bezeichne~$\im f$ die Bildmenge von~$f$. Dann gilt
+$f^{-1}[\im f] = f^{-1}[X]$
+und damit~$\im f = X$, also ist~$f$ surjektiv.\end{proof}
+
+\paragraph{Mentale Hygiene.} Arbeit in konstruktiver Logik ist gut für die
+mentale Hygiene: Man lernt, genauer auf die Formulierungen von Aussagen zu
+achten, nicht unnötigerweise Verneinungen einzuführen und darauf zu achten, an
+welchen bestimmten Stellen klassische Axiome nötig sind. Bei passenden
+Formulierungen ist das nämlich viel seltener, als man auf den ersten Blick
+vielleicht vermutet.
+
+\paragraph{Wertschätzung.} Klassische Mathematik kann man besser wertschätzen,
+wenn man verstanden hat, wie anders sich konstruktive Mathematik anfühlt.
+Die Frage, \emph{inwieweit genau} ein konstruktiver Beweis einer Aussage mehr
+Inhalt als ein klassischer Beweis hat, kann in Einzelfällen sehr diffizil und
+interessant sein. Wir werden zu diesem Thema noch einen mathematischen
+Zaubertrick kennenlernen.
+
+\paragraph{Programmextraktion.} Aus jedem konstruktiven Beweis einer Behauptung
+kann man maschinell, ohne manuelles Zutun, ein Computerprogramm extrahieren,
+welches die untersuchte Behauptung bezeugt (und bewiesenermaßen korrekt
+arbeitet). Etwa ist in jedem konstruktiven Beweis der Behauptung
+\begin{quote}Sei~$S$ eine endliche Menge von Primzahlen. Dann gibt es eine
+weitere Primzahl, welche nicht in~$S$ liegt.\end{quote}
+ein Algorithmus versteckt, welcher zu endlich vielen gegebenen Primzahlen
+ganz konkret eine weitere Primzahl berechnet. Solch maschinelle
+Programmextraktion ist wichtig in der Informatik: Anstatt in einem ersten
+Schritt ein Programm selbsthändig zu entwickeln und dann in einem zweiten
+Schritt umständlich seine Korrektheit bezüglich einer vorgegebenen
+Spezifikation zu zeigen, kann man auch direkt einen konstruktiven Beweis der
+Erfüllbarkeit der Spezifikation führen und dann automatisch ein entsprechendes
+Programm extrahieren lassen. In der akademischen Praxis wird dieses Vorgehen
+tatsächlich angewendet.
+
+\paragraph{Traummathematik.} Nur in einem konstruktiven Kontext ist die Arbeit
+mit sog. \emph{Traumaxiomen}, wie etwa
+\begin{quote}Jede Abbildung~$\RR \to \RR$ ist stetig.\end{quote}
+oder
+\begin{quote}Es gibt infinitesimale reelle Zahlen~$\varepsilon$
+mit~$\varepsilon^2 = 0$, aber~$\varepsilon \neq 0$.\end{quote}
+möglich: Denn in klassischer Logik sind diese Axiome schlichtweg offensichtlich
+falsch. Diese Axiome sind aber durchaus interessant: Sie können die Arbeit
+rechnerisch und konzeptionell vereinfachen (man muss nur einen Blick zu den
+Physikern werfen), und es gibt Metatheoreme, die garantieren, dass Folgerungen
+aus diesen Axiomen, welche nur mit konstruktiven Schlussregeln getroffen wurden
+und eine bestimmte logische Form aufweisen, auch im üblichen klassischen Sinn
+gelten.
+% XXX: Stetigkeitsnachweise unnötig
+
+\paragraph{Alternative Mathematik-Universen.} Wenn man ganz normal Mathematik
+betreibt, arbeitet man tatsächlich \emph{intern im Topos der Mengen}. Es gibt
+aber auch andere interessante Topoi; deren interne Sprache ist aber fast immer
+nicht klassisch. Eine genauere Diskussion würde an dieser Stelle zu weit
+führen, aber zwei Beispiele seien erwähnt:
+\begin{itemize}
+\item Aus dem recht einfach nachweisbaren Faktum konstruktiver linearer
+Algebra, dass jeder endlich erzeugte Vektorraum nicht nicht eine endliche
+Basis besitzt, folgt \emph{ohne weitere Arbeit} sofort folgende offensichtlich
+kompliziertere Aussage, wenn man das Faktum intern im Garbentopos eines reduzierten
+Schemas~$X$ interpretiert: Jeder~$\O_X$-Modul, der lokal von endlichem Typ ist,
+ist auf einer dichten Teilmenge sogar lokal frei.
+\item Zu quantenmechanischen Systemen kann man eine $C^*$-Algebra assoziieren.
+Wichtiges Merkmal ist, dass diese in allen interessanten Fällen
+\emph{nichtkommutativ} sein wird. Nun gibt es aber ein alternatives Universum,
+den sog. \emph{Bohr-Topos}, aus dessen Sicht diese Algebra kommutativ ist; auf
+diese Weise vereinfacht sich manches. (Was genau, werden wir noch gemeinsam
+herausfinden.)
+\end{itemize}
+
+
+\section{Beziehung zu klassischer Logik}
+
+Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
+historische Einordnung: Hilberts Programm, \ldots
+
+\nocite{*}
+\printbibliography
+
+\end{document}
