@@ -11,7 +11,7 @@ Verwende dazu nur die fünf \emph{Peano-Axiome}:
 \begin{enumerate}
 \item[1.] $0$ ist eine natürliche Zahl.
 \item[2.] Jede natürliche Zahl~$n$ hat eine Zahl~$S(n)$ als Nachfolger.
-\item[3.] Die Zahl~$0$ ist Nachfolger einer Zahl.
+\item[3.] Die Zahl~$0$ ist Nachfolger keiner Zahl.
 \item[4.] Natürliche Zahlen mit gleichem Nachfolger sind gleich.
 \item[5.] Enthält eine Teilmenge der natürlichen Zahlen die Zahl~$0$ und mit jeder
 Zahl auch ihren Nachfolger, so enthält sie schon alle natürlichen Zahlen.
@@ -19,8 +19,7 @@ Zahl auch ihren Nachfolger, so enthält sie schon alle natürlichen Zahlen.
 \end{aufgabe}
 
 \begin{aufgabe}{Konstruktive Tautologien}
-Zeige für beliebige Aussagen~$\varphi, \psi$ und mache dir ggf. Gedanken über die
-Rückrichtung:
+Zeige für beliebige Aussagen~$\varphi$ und~$\psi$ (bzw.~$\psi(x)$):
 \begin{enumerate}
 \item $\varphi \Longrightarrow \neg\neg\varphi$
 \item $(\varphi \Rightarrow \psi) \Longrightarrow (\neg\psi \Rightarrow
@@ -29,18 +28,19 @@ Rückrichtung:
 \item $\neg\neg\exists x \in A{:}\, \psi(x) \Longleftrightarrow
   \neg\forall x \in A{:}\, \neg\psi(x)$
 \end{enumerate}
+Gilt ggf. auch die Rückrichtung?
 \emph{Tipp:} Die Negation ist als~$\neg\varphi :\equiv (\varphi \Rightarrow
-\bot)$ definiert. Wahrheitstafeln haben hier nichts zu suchen.
+\bot)$ definiert. Wahrheitswertetafeln haben hier nichts zu suchen.
 \end{aufgabe}
 
 \begin{aufgabe}{Doppelnegationselimination}
 Zeige, dass folgende zwei Prinzipien äquivalent sind:
 \begin{enumerate}
-\item[1.] Für alle Aussagen~$\varphi$ gilt: $\varphi \vee \neg\varphi$.
-\item[2.] Für alle Aussagen~$\psi$ gilt: $\neg\neg\psi \Rightarrow
+\item[] (LEM) Für alle Aussagen~$\varphi$ gilt: $\varphi \vee \neg\varphi$.
+\item[] (DNE) Für alle Aussagen~$\psi$ gilt: $\neg\neg\psi \Rightarrow
 \psi$.
 \end{enumerate}
-\emph{Tipp für 2. $\Rightarrow$ 1.:} Verwende die Voraussetzung \emph{nicht} für~$\psi
+\emph{Tipp für (DNE) $\Rightarrow$ (LEM):} Verwende die Voraussetzung \emph{nicht} für~$\psi
 := \varphi$.
 \end{aufgabe}
 
