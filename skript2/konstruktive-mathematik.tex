@@ -191,6 +191,7 @@ Prinzip vom ausgeschlossenen Dritten.\end{bem}
 
 
 \subsection{Widerspruchsbeweise vs. Beweise von Negationen}
+\label{widerspruchvsnegation}
 
 Ein übliches Gerücht über konstruktive Mathematik besagt, dass der Begriff
 \emph{Widerspruch} konstruktiv generell verboten ist. Dem ist nicht so. Man
@@ -217,6 +218,23 @@ Die Negation wird (übrigens auch in klassischer Logik) als
 festgelegt. Dabei steht~"`$\bot$"' für \emph{Falschheit}, eine kanonische falsche
 Aussage. Wer mag, kann~$1 = 0$ oder~$\lightning$ denken.
 
+Hier ein konkretes Beispiel aus der Zahlentheorie, um den Unterschied zu
+demonstrieren:
+\begin{prop}Die Zahl~$\sqrt{2}$ ist nicht rational.\end{prop}
+\begin{proof}[Beweis (nur klassisch zulässig)]
+Angenommen, die Behauptung ist falsch, d.\,h. die Zahl~$\sqrt{2}$ ist nicht
+nicht rational. Dann ist~$\sqrt{2}$ also rational. Somit gibt es ganze
+Zahlen~$p$ und~$q$ mit~$\sqrt{2} = p / q$. Daraus folgt die Beziehung~$2q^2 =
+p^2$, die einen Widerspruch zum Satz über die Eindeutigkeit der
+Primfaktorzerlegung darstellt: Auf der linken Seite kommt der Primfaktor~$2$
+ungerade oft, auf der rechten Seite aber gerade oft vor.
+\end{proof}
+\begin{proof}[Beweis (auch konstruktiv zulässig)]
+Angenommen, die Zahl~$\sqrt{2}$ ist rational. Dann gibt es ganze Zahlen \ldots,
+Widerspruch. (Der verwendete Satz über die Eindeutigkeit der
+Primfaktorzerlegung lässt sich konstruktiv beweisen.)
+\end{proof}
+
 
 \subsection{Informale Bedeutung logischer Aussagen}
 
@@ -225,7 +243,7 @@ Aussage. Wer mag, kann~$1 = 0$ oder~$\lightning$ denken.
 Die Ablehnung des Prinzips vom ausgeschlossenen Dritten erscheint uns durch
 unsere klassische Ausbildung als völlig verrückt: \emph{Offensichtlich} ist
 doch jede Aussage entweder wahr oder falsch! Die Verwunderung löst sich auf,
-wenn man akzeptiert, dass konstruktiver Mathematiker zwar dieselbe
+wenn man akzeptiert, dass konstruktive Mathematiker zwar dieselbe
 \emph{logische Sprache} verwenden ($\wedge, \vee, \Rightarrow, \neg, \forall,
 \exists$), aber eine andere Bedeutung im Sinn haben:
 
@@ -248,9 +266,6 @@ wenn man akzeptiert, dass konstruktiver Mathematiker zwar dieselbe
   $\exists x \in X{:}\ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x \in X$, für das~$\varphi(x)$
   stimmt. & {\raggedright
     Wir haben ein~$x \in X$ zusammen mit Beleg für~$\varphi(x).$} \\
-  $\varphi \vee \neg\varphi$ &
-    $\varphi$ stimmt oder stimmt nicht. &
-    Wir haben Beleg für~$\varphi$ oder für~$\neg\varphi$.
 \end{tabular}
 \end{center}
 % XXX: Gleichmäßigkeit thematisieren
@@ -378,6 +393,86 @@ Potenzmenge hat (potenziell!) viel mehr Struktur. Das ist Gegenstand einer
 Übungsaufgabe.
 
 
+\subsection{Die De Morganschen Gesetze}
+
+In klassischer Logik verwendet man oft die De Morganschen Gesetze, manchmal
+sogar implizit, um verschachtelte Aussagen zu vereinfachen. In konstruktiver
+Mathematik lässt sich nur noch eines der beiden Gesetze in seiner vollen Form
+nachweisen. Den Beweis der folgenden Proposition führen wir mit Absicht recht
+ausführlich, damit man eine Imitationsgrundlage für die Bearbeitung des ersten
+Übungsblatts hat. Es wird das Wort "`Widerspruch"' vorkommen, aber wir haben ja
+schon in Abschnitt~\ref{widerspruchvsnegation} diskutiert, dass das nicht
+automatisch unkonstruktiv ist.
+
+\begin{prop}Für alle Aussagen~$\varphi$ und $\psi$ gilt
+\begin{enumerate}
+\item $\neg(\varphi \vee \psi) \quad\Longleftrightarrow\quad \neg\varphi \wedge
+\neg\psi$,
+\item $\neg(\varphi \wedge \psi) \quad\Longleftarrow\quad \neg\varphi \vee
+\neg\psi$.
+\end{enumerate}
+\end{prop}
+\begin{proof}\begin{enumerate}
+\item "`$\Rightarrow$"': Wir müssen~$\neg\varphi$ und~$\neg\psi$ zeigen:
+\begin{itemize}
+\item Angenommen, es gilt doch~$\varphi$. Dann gilt auch~$\varphi \vee \psi$. Da
+nach Voraussetzung~$\neg(\varphi \vee \psi)$, folgt ein Widerspruch.
+\item Analog zeigt man~$\neg\psi$.
+\end{itemize}
+
+"`$\Leftarrow$"': Wir müssen zeigen, dass~$\neg(\varphi \vee \psi)$. Dazu
+nehmen wir an, dass~$\varphi \vee \psi$ doch gilt, und streben einen Widerspruch an.
+Dann gibt es zwei Fälle:
+\begin{itemize}
+\item Falls~$\varphi$ gilt: Aus der Voraussetzung~$\neg\varphi \wedge \neg\psi$
+folgt insbesondere~$\neg\varphi$. Somit folgt ein Widerspruch.
+\item Falls~$\psi$ gilt, folgt ein Widerspruch auf analoge Art und
+Weise.
+\end{itemize}
+
+\item
+Wir müssen zeigen, dass~$\neg(\varphi \wedge \psi)$. Dazu nehmen wir an, dass
+doch~$\varphi \wedge \psi$ (also dass~$\varphi$ und dass~$\psi$), und streben
+einen Widerspruch an. Nach Voraussetzung können wir zwei Fälle unterscheiden:
+\begin{itemize}
+\item Falls~$\neg\varphi$: Dann folgt ein Widerspruch zu~$\varphi$.
+\item Falls~$\neg\psi$: Dann folgt ein Widerspruch zu~$\psi$.\qedhere
+\end{itemize}
+\end{enumerate}
+\end{proof}
+
+Die Hinrichtung in Regel~b) lässt sich konstruktiv nicht nachweisen. Im
+Belegdenken ist das plausibel: Wenn wir lediglich wissen, dass es keinen Beleg
+für~$\varphi \wedge \psi$ gibt, wissen wir noch nicht, ob es keinen Beleg
+für~$\varphi$ oder keinen Beleg für~$\psi$ gibt. Tatsächlich ist die
+Hinrichtung in Regel~b) äquivalent zu einer schwächeren Version des Prinzips
+vom ausgeschlossenen Dritten:
+
+\begin{prop}Folgende Prinzipien sind zueinander äquivalent:
+\begin{enumerate}
+\item[1.] LEM für negierte Aussagen: Für alle Aussagen~$\varphi$
+gilt~$\neg\varphi \vee \neg\neg\varphi$.
+\item[2.] Für alle Aussagen~$\varphi$ und $\psi$ gilt $\neg(\varphi \wedge \psi)
+\Longrightarrow \neg\varphi \vee \neg\psi$.
+\end{enumerate}
+\end{prop}
+Es ist besser, diese Proposition selbstständig zu beweisen als den folgenden
+Beweis zu lesen. Denn wenn man nicht genau den Beweisvorgang mitverfolgt,
+verirrt man sich leicht in den vielen Negationen.
+\begin{proof}"`1. $\Rightarrow$ 2."': Seien~$\varphi$ und~$\psi$ beliebige
+Aussagen. Gelte~$\neg(\varphi \wedge \psi)$. Nach
+Voraussetzung gilt~$\neg\varphi$ oder~$\neg\neg\varphi$. Im ersten Fall sind
+wir fertig. Im zweiten Fall folgt tatsächlich~$\neg\psi$: Denn
+wenn~$\psi$ gälte, gälte auch~$\neg\varphi$ (denn wenn~$\varphi$, folgt ein
+Widerspruch zu~$\neg(\varphi \wedge \psi)$), aber das wäre ein Widerspruch
+zu~$\neg\neg\varphi$.
+
+"`2. $\Rightarrow$ 1."': Sei~$\varphi$ eine beliebige Aussage. Da~$\neg(\varphi
+\wedge \neg\varphi)$ (wieso?), folgt nach Voraussetzung $\neg\varphi \vee
+\neg\neg\varphi$, das war zu zeigen.
+\end{proof}
+
+
 \section{Nutzen konstruktiver Mathematik}
 
 \paragraph{Spaß.} Konstruktive Mathematik macht Spaß!
@@ -492,3 +587,5 @@ historische Einordnung: Hilberts Programm, \ldots
 \printbibliography
 
 \end{document}
+
+% XXX: "Beleg" als intuitiv erklären.
