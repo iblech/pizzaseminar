@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage[ngerman]{babel}
+\addto\captionsngerman{\renewcommand\tablename{Tafel}}
 
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
 \usepackage{bussproofs}
@@ -276,8 +277,9 @@ für~$\varphi(x)$ Belege für~$\psi(x)$ erhalten kann. Dies soll tatsächlich nu
 nicht für jede natürliche Zahl jeweils eine. Das ist mit \emph{gleichmäßig} in
 der Tabelle gemeint.
 
-\begin{figure}
+\begin{table}
   \centering
+  \small
   \setlength{\extrarowheight}{0.3em}
   \begin{tabular}{@{}r|p{5.9cm}|p{6.5cm}}
     & {klassische Logik} & {intuitionistische Logik}
@@ -298,7 +300,7 @@ der Tabelle gemeint.
       Wir haben ein~$x : X$ zusammen mit Beleg für~$\varphi(x).$} \\
   \end{tabular}
   \caption{\label{bhk}Informale rekursive Definition des Belegbegriffs.}
-\end{figure}
+\end{table}
 
 \begin{bsp}
 Unter dieser Interpretation meint das Prinzip vom ausgeschlossenen Dritten, dass wir für jede
@@ -682,11 +684,10 @@ Aussage
 eine Aussage im Kontext~$n : \NN$. Die Variable~$m$ kommt nicht \emph{frei},
 sondern durch den Allquantor \emph{gebunden} vor, und gehört daher nicht zum
 Kontext. Wir vereinbaren, dass kollisionsfreie Umbenennung gebundener
-Variablen die Aussage nicht verändert. Dieselbe Beispielaussage können wir also
-auch in der Form
+Variablen die Aussage nicht verändert. Die anders geschribene Aussage
 \[ n + n = n \quad\Longrightarrow\quad \forall u\?\NN{:}\ n + u = u \]
-notieren. Wenn wir auch noch über die Variable~$n$ quantifizieren, erhalten wir
-eine Aussage im \emph{leeren Kontext}:
+sehen wir also als dieselbe Aussage an. Wenn wir auch noch über die
+Variable~$n$ quantifizieren, erhalten wir eine Aussage im \emph{leeren Kontext}:
 \[ \forall n\?\NN{:}\ \Bigl[n + n = n \quad\Longrightarrow\quad \forall
 u\?\NN{:}\ n + u = u\Bigr] \]
 
@@ -695,9 +696,103 @@ A$. Genau dann ist~$\psi$ aus der Voraussetzung~$\varphi$ \emph{ableitbar}, in
 Symbolen
 \[ \varphi \seq{\vec x} \psi, \]
 wenn es eine entsprechende endliche \emph{Ableitung} gibt, welche nur die
-in Tafel~\ref{ableitungsregeln} aufgeführten Ableitungsregeln verwendet.
+in Tafel~\ref{ableitungsregeln:int} aufgeführten Ableitungsregeln verwendet.
 \end{defn}
 
+% XXX: Termsubstitution, Beispiel, HA
+
+\begin{table}
+  \small
+  \centering
+  \textbf{Strukturelle Regeln} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \seq{\vec x} \varphi$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \psi$}\UnaryInfC{$\varphi[\vec s/\vec x]
+  \seq{\vec y} \psi[\vec s/\vec x]$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \psi$}\AxiomC{$\psi \seq{\vec x}
+  \chi$}\BinaryInfC{$\varphi \seq{\vec x} \chi$}\DisplayProof
+  \phantom{a}\hfill
+  \vspace{2.0em}
+
+  \textbf{Regeln für Konjunktion} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \seq{\vec x} \top$}\DisplayProof\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \wedge \psi \seq{\vec x} \varphi$}\DisplayProof\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \wedge \psi \seq{\vec x} \psi$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \psi$}\AxiomC{$\varphi \seq{\vec x} \chi$}\BinaryInfC{$\varphi \seq{\vec x} \psi \wedge \chi$}\DisplayProof
+  \phantom{a}\hfill
+  \vspace{2em}
+
+  \textbf{Regeln für Disjunktion} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\bot \seq{\vec x} \varphi$}\DisplayProof\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\varphi \seq{\vec x} \varphi \vee \psi$}\DisplayProof\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}\UnaryInfC{$\psi \seq{\vec x} \varphi \vee \psi$}\DisplayProof\hfill
+  \AxiomC{$\varphi \seq{\vec x} \chi$}\AxiomC{$\psi \seq{\vec x} \chi$}\BinaryInfC{$\varphi \vee \psi \seq{\vec x} \chi$}\DisplayProof
+  \phantom{a}\hfill
+  \vspace{2em}
+
+  \textbf{Doppelregel für Implikation} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \Axiom$\varphi \wedge \psi\ \fCenter\seq{\vec x} \chi$
+  \doubleLine
+  \UnaryInf$\varphi\ \fCenter\seq{\vec x} \psi \Rightarrow \chi$
+  \DisplayProof
+  \phantom{a}\hfill
+  \vspace{2em}
+
+  \textbf{Doppelregeln für Quantifikation} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \Axiom$\varphi\ \fCenter\seq{\vec x, y} \psi$
+  \doubleLine
+  \UnaryInf$\exists y\?Y\_\! \varphi\ \fCenter\seq{\vec x} \psi$
+  \DisplayProof
+  {\tiny ($y$ keine Variable von~$\psi$)}
+  \hfill
+  \Axiom$\varphi\ \fCenter\seq{\vec x, y} \psi$
+  \doubleLine
+  \UnaryInf$\varphi\ \fCenter\seq{\vec x\phantom{, y}} \forall y\?Y\_\! \psi$
+  \DisplayProof
+  {\tiny ($y$ keine Variable von~$\varphi$)}
+  \hfill\phantom{a}
+
+  \caption{\label{ableitungsregeln:int}Die Schlussregeln intuitionistischer Logik.}
+\end{table}
+
+\begin{table}
+  \small
+  \centering
+  \textbf{Regeln für Gleichheit} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}
+  \UnaryInfC{$\top \seq{x} x = x$}
+  \DisplayProof
+  \hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}
+  \UnaryInfC{$(\vec x = \vec y) \wedge \varphi \seq{\vec z} \varphi[\vec y/\vec x]$}
+  \DisplayProof
+  \hfill\phantom{a} \\[0.5em]
+  (Dabei steht "`$\vec x = \vec y\,$"' für~$x_1 = y_1 \wedge \cdots \wedge x_n =
+  y_n$.)
+  \vspace{2em}
+
+  \textbf{Prinzip vom ausgeschlossenen Dritten} \\
+  \vspace{-0.5em}
+  \phantom{a}\hfill
+  \AxiomC{$\phantom{\seq{\vec x}}$}
+  \UnaryInfC{$\top \seq{\vec x} \varphi \vee \neg\varphi$}
+  \DisplayProof
+  \hfill\phantom{a}
+
+  \caption{\label{ableitungsregeln:weitere}Weitere Schlussregeln mancher
+  formaler Systeme.}
+\end{table}
 
 \section{Beziehung zu klassischer Logik}
 
