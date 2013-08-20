@@ -87,6 +87,8 @@
 \newcommand{\Man}{\mathrm{Man}}
 \newcommand{\Top}{\mathrm{Top}}
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\?}{\,{:}\,}
 
 \newcommand{\XXX}[1]{\textcolor{red}{#1}}
 
@@ -171,13 +173,14 @@ In konstruktiver Mathematik behauptet man \emph{nicht}, dass das
 Prinzip vom ausgeschlossenen Dritten falsch wäre: Intuitionistische Logik ist
 abwärtskompatibel zu klassischer Logik -- jede konstruktiv nachweisbare Aussage
 gilt auch klassisch -- und manche konkrete Instanzen des Prinzips lassen sich
-sogar konstruktiv zeigen (siehe Proposition~\ref{natdiskret} für ein Beispiel).
+sogar konstruktiv nachweisen (siehe Proposition~\ref{natdiskret} für ein Beispiel).
 Stattdessen verwendet man das Prinzip einfach
 nur nicht. (Tatsächlich kann man leicht zeigen, dass es keine Gegenbeispiele
 des Prinzips geben kann: Für jede Aussage~$\varphi$ gilt~$\neg(\neg\varphi
 \wedge \neg\neg\varphi)$.)
 
-\begin{bem}Manche Dozenten erzählen Erstsemestern folgende Lüge: Eine Aussage
+\begin{bem}Manche Dozenten erzählen Erstsemestern folgende vereinfachte Version
+der Wahrheit: Eine Aussage
 erkennt man daran, dass sie einen eindeutigen Wahrheitswert hat. Diese
 Charakterisierung mag bei klassischer Logik noch vertretbar sein, ist aber in
 einem konstruktiven Kontext offensichtlich unsinnig. Stattdessen erkennt man
@@ -239,47 +242,76 @@ Primfaktorzerlegung lässt sich konstruktiv beweisen.)
 
 \subsection{Informale Bedeutung logischer Aussagen}
 
-\subsubsection*{\ldots über Belege}
+\subsubsection*{\ldots über Belege (die
+Brouwer-Heyting-Kolmogorov-Interpretation)}
 
 Die Ablehnung des Prinzips vom ausgeschlossenen Dritten erscheint uns durch
 unsere klassische Ausbildung als völlig verrückt: \emph{Offensichtlich} ist
 doch jede Aussage entweder wahr oder falsch! Die Verwunderung löst sich auf,
 wenn man akzeptiert, dass konstruktive Mathematiker zwar dieselbe
 \emph{logische Sprache} verwenden ($\wedge, \vee, \Rightarrow, \neg, \forall,
-\exists$), aber eine andere Bedeutung im Sinn haben:
+\exists$), aber eine andere Bedeutung im Sinn haben: Wenn eine konstruktive
+Mathematikerin eine Aussage~$\varphi$ behauptet, meint sie, dass sie einen
+\emph{expliziten Beleg} für~$\varphi$ hat.
 
-\begin{center}
-\vspace{-1em}
-\setlength{\extrarowheight}{0.3em}
-\begin{tabular}{@{}r@{\quad}p{6.0cm}@{\quad}p{6.6cm}}
-  & \underline{klassische Logik} & \underline{intuitionistische Logik} \\[0.5em]
-  Aussage $\varphi$ & Die Aussage $\varphi$ gilt. & Wir haben Beleg für $\varphi$. \\
-  $\bot$ & Es stimmt Falschheit. & Wir haben Beleg für Falschheit. \\
-  $\varphi \wedge \psi$ & $\varphi$ und $\psi$ stimmen. & Wir haben Beleg für~$\varphi$ und für~$\psi$. \\
-  $\varphi \vee \psi$ & $\varphi$ oder $\psi$ stimmt. & Wir haben Beleg für~$\varphi$ oder für~$\psi$. \\
-  $\varphi \Rightarrow \psi$ & Sollte~$\varphi$ stimmen, dann auch~$\psi$. &
-  Aus Belegen für~$\varphi$ können wir (gleichmäßig) Belege für~$\psi$ konstruieren. \\
-  $\neg\varphi$ &
-    $\varphi$ stimmt nicht. &
-    Es kann keinen Beleg für~$\varphi$ geben. \\
-  $\forall x \in X{:}\ \varphi(x)$ & Für alle $x \in X$ stimmt jeweils~$\varphi(x).$ &
-    Wir können (gleichmäßig) für alle~$x \in X$ Belege für~$\varphi(x)$ konstruieren. \\
-  $\exists x \in X{:}\ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x \in X$, für das~$\varphi(x)$
-  stimmt. & {\raggedright
-    Wir haben ein~$x \in X$ zusammen mit Beleg für~$\varphi(x).$} \\
-\end{tabular}
-\end{center}
-% XXX: Gleichmäßigkeit thematisieren
+Den Basisfall bilden dabei die sog. \emph{atomaren Aussagen}, von denen wir
+intuitiv wissen, wie ein Beleg ihrer Gültigkeit aussehen sollte. Atomare Aussagen sind
+solche, die nicht vermöge der logischen Operatoren $\wedge, \vee,
+\Rightarrow$ und der Quantoren~$\forall, \exists$ aus weiteren Teilformeln
+zusammengesetzt sind. In der Zahlentheorie sind atomare Aussagen etwa von der
+Form
+\[ n = m, \]
+wobei~$n$ und~$m$ Terme für natürliche Zahlen sind; in der Mengenlehre sind
+atomare Aussagen von der Form
+\[ x \in M. \]
 
-Unter dieser Interpretation (die übrigens auf Brouwer, Heyting und Kolmogorov
-zurückgeht) meint das Prinzip vom ausgeschlossenen Dritten, dass wir für jede
+Für \emph{zusammengesetzte Aussagen} zeigt Tabelle~\ref{bhk}, was unter Belegen
+jeweils zu verstehen ist. (An manchen Stellen steht dort~"`$x : X$"' -- das hat
+einen Grund, aber momentan soll das einfach etwas seltsame Notation für~"`$x
+\in X$"' sein.) Etwa ist ein Beleg für eine Aussage der Form
+\[ \forall n \? \NN{:}\ \varphi(x) \Rightarrow \psi(x) \]
+eine Vorschrift, wie man für jede natürliche Zahl~$n : \NN$ aus Belegen
+für~$\varphi(x)$ Belege für~$\psi(x)$ erhalten kann. Dies soll tatsächlich nur
+\emph{eine} Vorschrift sein (welche mit allen natürlichen Zahlen zurechtkommt),
+nicht für jede natürliche Zahl jeweils eine. Das ist mit \emph{gleichmäßig} in
+der Tabelle gemeint.
+
+\begin{figure}
+  \centering
+  \setlength{\extrarowheight}{0.3em}
+  \begin{tabular}{@{}r|p{5.9cm}|p{6.5cm}}
+    & {klassische Logik} & {intuitionistische Logik}
+    \\\hline
+    Aussage $\varphi$ & Die Aussage $\varphi$ gilt. & Wir haben Beleg für $\varphi$. \\
+    $\bot$ & Es stimmt Falschheit. & Wir haben Beleg für Falschheit. \\
+    $\varphi \wedge \psi$ & $\varphi$ und $\psi$ stimmen. & Wir haben Beleg für~$\varphi$ und für~$\psi$. \\
+    $\varphi \vee \psi$ & $\varphi$ oder $\psi$ stimmt. & Wir haben Beleg für~$\varphi$ oder für~$\psi$. \\
+    $\varphi \Rightarrow \psi$ & Sollte~$\varphi$ stimmen, dann auch~$\psi$. &
+    Aus Belegen für~$\varphi$ können wir (gleichmäßig) Belege für~$\psi$ konstruieren. \\
+    $\neg\varphi$ &
+      $\varphi$ stimmt nicht. &
+      Es kann keinen Beleg für~$\varphi$ geben. \\
+    $\forall x\?X{:}\ \varphi(x)$ & Für alle $x : X$ stimmt jeweils~$\varphi(x).$ &
+      Wir können (gleichmäßig) für alle~$x : X$ Belege für~$\varphi(x)$ konstruieren. \\
+    $\exists x\?X{:}\ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x : X$, für das~$\varphi(x)$
+    stimmt. & {\raggedright
+      Wir haben ein~$x : X$ zusammen mit Beleg für~$\varphi(x).$} \\
+  \end{tabular}
+  \caption{\label{bhk}Informale rekursive Definition des Belegbegriffs.}
+\end{figure}
+
+\begin{bsp}
+Unter dieser Interpretation meint das Prinzip vom ausgeschlossenen Dritten, dass wir für jede
 Aussage Beleg für sie oder ihre Negation haben. Das ist aber offensichtlich
 nicht der Fall.
+\end{bsp}
 
+\begin{bsp}
 Die Interpretation von~$\neg\neg\varphi$ ist, dass es keinen Beleg
 für~$\neg\varphi$ gibt. Daraus folgt natürlich noch nicht, dass wir tatsächlich
 Beleg für~$\varphi$ haben; gewissermaßen ist eine solche Aussage~$\varphi$ nur
 "`potenziell wahr"'.
+\end{bsp}
 
 \begin{bsp}Wenn wir wissen, dass sich unser Haustürschlüssel irgendwo in der
 Wohnung befinden muss (da wir ihn letzte Nacht verwendet haben, um die Tür
@@ -288,6 +320,14 @@ nur die doppelt negierte Aussage
 \[ \neg\neg (\exists x{:}\ \text{der Schlüssel befindet sich an Position~$x$})
 \]
 vertreten.\end{bsp}
+
+\begin{bsp}[\cite{sigfpe:katemoss}]
+Es war ein Video aufgetaucht, dass Kate Moss beim Konsumieren von Drogen zeigte,
+und zwar entweder solche von einem Typ~A oder solche von einem Typ~B. Welcher
+Typ aber tatsächlich vorlag, konnte nicht entschieden werden. Daher gab es für
+keine der beiden Strafttaten einen Beleg, Kate Moss wurde daher nicht
+strafrechtlich verfolgt.
+\end{bsp}
 
 
 \subsubsection*{\ldots über Berechenbarkeit}
@@ -332,10 +372,11 @@ kein Computerprogramm geben, dass \emph{in endlicher Zeit} zwei reelle Zahlen
 auf Gleichheit testet. Denn in endlicher Zeit kann ein Programm nur endlich viele
 Nachkommaziffern (besser: endlich viele rationale Approximationen) abfragen;
 haben die beiden zu vergleichenden Zahlen dieselben Nachkommaziffern, so kann
-sich das Programm in endlicher Zeit nie sicher sein, ob irgendwann doch noch
+sich das Programm aber in endlicher Zeit nie sicher sein, ob irgendwann doch noch
 eine Abweichung auftreten wird.
 
-Für algebraische Zahlen gilt die analoge Aussage aber übrigens schon: Man kann ein
+Übrigens ist die Menge der algebraischen Zahlen durchaus diskret:
+Man kann ein
 Programm angeben, dass zwei algebraische Zahlen~$x,y$ zusammen mit \emph{Zeugen}
 ihrer Algebraizität, also Polynomgleichungen mit rationalen Koeffizienten
 und~$x$ bzw.~$y$ als Lösung, als Eingabe erwartet und dann entscheidet, ob~$x$
@@ -348,9 +389,10 @@ fürchterlich kompliziert; siehe etwa Proposition~1.6 in~\cite{nw:algebra}.
 In klassischer Logik gilt folgendes Minimumsprinzip:
 \begin{prop}[in klassischer Logik]Sei~$U \subseteq \NN$ eine bewohnte
 Teilmenge. Dann enthält~$U$ ein kleinstes Element.\end{prop}
+Dabei heißt eine Menge~$U$ \emph{bewohnt}, falls~$\exists u \in U$.
 In konstruktiver Mathematik kann man diese Aussage nicht zeigen -- wegen der
 Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät kann man zwar auch nicht ihr Gegenteil
-nachweisen, aber man kann folgendes sog. \emph{brouwersches Gegenbeispiel}
+nachweisen, aber man kann ein sog. \emph{brouwersches Gegenbeispiel}
 anführen:
 \begin{prop}Besitze jede bewohnte Teilmenge der natürlichen Zahlen ein Minimum.
 Dann gilt das Prinzip vom ausgeschlossenen Dritten.\end{prop}
@@ -364,12 +406,12 @@ Minimum~$z \in U$.
 
 Wegen der diskutierten Diskretheit der natürlichen Zahlen gilt~$z = 0$ oder~$z
 \neq 0$. Im ersten Fall folgt~$\varphi$ (denn~$0 \in U$ ist gleichbedeutend
-mit~$0 = 1 \vee \varphi$), im zweiten Fall folgt~$\neg\varphi$ (denn
+mit~$0 = 1 \vee \varphi$, also mit~$\varphi$), im zweiten Fall folgt~$\neg\varphi$ (denn
 wenn~$\varphi$ gälte, wäre~$U = \NN$ und somit~$z = 0$ im Widerspruch zu~$z
 \neq 0$).\end{proof}
 
-Unter einer klassisch trivialerweise erfüllten Zusatzbedingung lässt sich das
-Prinzip retten:
+Wir können das Minimumsprinzip retten, wenn wir eine klassisch triviale
+Zusatzbedingung stellen:
 \begin{defn}Eine Teilmenge~$U \subseteq X$ heißt genau dann
 \emph{herauslösbar}, wenn für alle~$x \in X$ gilt: $x \in U \vee \neg(x \in
 U)$.\end{defn}
@@ -495,10 +537,11 @@ ganze Theoriegebäude eleganter zu formulieren. Etwa hat man klassisch oft
 \emph{Angst vor Spezialfällen} wie etwa der leeren Menge, einem
 nulldimensionalen Vektorraum oder einer leeren Mannigfaltigkeit. Aussagen
 formuliert dann nur für nichtleere Mengen, nichttriviale Vektorräume und so
-weiter. Tatsächlich sind diese Einschränkungen aber oftmals gar nicht notwendig
--- in konstruktiver Mathematik wird man insofern darauf aufmerksam gemacht, als
-dass der Nachweis, dass diese Einschränkungen in bestimmten Fällen erfüllt
-sind, nicht mehr trivial ist, sondern Nachdenken erfordert.
+weiter, obwohl diese Einschränkungen tatsächlich aber oftmals gar nicht
+notwendig sind. In konstruktiver Mathematik wird man nun insofern darauf
+aufmerksam gemacht, als dass der Nachweis, dass diese Einschränkungen in
+bestimmten Fällen erfüllt sind, nicht mehr trivial ist, sondern Nachdenken
+erfordert.
 
 Ein anderes Beispiel liefert folgende Proposition, die oft als Übungsaufgabe in
 einer Anfängervorlesung gestellt wird:
@@ -520,8 +563,8 @@ $f^{-1}[\im f] = f^{-1}[X]$
 und damit~$\im f = X$, also ist~$f$ surjektiv.\end{proof}
 
 \paragraph{Mentale Hygiene.} Arbeit in konstruktiver Logik ist gut für die
-mentale Hygiene: Man lernt, genauer auf die Formulierungen von Aussagen zu
-achten, nicht unnötigerweise Verneinungen einzuführen und darauf zu achten, an
+mentale Hygiene: Man lernt, genauer auf die Formulierung von Aussagen zu
+achten, nicht unnötigerweise Verneinungen einzuführen und aufzupassen, an
 welchen bestimmten Stellen klassische Axiome nötig sind. Bei passenden
 Formulierungen ist das nämlich viel seltener, als man auf den ersten Blick
 vielleicht vermutet.
@@ -540,23 +583,26 @@ arbeitet). Etwa ist in jedem konstruktiven Beweis der Behauptung
 \begin{quote}Sei~$S$ eine endliche Menge von Primzahlen. Dann gibt es eine
 weitere Primzahl, welche nicht in~$S$ liegt.\end{quote}
 ein Algorithmus versteckt, welcher zu endlich vielen gegebenen Primzahlen
-ganz konkret eine weitere Primzahl berechnet. Solch maschinelle
+ganz konkret eine weitere Primzahl berechnet.
+
+Solch maschinelle
 Programmextraktion ist wichtig in der Informatik: Anstatt in einem ersten
-Schritt ein Programm selbsthändig zu entwickeln und dann in einem zweiten
+Schritt ein Programm per Hand zu entwickeln und dann in einem zweiten
 Schritt umständlich seine Korrektheit bezüglich einer vorgegebenen
 Spezifikation zu zeigen, kann man auch direkt einen konstruktiven Beweis der
 Erfüllbarkeit der Spezifikation führen und dann automatisch ein entsprechendes
 Programm extrahieren lassen. In der akademischen Praxis wird dieses Vorgehen
 tatsächlich angewendet.
+% XXX: Literaturverweise!
 
 \paragraph{Traummathematik.} Nur in einem konstruktiven Kontext ist die Arbeit
-mit sog. \emph{Traumaxiomen}, wie etwa
+mit sog. \emph{Traum\-axio\-men}, wie etwa
 \begin{quote}Jede Abbildung~$\RR \to \RR$ ist stetig.\end{quote}
 oder
 \begin{quote}Es gibt infinitesimale reelle Zahlen~$\varepsilon$
 mit~$\varepsilon^2 = 0$, aber~$\varepsilon \neq 0$.\end{quote}
-möglich: Denn in klassischer Logik sind diese Axiome schlichtweg offensichtlich
-falsch. Diese Axiome sind aber durchaus interessant: Sie können die Arbeit
+möglich: Denn in klassischer Logik sind diese Axiome offensichtlich schlichtweg
+falsch. Sie sind aber durchaus interessant: Sie können die Arbeit
 rechnerisch und konzeptionell vereinfachen (man muss nur einen Blick zu den
 Physikern werfen), und es gibt Metatheoreme, die garantieren, dass Folgerungen
 aus diesen Axiomen, welche nur mit konstruktiven Schlussregeln getroffen wurden
@@ -564,11 +610,43 @@ und eine bestimmte logische Form aufweisen, auch im üblichen klassischen Sinn
 gelten.
 % XXX: Stetigkeitsnachweise unnötig
 
+\begin{bem}Hier ein kurzer Einschub, wieso das erstgenannte Traumaxiom
+in einem konstruktiven Kontext zumindest nicht offensichtlich widersprüchlich
+ist. Man könnte denken, dass die Signumsfunktion
+\[ x \longmapsto \begin{cases}
+  -1, & \text{falls $x < 0$,} \\
+  \phantom{+}0, & \text{falls $x = 0$,} \\
+  \phantom{+}1, & \text{falls $x > 0$}
+\end{cases} \]
+ein triviales Gegenbeispiel ist. Konstruktiv kann man aber nicht zeigen, dass
+diese Funktion tatsächlich auf ganz~$\RR$ definiert ist: Die Definitionsmenge
+ist nur
+\[ \{ x \in \RR \ |\  x < 0 \,\vee\, x = 0 \,\vee\, x > 0 \}. \]
+Andrej Bauer diskutiert dieses Beispiel in seinem Blog
+ausführlicher~\cite{bauer:blog:stetigkeit}.
+\end{bem}
+
 \paragraph{Alternative Mathematik-Universen.} Wenn man ganz normal Mathematik
 betreibt, arbeitet man tatsächlich \emph{intern im Topos der Mengen}. Es gibt
 aber auch andere interessante Topoi; deren interne Sprache ist aber fast immer
-nicht klassisch. Eine genauere Diskussion würde an dieser Stelle zu weit
-führen, aber zwei Beispiele seien erwähnt:
+nicht klassisch.
+\begin{itemize}
+\item Vielleicht hat man einen bestimmen topologischen Raum~$X$ besonders lieb
+und möchte daher, dass alle untersuchten Objekte vom aktuellen Aufenthaltsort
+auf dem Raum abhängen. Dann möchte man im \emph{Topos der Garben auf~$X$}
+arbeiten.
+\item Vielleicht ist man auch ein besonderer Freund einer bestimmten
+Gruppe~$G$. Dann möchte man vielleicht, dass alle untersuchten Objekte
+eine~$G$-Wirkung tragen und dass alle untersuchten Abbildungen~$G$-äquivariant
+sind. Dann sollte man im \emph{Topos der~$G$-Mengen} arbeiten.
+\item Vielleicht interessiert man sich sehr dafür, was Turingmaschinen
+berechnen können. Dann kann man im \emph{effektiven Topos} arbeiten, der nur
+solche Morphismen enthält, die durch Turingmaschinen algorithmisch gegeben
+werden können.
+\end{itemize}
+Eine genauere Diskussion würde an dieser Stelle zu weit
+führen. Es seien nur noch zwei Beispiele erwähnt, was mit der Topossichtweise
+möglich ist:
 \begin{itemize}
 \item Aus dem recht einfach nachweisbaren Faktum konstruktiver linearer
 Algebra, dass jeder endlich erzeugte Vektorraum nicht nicht eine endliche
@@ -585,6 +663,42 @@ herausfinden.)
 \end{itemize}
 
 
+\section{Die Schlussregeln intuitionistischer Logik}
+
+In den folgenden Abschnitten wollen wir \emph{Meta-Mathematik} betreiben: In
+Abgrenzung von der sonst betriebenen Mathematik wollen wir nicht die üblichen
+mathematischen Objekte wie Mengen, Vektorräume, Mannigfaltigkeiten untersuchen,
+sondern \emph{Beweise}. Dazu müssen wir präzise festlegen, was unter einem
+(intuitionistischen oder klassischen) Beweis zu verstehen ist.
+
+\begin{defn}Ein \emph{Kontext} ist eine endliche Folge von
+Variablendeklarationen der Form
+\[ x_1 : A_1,\ \ldots,\ x_n : A_n. \]
+Dabei sind die~$A_i$ \emph{Typen} der untersuchten formalen Systems.\end{defn}
+
+Wir werden Kontexte oft kürzer als~$\vec x : \vec A$ notieren. Etwa ist die
+Aussage
+\[ n + n = n \quad\Longrightarrow\quad \forall m\?\NN{:}\ n + m = m \]
+eine Aussage im Kontext~$n : \NN$. Die Variable~$m$ kommt nicht \emph{frei},
+sondern durch den Allquantor \emph{gebunden} vor, und gehört daher nicht zum
+Kontext. Wir vereinbaren, dass kollisionsfreie Umbenennung gebundener
+Variablen die Aussage nicht verändert. Dieselbe Beispielaussage können wir also
+auch in der Form
+\[ n + n = n \quad\Longrightarrow\quad \forall u\?\NN{:}\ n + u = u \]
+notieren. Wenn wir auch noch über die Variable~$n$ quantifizieren, erhalten wir
+eine Aussage im \emph{leeren Kontext}:
+\[ \forall n\?\NN{:}\ \Bigl[n + n = n \quad\Longrightarrow\quad \forall
+u\?\NN{:}\ n + u = u\Bigr] \]
+
+\begin{defn}Seien~$\varphi$ und~$\psi$ Aussagen in einem Kontext~$\vec x : \vec
+A$. Genau dann ist~$\psi$ aus der Voraussetzung~$\varphi$ \emph{ableitbar}, in
+Symbolen
+\[ \varphi \seq{\vec x} \psi, \]
+wenn es eine entsprechende endliche \emph{Ableitung} gibt, welche nur die
+in Tafel~\ref{ableitungsregeln} aufgeführten Ableitungsregeln verwendet.
+\end{defn}
+
+
 \section{Beziehung zu klassischer Logik}
 
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
@@ -594,8 +708,6 @@ historische Einordnung: Hilberts Programm, \ldots
 \printbibliography
 
 \end{document}
-
-% XXX: "Beleg" als intuitiv erklären.
 
 % Mögliche weitere Themen:
 % * Lindenbaumzeugs
@@ -616,6 +728,7 @@ historische Einordnung: Hilberts Programm, \ldots
 % * Proof mining auch für Beweise aus der Analysis relevant,
 %   siehe etwa Kohlenbach, Applied Proof Theory.
 % * Grund, wieso PA/HA inkonsistent sein KÖNNTE
+% * Gelfand-Schneider-FUD wieder auflösen
 %
 % Dazu noch herausfinden:
 % * historischer Umgang mit LEM
