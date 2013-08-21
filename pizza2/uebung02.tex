@@ -1,0 +1,53 @@
+\documentclass{pizzablatt}
+
+\begin{document}
+
+\maketitle{2}{21. August 2013}
+
+\begin{aufgabe}{Doppelnegationsübersetzung}
+Beweise die fundamentalen Eigenschaften der Doppelnegationsübersetzung, jeweils für alle
+Aussagen~$\varphi$ und~$\psi$ in beliebigen Kontexten~$\vec x$.
+\begin{enumerate}
+\item Klassisch gilt: $\varphi \Longleftrightarrow \varphi^\circ$.
+\item Intuitionistisch gilt: $\neg\neg\varphi^\circ \Longrightarrow
+\varphi^\circ$.
+\item Wenn~$\varphi \seq{\vec x} \psi$ klassisch, dann~$\varphi^\circ \seq{\vec
+x} \psi^\circ$ intuitionistisch.
+
+\emph{Bemerkung:} Du kannst sogar zeigen, dass~$\varphi^\circ \seq{\vec x}
+\psi^\circ$ in \emph{minimaler Logik} gilt, das ist intuitionistische Logik
+ohne das Prinzip \emph{ex falso quodlibet} ($\bot \seq{\vec x} \chi$).
+\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}{Beweisbäume}
+Finde für folgende Sequenzen formale Ableitungsbäume:
+\begin{enumerate}
+\item $(\varphi \Rightarrow \psi) \seq{\vec x} ((\psi \Rightarrow \chi)
+\Rightarrow (\varphi \Rightarrow \chi))$
+\item $(\exists y\?Y{:}\ \varphi) \seq{\vec x,z} \varphi[z/y]$
+\item $(x = y) \seq{x,y} (y = x)$
+\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}{Minimumsprinzip}
+Sei~$(a_n)_{n \geq 0}$ eine Folge natürlicher Zahlen. Wir wollen die Aussage
+\[ A :\equiv \exists n\?\NN{:}\ \forall m\?\NN{:}\ a_n \leq a_m \]
+betrachten, die besagt, dass die Folge ein Minimum annimmt.
+
+\begin{enumerate}
+\item Zeige konstruktiv, dass~$\neg\neg A$.
+\item Formuliere deinen Beweis als Streitgespräch für~$\neg\neg A$ (ohne
+Zeitsprünge).
+\item Formulieren deinen Beweis als Streitgespräch für~$A$ (notwendigermaßen
+mit Zeitsprüngen).
+\end{enumerate}
+
+\emph{Bemerkung:} Man kann nicht erwarten,
+konstruktiv~$A$ zeigen zu können. Die Aussage, dass das für alle Folgen doch
+ginge, ist übrigens ein klassisches Prinzip, das aus dem Prinzip vom
+ausgeschlossenen Dritten folgt, aber echt schwächer ist.
+
+\end{aufgabe}
+
+\end{document}

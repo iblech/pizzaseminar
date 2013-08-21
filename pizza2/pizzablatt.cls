@@ -74,3 +74,5 @@
 \DeclareMathOperator{\Ob}{Ob}
 \newcommand{\freist}{\underline{\ \ }}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
+\newcommand{\?}{\,{:}\,}
