@@ -723,8 +723,54 @@ wenn es eine entsprechende endliche \emph{Ableitung} gibt, welche nur die
 in Tafel~\ref{ableitungsregeln:int} aufgeführten Ableitungsregeln verwendet.
 \end{defn}
 
+\begin{bsp}Werde noch ein Beispiel überlegen. In der Zwischenzeit ein Scan aus
+dem Elephant-Buch (Seite~832):
+\begin{center}\includegraphics[scale=0.3]{prooftree-elephant.png}\end{center}
+Diese Ableitung beweist (eine Richtung des) \emph{Frobenius-Prinzips}.
+\end{bsp}
 
-% XXX: Beispiel, HA
+
+\subsection*{Peano-Arithmetik und Heyting-Arithmetik}
+
+\begin{defn}Das formale System \emph{Heyting-Arithmetik} ist gegeben durch
+\begin{itemize}
+\item intuitionistische Logik,
+\item die Gleichheitsregeln (siehe Tafel~\ref{ableitungsregeln:weitere}),
+\item einem einzigen Typ~$\NN$,
+\item einer Termkonstante~$0 : \NN$,
+\item einem 1-adischen Termkonstruktor~$S$ (für successor): Ist~$n : \NN$ ein
+Term vom Typ~$\NN$, so ist~$S(n) : \NN$ ebenfalls ein Term vom Typ~$\NN$,
+\item die Axiome \\
+\vspace{-0.5em}
+\phantom{a}\hfill
+\AxiomC{$\phantom{\seq{\vec x}}$}
+\UnaryInfC{$S(n) = 0 \seq{n} \bot$}
+\DisplayProof
+\hfill
+\AxiomC{$\phantom{\seq{\vec x}}$}
+\UnaryInfC{$S(n) = S(m) \seq{n,m} n = m$}
+\DisplayProof
+\hfill
+\phantom{a} \\
+
+und das Induktionsprinzip \\
+\vspace{1.0em}
+\phantom{a}\hfill
+\AxiomC{$\varphi \seq{\vec x} \psi[0/m]$}
+\AxiomC{$\varphi \seq{\vec x, m} \psi \Rightarrow \psi[S(m)/m]$}
+\BinaryInfC{$\varphi \seq{\vec x} \forall m\?\NN{:}\ \psi$}
+\DisplayProof
+\hfill\phantom{a}
+
+\item sowie Regeln für alle primitiv-rekursiven Funktionen, insbesondere also
+die erwarteten Regeln für Addition und Multiplikation.
+\end{itemize}
+\end{defn}
+
+\begin{defn}Das formale System \emph{Peano-Arithmetik} ist genau wie
+Heyting-Arithmetik gegeben, nur mit klassischer statt intuitionistischer
+Logik.\end{defn}
+
 
 \begin{table}
   \small
