@@ -673,6 +673,9 @@ mathematischen Objekte wie Mengen, Vektorräume, Mannigfaltigkeiten untersuchen,
 sondern \emph{Beweise}. Dazu müssen wir präzise festlegen, was unter einem
 (intuitionistischen oder klassischen) Beweis zu verstehen ist.
 
+
+\subsection*{Variablenkontexte}
+
 \begin{defn}Ein \emph{Kontext} ist eine endliche Folge von
 Variablendeklarationen der Form
 \[ x_1 : A_1,\ \ldots,\ x_n : A_n. \]
@@ -680,16 +683,37 @@ Dabei sind die~$A_i$ \emph{Typen} der untersuchten formalen Systems.\end{defn}
 
 Wir werden Kontexte oft kürzer als~$\vec x : \vec A$ notieren. Etwa ist die
 Aussage
-\[ n + n = n \quad\Longrightarrow\quad \forall m\?\NN{:}\ n + m = m \]
-eine Aussage im Kontext~$n : \NN$. Die Variable~$m$ kommt nicht \emph{frei},
-sondern durch den Allquantor \emph{gebunden} vor, und gehört daher nicht zum
-Kontext. Wir vereinbaren, dass kollisionsfreie Umbenennung gebundener
-Variablen die Aussage nicht verändert. Die anders geschribene Aussage
-\[ n + n = n \quad\Longrightarrow\quad \forall u\?\NN{:}\ n + u = u \]
-sehen wir also als dieselbe Aussage an. Wenn wir auch noch über die
+\[ n = m \]
+eine Aussage im Kontext~$n : \NN, m : \NN$. Dagegen ist die Aussage
+\[ \forall m\?\NN{:}\ n = m \]
+lediglich eine Aussage im reduzierten Kontext~$n : \NN$: Die Variable~$m$ kommt
+nicht mehr \emph{frei}, sondern nur noch \emph{gebunden} vor. Wir vereinbaren,
+dass die kollisionsfreie Umbenennung gebundener
+Variablen die Aussage nicht verändert. Die anders geschriebene Aussage
+\[ \forall u\?\NN{:}\ n = u \]
+sehen wir also als dieselbe Aussage an.
+Wenn wir auch noch über die
 Variable~$n$ quantifizieren, erhalten wir eine Aussage im \emph{leeren Kontext}:
-\[ \forall n\?\NN{:}\ \Bigl[n + n = n \quad\Longrightarrow\quad \forall
-u\?\NN{:}\ n + u = u\Bigr] \]
+\[ \forall n\?\NN{:}\ \forall u\?\NN{:}\ n = u. \]
+
+
+\subsection*{Substitution von Variablen}
+
+Ist~$\varphi$ eine Aussage im Kontext~$x_1,\ldots,x_n$. Sind dann
+Terme~$s_1,\ldots,s_n$ (in einem neuen Kontext~$y_1,\ldots,y_m$) gegeben, so
+kann man die~$x_i$ \emph{simultan durch die~$s_i$ ersetzen}. Als Ergebnis
+erhält man eine Formel im Kontext~$y_1,\ldots,y_m$, die
+man~"`$\varphi[s_1/x_1,\ldots,x_n/x_n]$"' oder kürzer~"`$\varphi[\vec s/\vec
+x]$"' schreibt.
+
+Bei der Substitution muss man Variablenkollisionen verhindern. Etwa gilt für
+die Aussage
+\[ \varphi :\equiv (\forall n\?\NN{:}\ n = m) \]
+im Kontext~$m : \NN$, dass
+\[ \varphi[n^2/m] \equiv (\forall \widetilde n\?\NN{:}\ \widetilde n = n^2). \]
+
+
+\subsection*{Ableitungen}
 
 \begin{defn}Seien~$\varphi$ und~$\psi$ Aussagen in einem Kontext~$\vec x : \vec
 A$. Genau dann ist~$\psi$ aus der Voraussetzung~$\varphi$ \emph{ableitbar}, in
@@ -699,7 +723,8 @@ wenn es eine entsprechende endliche \emph{Ableitung} gibt, welche nur die
 in Tafel~\ref{ableitungsregeln:int} aufgeführten Ableitungsregeln verwendet.
 \end{defn}
 
-% XXX: Termsubstitution, Beispiel, HA
+
+% XXX: Beispiel, HA
 
 \begin{table}
   \small
