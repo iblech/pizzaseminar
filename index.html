@@ -11,7 +11,7 @@
     font-size: 1em;
     line-height: 1.3em;
     margin: 0 auto;
-    width: 60em;
+    width: 80em;
   }
   .page { background: #ffffff; margin: 50px; border: 2px solid #c0c0c0; padding: 10px; }
   #header { background: #4b6983; border: 2px solid #7590ae; text-align: center; padding: 10px; color: #ffffff; }
@@ -26,7 +26,9 @@
   .noskip { padding-top: 0em; }
   ul p { margin-top: 0.3em; margin-bottom: 0.3em; }
 
-  td { border: 1px solid #ccc; }
+  td { border: 1px solid #ccc; vertical-align: top; }
+
+  .descr { color: #444; }
 </style>
 </head>
 
@@ -74,61 +76,113 @@
     alle zwei Wochen jeweils zwei Mal treffen.</p>
 
     <h2>Vortragsplan zwischen SS13 und WS13/14</h2>
-    <table>
+    <table style="border-spacing: 2px 10px">
       <tr>
         <td>1</td>
         <td>13.8.</td>
         <td>Ingo Blechschmidt</td>
-        <td>Konstruktive Mathematik I: Was ist es, Beispiele, Nutzen</td>
+        <td><strong>Konstruktive Mathematik I</strong>
+        <div class="descr">Was ist konstruktive Mathematik, Beispiele, Nutzen</div></td>
         <td><a href="pizza2/uebung01.pdf">1.&nbsp;Übungsblatt</a></td>
       </tr>
+      <tr></tr>
       <tr>
         <td>2</td>
         <td>21.8.</td>
         <td>Ingo Blechschmidt</td>
-        <td>Konstruktive Mathematik II: Verbindung zu klassischer Logik
-        und theoretischer Informatik, geschichtliche Einordnung, Parabel über
-        den Stein der Weisen</td>
+        <td><strong>Konstruktive Mathematik II</strong>
+        <div class="descr">Verbindung zu klassischer Logik (Doppelnegationsübersetzung) und zu
+        theoretischer Informatik (Curry-Howard-Korrespondenz)</div></td>
         <td></td>
       </tr>
       <tr>
         <td>3</td>
         <td>21.8.</td>
-        <td>Tim Baumann und Carina Willbold</td>
-        <td>Singulärwertzerlegung und Hauptkomponentenanalyse</td>
+        <td>Tim&nbsp;Baumann,&nbsp;Carina&nbsp;Willbold</td>
+        <td><strong>Singulärwertzerlegung und Hauptkomponentenanalyse</strong></td>
+        <td></td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td>4</td>
+        <td>4.9.</td>
+        <td>Ingo Blechschmidt</td>
+        <td><strong>Konstruktive Mathematik III</strong>
+        <div class="descr">Hilberts Programm, konstruktiver Gehalt klassischer Beweise, ein
+        mathematischer Zaubertrick</div></td>
         <td></td>
       </tr>
       <tr>
+        <td>5</td>
+        <td>4.9.</td>
+        <td>Stefan Wenkheimer</td>
+        <td><strong>Knotentheorie I</strong>
+        <div class="descr">Einführung: Homotopie, Fundamentalgruppe, Definition von Knoten und
+        Verschlingungen, Homotopien von Knoten, Knotendiagramme und
+        Projektionen, Orientierungen</div></td>
         <td></td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td>6</td>
+        <td>18.9.</td>
+        <td>Ingo&nbsp;Blechschmidt,&nbsp;Johannes&nbsp;Sedlmeier</td>
+        <td><strong>Konstruktive Mathematik IV</strong>
+        <div class="descr">Bohr-Topos und Quantenmechanik?</div></td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>18.9.</td>
+        <td>Kathrin Gimmi</td>
+        <td><strong>Knotentheorie II</strong>
+        <div class="descr">Knotengruppen und der Wirtinger-Algorithmus</div></td>
         <td></td>
-        <td rowspan="2">Ingo Blechschmidt, Mirjam Fahrion, Johannes Sedlmeier</td>
-        <td>Konstruktive Mathematik III: Zaubertrick</td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td>8</td>
+        <td>25.9.&nbsp;oder&nbsp;2.10.</td>
+        <td>Ingo&nbsp;Blechschmidt,&nbsp;Johannes&nbsp;Sedlmeier</td>
+        <td><strong>Konstruktive Mathematik IV</strong>
+        <div class="descr">Bohr-Topos und Quantenmechanik?</div></td>
         <td></td>
       </tr>
       <tr>
+        <td>9</td>
+        <td>25.9.&nbsp;oder&nbsp;2.10.</td>
+        <td>Meru Alagalingam?</td>
+        <td><strong>Knotentheorie III</strong>
+        <div class="descr">Einfache Knoteninvarianten und -konstruktionen</div></td>
         <td></td>
-        <td></td>
-        <td>Konstruktive Mathematik IV: Bohr-Topos</td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td>10</td>
+        <td>2.10.&nbsp;oder&nbsp;9.10.</td>
+        <td>Tim Baumann</td>
+        <td><strong>Der Vier-Farben-Satz</strong></td>
         <td></td>
       </tr>
       <tr>
-        <td></td>
-        <td></td>
-        <td>Stefan, Kathrin Gimmi, Sven Prüfer, Peter Uebele</td>
-        <td>Knotentheorie (inkl. Zöpfe und Verbindungen zur Quantenphysik)</td>
-        <td></td>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td>Mirjam Fahrion, Maximilian Kaske, Tim Baumann</td>
-        <td>Das BUCH der Beweise</td>
+        <td>11</td>
+        <td>2.10.&nbsp;oder&nbsp;9.10.</td>
+        <td>Sven&nbsp;Prüfer,&nbsp;Peter&nbsp;Uebele</td>
+        <td><strong>Knotentheorie IV</strong>
+        <div class="descr">Zöpfe</div></td>
         <td></td>
       </tr>
       <tr>
+        <td>12</td>
+        <td>2.10.&nbsp;oder&nbsp;9.10.</td>
+        <td>Maximilian Kaske</td>
+        <td><strong>Das BUCH der Beweise</strong></td>
+        <td></td>
+      </tr>
+      <tr></tr>
+      <tr>
         <td></td>
         <td></td>
-        <td>Ingo Blechschmidt, Lukas Graf</td>
+        <td>Ingo Blechschmidt,&nbsp;Lukas Graf</td>
         <td>Modellierung natürlicher Sprache mit kategoriellem
         Schnickschnack</td>
         <td></td>
