@@ -729,6 +729,14 @@ dem Elephant-Buch (Seite~832):
 Diese Ableitung beweist (eine Richtung des) \emph{Frobenius-Prinzips}.
 \end{bsp}
 
+Man kann \emph{alle} Beweise gewöhnlicher Mathematik, die man
+gemeinhin als "`vollständig und präzise ausformuliert"' bezeichnet, als
+Ableitungen im Sinne der Definition formalisieren (ggf. unter Hinzunahme
+klassischer logischer Axiome, Mengentheorieaxiome oder Typtheorieaxiome).
+
+\begin{aufg}Überzeuge dich von dieser Behauptung. \emph{Tipp:} Formalisiere so
+viele Beweise deiner Wahl, bis du keine Lust mehr hast.\end{aufg}
+
 
 \subsection*{Peano-Arithmetik und Heyting-Arithmetik}
 
@@ -865,7 +873,95 @@ Logik.\end{defn}
   formaler Systeme.}
 \end{table}
 
-\section{Beziehung zu klassischer Logik}
+\section{Beziehung zu klassischer Logik: die Doppelnegationsübersetzung}
+
+Aus den Augen einer konstruktiven Mathematikerin sind manche Aussagen ihrer
+klassisch arbeitenden Kollegen falsch. Es gibt aber eine einfache Übersetzung,
+die \emph{Doppelnegationsübersetzung}, die Aussagen derart umformt, dass die
+Übersetzung genau dann konstruktiv gilt, wenn die ursprüngliche Aussage
+klassisch gilt. Mit dieser kann sie daher ihre Kollegen verstehen, ohne ihre
+Logik verlassen zu müssen.
+
+\begin{defn}Die \emph{Doppelnegationsübersetzung} (nach Kolmogorov, Gentzen,
+Gödel und anderen) wird rekursiv wie folgt definiert:
+\newcommand{\optnegneg}{\textcolor{grey}{\neg\neg}}
+\begin{align*}
+  \varphi^\circ &:\equiv \neg\neg \varphi \text{ für atomare Aussagen~$\varphi$} \\
+  \top^\circ &:\equiv \top \\
+  \bot^\circ &:\equiv \bot \\
+  (\varphi \wedge \psi)^\circ &:\equiv \optnegneg(\varphi^\circ \wedge \psi^\circ) \\
+  (\varphi \vee \psi)^\circ &:\equiv \neg\neg(\varphi^\circ \vee \psi^\circ) \\
+  (\varphi \Rightarrow \psi)^\circ &:\equiv \optnegneg(\varphi^\circ \Rightarrow \psi^\circ) \\
+  (\forall x\?X{:}\ \varphi)^\circ &:\equiv \optnegneg\forall x\?X{:}\ \varphi^\circ \\
+  (\exists x\?X{:}\ \varphi)^\circ &:\equiv \neg\neg\exists x\?X{:}\ \varphi^\circ
+\end{align*}
+\end{defn}
+
+\begin{bem}Da~$\neg\varphi :\equiv (\varphi \Rightarrow \bot)$,
+gilt~$(\neg\varphi)^\circ \equiv \neg(\varphi^\circ)$.\end{bem}
+
+\begin{aufg}Beweise durch Induktion über den Aussageaufbau, dass man auf die grau
+gesetzten Doppelnegationen verzichten kann.\end{aufg}
+
+\begin{satz}Seien~$\varphi$, $\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
+\begin{enumerate}
+\item Klassisch gilt: $\varphi^\circ \Longleftrightarrow \varphi$.
+\item Intuitionistisch gilt: $\neg\neg\varphi^\circ \Longrightarrow
+\varphi^\circ$.
+\item Wenn~$\varphi \seq{\vec x} \psi$ klassisch, dann~$\varphi^\circ \seq{\vec
+x} \psi^\circ$ intuitionistisch. (Wegen der Abwärtskompatibilität
+intuitionistischer Logik und Teilaussage~a) gilt trivialerweise auch die
+Umkehrung.)
+\end{enumerate}
+\end{satz}
+\begin{proof}
+\begin{enumerate}
+\item Klar.
+\item Induktion über den Aussageaufbau, ausgelassen.
+\item Wir müssen in einer Induktion über den Aufbau klassischer Ableitungen
+nachweisen, dass wir jeden logischen Schluss klassischer Logik in der
+Doppelnegationsübersetzung intuitionistisch nachvollziehen können. (Aus diesem
+Grund mussten wir im vorherigen Abschnitt formal definieren, was wir unter
+Ableitungen verstehen wollen.)
+
+Etwa müssen wir zeigen, dass die übersetzte Schnittregel gültig ist:
+\begin{prooftree}
+  \AxiomC{$\varphi^\circ \seq{\vec x} \psi^\circ$}
+  \AxiomC{$\psi^\circ \seq{\vec x} \chi^\circ$}
+  \BinaryInfC{$\varphi^\circ \seq{\vec x} \chi^\circ$}
+\end{prooftree}
+Aber das ist klar, denn das ist wieder eine Instanz der intuitionistisch
+zulässigen Schnittregel. Ein interessanteres Beispiel ist die übersetzte Form
+von einer der Disjunktionsregeln:
+\begin{prooftree}
+  \AxiomC{}
+  \UnaryInfC{$\varphi^\circ \seq{\vec x} \neg\neg(\varphi^\circ \vee \psi^\circ)$}
+\end{prooftree}
+Die Gültigkeit dieser Regel folgt aus der Disjunktionsregel und der
+intuitionistischen Tautologie~$\chi \Rightarrow \neg\neg\chi$. Als letztes
+und wichtigstes Beispiel wollen wir die Übersetzung des klassischen Axioms vom
+ausgeschlossenen Dritten diskutieren:
+\begin{prooftree}
+  \AxiomC{}
+  \UnaryInfC{$\top \seq{\vec x} \neg\neg(\varphi^\circ \vee \neg\varphi^\circ)$}
+\end{prooftree}
+Dass diese Regel intuitionistisch zulässig ist, haben wir in Übungsblatt~1
+gesehen. Die Untersuchung aller weiteren Schlussregeln überlassen wir den Leser
+(Übungsblatt~2).\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{kor}Zeigt Peano-Arithmetik einen Widerspruch, so auch
+Heyting-Arithmetik.\end{kor}
+\begin{proof}Man kann leicht nachvollziehen, dass die
+Doppelnegationsübersetzungen der Peano-Axiome wiederum Instanzen den
+Peano-Axiome sind und daher auch in Heyting-Arithmetik gelten. Daher kann man
+eine Ableitung von~$\bot$ in Peano-Arithmetik in einer Ableitung
+von~$\bot^\circ \equiv \bot$ in Heyting-Arithmetik überführen.\end{proof}
+
+% XXX Bemerkung über Konsistenz von PA
+% XXX Interpretation der übersetzten Aussagen
+% XXX Curry-Howard
 
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
 historische Einordnung: Hilberts Programm, \ldots
