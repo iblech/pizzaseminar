@@ -6,6 +6,7 @@
 \addto\captionsngerman{\renewcommand\tablename{Tafel}}
 
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
+\usepackage{setspace}
 \usepackage{bussproofs}
 \usepackage{array}
 \usepackage{comment}
@@ -107,6 +108,21 @@
 }{%
   \endlist
 }
+
+\newcommand{\Alice}{\item[Alice]}
+\newcommand{\Eve}{\item[Eve]}
+\newenvironment{dialogue}{%
+  \begin{list}{}{%
+    \settowidth{\labelwidth}{\qquad\emph{Alice:}}
+    \setlength{\labelsep}{0.5cm}
+    \setlength{\leftmargin}{\labelwidth}
+    \addtolength{\leftmargin}{\labelsep}
+    \setlength{\rightmargin}{0pt}
+    \setlength{\parsep}{0.5ex plus 0.2ex minus 0.1ex}
+    \setlength{\itemsep}{0 ex plus 0.2ex}
+    \renewcommand{\makelabel}[1]{\qquad\emph{##1:}\hfil}
+    }
+}{\end{list}}
 
 %\newarrow{Equals}=====
 
@@ -266,7 +282,7 @@ wobei~$n$ und~$m$ Terme für natürliche Zahlen sind; in der Mengenlehre sind
 atomare Aussagen von der Form
 \[ x \in M. \]
 
-Für \emph{zusammengesetzte Aussagen} zeigt Tabelle~\ref{bhk}, was unter Belegen
+Für \emph{zusammengesetzte Aussagen} zeigt Tafel~\ref{bhk}, was unter Belegen
 jeweils zu verstehen ist. (An manchen Stellen steht dort~"`$x : X$"' -- das hat
 einen Grund, aber momentan soll das einfach etwas seltsame Notation für~"`$x
 \in X$"' sein.) Etwa ist ein Beleg für eine Aussage der Form
@@ -688,8 +704,8 @@ eine Aussage im Kontext~$n : \NN, m : \NN$. Dagegen ist die Aussage
 \[ \forall m\?\NN{:}\ n = m \]
 lediglich eine Aussage im reduzierten Kontext~$n : \NN$: Die Variable~$m$ kommt
 nicht mehr \emph{frei}, sondern nur noch \emph{gebunden} vor. Wir vereinbaren,
-dass die kollisionsfreie Umbenennung gebundener
-Variablen die Aussage nicht verändert. Die anders geschriebene Aussage
+dass die kollisionsfreie Umbenennung gebundener Variablen die Aussage nicht
+verändert. Die anders geschriebene Aussage
 \[ \forall u\?\NN{:}\ n = u \]
 sehen wir also als dieselbe Aussage an.
 Wenn wir auch noch über die
@@ -710,7 +726,7 @@ Bei der Substitution muss man Variablenkollisionen verhindern. Etwa gilt für
 die Aussage
 \[ \varphi :\equiv (\forall n\?\NN{:}\ n = m) \]
 im Kontext~$m : \NN$, dass
-\[ \varphi[n^2/m] \equiv (\forall \widetilde n\?\NN{:}\ \widetilde n = n^2). \]
+\[ \varphi[n^2/m] \equiv (\forall \tilde n\?\NN{:}\ \tilde n = n^2). \]
 
 
 \subsection*{Ableitungen}
@@ -779,6 +795,9 @@ die erwarteten Regeln für Addition und Multiplikation.
 Heyting-Arithmetik gegeben, nur mit klassischer statt intuitionistischer
 Logik.\end{defn}
 
+\begin{defn}Ein formales System heißt genau dann \emph{inkonsistent}, wenn es in
+ihm eine Ableitung der Sequenz~$\top \seq \bot$ gibt. Andernfalls heißt es
+\emph{konsistent}.\end{defn}
 
 \begin{table}
   \small
@@ -901,7 +920,9 @@ Gödel und anderen) wird rekursiv wie folgt definiert:
 gilt~$(\neg\varphi)^\circ \equiv \neg(\varphi^\circ)$.\end{bem}
 
 \begin{aufg}Beweise durch Induktion über den Aussageaufbau, dass man auf die grau
-gesetzten Doppelnegationen verzichten kann.\end{aufg}
+gesetzten Doppelnegationen verzichten kann. Gewissermaßen besteht also der
+einzige Unterschied zwischen klassischer und intuitionistischer Logik in der
+Interpretation der Disjunktion und der Existenzquantifikation.\end{aufg}
 
 \begin{satz}Seien~$\varphi$, $\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
 \begin{enumerate}
@@ -909,14 +930,15 @@ gesetzten Doppelnegationen verzichten kann.\end{aufg}
 \item Intuitionistisch gilt: $\neg\neg\varphi^\circ \Longrightarrow
 \varphi^\circ$.
 \item Wenn~$\varphi \seq{\vec x} \psi$ klassisch, dann~$\varphi^\circ \seq{\vec
-x} \psi^\circ$ intuitionistisch. (Wegen der Abwärtskompatibilität
+x} \psi^\circ$ intuitionistisch. (Wegen der Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät
 intuitionistischer Logik und Teilaussage~a) gilt trivialerweise auch die
 Umkehrung.)
 \end{enumerate}
 \end{satz}
 \begin{proof}
 \begin{enumerate}
-\item Klar.
+\item Klar, für jede Aussage~$\chi$ ist~$\neg\neg\chi \Leftrightarrow \chi$
+eine klassische Tautologie.
 \item Induktion über den Aussageaufbau, ausgelassen.
 \item Wir müssen in einer Induktion über den Aufbau klassischer Ableitungen
 nachweisen, dass wir jeden logischen Schluss klassischer Logik in der
@@ -959,8 +981,145 @@ Peano-Axiome sind und daher auch in Heyting-Arithmetik gelten. Daher kann man
 eine Ableitung von~$\bot$ in Peano-Arithmetik in einer Ableitung
 von~$\bot^\circ \equiv \bot$ in Heyting-Arithmetik überführen.\end{proof}
 
+
+\subsection{Interpretation der übersetzten Aussagen}
+
+Uns allen ist die Dialogmetapher zur Interpretation logischer Aussagen bekannt:
+Wir stellen uns ein besonders kritisches Gegenüber vor, das unsere Behauptung
+bezweifelt. In einem Dialog versuchen wir dann, das Gegenüber zu überzeugen.
+Eine typische Stetigkeitsüberzeugung sieht etwa wie folgt aus:
+
+\begin{dialogue}
+\Eve Ich gebe dir~$x = \cdots$ und~$\varepsilon = \cdots$ vor.
+\Alice Gut, dann setze ich~$\delta = \cdots$.
+\Eve Dann ist hier ein~$\tilde x = \cdots$ zusammen mit einem Beleg von~$|x -
+\tilde x| < \delta$.
+\Alice Dann gilt tatsächlich~$|f(x) - f(\tilde x)| < \varepsilon$,
+wie von mir behauptet, denn \ldots
+\end{dialogue}
+
+In Tafel~{bhk} ist festgelegt, nach welchen Spielregeln Alice und Eve bei
+solchen Diagonalen miteinander kommunizieren müssen. Exemplarisch seien einige
+nochmal betont:
+\begin{itemize}
+\item Wenn Eve von Alice einen Beleg von~$\varphi \vee \psi$ fordert,
+muss Alice einen Beleg von~$\varphi$ oder einen Beleg von~$\psi$ präsentieren.
+Sie darf sich nicht mit einem "`angenommen, keines von beiden gälte"'
+herausreden.
+\item Wenn Eve von Alice einen Beleg von~$\varphi \Rightarrow \psi$
+fordert, muss Alice ihr versprechen, Belege von~$\varphi$ in Belege von~$\psi$
+überführen zu können. Dieses Versprechen kann Eve herausfordern, indem sie
+einen Beleg von~$\varphi$ präsentiert; Alice muss dann in der Lage sein, mit
+einem Beleg von~$\psi$ zu antworten.
+\item Für die Negation als Spezialfall gilt folgende Spielregel: Wenn Eve von
+Alice einen Beleg von~$\neg\varphi \equiv (\varphi \Rightarrow \bot)$ verlangt,
+muss Alice in der Lage sein, aus einem präsentierten Beleg von~$\varphi$ einen
+Beleg von~$\bot$ zu produzieren. Wenn das betrachtete formale System konsistent
+ist, gibt es keinen solchen Beleg; Alice kann unter der Konsistenzannahme also
+nur dann~$\neg\varphi$ vertreten, wenn es keinen Beleg von~$\varphi$ gibt.
+\end{itemize}
+
+Als Motto können wir festhalten:
+
+\begin{motto}
+Eine Aussage~$\varphi$ intuitionistisch zu behaupten, bedeutet, in jedem
+Dialog~$\varphi$ belegen zu können.
+\end{motto}
+
+Dank der Doppelnegationsübersetzung können wir damit auch eine
+Dialoginterpretation klassischer Behauptungen angeben. Es stellt sich heraus,
+dass die folgende Metapher sehr tragfähig ist. Diese wollen wir dann erst an
+einem Beispiel veranschaulichen bevor wie sie begründen.
+
+\begin{motto}
+Eine Aussage~$\varphi$ klassisch zu behaupten (also~$\varphi^\circ$
+intuitionistisch zu behaupten), bedeutet, in jedem Dialog~$\varphi$ belegen zu
+können, wobei man aber beliebig oft Zeitsprünge in die Vergangenheit
+durchführen kann.
+\end{motto}
+
+
+\subsubsection*{Beispiel: das Prinzip vom ausgeschlossenen Dritten}
+
+Wir wollen sehen, wie man das klassische Prinzip~$\varphi \vee
+\neg\varphi$ mit Hilfe von Zeitsprüngen vertreten kann.
+\begin{dialogue}
+\Eve Zeige mir~$\varphi \vee \neg\varphi$!
+\Alice Gut! Es gilt~$\neg\varphi$.
+\end{dialogue}
+Wenn~$\varphi$ eine allgemeine Aussage ist, kann Alice nicht wissen,
+ob~$\varphi$ oder~$\neg\varphi$ gilt. Sie muss daher an dieser Stelle bluffen.
+Da sie die Implikation~$(\varphi \Rightarrow \bot)$ behauptet, ist nun Eve
+wieder an der Reihe. Sie kann nur dann in ihrem Vorhaben, Alice zu widerlegen,
+fortfahren, wenn sie einen Beleg von~$\varphi$ präsentiert und dann Alice
+herausfordert, ihr Versprechen, daraufhin einen Beleg von~$\bot$ zu
+präsentieren, einzulösen.
+
+Wenn es keinen Beleg von~$\varphi$ gibt, ist das Streitgespräch daher an dieser
+Stelle beendet, und Alice hat sogar die Wahrheit gesagt. Andernfalls geht es
+weiter:
+\begin{dialogue}
+\Eve Aber hier ist ein Beleg von~$\varphi$: $x$. Belege mir nun~$\bot$!
+\end{dialogue}
+Wenn Alice nicht die Inkonsistenz des untersuchten formalen Systems nachweisen
+kann, hat sie nun ein Problem: Ihre Lüge von Beginn straft sich, sie kann das
+Gespräch nicht fortsetzen. Sie muss daher in einem Logikwölkchen verschwinden
+und in der Zeit zurückspringen:
+\begin{dialogue}
+\Eve Zeige mir~$\varphi \vee \neg\varphi$!
+\Alice Gut! Es gilt~$\varphi$, hier ist ein Beleg: $x$.
+\end{dialogue}
+
+\begin{bem}Wer Zeitsprünge dieser Form betrügerisch findet, hat die
+Grund\-über\-zeu\-gung konstruktiver Mathematik bereits verinnerlicht: In diesem (und
+nur diesem) Sinn ist klassische Logik tatsächlich betrügerisch. Das macht
+klassische Logik aber nicht trivial: Auch mit Zeitsprüngen kann man nicht jede
+beliebige Aussage in einem Dialog vertreten. Wenn man etwa obiges Vorgehen
+mit der im Allgemeinen ungerechtfertigten Aussage~$\varphi \vee \neg\psi$
+versucht, wird man sehen, dass auch die Fähigkeit zu Zeitsprüngen
+nicht hilft.\end{bem}
+
+
+\subsubsection*{Dasselbe Beispiel, konservativer interpretiert}
+
+Dass die Zeitsprungmetapher berechtigt ist, wollen wir exemplarisch an einem
+Beispiel demonstrieren. Dazu betrachten wir einen Dialog zur
+Dop\-pel\-ne\-ga\-tions\-über\-set\-zung des Prinzips vom ausgeschlossenen
+Dritten, also zu $\neg\neg(\varphi^\circ \vee \neg\varphi^\circ)$. Wir können
+sogar für beliebige Aussagen~$\varphi$ das Prinzip $\neg\neg(\varphi \vee
+\neg\varphi)$ nachweisen, ausgeschrieben
+\[ ((\varphi \vee \neg\varphi) \Rightarrow \bot) \Rightarrow \bot, \]
+das ist geringfügig übersichtlicher.
+
+\begin{dialogue}
+\Eve Zeige mir~$\neg\neg(\varphi \vee \neg\varphi)$!
+Präsentiere mir also einen Beleg von~$\bot$, wobei du auf mich zurückkommen
+kannst, wenn du einen Beleg von~$\varphi \vee \neg\varphi$ hast; dann
+würde ich Beleg von~$\bot$ produzieren.
+\Alice Gut! Dann komme ich sofort auf dich zurück, denn ich habe einen Beleg
+von~$\neg\varphi$. $(\star)$
+\end{dialogue}
+
+Wie oben ist das Gespräch an dieser Stelle beendet, wenn Eve nicht einen Beleg
+von~$\varphi$ produzieren kann, mit dem sie Alice herausfordern könnte. Falls
+sie das doch schafft, geht es wie folgt weiter:
+
+\begin{dialogue}
+\Eve Ach wirklich? Hier ist ein Beleg von~$\varphi$: $x$. Zeige mir nun einen
+Beleg von~$\bot$!
+\Alice Dann komme ich auf deine Verpflichtung mir gegenüber ein zweites Mal
+zurück -- hier ist ein Beleg von~$\varphi \vee \neg\varphi$: $x$.
+\Eve Stimmt. Dann ist hier Beleg von~$\bot$: $y$.
+\Alice Danke. Dann ist hier ein Beleg von~$\bot$: $y$. Damit habe ich meine
+Pflicht erfüllt.
+\Eve Stimmt. Dann erfülle ich meinen Teil der Verpflichtung (Stelle~$(\star)$),
+hier ist Beleg von~$\bot$: $z$.
+\Alice Danke. Dann ist hier Beleg von~$\bot$, wie gefordert: $z$.
+\end{dialogue}
+
+% XXX Fazit
+
 % XXX Bemerkung über Konsistenz von PA
-% XXX Interpretation der übersetzten Aussagen
 % XXX Curry-Howard
 
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
