@@ -690,7 +690,9 @@ sondern \emph{Beweise}. Dazu müssen wir präzise festlegen, was unter einem
 (intuitionistischen oder klassischen) Beweis zu verstehen ist.
 
 
-\subsection*{Variablenkontexte}
+\subsection{Formale logische Sprache}
+
+\subsubsection*{Variablenkontexte}
 
 \begin{defn}Ein \emph{Kontext} ist eine endliche Folge von
 Variablendeklarationen der Form
@@ -713,7 +715,7 @@ Variable~$n$ quantifizieren, erhalten wir eine Aussage im \emph{leeren Kontext}:
 \[ \forall n\?\NN{:}\ \forall u\?\NN{:}\ n = u. \]
 
 
-\subsection*{Substitution von Variablen}
+\subsubsection*{Substitution von Variablen}
 
 Ist~$\varphi$ eine Aussage im Kontext~$x_1,\ldots,x_n$. Sind dann
 Terme~$s_1,\ldots,s_n$ (in einem neuen Kontext~$y_1,\ldots,y_m$) gegeben, so
@@ -729,75 +731,70 @@ im Kontext~$m : \NN$, dass
 \[ \varphi[n^2/m] \equiv (\forall \tilde n\?\NN{:}\ \tilde n = n^2). \]
 
 
-\subsection*{Ableitungen}
+\subsection{Sequenzen}
+
+\begin{defn}Eine \emph{Sequenz} in einem Kontext~$\vec x : \vec A$ ist ein
+Ausdruck der Form
+\[ \varphi \seq{\vec x} \psi, \]
+wobei~$\varphi$ und~$\psi$ Aussagen in diesem Kontext sind. Aussprache:
+\emph{Aus der Voraussetzung~$\varphi$ ist die Aussage~$\psi$ ableitbar.}
+\end{defn}
+
+Welche Aussagen aus welchen Voraussetzungen ableitbar sind, entscheiden die
+\emph{Ableitungsregeln} des untersuchten formalen Systems. Auf diese kommen wir
+gleich, wollen aber vorher einen rein formalen Aspekt genauer beleuchten.
+
+
+\subsubsection*{Sequenzen vs. Implikationen}
+
+Wenn man das erste Mal mit der Definition einer Sequenz konfrontiert wird,
+fragt man sich vielleicht, was der Unterschied zwischen
+\[ \text{$\varphi \seq{\vec x} \psi$} \qquad\text{und}\qquad
+  \text{$\top \seq{\vec x} (\varphi \Rightarrow \psi)$} \]
+ist. Tatsächlich ist es bei Kenntnis der Ableitungsregeln für Implikation und
+Konjunktion eine leichte Übungsaufgabe, die Äquivalenz der beiden Urteile zu
+zeigen. Die Interpretation ist aber eine völlig andere:
+\begin{itemize}
+\item Die erste Sequenz besagt, dass unter der Globalvoraussetzung~$\varphi$
+die Aussage~$\psi$ ableitbar ist. Eine typische Übungsaufgabe nach diesem
+Muster sieht wie folgt aus:
+\begin{quote}Sei~$n$ eine Primzahl~$\geq 3$. Zeige, dass~$n + 1$ keine Primzahl
+ist.\end{quote}
+\item Die zweite Sequenz besagt, dass unter keiner besonderen Voraussetzung
+(zur Verfügung stehen also nur die gegebenen Ableitungsregeln) die
+hypothetische Implikation~$\varphi \Rightarrow \psi$ folgt. Eine
+Beispielformulierung für diese Art ist folgende:
+\begin{quote}Zeige, dass wenn~$n$ eine Primzahl~$\geq 3$ ist, die Zahl~$n + 1$
+keine Primzahl ist.\end{quote}
+\end{itemize}
+Der Unterschied ist subtil, aber sprachlich durchaus vorhanden.
+
+\begin{bem}Logiker untersuchen auch formale Systeme, die deutlich weniger
+sprachliche Mittel haben als klassische oder intuitionistische Logik -- etwa
+solche, in denen Implikation als Junktor nicht vorkommt. Das antike System der
+\emph{Syllogismen} (siehe Abbildung~\ref{penguin-logic})
+ist ein Beispiel. Dann ist das Sequenzkonzept unverzichtbar.
+\end{bem}
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.5]{penguin-logic}
+  \caption{\label{penguin-logic}Ein Beispiel für einen (ungültigen)
+  Syllogismus (Randy Glasbergen, verwendet ohne Erlaubnis).}
+\end{figure}
+
+
+\subsection{Ableitungen}
 
 \begin{defn}Seien~$\varphi$ und~$\psi$ Aussagen in einem Kontext~$\vec x : \vec
 A$. Genau dann ist~$\psi$ aus der Voraussetzung~$\varphi$ \emph{ableitbar}, in
 Symbolen
-\[ \varphi \seq{\vec x} \psi, \]
+$\varphi \seq{\vec x} \psi$,
 wenn es eine entsprechende endliche \emph{Ableitung} gibt, welche nur die
 in Tafel~\ref{ableitungsregeln:int} aufgeführten Ableitungsregeln verwendet.
 \end{defn}
 
-\begin{bsp}Werde noch ein Beispiel überlegen. In der Zwischenzeit ein Scan aus
-dem Elephant-Buch (Seite~832):
-\begin{center}\includegraphics[scale=0.3]{prooftree-elephant.png}\end{center}
-Diese Ableitung beweist (eine Richtung des) \emph{Frobenius-Prinzips}.
-\end{bsp}
-
-Man kann \emph{alle} Beweise gewöhnlicher Mathematik, die man
-gemeinhin als "`vollständig und präzise ausformuliert"' bezeichnet, als
-Ableitungen im Sinne der Definition formalisieren (ggf. unter Hinzunahme
-klassischer logischer Axiome, Mengentheorieaxiome oder Typtheorieaxiome).
-
-\begin{aufg}Überzeuge dich von dieser Behauptung. \emph{Tipp:} Formalisiere so
-viele Beweise deiner Wahl, bis du keine Lust mehr hast.\end{aufg}
-
-
-\subsection*{Peano-Arithmetik und Heyting-Arithmetik}
-
-\begin{defn}Das formale System \emph{Heyting-Arithmetik} ist gegeben durch
-\begin{itemize}
-\item intuitionistische Logik,
-\item die Gleichheitsregeln (siehe Tafel~\ref{ableitungsregeln:weitere}),
-\item einem einzigen Typ~$\NN$,
-\item einer Termkonstante~$0 : \NN$,
-\item einem 1-adischen Termkonstruktor~$S$ (für successor): Ist~$n : \NN$ ein
-Term vom Typ~$\NN$, so ist~$S(n) : \NN$ ebenfalls ein Term vom Typ~$\NN$,
-\item die Axiome \\
-\vspace{-0.5em}
-\phantom{a}\hfill
-\AxiomC{$\phantom{\seq{\vec x}}$}
-\UnaryInfC{$S(n) = 0 \seq{n} \bot$}
-\DisplayProof
-\hfill
-\AxiomC{$\phantom{\seq{\vec x}}$}
-\UnaryInfC{$S(n) = S(m) \seq{n,m} n = m$}
-\DisplayProof
-\hfill
-\phantom{a} \\
-
-und das Induktionsprinzip \\
-\vspace{1.0em}
-\phantom{a}\hfill
-\AxiomC{$\varphi \seq{\vec x} \psi[0/m]$}
-\AxiomC{$\varphi \seq{\vec x, m} \psi \Rightarrow \psi[S(m)/m]$}
-\BinaryInfC{$\varphi \seq{\vec x} \forall m\?\NN{:}\ \psi$}
-\DisplayProof
-\hfill\phantom{a}
-
-\item sowie Regeln für alle primitiv-rekursiven Funktionen, insbesondere also
-die erwarteten Regeln für Addition und Multiplikation.
-\end{itemize}
-\end{defn}
-
-\begin{defn}Das formale System \emph{Peano-Arithmetik} ist genau wie
-Heyting-Arithmetik gegeben, nur mit klassischer statt intuitionistischer
-Logik.\end{defn}
-
-\begin{defn}Ein formales System heißt genau dann \emph{inkonsistent}, wenn es in
-ihm eine Ableitung der Sequenz~$\top \seq \bot$ gibt. Andernfalls heißt es
-\emph{konsistent}.\end{defn}
+An die Notation der Ableitungsregeln muss man sich gewöhnen. Drei
+Beispiele seien im Folgenden genauer erklärt.
 
 \begin{table}
   \small
@@ -892,14 +889,159 @@ ihm eine Ableitung der Sequenz~$\top \seq \bot$ gibt. Andernfalls heißt es
   formaler Systeme.}
 \end{table}
 
+
+\subsubsection*{Die Schnittregel}
+
+Oberhalb des horizontalen Strichs in der sog. \emph{Schnittregel}
+\begin{prooftree}
+  \AxiomC{$\varphi \seq{\vec x} \psi$}
+  \AxiomC{$\psi \seq{\vec x} \chi$}
+  \BinaryInfC{$\varphi \seq{\vec x} \chi$}
+\end{prooftree}
+sind, nur durch horizontalen Freiraum getrennt, die Voraussetzungen der Regel
+aufgeführt. Unterhalb des Strichs steht dann das Urteil, das man aus diesen
+Voraussetzungen ziehen darf. Die Schnittregel besagt also: Ist in einem
+Kontext~$\vec x$ aus~$\varphi$ die Aussage~$\psi$ ableitbar, und ist ferner
+aus~$\psi$ die Aussage~$\chi$ ableitbar, so ist auch aus~$\varphi$
+direkt~$\chi$ ableitbar. Die Schnittregel rechtfertigt also die Modularisierung
+mathematischer Argumente in Lemmata.
+
+
+\subsubsection*{Eine der Disjunktionsregeln}
+
+Die Disjunktionsregel
+\begin{prooftree}
+  \AxiomC{$\varphi \seq{\vec x} \chi$}
+  \AxiomC{$\psi \seq{\vec x} \chi$}
+  \BinaryInfC{$\varphi \vee \psi \seq{\vec x} \chi$}
+\end{prooftree}
+besagt, dass, wenn aus~$\varphi$ die Aussage~$\chi$ ableitbar ist, und wenn
+ferner auch aus~$\psi$ die Aussage~$\chi$ ableitbar ist, dass dann auch
+aus~$\varphi \vee \psi$ die Aussage~$\chi$ ableitbar ist. Diese Regel
+rechtfertigt also, bei einer Disjunktion als Voraussetzung einen Beweis durch
+Unterscheidung der beiden möglichen Fälle zu führen.
+
+
+\subsubsection*{Die Doppelregel für den Allquantor}
+
+Der Doppelstrich in der Regel
+\begin{prooftree}
+  \Axiom$\varphi\ \fCenter\seq{\vec x, y} \psi$
+  \doubleLine
+  \UnaryInf$\varphi\ \fCenter\seq{\vec x\phantom{, y}} \forall y\?Y\_\! \psi$
+\end{prooftree}
+für den Allquantor, die nur angewendet werden darf, wenn~$y$ keine freie
+Variable in~$\varphi$ ist, deutet an, dass die Regel sowohl wie üblich von oben
+nach unten, als auch von unten nach oben gelesen werden kann. Sie besagt, dass
+die beiden Urteile
+\begin{itemize}
+\item "`Im Kontext~$\vec x : \vec A, y : Y$ ist aus~$\varphi$ die
+Aussage~$\psi$ ableitbar."'
+\item "`Im Kontext~$\vec x : \vec A$ ist aus~$\varphi$ die Allaussage~$\forall
+y\?Y{:}\, \psi$ ableitbar."'
+\end{itemize}
+äquivalent sind. Sie rechtfertigt daher das bekannte Standardvorgehen, um
+Allaussagen nachzuweisen: Man nimmt sich ein "`beliebiges, aber festes"'~$y :
+Y$, von dem man außer der Zugehörigkeit zu~$Y$ keine weiteren Eigenschaften
+unterstellt, und weist die Behauptung dann für \emph{dieses}~$y$ nach.
+
+\begin{aufg}Wieso sind die Variablenbeschränkungen in den Regeln für den
+Existenz- und Allquantor nötig?\end{aufg}
+
+
+\subsubsection*{Umfang der Ableitungsregeln}
+
+\begin{motto}\label{allesformalisierbar}\emph{Alle} Beweise gewöhnlicher Mathematik, die man
+gemeinhin als "`vollständig und präzise ausformuliert"', lassen sich als
+Ableitungen im Sinne der Definition formalisieren (ggf. unter Hinzunahme
+klassischer logischer Axiome, Mengentheorieaxiome oder Typtheorieaxiome).
+\end{motto}
+
+\begin{aufg}Überzeuge dich von dieser Behauptung. \emph{Tipp:} Formalisiere so
+viele Beweise deiner Wahl, bis du keine Lust mehr hast.\end{aufg}
+
+Wer nicht so viel Zeit hat, dem sei verraten, dass
+Tafel~\ref{ableitungsregeln:int} kein Haufen ungeordneter Ableitungsregeln ist.
+Stattdessen sind die Axiome nach den sie betreffenden Junktoren bzw. Quantoren
+gruppiert: Sie legen für jedes sprachliche Konstrukt ist fest, wie man es
+\emph{einführt} (etwa: "`aus~$\varphi \wedge \psi$ folgt schlicht~$\varphi$"')
+und \emph{eliminiert} (etwa: "`kann man sowohl~$\varphi$ als auch~$\psi$
+ableiten, so auch~$\varphi \wedge \psi$"').
+
+\begin{bem}Neben den strukturellen Regeln sticht einzig das Prinzip vom
+ausgeschlossenen Dritten aus diesem System von Einführungs- und
+Eliminationsprinzipien heraus. Das ist ein rein formal-ästhetisches Argument
+gegen klassische Logik.\end{bem}
+
+\begin{bsp}Hier ein längeres Beispiel für eine Ableitung (ein Scan aus
+dem Elephant-Buch, Seite~832):
+\begin{center}\includegraphics[scale=0.3]{prooftree-elephant.png}\end{center}
+Diese Ableitung beweist (eine Richtung des) \emph{Frobenius-Prinzips}.
+\end{bsp}
+
+Nicht verschwiegen werden sollte folgende Ergänzung des formalistischen Kredos:
+\begin{motto}Das optimistische Motto~\ref{allesformalisierbar} stimmt nur in
+erster Näherung. Es gibt mathematische Gedanken, die nicht formalisierbar
+sind.\end{motto}
+
+\XXX{Das ausführen!}
+
+
+\subsection{Peano-Arithmetik und Heyting-Arithmetik}
+
+\begin{defn}Das formale System \emph{Heyting-Arithmetik} ist gegeben durch
+\begin{itemize}
+\item intuitionistische Logik,
+\item die Gleichheitsregeln (siehe Tafel~\ref{ableitungsregeln:weitere}),
+\item einem einzigen Typ~$\NN$,
+\item einer Termkonstante~$0 : \NN$,
+\item einem 1-adischen Termkonstruktor~$S$ (für successor): Ist~$n : \NN$ ein
+Term vom Typ~$\NN$, so ist~$S(n) : \NN$ ebenfalls ein Term vom Typ~$\NN$,
+\item die Axiome \\
+\vspace{-0.5em}
+\phantom{a}\hfill
+\AxiomC{$\phantom{\seq{\vec x}}$}
+\UnaryInfC{$S(n) = 0 \seq{n} \bot$}
+\DisplayProof
+\hfill
+\AxiomC{$\phantom{\seq{\vec x}}$}
+\UnaryInfC{$S(n) = S(m) \seq{n,m} n = m$}
+\DisplayProof
+\hfill
+\phantom{a} \\
+
+und das Induktionsprinzip
+
+\vspace{-1.0em}
+\phantom{a}\hfill
+\AxiomC{$\varphi \seq{\vec x} \psi[0/m]$}
+\AxiomC{$\varphi \seq{\vec x, m} \psi \Rightarrow \psi[S(m)/m]$}
+\BinaryInfC{$\varphi \seq{\vec x} \forall m\?\NN{:}\ \psi$}
+\DisplayProof
+\hfill\phantom{a}
+
+\item sowie Regeln für alle primitiv-rekursiven Funktionen, insbesondere also
+die erwarteten Regeln für Addition und Multiplikation.
+\end{itemize}
+\end{defn}
+
+\begin{defn}Das formale System \emph{Peano-Arithmetik} ist genau wie
+Heyting-Arithmetik gegeben, nur mit klassischer statt intuitionistischer
+Logik.\end{defn}
+
+\begin{defn}Ein formales System heißt genau dann \emph{inkonsistent}, wenn es in
+ihm eine Ableitung der Sequenz~$\top \seq{} \bot$ (im leeren Kontext) gibt. Andernfalls heißt es
+\emph{konsistent}.\end{defn}
+
+
 \section{Beziehung zu klassischer Logik: die Doppelnegationsübersetzung}
 
 Aus den Augen einer konstruktiven Mathematikerin sind manche Aussagen ihrer
 klassisch arbeitenden Kollegen falsch. Es gibt aber eine einfache Übersetzung,
 die \emph{Doppelnegationsübersetzung}, die Aussagen derart umformt, dass die
 Übersetzung genau dann konstruktiv gilt, wenn die ursprüngliche Aussage
-klassisch gilt. Mit dieser kann sie daher ihre Kollegen verstehen, ohne ihre
-Logik verlassen zu müssen.
+klassisch gilt. Mit dieser kann die konstruktive Mathematikern daher ihre
+Kollegen verstehen, ohne ihre Logik verlassen zu müssen.
 
 \begin{defn}Die \emph{Doppelnegationsübersetzung} (nach Kolmogorov, Gentzen,
 Gödel und anderen) wird rekursiv wie folgt definiert:
@@ -930,9 +1072,9 @@ Interpretation der Disjunktion und der Existenzquantifikation.\end{aufg}
 \item Intuitionistisch gilt: $\neg\neg\varphi^\circ \Longrightarrow
 \varphi^\circ$.
 \item Wenn~$\varphi \seq{\vec x} \psi$ klassisch, dann~$\varphi^\circ \seq{\vec
-x} \psi^\circ$ intuitionistisch. (Wegen der Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät
+x} \psi^\circ$ intuitionistisch. Wegen der Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät
 intuitionistischer Logik und Teilaussage~a) gilt trivialerweise auch die
-Umkehrung.)
+Umkehrung.
 \end{enumerate}
 \end{satz}
 \begin{proof}
@@ -975,7 +1117,7 @@ gesehen. Die Untersuchung aller weiteren Schlussregeln überlassen wir den Leser
 
 \begin{kor}Zeigt Peano-Arithmetik einen Widerspruch, so auch
 Heyting-Arithmetik.\end{kor}
-\begin{proof}Man kann leicht nachvollziehen, dass die
+\begin{proof}Man kann leicht nachprüfen, dass die
 Doppelnegationsübersetzungen der Peano-Axiome wiederum Instanzen den
 Peano-Axiome sind und daher auch in Heyting-Arithmetik gelten. Daher kann man
 eine Ableitung von~$\bot$ in Peano-Arithmetik in einer Ableitung
@@ -998,9 +1140,9 @@ Eine typische Stetigkeitsüberzeugung sieht etwa wie folgt aus:
 wie von mir behauptet, denn \ldots
 \end{dialogue}
 
-In Tafel~{bhk} ist festgelegt, nach welchen Spielregeln Alice und Eve bei
-solchen Diagonalen miteinander kommunizieren müssen. Exemplarisch seien einige
-nochmal betont:
+In Tafel~\ref{bhk} (Seite~\pageref{bhk}) ist festgelegt, nach welchen
+Spielregeln Alice und Eve bei solchen Dialogen miteinander kommunizieren
+müssen. Exemplarisch seien einige nochmal betont:
 \begin{itemize}
 \item Wenn Eve von Alice einen Beleg von~$\varphi \vee \psi$ fordert,
 muss Alice einen Beleg von~$\varphi$ oder einen Beleg von~$\psi$ präsentieren.
@@ -1011,7 +1153,7 @@ fordert, muss Alice ihr versprechen, Belege von~$\varphi$ in Belege von~$\psi$
 überführen zu können. Dieses Versprechen kann Eve herausfordern, indem sie
 einen Beleg von~$\varphi$ präsentiert; Alice muss dann in der Lage sein, mit
 einem Beleg von~$\psi$ zu antworten.
-\item Für die Negation als Spezialfall gilt folgende Spielregel: Wenn Eve von
+\item Für die Negation als Spezialfall der Implikation gilt folgende Spielregel: Wenn Eve von
 Alice einen Beleg von~$\neg\varphi \equiv (\varphi \Rightarrow \bot)$ verlangt,
 muss Alice in der Lage sein, aus einem präsentierten Beleg von~$\varphi$ einen
 Beleg von~$\bot$ zu produzieren. Wenn das betrachtete formale System konsistent
@@ -1069,15 +1211,16 @@ und in der Zeit zurückspringen:
 \Eve Zeige mir~$\varphi \vee \neg\varphi$!
 \Alice Gut! Es gilt~$\varphi$, hier ist ein Beleg: $x$.
 \end{dialogue}
+Damit ist das Gespräch abgeschlossen.
 
-\begin{bem}Wer Zeitsprünge dieser Form betrügerisch findet, hat die
+Wer Zeitsprünge dieser Form betrügerisch findet, hat die
 Grund\-über\-zeu\-gung konstruktiver Mathematik bereits verinnerlicht: In diesem (und
 nur diesem) Sinn ist klassische Logik tatsächlich betrügerisch. Das macht
 klassische Logik aber nicht trivial: Auch mit Zeitsprüngen kann man nicht jede
 beliebige Aussage in einem Dialog vertreten. Wenn man etwa obiges Vorgehen
 mit der im Allgemeinen ungerechtfertigten Aussage~$\varphi \vee \neg\psi$
 versucht, wird man sehen, dass auch die Fähigkeit zu Zeitsprüngen
-nicht hilft.\end{bem}
+nicht hilft.
 
 
 \subsubsection*{Dasselbe Beispiel, konservativer interpretiert}
