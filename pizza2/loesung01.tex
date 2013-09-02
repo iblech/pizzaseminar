@@ -1,0 +1,60 @@
+\documentclass{pizzablatt}
+
+\newtheorem*{bem}{Bemerkung}
+
+\begin{document}
+
+\maketitle{Lösung zum 1}{Tim Baumann, 22. August 2013}
+
+\begin{aufgabe}{Diskretheit der natürlichen Zahlen}
+Wir zeigen sogar die stärkere Aussage
+\[ \forall n,m \in \NN{:}\ n = m \vee \neg(n = m). \]
+
+Durch Induktion über $n$:
+\begin{itemize}
+\item Fall 1: $n = 0$. Falls $m = 0$, so ist $n = m$. Wenn jedoch $m$ Nachfolger einer natürlichen Zahl $\widetilde{m}$ ist, so ist $n \not= m$, da $n = 0$ kein Nachfolger einer natürlichen Zahl ist. (Das ist eine versteckte Induktion nach~$m$.)
+\item Fall 2: $n = S(\widetilde{n})$: Falls $m = 0$, so ist $n \not= m$, da $m$ nicht Nachfolger einer natürlichen Zahl ist. Falls $m = S(\widetilde{m})$, so können wir anhand der Induktionsvoraussetzung feststellen, ob $\widetilde{n} = \widetilde{m}$ gilt. Ist dies der Fall, so gilt offensichtlich auch $n = S(\widetilde{n}) = S(\widetilde{m}) = m$. Wenn jedoch $\widetilde{n} \not= \widetilde{m}$ gilt, so gilt auch $n \not= m$, da sonst aufgrund von Axiom 4 $\widetilde{n} = \widetilde{m}$ wäre.
+\end{itemize}
+
+Das Prinzip der Induktion (angewendet über $n$ und versteckt auch über $m$ als Fallunterscheidung) können wir dabei mit Axiom 5 rechtfertigen: Für jede Aussage $A$ über natürliche Zahlen können wir die Menge
+\[ M = \{ n \in \NN : A(n) \} \]
+bilden. Wenn wir beweisen, dass $0 \in M$ und außerdem $S(u) \in M$ für jede natürliche Zahl $u$, so folgt aus Axiom 5, dass $M = \NN$ und somit gilt $A(n)$ für jede natürliche Zahl $n$.
+\end{aufgabe}
+
+\begin{aufgabe}{Konstruktive Tautologien}
+Seien $\varphi$ und~$\psi$ (bzw.~$\psi(x)$) beliebige Aussagen.
+\begin{enumerate}
+\item Zu zeigen: $\varphi \implies \neg\neg\varphi$. Erinnerung: $\neg\neg\varphi$ ist nur eine andere Schreibweise für $(\varphi \implies \bot) \implies \bot$. Angenommen, es gilt $\varphi$ und $\varphi \implies \bot$. Dann folgt sofort $\bot$.
+\item Zu zeigen: $(\varphi \Rightarrow \psi) \Longrightarrow (\neg\psi \Rightarrow
+\neg\varphi)$. Gelte $\varphi \Rightarrow \psi$ und $\neg\psi$, also $\psi \implies \bot$. Gelte außerdem $\varphi$. Dann gilt auch $\psi$ (nach der ersten Voraussetzung), also auch $\bot$ (nach der zweiten Voraussetzung).
+\item Zu zeigen: $\neg\neg(\varphi \vee \neg\varphi)$. Gelte $\neg(\varphi \vee \neg\varphi)$. Dann gilt auch $\neg\varphi$, denn aus $\varphi$ folgt $\varphi \vee \neg\varphi$ und daraus nach Voraussetzung $\bot$. Somit haben wir auch $\varphi \vee \neg\varphi$ und es folgt aus derselben Voraussetzung $\bot$.
+\item Zu zeigen: $\neg\neg\exists x \in A{:}\, \psi(x) \Longleftrightarrow
+  \neg\forall x \in A{:}\, \neg\psi(x)$. Wir zeigen zuerst die Hinrichtung. Gelte erstens $\neg\neg\exists x \in A{:}\, \psi(x)$ und zweitens $\forall x \in A{:}\, \neg\psi(x)$. Dann gilt auch $\neg\exists x \in A{:}\, \psi(x)$, da die Existenz eines $x \in A$ mit Beleg für $\psi(x)$ in Widerspruch zur zweiten Voraussetzung stehen würde. Somit folgt aus der ersten Voraussetzung $\bot$.\\
+  Zur Rückrichtung: Angenommen, es gilt erstens $\neg\forall x \in A{:}\, \neg\psi(x)$ und zweitens $\neg\exists x \in A{:}\, \psi(x)$. Dann gilt auch $\forall x \in A{:}\, \neg\psi(x)$: Sei $x \in A$ beliebig. Gelte $\psi(x)$. Das ist jedoch ein Widerspruch zur zweiten Voraussetzung.
+\end{enumerate}
+
+\begin{bem}
+  Es gibt Programmiersprachen, in denen mathematische Aussagen und ihre Beweise formalisiert werden können. Die formalisierten Beweise kann man sodann von einem Computerprogramm auf ihre Richtigkeit überprüfen lassen. Solche Beweise sind leicht maschinell lesbar, aber oft für Menschen schwer verständlich. Unter \url{https://gist.github.com/timjb/6308420} habe ich eine Übersetzung der Beweise obiger Tautologien in die Programmiersprache \emph{Coq} online gestellt.
+\end{bem}
+\end{aufgabe}
+
+\pagebreak
+
+\begin{aufgabe}{Doppelnegationselimination}
+\begin{itemize}
+  \item (LEM) $\Rightarrow$ (DNE): Sei $\psi$ eine Aussage und gelte $\neg\neg\psi$. Aus LEM folgt: $\psi \vee \neg\psi$. Im ersten Fall sind wir fertig, da dieser genau unserem Ziel entspricht. Gelte also $\neg\psi$. Zusammen mit der Voraussetzung~$\neg\neg\psi$ folgt dann ein Widerspruch. Nach \emph{ex falso quodlibet} folgt jede beliebige Aussage, insbesondere die Behauptung.
+  
+Informal schreibt man manchmal auch etwas wie: "`Diese Aussage steht aber im Widerspruch zur Annahme, der zweite Fall kann also gar nicht eintreten."' Dann versteckt man die Anwendung von \emph{ex falso quodlibet}. (In \emph{minimaler Logik} ist dieses Axiom nicht enthalten.)
+
+  \item (DNE) $\Rightarrow$ (LEM): In Aufgabe 2 haben wir bewiesen, dass konstruktiv $\neg\neg(\varphi \vee \neg\varphi)$ für jede Aussage $\varphi$ gilt. Durch Elimination der doppelten Negation erhalten wir den Satz vom ausgeschlossenen Dritten.
+\end{itemize}
+
+\end{aufgabe}
+
+\begin{aufgabe}{Teilmengen von~$\{\star\}$}
+Sei $\varphi$ eine Aussage. Zu zeigen: $\varphi \vee \neg\varphi$. Wir bilden die Menge
+\[ M = \{ \star \,|\, \varphi \} \subseteq \{\star\}. \]
+Nach Annahme ist entweder $M = \emptyset$ oder $M = \{\star\}$. Im ersten Fall haben wir $\neg\varphi$, da sonst $\star$ ein Element von $M$ wäre. Im zweiten Fall gilt offensichtlich $\varphi$.
+\end{aufgabe}
+
+\end{document}
