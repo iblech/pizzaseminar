@@ -36,6 +36,7 @@
 
 \newtheorem{prop}[defn]{Proposition}
 \newtheorem{motto}[defn]{Motto}
+\newtheorem{wunder}[defn]{Wunder}
 \newtheorem{ueberlegung}[defn]{Überlegung}
 \newtheorem{lemma}[defn]{Lemma}
 \newtheorem{kor}[defn]{Korollar}
@@ -62,11 +63,13 @@
 \newcommand{\PP}{\mathbb{P}}
 \renewcommand{\aa}{\mathfrak{a}}
 \newcommand{\pp}{\mathfrak{p}}
+\newcommand{\mm}{\mathfrak{m}}
 \newcommand{\I}{\mathcal{I}}
 \newcommand{\J}{\mathcal{J}}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
+\newcommand{\U}{\mathcal{U}}
 \renewcommand{\I}{\mathcal{I}}
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
@@ -1401,7 +1404,9 @@ Primalitätsbedingung ist daher auch~$x$ in~$\pp$ enthalten. Das war zu
 zeigen.\end{proof}
 
 Interessant ist nun, dass -- in einem klassischen Kontext -- auch die Umkehrung
-dieser Proposition gilt:
+dieser Proposition gilt. Somit hat man ein einfaches Kriterium an der Hand, um
+die Nilpotenz eines Ringselements nachzuweisen.
+
 \begin{prop}[nur klassisch]Im Schnitt aller Primideale eines Rings liegen nur
 die nilpotenten Elemente.\end{prop}
 \begin{proof}Sei~$x$ ein Element von~$R$, welches in allen Primidealen liegt.
@@ -1409,8 +1414,31 @@ Wir wollen zeigen, dass~$x$ nilpotent ist; dazu führen wir einen
 Widerspruchsbeweis, nehmen also an, dass~$x$ nicht nilpotent ist. Dann enthält
 die Menge
 \[ S := \{ x^n \,|\, n \geq 0 \} \subseteq R \]
-also nicht die Null. \ldots\ldots
+also nicht die Null. Wir betrachten nun das bezüglich der
+Teilmengeninklusionsrelation partiell geordnete Mengensystem
+\[ \U := \{ \aa \subseteq R \,|\, \text{$\aa$ ist ein Ideal mit~$\aa \cap S =
+\emptyset$} \}. \]
+Dieses ist bewohnt: Das Nullideal liegt wegen~$0 \not\in S$ in~$\U$. Außerdem
+liegt die Vereinigung~$\bigcup_i \aa_i$ einer in~$\U$ liegenden Kette von
+Elementen aus~$\U$ wieder in~$\U$. Damit sind alle Voraussetzung des Lemmas von
+Zorn erfüllt, womit~$\U$ also ein maximales Element enthält: $\mm$.
+
+Man kann nun nachrechnen, dass~$\mm$ ein Primideal ist. Da~$x \not\in \mm$
+(wegen~$x \in S$), ist das ein Widerspruch zur Voraussetzung.
 \end{proof}
+
+Dieser Beweis ist an zwei zentralen Stellen inhärent klassisch: Zum einen, weil
+er ein echter Widerspruchsbeweis ist; zum anderen, weil das Lemma von Zorn
+verwendet wird (dieses ist zum Auswahlaxiom äquivalent). Man kann sogar zeigen,
+dass ein konstruktiver Beweis dieser Proposition nicht möglich ist. Daher
+ist folgendes Metatheorem absolut erstaunlich:
+
+\begin{wunder}Sei~$x \in R$ ein Element eines Rings. Sei ein \emph{klassischer
+Beweis} (einer gewissen Form) der Aussage~$x \in \pp$, wobei man von~$\pp$ nur
+die Axiome eines Primideals voraussetzen darf, gegeben. Dann ist~$x$ nilpotent
+(konstruktiv!). Aus dem klassischen Beweis kann man also auf konstruktive Art
+und Weise einen konstruktiven Beweis der Nilpotenzbehauptung extrahieren.
+\end{wunder}
 
 \nocite{*}
 \printbibliography
