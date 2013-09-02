@@ -60,6 +60,8 @@
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\PP}{\mathbb{P}}
+\renewcommand{\aa}{\mathfrak{a}}
+\newcommand{\pp}{\mathfrak{p}}
 \newcommand{\I}{\mathcal{I}}
 \newcommand{\J}{\mathcal{J}}
 \newcommand{\C}{\mathcal{C}}
@@ -1267,6 +1269,148 @@ hier ist Beleg von~$\bot$: $z$.
 
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
 historische Einordnung: Hilberts Programm, \ldots
+
+
+\appendix
+\section{Ideale in Ringen}
+
+\begin{defn}Ein \emph{kommutativer Ring mit Eins} (kurz \emph{Ring}) besteht aus
+\begin{itemize}
+\item einer Menge~$R$,
+\item einer additiv geschriebenen Verknüpfung~${+} : R \times R \to R$,
+\item einer multiplikativ geschriebenen Verknüpfung~${\cdot} : R \times R \to R$,
+\item einem ausgezeichneten Element~$0 \in R$ und
+\item einem ausgezeichneten Element~$1 \in R$,
+\end{itemize}
+sodass
+\begin{itemize}
+\item Addition und Multiplikation assoziativ sind,
+\item Addition und Multiplikation multiplikativ sind,
+\item Addition über Multiplikation distribuiert,
+\item das Element~$0$ neutral bezüglich der Addition ist,
+\item das Element~$1$ neutral bezüglich der Multiplikation ist und
+\item jedes Element ein bezüglich der Addition inverses Element besitzt.
+\end{itemize}
+\end{defn}
+
+\begin{defn}Ein \emph{Körper} ist ein Ring, in dem jedes Element
+\emph{entweder} Null \emph{oder} (bezüglich der Multiplikation) invertierbar
+ist.\end{defn}
+
+\begin{bsp}Die Mengen~$\ZZ$, $\QQ$, $\RR$, $\ZZ/(n)$, $\ZZ[X]$, $\QQ[X]$ bilden
+bezüglich ihrer üblichen Additionen und Multiplikationen Ringe. Für~$n$ prim
+ist~$\ZZ/(n)$ sogar ein Körper. Die Menge~$\NN$ bildet bezüglich der üblichen
+Addition und Multiplikation noch keinen Ring, da bis auf die Null kein Element
+ein Negatives besitzt.\end{bsp}
+
+\begin{defn}Ein \emph{Ideal} eines Rings~$R$ ist eine Teilmenge~$\aa \subseteq
+R$, die
+\begin{itemize}
+\item die Null enthält: $0 \in \aa$,
+\item abgeschlossen unter Addition ist: $x + y \in \aa$ für alle~$x,y \in \aa$, und
+\item die \emph{Magneteigenschaft} erfüllt: $r x \in \aa$ für alle~$r \in R, x
+\in \aa$.
+\end{itemize}
+\end{defn}
+
+Die Axiome werden durch folgendes Beispiel motiviert:
+
+\begin{bsp}Sei~$R$ ein Ring (zum Beispiel~$R = \ZZ$) und~$u \in R$ ein Element
+(zum Beispiel deine Lieblingszahl). Dann ist die Menge
+\[ (u) := \{ r u \,|\, r \in R \} \subseteq R \]
+aller Vielfachen von~$u$ ein Ideal, das sog. \emph{von~$u$ erzeugte Ideal}.
+Denn die Null ist ein Vielfaches von~$u$ (das Null-fache), die Summe zweier
+Vielfachen von~$u$ ist ein Vielfaches von~$u$, und ist~$x$ ein Vielfaches
+von~$u$, so ist~$r x$ für ein beliebiges Element~$r \in R$ "`umso mehr"' ein
+Vielfaches von~$u$.
+\end{bsp}
+
+In Körpern~$K$ ist der Idealbegriff dagegen langweilig: Körper besitzen stets nur
+genau zwei Ideale, nämlich das sog. Nullideal~$(0) = \{ 0 \}$ und das sog.
+Einsideal~$(1) = K$.
+
+\begin{defn}Ein Ideal~$\pp \subseteq R$ heißt genau dann \emph{Primideal}, wenn
+\begin{itemize}
+\item die Eins nicht enthalten ist: $1 \not\in \pp$, und
+\item falls ein Produkt in~$\pp$ enthalten ist, schon ein Faktor in~$\pp$
+liegt:
+\[ xy \in \pp \quad\Longrightarrow\quad x \in \pp \,\vee\, y \in \pp
+  \qquad\text{für alle~$x,y \in R$.} \]
+\end{itemize}
+\end{defn}
+
+\begin{bsp}Sei~$u \in \ZZ$. Dann ist das von~$u$ erzeugte Ideal~$(u) \subseteq
+\ZZ$ genau dann ein Primideal, wenn~$u$ Null ist oder wenn~$u$ oder~$-u$ eine
+Primzahl ist.\end{bsp}
+
+
+\subsection{Historische Motivation für Idealtheorie}
+
+Historisch gab es eine große Motivation, dieses Konzept einzuführen. Vom Ring
+der ganzen Zahlen war natürlich bekannt, dass sich (bis auf die Null) jedes
+Element auf eindeutige Weise als Produkt von Primfaktoren schreiben lässt. Man
+fragte sich nun, ob gewisse für die Zahlentheorie relevante Ringe dieselbe
+Eigenschaft hatten: Das wäre zum einen recht "`nett"', zum anderen aber auch
+enorm nützlich: Denn man kannte schon einfache Beweise von Fermats letztem
+Satz, welche als einzige unsicherte Voraussetzung diese Eigenschaft hatten.
+
+Leider stellte es sich heraus, dass diese Eigenschaft vielen der interessanten
+Ringe \emph{nicht} zu kam. Kronecker hatte nun die geniale Einsicht, von
+Zahlen zu Idealen und von Primzahlen zu Primidealen zu verallgemeinern. Denn in
+diesen Ringen gilt zumindest noch, dass sich jedes \emph{Ideal} eindeutig als
+Produkt von Primidealen schreiben lässt. Mit dieser schwächeren Eigenschaft
+lässt sich zwar kein allgemeiner Beweis von Fermats letztem Satz führen,
+zumindest lässt sich jedoch eine große Klasse von Spezialfällen damit
+behandeln.
+
+Wer sich für dieses Thema interessiert, dem sei das deutschsprachige
+Buch~\ref{schmidt:zahlentheorie} von Alexander Schmidt empfohlen. Als Vorwissen
+setzt es nur Schulkenntnisse voraus.
+
+
+\subsection{Die Ideale im Ring der ganzen Zahlen und im Polynomring über einen
+Körper}
+
+Die Tafeln~\ref{ideale:z} und~\ref{ideale:qx} zeigen die Ideale der Ringe~$\ZZ$
+und~$\QQ[X]$. Ergänzt man die aus Platzgründen ausgelassenen Ideale, sind das
+sogar vollständige Übersichten über \emph{alle} Ideale der jeweiligen Ringe --
+wenn man klassische Logik voraussetzt.
+
+\begin{table}
+  \centering
+  \includegraphics[scale=0.4]{ideale-z}
+  \caption{\label{ideale:z}Modulo Platz und klassische Logik eine
+  vollständige Übersicht über alle Ideale von~$\ZZ$.}
+\end{table}
+
+
+\subsection{Primideale und Nilpotenz}
+
+\begin{defn}Ein Element~$x \in R$ eines Rings~$R$ heißt genau dann
+\emph{nilpotent}, wenn eine gewisse Potenz Null ist:
+\[ x^n = 0 \qquad\text{für ein~$n \geq 0$}. \]
+\end{defn}
+
+\begin{bsp}Im Ring~$\ZZ/(4)$ ist das Element~$[2]$ nilpotent.\end{bsp}
+
+\begin{prop}Die nilpotenten Elemente eines Rings liegen in allen Primidealen
+des Rings.\end{prop}
+\begin{proof}Sei~$x$ mit~$x^n = 0$ ein nilpotentens Element. Sei~$\pp$ ein
+beliebiges Primideal. Dann ist also~$x^n$ in~$\pp$ enthalten. Wegen der
+Primalitätsbedingung ist daher auch~$x$ in~$\pp$ enthalten. Das war zu
+zeigen.\end{proof}
+
+Interessant ist nun, dass -- in einem klassischen Kontext -- auch die Umkehrung
+dieser Proposition gilt:
+\begin{prop}[nur klassisch]Im Schnitt aller Primideale eines Rings liegen nur
+die nilpotenten Elemente.\end{prop}
+\begin{proof}Sei~$x$ ein Element von~$R$, welches in allen Primidealen liegt.
+Wir wollen zeigen, dass~$x$ nilpotent ist; dazu führen wir einen
+Widerspruchsbeweis, nehmen also an, dass~$x$ nicht nilpotent ist. Dann enthält
+die Menge
+\[ S := \{ x^n \,|\, n \geq 0 \} \subseteq R \]
+also nicht die Null. \ldots\ldots
+\end{proof}
 
 \nocite{*}
 \printbibliography

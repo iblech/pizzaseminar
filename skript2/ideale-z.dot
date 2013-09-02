@@ -1,0 +1,62 @@
+digraph main {
+  rankdir = TB;
+  edge [ color = "#888888", arrowhead = none ];
+
+  node [ shape = "none" ];
+
+  edge [ style = invis ];
+  subgraph z {
+    1;
+  }
+  subgraph a {
+    rank="same";
+    2 -> 3 -> 5 -> 7 -> f7;
+  }
+  subgraph b {
+    rank="same";
+    4 -> 6 -> 9 -> 10 -> 15 -> 25;
+  }
+  subgraph c {
+    rank="same";
+    8 -> 12 -> 18 -> 20
+  }
+  subgraph d {
+    rank="same";
+    16 -> 24;
+  }
+  edge [ style = solid ];
+
+  1 -> { 2 3 5 7 f7 };
+  2 -> 4 -> 8 -> 16;
+  { 2 3 } -> 6 -> 12 -> 24;
+  3 -> 9 -> 18;
+  { 2 5 } -> 10 -> 20;
+  { 3 5 } -> 15;
+  5 -> 25;
+  4 -> 12;
+  4 -> 20;
+  6 -> 18;
+  8 -> 24;
+
+  { 2 3 5 7 f7 8 9 10 12 15 18 20 24 } -> 0;
+
+  0 [ label="(0)" ];
+  1 [ label="(1)" ];
+  2 [ label="(2)" ];
+  3 [ label="(3)" ];
+  4 [ label="(4)" ];
+  5 [ label="(5)" ];
+  6 [ label="(6)" ];
+  7 [ label="(7)" ];
+  f7 [ label="..." ];
+  8 [ label="(8)" ];
+  9 [ label="(9)" ];
+  10 [ label="(10)" ];
+  12 [ label="(12)" ];
+  15 [ label="(15)" ];
+  16 [ label="(16)" ];
+  18 [ label="(18)" ];
+  20 [ label="(20)" ];
+  24 [ label="(24)" ];
+  25 [ label="(25)" ];
+}
