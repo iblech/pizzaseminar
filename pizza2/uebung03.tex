@@ -1,0 +1,36 @@
+\documentclass{pizzablatt}
+
+\begin{document}
+
+\maketitle{3}{4. September 2013}
+
+\begin{aufgabe}{Schranken für die Größe der~$n$-ten Primzahl}
+Folgender Beweis der Unendlichkeit der Primzahlen wird Euklid zugeschrieben:
+
+\begin{quote}
+Angenommen, $p_1, \ldots, p_r$ seien alle Primzahlen. Wir setzen~$N :=
+p_1 \cdots p_r + 1$. Nach dem Fundamentalsatz der Arithmetik lässt sich~$N$ in
+Primfaktoren zerlegen. Das ist ein Widerspruch, denn die~$p_i$ sind keine
+Teiler von~$N$, andere Primzahlen gibt es aber nach Widersprungsvoraussetzung
+nicht.
+\end{quote}
+
+\begin{enumerate}
+\item Formuliere den Beweis so um, dass er konstruktiv folgende stärkere
+Aussage zeigt: \emph{Seien~$p_1,\ldots,p_r$ gegebene Primzahlen. Dann gibt es eine
+weitere Primzahl ungleich den~$p_i$.}
+
+\item Sei nun~$p_1,p_2,\ldots$ die aufsteigende Folge aller Primzahlen. Extrahiere
+aus deinem Beweis die Abschätzung
+\[ p_{n+1} \leq p_1 \cdots p_n + 1. \]
+
+\item Zeige folgende Schranke für die Größe der~$n$-ten Primzahl:
+\[ p_n \leq 2^{2^{n-1}}. \]
+
+\item Tatsächlich ist diese Schranke sehr pessimistisch. Extrahiere aus Eulers
+Alternativbeweis der Unendlichkeit der Primzahlen eine
+bessere! (Details kommen noch!)
+\end{enumerate}
+\end{aufgabe}
+
+\end{document}
