@@ -1072,7 +1072,7 @@ gesetzten Doppelnegationen verzichten kann. Gewissermaßen besteht also der
 einzige Unterschied zwischen klassischer und intuitionistischer Logik in der
 Interpretation der Disjunktion und der Existenzquantifikation.\end{aufg}
 
-\begin{satz}Seien~$\varphi$, $\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
+\begin{satz}\label{dnt:proof}Seien~$\varphi$, $\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
 \begin{enumerate}
 \item Klassisch gilt: $\varphi^\circ \Longleftrightarrow \varphi$.
 \item Intuitionistisch gilt: $\neg\neg\varphi^\circ \Longrightarrow
@@ -1128,6 +1128,14 @@ Doppelnegationsübersetzungen der Peano-Axiome wiederum Instanzen den
 Peano-Axiome sind und daher auch in Heyting-Arithmetik gelten. Daher kann man
 eine Ableitung von~$\bot$ in Peano-Arithmetik in einer Ableitung
 von~$\bot^\circ \equiv \bot$ in Heyting-Arithmetik überführen.\end{proof}
+
+Folgendes Lemma werden wir erst später, im Abschnitt über Friedmans Trick, benötigen:
+\begin{lemma}\label{dnt:geom}Sei~$\varphi$ eine Aussage, in der nur~$\top$, $\bot$,
+$\wedge$, $\vee$ und $\exists$ (über
+bewohnte Typen), aber nicht~$\Rightarrow$ oder~$\forall$ vorkommen. Dann gilt
+intuitionistisch: $\varphi^\circ \Longleftrightarrow \neg\neg\varphi$.
+\end{lemma}
+\begin{proof}Induktion über den Aussageaufbau.\end{proof}
 
 
 \subsection{Interpretation der übersetzten Aussagen}
@@ -1273,7 +1281,157 @@ hier ist Beleg von~$\bot$: $z$.
 % XXX Curry-Howard
 
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
-historische Einordnung: Hilberts Programm, \ldots
+LCM, \ldots
+
+
+\section[Beziehung zur theoretischen Informatik: die
+Curry-Howard-Korrespondenz]{Beziehung zur theoretischen Informatik: \newline die
+Curry-Howard-Korrespondenz}
+
+
+\section{Hilberts Programm}
+
+\subsection{Die mathematische Welt um 1900}
+
+\XXX{Unvollständig und falsch.}
+
+\emph{Hilberts Programm:} Zeige, dass man aus jedem Beweis einer konkreten
+Aussage, welcher beliebige ideelle Prinzipien (Prinzip vom ausgeschlossenen
+Dritten für beliebige Aussagen, Auswahlaxiom, maximale Ideale in der Algebra)
+verwendet, einen finitistisch zulässigen Beweis erhalten kann.
+
+In voller Allgemeinheit gilt Hilberts Programm als \emph{gescheitert}. Denn die
+Aussage \emph{Peano-Arithmetik ist konsistent} lässt sich als "`konkrete
+Aussage"' formulieren und leicht mit abstrakten Methoden beweisen (in üblicher
+Mengenlehre liefert die unendliche Menge~$\NN$ ein Modell), kann aber keinen
+finitistisch zulässigen Beweis besitzen, da es nach Gödels
+Unvollständigkeitssatz nicht einmal einen Beweis in der stärkeren
+Peano-Arithmetik geben kann.
+
+Teilweise kann Hilberts Programm jedoch doch realisiert werden, unter anderem
+in Analysis und Algebra: Mittels \emph{proof mining} kann aus klassischen
+Beweisen mehr oder weniger systematisch noch konstruktiver Inhalt extrahiert
+werden -- etwa explizite Schranken für Konstanten oder explizite Zeugen von
+Existenzbehauptungen.
+
+
+\subsection{Friedmans Trick}
+
+\begin{defn}Die \emph{Friedmanübersetzung}
+wird für eine feste Aussage~$F$ wie folgt rekursiv definiert:
+\begin{align*}
+  \varphi^F &:\equiv \varphi \vee F \text{ für atomare Aussagen~$\varphi$} \\
+  \top^F &:\equiv \top \\
+  \bot^F &:\equiv F \\
+  (\varphi \wedge \psi)^F &:\equiv (\varphi^F \wedge \psi^F) \\
+  (\varphi \vee \psi)^F &:\equiv (\varphi^F \vee \psi^F) \\
+  (\varphi \Rightarrow \psi)^F &:\equiv (\varphi^F \Rightarrow \psi^F) \\
+  (\forall x\?X{:}\ \varphi)^F &:\equiv (\forall x\?X{:}\ \varphi^F) \\
+  (\exists x\?X{:}\ \varphi)^F &:\equiv (\exists x\?X{:}\ \varphi^F)
+\end{align*}
+Wenn in~$F$ Variablen vorkommen, muss man ggf. manche Variablen umbenennen, um
+Variablenkollisionen zu vermeiden.
+\end{defn}
+
+\begin{bem}Da~$\neg\varphi :\equiv (\varphi \Rightarrow \bot)$,
+gilt~$(\neg\varphi)^F \equiv (\varphi^F \Rightarrow F)$.\end{bem}
+
+\begin{satz}\label{friedman:proof}
+\begin{enumerate}
+\item Sei~$\varphi$ eine Aussage, in der Existenzquantoren nur über bewohnte
+Typen gehen. Dann gilt intuitionistisch: $F \Longrightarrow \varphi^F$.
+
+\item Sei~$\varphi$ eine Aussage, in der nur~$\top$, $\bot$,
+$\wedge$, $\vee$ und $\exists$ (über
+bewohnte Typen), aber nicht~$\Rightarrow$ oder~$\forall$ vorkommen.
+Dann gilt intuitionistisch: $\varphi^F \Longleftrightarrow \varphi \vee F$.
+% Wenn sich die Nummerierung ändert, auch unten anpassen!
+
+\item Seien~$\varphi$ und~$\psi$ beliebige Aussagen in einem Kontext~$\vec x$,
+in der Existenzquantoren nur über bewohnte Typen gehen.
+Wenn~$\varphi \seq{\vec x} \psi$ intuitionistisch, dann gilt auch~$\varphi^F
+\seq{\vec x} \psi^F$ intuitionistisch.
+\end{enumerate}
+\end{satz}
+\begin{proof}
+\begin{enumerate}
+\item Induktion über den Aussageaufbau. Exemplarisch zeigen wir den Fall
+\[ F \Longrightarrow (\exists x\?X{:}\ \varphi)^F. \]
+Gelte also~$F$. Da~$X$ bewohnt ist, gibt es ein~$x : X$. Nach
+Induktionsvoraussetzung können wir ~$F \Rightarrow \varphi^F$ voraussetzen.
+Somit folgt~$\varphi^F$, das war zu zeigen.
+\item Induktion über den Aussageaufbau.
+\item Induktion über den Aufbau intuitionistischer Ableitungen. Wie beim
+analogen Theorem über die Doppelnegationsübersetzung (Satz~\ref{dnt:proof})
+muss man zeigen, dass die Friedmanübersetzungen der Schlussregeln gültig sind.
+Das ist sogar einfacher als bei der Doppelnegationsübersetzung.\qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{kor}Peano-Arithmetik ist für Aussagen der Form~$\forall (\cdots
+\Rightarrow \cdots)$, wobei die Teilaussagen den Beschränkungen
+aus~\ref{friedman:proof}b) unterliegen müssen, konservativ über
+Heyting-Arithmetik.\end{kor}
+\begin{proof}Gelte~$\top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi)$ in
+Peano-Arithmetik. Dann gilt auch
+\[ \varphi \seq{x} \psi \]
+in Peano-Arithmetik; so schaffen wir den Allquantor und die Implikation weg.
+Nach dem Satz über die Doppelnegationsübersetzung (Satz~\ref{dnt:proof}) folgt
+die Ableitbarkeit der übersetzten Sequenz in Heyting-Arithmetik. Da~$\varphi$
+und~$\psi$ den genannten Einschränkungen unterliegen, sind~$\varphi^\circ$
+und~$\psi^\circ$ intuitionistisch äquivalent zu ihren Doppelnegationen
+(Lemma~\ref{dnt:geom}); also ist die Sequenz
+\[ \neg\neg\varphi \seq{x} \neg\neg\psi \]
+in Heyting-Arithmetik ableitbar. Nun können wir die Friedmanübersetzung
+bezüglich einer noch unspezifizierten Aussage~$F$ anwenden. Da sich leicht die
+Friedmanübersetzungen der Peano-Axiome in Heyting-Arithmetik zeigen lassen,
+folgt die Ableitbarkeit von
+\[ ((\varphi^F \Rightarrow F) \Rightarrow F) \seq{x}
+  ((\psi^F \Rightarrow F) \Rightarrow F) \]
+in Heyting-Arithmetik. Dass~$\varphi$ und~$\psi$ den genannten Einschränkungen
+unterliegen, können wir ein weiteres Mal ausnutzen: Heyting-Arithmetik kann die
+Sequenz
+\[ ((\varphi \vee F \Rightarrow F) \Rightarrow F) \seq{x}
+  ((\psi \vee F \Rightarrow F) \Rightarrow F) \]
+zeigen. \emph{Friedmans Trick} besteht nun darin, für~$F$ speziell~$\varphi$ zu
+wählen. Dann vereinfachen sich die Ausdrücke und wir erhalten die Ableitbarkeit
+von $\varphi \seq{x} \psi$, also von
+\[ \top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi) \]
+in Heyting-Arithmetik.
+\end{proof}
+
+\begin{bsp}Die Aussage der Zahlentheorie, dass es unendlich viele Primzahlen
+gibt, lässt sich in der Form
+\[ \forall n\?\NN{:}\ \exists p\?\NN{:}\ p \geq n \wedge \text{$p$ ist prim} \]
+schreiben. Zur Formalisierung der Primalitätsaussage benötigt man nur
+\emph{beschränkte Allquantifikation}, für welche die Konservativitätsaussage
+ebenfalls gilt. Also kann man aus jedem klassischen Beweis der Unendlichkeit
+der Primzahlen einen konstruktiven extrahieren.
+\end{bsp}
+% XXX: Wie muss /p prim/ formuliert werden?
+
+\begin{bsp}Das Konservativitätsresultat trifft insbesondere
+auf~$\Pi^0_2$-Aussagen zu -- das sind solche der Form
+\[ \forall \cdots \forall\ \exists \cdots \exists\ (\cdots), \]
+wobei die abschließende Teilaussage keine Quantoren mehr enthält. Zu diesen
+gehört die Aussage, dass eine gegebene Turingmaschine bei jeder
+beliebigen Eingabe schlussendlich terminiert ("`$\forall\,\text{Eingaben}\
+\exists\,\text{Stoppzeitpunkt}$"').
+\end{bsp}
+
+% XXX: Markovs Regel beim Namen erwähnen.
+
+% XXX: Nochmal betonen, dass dadurch eine partielle Realisierung von Hilberts
+% Programm erfolgt ist.
+
+
+\subsection{Dynamische Methoden in der Algebra}
+
+\[ \top \seq{} Z(0) \]
+\[ Z(x) \wedge Z(y) \seq{} Z(x+y) \]
+\[ Z(x) \seq{} Z(rx) \]
+\[ Z(1) \seq{} \bot \]
+\[ Z(xy) \seq{} Z(x) \vee Z(y) \]
 
 
 \appendix
@@ -1370,7 +1528,7 @@ zumindest lässt sich jedoch eine große Klasse von Spezialfällen damit
 behandeln.
 
 Wer sich für dieses Thema interessiert, dem sei das deutschsprachige
-Buch~\ref{schmidt:zahlentheorie} von Alexander Schmidt empfohlen. Als Vorwissen
+Buch~\cite{schmidt:zahlentheorie} von Alexander Schmidt empfohlen. Als Vorwissen
 setzt es nur Schulkenntnisse voraus.
 
 
