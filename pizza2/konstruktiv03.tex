@@ -1,5 +1,7 @@
 \documentclass{pizzablatt}
 
+\geometry{tmargin=2cm,bmargin=1.5cm,lmargin=2.9cm,rmargin=2.9cm}
+
 \begin{document}
 
 \maketitle{3}{Pizzaseminar zu konstruktiver Mathematik}{4. September 2013}
@@ -18,7 +20,8 @@ nicht.
 \begin{enumerate}
 \item Formuliere den Beweis so um, dass er konstruktiv folgende stärkere
 Aussage zeigt: \emph{Seien~$p_1,\ldots,p_r$ gegebene Primzahlen. Dann gibt es eine
-weitere Primzahl ungleich den~$p_i$.}
+weitere Primzahl ungleich den~$p_i$.} (Das war auch Euklids ursprüngliche
+Formulierung.)
 
 \item Sei nun~$p_1,p_2,\ldots$ die aufsteigende Folge aller Primzahlen. Extrahiere
 aus deinem Beweis die Abschätzung
@@ -26,10 +29,49 @@ aus deinem Beweis die Abschätzung
 
 \item Zeige folgende Schranke für die Größe der~$n$-ten Primzahl:
 \[ p_n \leq 2^{2^{n-1}}. \]
+\end{enumerate}
 
-\item Tatsächlich ist diese Schranke sehr pessimistisch. Extrahiere aus Eulers
-Alternativbeweis der Unendlichkeit der Primzahlen eine
-bessere! (Details kommen noch!)
+Tatsächlich ist diese Schranke sehr pessimistisch. Aus Eulers
+Alternativbeweis der Unendlichkeit der Primzahlen, der nicht nur die Existenz,
+sondern auch die Eindeutigkeit der
+Primfaktorzerlegung verwendet, kann man eine bessere Schranke extrahieren;
+siehe etwa die Analyse in U.~Kohlenbach, \emph{Applied Proof Theory}, Kapitel~2,
+Seite~15f.
+\end{aufgabe}
+
+\begin{aufgabe}{Friedmans Trick}
+Beweise folgende fundamentale Eigenschaften der Friedmanübersetzung:
+\begin{enumerate}
+\item Sei~$\varphi$ eine Aussage, in der nur~$\top$, $\bot$,
+$\wedge$, $\vee$ und $\exists$ (über
+bewohnte Typen), aber nicht~$\Rightarrow$ oder~$\forall$ vorkommen.
+Dann gilt intuitionistisch: $\varphi^F \Longleftrightarrow \varphi \vee F$.
+
+\emph{Tipp:} Induktion über den Aussageaufbau.
+
+\item Seien~$\varphi$ und~$\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
+Wenn~$\varphi \seq{\vec x} \psi$ intuitionistisch, dann gilt auch~$\varphi^F
+\seq{\vec x} \psi^F$ intuitionistisch.
+
+\emph{Tipp:} Induktion über den Aufbau von Ableitungen -- zu zeigen ist, dass
+die Friedmanübersetzungen aller Schlussregeln intuitionistisch gültig sind.
+
+\item Die Peano-Axiome implizieren ihre Friedmanübersetzungen.
+\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}{Formaler Nullstellensatz}
+Seien~$f_1,\ldots,f_n \in R[X_1,\ldots,X_m]$ Polynome in~$m$ Variablen über
+einem Ring~$R$ mit~$1 \neq 0$.
+\begin{enumerate}
+\item
+Gelte~$1 = p_1 f_1 + \cdots + p_n f_n$ für gewisse Polynome~$p_1,\ldots,p_n$.
+Zeige, dass die Polynome~$f_i$ keine gemeinsame Nullstelle besitzen.
+\item Zeige umgekehrt, dass man aus einem Beweis, dass die~$f_i$ keine
+gemeinsame Nullstelle besitzen, genauer einem Beweis der Sequenz
+\[ Z(f_1) \wedge \cdots \wedge Z(f_n) \seq{} \bot \]
+welcher von der im Skript beschriebenen Form ist, explizit eine Darstellung des
+Eins\-polynoms wie in~a) erhalten kann.
 \end{enumerate}
 \end{aufgabe}
 
