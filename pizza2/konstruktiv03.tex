@@ -1,6 +1,8 @@
 \documentclass{pizzablatt}
 
-\geometry{tmargin=2cm,bmargin=1.5cm,lmargin=2.9cm,rmargin=2.9cm}
+\geometry{tmargin=2cm,bmargin=1.3cm,lmargin=2.9cm,rmargin=2.9cm}
+
+\setlength{\aufgabenskip}{1em}
 
 \begin{document}
 
@@ -42,6 +44,9 @@ Seite~15f.
 \begin{aufgabe}{Friedmans Trick}
 Beweise folgende fundamentale Eigenschaften der Friedmanübersetzung:
 \begin{enumerate}
+\item Sei~$\varphi$ eine Aussage, in der Existenzquantoren nur über bewohnte
+Typen gehen. Dann gilt intuitionistisch: $F \Longrightarrow \varphi^F$.
+
 \item Sei~$\varphi$ eine Aussage, in der nur~$\top$, $\bot$,
 $\wedge$, $\vee$ und $\exists$ (über
 bewohnte Typen), aber nicht~$\Rightarrow$ oder~$\forall$ vorkommen.
@@ -49,7 +54,8 @@ Dann gilt intuitionistisch: $\varphi^F \Longleftrightarrow \varphi \vee F$.
 
 \emph{Tipp:} Induktion über den Aussageaufbau.
 
-\item Seien~$\varphi$ und~$\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
+\item Seien~$\varphi$ und~$\psi$ beliebige Aussagen in einem Kontext~$\vec x$
+(mit~$\exists$ nur über bewohnte Typen).
 Wenn~$\varphi \seq{\vec x} \psi$ intuitionistisch, dann gilt auch~$\varphi^F
 \seq{\vec x} \psi^F$ intuitionistisch.
 
