@@ -17,12 +17,12 @@
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-\renewcommand{\maketitle}[2]{
+\renewcommand{\maketitle}[3]{
   \thispagestyle{empty}
   \vspace*{-4em}
-  \begin{flushright}Universität Augsburg \\ #2\end{flushright}
+  \begin{flushright}Universität Augsburg \\ #3\end{flushright}
 
-  \begin{center}\Large \textbf{Pizzaseminar} \\
+  \begin{center}\Large \textbf{#2} \\
   #1. Übungsblatt
   \end{center}
   \vspace{1.5em}}
