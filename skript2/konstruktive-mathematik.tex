@@ -56,12 +56,15 @@
 \newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
 \newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
 
+\newcommand{\brak}[1]{\llbracket {#1} \rrbracket}
+
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\PP}{\mathbb{P}}
 \renewcommand{\aa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
 \newcommand{\pp}{\mathfrak{p}}
 \newcommand{\mm}{\mathfrak{m}}
 \newcommand{\I}{\mathcal{I}}
@@ -74,6 +77,7 @@
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Rad}{\mathrm{Rad}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\Id}{\mathrm{Id}}
@@ -798,8 +802,10 @@ wenn es eine entsprechende endliche \emph{Ableitung} gibt, welche nur die
 in Tafel~\ref{ableitungsregeln:int} aufgeführten Ableitungsregeln verwendet.
 \end{defn}
 
-An die Notation der Ableitungsregeln muss man sich gewöhnen. Drei
-Beispiele seien im Folgenden genauer erklärt.
+Aus dem Kontext muss hervorgehen, ob man eine Sequenz nur als solche
+diskutieren möchte oder ob man ihre Ableitbarkeit unterstellt. Außerdem muss
+man sich an die Notation der Ableitungsregeln gewöhnen, drei Beispiele seien im
+Folgenden genauer erklärt.
 
 \begin{table}
   \small
@@ -1039,12 +1045,12 @@ ihm eine Ableitung der Sequenz~$\top \seq{} \bot$ (im leeren Kontext) gibt. Ande
 \emph{konsistent}.\end{defn}
 
 
-\section[Beziehung zu klassischer Logik: die Doppelnegationsübersetzung]{
+\section[Beziehung zu klassischer Logik: die Doppelnegationsübersetzung]{%
   Beziehung zu klassischer Logik: \newline die Doppelnegationsübersetzung}
 
 Aus den Augen einer konstruktiven Mathematikerin sind manche Aussagen ihrer
 klassisch arbeitenden Kollegen falsch. Es gibt aber eine einfache Übersetzung,
-die \emph{Doppelnegationsübersetzung}, die Aussagen derart umformt, dass die
+die \emph{Doppel\-ne\-ga\-tions\-über\-set\-zung}, die Aussagen derart umformt, dass die
 Übersetzung genau dann konstruktiv gilt, wenn die ursprüngliche Aussage
 klassisch gilt. Mit dieser kann die konstruktive Mathematikern daher ihre
 Kollegen verstehen, ohne ihre Logik verlassen zu müssen.
@@ -1281,7 +1287,7 @@ hier ist Beleg von~$\bot$: $z$.
 % XXX Curry-Howard
 
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
-LCM, \ldots
+LCM, Stein der Weisen, \ldots
 
 
 \section[Beziehung zur theoretischen Informatik: die
@@ -1311,11 +1317,23 @@ Peano-Arithmetik geben kann.
 Teilweise kann Hilberts Programm jedoch doch realisiert werden, unter anderem
 in Analysis und Algebra: Mittels \emph{proof mining} kann aus klassischen
 Beweisen mehr oder weniger systematisch noch konstruktiver Inhalt extrahiert
-werden -- etwa explizite Schranken für Konstanten oder explizite Zeugen von
-Existenzbehauptungen.
+werden. Je nach Situation kann \emph{konstruktiver Inhalt} etwa
+\begin{itemize}
+\item explizite Schranken für Konstanten,
+\item stetige (oder noch bessere) Abhängigkeit von Paramtern,
+\item explizite Zeugen von Existenzbehauptungen oder
+\item Algorithmen
+\end{itemize}
+umfassen.
+
+% XXX: Eliminationsbegriff
+
+\begin{motto}\label{motto:inhaltvonbeweisen}In einem \emph{Beweis} einer
+Aussage steckt viel mehr Inhalt als die bloße Information, dass die Aussage
+wahr ist.\end{motto}
 
 
-\subsection{Friedmans Trick}
+\subsection{Beispiel aus der Zahlentheorie: Friedmans Trick}
 
 \begin{defn}Die \emph{Friedmanübersetzung}
 wird für eine feste Aussage~$F$ wie folgt rekursiv definiert:
@@ -1371,7 +1389,8 @@ Das ist sogar einfacher als bei der Doppelnegationsübersetzung.\qedhere
 \begin{kor}Peano-Arithmetik ist für Aussagen der Form~$\forall (\cdots
 \Rightarrow \cdots)$, wobei die Teilaussagen den Beschränkungen
 aus~\ref{friedman:proof}b) unterliegen müssen, konservativ über
-Heyting-Arithmetik.\end{kor}
+Heyting-Arithmetik: Aus jedem Beweis in Peano-Arithmetik lässt sich ein Beweis
+in Heyting-Arithmetik gewinnen.\end{kor}
 \begin{proof}Gelte~$\top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi)$ in
 Peano-Arithmetik. Dann gilt auch
 \[ \varphi \seq{x} \psi \]
@@ -1425,17 +1444,194 @@ beliebigen Eingabe schlussendlich terminiert ("`$\forall\,\text{Eingaben}\
 % Programm erfolgt ist.
 
 
-\subsection{Dynamische Methoden in der Algebra}
+\subsection{Beispiel aus der Algebra: dynamische Methoden}
 
-\[ \top \seq{} Z(0) \]
-\[ Z(x) \wedge Z(y) \seq{} Z(x+y) \]
-\[ Z(x) \seq{} Z(rx) \]
-\[ Z(1) \seq{} \bot \]
-\[ Z(xy) \seq{} Z(x) \vee Z(y) \]
+In der kommutativen Algebra sind viele Techniken gebräuchlich, mit deren Hilfe
+man bestimmte konkrete Aussagen beweisen kann, deren Gültigkeit man aber nur
+in klassischer Logik und unter Verwendung starker Auswahlprinzipien beweisen
+kann. Drei Beispiele sind folgende:
+
+\begin{itemize}
+\item Um zu zeigen, dass ein Element~$x$ eines Rings~$R$ nilpotent ist (dass
+also eine gewisse Potenz~$x^n$ Null ist), genügt es zu zeigen, dass~$x$ in
+allen Primidealen von~$R$ liegt (siehe Proposition~\ref{intersectprim}).
+\item Um zu zeigen, dass ein Element~$x$ im Jacobson-Radikal liegt (dass
+also~$1-rx$ für alle~$r \in R$ invertierbar ist), genügt es zu zeigen, dass~$x$
+in allen maximalen Idealen von~$R$ liegt.
+\item Um zu zeigen, dass ein Element~$x$ eines Körpers~$K$ ganz über einem
+Unterring~$R$ ist, genügt es zu zeigen, dass~$x$ in allen Bewertungsringen
+liegt.
+\item Um zu zeigen, dass zwischen Polynomen~$f_1,\ldots,f_m \in
+K[X_1,\ldots,X_n]$, wobei~$K$ ein algebraisch abgeschlossener Körper ist, eine
+Relation der Form~$1 = p_1 f_1 + \cdots + p_m f_m$ besteht, genügt es zu
+zeigen, dass die~$f_i$ keine gemeinsame Nullstelle besitzen.
+\end{itemize}
+
+
+\subsubsection*{Standardbeispiel: Nilpotente Polynome}
+\label{bsp:nilpotentepolynome}
+
+Die Nützlichkeit des Nilpotenzkriteriums wird oft an folgendem Standardbeispiel
+demonstriert. Alle benötigten Vorkenntnisse aus der Idealtheorie sind in
+Anhang~\ref{appendix:ideale} zusammengefasst.
+
+\begin{prop}[auch konstruktiv]Sei~$f \in R[X]$ ein Polynom über einem Ring~$R$. Dann gilt:
+\[ \text{$f$ ist nilpotent} \quad\Longleftrightarrow\quad
+  \text{alle Koeffizienten von~$f$ sind nilpotent}. \]
+\end{prop}
+\begin{proof}[Beweis (nur klassisch)]Die Rückrichtung ist einfach: Sei~$f = \sum_{i=0}^n a_i X^i$
+mit~$a_i^m = 0$ für alle~$i = 0,\ldots,n$. Dann überzeugt man sich durch
+Ausmultiplizieren und dem Schubfachprinzip, dass die Potenz~$f^{(m-1)(n+1) +
+1}$ Null ist.
+
+Interessant ist die Hinrichtung. Gelte~$f^m = 0$. Sei ein beliebiges
+Primideal~$\pp \subseteq R$ gegeben. Dann liegen alle Koeffizienten von~$f^m$
+in~$\pp$. Nach einem allgemeinem Lemma (Lemma~\ref{produktprim}) liegen dann
+schon alle Koeffizienten von einem der Faktoren, also von~$f$, in~$\pp$. Das
+zeigt schon die Behauptung.
+\end{proof}
+
+Der Beweis gelingt also völlig mühelos: Man muss nur
+nur das Nilpotenzkriterium und das auch anderweitig nützliche
+Lemma~\ref{produktprim} verwenden. Allerdings ist der Beweis in dieser Form
+\emph{ineffektiv}: Man erhält keine Abschätzung der Nilpotenzindizes der
+Koeffizienten, also der minimal möglichen Exponenten~$m_i$ mit~$a_i^{m_i} = 0$.
+Auch ist die Abhängigkeit der~$m_i$ von den Daten nicht klar: Gibt es eine
+universelle Schranke, die für jeden Ring und jedes Polynom gültig wäre? Oder
+kann der Nilpotenzindex bei schlimmen Ringen oder Polynomen beliebig hoch
+werden?
+
+Diese Fragen könnte man durch eine manuelle Untersuchung, etwa mit
+verschachtelten Induktionsbeweisen, klären. Es gibt aber auch ein
+systematisches Verfahren, das ganz ohne weitere Arbeit direkt aus obigem Beweis die
+gesuchten Schranken extrahiert. Der Schlüssel zu diesem Verfahren liegt in
+folgender Erkenntnis: Der Beweis verwendet gar nicht die speziellen
+Eigenschaften der Primideale des Rings~$R$ (welche das auch immer sein mögen).
+Stattdessen verwendet er nur die \emph{allgemeinen Primidealaxiome}. Gewissermaßen
+zeigt er also nicht nur, dass die Koeffizienten in allen Primidealen enthalten
+sind, sondern dass sie in \emph{dem generischen Primideal} enthalten sind.
+
+\begin{motto}Die \emph{generische} Verwendung ideeller Konzepte (Primideale,
+maximale Ideale, Bewertungen, \ldots) lässt sich eliminieren.\end{motto}
+
+
+\subsubsection*{Axiomatisierung des generischen Primideals}
+
+Sei~$R$ ein Ring.
+
+\begin{defn}\label{defn:genprime}Die Axiome für das \emph{generische Primideal}
+sind folgende.
+\begin{enumerate}
+\item[1.] $\top \seq{} Z(0).$
+\item[2.] $Z(x) \wedge Z(y) \seq{} Z(x+y)$ für alle~$x,y \in R$.
+\item[3.] $Z(x) \seq{} Z(rx)$ für alle~$r,x \in R$.
+\item[4.] $Z(1) \seq{} \bot.$
+\item[5.] $Z(xy) \seq{} Z(x) \vee Z(y)$ für alle~$x,y \in R$.
+\end{enumerate}
+\end{defn}
+
+% XXX: Zitieren!
+\begin{satz}\label{satz:genprime}Aus einem Beweis der Sequenz
+\[ Z(a_1) \wedge \cdots \wedge Z(a_n) \seq{} Z(b) \]
+welcher als sprachliche Mittel nur~$\top$, $\bot$, $\wedge$ und~$\vee$, nicht
+aber~$\Rightarrow$ oder die Quantoren, und als Schlussregeln neben den Axiomen
+aus Definition~\ref{defn:genprime} nur die
+strukturellen Regeln und die Regeln für Konjunktion und Disjunktion verwendet (siehe
+Tafel~\ref{ableitungsregeln:int}), kann man einen expliziten Zeugen der Aussage
+\[ b \in \sqrt{(a_1,\ldots,a_n)} \]
+extrahieren (siehe Definitionen~\ref{def:idealerz} und~\ref{def:radikal} für
+die Notation), also eine natürliche Zahl~$m \geq 0$ und
+Ringelemente~$u_1,\ldots,u_n \in R$ mit
+\[ b^m = u_1 a_1 + \cdots + u_n a_n. \]
+\end{satz}
+
+Der Satz ist eine beeindruckende
+Demonstration von Motto~\ref{motto:inhaltvonbeweisen}, demnach in
+Beweisen von Aussagen viel mehr Inhalt steckt als die bloße Information
+über die Wahrheit der Behauptung. Bevor wir den Beweis führen (welcher
+erstaunlich einfach ist), wollen wir das Resultat aber noch genauer
+diskutieren.
+
+\begin{kor}Aus einem Beweis der Sequenz
+\[ \top \seq{} Z(x) \]
+folgt die Nilpotenz von~$x$, und man kann sogar eine explizite Schranke
+für den Nilpotenzindex von~$x$, d.\,h. eine Zahl~$m \geq 0$ mit $x^m = 0$,
+extrahieren.
+\end{kor}
+\begin{proof}[Beweis des Korollars] Mit den Axiomen kann man die Äquivalenz
+von~$\top$ mit~$Z(0)$ zeigen. Nach dem Satz folgt daher, dass man einen
+expliziten Zeugen der Zugehörigkeit~$x \in \sqrt{(0)}$ extrahieren
+kann.\end{proof}
+
+Mit der Interpretation des Korollars und des Satzes muss man ein wenig
+vorsichtig sein. Die Aussage ist \emph{nicht}, dass aus der Zugehörigkeit
+von~$x$ zu allen Primidealen die Nilpotenz von~$x$ folgt. Diese stärkere
+Aussage kann man (bewiesenermaßen) nur in einem klassischen Rahmen zeigen.
+Stattdessen kann man lediglich aus einem entsprechend formalisierten
+\emph{Beweis}, dass~$x$ in allen Primidealen enthalten ist, die Nilpotenz
+von~$x$ folgern.
+
+\begin{bem}
+Man kann sich die Frage stellen, ob das generische Primideal durch ein
+gewöhnliches Primideal realisiert werden kann, ob es also ein Primideal~$\pp
+\subseteq R$ gibt, das genau die Eigenschaften hat, die auch das generische
+Primideal hat. Das ist nicht zu erwarten -- jedes konkrete Primideal kann nicht
+die Vorstellung des generischen Primideals fassen -- und in der Tat im
+Allgemeinen auch nicht der Fall. Denn wenn ein Primideal~$\pp$ für alle~$x \in
+R$ die Äquivalenz
+\[ x \in \pp \quad\Longleftrightarrow\quad \top \seq{} Z(x) \]
+erfüllt, gilt schon~$\pp = \sqrt{(0)} = (\text{Ideal aller nilpotenten
+Elemente})$. Also ist jeder Nullteiler in~$R$ nilpotent. Das ist aber eine
+besondere Eigenschaft, die nur wenige Ringe haben. (Etwa ist in~$\ZZ \times
+\ZZ$ das Element~$(1,0)$ ein Nullteiler, aber nicht nilpotent.)
+\end{bem}
+
+
+\subsubsection*{Beweis des Satzes}
+
+\begin{proof}[Beweis von Satz~\ref{satz:genprime}]
+Wir geben ein explizites \emph{Modell} der in der Formulierung des Satzes
+beschriebenen Axiomensystems an. Die Aussagen~$\varphi$ der Sprache wollen wir als
+gewisse Radikalideale~$\brak{\varphi} \subseteq R$ interpretieren, die
+Ableitungsrelation~$\seq{}$ als umgekehrte Idealinklusion.
+Lemma~\ref{lemma:rad} ist für das Verständnis der folgenden Übersetzungstabelle
+hilfreich. Konkret definieren wir
+\begin{align*}
+  \brak{Z(x)} &:= \sqrt{(x)} \\
+  \brak{\top} &:= \sqrt{(0)} \\
+  \brak{\bot} &:= (1) \\
+  \brak{\varphi \wedge \psi} &:= \sup\{\brak{\varphi},\brak{\psi}\} = \sqrt{\brak{\varphi} + \brak{\psi}} \\
+  \brak{\varphi \cap \psi} &:= \inf\{\brak{\varphi},\brak{\psi}\} = \brak{\varphi} \cap \brak{\psi}
+\end{align*}
+und
+\[ \varphi \models \psi \quad:\Longleftrightarrow\quad
+  \brak{\varphi} \supseteq \brak{\psi}. \]
+Dann kann man nachrechnen, dass diese semantisch definierte Relation~$\models$
+die geforderten Axiome erfüllt. Etwa gilt
+\begin{align*}
+  Z(x) \wedge Z(y) \models Z(x+y), &
+    \quad\text{denn } \sqrt{\sqrt{(x)} + \sqrt{(y)}} \supseteq \sqrt{(x+y)},\ \text{und} \\
+  Z(xy) \models Z(x) \vee Z(y), &
+    \quad\text{denn } \sqrt{(xy)} \supseteq \sqrt{(x)} \cap \sqrt{(y)},
+\end{align*}
+die restlichen Nachweise überlassen wir dem Leser. Jeden Beweis, der nur die
+angegebenen Schlussregeln verwendet, kann man also in der Menge der
+Radikalideale nachbauen. Nun ist es leicht, die Behauptung zu zeigen:
+\begin{align*}
+  Z(a_1) \wedge \cdots \wedge Z(a_n) \seq{} Z(b)
+  &\Longleftrightarrow
+  \sqrt{(b)} \subseteq \sqrt{(a_1,\ldots,a_n)} \\
+  &\Longleftrightarrow
+  b^m = u_1 a_1 + \cdots + u_n a_n \\
+  &\qquad\qquad
+    \text{für gewisse~$m \geq 0$, $u_1,\ldots,u_n \in R$.} \qedhere
+\end{align*}
+\end{proof}
 
 
 \appendix
 \section{Ideale in Ringen}
+\label{appendix:ideale}
 
 \subsection{Grundlegende Konzepte}
 
@@ -1492,6 +1688,14 @@ Vielfaches von~$u$.
 In Körpern~$K$ ist der Idealbegriff dagegen langweilig: Körper besitzen stets nur
 genau zwei Ideale, nämlich das sog. Nullideal~$(0) = \{ 0 \}$ und das sog.
 Einsideal~$(1) = K$.
+
+\begin{defn}\label{def:idealerz}Seien~$x_1,\ldots,x_n$ Elemente eines
+Rings~$R$. Dann heißt das Ideal
+\[ (x_1,\ldots,x_n) := \{ r_1 x_1 + \cdots + r_n x_n \,|\, r_1,\ldots,r_n \in R
+\} \subseteq R \]
+das \emph{von~$x_1,\ldots,x_n$ erzeugte Ideal}.\end{defn}
+
+\begin{bsp}Für den Ring der ganzen Zahlen gilt~$(2,3) = (1) = \ZZ$.\end{bsp}
 
 \begin{defn}Ein Ideal~$\pp \subseteq R$ heißt genau dann \emph{Primideal}, wenn
 \begin{itemize}
@@ -1565,9 +1769,10 @@ zeigen.\end{proof}
 
 Interessant ist nun, dass -- in einem klassischen Kontext -- auch die Umkehrung
 dieser Proposition gilt. Somit hat man ein einfaches Kriterium an der Hand, um
-die Nilpotenz eines Ringselements nachzuweisen.
+die Nilpotenz eines Ringelements nachzuweisen.
 
-\begin{prop}[nur klassisch]Im Schnitt aller Primideale eines Rings liegen nur
+\begin{prop}[nur klassisch]\label{intersectprim}%
+Im Schnitt aller Primideale eines Rings liegen nur
 die nilpotenten Elemente.\end{prop}
 \begin{proof}Sei~$x$ ein Element von~$R$, welches in allen Primidealen liegt.
 Wir wollen zeigen, dass~$x$ nilpotent ist; dazu führen wir einen
@@ -1581,13 +1786,13 @@ Teilmengeninklusionsrelation partiell geordnete Mengensystem
 Dieses ist bewohnt: Das Nullideal liegt wegen~$0 \not\in S$ in~$\U$. Außerdem
 liegt die Vereinigung~$\bigcup_i \aa_i$ einer in~$\U$ liegenden Kette von
 Elementen aus~$\U$ wieder in~$\U$. Damit sind alle Voraussetzung des Lemmas von
-Zorn erfüllt, womit~$\U$ also ein maximales Element enthält: $\mm$.
+Zorn erfüllt, womit~$\U$ also ein maximales Element~$\mm$ enthält.
 
 Man kann nun nachrechnen, dass~$\mm$ ein Primideal ist. Da~$x \not\in \mm$
 (wegen~$x \in S$), ist das ein Widerspruch zur Voraussetzung.
 \end{proof}
 
-Dieser Beweis ist an zwei zentralen Stellen inhärent klassisch: Zum einen, weil
+Dieser Beweis ist aus zwei Gründen inhärent klassisch: Zum einen, weil
 er ein echter Widerspruchsbeweis ist; zum anderen, weil das Lemma von Zorn
 verwendet wird (dieses ist zum Auswahlaxiom äquivalent). Man kann sogar zeigen,
 dass ein konstruktiver Beweis dieser Proposition nicht möglich ist. Daher
@@ -1599,6 +1804,66 @@ die Axiome eines Primideals voraussetzen darf, gegeben. Dann ist~$x$ nilpotent
 (konstruktiv!). Aus dem klassischen Beweis kann man also auf konstruktive Art
 und Weise einen konstruktiven Beweis der Nilpotenzbehauptung extrahieren.
 \end{wunder}
+
+
+\subsubsection*{Polynome mit Koeffizienten in Primidealen}
+
+Für das Beispiel in Abschnitt~\ref{bsp:nilpotentepolynome} benötigen wir
+folgendes Lemma.
+\begin{lemma}\label{produktprim}Seien~$f,g \in R[X]$ Polynome über einem Ring~$R$. Sei~$\pp
+\subseteq R$ ein Primideal. Wenn alle Koeffizienten von~$fg$ in~$\pp$ liegen,
+so liegen schon alle Koeffizienten von~$f$ oder alle Koeffizienten von~$g$
+in~$\pp$.\end{lemma}
+Wenn man mit der Faktorringkonstruktion vertraut ist, lässt sich das Lemma
+einfacher formulieren: Ist ein Produkt in~$(R/\pp)[X]$ Null, so ist schon einer
+der Faktoren in~$(R/\pp)[X]$ Null. Diese Aussage ist Instanz eines noch
+allgemeineren Lemmas: Ist ein Ring~$S$ ein Integritätsbereich, so auch~$S[X]$.
+
+
+\subsection{Radikalideale}
+
+\begin{defn}\label{def:radikal}\begin{enumerate}
+\item Ein Ideal~$\aa \subseteq R$ eines Rings~$R$ heißt genau dann
+\emph{Radikalideal}, wenn für alle~$x
+\in R$ und~$n \geq 0$ aus~$x^n \in \aa$ schon~$x \in \aa$ folgt.
+\item Sei~$\aa \subseteq R$ ein Ring. Dann heißt das Ideal
+\[ \sqrt{\aa} := \{ x \in R \,|\, \exists n \geq 0{:}\ x^n \in \aa \} \]
+das \emph{Radikal von~$\aa$}. Es ist stets ein Radikalideal, und zwar das
+kleinste, das~$\aa$ umfasst.
+\end{enumerate}\end{defn}
+
+\begin{bsp}Das Ideal~$(12) \subseteq \ZZ$ ist kein Radikalideal, $\sqrt{(12)} =
+(6)$ dagegen schon.\end{bsp}
+
+\begin{bem}Die Zuordnung von Radikalen zu Idealen bildet einen
+Linksadjungierten zum Vergissfunktor der Kategorie der Radikalideale von~$R$ in
+die Kategorie aller Ideale von~$R$.\end{bem}
+
+\begin{lemma}\label{lemma:rad}%
+Für die bezüglich der Inklusionsbeziehung partiell geordnete Menge~$\Rad(R)$
+der Radikalideale eines Rings~$R$ gilt:
+\begin{enumerate}
+\item Das kleinste Element ist~$\sqrt{(0)}$, das Ideal aller nilpotenten
+Elemente.
+\item Das größte Element ist~$(1)$, das Einsideal.
+\item Das Supremum zweier Elemente~$\aa,\bb$, also das kleinste Radikalideal,
+das~$\aa$ und~$\bb$ umfasst, ist
+\[ \sqrt{\aa + \bb} := \{ x \in R \,|\, \text{$x^n = u + v$ für ein~$n \geq 0,
+u \in \aa, v \in \bb$} \}. \]
+\item Das Infimum zweier Elemente~$\aa,\bb$, also das größte Radikalideal,
+das in~$\aa$ und~$\bb$ enthalten ist, ist
+\[ \aa \cap \bb. \]
+\end{enumerate}
+\end{lemma}
+\begin{proof}Nachrechnen.\end{proof}
+
+\begin{bsp}Für den Ring der ganzen Zahlen gilt~$(6) \cap (5) = (30)$ und~$(6)
+\cap (15) = (30)$.\end{bsp}
+
+\begin{bsp}Allgemein gilt
+\[ \sup\bigl\{ \sqrt{(x)}, \sqrt{(y)} \bigr\} = \sqrt{\sqrt{(x)} + \sqrt{(y)}} =
+\sqrt{(x,y)}. \]
+\end{bsp}
 
 \nocite{*}
 \printbibliography
