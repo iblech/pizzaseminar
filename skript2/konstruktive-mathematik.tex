@@ -348,6 +348,12 @@ nur die doppelt negierte Aussage
 \]
 vertreten.\end{bsp}
 
+\begin{bsp}Wir stehen im Supermarkt und erinnern uns, dass wir unbedingt
+gewisse Zutaten einkaufen müssen. Leider fällt uns momentan keine einzige der
+Zutaten mehr ein. Dann können wir zwar die Aussage, dass die Menge der zu
+besorgenden Zutaten nicht leer ist, vertreten, nicht jedoch die stärkere
+Aussage, dass diese Menge ein Element enthält.\end{bsp}
+
 \begin{bsp}[\cite{sigfpe:katemoss}]
 Es war ein Video aufgetaucht, dass Kate Moss beim Konsumieren von Drogen zeigte,
 und zwar entweder solche von einem Typ~A oder solche von einem Typ~B. Welcher
@@ -622,6 +628,12 @@ Programm extrahieren lassen. In der akademischen Praxis wird dieses Vorgehen
 tatsächlich angewendet.
 % XXX: Literaturverweise!
 
+Auch kann Programmextraktion didaktisch sinnvoll sein: Um etwa eine allgemeine
+Existenzbehauptung zu verstehen, ist es hilfreich, sie in einem konkreten
+Beispielfall durchzudenken. Einen konstruktiven Beweis der Existenzbehauptung
+kann man dafür stets Schritt für Schritt durchgehen und so am Ende das behauptete
+Objekt erhalten.
+
 \paragraph{Traummathematik.} Nur in einem konstruktiven Kontext ist die Arbeit
 mit sog. \emph{Traum\-axio\-men}, wie etwa
 \begin{quote}Jede Abbildung~$\RR \to \RR$ ist stetig.\end{quote}
@@ -672,11 +684,11 @@ solche Morphismen enthält, die durch Turingmaschinen algorithmisch gegeben
 werden können.
 \end{itemize}
 Eine genauere Diskussion würde an dieser Stelle zu weit
-führen. Es seien nur noch zwei Beispiele erwähnt, was mit der Topossichtweise
+führen. Es seien nur noch zwei Beispiele dafür erwähnt, was mit der Topossichtweise
 möglich ist:
 \begin{itemize}
 \item Aus dem recht einfach nachweisbaren Faktum konstruktiver linearer
-Algebra, dass jeder endlich erzeugte Vektorraum nicht nicht eine endliche
+Algebra, dass jeder endlich erzeugte Vektorraum \emph{nicht nicht} eine endliche
 Basis besitzt, folgt \emph{ohne weitere Arbeit} sofort folgende offensichtlich
 kompliziertere Aussage, wenn man das Faktum intern im Garbentopos eines reduzierten
 Schemas~$X$ interpretiert: Jeder~$\O_X$-Modul, der lokal von endlichem Typ ist,
@@ -1729,13 +1741,13 @@ Element auf eindeutige Weise als Produkt von Primfaktoren schreiben lässt. Man
 fragte sich nun, ob gewisse für die Zahlentheorie relevante Ringe dieselbe
 Eigenschaft hatten: Das wäre zum einen recht "`nett"', zum anderen aber auch
 enorm nützlich: Denn man kannte schon einfache Beweise von Fermats letztem
-Satz, welche als einzige unsicherte Voraussetzung diese Eigenschaft hatten.
+Satz, welche als einzige ungesicherte Voraussetzung diese Eigenschaft hatten.
 
 Leider stellte es sich heraus, dass diese Eigenschaft vielen der interessanten
 Ringe \emph{nicht} zu kam. Kronecker hatte nun die geniale Einsicht, von
 Zahlen zu Idealen und von Primzahlen zu Primidealen zu verallgemeinern. Denn in
 diesen Ringen gilt zumindest noch, dass sich jedes \emph{Ideal} eindeutig als
-Produkt von Primidealen schreiben lässt. Mit dieser schwächeren Eigenschaft
+Produkt von Prim\emph{idealen} schreiben lässt. Mit dieser schwächeren Eigenschaft
 lässt sich zwar kein allgemeiner Beweis von Fermats letztem Satz führen,
 zumindest lässt sich jedoch eine große Klasse von Spezialfällen damit
 behandeln.
@@ -1747,7 +1759,7 @@ setzt es nur Schulkenntnisse voraus.
 
 \subsection{Die Ideale im Ring der ganzen Zahlen}
 
-Die Tafel~\ref{ideale:z} zeigen die Ideale des Rings~$\ZZ$.
+Tafel~\ref{ideale:z} zeigt die Ideale des Rings~$\ZZ$.
 Ergänzt man die aus Platzgründen ausgelassenen Ideale, ist das
 sogar eine vollständig Übersicht über \emph{alle} Ideale von~$\ZZ$ --
 wenn man klassische Logik voraussetzt.
@@ -1758,6 +1770,12 @@ wenn man klassische Logik voraussetzt.
   \caption{\label{ideale:z}Modulo Platz und klassische Logik eine
   vollständige Übersicht über alle Ideale von~$\ZZ$.}
 \end{table}
+
+\begin{aufg}Zeige, dass wenn alle Ideale von~$\ZZ$ von der Form~$(a)$ für
+eine ganze Zahl~$x$ sind, das Prinzip vom ausgeschlossenen Dritten gilt.
+\emph{Tipp:} Betrachte für eine beliebige Aussage~$\varphi$ das Ideal (wieso
+sind die Idealaixome erfüllt?) $\{ x \in \ZZ
+\,|\, x = 0 \vee \varphi \} \subseteq \ZZ$.\end{aufg}
 
 
 \subsection{Primideale und Nilpotenz}
