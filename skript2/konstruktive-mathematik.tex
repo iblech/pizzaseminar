@@ -86,6 +86,7 @@
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\ggT}{ggT}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\Quot}{Quot}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Grp}{\mathrm{Grp}}
@@ -1580,7 +1581,7 @@ Der Satz ist eine beeindruckende
 Demonstration von Motto~\ref{motto:inhaltvonbeweisen}, demnach in
 Beweisen von Aussagen viel mehr Inhalt steckt als die bloße Information
 über die Wahrheit der Behauptung. Bevor wir den Beweis führen (welcher
-erstaunlich einfach ist), wollen wir das Resultat aber noch genauer
+erstaunlich einfach ist), wollen wir das Resultat noch genauer
 diskutieren.
 
 \begin{kor}Aus einem Beweis der Sequenz
@@ -1619,6 +1620,11 @@ algebraischen Geometrie lernt man, dass ein Ring~$R$ genau dann diese besondere
 Eigenschaft hat, wenn sein Spektrum als topologischer Raum irreduzibel ist.)
 % XXX: Referenz?
 \end{bem}
+
+\begin{bem}Die Beschränkungen in Satz~\ref{satz:genprime} an die Form des
+gegebenen Beweises sind unnötig restriktiv, insbesondere können anders als dort
+beschrieben durchaus Quantoren verwendet werden. Das diskutieren wir im
+übernächsten Abschnitt.\end{bem}
 
 
 \subsubsection*{Beweis des Satzes}
@@ -1666,7 +1672,6 @@ Radikalideale nachbauen. Nun ist es leicht, die Behauptung zu zeigen:
 
 % XXX: Wieso heißt es "dynamische Methoden"?
 % XXX: Fehlt: Beispiel.
-% XXX: Erweiterung mit Quantoren und V(...)
 
 Nur zur Illustration wollen wir auch noch einen Alternativbeweis des Satzes
 führen, welcher die speziellen Möglichkeiten klassischer Logik nutzt, daher
@@ -1682,6 +1687,66 @@ gerade die Aussage der nur klassisch gültigen Proposition~\ref{intersectprim};
 für~$n > 0$ ist das ebenfalls eine Standardaussage aus kommutativer Algebra
 (welche man durch Rückführung auf den Spezialfall beweist).
 \end{proof}
+
+
+\subsubsection*{Erweiterungen}
+
+Satz~\ref{satz:genprime} hat gezeigt, dass man die klassische Vorgehensweise
+\begin{quote}
+Um zu zeigen, dass ein Element~$x \in R$ nilpotent ist, zeige, dass es in allen
+Primidealen liegt.\end{quote}
+konstruktiv rechtfertigen kann -- obwohl konstruktiv nicht bewiesen werden
+kann, dass der Schnitt aller Primideale nur die Menge der nilpotenten Elemente
+ist. Klassisch gibt es aber auch noch folgendes stärkeres Prinzip:
+\begin{lemma}[in dieser Form nur klassisch]\label{lemma:nullinabschl}%
+Sei~$x \in R$ ein Element eines Rings~$R$. Wenn~$x$ in jedem algebraisch
+abgeschlossenen Oberkörper von~$R$ Null ist, wenn also für jeden
+Ringhomomorphismus~$\varphi : R \to K$, wobei~$K$ ein algebraisch
+abgeschlossener Körper ist, das Element~$\varphi(x) \in K$ Null ist, dann
+ist~$x$ nilpotent.\end{lemma}
+In diesem Abschnitt wollen wir zeigen, dass auch dieses Prinzip konstruktiv
+in einem konstruktiven Kontext verwendbar ist -- obwohl die Existenz
+algebraischer Abschlüsse, und schon die Existenz von Zerfällungskörpern,
+konstruktiv eine diffizile Angelegenheit ist. In diesem Abschnitt setzen wir
+etwas mehr Vorwissen aus kommutativer Algebra voraus.
+
+\begin{proof}[Beweis des Lemmas (nur klassisch)]
+Wir weisen nach, dass~$x$ in allen Primidealen von~$R$ liegt, klassisch genügt
+das ja. Sei also~$\pp$ ein beliebiges Primideal. Dann ist der
+Faktorring~$R/\pp$ ein Integritätsbereich und wir können seinen
+Quotientenkörper betrachten. Diesen wiederum können wir in einen algebraisch
+abgeschlossenen Oberkörper~$K$ einbetten (hier geht klassische Logik ein). Wir
+haben also Ringhomomorphismen
+\[ R \longrightarrow R/\pp \lhra \Quot(R/\pp) \lhra K. \]
+Nach Voraussetzung ist das Bild von~$x$ in~$K$ Null. Daher ist auch das Bild
+von~$x$ in~$\Quot(R/\pp)$ Null, somit auch das Bild von~$x$ in~$R/\pp$, und
+daher liegt~$x$ in~$\pp$.
+\end{proof}
+
+Die konstruktive Umsetzung dieses Prinzips im Rahmen der dynamischen Methoden
+ist folgende:
+
+\begin{satz}
+Aus einem Beweis der Sequenz
+\[ Z(a_1) \wedge \cdots \wedge Z(a_n) \seq{} Z(b) \]
+welcher als sprachliche Mittel nur~$\top$, $\bot$, $\wedge$, $\vee$ sowie die
+Quantoren, nicht aber~$\Rightarrow$, und als Schlussregeln
+\begin{enumerate}
+\item[1.] die Axiome aus Definition~\ref{defn:genprime} (jetzt in beliebigen
+Kontexten, nicht nur im leeren),
+\item[2.] $\top \seq{\vec x} Z(x) \vee \exists y{:}\, Z(1-xy)$,
+\item[3.] $\top \seq{\vec x} \exists y{:}\, Z(y^n + a_{n-1}y^{n-1} + \cdots +
+a_1y + a_0)$, und
+\item[4.] die strukturellen Regeln, die Regeln für Konjunktion, Disjunktion,
+Allquantifikation und Existenzquantifikation
+\end{enumerate}
+verwendet, kann man einen expliziten Zeugen der Aussage
+\[ b \in \sqrt{(a_1,\ldots,a_n)} \subseteq R \]
+extrahieren.
+\end{satz}
+\begin{proof}Wird nachgeliefert. Die Idee ist wieder, ein Modell anzugeben. Die
+Interpretation einer Aussage im Kontext~$x_1,\ldots,x_n$ soll dabei ein
+Radikalideal in~$\ZZ[x_1,\ldots,x_n]$ sein.\end{proof}
 
 
 \appendix
