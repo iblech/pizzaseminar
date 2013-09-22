@@ -1301,7 +1301,6 @@ hier ist Beleg von~$\bot$: $z$.
 
 % XXX Fazit
 
-% XXX Bemerkung über Konsistenz von PA
 % XXX Curry-Howard
 
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
@@ -1318,45 +1317,119 @@ Curry-Howard-Korrespondenz}
 
 \section{Hilberts Programm}
 
-\subsection{Die mathematische Welt um 1900}
+\subsection[Die mathematische Welt um 1900]{Die mathematische Welt um 1900
+\qquad\small[unvollständig und fehlerhaft]}
 
-\XXX{Unvollständig und falsch.}
+Man erzählt sich folgende Geschichte. Im letzten Viertel des 19.~Jahrhunderts
+kamen in der Mathematik neue, abstrakte Methoden auf. Dazu gehörte vor allem
+Cantors Mengenlehre, die mit ihrer Akzeptanz des \emph{aktual Unendlichen} ein
+Tabu brach: Es war zwar jeder mit dem Konzept \emph{potenzieller} Unendlichkeit
+vertraut, wie etwa der Vorstellung, dass die natürlichen Zahlen "`nie
+aufhören"', dass man "`immer weiter zählen kann"'. Aber manche hatten Angst
+davor, unendlich viele Objekte zu einer vollendeten Menge zusammenzufassen.
 
-\emph{Hilberts Programm:} Zeige, dass man aus jedem Beweis einer konkreten
-Aussage, welcher beliebige ideelle Prinzipien (Prinzip vom ausgeschlossenen
-Dritten für beliebige Aussagen, Auswahlaxiom, maximale Ideale in der Algebra)
+Insbesondere wurde die Verwendung des Prinzips
+\[ \neg\forall x\?X{:}\, \neg\varphi(x) \quad\Longrightarrow\quad
+  \exists x\?X{:}\, \varphi(x) \]
+kritisiert. Dies erscheint von unserem heutigen Standpunkt verwunderlich: Denn
+dieses Prinzip folgt ja sofort aus dem Prinzip vom ausgeschlossenen Dritten,
+welches man stets als evident annahm. Man muss aber zwischen verschieden
+mächtigen Instanzen des Prinzips unterscheiden. Etwa ist für natürliche
+Zahlen~$n$ die Aussage
+\[ n = 0 \quad\vee\quad n \neq 0 \]
+völlig unkritisch, sie ist sogar konstruktiv beweisbar. Die analoge Aussage für
+reelle Zahlen~$x$ ist zwar nicht konstruktiv haltbar, aber im 19.~Jahrhundert
+war noch nicht der Rahmen gegeben, um das einzusehen bzw. überhaupt die Frage
+nach formaler konstruktiver Ableitbarkeit zu stellen. Stattdessen wurde diese
+Aussage ebenfalls als einleuchtend empfunden und akzeptiert.
+
+Widerspruchsbeweise wurden also durchaus akzeptiert. (Die manchmal behauptete
+Aussage, klassische Logik sei erst im 20.~Jahrhundert aufgekommen, ist also
+nicht richtig.) Angst bestand nur vor Anwendungen des Prinzips vom
+ausgeschlossenen Dritten in Kombination mit unendlich großen Mengen. So
+zerfielen die Mathematiker in zwei Lager: Solche, die neue abstrakte Methoden
+mit Begeisterung aufnahmen, und solche, die den neuen Entwicklungen kritisch
+gegenüber standen.
+
+David Hilbert gehörte zu den Fans, nicht zuletzt deswegen, weil er selbst mit
+nichtkonstruktiven Methoden seinen \emph{Basissatz} bewies, mit dem er
+international bekannt wurde: Dieser besagt, dass jedes Ideal des
+Polynomrings~$k[X_1,\ldots,X_n]$ endlich erzeugt ist. Vor Hilberts Beweis war
+das überhaupt nicht klar, und es gab eine große Industrie, um explizit Erzeuger in
+konkreten Fällen zu bestimmen. Da Hilbert kein Verfahren angeben konnte,
+um die Erzeuger zu berechnen, sondern lediglich zeigte, dass die Annahme,
+es gäbe kein endliches Erzeugendensystem, zu einem Widerspruch führte, vertrat
+etwa Paul Gordan, der \emph{König der
+Invariantentheorie}, folgende Meinung über Hilberts Resultat:
+\begin{quote}
+\emph{Das ist nicht Mathematik, das ist Theologie.}
+\end{quote}
+
+Um seine Kritiker zufrieden zu stellen, wollte Hilbert daher zeigen, dass man
+die neuen abstrakten Methoden \emph{eliminieren} konnte. Damit hat er nicht die
+Abschaffung derselbigen gemeint -- im Gegenteil: Er wollte ihre Zulässigkeit
+rechtfertigen, indem er zeigen wollte, dass man aus jedem Beweis einer
+konkreten Aussage, der abstrakte Methoden verwendet, einen Beweis erhalten
+kann, der nur finitistisch zulässige Schlussweisen verwendet.
+
+\textbf{Hilberts Programm.} Zeige, dass man aus jedem Beweis einer konkreten
+Aussage, welcher beliebige ideelle Prinzipien (etwa das Prinzip vom ausgeschlossenen
+Dritten für beliebige Aussagen, das Auswahlaxiom oder maximale Ideale in der Algebra)
 verwendet, einen finitistisch zulässigen Beweis erhalten kann.
 
-In voller Allgemeinheit gilt Hilberts Programm als \emph{gescheitert}. Denn die
-Aussage \emph{Peano-Arithmetik ist konsistent} lässt sich als "`konkrete
-Aussage"' formulieren und leicht mit abstrakten Methoden beweisen (in üblicher
-Mengenlehre liefert die unendliche Menge~$\NN$ ein Modell), kann aber keinen
-finitistisch zulässigen Beweis besitzen, da es nach Gödels
-Unvollständigkeitssatz nicht einmal einen Beweis in der stärkeren
+Dabei ist eine \emph{konkrete Aussage} eine solche, in deren Formulierung nur
+die natürlichen Zahlen, aber keine höheren Konzepte wie Mengen natürlicher
+Zahlen oder gar Mengen von Mengen vorkommen. Diese Beschränkung in Hilberts
+Programm ist sicherlich notwendig: Etwa kann man offensichtlich keine Aussage
+über Mengen ohne Verwendung von Mengen zu beweisen.
+
+\begin{bsp}Die Aussage, dass die Menge der Primzahlen nicht endlich ist, ist
+nicht konkret. Äquivalent ist aber die Aussage, dass zu jeder vorgegebenen
+Schranke eine Primzahl existiert, die Größer als die Schranke ist; und diese
+ist konkret.\end{bsp}
+
+In voller Allgemeinheit gilt Hilberts Programm seit 19xx als
+\emph{gescheitert}. Denn in diesem Jahr veröffentlichte Gödel sein
+Unvollständigkeitsresultat: Die Aussage \emph{Peano-Arithmetik ist konsistent}
+lässt sich als "`konkrete Aussage"' formulieren und leicht mit abstrakten
+Methoden beweisen (in üblicher Mengenlehre liefert die unendliche Menge~$\NN$
+ein Modell), kann aber keinen finitistisch zulässigen Beweis besitzen, da es
+nach Gödels Unvollständigkeitssatz nicht einmal einen Beweis in der stärkeren
 Peano-Arithmetik geben kann.
 
-Teilweise kann Hilberts Programm jedoch doch realisiert werden, unter anderem
+Teilweise kann Hilberts Programm jedoch schon realisiert werden, unter anderem
 in Analysis und Algebra: Mittels \emph{proof mining} kann aus klassischen
 Beweisen mehr oder weniger systematisch noch konstruktiver Inhalt extrahiert
 werden. Je nach Situation kann \emph{konstruktiver Inhalt} etwa
 \begin{itemize}
 \item explizite Schranken für Konstanten,
-\item stetige (oder noch bessere) Abhängigkeit von Paramtern,
+\item stetige (oder noch bessere) Abhängigkeit von Parametern,
 \item explizite Zeugen von Existenzbehauptungen oder
 \item Algorithmen
 \end{itemize}
 umfassen.
 
-% XXX: Eliminationsbegriff
-
 \begin{motto}\label{motto:inhaltvonbeweisen}In einem \emph{Beweis} einer
 Aussage steckt viel mehr Inhalt als die bloße Information, dass die Aussage
 wahr ist.\end{motto}
+
+Dieses Motto ist keine tiefe Einsicht: \emph{Natürlich} steckt in
+einem Beweis einer Aussage viel mehr Inhalt als in einer bloßen
+Wahrheitsbekundung -- nämlich ein \emph{Grund}, wieso die Aussage stimmt.
+Interessant ist, dass man dieses Motto auch formal ernst nehmen kann.
 
 Siehe~\cite{raatikainen:hilbert} für eine ausführlichere Darstellung von
 Hilberts Programm und~\cite{kohlenbach:applprooftheory} für ein Lehrbuch zu
 proof mining. Einen kurzen Überblick geben auch die
 Vortragsfolien~\cite{avigad:proofmining}.
+
+Später änderte Gordan übrigens seine Meinung:
+\begin{quote}
+\emph{Ich habe erkannt, dass auch Theologie nützlich sein kann.}
+\end{quote}
+
+% XXX: Jahreszahl
+% XXX: Wortlaut der Zitate nachsehen, genaue Quellen angeben
 
 
 \subsection{Beispiel aus der Zahlentheorie: Friedmans Trick}
@@ -1402,7 +1475,7 @@ Wenn~$\varphi \seq{\vec x} \psi$ intuitionistisch, dann gilt auch~$\varphi^F
 \item Induktion über den Aussageaufbau. Exemplarisch zeigen wir den Fall
 \[ F \Longrightarrow (\exists x\?X{:}\ \varphi)^F. \]
 Gelte also~$F$. Da~$X$ bewohnt ist, gibt es ein~$x : X$. Nach
-Induktionsvoraussetzung können wir ~$F \Rightarrow \varphi^F$ voraussetzen.
+Induktionsvoraussetzung gilt~$F \Rightarrow \varphi^F$.
 Somit folgt~$\varphi^F$, das war zu zeigen.
 \item Induktion über den Aussageaufbau.
 \item Induktion über den Aufbau intuitionistischer Ableitungen. Wie beim
@@ -1414,7 +1487,7 @@ Das ist sogar einfacher als bei der Doppelnegationsübersetzung.\qedhere
 
 \begin{kor}Peano-Arithmetik ist für Aussagen der Form~$\forall (\cdots
 \Rightarrow \cdots)$, wobei die Teilaussagen den Beschränkungen
-aus~\ref{friedman:proof}b) unterliegen müssen, konservativ über
+aus~\ref{friedman:proof}b) unterliegen müssen, \emph{konservativ} über
 Heyting-Arithmetik: Aus jedem Beweis in Peano-Arithmetik lässt sich ein Beweis
 in Heyting-Arithmetik gewinnen.\end{kor}
 \begin{proof}Gelte~$\top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi)$ in
@@ -1428,7 +1501,7 @@ und~$\psi^\circ$ intuitionistisch äquivalent zu ihren Doppelnegationen
 (Lemma~\ref{dnt:geom}); also ist die Sequenz
 \[ \neg\neg\varphi \seq{x} \neg\neg\psi \]
 in Heyting-Arithmetik ableitbar. Nun können wir die Friedmanübersetzung
-bezüglich einer noch unspezifizierten Aussage~$F$ anwenden. Da sich leicht die
+bezüglich einer erst noch unspezifizierten Aussage~$F$ anwenden. Da sich leicht die
 Friedmanübersetzungen der Peano-Axiome in Heyting-Arithmetik zeigen lassen,
 folgt die Ableitbarkeit von
 \[ ((\varphi^F \Rightarrow F) \Rightarrow F) \seq{x}
@@ -1444,6 +1517,14 @@ von $\varphi \seq{x} \psi$, also von
 \[ \top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi) \]
 in Heyting-Arithmetik.
 \end{proof}
+
+Bemerkenswert ist, dass dieses Konservativitätsresultat nur eine Forderung
+an die Form der untersuchten Aussage stellt, nicht aber an die Form des gegebenen
+klassischen Beweises. Dieser kann Hilfsaussagen beliebiger Form verwenden.
+Somit kann man das Resultat als eine (äußerst limierte) partielle Realisierung
+von Hilberts Programm ansehen: Denn es besagt, dass für Aussagen der
+beschriebenen Form das ideelle Prinzip des ausgeschlossenen Dritten eliminiert
+werden kann.
 
 \begin{bsp}Die Aussage der Zahlentheorie, dass es unendlich viele Primzahlen
 gibt, lässt sich in der Form
@@ -1544,7 +1625,6 @@ sind, sondern dass sie in \emph{dem generischen Primideal} enthalten sind.
 
 \begin{motto}Die \emph{generische} Verwendung ideeller Konzepte (Primideale,
 maximale Ideale, Bewertungen, \ldots) lässt sich eliminieren.\end{motto}
-% XXX: Trivialität des Mottos anmerken und erklären, wie es gemeint ist.
 
 
 \subsubsection*{Axiomatisierung des generischen Primideals}
