@@ -1522,7 +1522,7 @@ zeigt schon die Behauptung.
 \end{proof}
 
 Der Beweis gelingt also völlig mühelos: Man muss nur
-nur das Nilpotenzkriterium und das auch anderweitig nützliche
+nur das Nilpotenzkriterium (Proposition \label{intersectprim}) und das auch anderweitig nützliche
 Lemma~\ref{produktprim} verwenden. Allerdings ist der Beweis in dieser Form
 \emph{ineffektiv}: Man erhält keine Abschätzung der Nilpotenzindizes der
 Koeffizienten, also der minimal möglichen Exponenten~$m_i$ mit~$a_i^{m_i} = 0$.
@@ -1667,7 +1667,21 @@ Radikalideale nachbauen. Nun ist es leicht, die Behauptung zu zeigen:
 % XXX: Wieso heißt es "dynamische Methoden"?
 % XXX: Fehlt: Beispiel.
 % XXX: Erweiterung mit Quantoren und V(...)
-% XXX: Beweis in klassischer Logik, der natürlich witzlos ist.
+
+Nur zur Illustration wollen wir auch noch einen Alternativbeweis des Satzes
+führen, welcher die speziellen Möglichkeiten klassischer Logik nutzt, daher
+keinen expliziten Zeugen liefert und somit völlig witzlos ist:
+\begin{proof}[Beweis von Satz~\ref{satz:genprime} (nur klassisch)]
+Da die einzelnen Axiome des generischen Primideals von jedem tatsächlichen
+Primideal~$\pp$ werden, folgt aus dem gegebenen Beweis von~$Z(a_1) \wedge
+\cdots \wedge Z(a_n) \seq{} Z(b)$, dass für jedes Primideal~$\pp$ die
+Implikation
+\[ a_1,\ldots,a_n \in \pp \quad\Longrightarrow\quad b \in \pp \]
+gilt. In klassischer Logik folgt daraus die Behauptung: Für~$n = 0$ ist das
+gerade die Aussage der nur klassisch gültigen Proposition~\ref{intersectprim};
+für~$n > 0$ ist das ebenfalls eine Standardaussage aus kommutativer Algebra
+(welche man durch Rückführung auf den Spezialfall beweist).
+\end{proof}
 
 
 \appendix
