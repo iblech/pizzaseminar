@@ -1,5 +1,5 @@
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{algblatt}[2013/03/29 LaTeX class]
+\ProvidesClass{pizzablatt}[2013/03/29 LaTeX class]
 
 \LoadClass[a4paper,ngerman]{scrartcl}
 
