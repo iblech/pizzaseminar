@@ -1344,6 +1344,100 @@ Kollegen zu verstehen. XXX Garbenmodelle usw.
 Curry-Howard-Korrespondenz]{Beziehung zur theoretischen Informatik: \newline die
 Curry-Howard-Korrespondenz}
 
+Unter der Curry-Howard-Korrespondenz versteht man grob folgendes fundamentale
+Motto, das intuitionistische Logik und theoretische Information in Beziehung
+setzt:
+
+\begin{motto}Eine Aussage~$\varphi$ ist genau dann intuitionistisch ableitbar,
+wenn es ein Computerprogramm vom Typ~$\varphi$ gibt.\end{motto}
+
+Hierbei wird~$\varphi$ einerseits als Aussage, andererseits als Typ
+interpretiert. Beispiele sollen diesen Doppelgebrauch deutlich machen.
+
+
+\subsection{Beispiele}
+
+\subsubsection*{Beispiel 1}
+
+Konstruktiv gilt offensichtlich~$A \Rightarrow A$. Ein expliziter Beweis
+verläuft wie folgt: \emph{Gelte~$A$. Dann gilt~$A$.} Wenn man dem Leser noch
+weiter helfen möchte, kann man den zweiten Schritt noch explizit begründen:
+\begin{quote}\emph{Gelte~$A$. $(\star)$ \\ Wegen~$(\star)$ gilt dann
+auch~$A$.}\end{quote}
+Man kann sich auch trauen, den gegebenen Zeugen von~$A$ mit einem
+Kleinbuchstaben statt einem Symbol zu bezeichnen. Dann kann man schreiben:
+\begin{quote}\emph{Sei~$p\?A$. Dann gilt~$p\?A$.}\end{quote}
+Hieraus ist nun folgendes Computerprogramm ableitbar:
+\[ \begin{array}{@{}rcl@{}}
+  A &\longrightarrow& A \\
+  p &\longmapsto& p
+\end{array} \]
+Dieses Computerprogramm hat den \emph{Typ}~$(A \to A)$. Man beachte, dass
+dasselbe Symbol~"`$A$"' hier je nach Kontext als \emph{Aussage} oder als
+\emph{Typ} (den man sich in erster Näherung als Menge der Zeugen der
+Aussage~$A$ vorstellen kann) verwendet wird.
+
+
+\subsubsection*{Beispiel 2}
+
+Konstruktiv gilt~$A \Rightarrow (B \Rightarrow A)$. Ein Beweis verläuft
+wie folgt:
+\begin{quote}\emph{Sei~$p\?A$, dann ist~$(B \Rightarrow A)$ zu zeigen. Sei
+dazu~$q\?B$ gegeben, dann ist~$A$ zu zeigen. Das ist klar
+wegen~$p\?A$.}\end{quote}
+Daraus kann man folgendes Programm ableiten:
+\[ \begin{array}{@{}rcl@{}}
+  A &\longrightarrow& B^A \\
+  p &\longmapsto& (q \mapsto p)
+\end{array} \]
+Dabei bezeichnet~"`$B^A$"' den Typ der Funktionen von~$A$ nach~$B$.
+
+
+\subsubsection*{Beispiel 3}
+
+Konstruktiv gilt~$A \wedge B \Rightarrow A$, mit folgendem Beweis:
+\begin{quote}\emph{Sei~$p\?(A \wedge B)$. Dann steckt in~$p$ ein Zeuge
+von~$A$.}\end{quote}
+Das zugehörige Computerprogramm lautet wie folgt:
+\[ \begin{array}{@{}rcl@{}}
+  A \times B &\longrightarrow& A \\
+  (p,q) &\longmapsto& p
+\end{array} \]
+Hierfür ist der zu~$A \wedge B$ gehörige Typ~$A \times B$.
+
+
+\subsection{Interpretation}
+
+Die Curry-Howard-Korrespondenz hat einen ganz praktischen Nutzen: Aus
+intuitionistischen Beweisen kann man Computerprogramme extrahieren und
+umgekehrt. Beide Richtungen sind interessant: Etwa kann man offensichtlich ein
+Computerprogramm schreiben, das zu einer Eingabe~$n \? \NN$ eine Primzahl~$p
+\geq n$ produziert. Daher ist auch die entsprechende Aussage ableitbar:~$\forall
+n{:}\NN{:}\ \exists p \geq n{:}\ \text{$p$ prim}$.
+
+Die Umkehrung ist im Kontext formaler Methoden in der Informatik wichtig.
+\XXX{Ausführen!}
+
+
+\subsection{Genauere Formulierung}
+
+Eine genauere Formulierung ist folgende: Es gibt eine 1:1--Korrespondenz
+zwischen \emph{Ableitungen} einer Aussage~$\varphi$ einerseits und
+\emph{Termen} vom Typ~$\varphi$ andererseits. Für eine völlig präzise
+Formulierung muss man nur noch das gewählte Ableitungssystem und den gewählten
+Termkalkül sowie die
+Übersetzung von Aussagen zu Typen festlegen. Als Termkalkül kann man etwa den
+einfach getypten~$\lambda$-Kalkül verwenden.
+
+% XXX: Gute Quelle heraussuchen
+
+Als Korollar folgt aus der präziseren Formulierung das oben angegebene Motto:
+Genau dann gibt es eine Ableitung, wenn es einen entsprechenden Term gibt.
+
+Der Beweis ist übrigens trivial, wenn man die Behauptung nur präzise genug
+formuliert hat. Denn die Ableitungsregeln entsprechen~1:1 den
+Termkonstruktionsregeln.
+
 
 \section{Hilberts Programm}
 
