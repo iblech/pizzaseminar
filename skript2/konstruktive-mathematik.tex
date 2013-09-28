@@ -556,6 +556,14 @@ zu~$\neg\neg\varphi$.
 \end{proof}
 
 
+\subsection{Weitere Beispiele}
+
+Wer auf den Geschmack gekommen ist, kann die
+Bücher~\cite{mines:richman:ruitenburg} und~\cite{bishop:bridges:bible}
+studieren. Das erste ist ein konstruktiver Zugang zu kommutativer Algebra, das
+zweite einer zu Analysis.
+
+
 \section{Nutzen konstruktiver Mathematik}
 
 \paragraph{Spaß.} Konstruktive Mathematik macht Spaß!
@@ -1310,6 +1318,28 @@ LCM, Stein der Weisen, \ldots
 % XXX: Feinere Unterschiede
 
 
+\subsection{Die umgekehrte Richtung}
+
+Mit der Doppelnegationsübersetzung kann eine konstruktive Mathematikerin auf
+eine sehr einfache Art und Weise einen klassischen Kollegen verstehen: Wenn ein
+klassischer Mathematiker eine Aussage~$\varphi$ behauptet, muss man als
+konstruktiv nur~$\varphi^\circ$ verstehen.
+
+Für die umgekehrte Richtung gibt es keine Übersetzung: Es gibt keine
+Formeltransformation~$\varphi \mapsto \varphi^\#$ mit den Eigenschaften
+\begin{enumerate}
+\item $\varphi \Longleftrightarrow \varphi^\#$ intuitionistisch und
+\item wenn $\varphi \seq{\vec x} \psi$ intuitionistisch, dann $\varphi^\#
+\seq{\vec x} \psi^\#$ klassisch.
+\end{enumerate}
+Denn aus der ersten Eigenschaft würde wegen der Abwärtskompatibilität
+intuitionistischer Logik zu klassischer Logik ja $\varphi \Leftrightarrow
+\varphi^\#$ klassisch folgen.
+
+Ein klassischer Mathematiker hat es also schwerer, konstruktiv arbeitende
+Kollegen zu verstehen. XXX Garbenmodelle usw.
+
+
 \section[Beziehung zur theoretischen Informatik: die
 Curry-Howard-Korrespondenz]{Beziehung zur theoretischen Informatik: \newline die
 Curry-Howard-Korrespondenz}
@@ -1545,7 +1575,27 @@ beliebigen Eingabe schlussendlich terminiert ("`$\forall\,\text{Eingaben}\
 \exists\,\text{Stoppzeitpunkt}$"').
 \end{bsp}
 
-% XXX: Markovs Regel beim Namen erwähnen.
+
+\subsubsection*{Markovs Regel}
+
+In klassischer Logik gilt \emph{Markovs Prinzip}: Für jede Aussage~$\varphi$
+(in der unter anderem die Variable~$x$ vorkommt) gilt
+\[ \neg\neg \exists x{:}\ \varphi \quad\Longrightarrow\quad
+  \exists x{:}\ \varphi. \]
+Dieses Prinzip folgt sofort aus dem Prinzip vom ausgeschlossenen Dritten.
+Konstruktiv lässt sich dieses Prinzip nicht zeigen (etwa liefert fast jeder
+Garbentopos ein Gegenbeispiel). In Heyting-Arithmetik gilt aber zumindest
+Markovs \emph{Regel}:
+
+\begin{kor}[Markovs Regel]Sei~$\varphi$ eine Aussage, die den Beschränkungen
+aus~\ref{friedman:proof}b) unterliegt. Wenn intuitionistisch
+\[ \seq{\vec x} \neg\neg\exists y\?\NN{:}\ \varphi \]
+ableitbar ist, so ist auch
+\[ \seq{\vec x} \exists y\?\NN{:}\ \varphi \]
+intuitionistisch ableitbar.\end{kor}
+
+% XXX: Beweis
+% XXX: Signifikanz
 
 % XXX: Nochmal betonen, dass dadurch eine partielle Realisierung von Hilberts
 % Programm erfolgt ist.
