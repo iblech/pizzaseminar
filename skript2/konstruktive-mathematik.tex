@@ -585,7 +585,7 @@ aufmerksam gemacht, als dass der Nachweis, dass diese Einschränkungen in
 bestimmten Fällen erfüllt sind, nicht mehr trivial ist, sondern Nachdenken
 erfordert.
 
-Ein anderes Beispiel liefert folgende Proposition, die oft als Übungsaufgabe in
+Ein konkretes Beispiel liefert folgende Proposition, die oft als Übungsaufgabe in
 einer Anfängervorlesung gestellt wird:
 \begin{prop}Sei~$f : X \to Y$ eine Abbildung und~$f^{-1}[\freist] : \P(Y) \to
 \P(X)$ die Urbildoperation (welche eine Teilmenge~$U \in \P(Y)$ auf~$\{ x \in X
@@ -618,6 +618,23 @@ Inhalt als ein klassischer Beweis hat, kann in Einzelfällen sehr diffizil und
 interessant sein. Wir werden zu diesem Thema noch einen mathematischen
 Zaubertrick kennenlernen.
 
+\paragraph{Feinere Unterschiede.} Konstruktiv kann man feinere Unterscheidungen
+treffen. Etwa kann man intuitionistisch den Bedeutungsunterschied zwischen
+\begin{itemize}
+\item \emph{Ich weiß, wo der Haustürschlüssel liegt.} und
+\item \emph{Ich weiß, dass der Schlüssel hier irgendwo sein muss, ich weiß aber
+nicht, wo.}
+\end{itemize}
+abbilden: Die erste Aussage übersetzt sich als
+\[ (\exists x{:}\ \text{der Schlüssel befindet sich an Position~$x$}), \]
+die zweite als deren doppelte Verneinung. Klassisch sind diese beiden
+Übersetzungen dagegen äquivalent, klassisch kann man den Unterschied also nicht
+formalisieren.
+
+\begin{motto}Intuitionistische Logik ist schwächer, aber auch feiner als
+klassische Logik.\end{motto}
+
+
 \paragraph{Programmextraktion.} Aus jedem konstruktiven Beweis einer Behauptung
 kann man maschinell, ohne manuelles Zutun, ein Computerprogramm extrahieren,
 welches die untersuchte Behauptung bezeugt (und bewiesenermaßen korrekt
@@ -625,7 +642,8 @@ arbeitet). Etwa ist in jedem konstruktiven Beweis der Behauptung
 \begin{quote}Sei~$S$ eine endliche Menge von Primzahlen. Dann gibt es eine
 weitere Primzahl, welche nicht in~$S$ liegt.\end{quote}
 ein Algorithmus versteckt, welcher zu endlich vielen gegebenen Primzahlen
-ganz konkret eine weitere Primzahl berechnet.
+ganz konkret eine weitere Primzahl berechnet. Unterschiedliche Beweise können
+dabei in unterschiedlich effizienten Algorithmen resultieren.
 
 Solch maschinelle
 Programmextraktion ist wichtig in der Informatik: Anstatt in einem ersten
@@ -637,11 +655,12 @@ Programm extrahieren lassen. In der akademischen Praxis wird dieses Vorgehen
 tatsächlich angewendet.
 % XXX: Literaturverweise!
 
-Auch kann Programmextraktion didaktisch sinnvoll sein: Um etwa eine allgemeine
-Existenzbehauptung zu verstehen, ist es hilfreich, sie in einem konkreten
+Auch kann Programmextraktion didaktisch sinnvoll sein: Um etwa eine
+Existenzbehauptung zu verstehen, ist es bekanntermaßen oftmals hilfreich, sie in einem konkreten
 Beispielfall durchzudenken. Einen konstruktiven Beweis der Existenzbehauptung
-kann man dafür stets Schritt für Schritt durchgehen und so am Ende das behauptete
-Objekt erhalten.
+kann man für diesen Zweck stets Schritt für Schritt durchgehen und so am Ende das gesuchte
+Objekt erhalten. Mit einem Beweis, der nur klassisch zulässig ist, ist das
+dagegen im Allgemeinen nicht möglich.
 
 \paragraph{Traummathematik.} Nur in einem konstruktiven Kontext ist die Arbeit
 mit sog. \emph{Traum\-axio\-men}, wie etwa
@@ -660,7 +679,7 @@ gelten.
 
 \begin{bem}Hier ein kurzer Einschub, wieso das erstgenannte Traumaxiom
 in einem konstruktiven Kontext zumindest nicht offensichtlich widersprüchlich
-ist. Man könnte denken, dass die Signumsfunktion
+ist. Man könnte denken, dass die Signumfunktion
 \[ x \longmapsto \begin{cases}
   -1, & \text{falls $x < 0$,} \\
   \phantom{+}0, & \text{falls $x = 0$,} \\
@@ -675,11 +694,15 @@ ausführlicher~\cite{bauer:blog:stetigkeit}.
 \end{bem}
 
 \paragraph{Alternative Mathematik-Universen.} Wenn man ganz normal Mathematik
-betreibt, arbeitet man tatsächlich \emph{intern im Topos der Mengen}. Es gibt
-aber auch andere interessante Topoi; deren interne Sprache ist aber fast immer
-nicht klassisch.
+betreibt, arbeitet man tatsächlich \emph{intern im Topos der Mengen}: Alle
+üblicherweise untersuchten mathematischen Objekte sind aus Mengen aufgebaut. Es gibt
+aber auch andere interessante Topoi; diese kommen mit einer \emph{internen
+Sprache}, welcher der üblichen formalen mathematischen Sprache sehr stark
+ähnelt, sodass man fast wie gewohnt in ihnen arbeiten kann -- mit der einzigen
+Einschränkung, dass diese interne Sprache fast immer nicht klassisch ist. Das
+liefert einen rein sachlichen Grund, konstruktive Mathematik zu betreiben.
 \begin{itemize}
-\item Vielleicht hat man einen bestimmen topologischen Raum~$X$ besonders lieb
+\item Vielleicht hat man einen bestimmen topologischen Raum~$X$ besonders gern
 und möchte daher, dass alle untersuchten Objekte vom aktuellen Aufenthaltsort
 auf dem Raum abhängen. Dann möchte man im \emph{Topos der Garben auf~$X$}
 arbeiten.
@@ -687,7 +710,7 @@ arbeiten.
 Gruppe~$G$. Dann möchte man vielleicht, dass alle untersuchten Objekte
 eine~$G$-Wirkung tragen und dass alle untersuchten Abbildungen~$G$-äquivariant
 sind. Dann sollte man im \emph{Topos der~$G$-Mengen} arbeiten.
-\item Vielleicht interessiert man sich sehr dafür, was Turingmaschinen
+\item Vielleicht interessiert man sich vor allem dafür, was Turingmaschinen
 berechnen können. Dann kann man im \emph{effektiven Topos} arbeiten, der nur
 solche Morphismen enthält, die durch Turingmaschinen algorithmisch gegeben
 werden können.
@@ -699,7 +722,7 @@ möglich ist:
 \item Aus dem recht einfach nachweisbaren Faktum konstruktiver linearer
 Algebra, dass jeder endlich erzeugte Vektorraum \emph{nicht nicht} eine endliche
 Basis besitzt, folgt \emph{ohne weitere Arbeit} sofort folgende offensichtlich
-kompliziertere Aussage, wenn man das Faktum intern im Garbentopos eines reduzierten
+kompliziertere Aussage, wenn man nur das Faktum intern im Garbentopos eines reduzierten
 Schemas~$X$ interpretiert: Jeder~$\O_X$-Modul, der lokal von endlichem Typ ist,
 ist auf einer dichten Teilmenge sogar lokal frei.
 \item Zu quantenmechanischen Systemen kann man eine $C^*$-Algebra assoziieren.
@@ -1071,15 +1094,24 @@ ihm eine Ableitung der Sequenz~$\top \seq{} \bot$ (im leeren Kontext) gibt. Ande
 \emph{konsistent}.\end{defn}
 
 
-\section[Beziehung zu klassischer Logik: die Doppelnegationsübersetzung]{%
-  Beziehung zu klassischer Logik: \newline die Doppelnegationsübersetzung}
+\section{Beziehung zu klassischer Logik}
 
-Aus den Augen einer konstruktiven Mathematikerin sind manche Aussagen ihrer
-klassisch arbeitenden Kollegen falsch. Es gibt aber eine einfache Übersetzung,
-die \emph{Doppel\-ne\-ga\-tions\-über\-set\-zung}, die Aussagen derart umformt, dass die
+Auf den ersten Blick scheint intuitionistische Logik schlichtweg weniger
+mächtig als klassische Logik zu sein: Viele Aussagen sind klassisch, aber nicht
+intuitionistisch ableitbar. Das ist aber nur die halbe
+Wahrheit: Es gibt nämlich die \emph{Doppel\-ne\-ga\-tions\-über\-set\-zung},
+die Aussagen derart umformt, dass die
 Übersetzung genau dann konstruktiv gilt, wenn die ursprüngliche Aussage
-klassisch gilt. Mit dieser kann die konstruktive Mathematikern daher ihre
-Kollegen verstehen, ohne ihre Logik verlassen zu müssen.
+klassisch gilt. In diesem Sinn lässt sich also klassische Logik in
+intuitionistische einbetten -- man hat also klassische Logik zur Verfügung,
+wenn man sie ausnahmsweise verwenden möchte.
+
+Eine Übersetzung in die andere Richtung gibt es leider nicht, man muss größeren
+Aufwand treiben, um in einem klassischen Kontext die Sichtweise konstruktiver
+Mathematiker zu verstehen. Darauf gehen wir am Ende dieses Abschnitts ein.
+
+
+\subsection{Die Doppelnegationsübersetzung}
 
 \begin{defn}Die \emph{Doppelnegationsübersetzung} (nach Kolmogorov, Gentzen,
 Gödel und anderen) wird rekursiv wie folgt definiert:
@@ -1102,7 +1134,8 @@ gilt~$(\neg\varphi)^\circ \equiv \neg(\varphi^\circ)$.\end{bem}
 \begin{aufg}Beweise durch Induktion über den Aussageaufbau, dass man auf die grau
 gesetzten Doppelnegationen verzichten kann. Gewissermaßen besteht also der
 einzige Unterschied zwischen klassischer und intuitionistischer Logik in der
-Interpretation der Disjunktion und der Existenzquantifikation.\end{aufg}
+Interpretation der Disjunktion und der Existenzquantifikation: Diese sagen
+konstruktiv mehr aus als in klassischer Logik.\end{aufg}
 
 \begin{satz}\label{dnt:proof}Seien~$\varphi$, $\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
 \begin{enumerate}
@@ -1110,9 +1143,7 @@ Interpretation der Disjunktion und der Existenzquantifikation.\end{aufg}
 \item Intuitionistisch gilt: $\neg\neg\varphi^\circ \Longrightarrow
 \varphi^\circ$.
 \item Wenn~$\varphi \seq{\vec x} \psi$ klassisch, dann~$\varphi^\circ \seq{\vec
-x} \psi^\circ$ intuitionistisch. Wegen der Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät
-intuitionistischer Logik und Teilaussage~a) gilt trivialerweise auch die
-Umkehrung.
+x} \psi^\circ$ intuitionistisch; und umgekehrt.
 \end{enumerate}
 \end{satz}
 \begin{proof}
@@ -1120,7 +1151,10 @@ Umkehrung.
 \item Klar, für jede Aussage~$\chi$ ist~$\neg\neg\chi \Leftrightarrow \chi$
 eine klassische Tautologie.
 \item Induktion über den Aussageaufbau, ausgelassen.
-\item Wir müssen in einer Induktion über den Aufbau klassischer Ableitungen
+\item Die Rückrichtung ist wegen der Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät
+intuitionistischer Logik und Teilaussage~a) trivial.
+
+Für die Hinrichtung müssen wir in einer Induktion über den Aufbau klassischer Ableitungen
 nachweisen, dass wir jeden logischen Schluss klassischer Logik in der
 Doppelnegationsübersetzung intuitionistisch nachvollziehen können. (Aus diesem
 Grund mussten wir im vorherigen Abschnitt formal definieren, was wir unter
@@ -1158,7 +1192,7 @@ Heyting-Arithmetik.\end{kor}
 \begin{proof}Man kann leicht nachprüfen, dass die
 Doppelnegationsübersetzungen der Peano-Axiome wiederum Instanzen den
 Peano-Axiome sind und daher auch in Heyting-Arithmetik gelten. Daher kann man
-eine Ableitung von~$\bot$ in Peano-Arithmetik in einer Ableitung
+eine Ableitung von~$\bot$ in Peano-Arithmetik in eine Ableitung
 von~$\bot^\circ \equiv \bot$ in Heyting-Arithmetik überführen.\end{proof}
 
 Folgendes Lemma werden wir erst später, im Abschnitt über Friedmans Trick, benötigen:
@@ -1171,6 +1205,12 @@ intuitionistisch: $\varphi^\circ \Longleftrightarrow \neg\neg\varphi$.
 
 
 \subsection{Interpretation der übersetzten Aussagen}
+
+Die konstruktive Bedeutung übersetzter Aussagen lässt sich wegen der Vielzahl
+vorkommender nichttrivialer doppelter Verneinungen nicht sofort überblicken. Es
+gibt aber eine aus der theoretischen Informatik stammende
+\emph{Zeitsprungmetapher}, mit der man den Inhalt übersetzter Aussagen doch
+verstehen kann.
 
 Uns allen ist die Dialogmetapher zur Interpretation logischer Aussagen bekannt:
 Wir stellen uns ein besonders kritisches Gegenüber vor, das unsere Behauptung
@@ -1223,7 +1263,7 @@ einem Beispiel veranschaulichen bevor wie sie begründen.
 Eine Aussage~$\varphi$ klassisch zu behaupten (also~$\varphi^\circ$
 intuitionistisch zu behaupten), bedeutet, in jedem Dialog~$\varphi$ belegen zu
 können, wobei man aber beliebig oft Zeitsprünge in die Vergangenheit
-durchführen kann.
+durchführen darf.
 \end{motto}
 
 
@@ -1236,8 +1276,8 @@ Wir wollen sehen, wie man das klassische Prinzip~$\varphi \vee
 \Alice Gut! Es gilt~$\neg\varphi$.
 \end{dialogue}
 Wenn~$\varphi$ eine allgemeine Aussage ist, kann Alice nicht wissen,
-ob~$\varphi$ oder~$\neg\varphi$ gilt. Sie muss daher an dieser Stelle bluffen.
-Da sie die Implikation~$(\varphi \Rightarrow \bot)$ behauptet, ist nun Eve
+ob~$\varphi$ oder~$\neg\varphi$ gilt. Sie hat daher an dieser Stelle geblufft.
+Da sie eine behauptet -- nämlich~$(\varphi \Rightarrow \bot)$ --, ist nun Eve
 wieder an der Reihe. Sie kann nur dann in ihrem Vorhaben, Alice zu widerlegen,
 fortfahren, wenn sie einen Beleg von~$\varphi$ präsentiert und dann Alice
 herausfordert, ihr Versprechen, daraufhin einen Beleg von~$\bot$ zu
@@ -1272,14 +1312,16 @@ nicht hilft.
 \subsubsection*{Dasselbe Beispiel, konservativer interpretiert}
 
 Um zu sehen, dass die Zeitsprungmetapher berechtigt ist, wollen wir
-exemplarisch dasselbe Beispiel erneut untersuchen. Genauer betrachten
-wir einen Dialog zur
+exemplarisch dasselbe Beispiel erneut untersuchen, diesmal aber ohne die
+Metapher. Wir wollen also einen
+Dialog zur
 Dop\-pel\-ne\-ga\-tions\-über\-set\-zung des Prinzips vom ausgeschlossenen
-Dritten, also zu $\neg\neg(\varphi^\circ \vee \neg\varphi^\circ)$. Wir können
-sogar für beliebige Aussagen~$\varphi$ das Prinzip $\neg\neg(\varphi \vee
-\neg\varphi)$ nachweisen, ausgeschrieben
+Dritten, also zu $\neg\neg(\varphi^\circ \vee \neg\varphi^\circ)$, führen. Da wir
+für beliebige Aussagen~$\varphi$ sogar das Prinzip $\neg\neg(\varphi \vee
+\neg\varphi)$ nachweisen können, ausgeschrieben
 \[ ((\varphi \vee \neg\varphi) \Rightarrow \bot) \Rightarrow \bot, \]
-das ist geringfügig übersichtlicher.
+und dieses geringfügig übersichtlicher ist, wollen wir tatsächlich dieses in Dialogform
+belegen.
 
 \begin{dialogue}
 \Eve Zeige mir~$\neg\neg(\varphi \vee \neg\varphi)$!
@@ -1333,8 +1375,8 @@ Formeltransformation~$\varphi \mapsto \varphi^\#$ mit den Eigenschaften
 \seq{\vec x} \psi^\#$ klassisch.
 \end{enumerate}
 Denn aus der ersten Eigenschaft würde wegen der Abwärtskompatibilität
-intuitionistischer Logik zu klassischer Logik ja $\varphi \Leftrightarrow
-\varphi^\#$ klassisch folgen.
+intuitionistischer Logik zu klassischer Logik ja klassisch die Äquivalenz $\varphi \Leftrightarrow
+\varphi^\#$ folgen; das ist mit Eigenschaft~b) unverträglich.
 
 Ein klassischer Mathematiker hat es also schwerer, konstruktiv arbeitende
 Kollegen zu verstehen. XXX Garbenmodelle usw.
@@ -1748,7 +1790,7 @@ zeigt schon die Behauptung.
 \end{proof}
 
 Der Beweis gelingt also völlig mühelos: Man muss nur
-nur das Nilpotenzkriterium (Proposition \label{intersectprim}) und das auch anderweitig nützliche
+das Nilpotenzkriterium (Proposition~\ref{intersectprim}) und das auch anderweitig nützliche
 Lemma~\ref{produktprim} verwenden. Allerdings ist der Beweis in dieser Form
 \emph{ineffektiv}: Man erhält keine Abschätzung der Nilpotenzindizes der
 Koeffizienten, also der minimal möglichen Exponenten~$m_i$ mit~$a_i^{m_i} = 0$.
@@ -2236,7 +2278,6 @@ das in~$\aa$ und~$\bb$ enthalten ist, ist
 % * konkrete vs. abstrakte Aussagen
 % * Hilberts Programm
 % * verschiedene Stufen für Schlimmheit von LEM
-% * "Int. Logik schwächer, aber feiner"
 % * "Von konkreten Aussagen sollte es konkrete Beweise geben"
 % * Proof mining auch für Beweise aus der Analysis relevant,
 %   siehe etwa Kohlenbach, Applied Proof Theory.
@@ -2262,6 +2303,9 @@ das in~$\aa$ und~$\bb$ enthalten ist, ist
 % Regel)
 % Logik-Geist
 % Mutter aller Monaden
+
+% X leer. Dann X subset Y zeigen. Klären, wieso das gute Vorgehen tatsächlich
+% gut ist.
 
 === Quantenmechanische Systeme als C^*-Algebren
  
