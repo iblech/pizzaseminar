@@ -22,6 +22,15 @@
 
 \usepackage[all]{xy}
 
+\usepackage{tikz}
+\usetikzlibrary{calc,shapes.callouts,shapes.arrows}
+\newcommand{\hcancel}[5]{%
+    \tikz[baseline=(tocancel.base)]{
+        \node[inner sep=0pt,outer sep=0pt] (tocancel) {#1};
+        \draw[red, line width=0.5mm] ($(tocancel.south west)+(#2,#3)$) -- ($(tocancel.north east)+(#4,#5)$);
+    }%
+}
+
 \usepackage{hyperref}
 
 \setlength\parskip{\medskipamount}
@@ -87,6 +96,7 @@
 \DeclareMathOperator{\ggT}{ggT}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\interior}{int}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Grp}{\mathrm{Grp}}
@@ -1212,7 +1222,8 @@ gibt aber eine aus der theoretischen Informatik stammende
 \emph{Zeitsprungmetapher}, mit der man den Inhalt übersetzter Aussagen doch
 verstehen kann.
 
-Uns allen ist die Dialogmetapher zur Interpretation logischer Aussagen bekannt:
+Dazu erinnern wir zunächst an die Dialogmetapher zur Interpretation logischer
+Aussagen:
 Wir stellen uns ein besonders kritisches Gegenüber vor, das unsere Behauptung
 bezweifelt. In einem Dialog versuchen wir dann, das Gegenüber zu überzeugen.
 Eine typische Stetigkeitsüberzeugung sieht etwa wie folgt aus:
@@ -1360,7 +1371,7 @@ LCM, Stein der Weisen, \ldots
 % XXX: Feinere Unterschiede
 
 
-\subsection{Die umgekehrte Richtung}
+\subsection{Die umgekehrte Richtung: Modelle für intuitionistische Logik}
 
 Mit der Doppelnegationsübersetzung kann eine konstruktive Mathematikerin auf
 eine sehr einfache Art und Weise einen klassischen Kollegen verstehen: Wenn ein
@@ -1378,8 +1389,119 @@ Denn aus der ersten Eigenschaft würde wegen der Abwärtskompatibilität
 intuitionistischer Logik zu klassischer Logik ja klassisch die Äquivalenz $\varphi \Leftrightarrow
 \varphi^\#$ folgen; das ist mit Eigenschaft~b) unverträglich.
 
-Ein klassischer Mathematiker hat es also schwerer, konstruktiv arbeitende
-Kollegen zu verstehen. XXX Garbenmodelle usw.
+Eine klassische Mathematikerin hat es also schwerer, konstruktiv arbeitende
+Kollegen zu verstehen. Sie muss dazu geeignete \emph{Modelle} betrachten.
+
+
+\subsubsection*{Topologische Modelle für propositionale intuitionistische
+Logik}
+
+Mit \emph{propositionaler} Logik bezeichnet man das Fragmet, in dem keine
+Variablen und daher insbesondere keine Quantoren vorkommen. (Ihre klassische
+Variante kann man noch mit Wahrheitstafeln vollständig verstehen.)
+
+Jeder topologischer Raum~$X$ liefert ein Modell~$\O(X)$ für propositionale
+intuitionistische Logik: Wenn man zu jeder atomaren Aussage~$\varphi$ eine
+bestimmte offene Menge~$\brak{\varphi} \subseteq X$ zuordnet, kann man die
+Interpretation der restlichen Formeln gemäß folgender Definition festlegen.
+\begin{defn}[topologische Interpretation zusammengesetzter Aussagen]
+\begin{align*}
+  \brak{\top} &:= X \\
+  \brak{\bot} &:= \emptyset \\
+  \brak{\varphi \wedge \psi} &:= \brak{\varphi} \cap \brak{\psi} \\
+  \brak{\varphi \vee \psi} &:= \brak{\varphi} \cup \brak{\psi} \\
+  \brak{\varphi \Rightarrow \psi} &:=
+    \hcancel{$\brak{\varphi}^c \cup \brak{\psi}$}{0pt}{3pt}{0pt}{-2pt} =
+    \interior(\brak{\varphi}^c \cup \brak{\psi})
+\end{align*}
+\end{defn}
+Dabei bezeichnet~$U^c$ das Komplement von~$U$ in~$X$. Die Verwendung
+von~$(\brak{\varphi}^c \cup \brak{\psi})$ würde die Menge der offenen Mengen
+von~$X$ verlassen und ist daher schon aus diesem formalen Grund keine gute
+Idee; Abhilfe schafft das Nehmen des inneren Kerns.
+
+Anschaulich kann man sich~$\brak{\varphi}$ als den Ort, wo~$\varphi$ erfüllt
+ist, vorstellen. Wenn~$\brak{\varphi} = \emptyset$ gilt, gilt~$\varphi$ also
+nirgendwo; wenn~$\brak{\varphi} = X$ gilt, gilt~$\varphi$ überall; wenn~$X$
+nicht gerade nur zwei offene Mengen besitzt, sind aber auch viele weitere
+Abstufungen möglich. In diesem Sinn ist~$\O(X)$ ein Modell mit mehr als zwei
+Wahrheitswerten.
+
+\begin{bsp}Sei~$X$ die Erdoberfläche. Dann kann man zwei atomare Aussagen~$A$
+und~$B$ mit den Interpretationen
+\begin{align*}
+  \brak{A} &:= \{ x \in X \,|\, \text{an der Stelle~$x$ regnet es} \} \\
+  \brak{B} &:= \{ x \in X \,|\, \text{an der Stelle~$x$ hat es mehr
+  als~$20$ Grad} \}
+\end{align*}
+definieren. Die Aussage~$A \wedge B$ hat dann die Interpretation
+$\brak{A \wedge B} = \brak{A} \wedge \brak{B}$, beschreibt also den Ort
+derjenigen Stellen auf der Erde, an denen es bei mehr als~$20$ Grad
+regnet.\end{bsp}
+
+Die folgende Definition zeigt, dass diese Definition die Regeln
+intuitionistischen Schließens respektiert und daher sinnvoll ist:
+\begin{prop}Wenn~$\varphi \seq{} \psi$ intuitionistisch (im Fragment ohne
+Variablen), dann $\brak{\varphi} \subseteq \brak{\psi}$.\end{prop}
+\begin{proof}
+Wir müssen zeigen, dass die offenen Mengen von~$X$ den Schlussregeln
+propositionaler intuitionistischer Logik gehorchen. Etwa lautet die
+Interpretation der Schnittregel
+\begin{prooftree}
+  \AxiomC{$\brak{\varphi} \subseteq \brak{\psi}$}
+  \AxiomC{$\brak{\psi} \subseteq \brak{\chi}$}
+  \BinaryInfC{$\brak{\varphi} \subseteq \brak{\chi}$}
+\end{prooftree}
+und ist offensichtlich erfüllt: Wenn~$\brak{\varphi} \subseteq \brak{\psi}$
+und~$\brak{\psi} \subseteq \brak{\chi}$, dann auch~$\brak{\varphi} \subseteq
+\brak{\chi}$. Die Interpretation einer der Konjunktionsregeln lautet
+\vspace{-1em}
+\begin{prooftree}
+  \AxiomC{$\phantom{\seq{}}$}
+  \UnaryInfC{$\brak{\varphi \wedge \psi} \subseteq \brak{\varphi}$}
+\end{prooftree}
+und ist ebenfalls erfüllt: Denn~$\brak{\varphi \wedge \psi} = \brak{\varphi}
+\cap \brak{\psi} \subseteq \brak{\varphi}$. Die restlichen Fälle überlassen wir
+dem Leser.\end{proof}
+
+Eine andere Definition als die oben gegebene ist im Übrigen gar nicht möglich,
+wenn man möchte, dass diese Proposition gültig bleibt. Schnell kann man das wie
+folgt einsehen: Die Schlussregeln beschreiben \emph{universelle Eigenschaften}
+für~$\top$, $\bot$, $\wedge$, $\vee$ und~$\Rightarrow$ und legen daher ihre
+Interpretationen schon eindeutig fest.
+
+\begin{bem}Wenn man auch in seiner Meta-Logik konstruktiv arbeiten möchte,
+sollte man besser
+\[ \brak{\varphi \Rightarrow \psi} :=
+  \bigcup \{ U \,|\, \text{$U \subseteq X$ offen, $U \cap \brak{\varphi}
+  \subseteq \brak{\psi}$} \} \]
+definieren. Da in klassischer Logik genau dann~$U \subseteq V^c \cup W$,
+wenn~$U \cap V \subseteq W$, ist diese Definition in klassischer Logik zu
+obiger äquivalent.\end{bem}
+
+
+\subsubsection*{Topologische Interpretation des Prinzips vom ausgeschlossenen
+Dritten}
+
+Die topologische Interpretation von~$\varphi \vee \neg\varphi$ ist die offene
+Menge
+\[ \brak{\varphi \vee \neg\varphi} = \brak{\varphi} \cup \interior
+(\brak{\varphi}^c), \]
+also die Vereinigung von~$\brak{\varphi}$ mit dem Inneren ihres Komplements. Es
+ist klar, dass diese Vereinigung in den meisten interessanten Fällen nicht
+gleich ganz~$X$ ist; das Prinzip vom ausgeschlossenen Dritten gilt also in den
+wenigsten topologischen Modellen.
+
+% XXX: Anschauliche Interpretation
+
+
+\subsubsection*{Ausblick: Garbenmodelle für intuitionistische Prädikatenlogik}
+
+% XXX: van Dalen und Locales and toposes as spaces, Vickers, zitieren.
+
+Ein Modell für intuitionistische Prädikatenlogik benötigt nicht nur
+Wahrheitswerte, sondern auch Objekte, aus denen die Variablenwerte gezogen
+werden können. \XXX{Hinführung auf Garbenmodelle}
 
 
 \section[Beziehung zur theoretischen Informatik: die
@@ -2306,6 +2428,8 @@ das in~$\aa$ und~$\bb$ enthalten ist, ist
 
 % X leer. Dann X subset Y zeigen. Klären, wieso das gute Vorgehen tatsächlich
 % gut ist.
+
+% XXX: Formel vs. Aussage
 
 === Quantenmechanische Systeme als C^*-Algebren
  
