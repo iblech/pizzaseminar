@@ -95,7 +95,7 @@
 \newcommand{\Id}{\mathrm{Id}}
 \newcommand{\freist}{\underline{\ \ }}
 \newcommand{\csalgebra}{C\textsuperscript{*}\kern-.1ex-Algebra}
-\newcommand{\csalgebren}{C\textsuperscript{*}\kern-.1ex-Algebren}
+\newcommand{\csalgebren}{C\textsuperscript{*}\kern-.1ex-Alge\-bren}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\ggT}{ggT}
@@ -2286,6 +2286,146 @@ Auswahlaxiom oder andere klassische Prinzipien benötigt, eignen sich
 Örtlichkeiten also besser, wenn man solche nicht verwenden möchte oder (wie bei
 der Arbeit in anderen Topoi) nicht verwenden kann.
 
+
+\subsection{Algebraische Sicht auf klassische Mechanik und Quantenmechanik}
+
+\subsubsection*{Klassische Mechanik}
+
+Zu einem klassisch-mechanischen System gehört ein Phasenraum~$\Sigma$, dessen
+Punkte die reinen Zustände des Systems sind.
+
+\begin{bsp}Der Phasenraum des freien Teilchens im~$\RR^3$ ist~$\Sigma = \RR^3
+\times \RR^3$, denn durch Position und Impuls ist die Systemkonfiguration
+eindeutig festgelegt. Die beiden Projektionen~$\Sigma \to \RR^3$ sind die
+Observablen \emph{Position} bzw. \emph{Impuls}.\end{bsp}
+
+Auf der algebraischen Seite gehört zum Phasenraum~$\Sigma$ eine \csalgebra~$A
+:= C(\Sigma, \CC)$; es ergibt sich dann folgendes Wörterbuch zwischen
+Formulierungen auf der geometrischen und der algebraischen Seite:
+
+\begin{itemize}
+\item \emph{Reine Zustände} sind Punkte~$x \in \Sigma$ oder, da~$\Sigma \cong \Spec
+A$, äquivalent \csalgebren{}\-ho\-mo\-mor\-phis\-men $A \to \CC$.
+
+\item \emph{Gemischte Zustände} sind Wahrscheinlichkeitsmaße~$\mu$ auf~$\Sigma$ oder
+äquivalent lineare Abbildungen~$\rho : A \to \CC$, welche normiert
+(d.\,h.~$\rho(1) = 1$) und positiv sind (d.\,h.~$\rho(a^\star a) \geq 0$
+für alle~$a \in A$).
+
+Der Zusammenhang zwischen den beiden Sichtweisen wird durch
+\[ \rho(f) = \int_\Sigma f(x) \,d\mu(x) \]
+für alle~$f \in A$ gegeben: Ein Wahrscheinlichkeitsmaß~$\mu$ definiert über
+diese Setzung eine normierte, positive und lineare Abbildung; dass umgekehrt
+jedes solche Funktional von dieser Form ist, garantiert der Darstellungssatz
+von Riesz-Markov-Kakutani.
+
+Unter dieser Korrespondenz entspricht ein reiner Zustand~$x \in \Sigma$ dem
+in~$x$ konzentrierten Dirac-Maß bzw. der Abbildung~$\rho$ mit~$\rho(f) =
+f(x)$.
+
+\item \emph{Observable} sind stetige Funktionen~$\Sigma \to \RR$ oder
+äquivalent selbstadjungierte Elemente~$a \in A$.
+
+Eine spezielle Observable ist die Eins von~$A$, also die Funktion, die konstant
+den Wert~$1 \in \RR$ annimmt.
+
+\item Der Erwartungswert einer Observablen~$a$ in einem Zustand~$\rho$
+ist~$\rho(a)$. Ist~$\rho$ durch ein Wahrscheinlichkeitsmaß~$\mu$ gegeben,
+lässt sich dieser Ausdruck auch als~$\int_\Sigma a(x) \,d\mu(x)$ schreiben;
+diese Form ist vielleicht vertrauter.
+
+Die Forderung, dass~$\rho$ normiert ist, ist dann anschaulich: Denn der
+Erwartungswert der konstanten Observable~$1 \in A$ sollte auch tatsächlich~$1$
+sein.
+
+Ist~$\rho = \freist(x)$ ein reiner Zustand, so ist~$\rho(a) = a(x)$ nicht nur
+der Erwartungswert, sondern der tatsächliche Wert von~$a$.
+\end{itemize}
+
+\XXX{Phasenräume sind doch eher symplektische Mannigfaltigkeiten oder
+Pois\-son-Man\-nig\-fal\-tig\-kei\-ten. Wieso ignoriert man die glatte
+Struktur? Wieso erlaubt man beliebige stetige Abbildungen?}
+
+\XXX{Wie heißt die mathematische Theorie, die tatsächlich so wie oben
+beschrieben vorgeht?}
+
+
+\subsubsection*{Quantenmechanik}
+
+Quantenmechanische Systeme können nicht mehr durch einen Phasenraum im
+traditionellen Sinn beschrieben werden. Es bleibt aber die Möglichkeit, sie
+durch nichtkommutative~\csalgebren{} zu beschreiben.
+
+\begin{bsp}Wird ein System durch einen Hilbertraum~$H$ beschrieben, so ist~$A
+:= L(H,H) = \{ f : H \to H \,|\, \text{$f$ linear und stetig} \}$ die
+zugehörige~\csalgebra.\end{bsp}
+
+Grundlegende Konzepte können also nicht mehr geometrische über einen Phasenraum
+verstanden werden, sondern müssen algebraisch formuliert werden. In Analogie
+zur klassischen Situation könnte man definieren:
+\begin{itemize}
+\item \emph{Reine Zustände} sind \csalgebren{}\-homo\-mor\-phis\-men~$A \to
+\CC$.
+\item \emph{Gemischte Zustände} sind normierte, positive und lineare
+Abbildungen~$A \to \CC$.
+\item \emph{Observablen} sind selbstadjungierte Elemente von~$A$.
+\item Der Erwartungswert einer Observablen~$a$ in einem Zustand~$\rho$
+ist~$\rho(a)$.
+\end{itemize}
+
+\begin{bsp}Jeder reine Zustand ist auch ein gemischter Zustand.\end{bsp}
+
+\begin{bsp}\begin{itemize}
+\item Ist~$\psi \in H$ eine normierte Wellenfunktion, so ist~$\rho$
+mit~$\rho(a) = (\psi, a(\psi))$ ein reiner Zustand.
+\item Ist~$(\psi_i)_i$ eine Familie normierter Wellenfunktionen und~$(p_i)_i$
+eine Familie nichtnegativer Zahlen mit~$\sum_i p_i = 1$, so ist~$\rho$
+mit~$\rho(a) = \sum_i p_i \cdot (\psi_i, a(\psi_i))$ ein gemischter Zustand.
+\item Ist~$a : H \to H$ ein selbstadjungierter Operator, so ist~$a \in A$ eine
+Observable.
+\end{itemize}
+\end{bsp}
+
+Bei näherer Betrachtung stellt sich dieser Ansatz jedoch als zu naiv heraus. Das
+Problem steckt in der unscheinbaren Bedingung
+\[ \rho(a + b) = \rho(a) + \rho(b) \quad\text{für alle~$a,b \in A$} \]
+an gemischte Zustände~$\rho$ bzw. der analogen Forderung der
+Multiplikativität bei reinen Zuständen. Man kann nämlich
+argumentieren~\cite[Seite~27]{topos:aqt},
+dass zwei Observable~$a$ und~$b$ nur dann physikalisch sinnvoll addierbar sind,
+wenn sie gemeinsam messbar sind, also miteinander kommutieren. Die
+mathematischen Physiker, die nicht nur vorgeben, sich mit diesem Thema
+auszukennen, begründen das mit einer Referenz auf Bohrs \emph{Doktrin
+klassischer Konzepte}, auf die wir weiter unten eingehen. Jedenfalls sollte man
+besser folgende Definition treffen:
+
+\begin{defn}\begin{enumerate}
+\item
+Ein \emph{reiner Quasi-Zustand} einer \csalgebra~$A$ ist eine Abbildung~$A \to \CC$,
+die auf jeder kommutativen Unter-\csalgebra~$C \subseteq A$ ein
+\csalgebren\-homo\-mor\-phis\-mus ist.
+\item Ein \emph{gemischter Quasi-Zustand} einer \csalgebra~$A$ ist eine Abbildung~$A
+\to \CC$, welche normiert, positiv und auf jeder kommutativen
+Unter-\csalgebra~$C \subseteq A$ linear ist.
+\end{enumerate}
+\end{defn}
+
+\begin{bem}In der Praxis ist der Unterschied zwischen Zuständen und den besser
+motivierten Quasi-Zuständen nicht so groß: Denn nach Gleasons Theorem ist jeder
+Quasi-Zustand auf~$A = L(H,H)$ mit~$\dim H \geq 3$ schon ein Zustand.\end{bem}
+
+%~\cite[Seite~209]{scheibe}:
+%\begin{quote}
+%However far the phenomena transcend the scope of classical physical
+%explanation, the account of all evidence must be expressed in
+%classical terms. [\ldots] The argument is simply that by the word {\it
+%experiment} we refer to a situation where we can tell others what we
+%have done and what we have learned and that, therefore, the account of
+%the experimental arrangements and of the results of the observations
+%must be expressed in unambiguous language with suitable application of
+%the terminology of classical physics.
+
+% XXX: Vergleich Hilbertraumzugang
 
 \appendix
 \section{Ideale in Ringen}
