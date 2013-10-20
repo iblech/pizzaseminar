@@ -70,6 +70,7 @@
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\PP}{\mathbb{P}}
 \renewcommand{\aa}{\mathfrak{a}}
@@ -86,16 +87,21 @@
 \renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Ouv}{\mathrm{Ouv}}
 \newcommand{\Rad}{\mathrm{Rad}}
+\newcommand{\pt}{\mathrm{pt}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\Id}{\mathrm{Id}}
 \newcommand{\freist}{\underline{\ \ }}
+\newcommand{\csalgebra}{C\textsuperscript{*}\kern-.1ex-Algebra}
+\newcommand{\csalgebren}{C\textsuperscript{*}\kern-.1ex-Algebren}
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\Ob}{Ob}
 \DeclareMathOperator{\ggT}{ggT}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\Quot}{Quot}
+\DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\interior}{int}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Set}{\mathrm{Set}}
@@ -2138,6 +2144,147 @@ extrahieren.
 \begin{proof}Wird nachgeliefert. Die Idee ist wieder, ein Modell anzugeben. Die
 Interpretation einer Aussage im Kontext~$x_1,\ldots,x_n$ soll dabei ein
 Radikalideal in~$R[x_1,\ldots,x_n]$ sein.\end{proof}
+
+
+\section{Ein topostheoretischer Zugang zu Quantenmechanik}
+
+\subsection{Gelfand-Dualität zwischen topologischen Räumen und \csalgebren}
+
+Grundlegend für das Wechselspiel zwischen Geometrie und Algebra ist folgende
+Erkenntnis: Zu einem geometrischen Objekt~$X$ kann man die Menge der
+(reellwertigen, komplexwertigen, allgemeineren) Funktionen auf~$X$ betrachten.
+Diese Menge trägt algebraische Struktur (ist etwa ein Ring) und kann daher mit
+Mitteln der Algebra untersucht werden. Dabei besteht die Hoffnung, dadurch
+etwas über~$X$ zu lernen; in guten Fällen legt die Algebra von Funktionen
+das geometrische Objekt~$X$ sogar schon eindeutig fest.
+
+Dieses Motto hat in mehreren Teilgebieten der Mathematik konkrete Ausprägungen.
+Etwa ist in algebraischer Geometrie folgende Proposition fundamental:
+\begin{prop}Die Kategorie der affinen Schemata ist dual äquivalent zur Kategorie der
+Ringe:
+\[ \begin{array}{@{}rcl@{}}
+  \textnormal{(Kat. der affinen Schemata)}^\op &\simeq& \textnormal{(Kat. der Ringe)} \\
+  X &\mapsto& \Gamma(X, \O_X) = \textnormal{Ring der regulären Funktionen auf~$X$} \\
+  \textnormal{Spektrum von~$A$} = \Spec A &\mapsfrom& A
+\end{array} \]
+\end{prop}
+
+Für unsere Zwecke ist die \emph{Gelfand-Dualität} wichtig, die zwischen
+kompakten Hausdorffräumen einerseits und \csalgebren{} andererseits vermittelt.
+\begin{defn}Eine \csalgebra~$A$ ist ein Banachraum über~$\CC$ (also ein vollständiger
+normierter Vektorraum über~$\CC$) zusammen mit einer
+Multiplikationsoperation~$A \times A \to A$ und einer Involution~$(\freist)^* :
+A \to A$, sodass gewisse natürliche Axiome erfüllt sind.\end{defn}
+Prototypbeispiele für~\csalgebren{} sind~$\CC$ mit der komplexen Konjugation
+als Involution und~$L(H,H) = \{ f : H \to H \,|\, \text{$f$ linear und stetig}
+\}$ mit der Zuordnung~$f \mapsto f^\star = \text{(adjungierter Operator
+zu~$f$)}$ als Involution.
+\begin{satz}[Gelfand-Dualität, so nur klassisch]
+Die Kategorie der kompakten Hausdorffräume ist dual äquivalent zur Kategorie
+der kommutativen~\csalgebren{} (mit Eins):
+\[ \begin{array}{@{}rcl@{}}
+  \textnormal{(Kat. der kompakten Hausdorffräume)}^\op &\simeq&
+  \textnormal{(Kat. der kommutativen \csalgebren)} \\
+  X &\mapsto& C(X, \CC) = \{ f : X \to \CC \,|\, \textnormal{$f$ stetig} \} \\
+  \Spec A &\mapsfrom& A
+\end{array} \]
+Dabei wird~$C(X, \CC)$ vermöge der punktweisen Addition, Multiplikation und
+Konjugation sowie der Supremumsnorm zu einer~\csalgebra. Die Punkte von~$\Spec
+A$ sind genau die \csalgebren{}homomorphismen~$A \to \CC$.
+\end{satz}
+\begin{proof}
+Führt hier zu weit. Wir wollen nur anmerken, dass der Homöomorphismus~$X \to
+\Spec C(X,\CC)$ durch~$x \longmapsto \freist(x)$ mit~$\freist(x) = (f \mapsto
+f(x))$ gegeben ist. An einer Stelle im Beweis muss man geeignete
+Algebrenhomomorphismen~$A \to \CC$ konstruieren; dazu benötigt man das
+Auswahlaxiom.
+\end{proof}
+
+\begin{bem}Die Gelfand-Dualität liefert einen Ansatz für \emph{nichtkommutative
+Geometrie}: Wie man die Definition eines topologischen Raums abändern sollte,
+sodass sie nicht mehr "`kommutativ"' wäre, ist völlig unklar, denn in
+der Definition kommen ja gar keine binären Verknüpfungen vor. Auf der algebraischen Seite
+ist es dagegen einfach. Daher kann man das formale Duale zur Kategorie der
+(nicht notwendigerweise kommutativen) \csalgebren{} als erste Approximation für
+eine Kategorie nichtkommutativer Räume verwenden.
+\end{bem}
+
+
+\subsection{Örtlichkeiten für Topologie ohne Punkte}
+
+In der obigen Formulierung gilt die Gelfand-Dualität leider nur in einem
+klassischen Kontext. Da wir sie später in einem alternativen
+Mathematik-Universum (dem Bohr-Topos zu einer nichtkommutativen \csalgebra)
+nutzen wollen, in dem das Auswahlaxiom unabhängig von unseren philosophischen
+Vorlieben schlichtweg \emph{nicht gilt}, ist das unzureichend. Im Zeitraum von
+etwa 20~Jahren wurde glücklicherweise auch folgende konstruktiv zulässige Variante
+entwickelt:
+
+\begin{satz}[auch konstruktiv]Die Kategorie der kompakten und vollständig
+regulären Örtlichkeiten (Locales) ist dual äquivalent zur Kategorie der
+kommutativen~\csalgebren. Dabei geht analog zur klassischen Formulierung eine
+Örtlichkeit~$X$ auf die Algebra der stetigen Abbildungen~$X \to \CC$.
+\end{satz}
+
+Dabei ist das Konzept einer \emph{Örtlichkeit} (Locale) eine milde
+Verallgemeinerung des Konzepts eines topologischen Raums, bei dem \emph{Punkte}
+nicht im Vordergrund stehen: Während ein topologischer Raum bekanntlich durch
+eine Menge von Punkten sowie der Deklaration gewisser Mengen von Punkten als
+offen gegeben ist, besteht eine Örtlichkeit nur aus der Angabe von
+gewissen \emph{offenen Dingen}, welche nicht notwendigerweise Mengen von
+Punkten sein müssen. Von den offenen Teilmengen eines topologischen Raums
+schaut man sich die Axiome ab, die die offenen Dinge einer Örtlichkeit
+erfüllen sollen:
+
+\begin{defn}Eine \emph{Örtlichkeit}~$X$ besteht aus einem Verband~$\Ouv(X)$
+\emph{offener Dinge} (also einer Halbordnung zusammen mit Operationen~$\wedge$
+und~$\vee$, die geeignete Axiome erfüllen), in dem zusätzliche beliebige
+Suprema existieren und für diese folgendes Distributivitätsgesetz erfüllt ist:
+\[ u \wedge \bigvee_i v_i = \bigvee_i (u \wedge v_i). \]
+\end{defn}
+
+\begin{bsp}
+Jeder topologischer Raum~$X$ liefert ein Beispiel für eine Örtlichkeit~$X$
+mit~$\Ouv(X) = \{ U \subseteq X \,|\, \text{$U$ offen} \}$ und~$\wedge =
+\cap$, $\vee = \cup$, $\bigvee = \bigcup$.\end{bsp}
+
+\begin{bsp}Speziell ist der einpunktige Raum~$\pt$ als Örtlichkeit
+durch~$\Ouv(\pt) = \P(\{\star\})$ gegeben.\end{bsp}
+
+Das Konzept eines Punkts ist in der Theorie der Örtlichkeiten nicht
+grundlegend, kann aber sehr wohl definiert werden: Ein \emph{Punkt} einer
+Örtlichkeit~$X$ ist ein Morphismus~$\pt \to X$ von Örtlichkeiten. Die Menge
+aller Punkte einer Örtlichkeit kann man mit einer natürlichen Topologie
+versehen; der so entstehende topologische Raum spiegelt aber nur dann die
+Örtlichkeit getreu wieder, wenn diese \emph{räumlich} war. Insbesondere gibt es
+nichttriviale und interessante Örtlichkeiten, die keinen einzigen Punkt
+besitzen: Die Vorstellung eines Punkts ist gewissermaßen ein ideelles und
+schwerer fassbares Konzept als das eines offenen Teils eines Raums. Auch, wenn
+es einem Raum an Punkten mangelt, kann man manchmal dennoch von offenen
+Teilbereichen sprechen.
+
+\begin{bsp}Folgende Örtlichkeiten sind nichttrivial und besitzen keine Punkte:
+die Örtlichkeit aller Surjektionen~$\NN \twoheadrightarrow \RR$, die
+Örtlichkeit aller zufälligen~$0/1$-Folgen, der örtlichkeitstheoretische Schnitt
+beliebig vieler dichter Unterörtlichkeiten einer Örtlichkeit.\end{bsp}
+
+Umgekehrt spiegelt auch die Örtlichkeit zu einem topologischen Raum diesen nur
+dann getreu wieder, wenn dieser \emph{nüchtern} war. Jeder Hausdorffraum ist
+nüchtern.
+% XXX: Stimmt das konstruktiv?
+Stattet man aber etwa eine Menge mit
+mehr als nur einem Element mit der indiskreten Topologie aus, erhält man einen
+topologischen Raum, der nicht nüchtern ist: Die Vielzahl seiner Punkte schlägt
+sich nicht in seiner Topologie nieder. Seine \emph{Nüchternifizierung}
+(\emph{Ausnüchterung}?) ist der einpunktige Raum.
+
+Hier ist nicht der richtige Ort, um auf die vielen Vorteile (und die Nachteile) von
+Örtlichkeiten gegenüber topologischen Räumen einzugehen. Es sei nur erwähnt,
+dass durch den Wegfall von Punkten als grundlegendes Konzept diese auch
+seltener konstruiert werden müssen. Da man zur Angabe spezieller Punkte oft das
+Auswahlaxiom oder andere klassische Prinzipien benötigt, eignen sich
+Örtlichkeiten also besser, wenn man solche nicht verwenden möchte oder (wie bei
+der Arbeit in anderen Topoi) nicht verwenden kann.
 
 
 \appendix
