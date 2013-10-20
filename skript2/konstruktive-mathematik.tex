@@ -714,7 +714,7 @@ liefert einen rein sachlichen Grund, konstruktive Mathematik zu betreiben.
 \begin{itemize}
 \item Vielleicht hat man einen bestimmen topologischen Raum~$X$ besonders gern
 und möchte daher, dass alle untersuchten Objekte vom aktuellen Aufenthaltsort
-auf dem Raum abhängen. Dann möchte man im \emph{Topos der Garben auf~$X$}
+in dem Raum abhängen. Dann möchte man im \emph{Topos der Garben auf~$X$}
 arbeiten.
 \item Vielleicht ist man auch ein besonderer Freund einer bestimmten
 Gruppe~$G$. Dann möchte man vielleicht, dass alle untersuchten Objekte
@@ -1862,7 +1862,7 @@ intuitionistisch ableitbar.\end{kor}
 \subsection{Beispiel aus der Algebra: dynamische Methoden}
 
 In der kommutativen Algebra sind einige Techniken gebräuchlich, mit deren Hilfe
-man viele konkrete Aussagen beweisen kann, deren Gültigkeit man aber nur
+man viele konkrete Aussagen beweisen kann, deren Zulässigkeit man aber nur
 in klassischer Logik und unter Verwendung starker Auswahlprinzipien beweisen
 kann. Drei Beispiele sind folgende:
 
@@ -1920,6 +1920,8 @@ Auch ist die Abhängigkeit der~$m_i$ von den Daten nicht klar: Gibt es eine
 universelle Schranke, die für jeden Ring und jedes Polynom gültig wäre? Oder
 kann der Nilpotenzindex bei schlimmen Ringen oder Polynomen beliebig hoch
 werden?
+
+% XXX: Hilft universelles Ringelement?
 
 Diese Fragen könnte man durch eine manuelle Untersuchung, etwa mit
 verschachtelten Induktionsbeweisen, klären. Es gibt aber auch ein
@@ -2008,6 +2010,7 @@ algebraischen Geometrie lernt man, dass ein Ring~$R$ genau dann diese besondere
 Eigenschaft hat, wenn sein Spektrum als topologischer Raum irreduzibel ist.)
 % XXX: Referenz?
 \end{bem}
+% XXX: Kann man das generische Primideal in einem anderen Topos realisieren?
 
 \begin{bem}Die Beschränkungen in Satz~\ref{satz:genprime} an die Form des
 gegebenen Beweises sind unnötig restriktiv, insbesondere können anders als dort
@@ -2018,7 +2021,7 @@ beschrieben durchaus Quantoren verwendet werden. Das diskutieren wir im
 \subsubsection*{Beweis des Satzes}
 
 \begin{proof}[Beweis von Satz~\ref{satz:genprime}]
-Wir geben ein explizites \emph{Modell} der in der Formulierung des Satzes
+Wir geben ein explizites \emph{Modell} des in der Formulierung des Satzes
 beschriebenen Axiomensystems an. Die Aussagen~$\varphi$ der Sprache wollen wir als
 gewisse Radikalideale~$\brak{\varphi} \subseteq R$ interpretieren, die
 Ableitungsrelation~$\seq{}$ als umgekehrte Idealinklusion.
@@ -2066,7 +2069,7 @@ führen, welcher die speziellen Möglichkeiten klassischer Logik nutzt, daher
 keinen expliziten Zeugen liefert und somit völlig witzlos ist:
 \begin{proof}[Beweis von Satz~\ref{satz:genprime} (nur klassisch)]
 Da die einzelnen Axiome des generischen Primideals von jedem tatsächlichen
-Primideal~$\pp$ werden, folgt aus dem gegebenen Beweis von~$Z(a_1) \wedge
+Primideal~$\pp$ erfüllt werden, folgt aus dem gegebenen Beweis von~$Z(a_1) \wedge
 \cdots \wedge Z(a_n) \seq{} Z(b)$, dass für jedes Primideal~$\pp$ die
 Implikation
 \[ a_1,\ldots,a_n \in \pp \quad\Longrightarrow\quad b \in \pp \]
@@ -2092,7 +2095,7 @@ abgeschlossenen Oberkörper von~$R$ Null ist, wenn also für jeden
 Ringhomomorphismus~$\varphi : R \to K$, wobei~$K$ ein algebraisch
 abgeschlossener Körper ist, das Element~$\varphi(x) \in K$ Null ist, dann
 ist~$x$ nilpotent.\end{lemma}
-In diesem Abschnitt wollen wir zeigen, dass auch dieses Prinzip konstruktiv
+In diesem Abschnitt wollen wir zeigen, dass auch dieses Prinzip
 in einem konstruktiven Kontext verwendbar ist -- obwohl die Existenz
 algebraischer Abschlüsse, und schon die Existenz von Zerfällungskörpern,
 konstruktiv eine diffizile Angelegenheit ist. In diesem Abschnitt setzen wir
@@ -2134,7 +2137,7 @@ extrahieren.
 \end{satz}
 \begin{proof}Wird nachgeliefert. Die Idee ist wieder, ein Modell anzugeben. Die
 Interpretation einer Aussage im Kontext~$x_1,\ldots,x_n$ soll dabei ein
-Radikalideal in~$\ZZ[x_1,\ldots,x_n]$ sein.\end{proof}
+Radikalideal in~$R[x_1,\ldots,x_n]$ sein.\end{proof}
 
 
 \appendix
@@ -2154,7 +2157,7 @@ Radikalideal in~$\ZZ[x_1,\ldots,x_n]$ sein.\end{proof}
 sodass
 \begin{itemize}
 \item Addition und Multiplikation assoziativ sind,
-\item Addition und Multiplikation multiplikativ sind,
+\item Addition und Multiplikation kommutativ sind,
 \item Addition über Multiplikation distribuiert,
 \item das Element~$0$ neutral bezüglich der Addition ist,
 \item das Element~$1$ neutral bezüglich der Multiplikation ist und
@@ -2228,7 +2231,7 @@ Element auf eindeutige Weise als Produkt von Primfaktoren schreiben lässt. Man
 fragte sich nun, ob gewisse für die Zahlentheorie relevante Ringe dieselbe
 Eigenschaft hatten: Das wäre zum einen recht "`nett"', zum anderen aber auch
 enorm nützlich: Denn man kannte schon einfache Beweise von Fermats letztem
-Satz, welche als einzige ungesicherte Voraussetzung diese Eigenschaft hatten.
+Satz, welche als einzige ungesicherte Zutat diese Eigenschaft voraussetzten.
 
 Leider stellte es sich heraus, dass diese Eigenschaft vielen der interessanten
 Ringe \emph{nicht} zu kam. Kronecker hatte nun die geniale Einsicht, von
@@ -2258,10 +2261,10 @@ wenn man klassische Logik voraussetzt.
   vollständige Übersicht über alle Ideale von~$\ZZ$.}
 \end{table}
 
-\begin{aufg}Zeige, dass wenn alle Ideale von~$\ZZ$ von der Form~$(a)$ für
+\begin{aufg}Zeige, dass wenn alle Ideale von~$\ZZ$ von der Form~$(x)$ für
 eine ganze Zahl~$x$ sind, das Prinzip vom ausgeschlossenen Dritten gilt.
 \emph{Tipp:} Betrachte für eine beliebige Aussage~$\varphi$ das Ideal (wieso
-sind die Idealaixome erfüllt?) $\{ x \in \ZZ
+sind die Idealaxiome erfüllt?) $\{ x \in \ZZ
 \,|\, x = 0 \vee \varphi \} \subseteq \ZZ$.\end{aufg}
 
 
@@ -2318,6 +2321,8 @@ die Axiome eines Primideals voraussetzen darf, gegeben. Dann ist~$x$ nilpotent
 (konstruktiv!). Aus dem klassischen Beweis kann man also auf konstruktive Art
 und Weise einen konstruktiven Beweis der Nilpotenzbehauptung extrahieren.
 \end{wunder}
+
+Die genaue Formulierung steht im Haupttext als Satz~\ref{satz:genprime}.
 
 
 \subsubsection*{Polynome mit Koeffizienten in Primidealen}
