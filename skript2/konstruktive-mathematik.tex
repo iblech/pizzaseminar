@@ -2414,6 +2414,61 @@ Unter-\csalgebra~$C \subseteq A$ linear ist.
 motivierten Quasi-Zuständen nicht so groß: Denn nach Gleasons Theorem ist jeder
 Quasi-Zustand auf~$A = L(H,H)$ mit~$\dim H \geq 3$ schon ein Zustand.\end{bem}
 
+
+\subsection{Topoi als mathematische Alternativuniversen}
+
+\subsubsection*{Was ist ein Topos?}
+
+\begin{defn}Ein \emph{Topos} ist eine Kategorie, die endliche Limiten besitzt,
+kartesisch abgeschlossen ist und über einen Unterobjektklassifizierer verfügt.
+\end{defn}
+
+Notwendig und hinreichend für die Existenz endlicher Limiten ist die Existenz
+eines terminalen Objekts (eines Objekts~$1$, sodass für jedes Objekt~$X$ genau
+ein Morphismus~$X \to 1$ existiert), von Produkten~$X \times Y$ für je zwei
+Objekte~$X$ und~$Y$ und von Differenzkernen für je zwei parallele Morphismen~$X
+\to Y$.
+
+\emph{Kartesisch abgeschlossen} bedeutet, dass es zu je zwei Objekten~$X$
+und~$Y$ nicht nur wie in jeder Kategorie eine Menge (oder Klasse)~$\Hom(X,Y)$
+von Morphismen zwischen~$X$ und~$Y$ gibt, sondern dass man sinnvoll von einem
+internen \emph{Hom-Objekt}~$\underline{\Hom}(X,Y)$ der Kategorie sprechen kann.
+Das ist etwa in der Kategorie der Mengen und beinahe in der Kategorie der
+topologischen Räume der Fall (da man die Hom-Mengen mit einer Topologie
+versehen kann).
+
+Ein \emph{Unterobjektklassifizierer} ist ein spezielles Objekt~$\Omega$, sodass
+Unterobjekte eines Objekts~$X$ in 1:1-Korrespondenz zu Morphismen~$X \to
+\Omega$ stehen. In der Kategorie der Mengen ist~$\Omega = \P(\{\star\})$ (in
+klassischer Logik also~$\Omega = \{ 0, 1 \}$) ein solches: Denn bekanntlich
+können Teilmengen~$U$ einer Menge~$X$ ja eindeutig durch ihre klassifizierende
+Abbildung~$X \to \Omega,\ x \mapsto \{ \star \,|\, x \in U \}$ (also~$x \mapsto
+1$, falls~$x \in U$, und~$x \mapsto 0$, falls~$x \not\in U$) beschrieben
+werden.
+
+Obige Definition ist völlig korrekt, ist für unsere Zwecke aber aus zwei
+Gründen nicht gut geeignet: Zum einen ist sie nur dann anschaulich
+verständlich, wenn man schon einige Erfahrung mit Kategorientheorie hat. Zum
+anderen ist sie in einem gewissen Sinn sogar irreführend, denn ein Topos hat
+viel mehr Struktur als die auf Minimalität getrimmte Definition vermuten ließe.
+Eine umfassendere Definition, die diese weiteren wesentlichen Strukturen nicht
+verschweigt, ist etwa folgende: Ein \emph{Topos} ist eine lokal kartesisch
+abgeschlossene, endlich vollständige und kovollständige Heyting-Kategorie,
+welche exakt und extensiv ist und über einen Unterobjektklassifizierer verfügt.
+
+Für unsere Zwecke genügen ein Motto und Beispiele für Topoi.
+
+\begin{motto}Ein Topos ist eine Kategorie, die dadurch, dass sie ähnliche
+kategorielle Eigenschaften wie die Kategorie der Mengen hat, über eine
+\emph{interne Sprache} verfügt.\end{motto}
+
+Archetypisches Beispiel für einen Topos ist die Kategorie der Mengen. Ferner
+ist die Kategorie der mengenwertigen Garben über einem topologischen Raum~$X$
+ein Topos.
+
+% XXX: Topostheorie wichtig; viele Facetten; Verallgemeinerung von top. Räumen
+% und von Örtlichkeiten; Kripke-Rahmen; und siehe Foliensatz...
+
 %~\cite[Seite~209]{scheibe}:
 %\begin{quote}
 %However far the phenomena transcend the scope of classical physical
