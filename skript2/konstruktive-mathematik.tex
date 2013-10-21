@@ -82,6 +82,8 @@
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
 \newcommand{\U}{\mathcal{U}}
 \renewcommand{\I}{\mathcal{I}}
 \renewcommand{\P}{\mathcal{P}}
@@ -89,6 +91,7 @@
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Ouv}{\mathrm{Ouv}}
 \newcommand{\Rad}{\mathrm{Rad}}
+\newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\id}{\mathrm{id}}
@@ -323,7 +326,7 @@ der Tabelle gemeint.
   \centering
   \small
   \setlength{\extrarowheight}{0.3em}
-  \begin{tabular}{@{}r|p{5.9cm}|p{6.5cm}}
+  \begin{tabular}{@{}r|p{5.9cm}|p{6.5cm}@{}}
     & {klassische Logik} & {intuitionistische Logik}
     \\\hline
     Aussage $\varphi$ & Die Aussage $\varphi$ gilt. & Wir haben Beleg für $\varphi$. \\
@@ -339,7 +342,7 @@ der Tabelle gemeint.
       Wir können (gleichmäßig) für alle~$x : X$ Belege für~$\varphi(x)$ konstruieren. \\
     $\exists x\?X{:}\ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x : X$, für das~$\varphi(x)$
     stimmt. & {\raggedright
-      Wir haben ein~$x : X$ zusammen mit Beleg für~$\varphi(x).$} \\
+      Wir haben ein~$x : X$ zusammen mit Beleg für~$\varphi(x).$}
   \end{tabular}
   \caption{\label{bhk}Informale rekursive Definition des Belegbegriffs.}
 \end{table}
@@ -2417,6 +2420,21 @@ Quasi-Zustand auf~$A = L(H,H)$ mit~$\dim H \geq 3$ schon ein Zustand.\end{bem}
 
 \subsection{Topoi als mathematische Alternativuniversen}
 
+Vorab sei bemerkt, dass Topostheorie viele Facetten hat. Hier betonen wir nur eine, nämlich
+die Auffassung von Topoi als mathematische Alternativuniversen. Unter anderem
+hat Topostheorie aber auch eine geometrische Komponente: Topoi kann man auch als
+verallgemeinerte Räume ansehen. Eine informale Einführung in Topostheorie
+von Tom Leinster~\cite{leinster:topos} diskutiert auch diese anderen
+Standpunkte.
+
+In diesem und im folgenden Abschnitt setzen wir etwas Grundkenntnisse in
+Kategorientheorie voraus. Alle benötigten Konzepte kann man etwa im
+Skript zum vorherigen Pizzaseminar~\ref{pizzaseminar:kategorientheorie}
+nachlesen. Gelegentlich werden wir auch über Garben sprechen; die wesentlichen
+Definitionen dazu sind in Anhang~\ref{appendix:garben} zusammengestellt. Man
+kann solche Passagen aber auch überlesen.
+
+
 \subsubsection*{Was ist ein Topos?}
 
 \begin{defn}Ein \emph{Topos} ist eine Kategorie, die endliche Limiten besitzt,
@@ -2439,18 +2457,18 @@ versehen kann).
 
 Ein \emph{Unterobjektklassifizierer} ist ein spezielles Objekt~$\Omega$, sodass
 Unterobjekte eines Objekts~$X$ in 1:1-Korrespondenz zu Morphismen~$X \to
-\Omega$ stehen. In der Kategorie der Mengen ist~$\Omega = \P(\{\star\})$ (in
-klassischer Logik also~$\Omega = \{ 0, 1 \}$) ein solches: Denn bekanntlich
+\Omega$ stehen. In der Kategorie der Mengen ist~$\Omega = \P(\{\star\})$ ein solches (in
+klassischer Logik also~$\Omega = \{ 0, 1 \}$): Denn bekanntlich
 können Teilmengen~$U$ einer Menge~$X$ ja eindeutig durch ihre klassifizierende
 Abbildung~$X \to \Omega,\ x \mapsto \{ \star \,|\, x \in U \}$ (also~$x \mapsto
 1$, falls~$x \in U$, und~$x \mapsto 0$, falls~$x \not\in U$) beschrieben
 werden.
 
-Obige Definition ist völlig korrekt, ist für unsere Zwecke aber aus zwei
+Obige Definition ist völlig korrekt, für unsere Zwecke aber aus zwei
 Gründen nicht gut geeignet: Zum einen ist sie nur dann anschaulich
 verständlich, wenn man schon einige Erfahrung mit Kategorientheorie hat. Zum
 anderen ist sie in einem gewissen Sinn sogar irreführend, denn ein Topos hat
-viel mehr Struktur als die auf Minimalität getrimmte Definition vermuten ließe.
+viel mehr Struktur, als die auf Minimalität getrimmte Definition vermuten ließe.
 Eine umfassendere Definition, die diese weiteren wesentlichen Strukturen nicht
 verschweigt, ist etwa folgende: Ein \emph{Topos} ist eine lokal kartesisch
 abgeschlossene, endlich vollständige und kovollständige Heyting-Kategorie,
@@ -2462,12 +2480,169 @@ Für unsere Zwecke genügen ein Motto und Beispiele für Topoi.
 kategorielle Eigenschaften wie die Kategorie der Mengen hat, über eine
 \emph{interne Sprache} verfügt.\end{motto}
 
-Archetypisches Beispiel für einen Topos ist die Kategorie der Mengen. Ferner
-ist die Kategorie der mengenwertigen Garben über einem topologischen Raum~$X$
-ein Topos.
+\begin{bsp}Archetypisches Beispiel für einen Topos ist die Kategorie~$\Set$ der
+Mengen und Abbildungen.
+\end{bsp}
 
-% XXX: Topostheorie wichtig; viele Facetten; Verallgemeinerung von top. Räumen
-% und von Örtlichkeiten; Kripke-Rahmen; und siehe Foliensatz...
+\begin{bsp}Ist~$X$ ein topologischer Raum (oder eine Örtlichkeit), so ist die
+Kategorie der mengenwertigen Garben über~$X$ und der Garbenmorphismen ein
+Topos. Das terminale Objekt ist die konstante Garbe~$U \mapsto \{ \star \}$,
+das initiale die Garbe~$U \mapsto \{ \star \,|\, U = \emptyset \}$ und der
+Unterobjektklassifizierer ist die Garbe~$U \mapsto \{ V \subseteq U \}$.
+\end{bsp}
+
+
+\subsubsection*{Was ist die interne Sprache?}
+
+Die interne Sprache eines Topos~$\E$ erlaubt es,
+\begin{itemize}
+\item Objekte und Morphismen des Topos zu konstruieren,
+\item Eigenschaften über diese zu formulieren und
+\item gegebenenfalls solche Eigenschaften zu beweisen,
+\end{itemize}
+und zwar in einer \emph{naiven}, \emph{element-basierten} Sprache, die der
+üblichen formalen mathematischen Sprache sehr stark ähnelt.
+
+Etwa erscheint ein Objekt von~$\E$, das also vielleicht eine komplizierte Garbe
+von Mengen sein kann, aus Sicht der internen Sprache wie eine gewöhnliche
+Menge.\footnote{Besser sollte man hier \emph{Typ} schreiben. Auf den
+Unterschied wollen wir hier nicht eingehen.} Folgerichtig erscheint ein
+Morphismus von~$\E$, der tatsächlich vielleicht eine komplizierte unendliche
+Familie von Abbildungen ist, aus Sicht der internen Sprache wie eine
+gewöhnliche Abbildung zwischen Mengen.
+
+Diese Auffassung ist sehr tragfähig: Etwa sieht das initiale Objekt aus Sicht
+der internen Sprache auch in der Tat wie die leere Menge, ein Monomorphismus
+wie eine injektive Abbildung und ein Epimorphismus wie eine surjektive
+Abbildung aus, siehe Tafel~\ref{tafel:externintern}.
+
+Wichtige Eigenschaft der internen Sprache ist, dass sie \emph{korrekt} (engl.
+\emph{sound}) bezüglich konstruktiver Logik ist. Jeder konstruktive Beweis gilt
+lässt sich also auch in der internen Sprache beliebiger Topoi interpretieren.
+
+\begin{table}
+  \centering
+  \small
+  \setlength{\extrarowheight}{0.3em}
+  \begin{tabular}{@{}r|l@{}}
+    externe Sicht & interne Sicht
+    \\\hline
+    Objekt von~$\E$ & gewöhnliche Menge \\
+    Morphismus von~$\E$ & gewöhnliche Abbildung zwischen Mengen \\
+    initiales Objekt von~$\E$ & leere Menge \\
+    terminales Objekt von~$\E$ & einelementige Menge \\
+    Unterobjektklassifizierer von~$\E$ & gewöhnliche Menge~$\P(\{\star\})$ der
+    Wahrheitswerte \\
+    Monomorphismus in~$\E$ & gewöhnliche injektive Abbildung \\
+    Epimorphismus in~$\E$ & gewöhnliche surjektive Abbildung
+  \end{tabular}
+  \caption{\label{tafel:externintern}Externe und interne Sicht auf Objekte und
+  Morphismen eines Topos~$\E$}
+\end{table}
+
+
+\subsubsection*{Die interne Sprache eines Garbentopos}
+
+Sei~$X$ ein topologischer Raum (oder eine Örtlichkeit). Dann definieren wir rekursiv
+\[ U \models \varphi \quad \text{("`$\varphi$ gilt auf~$U$"')} \]
+für offene Teilmengen~$U \subseteq X$ und Aussagen~$\varphi$ gemäß
+der Regeln in Tafel~\ref{tafel:kripke-joyal} (der
+\emph{Kripke-Joyal-Semantik}).
+
+\begin{bsp}Sei~$s,t \in \Gamma(X, \F)$ globale Schnitte einer Garbe~$\F$.
+Dann gilt~$U \models s = t$ genau dann, wenn~$s|_U = t|_U$, und~$U \models
+\neg\neg(s = t)$ genau dann, wenn es eine dichte offene Teilmenge~$V \subseteq
+U$ mit~$s|_V = t|_V$ gibt.\end{bsp}
+
+Auf den ersten Blick erscheinen die Regeln der Kripke-Joyal-Semantik völlig
+willkürlich. Tatsächlich sind sie aber sehr fein aufeinander abgestimmt, schon
+kleine Änderungen führen dazu, dass das gesamte System zusammenbricht. Nur so
+gilt folgende grundlegende Proposition:
+
+\begin{prop}
+Die interne Sprache von~$\Sh(X)$ hat folgende Eigenschaften:
+\begin{enumerate}
+\item \emph{Lokalität:} Sei~$U = \bigcup_i U_i$ eine offene Überdeckung. Dann
+gilt genau dann~$U \models \varphi$, wenn für alle~$i$ jeweils~$U_i \models
+\varphi$ gilt.
+\item \emph{Korrektheit:} Wenn~$U \models \varphi$ und
+intuitionistisch~$\varphi \seq{} \psi$ ableitbar ist, dann gilt auch~$U \models
+\psi$.
+\end{enumerate}
+\end{prop}
+
+Diese Proposition ist der Grund für die Nützlichkeit der internen Sprache: Wenn
+man eine garbentheoretische Implikation~$A \Rightarrow B$ beweisen möchte, kann man vielleicht
+Voraussetzung und Behauptung als Interpretationen gewisser naiv-sprachlicher
+Aussagen~$\tilde A$ bzw.~$\tilde B$ mit der Kripke-Joyal-Semantik erkennen. Um
+dann die Implikation zu beweisen, genügt es, in naiver Sprache einen
+konstruktiven Beweis von~$\tilde A \Rightarrow \tilde B$ zu führen.
+
+\begin{bsp}In einer Grundvorlesung zeigt man, dass die Verkettung surjektiver
+Abbildungen wieder surjektiv ist. Da der Beweis konstruktiv ist, folgt durch
+Interpretation im Garbentopos daraus sofort, dass die Verkettung von
+Epimorphismen von Garben wieder ein Epimorphismus ist. Der Beweis der Aussage, dass jede
+surjektive Abbildungen~$f$ einen Schnitt~$g$ (eine Abbildung in die umgekehrte
+Richtung mit~$g \circ f = \id$) zulässt, erfordert dagegen das Auswahlaxiom und
+lässt sich daher nicht in der internen Sprache interpretieren; tatsächlich
+haben auch Epimorphismen von Garben nur in den seltensten Fällen Rechtsinverse.\end{bsp}
+
+\begin{bsp}Nur um Neugierde zu wecken, hier ein komplexeres Beispiel:
+Konstruktiv kann man nicht zeigen, dass jeder endlich erzeugte Vektorraum über
+einem Körper eine Basis besitzt. Das liegt nicht etwa daran, dass solche
+plötzlich unendlichdimensional werden, sondern schlichtweg daran, dass man
+konstruktiv keine Basis explizit angeben kann. Man kann aber die schwächere
+Behauptung zeigen, dass jeder endlich erzeugte Vektorraum \emph{nicht nicht}
+eine Basis besitzt. Diese Aussage zieht durch Interpretation im
+Garbentopos~$\Sh(X)$ eines reduzierten Schemas~$X$ sofort folgendes Korollar
+nach sich: Jeder~$\O_X$-Modul, der lokal von endlichem Typ ist, ist zwar nicht
+unbedingt lokal frei, aber zumindest auf einer dichten offenen Teilmenge lokal
+frei. (Die Reduziertheitsvoraussetzung geht insofern ein, als dass~$\O_X$ aus
+Sicht der internen Sprache genau dann ein geeignetes Körperaxiom erfüllt,
+wenn~$X$ reduziert ist.)\end{bsp}
+
+\begin{aufg}Sei~$\alpha : \F \to \G$ ein Morphismus von Garben auf~$X$. Zeige:
+\begin{enumerate}
+\item
+Der Morphismus~$\alpha$ ist genau dann ein Monomorphismus von Garben, wenn
+$X \models \forall x,y\?\F\_ \alpha(x) = \alpha(y) \Rightarrow x = y$.
+\item
+Der Morphismus~$\alpha$ ist genau dann ein Epimorphismus von Garben, wenn
+$X \models \forall y\?\G\_ \exists x\?\F\_ \alpha(x) = y$.
+\end{enumerate}
+\end{aufg}
+
+\begin{table}
+  \centering
+  \small
+  \setlength{\extrarowheight}{0.3em}
+  \newcommand{\Ll}{:\Longleftrightarrow}
+  \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+    U \models f = g \? \F &\Ll& f|_U = g|_U \in \Gamma(U, \F) \\
+    U \models \varphi \wedge \psi &\Ll&
+      \text{$U \models \varphi$ und $U \models \psi$} \\
+    U \models \varphi \vee \psi &\Ll&
+      \hcancel{\text{$U \models \varphi$ oder $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
+    && \text{es gibt eine Überdeckung $U = \bigcup_i U_i$ sodass für alle~$i$:} \\
+    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
+    U \models \varphi \Rightarrow \psi &\Ll&
+      \text{für alle offenen~$V \subseteq U$: } 
+    \text{$V \models \varphi$ impliziert $V \models \psi$} \\
+    U \models \forall f \? \F\_ \varphi(f) &\Ll&
+      \text{für alle Schnitte~$f \in \Gamma(V, \F), V \subseteq U$: $V \models
+      \varphi(f)$} \\
+    U \models \exists f \? \F\_ \varphi(f) &\Ll&
+      \hcancel{\text{es gibt einen Schnitt~$f \in \Gamma(U, \F)$ mit~$U \models
+      \varphi(f)$}}{0pt}{3pt}{0pt}{-2pt} \\
+    &&
+      \text{es gibt eine Überdeckung $U = \bigcup_i U_i$ sodass für alle~$i$:} \\
+    && \quad\quad \text{es gibt~$f_i \in \Gamma(U_i, \F)$ sodass
+    $U_i \models \varphi(f_i)$}
+  \end{array} \]
+  \vspace{-1.5em}
+  \caption{\label{tafel:kripke-joyal}Die Kripke-Joyal-Semantik eines
+  Garbentopos~$\Sh(X)$.}
+\end{table}
 
 %~\cite[Seite~209]{scheibe}:
 %\begin{quote}
