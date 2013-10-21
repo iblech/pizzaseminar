@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 
-\usepackage[ngerman,english]{babel}
+\usepackage[ngerman,french,english]{babel}
 \addto\captionsngerman{\renewcommand\tablename{Tafel}}
 
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
@@ -163,8 +163,6 @@
 \begin{document}
 
 \selectlanguage{ngerman}
-
-\begin{comment}
 
 \vspace*{2em}%
 \begin{center}%
@@ -2154,9 +2152,34 @@ extrahieren.
 Interpretation einer Aussage im Kontext~$x_1,\ldots,x_n$ soll dabei ein
 Radikalideal in~$R[x_1,\ldots,x_n]$ sein.\end{proof}
 
-\end{comment}
 
 \section{Ein topostheoretischer Zugang zu Quantenmechanik}
+
+Als Anwendung konstruktiver Mathematik wollen wir einen topostheoretischen
+Zugang zu (manchen Grundlagen von) Quantenmechanik vorstellen. Dieser geht auf
+eine wegweisende Arbeit von Jeremy Butterfield und Chris Isham
+zurück~\cite{butterfield:isham:1,butterfield:isham:2}, welche dann von weiteren
+mathematischen Physikern, unter anderem Andreas Döring, Chris Heunen und Nicolaas
+Landsman, und den konstruktiven Mathematikern Thierry Coquand und Bas Spitters
+aufgegriffen wurde. Unsere Darstellung ist im Wesentlichen eine Zusammenfassung
+des Artikels~\cite{topos:aqt}. Die grundlegende Idee ist folgende:
+
+Klassisch-mechanische Systeme können durch kommutative \csalgebren{} und
+dazugehörige Phasenräume beschrieben werden. Die \csalgebra{} zu
+quantenmechanischen Systemen ist dagegen im Allgemeinen nichtkommutativ und die
+schöne Idee eines Phasenraums bricht zusammen. Man kann nun das das
+mathematische Universum, in dem man arbeitet, wechseln; ein geeignetes
+Alternativuniversum enthält ein Abbild der nichtkommutativen \csalgebra,
+welches dort kommutativ erscheint und dort auch einen Phasenraum zulässt. In
+diesem (restriktiven) Sinn wird Quantenmechanik in diesem anderen Universum zu
+klassischer Mechanik.
+
+Um diesen Ansatz zu verstehen, sind drei Zutaten nötig: die Dualität zwischen
+Räumen und Algebren; eine für diese Zwecke geeignete Formulierung von
+klassischer Mechanik und Quantenmechanik; und die Auffassung von Topoi als
+mathematische Alternativuniversen. Diese Zutatenwollen wir in den folgenden
+Abschnitten grob umreißen.
+
 
 \subsection{Gelfand-Dualität zwischen topologischen Räumen und \csalgebren}
 
@@ -2210,6 +2233,9 @@ Algebrenhomomorphismen~$A \to \CC$ konstruieren; dazu benötigt man das
 Auswahlaxiom.
 \end{proof}
 
+Unter der Korrespondenz des Satzes entsprechen die selbstadjungierten
+Elemente~$a \in A$ gerade den stetigen Abbildungen~$X \to \RR$.
+
 \begin{bem}Die Gelfand-Dualität liefert einen Ansatz für \emph{nichtkommutative
 Geometrie}: Wie man die Definition eines topologischen Raums abändern sollte,
 sodass sie nicht mehr "`kommutativ"' wäre, ist völlig unklar, denn in
@@ -2220,7 +2246,7 @@ eine Kategorie nichtkommutativer Räume verwenden.
 \end{bem}
 
 
-\subsection{Örtlichkeiten für Topologie ohne Punkte}
+\subsection{Örtlichkeiten für punktfreie Topologie}
 
 In der obigen Formulierung gilt die Gelfand-Dualität leider nur in einem
 klassischen Kontext. Da wir sie später in einem alternativen
@@ -2234,6 +2260,8 @@ entwickelt:
 regulären Örtlichkeiten (Locales) ist dual äquivalent zur Kategorie der
 kommutativen~\csalgebren. Dabei geht analog zur klassischen Formulierung eine
 Örtlichkeit~$X$ auf die Algebra der stetigen Abbildungen~$X \to \CC$.
+(Auf die hierfür nötige konstruktiv geeignete Definition der komplexen Zahlen
+gehen wir nicht ein.)
 \end{satz}
 
 Dabei ist das Konzept einer \emph{Örtlichkeit} (Locale) eine milde
@@ -2263,7 +2291,7 @@ durch~$\Ouv(\pt) = \P(\{\star\})$ gegeben.\end{bsp}
 
 Das Konzept eines Punkts ist in der Theorie der Örtlichkeiten nicht
 grundlegend, kann aber sehr wohl definiert werden: Ein \emph{Punkt} einer
-Örtlichkeit~$X$ ist ein Morphismus~$\pt \to X$ von Örtlichkeiten. Die Menge
+Örtlichkeit~$X$ ist eine Morphismus~$\pt \to X$ von Örtlichkeiten. Die Menge
 aller Punkte einer Örtlichkeit kann man mit einer natürlichen Topologie
 versehen; der so entstehende topologische Raum spiegelt aber nur dann die
 Örtlichkeit getreu wieder, wenn diese \emph{räumlich} war. Insbesondere gibt es
@@ -2295,6 +2323,21 @@ seltener konstruiert werden müssen. Da man zur Angabe spezieller Punkte oft das
 Auswahlaxiom oder andere klassische Prinzipien benötigt, eignen sich
 Örtlichkeiten also besser, wenn man solche nicht verwenden möchte oder (wie bei
 der Arbeit in anderen Topoi) nicht verwenden kann.
+
+Wir wollen mit einem Zitat von Alexander Grothendieck über
+Topoi~\cite{grothendieck:zitat}, das aber
+genauso gut auf Örtlichkeiten anwendbar ist, schließen:\footnote{%
+"`Diese \glq Wahrscheinlichkeitswolken\grq, welche die beruhigenden materiellen
+Partikel von früher ersetzen, erinnern mich irgendwie an die flüchtigen
+\glq offenen Umgebungen\grq{} der Topoi -- wie dahinschwindende Phantome, um
+die fiktiven \glq Punkte\grq{} zu umgeben, [\ldots]."'}
+\begin{quote}
+\selectlanguage{french}
+Ces “nuages probabilistes”, remplaçant les rassurantes particules matérielles
+d’antan, me rappellent étrangement les élusifs “voisinages ouverts” qui
+peuplent les topos, tels des fantômes évanescents, pour entourer des “points”
+imaginaires, [\ldots].
+\end{quote}
 
 
 \subsection{Algebraische Sicht auf klassische Mechanik und Quantenmechanik}
@@ -2390,7 +2433,8 @@ Einselement auf die komplexe Zahl~$1$ schicken müssen) und positiv sind
 
 \begin{bsp}\begin{itemize}
 \item Ist~$\psi \in H$ eine normierte Wellenfunktion, so ist~$\rho$
-mit~$\rho(a) = (\psi, a(\psi))$ ein reiner Zustand.
+mit~$\rho(a) = (\psi, a(\psi))$ ein gemischter Zustand, im Allgemeinen aber
+kein reiner.
 \item Ist~$(\psi_i)_i$ eine Familie normierter Wellenfunktionen und~$(p_i)_i$
 eine Familie nichtnegativer Zahlen mit~$\sum_i p_i = 1$, so ist~$\rho$
 mit~$\rho(a) = \sum_i p_i \cdot (\psi_i, a(\psi_i))$ ein gemischter Zustand.
@@ -2427,6 +2471,14 @@ Unter-\csalgebra~$C \subseteq A$ linear ist.
 motivierten Quasi-Zuständen nicht so groß: Denn nach Gleasons Theorem ist jeder
 Quasi-Zustand auf~$A = L(H,H)$ mit~$\dim H \geq 3$ schon ein Zustand.\end{bem}
 
+\begin{bem}\label{bem:keine-reinen-quasi-zustaende}%
+Es gibt einen Grund, wieso wir kein Beispiel eines reinen Quasi-Zustands
+angeführt haben: Das Kochen-Specker-Theorem besagt, dass es zumindest im
+interessanten Fall~$A = L(H,H)$ mit~$\dim H \geq 3$ keinen solchen gibt. Das
+hat eine physikalische Interpretation: Ein reiner Quasi-Zustand würde allen
+Observablen konsistente Zahlenwerte als Messwerte zuweisen. So etwas ist nicht
+möglich.\end{bem}
+
 
 \subsection{Topoi als mathematische Alternativuniversen}
 
@@ -2439,7 +2491,7 @@ Standpunkte.
 
 In diesem und im folgenden Abschnitt setzen wir etwas Grundkenntnisse in
 Kategorientheorie voraus. Alle benötigten Konzepte kann man etwa im
-Skript zum vorherigen Pizzaseminar~\ref{pizzaseminar:kategorientheorie}
+Skript zum vorherigen Pizzaseminar~\cite{pizzaseminar:kategorientheorie}
 nachlesen. Gelegentlich werden wir auch über Garben sprechen; die wesentlichen
 Definitionen dazu sind in Anhang~\ref{appendix:garben} zusammengestellt. Man
 kann solche Passagen aber auch überlesen.
@@ -2597,7 +2649,7 @@ Richtung mit~$g \circ f = \id$) zulässt, erfordert dagegen das Auswahlaxiom und
 lässt sich daher nicht in der internen Sprache interpretieren; tatsächlich
 haben auch Epimorphismen von Garben nur in den seltensten Fällen Rechtsinverse.\end{bsp}
 
-\begin{bsp}Nur um Neugierde zu wecken, hier ein komplexeres Beispiel:
+\begin{bsp}Nur um Neugierde zu wecken hier ein komplexeres Beispiel:
 Konstruktiv kann man nicht zeigen, dass jeder endlich erzeugte Vektorraum über
 einem Körper eine Basis besitzt. Das liegt nicht etwa daran, dass solche
 plötzlich unendlichdimensional werden, sondern schlichtweg daran, dass man
@@ -2709,8 +2761,8 @@ kennt, findet die unterschiedliche Wahl der Varianz an dieser Stelle vielleicht
 überraschend. Tatsächlich aber ist diese zu erwarten: Offene Mengen werden umso
 interessanter, je kleiner sie werden, da sie dann genauere Information über die
 Lage ihrer enthaltenen Punkte vermitteln. Kommutative Unteralgebren werden
-dagegen umso interessanter, je größer sie werden, denn für mehr Elemente wird
-es umso schwerer, miteinander zu kommutieren. Man bedenke auch, dass
+dagegen umso interessanter, je größer sie werden, denn für Elemente wird
+es umso schwerer, miteinander zu kommutieren, je mehr sie werden. Man bedenke auch, dass
 beliebige Vereinigungen (aber nicht beliebige Schnitte) offener Mengen offen
 sind, und dass umgekehrt beliebige Schnitte (aber nicht beliebige
 Vereinigungen) kommutativer Unteralgebren kommutativ sind.\end{bem}
@@ -2720,20 +2772,28 @@ Bohr-Topos. Diese \emph{interne} \csalgebra{} ist \emph{kommutativ}. In diesem
 ersten Sinn wird Quantenmechanik bei interner Betrachtung zu klassischer
 Mechanik.
 
-\begin{prop}Die tautologisch definierte Koprägarbe
+\begin{defn}Die tautologisch definierte Koprägarbe
 \[ \begin{array}{@{}rrcl@{}}
   \ul{A}:\ & \C(A) &\longrightarrow& \Set \\
   & C &\longmapsto& C
 \end{array} \]
-ist aus interner Sicht eine \emph{kommutative} \csalgebra.
+heißt \emph{Bohrifizierung} von~$A$.\end{defn}
+\begin{prop}Die Bohrifizierung von~$A$
+ist aus der internen Sicht des Bohr-Topos eine \emph{kommutative} \csalgebra.
 \end{prop}
-\begin{proof}Wir zeigen nur die Kommutativität, denn um die anderen
-Eigenschaften nachzuweisen, müssten wir sie zunächst
-auf geeignete Art und Weise formulieren, und das würde unnötig ablenken. (Man
-kann nicht die klassische Definition einer \csalgebra{} naiv übernehmen, da
-diese sich in einem konstruktiven Kontext wie dem Bohr-Topos nicht gut
-verhält. Die geeignet umformulierte Definition ist in klassischer Logik
-äquivalent zur üblichen Definition.)
+\begin{proof}Die additive und multiplikative Struktur erhält~$\ul{A}$
+objektweise: Für jeden klassischen Kontext~$C \subseteq A$ gibt es
+auf~$\ul{A}(C) = C$ offensichtlich eine Addition und Multiplikation. Da diese
+mit den Inklusionen~$C \subseteq C'$ verträglich sind, werden so
+Morphismen~$\ul{A} \times \ul{A} \to \ul{A}$ festgelegt.
+
+An Eigenschaften weisen wir nur die Kommutativität nach, denn um die restlichen
+Eigenschaften zu diskutieren, müssten wir sie zunächst auf geeignete Art und
+Weise formulieren, und das würde unnötig ablenken. (Man kann nicht die
+klassische Definition einer \csalgebra{} naiv übernehmen, da diese sich in
+einem konstruktiven Kontext wie dem Bohr-Topos nicht gut verhält. Die geeignet
+umformulierte Definition ist in klassischer Logik äquivalent zur üblichen
+Definition.)
 
 Wir zeigen also
 \[ \Bohr(A) \models \forall a,b\?\ul{A}\_ a b = b a. \]
@@ -2746,9 +2806,92 @@ Mit dem Bohr-Topos können wir also das formale Kunststück vollführen, die
 Familie aller kommutativen Unteralgebren von~$A$ als eine einzige kommutative
 Algebra anzusehen.
 
-% XXX: Vergleich Hilbertraumzugang
 
-\end{document}
+\subsubsection*{Gemischte Quasi-Zustände}
+
+Die Bohrifizierung~$\ul{A}$ wäre nicht interessant, wenn sich die Quasi-Zustände
+von~$A$ nicht irgendwie in~$\ul{A}$ wiederspiegeln würden. Tatsächlich gibt es
+folgendes schönes Resultat:
+
+\begin{prop}Die gemischten Quasi-Zustände von~$A$ stehen in Bijektion zu den
+gemischten Zuständen von~$\ul{A}$.\end{prop}
+\begin{proof}Mit dem internen Objekt komplexer Zahlen~$\ul{\CC}$ meinen wir die
+konstante Koprägarbe~$C \mapsto \CC$. Sei~$\rho : A \to \CC$ ein Quasi-Zustand
+von~$A$. Dann definiert die Familie~$(\rho|_C)_{C \in \C(A)}$ von
+Einschränkungen eine natürliche Transformation~$\ul{\rho} : \ul{A} \to
+\ul{\CC}$, also einen Morphismus im Bohr-Topos. Es ist klar, dass dieser aus
+interner Sicht normiert, positiv und homogen ist. Dass er aus interner Sicht
+additiv ist, dass also
+\[ \Bohr(A) \models \forall a,b\?\ul{A}\_ \ul{\rho}(a+b) = \ul{\rho}(a) +
+\ul{\rho}(b) \]
+gilt, bedeutet tatsächlich
+\[ \forall C \in \C(A)\_ \forall a,b\?\ul{A}(C)\_ \rho_C(a+b) = \rho_C(a) +
+\rho_C(b). \]
+Das ist gerade die Aussage, dass~$\rho$ auf kommutativen Unteralgebren additiv
+ist.
+
+Sei umgekehrt ein Morphismus~$\eta : \ul{A} \to \ul{\CC}$ gegeben, der aus
+Sicht der internen Sprache normiert, positiv und linear ist. Dann können wir
+eine Abbildung~$\rho : A \to \CC$ durch die Setzung
+\[ \rho(a) := \eta_C(a), \quad\text{wobei~$C \in \C(A)$ beliebig mit~$a \in
+C$}, \]
+definieren. Denn für jedes~$a \in A$ existiert eine solche kommutative Unteralgebra (man kann
+etwa die von~$a$ erzeugte nehmen), und die Wahl von~$C$ spielt wegen der
+Natürlichkeitseigenschaft von~$\eta$ keine Rolle. Man kann nachrechnen, dass
+diese Abbildung~$\rho$ normiert, positiv und auf allen kommutativen
+Unteralgebren linear ist.
+
+Es ist klar, dass diese Zuordnungen zueinander invers sind.\end{proof}
+
+
+\subsubsection*{Eine geometrische Interpretation}
+
+Da die interne \csalgebra~$\ul{A}$ kommutativ ist, ist auf diese wieder -- wie
+in der Situation klassischer Mechanik -- Gelfand-Dualität anwendbar. Die
+\emph{interne Örtlichkeit}~$\ul{\Sigma} := \Spec \ul{A}$ des Bohr-Topos ist
+also eine Art Phasenraum für das gegebene quantenmechanische System.
+
+Folglich lassen sich Quasi-Zustände von~$A$ geometrisch als interne
+Wahrscheinlichkeitsmaße auf~$\ul{\Sigma}$ deuten -- ganz so, wie es bei
+klassischen Systemen auch im üblichen mathematischen Universum möglich ist.
+
+\begin{motto}Nichtkommutative \csalgebren~$A$ besitzen zwar keine zugehörige
+Örtlichkeit im üblichen mathematischen Universum, wohl aber im speziell auf sie
+zugeschnittenen Topos~$\Bohr(A)$.\end{motto}
+
+
+\subsubsection*{Observable}
+
+\begin{prop}Jede Observable von~$A$ induziert eine interne stetige
+Abbildung~$\ul{\Sigma} \to \ul{\mathbb{IR}}$. Diese Zuordnung ist
+injektiv.\end{prop}
+\begin{proof}Siehe~\cite[Prop.~15]{topos:aqt}. Mit~$\ul{\mathbb{IR}}$ ist eine
+spezielle Art eines Objekts reeller Zahlen gemeint.\end{proof}
+
+% Simons Bemerkung integrieren
+
+
+\subsubsection*{Reine Quasi-Zustände}
+
+Analog zu den gemischten Zuständen stehen die reinen Quasi-Zustände in
+1:1-Kor\-res\-pon\-denz zu 
+den internen reinen Zuständen von~$\ul{A}$, bzw. wegen Gelfand-Dualität
+äquivalent zu internen Punkten von~$\ul{\Sigma}$ (stetigen
+Abbildungen~$\ul{\pt} \to \ul{\Sigma}$). Da wir in
+Bemerkung~\ref{bem:keine-reinen-quasi-zustaende} schon festgehalten haben, dass es im
+interessanten Fall~$A = L(H,H)$ mit~$\dim H \geq 3$ keine reinen Quasi-Zustände
+gibt, ist~$\ul{\Sigma}$ also eine exotische Örtlichkeit: Sie ist nichttrivial,
+besitzt aber trotzdem keine Punkte.
+
+%Die Tatsache, dass es durchaus reine Quasi-Zustände~$C \to \CC$ gibt, welche
+%nur auf gewissen kommutativen Unteralgebren~$C \in \C(A)$ definiert sind,
+
+%Der Witz: Auf kommutativen Unteralgebren von A kann es durchaus
+%Bewertungen geben. Das spiegelt die Tatsache wieder, dass es in
+%klassischer Mechanik kein Problem ist, eindeutige Messwerte zu allen
+%Observablen zuzuordnen.
+
+% XXX: Vergleich Hilbertraumzugang
 
 \appendix
 \section{Ideale in Ringen}
@@ -3045,94 +3188,3 @@ das in~$\aa$ und~$\bb$ enthalten ist, ist
 % gut ist.
 
 % XXX: Formel vs. Aussage
-
-=== Quantenmechanische Systeme als C^*-Algebren
- 
-Ein quantenmechanisches System wird beschrieben durch eine (im
-Allgemeinen nichtkommutative) C^*-Algebra A.
-
-Wichtigstes Beispiel: A = L(H,H) = Raum der linearen stetigen Operatoren
-von H nach H, wobei H ein Hilbertraum ist. (H kann etwa der Zustandsraum
-eines Systems sein, wie man es wohl in jeder Vorlesung über
-Quantenmechanik lernt.)
-
-(Dieses Beispiel kann auch unser einziges Beispiel bleiben. Dann müssen
-wir nicht extra C^*-Algebren thematisieren.)
-
-Wörterbuch:
-
-* Observable = selbstadjungierte Elemente a in A
-* Zustände: C-lineare Abbildungen p : A --> C (positiv und normalisiert)
-* (Erwartungs-)Wert der Observablen a im Zustand p: p(a)
-* Ein-Parameter-Untergruppe R --> Aut(A): Evolution des Systems
-
-Das sollte man an einem einfachen Beispiel verdeutlichen. Hierin liegt
-vermutlich deine Hauptarbeit.
-
-Nun der erste kritische Punkt: Sei p : A --> C eine beliebige Abbildung
-(nicht unbedingt linear). Seien a1 und a2 zwei Observablen, also
-zwei selbstadjungierte Elemente in A. Wenn a1 und a2 miteinander
-kommutieren, stellt man folgende Forderung: Wenn p wirklich einen
-Zustand beschreiben soll, muss p(a1 + a2) = p(a1) + p(a2) gelten. Wenn
-a1 und a2 aber nicht miteinander kommutieren, ist diese Forderung
-unsinnig.
- 
-Diesen Absatz muss man quantenphysikalisch-anschaulich erklären.
-
-Davon motiviert trifft man folgende Definition:
-Ein *Quasi-Zustand* ist eine Abbildung A --> C, welche nicht
-unbedingt linear ist, aber auf allen kommutativen Unteralgebren von A
-linear ist. Außerdem sollte sie positiv und normalisiert sein.
-
-In klassischer Mechanik kommutieren je zwei Observablen, daher ist ein
-Quasi-Zustand klassisch nichts anderes als ein echter Zustand. In
-Quantenmechanik stimmt das aber nicht mehr.
-
-Hier setzt dann der Bohr-Topos an: Er ist ein alternatives
-Mathematik-Universum, aus dessen Sicht A kommutativ und daher jeder
-Quasi-Zustand schon ein Zustand ist! Das thematisieren wir dann zwei
-Wochen später.
-
-
-=== Bohrs Philosophie
-
-Bohr hatte anscheinend die Philosophie, dass man quantenmechanische
-Systeme alleine mit klassischen Messungen verstehen kann. Weißt du etwas
-darüber? Relevant ist es insofern, als dass diese Philosophie (bzw.
-Bohrs wirkliche Philosophie, nicht meine falsche Wiedergabe) durch den
-Bohr-Topos umgesetzt wird.
-
-
-=== Kochen-Specker
- 
-Eine *Bewertung* auf A ist eine Funktion lambda : A ---> R, die folgende
-zwei Eigenschaften erfüllt:
- 
-* Für jedes selbstadjungierte Element a ist lambda(a) ein Element des
-  Spektrums von A.
-
-* Sind a und b zwei selbstadjungierte Elemente von A, die über eine
-  Funktion h miteinander gekoppelt sind -- b = h(a) -- dann soll auch
-  lambda(b) = h(lambda(a)) gelten.
-
-  (Sind a1 und a2 zwei miteinander kommutierende selbstadjungierte
-  Elemente von A, so folgt daraus insbesondere lambda(a1 + a2) =
-  lambda(a1) + lambda(a2) und lambda(a1 * a2) = lambda(a1) * lambda(a2).
-
-Eine Bewertung weist also *allen* Observablen einen konsistenten
-Messwert zu. Das Kochen-Specker-Theorem besagt: Falls A = L(H,H) und
-dim H > 2, so gibt es keine Bewertungen.
- 
-Das kann man physikalisch irgendwie so interpretieren, dass in einer
-Quantentheorie (unter geeigneten Voraussetzungen) keine verborgenen
-Variablen vorkommen können.
-
-Der Witz: Auf kommutativen Unteralgebren von A kann es durchaus
-Bewertungen geben. Das spiegelt die Tatsache wieder, dass es in
-klassischer Mechanik kein Problem ist, eindeutige Messwerte zu allen
-Observablen zuzuordnen.
-
-In zwei Wochen werden wir dann verstehen: Die Aussage des
-Kochen-Specker-Theorems ist äquivalent dazu, dass ein gewisser Raum (der
-Raum der Bewertungen) keinen Punkt enthält. Er enthält aber sehr wohl
-Punkte *aus der internen Sicht des Bohr-Topos*!
