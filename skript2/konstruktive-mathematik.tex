@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 
-\usepackage[ngerman]{babel}
+\usepackage[ngerman,english]{babel}
 \addto\captionsngerman{\renewcommand\tablename{Tafel}}
 
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
@@ -92,11 +92,13 @@
 \newcommand{\Ouv}{\mathrm{Ouv}}
 \newcommand{\Rad}{\mathrm{Rad}}
 \newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\Bohr}{\mathrm{Bohr}}
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\Id}{\mathrm{Id}}
 \newcommand{\freist}{\underline{\ \ }}
+\newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\csalgebra}{C\textsuperscript{*}\kern-.1ex-Algebra}
 \newcommand{\csalgebren}{C\textsuperscript{*}\kern-.1ex-Alge\-bren}
 \DeclareMathOperator{\colim}{colim}
@@ -159,6 +161,10 @@
 %\geometry{tmargin=2cm,bmargin=4cm,lmargin=3cm,rmargin=3cm}
 
 \begin{document}
+
+\selectlanguage{ngerman}
+
+\begin{comment}
 
 \vspace*{2em}%
 \begin{center}%
@@ -2148,6 +2154,7 @@ extrahieren.
 Interpretation einer Aussage im Kontext~$x_1,\ldots,x_n$ soll dabei ein
 Radikalideal in~$R[x_1,\ldots,x_n]$ sein.\end{proof}
 
+\end{comment}
 
 \section{Ein topostheoretischer Zugang zu Quantenmechanik}
 
@@ -2242,7 +2249,7 @@ erfüllen sollen:
 \begin{defn}Eine \emph{Örtlichkeit}~$X$ besteht aus einem Verband~$\Ouv(X)$
 \emph{offener Dinge} (also einer Halbordnung zusammen mit Operationen~$\wedge$
 und~$\vee$, die geeignete Axiome erfüllen), in dem zusätzliche beliebige
-Suprema existieren und für diese folgendes Distributivitätsgesetz erfüllt ist:
+Suprema existieren und für diese folgendes Distributivitätsgesetz gilt:
 \[ u \wedge \bigvee_i v_i = \bigvee_i (u \wedge v_i). \]
 \end{defn}
 
@@ -2363,7 +2370,7 @@ durch nichtkommutative~\csalgebren{} zu beschreiben.
 := L(H,H) = \{ f : H \to H \,|\, \text{$f$ linear und stetig} \}$ die
 zugehörige~\csalgebra.\end{bsp}
 
-Grundlegende Konzepte können also nicht mehr geometrische über einen Phasenraum
+Grundlegende Konzepte können also nicht mehr geometrisch über einen Phasenraum
 verstanden werden, sondern müssen algebraisch formuliert werden. In Analogie
 zur klassischen Situation könnte man definieren:
 \begin{itemize}
@@ -2376,7 +2383,10 @@ Abbildungen~$A \to \CC$.
 ist~$\rho(a)$.
 \end{itemize}
 
-\begin{bsp}Jeder reine Zustand ist auch ein gemischter Zustand.\end{bsp}
+\begin{bsp}Jeder reine Zustand ist auch ein gemischter Zustand, da
+\csalgebren{}\-homo\-mor\-phis\-men~$\rho : A \to \CC$ automatisch normiert (da sie das
+Einselement auf die komplexe Zahl~$1$ schicken müssen) und positiv sind
+(da~$\rho(a^* a) = \rho(a)^* \rho(a) = |\rho(a)|^2 \geq 0$).\end{bsp}
 
 \begin{bsp}\begin{itemize}
 \item Ist~$\psi \in H$ eine normierte Wellenfunktion, so ist~$\rho$
@@ -2644,18 +2654,101 @@ $X \models \forall y\?\G\_ \exists x\?\F\_ \alpha(x) = y$.
   Garbentopos~$\Sh(X)$.}
 \end{table}
 
-%~\cite[Seite~209]{scheibe}:
-%\begin{quote}
-%However far the phenomena transcend the scope of classical physical
-%explanation, the account of all evidence must be expressed in
-%classical terms. [\ldots] The argument is simply that by the word {\it
-%experiment} we refer to a situation where we can tell others what we
-%have done and what we have learned and that, therefore, the account of
-%the experimental arrangements and of the results of the observations
-%must be expressed in unambiguous language with suitable application of
-%the terminology of classical physics.
+
+\subsection{Der Bohr-Topos zu einer nichtkommutativen \csalgebra}
+
+Sei~$A$ die nichtkommutative \csalgebra{} eines quantenmechanischen Systems.
+
+\begin{defn}\begin{enumerate}
+\item
+Ein \emph{klassischer Kontext} von~$A$ ist eine kommutative Unter-\csalgebra~$C
+\subseteq A$.
+\item Die bezüglich der Inklusion geordnete Menge aller klassischen Kontexte
+von~$A$ sei~$\C(A)$.
+\end{enumerate}
+\end{defn}
+
+Die Idee hinter dieser Namensgebung ist folgende: Die Observablen
+(selbstadjungierten Elemente) einer kommutativen Unteralgebra~$C \subseteq
+L(H,H)$ lassen sich \emph{simultan} diagonalisieren und erlauben daher einen
+konsistenten Satz von Messwerten -- ohne, dass Heisenbergs Unschärferelation in
+die Quere kommt.
+
+\begin{defn}Der \emph{Bohr-Topos} zur \csalgebra~$A$ ist die Koprägarbenkategorie
+\[ \Bohr(A) := [\C(A), \Set] \]
+aller Funktoren~$\C(A) \to \Set$ und natürlichen Transformationen zwischen
+ihnen.\end{defn}
+
+Ein solcher Funktor~$F : \C(A) \to \Set$ ordnet auf konsistente Art und Weise
+jedem klassischen Kontext~$C \subseteq A$ eine Menge~$F(C)$ zu. Gewissermaßen
+setzt daher der Topos solcher Funktoren Bohrs Doktrin klassischer Konzepte um
+-- in seinen eigenen Worten~\cite[Seite~209]{bohr} (Hervorhebung im
+Original)\footnote{"`\emph{Inwieweit auch
+die Phänomene die Grenzen klassischer physikalischer
+Erklärungen sprengen, die Darstellung aller Anhaltspunkte muss trotzdem
+in klassischer Sprache ausgedrückt werden.} Das Argument ist einfach:
+Mit dem Wort \glq Experiment\grq{} drücken wir eine Situation aus, in der wir
+anderen erzählen können, was wir getan und gelernt haben. Deshalb müssen
+Versuchsanordnung und Beobachtungsresultate in
+unmissverständlicher Sprache ausgedrückt werden -- unter passender
+Anwendung der Terminologie klassischer Physik."'}:
+\begin{quote}
+\selectlanguage{english}
+[\ldots] \emph{however far the phenomena transcend the scope of classical physical
+explanation, the account of all evidence must be expressed in
+classical terms.} The argument is simply that by the word ``experiment''
+we refer to a situation where we can tell others what we
+have done and what we have learned and that, therefore, the account of
+the experimental arrangements and of the results of the observations
+must be expressed in unambiguous language with suitable application of
+the terminology of classical physics.
+\end{quote}
+
+\begin{bem}Wer die Definition von Garben als Funktoren~$\Ouv(X)^\op \to \Set$
+kennt, findet die unterschiedliche Wahl der Varianz an dieser Stelle vielleicht
+überraschend. Tatsächlich aber ist diese zu erwarten: Offene Mengen werden umso
+interessanter, je kleiner sie werden, da sie dann genauere Information über die
+Lage ihrer enthaltenen Punkte vermitteln. Kommutative Unteralgebren werden
+dagegen umso interessanter, je größer sie werden, denn für mehr Elemente wird
+es umso schwerer, miteinander zu kommutieren. Man bedenke auch, dass
+beliebige Vereinigungen (aber nicht beliebige Schnitte) offener Mengen offen
+sind, und dass umgekehrt beliebige Schnitte (aber nicht beliebige
+Vereinigungen) kommutativer Unteralgebren kommutativ sind.\end{bem}
+
+Die nichtkommutative \csalgebra~$A$ besitzt nun ein Abbild~$\ul{A}$ im
+Bohr-Topos. Diese \emph{interne} \csalgebra{} ist \emph{kommutativ}. In diesem
+ersten Sinn wird Quantenmechanik bei interner Betrachtung zu klassischer
+Mechanik.
+
+\begin{prop}Die tautologisch definierte Koprägarbe
+\[ \begin{array}{@{}rrcl@{}}
+  \ul{A}:\ & \C(A) &\longrightarrow& \Set \\
+  & C &\longmapsto& C
+\end{array} \]
+ist aus interner Sicht eine \emph{kommutative} \csalgebra.
+\end{prop}
+\begin{proof}Wir zeigen nur die Kommutativität, denn um die anderen
+Eigenschaften nachzuweisen, müssten wir sie zunächst
+auf geeignete Art und Weise formulieren, und das würde unnötig ablenken. (Man
+kann nicht die klassische Definition einer \csalgebra{} naiv übernehmen, da
+diese sich in einem konstruktiven Kontext wie dem Bohr-Topos nicht gut
+verhält. Die geeignet umformulierte Definition ist in klassischer Logik
+äquivalent zur üblichen Definition.)
+
+Wir zeigen also
+\[ \Bohr(A) \models \forall a,b\?\ul{A}\_ a b = b a. \]
+Nach der Kripke-Joyal-Semantik in Koprägarbentopoi (in diesem Skript nicht
+angegeben) müssen wir dazu
+\[ \forall C \in \C(A)\_ \forall a,b \in \ul{A}(C)\_ a b = b a \]
+nachweisen. Das ist trivial.\end{proof}
+
+Mit dem Bohr-Topos können wir also das formale Kunststück vollführen, die
+Familie aller kommutativen Unteralgebren von~$A$ als eine einzige kommutative
+Algebra anzusehen.
 
 % XXX: Vergleich Hilbertraumzugang
+
+\end{document}
 
 \appendix
 \section{Ideale in Ringen}
