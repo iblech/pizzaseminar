@@ -59,6 +59,8 @@
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\D}{\mathcal{D}}
 \newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\QQ}{\mathbb{Q}}
@@ -68,6 +70,7 @@
 \newcommand{\Funct}{\mathrm{Funct}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\Id}{\mathrm{Id}}
 \newcommand{\GL}[1]{\operatorname{GL}(#1)}
@@ -76,3 +79,5 @@
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 \newcommand{\?}{\,{:}\,}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\speak}[1]{\ulcorner\text{#1}\urcorner}

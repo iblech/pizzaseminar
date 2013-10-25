@@ -1,0 +1,68 @@
+\documentclass{pizzablatt}
+
+%\geometry{tmargin=2cm,bmargin=1.3cm,lmargin=2.9cm,rmargin=2.9cm}
+%\setlength{\aufgabenskip}{1em}
+
+\begin{document}
+
+\maketitle{5}{Pizzaseminar zu konstruktiver Mathematik}{25. Oktober 2013}
+
+\begin{aufgabe}{Monomorphismen und Epimorphismen aus interner Sicht}
+Sei~$X$ ein topologischer Raum (oder eine Örtlichkeit). Sei~$\alpha : \F \to
+\G$ ein Morphismus von Garben auf~$X$. Zeige, \ldots
+\begin{enumerate}
+\item \ldots dass $\alpha$ genau dann Monomorphismus ist, wenn
+$X \models \forall x,y\?\F\_ \alpha(x) = \alpha(y) \Rightarrow x = y$.
+\item \ldots dass $\alpha$ genau dann ein Epimorphismus ist, wenn
+$X \models \forall y\?\G\_ \exists x\?\F\_ \alpha(x) = y$.
+\end{enumerate}
+Aus Sicht der internen Sprache des Garbentopos~$\Sh(X)$ sehen also
+Monomorphismen wie gewöhnliche injektive und Epimorphismen wie
+gewöhnliche surjektive Abbildungen aus.
+\end{aufgabe}
+
+\begin{aufgabe}{Topologische Interpretation der Doppelnegation}
+Sei~$X$ ein topologischer Raum. Sei~$\varphi$ eine Aussage. Zeige:
+\[ X \models \neg\neg\varphi
+  \quad\text{gdw.}\quad
+  \text{$U \models \varphi$ für eine dichte offene Teilmenge~$U \subseteq X$}. \]
+\end{aufgabe}
+\vspace{-2em}
+
+\begin{aufgabe}{Die Ringgarbe stetiger Funktionen als Körper}
+Sei~$X$ ein topologischer Raum. Sei~$\C^0$ die Garbe der stetigen Funktionen
+auf~$X$.
+\begin{enumerate}
+\item Sei~$f \in \Gamma(U,\C^0)$. Zeige: Die Funktion~$f$ besitzt genau dann
+ein multiplikatives Inverses in~$\Gamma(U,\C^0)$, wenn $X \models \speak{$f$
+invertierbar}$, d.\,h. wenn $X \models \exists g\?\C^0\_ fg = 1$.
+\item Zeige, dass~$\C^0$ aus interner Sicht in folgendem Sinn ein Körper ist:
+\[ X \models \forall f\?\C^0\_ \neg(\speak{$f$ invertierbar})
+\Rightarrow f = 0. \]
+\item Zeige, dass~$\C^0$ aber nicht folgende Körperbedingung erfüllt:
+\[ X \models \forall f\?\C^0\_ f = 0 \vee \speak{$f$ invertierbar}. \]
+\end{enumerate}
+\emph{Bemerkung.} Man kann zeigen, dass~$\C^0$ aus interner Sicht die Menge der
+über dedekindsche Schnitte konstruierten reellen Zahlen ist.
+\end{aufgabe}
+
+\begin{aufgabe}{Basen endlich erzeugter Vektorräume}
+\begin{enumerate}
+\item Sei~$V$ ein endlich erzeugter Vektorraum über einem Ring~$k$, der die Körperbedingung aus
+Aufgabe~3b) erfüllt. Zeige konstruktiv, dass~$V$ \emph{nicht nicht} eine Basis
+besitzt.
+
+\emph{Tipp.} Verwende, dass die Menge~$\{ n \in \NN \,|\, \text{$V$ besitzt ein
+Erzeugendensystem der Länge~$n$} \}$ \emph{nicht nicht} ein Minimum
+besitzt.
+
+\item Sei~$X$ ein topologischer Raum. Sei~$\F$ eine~$\C^0$-Modulgarbe, die
+lokal von endlichem Typ ist (das ist gleichbedeutend damit, dass~$\F$ aus
+interner Sicht ein endlich erzeugter~$\C^0$-Modul ist). Folgere direkt aus~a),
+dass~$\F$ auf einer dichten offenen Teilmenge~$U$ lokal frei ist (dass es also
+eine offene Überdeckung~$U = \bigcup_i U_i$ gibt, sodass~$\F|_{U_i}$ isomorph
+zu einer Modulgarbe der Form~$(\C^0|_{U_i})^{n_i}$ ist).
+\end{enumerate}
+\end{aufgabe}
+
+\end{document}
