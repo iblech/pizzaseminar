@@ -2553,7 +2553,8 @@ Mengen und Abbildungen.
 Kategorie der mengenwertigen Garben über~$X$ und der Garbenmorphismen ein
 Topos. Das terminale Objekt ist die konstante Garbe~$U \mapsto \{ \star \}$,
 das initiale die Garbe~$U \mapsto \{ \star \,|\, U = \emptyset \}$ und der
-Unterobjektklassifizierer ist die Garbe~$U \mapsto \{ V \subseteq U \}$.
+Unterobjektklassifizierer ist die Garbe~$U \mapsto \{ V \subseteq U \,|\,
+\text{$V$ offen} \}$.
 \end{bsp}
 
 
@@ -2582,7 +2583,7 @@ wie eine injektive Abbildung und ein Epimorphismus wie eine surjektive
 Abbildung aus, siehe Tafel~\ref{tafel:externintern}.
 
 Wichtige Eigenschaft der internen Sprache ist, dass sie \emph{korrekt} (engl.
-\emph{sound}) bezüglich konstruktiver Logik ist. Jeder konstruktive Beweis gilt
+\emph{sound}) bezüglich konstruktiver Logik ist. Jeder konstruktive Beweis
 lässt sich also auch in der internen Sprache beliebiger Topoi interpretieren.
 
 \begin{table}
@@ -2596,10 +2597,10 @@ lässt sich also auch in der internen Sprache beliebiger Topoi interpretieren.
     Morphismus von~$\E$ & gewöhnliche Abbildung zwischen Mengen \\
     initiales Objekt von~$\E$ & leere Menge \\
     terminales Objekt von~$\E$ & einelementige Menge \\
-    Unterobjektklassifizierer von~$\E$ & gewöhnliche Menge~$\P(\{\star\})$ der
+    Unterobjektklassifizierer von~$\E$ & Menge~$\P(\{\star\})$ der
     Wahrheitswerte \\
-    Monomorphismus in~$\E$ & gewöhnliche injektive Abbildung \\
-    Epimorphismus in~$\E$ & gewöhnliche surjektive Abbildung
+    Monomorphismus in~$\E$ & injektive Abbildung \\
+    Epimorphismus in~$\E$ & surjektive Abbildung
   \end{tabular}
   \caption{\label{tafel:externintern}Externe und interne Sicht auf Objekte und
   Morphismen eines Topos~$\E$}
@@ -2614,13 +2615,13 @@ für offene Teilmengen~$U \subseteq X$ und Aussagen~$\varphi$ gemäß
 der Regeln in Tafel~\ref{tafel:kripke-joyal} (der
 \emph{Kripke-Joyal-Semantik}).
 
-\begin{bsp}Sei~$s,t \in \Gamma(X, \F)$ globale Schnitte einer Garbe~$\F$.
+\begin{bsp}Seien~$s,t \in \Gamma(X, \F)$ globale Schnitte einer Garbe~$\F$.
 Dann gilt~$U \models s = t$ genau dann, wenn~$s|_U = t|_U$, und~$U \models
 \neg\neg(s = t)$ genau dann, wenn es eine dichte offene Teilmenge~$V \subseteq
 U$ mit~$s|_V = t|_V$ gibt.\end{bsp}
 
 Auf den ersten Blick erscheinen die Regeln der Kripke-Joyal-Semantik völlig
-willkürlich. Tatsächlich sind sie aber sehr fein aufeinander abgestimmt, schon
+willkürlich. Tatsächlich sind sie aber fein aufeinander abgestimmt, schon
 kleine Änderungen führen dazu, dass das gesamte System zusammenbricht. Nur so
 gilt folgende grundlegende Proposition:
 
@@ -2772,7 +2773,7 @@ Vereinigungen) kommutativer Unteralgebren kommutativ sind.\end{bem}
 
 Die nichtkommutative \csalgebra~$A$ besitzt nun ein Abbild~$\ul{A}$ im
 Bohr-Topos. Diese \emph{interne} \csalgebra{} ist \emph{kommutativ}. In diesem
-ersten Sinn wird Quantenmechanik bei interner Betrachtung zu klassischer
+(restriktiven) Sinn wird Quantenmechanik bei interner Betrachtung zu klassischer
 Mechanik.
 
 \begin{defn}Die tautologisch definierte Koprägarbe
@@ -2866,7 +2867,8 @@ zugeschnittenen Topos~$\Bohr(A)$.\end{motto}
 \subsubsection*{Observable}
 
 \begin{prop}Jede Observable von~$A$ induziert eine interne stetige
-Abbildung~$\ul{\Sigma} \to \ul{\mathbb{IR}}$. Diese Zuordnung ist
+Abbildung~$\ul{\Sigma} \to \ul{\mathbb{IR}}$. Diese Zuordnung von Observablen
+zu internen Örtlichkeitsmorphismen ist
 injektiv.\end{prop}
 \begin{proof}Siehe~\cite[Prop.~15]{topos:aqt}. Mit~$\ul{\mathbb{IR}}$ ist eine
 spezielle Art eines Objekts reeller Zahlen gemeint.\end{proof}

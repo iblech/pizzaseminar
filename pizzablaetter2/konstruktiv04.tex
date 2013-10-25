@@ -28,8 +28,8 @@ Abbildung~$C^\infty_c(\RR) \to \RR$.
 \begin{enumerate}
 \item Sei~$f : \RR \to \RR$ eine lokal integrable Funktion. Zeige, dass die Abbildung
 \[ \begin{array}{@{}rrcl@{}}
-  T_f{:} & C^\infty_c(\RR) &\longrightarrow& \RR \\
-  & \phi &\longmapsto& \int_\RR f(x) g(x) \,dx
+  T_f\ : & C^\infty_c(\RR) &\longrightarrow& \RR \\
+  & \phi &\longmapsto& \int_\RR f(x) \, \phi(x) \,dx
 \end{array} \]
 eine Distribution auf~$\RR$ ist. (Wieso ist das unbeschränkte Integral
 wohldefiniert?) In diesem Sinn kann man also jede (lokal integrable) Funktion
@@ -73,7 +73,7 @@ auf~$\RR$ heißt genau dann \emph{Dirac-Folge}, wenn~$\int_\RR \delta_n(x) \,dx
 \addtocounter{enumi}{2}
 \item Zeige, dass~$(\delta_n)_n$ mit~$\delta_n(x) := \frac{1}{n \sqrt{\pi}}
 \exp(-x^2 / n^2)$ eine Dirac-Folge ist.
-\item Zeige für alle~$\phi \in C^\infty_c(\RR)$: $\int_\RR \delta_n(x) \phi(x)
+\item Zeige für alle~$\phi \in C^\infty_c(\RR)$: $\int_\RR \delta_n(x) \phi(x) \,dx
 \xrightarrow{n \to \infty} \delta(\phi)$.
 \end{enumerate}
 \end{aufgabe}
@@ -97,7 +97,7 @@ eine antilineare Bijektion ist. Beweise diese Behauptung für den Fall, dass~$H$
 endlich-dimensional ist.
 \end{enumerate}
 
-Man schreibt nun~"$\ket{x}$"' für~$x \in H$ und~"`$\bra{x}$"' für~$(\freist,x)
+Man schreibt nun~"`$\ket{x}$"' für~$x \in H$ und~"`$\bra{x}$"' für~$(\freist,x)
 \in H^\vee$.
 
 \begin{enumerate}
