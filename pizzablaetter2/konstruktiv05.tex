@@ -11,7 +11,7 @@
 Sei~$X$ ein topologischer Raum (oder eine Örtlichkeit). Sei~$\alpha : \F \to
 \G$ ein Morphismus von Garben auf~$X$. Zeige, \ldots
 \begin{enumerate}
-\item \ldots dass $\alpha$ genau dann Monomorphismus ist, wenn
+\item \ldots dass $\alpha$ genau dann ein Monomorphismus ist, wenn
 $X \models \forall x,y\?\F\_ \alpha(x) = \alpha(y) \Rightarrow x = y$.
 \item \ldots dass $\alpha$ genau dann ein Epimorphismus ist, wenn
 $X \models \forall y\?\G\_ \exists x\?\F\_ \alpha(x) = y$.
@@ -21,13 +21,20 @@ Monomorphismen wie gewöhnliche injektive und Epimorphismen wie
 gewöhnliche surjektive Abbildungen aus.
 \end{aufgabe}
 
-\begin{aufgabe}{Topologische Interpretation der Doppelnegation}
-Sei~$X$ ein topologischer Raum. Sei~$\varphi$ eine Aussage. Zeige:
-\[ X \models \neg\neg\varphi
-  \quad\text{gdw.}\quad
-  \text{$U \models \varphi$ für eine dichte offene Teilmenge~$U \subseteq X$}. \]
+\begin{aufgabe}{Vereinfachungsregeln für die interne Sprache}
+Sei~$X$ ein topologischer Raum.
+\begin{enumerate}
+\item \emph{Eindeutige Existenz ist globale Existenz.}
+Sei~$\F$ eine Garbe auf~$X$ und~$\varphi$ eine Aussage, in der eine
+Variable~$x\?\F$ frei vorkommt. Zeige: Genau dann gilt~$X \models \exists!
+x\?\F\_ \varphi$, wenn auf jeder offenen Teilmenge~$U \subseteq X$ genau ein
+Schnitt~$s \in \Gamma(U,\F)$ mit~$U \models \varphi(s)$ existiert.
+\item \emph{Topologische Interpretation der Doppelnegation.}
+Sei~$\varphi$ eine Aussage. Zeige: Genau dann gilt~$X \models
+\neg\neg\varphi$, wenn es eine dichte offene Teilmenge~$U \subseteq X$ mit~$U
+\models \varphi$ gibt.
+\end{enumerate}
 \end{aufgabe}
-\vspace{-2em}
 
 \begin{aufgabe}{Die Ringgarbe stetiger Funktionen als Körper}
 Sei~$X$ ein topologischer Raum. Sei~$\C^0$ die Garbe der stetigen Funktionen
@@ -42,8 +49,8 @@ invertierbar}$, d.\,h. wenn $X \models \exists g\?\C^0\_ fg = 1$.
 \item Zeige, dass~$\C^0$ aber nicht folgende Körperbedingung erfüllt:
 \[ X \models \forall f\?\C^0\_ f = 0 \vee \speak{$f$ invertierbar}. \]
 \end{enumerate}
-\emph{Bemerkung.} Man kann zeigen, dass~$\C^0$ aus interner Sicht die Menge der
-über dedekindsche Schnitte konstruierten reellen Zahlen ist.
+\emph{Bemerkung.} Man kann zeigen, dass~$\C^0$ aus interner Sicht die Rolle der
+über dedekindsche Schnitte konstruierten reellen Zahlen erfüllt.
 \end{aufgabe}
 
 \begin{aufgabe}{Basen endlich erzeugter Vektorräume}
@@ -60,9 +67,12 @@ besitzt.
 lokal von endlichem Typ ist (das ist gleichbedeutend damit, dass~$\F$ aus
 interner Sicht ein endlich erzeugter~$\C^0$-Modul ist). Folgere direkt aus~a),
 dass~$\F$ auf einer dichten offenen Teilmenge~$U$ lokal frei ist (dass es also
-eine offene Überdeckung~$U = \bigcup_i U_i$ gibt, sodass~$\F|_{U_i}$ isomorph
-zu einer Modulgarbe der Form~$(\C^0|_{U_i})^{n_i}$ ist).
+eine offene Überdeckung~$U = \bigcup_i U_i$ gibt, sodass die~$\F|_{U_i}$ isomorph
+zu Modulgarben der Form~$(\C^0|_{U_i})^{n_i}$ sind).
 \end{enumerate}
 \end{aufgabe}
 
 \end{document}
+
+Auch noch schön wäre: Beispiel aus meiner Masterarbeit zum Thema exists vs.
+negnegexists.
