@@ -2180,7 +2180,7 @@ klassischer Mechanik.
 Um diesen Ansatz zu verstehen, sind drei Zutaten nötig: die Dualität zwischen
 Räumen und Algebren; eine für diese Zwecke geeignete Formulierung von
 klassischer Mechanik und Quantenmechanik; und die Auffassung von Topoi als
-mathematische Alternativuniversen. Diese Zutatenwollen wir in den folgenden
+mathematische Alternativuniversen. Diese Zutaten wollen wir in den folgenden
 Abschnitten grob umreißen.
 
 
@@ -2313,8 +2313,8 @@ Umgekehrt spiegelt auch die Örtlichkeit zu einem topologischen Raum diesen nur
 dann getreu wieder, wenn dieser \emph{nüchtern} war. Jeder Hausdorffraum ist
 nüchtern.
 % XXX: Stimmt das konstruktiv?
-Stattet man aber etwa eine Menge mit
-mehr als nur einem Element mit der indiskreten Topologie aus, erhält man einen
+Stattet man aber etwa eine aus mehr als nur einem Element bestehende Menge 
+mit der indiskreten Topologie aus, erhält man einen
 topologischen Raum, der nicht nüchtern ist: Die Vielzahl seiner Punkte schlägt
 sich nicht in seiner Topologie nieder. Seine \emph{Nüchternifizierung}
 (\emph{Ausnüchterung}?) ist der einpunktige Raum.
@@ -2353,7 +2353,7 @@ Punkte die reinen Zustände des Systems sind.
 \begin{bsp}Der Phasenraum des freien Teilchens im~$\RR^3$ ist~$\Sigma = \RR^3
 \times \RR^3$, denn durch Position und Impuls ist die Systemkonfiguration
 eindeutig festgelegt. Die beiden Projektionen~$\Sigma \to \RR^3$ sind die
-Observablen \emph{Position} bzw. \emph{Impuls}.\end{bsp}
+Observablen \emph{Position} und \emph{Impuls}.\end{bsp}
 
 Auf der algebraischen Seite gehört zum Phasenraum~$\Sigma$ eine \csalgebra~$A
 := C(\Sigma, \CC)$; es ergibt sich dann folgendes Wörterbuch zwischen
@@ -2450,7 +2450,7 @@ Bei näherer Betrachtung stellt sich dieser Ansatz jedoch als zu naiv heraus. Da
 Problem steckt in der unscheinbaren Bedingung
 \[ \rho(a + b) = \rho(a) + \rho(b) \quad\text{für alle~$a,b \in A$} \]
 an gemischte Zustände~$\rho$ bzw. der analogen Forderung der
-Multiplikativität bei reinen Zuständen. Man kann nämlich
+Multiplikativität ab reine Zustände. Man kann nämlich
 argumentieren~\cite[Seite~27]{topos:aqt},
 dass zwei Observable~$a$ und~$b$ nur dann physikalisch sinnvoll addierbar sind,
 wenn sie gemeinsam messbar sind, also miteinander kommutieren. Die
@@ -2485,9 +2485,9 @@ möglich.\end{bem}
 
 \subsection{Topoi als mathematische Alternativuniversen}
 
-Vorab sei bemerkt, dass Topostheorie viele Facetten hat. Hier betonen wir nur eine, nämlich
+Topostheorie hat viele Facetten. Hier betonen wir nur eine, nämlich
 die Auffassung von Topoi als mathematische Alternativuniversen. Unter anderem
-hat Topostheorie aber auch eine geometrische Komponente: Topoi kann man auch als
+hat Topostheorie aber auch eine geometrische Komponente: Topoi kann man als
 verallgemeinerte Räume ansehen. Eine informale Einführung in Topostheorie
 von Tom Leinster~\cite{leinster:topos} diskutiert auch diese anderen
 Standpunkte.
@@ -2557,6 +2557,9 @@ Unterobjektklassifizierer ist die Garbe~$U \mapsto \{ V \subseteq U \,|\,
 \text{$V$ offen} \}$.
 \end{bsp}
 
+\begin{bsp}Die Kategorien der Gruppen, Vektorräume und topologischer Räume sind
+keine Topoi.\end{bsp}
+
 
 \subsubsection*{Was ist die interne Sprache?}
 
@@ -2570,9 +2573,9 @@ und zwar in einer \emph{naiven}, \emph{element-basierten} Sprache, die der
 üblichen formalen mathematischen Sprache sehr stark ähnelt.
 
 Etwa erscheint ein Objekt von~$\E$, das also vielleicht eine komplizierte Garbe
-von Mengen sein kann, aus Sicht der internen Sprache wie eine gewöhnliche
-Menge.\footnote{Besser sollte man hier \emph{Typ} schreiben. Auf den
-Unterschied wollen wir hier nicht eingehen.} Folgerichtig erscheint ein
+von Mengen ist, aus Sicht der internen Sprache wie eine gewöhnliche
+Menge\footnote{Besser sollte man hier \emph{Typ} schreiben. Auf den
+Unterschied wollen wir hier nicht eingehen.}. Folgerichtig erscheint ein
 Morphismus von~$\E$, der tatsächlich vielleicht eine komplizierte unendliche
 Familie von Abbildungen ist, aus Sicht der internen Sprache wie eine
 gewöhnliche Abbildung zwischen Mengen.
@@ -2585,6 +2588,8 @@ Abbildung aus, siehe Tafel~\ref{tafel:externintern}.
 Wichtige Eigenschaft der internen Sprache ist, dass sie \emph{korrekt} (engl.
 \emph{sound}) bezüglich konstruktiver Logik ist. Jeder konstruktive Beweis
 lässt sich also auch in der internen Sprache beliebiger Topoi interpretieren.
+Im Folgenden Abschnitt illustrieren wir das anhand des anschaulichen
+Garbentopos zu einem topologischen Raum.
 
 \begin{table}
   \centering
@@ -3193,3 +3198,5 @@ das in~$\aa$ und~$\bb$ enthalten ist, ist
 % gut ist.
 
 % XXX: Formel vs. Aussage
+
+% Def. \exists!
