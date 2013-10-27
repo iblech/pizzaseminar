@@ -10,6 +10,69 @@
 
 \maketitle{4}{Pizzaseminar zu konstruktiver Mathematik}{16. Oktober 2013}
 
+\begin{aufgabe}{Teilchen im Kastenpotenzial}
+\begin{enumerate}
+\item
+Löse für ein Teilchen der Energie $E_0$ die Schrödingergleichung für
+ein Potential der Form
+\[ V(x) = \begin{cases}
+  V_0, & \text{für $|x| > L/2$}, \\
+  0,   & \text{für $|x| < L/2$}.
+\end{cases} \]
+\item
+Welches Problem ergibt sich für $E_0 > V_0$? Wo kann sich das
+Teilchen dann aufhalten?
+\item
+Bestimme für $E_0 < V_0$ den Erwartungswert und die Unschärfe von
+Ort und Impuls. Verifiziere, dass die Unschärferelation
+$(\Delta_x)(\Delta_p) \geq \frac{\hbar}{2}$ erfüllt ist.
+\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}{Bra-Ket-Notation}
+Sei~$H$ ein Hilbertraum über~$\CC$, also ein~$\CC$-Vektorraum mit einer
+positiv definiten hermiteschen Sesquilinearform~$(\freist,\freist)$, der
+bezüglich der induzierten Metrik vollständig ist. Sei~$H^\vee =
+\{ A : H \to \CC \,|\, \text{$A$ linear und stetig} \}$ der topologische
+Dualraum von~$H$. Die Konvention sei so, dass die Sesquilinearform im rechten
+Argument linear ist.
+
+\begin{enumerate}
+\item Der für die Hilbertraumtheorie fundamentale \emph{Satz von Riesz} besagt,
+dass die kanonische Abbildung
+\[ \begin{array}{@{}rcl@{}}
+  H &\longrightarrow& H^\vee \\
+  x &\longmapsto& (x, \freist)
+\end{array} \]
+eine antilineare Bijektion ist. Beweise diese Behauptung für den Fall, dass~$H$
+endlich-dimensional ist.
+\end{enumerate}
+
+Man schreibt nun~"`$\ket{x}$"' für~$x \in H$ und~"`$\bra{x}$"' für~$(\freist,x)
+\in H^\vee$.
+
+\begin{enumerate}
+\addtocounter{enumi}{1}
+\item Zeige: $\langle x|y \rangle := (\bra{x})(\ket{y}) = (x,y)$ für
+alle~$x,y \in H$.
+\item Zeige: $\langle x|A|y \rangle := \bigl(\bra{x} \circ A\bigr)
+\bigl(\ket{y}\bigr) = \bigl(\bra{x}\bigr) \bigl(A(\ket{y})\bigr) = (x,Ay)$ für
+alle~$x,y \in H$, $A : H \to H$ linear und stetig.
+\item Sei~$x \in H$ ein Vektor von Norm~$1$. Zeige: Der Operator~$P := \ket{x} \, \bra{x} : H \to H$, definiert
+über~$P(y) = \bra{x}(y) \cdot \ket{x}$ für~$y \in H$, erfüllt~$P \circ P = P$
+und hat~$\operatorname{span}(x)$ als Bild.
+\item Sei~$e_1,\ldots,e_n$ eine Basis von~$H$. Zeige: Der
+Operator~$\sum_{i=1}^n \ket{e_i} \bra{e_i}$ ist der Identitätsoperator.
+\item Sei weiterhin~$e_1,\ldots,e_n$ eine Basis von~$H$. Beobachte, wie
+suggestiv die Notation dich in einem Beweis der Identität $\ket{x} =
+\sum_{i=1}^n \langle e_i|x \rangle \cdot \ket{e_i}$ leitet.
+\end{enumerate}
+\end{aufgabe}
+
+\begin{center}\emph{-- für Funktionalanalysis bitte wenden --}\end{center}
+
+\newpage
+
 \begin{aufgabe}{Distributionen}
 Der~$\RR$-Vektorraum
 \[ C^\infty_c(\RR) := \{ \phi \in C^\infty(\RR) \,|\,
@@ -22,17 +85,17 @@ es ein Kompaktum~$K \subseteq \Omega$ gibt, sodass alle~$\phi_n$ Träger in~$K$
 haben und sodass für jede Ableitungsordnung~$k$ die Konvergenz
 \[ \sup_{x \in K}\ \Bigl|\tfrac{\partial^k}{\partial x^k} (\phi_n(x) -
 \phi(x))\Bigr| \xrightarrow{n \to \infty} 0 \]
-vorliegt. Eine \emph{Distribution auf~$\RR$} ist eine stetige lineare
+vorliegt. Eine \emph{Distribution auf~$\RR$} ist eine (folgen-)stetige lineare
 Abbildung~$C^\infty_c(\RR) \to \RR$.
 
 \begin{enumerate}
-\item Sei~$f : \RR \to \RR$ eine lokal integrable Funktion. Zeige, dass die Abbildung
+\item Sei~$f : \RR \to \RR$ eine lokal integrierbare Funktion. Zeige, dass die Abbildung
 \[ \begin{array}{@{}rrcl@{}}
   T_f\ : & C^\infty_c(\RR) &\longrightarrow& \RR \\
   & \phi &\longmapsto& \int_\RR f(x) \, \phi(x) \,dx
 \end{array} \]
 eine Distribution auf~$\RR$ ist. (Wieso ist das unbeschränkte Integral
-wohldefiniert?) In diesem Sinn kann man also jede (lokal integrable) Funktion
+wohldefiniert?) In diesem Sinn kann man also jede (lokal integrierbare) Funktion
 auch als Distribution auffassen.
 \item Die \emph{Ableitung~$D'$} einer (beliebigen!) Distribution~$D$ ist über die Vorschrift
 \[ D'(\phi) := -D(\phi') \]
@@ -75,46 +138,6 @@ auf~$\RR$ heißt genau dann \emph{Dirac-Folge}, wenn~$\int_\RR \delta_n(x) \,dx
 \exp(-x^2 / n^2)$ eine Dirac-Folge ist.
 \item Zeige für alle~$\phi \in C^\infty_c(\RR)$: $\int_\RR \delta_n(x) \phi(x) \,dx
 \xrightarrow{n \to \infty} \delta(\phi)$.
-\end{enumerate}
-\end{aufgabe}
-
-\begin{aufgabe}{Bra-Ket-Notation}
-Sei~$H$ ein Hilbertraum über~$\CC$, also ein~$\CC$-Vektorraum mit einer
-positiv definiten hermiteschen Sesquilinearform~$(\freist,\freist)$, der
-bezüglich der induzierten Metrik vollständig ist. Sei~$H^\vee =
-\{ A : H \to \CC \,|\, \text{$A$ linear und stetig} \}$ der topologische
-Dualraum von~$H$. Die Konvention sei so, dass die Sesquilinearform im rechten
-Argument linear ist.
-
-\begin{enumerate}
-\item Der für die Hilbertraumtheorie fundamentale \emph{Satz von Riesz} besagt,
-dass die kanonische Abbildung
-\[ \begin{array}{@{}rcl@{}}
-  H &\longrightarrow& H^\vee \\
-  x &\longmapsto& (x, \freist)
-\end{array} \]
-eine antilineare Bijektion ist. Beweise diese Behauptung für den Fall, dass~$H$
-endlich-dimensional ist.
-\end{enumerate}
-
-Man schreibt nun~"`$\ket{x}$"' für~$x \in H$ und~"`$\bra{x}$"' für~$(\freist,x)
-\in H^\vee$.
-
-\begin{enumerate}
-\addtocounter{enumi}{1}
-\item Zeige: $\langle x|y \rangle := (\bra{x})(\ket{y}) = (x,y)$ für
-alle~$x,y \in H$.
-\item Zeige: $\langle x|A|y \rangle := \bigl(\bra{x} \circ A\bigr)
-\bigl(\ket{y}\bigr) = \bigl(\bra{x}\bigr) \bigl(A(\ket{y})\bigr) = (x,Ay)$ für
-alle~$x,y \in H$, $A : H \to H$ linear und stetig.
-\item Sei~$x \in H$ ein Vektor von Norm~$1$. Zeige: Der Operator~$P := \ket{x} \, \bra{x} : H \to H$, definiert
-über~$P(y) = \bra{x}(y) \cdot \ket{x}$ für~$y \in H$, erfüllt~$P \circ P = P$
-und hat~$\operatorname{span}(x)$ als Bild.
-\item Sei~$e_1,\ldots,e_n$ eine Basis von~$H$. Zeige: Der
-Operator~$\sum_{i=1}^n \ket{e_i} \bra{e_i}$ ist der Identitätsoperator.
-\item Sei weiterhin~$e_1,\ldots,e_n$ eine Basis von~$H$. Beobachte, wie
-suggestiv die Notation dich in einem Beweis der Identität $\ket{x} =
-\sum_{i=1}^n \langle e_i|x \rangle \cdot \ket{e_i}$ leitet.
 \end{enumerate}
 \end{aufgabe}
 
