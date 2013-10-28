@@ -90,6 +90,7 @@
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Ouv}{\mathrm{Ouv}}
+\newcommand{\res}{\mathrm{res}}
 \newcommand{\Rad}{\mathrm{Rad}}
 \newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\Bohr}{\mathrm{Bohr}}
@@ -3146,6 +3147,72 @@ das in~$\aa$ und~$\bb$ enthalten ist, ist
 \[ \sup\bigl\{ \sqrt{(x)}, \sqrt{(y)} \bigr\} = \sqrt{\sqrt{(x)} + \sqrt{(y)}} =
 \sqrt{(x,y)}. \]
 \end{bsp}
+
+\section{Garben}
+
+\begin{defn}Eine \emph{Prägarbe} auf einem topologischen Raum~$X$ (oder einer
+Örtlichkeit) ist eine Prägarbe im kategoriellen Sinne auf der
+als dünne Kategorie aufgefassten Halb\-ord\-nung~$\Ouv(X)$ der offenen
+Teilmengen (bzw.  offenen Dinge) von~$X$, also ein Funktor~$\Ouv(X)^\op \to
+\Set$.
+\end{defn}
+% XXX: stimmt "dünn"?
+
+Ist~$\F$ eine Prägarbe auf~$X$ und~$U \subseteq X$ eine offene
+Menge, so schreibt man auch~"`$\Gamma(U, \F)$"' für~$\F(U)$ und nennt die
+Elemente dieser Menge \emph{Schnitte von~$\F$ auf~$U$}. Wenn~$V \subseteq U$,
+schreibt man die induzierte Abbildung~$F(\text{"`$V \subseteq U$"'}) : \F(U)
+\to \F(V)$ auch als~"`$(\freist)|_V$"'. Diese Schreibweise rührt von den
+wichtigsten Beispielen für Prägarben her.
+
+Die Prototyp-Beispiele für Prägarben stammen nämlich von verschiedenen
+Funktionsbegriffen ab. Etwa gibt es auf jedem topologischen Raum~$X$ die
+Prägarbe~$\C^0$ der stetigen Funktionen, definiert über
+\[ \begin{array}{@{}rcl@{}}
+  \Ouv(X)^\op &\longrightarrow& \Set \\
+  U &\longmapsto& \{ U \xra{f} \RR \,|\, \text{$f$ stetig} \} \\
+  \text{"`$V \subseteq U$"'} &\longmapsto& \res^U_V
+\end{array} \]
+mit~$\res^U_V : \C^0(U) \to \C^0(V), f \mapsto f|_V$ der
+Einschränkungsabbildung.  Trägt~$X$ sogar die Struktur einer glatten
+Mannigfaltigkeit, kann man analog auch die Garbe~$\C^\infty$ der glatten
+Funktionen definieren -- man setzt $\Gamma(U, \C^\infty) := \{ U \xra{f} \RR
+\,|\, \text{$f$ glatt} \}$.
+
+\begin{defn}Eine Prägarbe~$\F$ auf~$X$ heißt genau dann \emph{Garbe}, wenn
+folgendes Verklebeaxiom erfüllt ist: Ist~$U = \bigcup_i U_i \subseteq X$ eine
+offene Überdeckung einer offenen Teilmenge und ist~$(s_i)_{i \in I}$ eine
+Familie von Schnitten mit~$s_i \in \Gamma(U_i, \F)$, welche auf Überlapps
+übereinstimmen, also
+$s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j}$
+für alle Indizes~$i,j$ erfüllen, so soll es genau einen Schnitt~$s \in
+\Gamma(U,\F)$ mit~$s|_{U_i} = s_i$ für alle~$i$ geben.\end{defn}
+% XXX: Wort "Überlapp"
+
+\begin{bsp}Die Prägarben~$\C^0$ und~$\C^\infty$ (sofern definierbar) sind
+Garben: Man kann stetige bzw. glatte Funktionen, die auf Überlapps
+übereinstimmen, miteinander \emph{verkleben}; die resultierende Funktion wird
+wieder stetig bzw. glatt sein.\end{bsp}
+
+\begin{bsp}Die Prägarbe~$\C_{\text{const}}$ der konstanten Funktionen,
+\[ \Gamma(U, \C_{\text{const}}) = \{ U \xra{f} \RR \,|\, \text{$f$ konstant}
+\}, \]
+ist außer in pathologischen Fällen keine Garbe. Denn wenn zwei konstante
+Funktionen~$f_1 : U_1 \to \RR$ und~$f_2 : U_2 \to \RR$ auf zwei sich nicht
+überlappenden offenen Mengen definiert sind, ist die Kompatibilitätsbedingung
+leer, sie lassen sich jedoch im Allgemeinen nicht zu einer konstanten Funktion
+auf~$U_1 \cup U_2$ zusammensetzen: Das geht genau dann, wenn sie denselben
+konstanten Wert haben. Die analog definierte Prägarbe~$\C_{\text{lc}}$ der
+lokal konstanten Funktionen ist dagegen durchaus eine Garbe. (Eine Funktion heißt genau
+dann lokal konstant, wenn es eine Überdeckung ihres Urbildbereichs gibt, sodass
+die Einschränkungen der Funktion auf die Überdeckungsmengen jeweils konstant
+sind.)\end{bsp}
+
+\begin{bem}Es gibt ein allgemeine Technik, die \emph{Garbifizierung}, mit der
+man auf universelle Art und Weise aus Prägarben Garben machen kann. Die
+Garbifizierung der Prägarbe der konstanten Funktionen ist dann gerade die Garbe
+der lokal konstanten Funktionen.\end{bem}
+
 
 \nocite{*}
 \printbibliography
