@@ -3299,10 +3299,169 @@ Definition ist äquivalent zur allgemeinen kategoriellen Definition und somit
 zur Charakterisierung aus der Proposition. Sie hat allerdings den Nachteil, dass sie nicht
 unmittelbar auf Örtlichkeiten übertragbar ist.\end{bem}
 
+
 \nocite{*}
 \printbibliography
 
 \end{document}
+
+
+\section{Elemente in Kategorien}
+
+\subsection{Globale und verallgemeinerte Elemente}
+
+Sei~$X \xra{f} Y$ eine Abbildung von Mengen. Bekanntlich heißt diese genau dann
+\emph{injektiv}, wenn
+\begin{equation}\label{inj}
+  \forall x,x' \in X\_\ f(x) = f(x') \ \Longrightarrow\  x = x'.
+\end{equation}
+Diese Bedingung lässt sich nicht nur in~$\Set$, sondern in jeder Kategorie
+interpretieren, deren Objekte Mengen mit Zusatzstruktur und deren Morphismen
+gewisse Abbildungen sind. Wenn man aber über solche Kategorien hinaus
+verallgemeinern möchte, muss man die Aussage in kategorieller Notation
+umschreiben; sie lautet dann:
+\begin{equation}\label{injcat}
+  \forall (1 \xra{x} X), (1 \xra{x'\!} X)\_\ f \circ x = f \circ x'
+  \ \Longrightarrow\  x = x'.
+\end{equation}
+Morphismen der Form~$1 \to X$ heißen \emph{globale Elemente} von~$X$.
+Bedingung~\eqref{injcat} lässt sich in allen Kategorien interpretieren, in denen es ein
+terminales Objekt~$1$ gibt, und ist in~$\Set$ äquivalent zur mengensprachlich
+formulierten Bedingung~\eqref{inj}. Das hat einen tieferen Grund: In~$\Set$ ist
+die einelementige Menge~$1 = \{ \star \}$ ein \emph{Erzeuger}, d.\,h. Objekte
+in~$\Set$ sind schon durch ihre globalen Elemente (bis auf Isomorphie) eindeutig bestimmt.
+
+In Kategorien, in denen das terminale Objekt aber kein Erzeuger ist, ist
+Bedingung~\eqref{injcat} dagegen nicht sehr aussagekräftig. Konkret der Fall
+ist das beispielsweise beim Topos~$\Sh(A)$ der Garben auf einem topologischen
+Raum~$A$. Globale Elemente einer Garbe~$\F$ stehen in natürlicher Bijektion mit
+globalen Schnitten~$x \in \F(A)$ (daher der Name), sodass
+Bedingung~\eqref{injcat} nur aussagt, dass die Garbenabbildung~$f$
+\emph{injektiv auf globalen Schnitten} ist. Da viele interessante Garben
+überhaupt keine oder nur wenige globale Schnitte besitzen, ist das in der Regel
+eine gehaltlose Aussage.
+
+Man löst das Problem dadurch, indem man nicht nur globale Elemente~$1 \to X$,
+sondern auch \emph{verallgemeinerte} Elemente~$I \to X$ betrachtet. Dabei
+muss~$I$ alle Objekte der untersuchten Kategorie~$\C$ durchlaufen; mit diesem
+Prinzip ist eine bessere Übersetzung der Injektivitätsbedingung die Aussage
+\begin{equation}\label{injallg}
+  \forall \text{Objekte $I$ in~$\C$}\_ \forall (I \xra{x} X), (I \xra{x'\!} X) \text{ in~$\C$}\_\ 
+  f \circ x = f \circ x' \ \Longrightarrow\ x = x',
+\end{equation}
+und diese fängt die Intuition hinter dem Injektivitätsbegriff auch in
+beliebigen Kategorien~$\C$ richtig ein: Ein Morphismus~$f$, der
+Bedingung~\eqref{injallg} erfüllt, heißt bekanntlich \emph{Monomorphismus}. Den
+tieferen Grund, wieso diese Idee funktioniert, drückt das
+\emph{Yonedalemma}~\cite{yoneda} aus, demnach ein Objekt (bis auf Isomorphie) schon
+eindeutig durch die Morphismen in das Objekt hinein bestimmt ist.
+% XXX: Letzten Satz verstehe ich nicht?
+
+
+\subsection{Die interne Sprache}
+
+In der Praxis ist es allerdings umständlich, immer an verallgemeinerte
+Elemente denken und diese in der Notation berücksichtigen zu müssen. Als
+Abhilfe dazu gibt es die \emph{interne Sprache} einer Kategorie
+(nach J.~Bénabou, A.~Joyal und W.~Mitchell, siehe~\cite[Kap.~1]{catlogprime}):
+In dieser
+kann man die Injektivitätsbedingung als
+\begin{equation}\label{injtype}
+  \forall x,x'\?X\_\ f(x) = f(x') \ \Longrightarrow\ x = x'
+\end{equation}
+formulieren, die Ähnlichkeit zur ursprünglichen Definition~\eqref{inj} ist
+offensichtlich. Der Doppelpunkt beim Allquantor soll andeuten, dass~$X$ nicht
+notwendigerweise eine Menge und~$x,x'$ nicht notwendigerweise Elemente einer
+Menge im wörtlichen (materiellen) Sinn sein müssen. Stattdessen sagt man,
+dass~$X$ ein \emph{Typ} und~$x,x'$ \emph{Werte} dieses Typs sind, und
+bezeichnet den Ausdruck~\eqref{injtype} als \emph{Formel im leeren Kontext}.
+(Freie, nicht durch Quantoren gebundene Variablen sammelt der sog. Kontext
+der Formel auf.)
+
+Wenn die untersuchte Kategorie genügend gute Eigenschaften hat -- ein
+\emph{Topos} ist --, gibt es ein konkretes, algorithmisch gegebenes und auch in der Praxis einfach
+durch\-führ\-ba\-res Verfahren, um solche intern formulierten Aussagen in die externe
+mathematische Sprache zu übersetzen, die sog.
+\emph{Kripke-Joyal-Semantik}~\cite[Kap~VI.6]{moerdijkmaclane}.
+Wendet man dieses auf die Formel~\eqref{injtype} an, erhält man (nach einem
+Vereinfachungsschritt) genau die zuvor hergeleitete Bedingung~\eqref{injallg}
+mit verallgemeinerten Elementen.
+
+Die interne Sprache erlaubt nicht nur, Bedingungen einfach formulieren zu
+können, sondern auch logische Schlussfolgerungen anzustellen. Beispielsweise
+kann man, indem man den üblichen Beweis mit
+minimalen syntaktischen Änderungen abschreibt, intern zeigen, dass
+\[ \speak{$f$ ist injektiv} \wedge \speak{$f$ ist surjektiv}
+  \Longrightarrow \speak{$f$ besitzt eine Umkehrfunktion}. \]
+Die Häkchen sollen andeuten, dass die Teilaussagen nur umgangssprachlich vorliegen und
+daher vom Leser formalisiert werden müssen.
+Extern besagt diese Implikation, dass jeder Morphismus~$f$ eines Topos, der zugleich ein
+Mono- und Epimorphismus ist, schon einen Umkehrmorphismus besitzt, also ein
+Isomorphismus ist.
+
+
+\subsection{Beschränkung auf intuitionistische Logik}
+
+Damit die Übersetzungen intern bewiesener Schlussfolgerungen
+in beliebigen Topoi gültig sind, ist man beim Beweisen aber einer Reihe von
+Einschränkungen unterworfen: Man darf in Abgrenzung der gewohnten klassischen
+Logik nur die Schlussregeln
+\emph{intuitionistischer Logik}~\cite{dalen} verwenden, d.\,h. man muss auf das Prinzip vom
+ausgeschlossenen Dritten, demnach man für jede Aussage~$\phi$ voraussetzen
+darf, dass
+\[ \phi \vee \neg\phi \]
+gilt, verzichten; und ebenso kann man das Prinzip der
+Doppelnegationselimination ("`$\neg\neg\phi \Rightarrow \phi$"') und das
+Auswahlaxiom nicht verwenden. Infolgedessen sind Widerspruchsbeweise
+("`um~$\phi$ zu zeigen, zeige, dass~$\neg\phi$ falsch ist"') nicht
+zulässig.\footnote{Davon unbetroffen sind Beweise negierter Aussagen, d.\,h.
+Aussagen der Form~$\neg\psi$. Das übliche Vorgehen ("`Gelte $\psi$. Dann
+\ldots, also Widerspruch."') ist für solche zulässig, es handelt sich dabei
+nicht um Widerspruchsbeweise im eigentlichen Sinn. Klassisch kann man den
+Unterschied nicht erkennen, da man gewohnt ist, nach Belieben doppelte
+Verneinungen einzuführen oder zu streichen.} Zwei Beispiele sollen dieses
+Phänomen am Garbentopos~$\Sh(A)$ über einem topologischen Raum~$A$ verdeutlichen:
+\begin{enumerate}
+\item Dass eine Aussage~$\phi$ der internen Sprache von~$\Sh(A)$ gilt, kann man
+sich so vorstellen, dass sie auf jeder offenen Teilmenge~$U \subseteq A$
+erfüllt ist. Die doppelte Negation~$\neg\neg\phi$ bedeutet dagegen nur, dass
+jede nichtleere offene Teilmenge~$U \subseteq A$ eine weitere, kleinere nichtleere offene
+Teilmenge~$V \subseteq U$ enthält, auf der~$\phi$ gilt.
+
+Sei etwa~$A = \RR$ die reelle Zahlengerade und~$f$ eine stetige reellwertige Funktion
+auf~$\RR$. Dann bedeutet die interne Aussage
+\[ \speak{$f$ ist (bzgl. der Multiplikation) invertierbar}, \]
+dass~$f$ auf jeder offenen Teilmenge
+invertierbar ist, also dass~$f(a) \neq 0$ für alle~$a \in A$. Die doppelt
+negierte Aussage dagegen wird beispielsweise auch von Funktionen erfüllt, die
+isolierte Nullstellen besitzen, und allgemeiner von allen Funktionen, die auf
+keinem Intervall konstant null sind.
+% XXX: Also auf einer dichten Menge nicht null sind!
+
+\item Sei~$A = \CC$ die komplexe Zahlenebene und~$f$ eine auf ganz~$\CC$
+definierte holomorphe Funktion. Holomorphe Lösungen der Funktionalgleichung
+\[ \exp(g) = f \]
+organisieren sich auf natürliche Art und Weise in einer Garbe~$\F$ auf~$\CC$,
+explizit durch die Setzung
+\begin{equation}\label{holsheaf}
+  \F(U) = \{ U \xra{g} \CC \,|\, \text{$g$ holomorph und~$\exp(g) = f$ auf~$U$} \}
+\end{equation}
+für offene Teilmengen~$U \subseteq \CC$ gegeben. Wenn~$f$ Nullstellen besitzt,
+ist die Aussage $\exists g\?\F$ der internen Sprache nicht erfüllt: Diese
+bedeutet nämlich, dass es eine Überdeckung von~$\CC$ durch offene Mengen gibt,
+sodass es auf jeder dieser offenen Mengen~$U$ jeweils eine auf~$U$ definierte Lösung
+der Funktionalgleichung gibt (wobei diese Teillösungen auf Überlapps nicht
+unbedingt zusammenpassen müssen) -- das kann man kurz als das Motto \emph{Existenz in der
+internen Sprache bedeutet lokale Existenz} ausdrücken. Aber in jeder solchen Überdeckung würde
+mindestens eine offene Menge~$U$ eine Nullstelle von~$f$ enthalten, und auf
+einer solchen Menge ist die Funktionalgleichung natürlich nicht erfüllbar.
+
+Es gilt aber die doppelt negierte Aussage~$\neg\neg(\exists g\?\F)$, denn zu
+jeder nichtleeren offenen Teilmenge~$U \subseteq \CC$ kann man eine genügend
+kleine weitere nichtleere offene Teilmenge~$V \subseteq U$ finden, die keine
+Nullstellen von~$f$ enthält (diese sind ja isoliert) und auf der es einen
+passenden Logarithmus gibt.
+\end{enumerate}
 
 % XXX: \seq{} erzeugt falschen horizontalen Freiraum.
 
