@@ -93,6 +93,7 @@
 \newcommand{\res}{\mathrm{res}}
 \newcommand{\Rad}{\mathrm{Rad}}
 \newcommand{\Sh}{\mathrm{Sh}}
+\newcommand{\PSh}{\mathrm{PSh}}
 \newcommand{\Bohr}{\mathrm{Bohr}}
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\ev}{\mathrm{ev}}
@@ -2565,11 +2566,9 @@ keine Topoi.\end{bsp}
 \subsubsection*{Was ist die interne Sprache?}
 
 Die interne Sprache eines Topos~$\E$ erlaubt es,
-\begin{itemize}
-\item Objekte und Morphismen des Topos zu konstruieren,
-\item Eigenschaften über diese zu formulieren und
-\item gegebenenfalls solche Eigenschaften zu beweisen,
-\end{itemize}
+Objekte und Morphismen des Topos zu konstruieren,
+Eigenschaften über diese zu formulieren und
+gegebenenfalls solche Eigenschaften zu beweisen --
 und zwar in einer \emph{naiven}, \emph{element-basierten} Sprache, die der
 üblichen formalen mathematischen Sprache sehr stark ähnelt.
 
@@ -2615,6 +2614,7 @@ Garbentopos zu einem topologischen Raum.
 
 \subsubsection*{Die interne Sprache eines Garbentopos}
 
+\label{internesprache}%
 Sei~$X$ ein topologischer Raum (oder eine Örtlichkeit). Dann definieren wir rekursiv
 \[ U \models \varphi \quad \text{("`$\varphi$ gilt auf~$U$"')} \]
 für offene Teilmengen~$U \subseteq X$ und Aussagen~$\varphi$ gemäß
@@ -2654,7 +2654,7 @@ konstruktiven Beweis von~$\tilde A \Rightarrow \tilde B$ zu führen.
 Abbildungen wieder surjektiv ist. Da der Beweis konstruktiv ist, folgt durch
 Interpretation im Garbentopos daraus sofort, dass die Verkettung von
 Epimorphismen von Garben wieder ein Epimorphismus ist. Der Beweis der Aussage, dass jede
-surjektive Abbildungen~$f$ einen Schnitt~$g$ (eine Abbildung in die umgekehrte
+surjektive Abbildung~$f$ einen Schnitt~$g$ (eine Abbildung in die umgekehrte
 Richtung mit~$g \circ f = \id$) zulässt, erfordert dagegen das Auswahlaxiom und
 lässt sich daher nicht in der internen Sprache interpretieren; tatsächlich
 haben auch Epimorphismen von Garben nur in den seltensten Fällen Rechtsinverse.\end{bsp}
@@ -3148,13 +3148,22 @@ das in~$\aa$ und~$\bb$ enthalten ist, ist
 \sqrt{(x,y)}. \]
 \end{bsp}
 
+
 \section{Garben}
 
-\begin{defn}Eine \emph{Prägarbe} auf einem topologischen Raum~$X$ (oder einer
+\label{appendix:garben}
+
+\subsection{Prägarben und Garben}
+
+\begin{defn}\begin{enumerate}
+\item Eine \emph{Prägarbe} auf einem topologischen Raum~$X$ (oder einer
 Örtlichkeit) ist eine Prägarbe im kategoriellen Sinne auf der
 als dünne Kategorie aufgefassten Halb\-ord\-nung~$\Ouv(X)$ der offenen
 Teilmengen (bzw.  offenen Dinge) von~$X$, also ein Funktor~$\Ouv(X)^\op \to
 \Set$.
+\item Ein \emph{Morphismus von Prägarben}~$\F \to \G$ ist eine natürliche
+Transformation~$\F \to \G$.
+\end{enumerate}
 \end{defn}
 % XXX: stimmt "dünn"?
 
@@ -3179,15 +3188,25 @@ Mannigfaltigkeit, kann man analog auch die Garbe~$\C^\infty$ der glatten
 Funktionen definieren -- man setzt $\Gamma(U, \C^\infty) := \{ U \xra{f} \RR
 \,|\, \text{$f$ glatt} \}$.
 
-\begin{defn}Eine Prägarbe~$\F$ auf~$X$ heißt genau dann \emph{Garbe}, wenn
+
+\subsubsection*{Die Garbenbedingung}
+
+\begin{defn}\begin{enumerate}
+\item Eine Prägarbe~$\F$ auf~$X$ heißt genau dann \emph{Garbe}, wenn
 folgendes Verklebeaxiom erfüllt ist: Ist~$U = \bigcup_i U_i \subseteq X$ eine
 offene Überdeckung einer offenen Teilmenge und ist~$(s_i)_{i \in I}$ eine
 Familie von Schnitten mit~$s_i \in \Gamma(U_i, \F)$, welche auf Überlapps
 übereinstimmen, also
 $s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j}$
 für alle Indizes~$i,j$ erfüllen, so soll es genau einen Schnitt~$s \in
-\Gamma(U,\F)$ mit~$s|_{U_i} = s_i$ für alle~$i$ geben.\end{defn}
+\Gamma(U,\F)$ mit~$s|_{U_i} = s_i$ für alle~$i$ geben.
+\item Ein \emph{Morphismus von Garben} ist ein Morphismus der zugrundeliegenden
+Prägarben.
+\end{enumerate}\end{defn}
 % XXX: Wort "Überlapp"
+
+Die Kategorie der Garben auf~$X$, $\Sh(X)$, ist also eine volle Unterkategorie
+der Kategorie der Prägarben auf~$X$, $\PSh(X)$.
 
 \begin{bsp}Die Prägarben~$\C^0$ und~$\C^\infty$ (sofern definierbar) sind
 Garben: Man kann stetige bzw. glatte Funktionen, die auf Überlapps
@@ -3209,10 +3228,76 @@ die Einschränkungen der Funktion auf die Überdeckungsmengen jeweils konstant
 sind.)\end{bsp}
 
 \begin{bem}Es gibt ein allgemeine Technik, die \emph{Garbifizierung}, mit der
-man auf universelle Art und Weise aus Prägarben Garben machen kann. Die
-Garbifizierung der Prägarbe der konstanten Funktionen ist dann gerade die Garbe
-der lokal konstanten Funktionen.\end{bem}
+man auf universelle Art und Weise aus Prägarben Garben machen kann. (Genauer
+ist der Garbifizierungsfunktor linksadjungiert zum Vergissfunktor~$\Sh(X) \to
+\PSh(X)$.) Die Garbifizierung der Prägarbe der konstanten Funktionen ist dann
+gerade die Garbe der lokal konstanten Funktionen.\end{bem}
 
+
+\subsubsection*{Globale Schnitte}
+
+Historisch eine der wichtigsten Garben ist die Garbe~$\O_X$ der holomorphen
+Funktionen auf einer komplexen Mannigfaltigkeit~$X$ (etwa~$X = \CC$ oder~$X =
+\widehat{\CC} = \CC \cup \{ \infty \}$, die riemannsche Zahlenkugel), definiert
+über
+\[ \Gamma(U, \O_X) = \{ U \xra{f} \CC \,|\, \text{$f$ holomorph} \}. \]
+Sie hat die für viele Garben typische Eigenschaft, oftmals nur recht wenige
+\emph{globale Schnitte} (Elemente von~$\Gamma(X,\O_X)$) zu besitzen -- im Fall
+der riemannschen Zahlenkugel sind das (nach dem Satz von Liouville) etwa nur
+die konstanten Funktionen; nichttrivial sind nur die Schnitte, die auf
+kleineren offenen Teilmengen definiert sind.
+
+Sinnvolle Bedingungen an Garben oder Garbenmorphismen erhält man in der Regel
+also nur dann, wenn man alle offenen Mengen einbezieht, nicht nur~$X$ selbst.
+Die Kripke-Joyal-Semantik zur Interpretation der internen Sprache eines
+Garbentopos achtet von selbst darauf (siehe Abschnitt~\ref{internesprache}).
+
+
+\subsection{Monomorphismen und Epimorphismen von Garben}
+
+\begin{prop}Sei~$\alpha : \F \to \G$ ein Morphismus von Garben. Dann gilt:
+\begin{enumerate}
+\item Der Morphismus~$\alpha$ ist genau dann ein Monomorphismus in~$\Sh(X)$,
+wenn für alle offenen Teilmengen~$U \subseteq X$ die Komponente~$\alpha_U :
+\Gamma(U,\F) \to \Gamma(U,\G)$ eine injektive Abbildung ist, wenn also gilt:
+\[ \forall \text{$U \subseteq X$ offen}\_
+  \forall s,t \in \Gamma(U,\F)\_
+  \alpha_U(s) = \alpha_U(t) \Rightarrow s = t. \]
+\item Der Morphismus~$\alpha$ ist genau dann ein Epimorphismus in~$\Sh(X)$,
+wenn jeder Schnitt von~$\G$ \emph{lokal} ein Urbild besitzt, d.\,h. wenn für
+alle offenen Teilmengen~$U \subseteq X$ und Schnitte~$s \in \Gamma(U,\G)$ eine
+Überdeckung~$U = \bigcup U_i$ und Schnitte~$t_i \in \Gamma(U_i,\F)$
+mit~$\alpha_{U_i}(t_i) = s|_{U_i}$ existieren.
+\end{enumerate}
+\end{prop}
+
+Wenn man sich das erste Mal mit Garben beschäftigt, verwundert vielleicht die
+Charakterisierung von Epimorphismen: Vielleicht hätte man eher die
+Bedingung, dass alle Komponentenabbildungen~$\alpha_U$ surjektiv sind,
+erwartet. Diese stärkere Bedingung ist zwar ebenfalls hinreichend für Epimorphie,
+aber nur in der größeren Kategorie aller \emph{Prä}garben notwendig.
+
+\begin{bsp}Sei~$\O_X$ die Garbe der holomorphen Funktionen auf~$X = \CC$.
+Sei~$\O_X^\times$ die Untergarbe der bezüglich der Multiplikation
+invertierbaren holomorphen Funktionen, also der nirgends verschwindenden
+Funktionen. Dann ist der "`$\exp$"' genannte Garbenmorphismus
+\[ \begin{array}{@{}rrcl@{}}
+           & \O_X &\longrightarrow& \O_X^\times \\
+  \text{auf $U \subseteq X$:} & f \in \O_X(U) &\longmapsto& \exp \circ f \in
+  \O_X^\times(U)
+\end{array} \]
+ein Epimorphismus (da man \emph{lokal} die Exponentialfunktion mittels eines
+geeigneten Zweigs des Logarithmus umkehren kann). Aber seine
+Komponentenabbildungen~$\exp_U$ sind nicht alle surjektiv.\end{bsp}
+% XXX: Genauer, welche sind es nicht?
+
+\begin{bem}In den meisten Lehrbüchern sind \emph{Mono-} und \emph{Epimorphismus} speziell
+definierte Begriffe: Ein Morphismus~$\alpha : \F \to \G$ heißt dort genau dann
+mono- bzw. epimorph, wenn die induzierten Abbildungen~$\alpha_x : \F_x \to
+\G_x$, $x \in X$, auf allen \emph{Halmen} injektiv bzw. surjektiv sind. Diese
+Definition ist äquivalent zur allgemeinen kategoriellen Definition und somit
+zur Charakterisierung aus der Proposition. Sie hat allerdings den Nachteil, dass sie nicht
+unmittelbar auf Örtlichkeiten übertragbar ist.\end{bem}
 
 \nocite{*}
 \printbibliography
