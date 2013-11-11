@@ -2164,7 +2164,7 @@ zurück~\cite{butterfield:hamilton:isham:1}, welche dann von weiteren
 mathematischen Physikern, unter anderem Andreas Döring, Chris Heunen und Nicolaas
 Landsman, und den konstruktiven Mathematikern Thierry Coquand und Bas Spitters
 aufgegriffen wurde. Unsere Darstellung ist im Wesentlichen eine Zusammenfassung
-der Artikel~\cite{topos:aqt} und~\cite{nlab:bohrtopos}. Einen genauerer Abriss
+der Artikel~\cite{topos:aqt} und~\cite{nlab:bohrtopos}. Ein genauerer Abriss
 der Geschichte findet sich in~\cite{nlab:bohrtopos} und den dort genannten
 Referenzen.
 
@@ -2296,7 +2296,7 @@ durch~$\Ouv(\pt) = \P(\{\star\})$ gegeben.\end{bsp}
 
 Das Konzept eines Punkts ist in der Theorie der Örtlichkeiten nicht
 grundlegend, kann aber sehr wohl definiert werden: Ein \emph{Punkt} einer
-Örtlichkeit~$X$ ist eine Morphismus~$\pt \to X$ von Örtlichkeiten. Die Menge
+Örtlichkeit~$X$ ist ein Morphismus~$\pt \to X$ von Örtlichkeiten. Die Menge
 aller Punkte einer Örtlichkeit kann man mit einer natürlichen Topologie
 versehen; der so entstehende topologische Raum spiegelt aber nur dann die
 Örtlichkeit getreu wieder, wenn diese \emph{räumlich} war. Insbesondere gibt es
@@ -2452,7 +2452,7 @@ Bei näherer Betrachtung stellt sich dieser Ansatz jedoch als zu naiv heraus. Da
 Problem steckt in der unscheinbaren Bedingung
 \[ \rho(a + b) = \rho(a) + \rho(b) \quad\text{für alle~$a,b \in A$} \]
 an gemischte Zustände~$\rho$ bzw. der analogen Forderung der
-Multiplikativität ab reine Zustände. Man kann nämlich
+Multiplikativität an reine Zustände. Man kann nämlich
 argumentieren~\cite[Seite~27]{topos:aqt},
 dass zwei Observable~$a$ und~$b$ nur dann physikalisch sinnvoll addierbar sind,
 wenn sie gemeinsam messbar sind, also miteinander kommutieren. Die
@@ -2559,7 +2559,7 @@ Unterobjektklassifizierer ist die Garbe~$U \mapsto \{ V \subseteq U \,|\,
 \text{$V$ offen} \}$.
 \end{bsp}
 
-\begin{bsp}Die Kategorien der Gruppen, Vektorräume und topologischer Räume sind
+\begin{bsp}Die Kategorien der Gruppen, Vektorräume und topologischen Räume sind
 keine Topoi.\end{bsp}
 
 
@@ -2657,7 +2657,7 @@ Epimorphismen von Garben wieder ein Epimorphismus ist. Der Beweis der Aussage, d
 surjektive Abbildung~$f$ einen Schnitt~$g$ (eine Abbildung in die umgekehrte
 Richtung mit~$g \circ f = \id$) zulässt, erfordert dagegen das Auswahlaxiom und
 lässt sich daher nicht in der internen Sprache interpretieren; tatsächlich
-haben auch Epimorphismen von Garben nur in den seltensten Fällen Rechtsinverse.\end{bsp}
+haben Epimorphismen von Garben auch nur in den seltensten Fällen Rechtsinverse.\end{bsp}
 
 \begin{bsp}Nur um Neugierde zu wecken hier ein komplexeres Beispiel:
 Konstruktiv kann man nicht zeigen, dass jeder endlich erzeugte Vektorraum über
@@ -2776,6 +2776,7 @@ es umso schwerer, miteinander zu kommutieren, je mehr sie werden. Man bedenke au
 beliebige Vereinigungen (aber nicht beliebige Schnitte) offener Mengen offen
 sind, und dass umgekehrt beliebige Schnitte (aber nicht beliebige
 Vereinigungen) kommutativer Unteralgebren kommutativ sind.\end{bem}
+% XXX: "Vereinigungen" im letzten Satz ist das falsche Wort.
 
 Die nichtkommutative \csalgebra~$A$ besitzt nun ein Abbild~$\ul{A}$ im
 Bohr-Topos. Diese \emph{interne} \csalgebra{} ist \emph{kommutativ}. In diesem
@@ -3238,13 +3239,13 @@ gerade die Garbe der lokal konstanten Funktionen.\end{bem}
 
 Historisch eine der wichtigsten Garben ist die Garbe~$\O_X$ der holomorphen
 Funktionen auf einer komplexen Mannigfaltigkeit~$X$ (etwa~$X = \CC$ oder~$X =
-\widehat{\CC} = \CC \cup \{ \infty \}$, die riemannsche Zahlenkugel), definiert
+\widehat{\CC} = \CC \cup \{ \infty \}$, der riemannschen Zahlenkugel), definiert
 über
 \[ \Gamma(U, \O_X) = \{ U \xra{f} \CC \,|\, \text{$f$ holomorph} \}. \]
 Sie hat die für viele Garben typische Eigenschaft, oftmals nur recht wenige
 \emph{globale Schnitte} (Elemente von~$\Gamma(X,\O_X)$) zu besitzen -- im Fall
-der riemannschen Zahlenkugel sind das (nach dem Satz von Liouville) etwa nur
-die konstanten Funktionen; nichttrivial sind nur die Schnitte, die auf
+der riemannschen Zahlenkugel sind das nach dem Satz von Liouville etwa nur
+die konstanten Funktionen. Nichttrivial sind nur Schnitte, die auf
 kleineren offenen Teilmengen definiert sind.
 
 Sinnvolle Bedingungen an Garben oder Garbenmorphismen erhält man in der Regel
@@ -3270,6 +3271,7 @@ alle offenen Teilmengen~$U \subseteq X$ und Schnitte~$s \in \Gamma(U,\G)$ eine
 mit~$\alpha_{U_i}(t_i) = s|_{U_i}$ existieren.
 \end{enumerate}
 \end{prop}
+% XXX: Ersten Teil mit Nonsens beweisen.
 
 Wenn man sich das erste Mal mit Garben beschäftigt, verwundert vielleicht die
 Charakterisierung von Epimorphismen: Vielleicht hätte man eher die
@@ -3290,6 +3292,8 @@ ein Epimorphismus (da man \emph{lokal} die Exponentialfunktion mittels eines
 geeigneten Zweigs des Logarithmus umkehren kann). Aber seine
 Komponentenabbildungen~$\exp_U$ sind nicht alle surjektiv.\end{bsp}
 % XXX: Genauer, welche sind es nicht?
+% XXX: Messen, inwieweit exp auf globalen Schnitten nicht surjektiv ist:
+% Chern-Klasse!
 
 \begin{bem}In den meisten Lehrbüchern sind \emph{Mono-} und \emph{Epimorphismus} speziell
 definierte Begriffe: Ein Morphismus~$\alpha : \F \to \G$ heißt dort genau dann
