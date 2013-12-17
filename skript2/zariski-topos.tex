@@ -572,6 +572,16 @@ Aussage ist, $R \models \phi$ gilt.
 \emph{Tipp:} Man kann eine sehr einfache Zerlegung der Eins hinschreiben.
 \end{aufgabe}
 
+\begin{aufgabe}{Integritätsbereichseigenschaft des internen Rings}
+Ein \emph{Integritätsbereich} ist ein Ring, in dem, wann immer ein Produkt von
+Ringelementen Null ist, schon mindestens ein Faktor Null ist. (Das ist
+konstruktiv schwächer als zu verlangen, dass jedes Element entweder Null oder
+regulär ist.)
+
+Sei~$R$ ein Integritätsbereich. Zeige, dass dann auch~$\O$ ein
+Integritätsbereich ist.
+\end{aufgabe}
+
 \begin{aufgabe}{Körpereigenschaften des internen Rings}
 Ein Ring heißt genau dann \emph{reduziert}, wenn, wann immer ein Element
 nilpotent ist, dieses schon gleich Null ist.
@@ -620,9 +630,48 @@ Allgemeinen \emph{kein} diskreter Körper ist.
 \end{enumerate}
 \end{aufgabe}
 
+\begin{aufgabe}{Vorwissen zu Bewertungsbereichen}
+Sei~$R$ ein \emph{Bewertungsbereich}, also ein
+ein Integritätsbereich im Sinn von Aufgabe 3, sodass von je zwei Elementen
+stets eines das andere teilt.
+\begin{enumerate}
+\item Zeige, dass von je endlich vielen Elementen von~$R$ stets
+eins ein Teiler aller anderen ist.
+\item Zeige, dass jede Matrix über~$R$ ähnlich zu einer
+(rechteckigen) Diagonalmatrix ist.
+\item Zeige, dass der Kern einer Matrix über~$R$ als~$R$-Modul endlich erzeugt ist.
+(Da man konstruktiv von einem Diagonaleintrag nicht entscheiden kann, ob es
+Null ist oder nicht Null ist, kann man konstruktiv nicht die stärkere
+Behauptung zeigen, dass solche Kerne sogar frei sind, also eine endliche Basis
+besitzen.)
+\end{enumerate}
+\end{aufgabe}
+
 \begin{aufgabe}{Prüfersche Bereiche aus interner Sicht}
-Beweise die Behauptung über die interne Welt in
-Beispiel~\ref{lokal-hauptideale}.
+In dieser Aufgabe wollen die Behauptung über die interne Welt in
+Beispiel~\ref{lokal-hauptideale} verstehen.
+Sei~$R$ ein kommutativer Ring, in dem jedes
+endlich erzeugte Ideal lokal ein Hauptideal ist.
+\begin{enumerate}
+\item Zeige, dass jedes endlich
+erzeugte Ideal von~$\O$ selbst schon ein Hauptideal ist, zeige also:
+\[ R \models
+  \forall x_1,\ldots,x_n\?\O\_
+  \exists d\?\O\_
+  (x_1,\ldots,x_n) = (d). \]
+Da wir nicht diskutiert haben, wie man in der internen Sprache über Teilmengen
+sprechen kann, muss die Idealgleichheitsbedingung als Kurzschreibweise für
+folgende Bedingung gelesen werden:
+\[
+  \bigl(\exists u_1\?\O\_ x_1 = u_1 d\bigr) \wedge
+  \cdots \wedge
+  \bigl(\exists u_n\?\O\_ x_n = u_n d\bigr) \wedge
+  \bigl(\exists a_1,\ldots,a_n\?\O\_ a_1 x_1 + \cdots + a_n x_n = d\bigr)
+\]
+\item Sei~$R$ ferner ein Integritätsbereich im Sinn von Aufgabe~3. Zeige,
+dass~$\O$ ein Bewertungsbereich ist.
+\item Was kann man in diesem Fall über die Kerne von Matrizen über~$R$ folgern?
+\end{enumerate}
 \end{aufgabe}
 
 \begin{aufgabe}{Kerne von Matrizen}
