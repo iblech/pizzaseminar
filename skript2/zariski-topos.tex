@@ -9,7 +9,6 @@
 \usepackage{setspace}
 \usepackage{bussproofs}
 \usepackage{array}
-\usepackage{comment}
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
@@ -565,8 +564,8 @@ nichttrivialer Ring ist, zeige also:
 \end{aufgabe}
 \vspace{-1.5em}
 
-\begin{aufgabe}{Die interne Welt des Nullrings}
-Zeige, dass in der internen Welt des Nullrings jede beliebige Aussage gilt.
+\begin{aufgabe}{Der kleine Zariski-Topos des Nullrings}
+Zeige, dass im kleinen Zariski-Topos des Nullrings jede beliebige Aussage gilt.
 Zeige also, dass wenn~$R$ ein Ring mit~$1 = 0 \in R$ und~$\phi$ eine beliebige
 Aussage ist, $R \models \phi$ gilt.
 
@@ -608,9 +607,42 @@ wenn~$f$ im gewöhnlichen Sinn pseudoregulär ist.
 \end{enumerate}
 \end{aufgabe}
 
+\begin{aufgabe}{Eine geometrische Körperbedingung}
+Ein \emph{diskreter Körper} ist ein kommutativer Ring, sodass jedes Element
+entweder Null oder invertierbar ist. Das besondere an dieser Körperbedingung
+ist, dass sie eine geometrische Formel ist.
+\begin{enumerate}
+\item Rechtfertige die Namensgebung, indem du zeigst, dass diskrete Körper
+stets diskret im Sinn der vorherigen Aufgabe sind.
+\item Zeige, dass der
+interne Ring~$\O$ des kleinen Zariski-Topos zu einem beliebigen Ring im
+Allgemeinen \emph{kein} diskreter Körper ist.
+\end{enumerate}
+\end{aufgabe}
+
 \begin{aufgabe}{Prüfersche Bereiche aus interner Sicht}
 Beweise die Behauptung über die interne Welt in
 Beispiel~\ref{lokal-hauptideale}.
+\end{aufgabe}
+
+\begin{aufgabe}{Kerne von Matrizen}
+\begin{enumerate}
+\item Sei~$M \in R^{n \times m}$ eine Matrix über einem lokalen Ring~$R$, die
+als lineare Abbildung~$R^m \to R^n$ surjektiv ist, sodass es also zu jedem~$y
+\in R^n$ ein~$x \in R^m$ mit~$Mx = y$ gibt.
+
+Zeige, dass~$M$ ähnlich zu einer (rechteckigen) Diagonalmatrix mit genau~$n$
+Einsern auf der Hauptdiagonale ist. Folgere, dass der Kern von~$M$ eine Basis
+aus~$(m - n)$ Vektoren besitzt. (Man sagt auch: Der Kern von~$M$ ist \emph{frei
+vom Rang~$(m-n)$}.)
+
+\item Überlege, wie folgende Aussage sinnvoll zu interpretieren ist, und
+erkläre, wieso aus einer konstruktiven Behandlung von Teilaufgabe~a) sofort
+ihre Gültigkeit folgt:
+Der Kern einer~$(n \times m)$-Matrix über einem beliebigen kommutativen
+Ring, die als lineare Abbildung surjektiv ist, ist \emph{lokal frei} vom
+Rang~$(m-n)$.
+\end{enumerate}
 \end{aufgabe}
 
 \end{document}
