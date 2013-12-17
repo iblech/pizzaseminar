@@ -197,11 +197,13 @@
 Im Folgenden wollen wir über mathematische Aussagen sprechen, in denen
 \[ {=} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad {\Rightarrow} \quad {\forall} \quad {\exists} \]
 die einzigen vorkommenden logischen Symbole sind. Dabei steht~"`$\bot$"' für
-eine ausgezeichnete falsche und~"`$\top$"' für eine ausgezeichnete Aussage.
+eine ausgezeichnete falsche und~"`$\top$"' für eine ausgezeichnete wahre Aussage.
 Negation ist ebenfalls wichtig, muss aber nicht als primitiv
 angenommen werden, da man sie über die Beziehung
 \[ \neg\phi \quad:\equiv\quad (\phi \Rightarrow \bot) \]
-durch~$\Rightarrow$ und~$\bot$ ausdrücken kann.
+durch~$\Rightarrow$ und~$\bot$ ausdrücken kann: Zu behaupten, dass~$\phi$ nicht
+stimmt, ist gleichbedeutend damit, zu behaupten, dass aus der Annahme
+von~$\phi$ ein Widerspruch folgt.
 Wir schreiben die universelle und existenzielle Quantifikation nicht mit dem
 Elementsymbol, sondern dem in der Typtheorie üblichen Doppelpunkt:
 \[ \forall x\?X\_ \phi(x). \]
@@ -257,8 +259,8 @@ angegebenen Übersetzungsregeln festgelegt sein.\end{defn}
 Auf den ersten Blick erscheinen diese Regeln völlig
 willkürlich. Tatsächlich aber sind sie fein aufeinander abgestimmt, schon
 kleine Änderungen führen dazu, dass das gesamte System zusammenbricht. In
-diesem Rahmen wollen wir sie schlichtweg als gegeben hinnehmen, man gewöhnt
-sich schnell an sie.
+diesem Rahmen wollen wir sie schlichtweg als gegeben hinnehmen. Durch die
+Beispiele im folgenden Abschnitt werden wir uns schnell an sie gewöhnen.
 
 In dem kleinen Zariski-Topos zu~$R$ gibt es ein Abbild des Rings~$R$, das
 wir~"`$\O$"' schreiben. (Diese Bezeichnung hat nichts mit Ganzheitsringen zu tun.)
@@ -282,7 +284,7 @@ Gemäß den Regeln bedeutet das:
 \begin{indentblock}
 Für alle~$s \in R$ und alle~$x \in R[s^{-1}]$ gilt:
 \begin{indentblock}
-Für alle~$t \in R$ und alle~$y \in R[s^{-1}][t^{-1}]$ gilt:
+Für alle~$t \in R[s^{-1}]$ und alle~$y \in R[s^{-1}][t^{-1}]$ gilt:
 \begin{indentblock}
 In~$R[s^{-1}][t^{-1}]$ gilt~$xy = yx$.
 \end{indentblock}
@@ -318,7 +320,7 @@ behauptete Äquivalenz nachzuweisen.
 Diese beiden Propositionen waren noch nicht besonders beeindruckend.
 Die folgende Proposition ist dagegen beim ersten Kontakt völlig verblüffend und
 illustriert gut den kuriosen Charakter der internen Welt. Dazu erinnern wir an
-das Konzept des lokalen Rings:
+das Konzept eines lokalen Rings:
 \begin{defn}Ein Ring heißt genau dann \emph{lokal}, wenn, wann immer eine Summe
 von Ringelementen invertierbar ist, schon mindestens ein Summand invertierbar
 ist.\end{defn}
@@ -342,15 +344,16 @@ Wir zeigen, dass
 \[ R \models \forall x,y\?\O\_\ \speak{$x+y$ inv.}\ \Longrightarrow\ 
   \speak{$x$ inv.} \,\vee\, \speak{$y$ inv.}. \]
 Die Häkchen sollen andeuten, dass der entsprechende Teil nur umgangssprachlich
-vorliegt und daher vom Leser formalisiert werden muss. Unter Verwendung der
-vorhergehenden Proposition weisen und die
+vorliegt und daher vom Leser formalisiert werden muss. Unter Verwendung von
+Proposition~\ref{interne-invertierbarkeit} (angewendet auf~$R'$
+statt~$R$) weisen uns die
 Übersetzungsregeln also an, folgende Behauptung zu zeigen:
 \begin{indentblock}
 Für alle~$s \in R$ und~$x \in R[s^{-1}]$ gilt:
 \begin{indentblock}
 Für alle~$t \in R[s^{-1}]$ und~$y \in R[s^{-1}][t^{-1}]$ gilt:
 \begin{indentblock}
-Für alle~$u \in R$ gilt: Falls~$x+y$ in~$R[s^{-1}][t^{-1}][u^{-1}] =: R'$
+Für alle~$u \in R[s^{-1}][t^{-1}]$ gilt: Falls~$x+y$ in~$R[s^{-1}][t^{-1}][u^{-1}] =: R'$
 invertierbar ist, so gibt es eine Zerlegung der Eins von~$R'$, $1 = v_1 +
 \cdots + v_n \in R'$, sodass in den
 weiter lokalisierten Ringen~$R'[v_i^{-1}]$ jeweils~$x$ oder~$y$ invertierbar
@@ -439,7 +442,7 @@ erzeugte Ideal ist selbst schon ein Hauptideal.\end{bsp}
 Bisher haben wir die interne Welt des kleinen Zariski-Topos allein dadurch
 erkundet, indem wir mit den Kripke-Joyal-Regeln die Rückübersetzung in unsere
 gewohnte mathematische Sprache vorgenommen haben. Wenn das unsere einzige
-Interaktionsmöglichkeit mit der internen Welt wäre, wäre das ganze Thema aber nicht
+Interaktionsmöglichkeit mit der internen Welt wäre, wäre das ganze Thema nicht
 besonders spannend. Tatsächlich aber können wir in der internen Welt auch
 \emph{mathematisch argumentieren} -- fast genau so, wie wir es gewohnt sind.
 
@@ -518,7 +521,7 @@ Nullringe sind.
 \end{proof}
 
 \begin{prop}In der internen Welt des kleinen Zariski-Topos eines Rings gilt im
-Allgemeinen \emph{nicht}, dass jedes Element invertierbar oder nicht
+Allgemeinen \emph{nicht}, dass jedes Element von~$\O$ invertierbar oder nicht
 invertierbar ist.\end{prop}
 \begin{proof}Ein Gegenbeispiel liefert der Ring~$R := \ZZ$ mit dem Element~$f
 := 2$. Denn
