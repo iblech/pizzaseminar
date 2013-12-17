@@ -191,8 +191,9 @@
 
 \tableofcontents
 
+\section{Vorbereitungen}
 
-\section{Etwas formale Logik}
+\subsection{Etwas formale Logik}
 
 Im Folgenden wollen wir über mathematische Aussagen sprechen, in denen
 \[ {=} \quad {\top} \quad {\bot} \quad {\wedge} \quad {\vee} \quad {\Rightarrow} \quad {\forall} \quad {\exists} \]
@@ -210,16 +211,34 @@ unterdrücken und kurz nur~"`$\phi$"' schreiben. Ferner verwenden wir den
 Quantor der eindeutigen Existenz, formal definiert als
 \[ \exists! x\?X\_ \phi(x) \quad:\equiv\quad
   \bigl(\exists x\?X\_ \phi(x)\bigr) \ \wedge\ \bigl(\forall x\?X\_ \forall x'\?X\_
-  \phi(x) \wedge \phi(x') \Rightarrow x = x'\bigr). \]
-Da wir (gezwungenermaßen) in einem konstruktiven Kontext arbeiten werden,
-können wir im Wesentlichen keine weiteren der aufgeführten primitiven Symbole
-durch die anderen ausdrücken. Etwa können wir \emph{nicht} die Regel
-\[ \phi \vee \psi \quad\Longleftrightarrow\quad \neg(\neg\phi \wedge \neg\psi) \]
-verwenden, um Disjunktion auf Negation und Konjunktion zurückzuführen -- die
-umgangssprachliche Interpretation der Aussage auf der linken Seite ist, dass
-wir wissen, dass~$\phi$ gilt oder dass~$\psi$ gilt, während in der rechten
-Aussage nur die Information steckt, dass es nicht sein kann, dass~$\phi$
-und~$\psi$ beide falsch sind.
+  (\phi(x) \wedge \phi(x') \Rightarrow x = x')\bigr). \]
+%Da wir (gezwungenermaßen) in einem konstruktiven Kontext arbeiten werden,
+%können wir im Wesentlichen keine weiteren der aufgeführten primitiven Symbole
+%durch die anderen ausdrücken. Etwa können wir \emph{nicht} die Regel
+%\[ \phi \vee \psi \quad\Longleftrightarrow\quad \neg(\neg\phi \wedge \neg\psi) \]
+%verwenden, um Disjunktion auf Negation und Konjunktion zurückzuführen -- die
+%umgangssprachliche Interpretation der Aussage auf der linken Seite ist, dass
+%wir wissen, dass~$\phi$ gilt oder dass~$\psi$ gilt, während in der rechten
+%Aussage nur die Information steckt, dass es nicht sein kann, dass~$\phi$
+%und~$\psi$ beide falsch sind.
+
+
+\subsection{Geometrische Vorstellung von Ringen}
+
+Zu einem kommutativen Ring~$R$ können wir uns einen geometrischen Raum~$\Spec
+R$ vorstellen, und zwar auf solche Art und Weise, dass ein
+Ringelement~$s \in R$ einer "`guten"' Funktion auf~$\Spec R$ entspricht.
+Den Ort, wo diese Funktion nicht verschwindet, wollen wir mit~"`$D(s)$"'
+bezeichnen. Dieser Ort ist stets eine offene Menge.
+
+\begin{bsp}Den Ring~$K[X,Y]$ stellen wir uns geometrisch als~$K^2$ vor. Zum
+Element~$s := 2X+3Y$ gehört dann die Funktion~$(x,y) \mapsto 2x+3y$. Die
+Menge~$D(s)$ ist das Komplement einer schrägen Gerade in~$K^2$.\end{bsp}
+
+In diesem Bild können wir uns eine Zerlegung~$1 = \sum_i s_i \in R$ der Eins
+als eine Über\-dec\-kung~$\bigcup_i D(s_i)$ von~$\Spec R$ vorstellen: Da die
+Einsfunktion nirgendwo Null ist, können an keinem Punkt alle~$s_i$ zugleich
+verschwinden.
 
 
 \section{Die Kripke-Joyal-Semantik des kleinen Zariski-Topos}
@@ -312,6 +331,10 @@ beliebig kleinen Umgebungen von~$(a,b) \in K^2$ definierten rationalen
 Funktionen ist lokal.
 \end{bsp}
 
+\begin{bem}Die Namensgebung erklärt sich durch folgende Beobachtung: Ein
+lokaler Ring~$R$ ist ein solcher, sodass jede offene Überdeckung von~$\Spec R$
+schon eine einelementige Teilüberdeckung besitzt.\end{bem}
+
 \begin{prop}\label{intern-lokal}%
 Unabhängig davon, ob~$R$ lokal ist oder nicht, ist der Ring~$\O$
 der internen Zariski-Welt lokal.\end{prop}
@@ -339,8 +362,8 @@ ist.
 Der Nachweis dieser Behauptung ist eine Übungsaufgabe.
 \end{proof}
 
-Die interne Welt des kleinen Zariski-Topos ist also eine Möglichkeit, jeden
-beliebigen Ring als einen lokalen Ring aufzufassen.
+Mit der internen Welt des kleinen Zariski-Topos kann man also jeden
+beliebigen Ring als einen lokalen Ring auffassen.
 
 
 \section{Vereinfachungsregeln}
@@ -378,23 +401,6 @@ nicht schwer, aber auch nicht besonders erhellend.\end{proof}
 
 
 \section{Fundamentale Eigenschaften der internen Sprache}
-
-\subsection{Erinnerung: Geometrische Vorstellung von Ringen}
-
-Zum Ring~$R$ können wir uns einen geometrischen Raum~$\Spec R$ vorstellen; ein
-Ringelement~$s \in R$ entspricht dann einer "`guten"' Funktion auf~$\Spec R$.
-Den Ort, wo diese Funktion nicht verschwindet, wollen wir mit~"`$D(s)$"'
-bezeichnen. Dieser Ort ist stets eine offene Menge.
-
-\begin{bsp}Den Ring~$K[X,Y]$ stellen wir uns geometrisch als~$K^2$ vor. Zum
-Element~$s := 2X+3Y$ gehört dann die Funktion~$(x,y) \mapsto 2x+3y$. Die
-Menge~$D(s)$ ist das Komplement einer schrägen Gerade in~$K^2$.\end{bsp}
-
-In diesem Bild können wir uns eine Zerlegung~$1 = \sum_i s_i \in R$ der Eins
-als eine Über\-dec\-kung~$\bigcup_i D(s_i)$ von~$\Spec R$ vorstellen: Da die
-Einsfunktion nirgendwo Null ist, können an keinem Punkt alle~$s_i$ zugleich
-verschwinden.
-
 
 \subsection{Lokalität der internen Sprache}
 
@@ -486,8 +492,8 @@ Logik verwendet, also sich \emph{nicht} auf die sonst üblichen Axiome
 \phi$ und
 \item das \emph{Auswahlaxiom}
 \end{itemize}
-beruft. Das ist anfangs ungewohnt, in der Praxis aber oftmals keine große
-Einschränkung.
+beruft. Das ist anfangs ungewohnt, bedeutet in Anwendungen der Mathematik aber
+oftmals keine große Einschränkung.
 
 Die Beschränkung auf konstruktive Logik ist dabei keine Frage der Einstellung
 -- die interne Welt erfüllt nun mal nicht die genannten klassischen Axiome. Das
@@ -543,6 +549,9 @@ beweisen, die man ohne sie nicht beweisen könnte?"'
 \item Diskussion des großen Zariski-Topos
 \item Literaturverweise: Moerdijk, Johnstohne, Mulvey, Richman,
 Coquand/Lombardi/Roy, Kock (universal projective geometry), Pizzaseminar
+\item geometrische Morphismen/Ringhomos
+\item universelle Eigenschaft des kleinen Zariski-Topos
+\item BHK-Interpretation konstruktiver Logik
 \end{itemize}
 
 
