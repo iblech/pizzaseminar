@@ -573,6 +573,61 @@ steht die interne Sprache der üblichen mathematischen Sprache in keiner
 Hinsicht nach -- bis auf die Einschränkung auf konstruktive Logik.
 
 
+\subsection*{Verständnis für konstruktive Logik}
+
+Wir haben gesehen, dass in der internen Welt des kleinen Zariski-Topos nur die
+Gesetze konstruktiver Logik gelten. Möchten wir in der internen Welt
+mathematisch argumentieren, haben wir also keine andere Wahl, als auf das
+klassische Prinzip des ausgeschlossenen Dritten und verwandte Prinzipien zu
+verzichten.
+
+Es gibt eine Möglichkeit, diesen Verzicht auch ohne topostheoretischen
+Hintergrund anschaulich zu deuten: Dass eine Aussage konstruktiv gilt, kann man
+sich so vorstellen, dass man einen \emph{expliziten Beleg} für die Gültigkeit
+der Aussage hat. Dann bedeutet eine zusammengesetzte Aussage
+wie $\phi \vee \psi$,
+dass man einen Beleg für~$\phi$ oder einen Beleg für~$\psi$ hat.
+
+Die negierte Aussage
+\[ \neg\phi \quad\equiv\quad (\phi \Rightarrow \bot) \]
+bedeutet, dass man aus einem Beleg von~$\phi$ einen Beleg der falschen
+Aussage~$\bot$ produzieren könnte. Da es einen solchen nicht gibt,
+bedeutet~$\neg\phi$ also, dass es keinen Beleg für~$\phi$ gibt.
+In diesem Bild besagt das Prinzip der Doppelnegationselimination,
+\[ \neg\neg\phi \Longrightarrow \phi, \]
+dass man, wenn man weiß, dass es nicht sein kann, dass es keinen Beleg
+für~$\phi$ gibt, sofort einen Beleg für~$\phi$ produzieren kann. Das ist aber
+offensichtlich eine absurde Vorstellung.
+
+Die Aussage~$\neg(\neg\phi \wedge \neg\psi)$ bedeutet konstruktiv, dass es
+keinen Beleg dafür gibt, dass sowohl~$\phi$ als auch~$\psi$ falsch sind. Wenn
+man das weiß, kennt man aber noch lange nicht einen Beleg für~$\phi$ oder einen
+Beleg für~$\psi$. Das De Morgansche Gesetz
+\[ \neg(\neg\phi \wedge \neg\psi) \quad\Longrightarrow\quad \phi \vee \psi \]
+kann man also konstruktiv nicht rechtfertigen.
+
+\begin{bsp}Wenn wir wissen, dass sich unser Haustürschlüssel irgendwo in der
+Wohnung befinden muss (da wir ihn letzte Nacht verwendet haben, um die Tür
+aufzusperren), wir ihn momentan aber nicht finden, so können wir konstruktiv
+nur die doppelt negierte Aussage
+\[ \neg\neg (\exists x{:}\ \text{der Schlüssel befindet sich an Position~$x$})
+\]
+vertreten.\end{bsp}
+
+\begin{bsp}
+Es war ein Video aufgetaucht, dass Kate Moss beim Konsumieren von Drogen zeigte,
+und zwar entweder solche von einem Typ~A oder solche von einem Typ~B. Welcher
+Typ aber tatsächlich vorlag, konnte nicht entschieden werden. Daher gab es für
+keine der beiden Strafttaten einen Beleg, Kate Moss wurde daher nicht
+strafrechtlich verfolgt.
+\end{bsp}
+
+Abschließend sei bemerkt, dass einige üble Gerüchte um konstruktive Logik im
+Umlauf sind, etwa, dass das Wort \emph{Widerspruch} pauschal verboten sei und
+man daher nicht mal die Irrationalität von~$\sqrt{2}$ zeigen könne. Das
+Pizzaseminarskript räumt mit diesen Gerüchten auf.
+
+
 \subsection*{Eine besondere Klasse von Aussagen: geometrische Formeln}
 
 Aussagen der Form
@@ -717,6 +772,7 @@ topostheoretische Diskussionen immer offen.
 \end{center}
 
 
+\newpage
 \appendix
 \section{Aufgaben}
 
@@ -754,6 +810,7 @@ Sei~$R$ ein Integritätsbereich. Zeige, dass dann auch~$\O$ ein
 Integritätsbereich ist.
 \end{aufgabe}
 
+\enlargethispage{0.5cm}
 \begin{aufgabe}{Körpereigenschaften des internen Rings}
 Ein Ring heißt genau dann \emph{reduziert}, wenn, wann immer ein Element
 nilpotent ist, dieses schon gleich Null ist.
@@ -866,10 +923,12 @@ Rang~$(m-n)$.
 \end{enumerate}
 \end{aufgabe}
 
-\begin{center}
-  \includegraphics[scale=0.85]{phantome}
-\end{center}
+\enlargethispage{2cm}
 \thispagestyle{empty}
+\vfill
+\begin{center}
+  \includegraphics[scale=0.65]{phantome}
+\end{center}
 
 \end{document}
 
