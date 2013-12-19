@@ -151,7 +151,7 @@
 
 \title{Spiel und Spaß mit der internen Welt des kleinen Zariski-Topos}
 \author{Ingo Blechschmidt}
-\date{13. Dezember 2013}
+\date{19. Dezember 2013}
 \maketitle
 
 \thispagestyle{empty}
@@ -195,7 +195,7 @@
 %\begin{center}\begin{minipage}{0.8\textwidth}
 Neben der üblichen mathematischen Welt gibt es alternative mathematische
 Universen, sog. \emph{Topoi}. In diesen gelten leicht andere Gesetze der Logik.
-Speziell gibt es zu einem kommutativen Ring seinen \emph{kleinen
+Speziell gibt es zu jedem kommutativen Ring seinen zugehörigen \emph{kleinen
 Zariski-Topos}, der darauf zugeschnitten ist, um \emph{lokal} über den Ring zu
 sprechen. In diesen informalen Notizen wollen wir verstehen, wie man in diesem
 alternativen Universum arbeiten kann.
@@ -203,9 +203,9 @@ alternativen Universum arbeiten kann.
 
 Illustrationen: Carina Willbold
 
-\newpage
-
 \tableofcontents
+
+\newpage
 
 \section{Vorbereitungen}
 
@@ -388,7 +388,7 @@ beliebigen Ring als einen lokalen Ring auffassen.
 \section{Vereinfachungsregeln}
 
 In den bisherigen Beispielen waren die übersetzten Aussagen recht
-verschachtelt. Bevor wir fortfahren, wollen wir daher
+von verschachtelter Form. Bevor wir fortfahren, wollen wir daher
 Vereinfachungsregeln festhalten, die den praktischen Umgang mit internen
 Aussagen angenehmer gestalten.
 
@@ -429,8 +429,8 @@ gilt.
 
 Die interne Welt des kleinen Zariski-Topos zu~$R$ fasst nun gewissermaßen die
 \emph{lokalen Aspekte} von~$R$ -- solche, die genau dann ganz~$\Spec R$
-betreffen, wenn sie auf den einzelnen Überdeckungsmengen einer offenen
-Überdeckung gelten. Die folgende Proposition macht dieses Motto präzise:
+betreffen, wenn sie die einzelnen Überdeckungsmengen einer offenen
+Überdeckung betreffen. Die folgende Proposition macht dieses Motto präzise:
 \begin{prop}Sei~$1 = \sum_i s_i \in R$ eine Zerlegung der Eins und~$\phi$ eine
 Aussage. Dann gilt genau dann~$R \models \phi$, wenn für alle~$i$
 jeweils~$R[s_i^{-1}] \models \phi$ gilt.\end{prop}
@@ -445,7 +445,7 @@ mit Ringen zu arbeiten, ohne manuell Zerlegungen einführen und mitschleppen
 zu müssen.
 
 \begin{bsp}\label{lokal-hauptideale}%
-Sei~$R$ ein Prüferscher Bereich. Dann ist ein endlich erzeugtes
+Sei~$R$ ein prüferscher Bereich. Dann ist ein endlich erzeugtes
 Ideal~$\aa$ zwar nicht unbedingt ein Hauptideal, aber \emph{lokal} ein
 Hauptideal -- in dem Sinn, dass es eine Zerlegung~$1 = \sum_i s_i$ der Eins
 gibt, sodass die erweiterten Ideale~$\aa[s_i^{-1}]$ jeweils in~$R[s_i^{-1}]$
@@ -506,10 +506,10 @@ Satz~\ref{soundness} erlaubt es, über den Ring~$\O$ der internen Welt
 wie üblich mathematisch zu argumentieren -- solange man dabei nur konstruktive
 Logik verwendet, also sich \emph{nicht} auf die sonst üblichen Axiome
 \begin{itemize}
-\item \emph{Prinzip vom ausgeschlossenen Dritten:} $\phi \vee \neg\phi$,
+\item \emph{Prinzip vom ausgeschlossenen Dritten:} $\phi \vee \neg\phi$
 \item \emph{Prinzip der Doppelnegationselimination:} $\neg\neg\phi \Rightarrow
-\phi$ und
-\item das \emph{Auswahlaxiom}
+\phi$
+\item \emph{Auswahlaxiom}
 \end{itemize}
 beruft. Das ist anfangs ungewohnt, bedeutet in Anwendungen der Mathematik aber
 oftmals keine große Einschränkung.
@@ -566,9 +566,9 @@ Analoga zu Potenzmengen.
 
 Es ist leicht, die Regeln der Kripke-Joyal-Semantik so zu erweitern, dass man
 auch über diese weiteren Objekte nativ sprechen kann. In der vollen internen
-Sprache kann man sogar, wie im üblichen mathematischem Universum auch, aus
+Sprache kann man sogar, wie im üblichen mathematischen Universum auch, aus
 gegebenen Objekten über Operationen wie Potenzmengenbildung, Ausschneidung von
-Teilmengen, Bildung von Faktormengen Bildung usw. neue konstruieren. Damit
+Teilmengen, Bildung von Faktormengen usw. neue konstruieren. Damit
 steht die interne Sprache der üblichen mathematischen Sprache in keiner
 Hinsicht nach -- bis auf die Einschränkung auf konstruktive Logik.
 
@@ -586,7 +586,9 @@ Hintergrund anschaulich zu deuten: Dass eine Aussage konstruktiv gilt, kann man
 sich so vorstellen, dass man einen \emph{expliziten Beleg} für die Gültigkeit
 der Aussage hat. Dann bedeutet eine zusammengesetzte Aussage
 wie $\phi \vee \psi$,
-dass man einen Beleg für~$\phi$ oder einen Beleg für~$\psi$ hat.
+dass man einen Beleg für~$\phi$ oder einen Beleg für~$\psi$ hat -- das ist
+schwächer als die klassische Interpretation derselben Aussage, nach der~$\phi$
+oder~$\psi$ lediglich wahr sind.
 
 Die negierte Aussage
 \[ \neg\phi \quad\equiv\quad (\phi \Rightarrow \bot) \]
@@ -597,7 +599,7 @@ In diesem Bild besagt das Prinzip der Doppelnegationselimination,
 \[ \neg\neg\phi \Longrightarrow \phi, \]
 dass man, wenn man weiß, dass es nicht sein kann, dass es keinen Beleg
 für~$\phi$ gibt, sofort einen Beleg für~$\phi$ produzieren kann. Das ist aber
-offensichtlich eine absurde Vorstellung.
+offensichtlich eine absurde Behauptung.
 
 Die Aussage~$\neg(\neg\phi \wedge \neg\psi)$ bedeutet konstruktiv, dass es
 keinen Beleg dafür gibt, dass sowohl~$\phi$ als auch~$\psi$ falsch sind. Wenn
@@ -609,10 +611,10 @@ kann man also konstruktiv nicht rechtfertigen.
 \begin{bsp}Wenn wir wissen, dass sich unser Haustürschlüssel irgendwo in der
 Wohnung befinden muss (da wir ihn letzte Nacht verwendet haben, um die Tür
 aufzusperren), wir ihn momentan aber nicht finden, so können wir konstruktiv
-nur die doppelt negierte Aussage
+nur die folgende doppelt negierte Aussage vertreten:
 \[ \neg\neg (\exists x{:}\ \text{der Schlüssel befindet sich an Position~$x$})
 \]
-vertreten.\end{bsp}
+\end{bsp}
 
 \begin{bsp}
 Es war ein Video aufgetaucht, dass Kate Moss beim Konsumieren von Drogen zeigte,
@@ -655,8 +657,10 @@ dann, wenn alle Halme~$R_\pp$ sie erfüllen.
 
 Offiziell ist Topos eine Kategorie, die gewisse Eigenschaften mit der
 Kategorie der Mengen gemeinsam hat. Insbesondere ist die Kategorie der Mengen
-selbst ein Topos; deren interne Sprache fällt mit der gewöhnlichen
-mathematischen Sprache zusammen.
+selbst ein Topos. Jeder Topos hat eine interne Sprache, wobei die
+Übersetzungsregeln eine leichte Verallgemeinerung der Regeln des kleinen
+Zariski-Topos darstellen. Die interne Sprache der Kategorie der Mengen fällt
+mit der gewöhnlichen mathematischen Sprache zusammen.
 
 Zu einem topologischen Raum~$X$ gibt es die Kategorie der \emph{Garben
 auf~$X$}. Kategorien dieser Art bilden die Prototypbeispiele für interessante
@@ -694,7 +698,7 @@ berechnen können. Dann kann man im \emph{effektiven Topos} arbeiten, der nur
 solche Abbildungen enthält, die durch Turingmaschinen algorithmisch gegeben
 werden können.
 \item Vielleicht möchte man mit Schemata über~$\Spec R$ in einer einfachen
-Sprache arbeiten. Dann kann den \emph{großen Zariski-Topos zu~$R$} verwenden.
+Sprache arbeiten. Dann kann man den \emph{großen Zariski-Topos zu~$R$} verwenden.
 \end{itemize}
 
 Mithilfe von \emph{geometrischen Morphismen} kann man auch zwischen
@@ -709,7 +713,7 @@ Teilmenge~$S$. Dann kann man sich fragen, ob es einen Ring~$R'$ zusammen mit ein
 Ringhomomorphismus~$R \to R'$ gibt, sodass jeder Ringhomomorphismus~$R \to T$
 in einen weiteren Ring~$T$, welcher die Elemente aus~$S$ auf
 invertierbare Elemente schickt, eindeutig über~$R \to R'$ \emph{faktorisiert}.
-Das bedeutet, dass es in dieser Situation genau ein Ringhomomorphismus~$R' \to
+Das bedeutet, dass in dieser Situation genau ein Ringhomomorphismus~$R' \to
 T$ existieren soll, sodass das Diagramm
 \[ \xymatrix{
   R \ar[rd] \ar[rrr] &&& T \\
@@ -724,7 +728,7 @@ Ring~$R'$ zusammen mit einem Ringhomomorphismus~$R \to R'$, sodass jeder
 Ringhomomorphismus~$R \to T$ in einen \emph{lokalen Ring}~$T$ eindeutig über~$R
 \to R'$ faktorisiert?
 
-Im wörtlichen Sinn lautet auf diese Frage die Antwort leider \emph{nein}: Im
+Im wörtlichen Sinn lautet die Antwort auf diese Frage leider \emph{nein}: Im
 gewöhnlichen mathematischen Universum gibt es keinen Ring~$R'$ mit dieser
 Eigenschaft. Wenn man aber bereit ist, die Lösung
 dieses Optimierungsproblems auch in einem anderen Topos zu suchen, so fällt die
@@ -744,7 +748,8 @@ Aussagen im gewöhnlichen Sinn gewinnen kann. Daher kann man mit der
 Topossprache sicherlich \emph{nicht} Sätze beweisen, die man ohne sie nicht
 beweisen könnte.
 
-Allerdings kann es sehr viel einfacher sein, in der internen Welt zu arbeiten
+Allerdings kann es sehr viel einfacher sein, in der internen Welt zu denken und
+zu arbeiten
 und erst am Ende die Übersetzung mit der Kripke-Joyal-Semantik durchzuführen.
 Etwa folgt aus der einfach zu beweisenden Aussage konstruktiver linearer
 Algebra
