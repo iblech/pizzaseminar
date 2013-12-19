@@ -154,11 +154,6 @@
 \date{13. Dezember 2013}
 \maketitle
 
-%\begin{center}\begin{minipage}{0.8\textwidth}
-%Zu einem kommutativen Ring ist der \emph{kleine
-%Zariski-Topos} ein alternatives Mathematik-Universum, in dem der Ring wie ein
-%lokaler Ring aussieht.\end{minipage}\end{center}
-
 \thispagestyle{empty}
 \enlargethispage{3cm}
 \begin{center}
@@ -193,6 +188,22 @@
     $R[s_i^{-1}] \models \phi(x_i)$.}
   \end{array}$%
 }
+
+\newpage
+
+\section*{Zusammenfassung}
+%\begin{center}\begin{minipage}{0.8\textwidth}
+Neben der üblichen mathematischen Welt gibt es alternative mathematische
+Universen, sog. \emph{Topoi}. In diesen gelten leicht andere Gesetze der Logik.
+Speziell gibt es zu einem kommutativen Ring seinen \emph{kleinen
+Zariski-Topos}, der darauf zugeschnitten ist, um \emph{lokal} über den Ring zu
+sprechen. In diesen informalen Notizen wollen wir verstehen, wie man in diesem
+alternativen Universum arbeiten kann.
+%\end{minipage}\end{center}
+
+Illustrationen: Carina Willbold
+
+\newpage
 
 \tableofcontents
 
@@ -258,9 +269,9 @@ Aussage~$\phi$ in dem kleinen Zariski-Topos zu~$R$ gilt}, in Formeln
 ausgedrückt als
 \[ R \models \phi. \]
 
-\begin{defn}Die Bedeutung von Aussagen der internen Sprache des Zariski-Topos
-soll durch Rekursion über den Aussageaufbau durch die auf der ersten Seite
-angegebenen Übersetzungsregeln festgelegt sein.\end{defn}
+\begin{defn}Die Bedeutung von Aussagen der \emph{internen Sprache des
+Zariski-Topos} soll durch Rekursion über den Aussageaufbau durch die auf der
+ersten Seite angegebenen Übersetzungsregeln festgelegt sein.\end{defn}
 
 Auf den ersten Blick erscheinen diese Regeln völlig
 willkürlich. Tatsächlich aber sind sie fein aufeinander abgestimmt, schon
@@ -452,9 +463,9 @@ Interaktionsmöglichkeit mit der internen Welt wäre, wäre das ganze Thema nich
 besonders spannend. Tatsächlich aber können wir in der internen Welt auch
 \emph{mathematisch argumentieren} -- fast genau so, wie wir es gewohnt sind.
 
-\begin{prop}\label{soundness}%
+\begin{satz}\label{soundness}%
 Wenn~$R \models \phi$ gilt und konstruktiv aus~$\phi$ eine weitere
-Aussage~$\psi$ folgt, so gilt auch~$R \models \psi$.\end{prop}
+Aussage~$\psi$ folgt, so gilt auch~$R \models \psi$.\end{satz}
 \begin{proof}Wir müssen uns
 zunächst überlegen, aus welchen grundlegenden Argumentationsschritten Beweise
 aufgebaut sind. Dann müssen wir von jedem solchen Baustein nachweisen,
@@ -486,12 +497,12 @@ ist der Ring~$\O$ der internen Welt ja stets lokal.\end{bsp}
 die Einführung, Verwaltung und Kombination mehrerer Zerlegungen der Eins. Diese
 technischen Schritte fallen bei Arbeit in der internen Welt ersatzlos weg. Um
 Zerlegungen der Eins muss man sich nur ein einziges Mal kümmern, nämlich im
-Beweis der allgemeinen Proposition~\ref{soundness}.\end{bem}
+Beweis des allgemeinenen Satzes~\ref{soundness}.\end{bem}
 
 
 \section{Der nichtklassische Charakter der internen Welt}
 
-Proposition~\ref{soundness} erlaubt es, über den Ring~$\O$ der internen Welt
+Satz~\ref{soundness} erlaubt es, über den Ring~$\O$ der internen Welt
 wie üblich mathematisch zu argumentieren -- solange man dabei nur konstruktive
 Logik verwendet, also sich \emph{nicht} auf die sonst üblichen Axiome
 \begin{itemize}
@@ -511,8 +522,8 @@ wollen wir in diesem Abschnitt einsehen.
 invertierbar, wenn~$f$ im gewöhnlichen Sinn nilpotent ist.\end{lemma}
 \begin{proof}Die Aussage~$R \models \neg(\speak{$f$ inv.})$ lautet ausgeschrieben
 \[ R \models \bigl(\exists g\?\O\_ fg = 1\bigr) \Rightarrow \bot \]
-und unter Zuhilfenahme der Vereinfachungsregeln aus Lemma~\ref{vereinfachung}
-und Lemma~\ref{interne-invertierbarkeit} übersetzt wie folgt:
+und übersetzt sich unter Zuhilfenahme der Vereinfachungsregeln aus Lemma~\ref{vereinfachung}
+und Lemma~\ref{interne-invertierbarkeit} wie folgt:
 \begin{indentblock}
 Für alle~$s \in R$ gilt:
 \begin{indentblock}
@@ -544,23 +555,166 @@ aber auch nicht nilpotent.
 
 \section{Ausblick}
 
-\emph{Auszuformulieren:}
+\subsection*{Weitere Objekte des kleinen Zariski-Topos}
 
+Bisher haben wir nur über die Eigenschaften des Rings~$\O$ der internen Welt
+des kleinen Zariski-Topos gesprochen. Genau wie in der üblichen mathematischen
+Welt gibt es aber auch im Zariski-Topos noch viele weitere Objekte, etwa
+den Polynomring~$\O[X]$ und den Matrizenringoid~$\amalg_{n,m} \O^{n \times
+m}$ sowie Objekte, die nicht zur Ringtheorie gehören, wie
+Analoga zu Potenzmengen.
+
+Es ist leicht, die Regeln der Kripke-Joyal-Semantik so zu erweitern, dass man
+auch über diese weiteren Objekte nativ sprechen kann. In der vollen internen
+Sprache kann man sogar, wie im üblichen mathematischem Universum auch, aus
+gegebenen Objekten über Operationen wie Potenzmengenbildung, Ausschneidung von
+Teilmengen, Bildung von Faktormengen Bildung usw. neue konstruieren. Damit
+steht die interne Sprache der üblichen mathematischen Sprache in keiner
+Hinsicht nach -- bis auf die Einschränkung auf konstruktive Logik.
+
+
+\subsection*{Eine besondere Klasse von Aussagen: geometrische Formeln}
+
+Aussagen der Form
+\[ \forall \cdots \forall{:}\ (\cdots) \Rightarrow (\cdots), \]
+wobei in den eingeklammerten Teilaussagen die logischen Zeichen~$\forall$
+und~$\Rightarrow$ nicht vorkommen dürfen, heißen \emph{geometrische Formeln}.
+(Die Bezeichnung rührt von einem indirekten Zusammenhang mit der geometrischen
+Vorstellung von Ringen her.)
+
+Das besondere an geometrischen Formeln ist, dass sie genau dann in der internen
+Welt des kleinen Zariski-Topos zu~$R$ gelten, wenn sie im gewöhnlichen Sinn bei
+jedem Halm von~$R$ gelten. Ein \emph{Halm} von~$R$ ist dabei eine Lokalisierung
+der Form~$R_\pp = (R \setminus \pp)^{-1}R$ für ein beliebiges Primideal~$\pp
+\subseteq R$.
+
+Etwa ist die Bedingung, (in einem schwachen Sinn) ein Integritätsbereich zu
+sein,
+\[ \forall x,y{:}\ xy = 0 \Rightarrow x = 0 \vee y = 0, \]
+eine geometrische Formel. Deswegen erfüllt der interne Ring~$\O$ sie genau
+dann, wenn alle Halme~$R_\pp$ sie erfüllen.
+
+
+
+\subsection*{Kategorientheoretischer Hintergrund}
+
+Offiziell ist Topos eine Kategorie, die gewisse Eigenschaften mit der
+Kategorie der Mengen gemeinsam hat. Insbesondere ist die Kategorie der Mengen
+selbst ein Topos; deren interne Sprache fällt mit der gewöhnlichen
+mathematischen Sprache zusammen.
+
+Zu einem topologischen Raum~$X$ gibt es die Kategorie der \emph{Garben
+auf~$X$}. Kategorien dieser Art bilden die Prototypbeispiele für interessante
+Topoi. Der kleine Zariski-Topos zu einem kommutativen Ring~$R$ ist auch von
+dieser Form: Er ist der Topos der Garben auf~$\Spec R$, dem zu~$R$ assoziierten
+geometrischen Raum. Der interne Ring~$\O$ entspricht dann der sog.
+Strukturgarbe, auf einer Basis offener Mengen explizit gegeben durch
+\[ \Gamma(D(s), \O) = R[s^{-1}]. \]
+Die interne Sprache des Garbentopos zu einem topologischen Raum~$X$ ist genau
+dann klassisch, erfüllt also das Axiom vom ausgeschlossenen Dritten und das
+Axiom der Doppelnegationselimination, wenn~$X$ ein diskreter Raum ist. Das ist
+ein langweiliger Fall.
+
+Der Topos der Garben über dem einpunktigen Raum ist äquivalent zur Kategorie
+der Mengen. Daher hört man manchmal das Motto \emph{gewöhnliche Mathematik ist
+Mathematik über dem Punkt}.
+
+
+\subsection*{Weitere alternative Mathematik-Universen}
+
+In diesen Notizen haben wir nur über den kleinen Zariski-Topos zu einem
+kommutativen Ring gesprochen. Es gibt aber noch viele weitere Topoi, die
+ebenfalls interessant sind:
 \begin{itemize}
-\item Diskussion anderer Objekte als~$\O$, insbesondere Objekte wie~$\O[X]$
-und~$\O^{n \times m}$, die mühelos auch emuliert werden können
-\item "`Kann man mit der Topossprache Aussagen
-beweisen, die man ohne sie nicht beweisen könnte?"'
-\item Geometrische Formeln, halmweise Charakterisierung
-\item Explizite Beschreibung des kleinen Zariski-Topos
-\item Anwendung auf Modulgarben über Schemata und Vektorbündel über Mannigfaltigkeiten
-\item Diskussion des großen Zariski-Topos
-\item Literaturverweise: Moerdijk, Johnstohne, Mulvey, Richman,
-Coquand/Lombardi/Roy, Kock (universal projective geometry), Pizzaseminar
-\item geometrische Morphismen/Ringhomos
-\item universelle Eigenschaft des kleinen Zariski-Topos
-\item BHK-Interpretation konstruktiver Logik
+\item Vielleicht hat man einen bestimmen topologischen Raum~$X$ besonders gern
+und möchte daher, dass alles vom aktuellen Aufenthaltsort
+in dem Raum abhängt. Dann möchte man im \emph{Topos der Garben auf~$X$}
+arbeiten.
+\item Vielleicht ist man auch ein besonderer Freund einer bestimmten
+Gruppe~$G$. Dann möchte man vielleicht, dass alle Objekte
+eine~$G$-Wirkung tragen und dass alle Abbildungen~$G$-äquivariant
+sind. Dann sollte man im \emph{Topos der~$G$-Mengen} arbeiten.
+\item Vielleicht interessiert man sich vor allem dafür, was Turingmaschinen
+berechnen können. Dann kann man im \emph{effektiven Topos} arbeiten, der nur
+solche Abbildungen enthält, die durch Turingmaschinen algorithmisch gegeben
+werden können.
+\item Vielleicht möchte man mit Schemata über~$\Spec R$ in einer einfachen
+Sprache arbeiten. Dann kann den \emph{großen Zariski-Topos zu~$R$} verwenden.
 \end{itemize}
+
+Mithilfe von \emph{geometrischen Morphismen} kann man auch zwischen
+verschiedenen Topoi wechseln. Dabei bleiben wahre geometrische Formeln unter
+Rückzug wahr.
+
+
+\subsection*{Abstrakte Motivation für den kleinen Zariski-Topos}
+
+Sei~$R$ ein kommutativer Ring mit einer multiplikativ abgeschlossenen
+Teilmenge~$S$. Dann kann man sich fragen, ob es einen Ring~$R'$ zusammen mit einem
+Ringhomomorphismus~$R \to R'$ gibt, sodass jeder Ringhomomorphismus~$R \to T$
+in einen weiteren Ring~$T$, welcher die Elemente aus~$S$ auf
+invertierbare Elemente schickt, eindeutig über~$R \to R'$ \emph{faktorisiert}.
+Das bedeutet, dass es in dieser Situation genau ein Ringhomomorphismus~$R' \to
+T$ existieren soll, sodass das Diagramm
+\[ \xymatrix{
+  R \ar[rd] \ar[rrr] &&& T \\
+  & R' \ar@{-->}[rru]
+} \]
+kommutiert. Die Antwort auf diese Frage ist \emph{ja}: Einen solchen speziellen
+Ring~$R'$ gibt es, nämlich~$R' = S^{-1}R$.
+
+Wenn man keine multiplikativ abgeschlossene Teilmenge besonders auszeichnen
+möchte, kann man sich analog auch folgende Frage stellen: Gibt es einen
+Ring~$R'$ zusammen mit einem Ringhomomorphismus~$R \to R'$, sodass jeder
+Ringhomomorphismus~$R \to T$ in einen \emph{lokalen Ring}~$T$ eindeutig über~$R
+\to R'$ faktorisiert?
+
+Im wörtlichen Sinn lautet auf diese Frage die Antwort leider \emph{nein}: Im
+gewöhnlichen mathematischen Universum gibt es keinen Ring~$R'$ mit dieser
+Eigenschaft. Wenn man aber bereit ist, die Lösung
+dieses Optimierungsproblems auch in einem anderen Topos zu suchen, so fällt die
+Antwort wieder positiv aus: Der gesuchte Ring~$R'$ ist der interne Ring~$\O$
+des kleinen Zariski-Topos zu~$R$.
+
+Um das präzise zu formulieren, müssten wir erklären, was unter
+Ringhomomorphismen zwischen Ringen verschiedener Topoi zu verstehen ist.
+
+
+\subsection*{Kann man mit der Topossprache Sätze beweisen, die man ohne sie
+nicht beweisen könnte?}
+
+Im Beweis von Satz~\ref{soundness} ist ein Verfahren versteckt, wie man aus
+jedem intern geführten Beweis einen Beweis der entsprechenden übersetzten
+Aussagen im gewöhnlichen Sinn gewinnen kann. Daher kann man mit der
+Topossprache sicherlich \emph{nicht} Sätze beweisen, die man ohne sie nicht
+beweisen könnte.
+
+Allerdings kann es sehr viel einfacher sein, in der internen Welt zu arbeiten
+und erst am Ende die Übersetzung mit der Kripke-Joyal-Semantik durchzuführen.
+Etwa folgt aus der einfach zu beweisenden Aussage konstruktiver linearer
+Algebra
+\begin{indentblock}
+\emph{Jeder endlich erzeugte Vektorraum über einem Körper besitzt nicht nicht
+eine endliche Basis.}
+\end{indentblock}
+durch Interpretation in einem geeigneten Topos sofort folgende offensichtlich
+komplizierte Aussage aus der algebraischen Geometrie:
+\begin{indentblock}
+\emph{Jede~$\O_X$-Modulgarbe auf einem reduzierten Schema~$X$, die lokal von
+endlichem Typ ist, ist auf einer dichten offenen Teilmenge sogar lokal frei von
+endlichem Rang.}
+\end{indentblock}
+Ähnliche Anwendungen gibt es auch in der Differentialgeometrie.
+
+
+\subsection*{Auf den Geschmack gekommen?}
+
+Im Skript zum Pizzaseminar der Sommersemesterferien~2013 gibt es Hintergründe,
+Details und Literaturverweise. Ferner steht die Tür von Büro~2031/L1 für
+topostheoretische Diskussionen immer offen.
+\begin{center}
+\url{http://pizzaseminar.speicherleck.de/}
+\end{center}
 
 
 \appendix
@@ -579,6 +733,15 @@ Zeige also, dass wenn~$R$ ein Ring mit~$1 = 0 \in R$ und~$\phi$ eine beliebige
 Aussage ist, $R \models \phi$ gilt.
 
 \emph{Tipp:} Man kann eine sehr einfache Zerlegung der Eins hinschreiben.
+\end{aufgabe}
+
+\begin{aufgabe}{Der kleine Zariski-Topos eines Körpers}
+Sei~$K$ ein Körper. Zeige, dass die interne Sprache des kleinen Zariski-Topos
+zu~$K$ mit der gewöhnlichen mathematischen Sprache zusammenfällt. Zeige also
+für beliebige Aussagen~$\phi$:
+\[ K \models \phi \quad\Longleftrightarrow\quad \phi. \]
+\emph{Tipp:} Induktion über den Aufbau von~$\phi$. Was ist an Zerlegungen der
+Eins von Körpern besonders?
 \end{aufgabe}
 
 \begin{aufgabe}{Integritätsbereichseigenschaft des internen Rings}
@@ -641,7 +804,7 @@ Allgemeinen \emph{kein} diskreter Körper ist.
 
 \begin{aufgabe}{Vorwissen zu Bewertungsbereichen}
 Sei~$R$ ein \emph{Bewertungsbereich}, also ein
-ein Integritätsbereich im Sinn von Aufgabe 3, sodass von je zwei Elementen
+ein Integritätsbereich im Sinn von Aufgabe 4, sodass von je zwei Elementen
 stets eines das andere teilt.
 \begin{enumerate}
 \item Zeige, dass von je endlich vielen Elementen von~$R$ stets
@@ -677,13 +840,13 @@ folgende Bedingung gelesen werden:
   \bigl(\exists u_n\?\O\_ x_n = u_n d\bigr) \wedge
   \bigl(\exists a_1,\ldots,a_n\?\O\_ a_1 x_1 + \cdots + a_n x_n = d\bigr)
 \]
-\item Sei~$R$ ferner ein Integritätsbereich im Sinn von Aufgabe~3. Zeige,
+\item Sei~$R$ ferner ein Integritätsbereich im Sinn von Aufgabe~4. Zeige,
 dass~$\O$ ein Bewertungsbereich ist.
 \item Was kann man in diesem Fall über die Kerne von Matrizen über~$R$ folgern?
 \end{enumerate}
 \end{aufgabe}
 
-\begin{aufgabe}{Kerne von Matrizen}
+\begin{aufgabe}{Weitere Aussagen über Kerne von Matrizen}
 \begin{enumerate}
 \item Sei~$M \in R^{n \times m}$ eine Matrix über einem lokalen Ring~$R$, die
 als lineare Abbildung~$R^m \to R^n$ surjektiv ist, sodass es also zu jedem~$y
@@ -703,23 +866,19 @@ Rang~$(m-n)$.
 \end{enumerate}
 \end{aufgabe}
 
+\begin{center}
+  \includegraphics[scale=0.85]{phantome}
+\end{center}
+\thispagestyle{empty}
+
 \end{document}
 
-Wieso konstruktiv?
 
-Kann man damit Dinge beweisen, die man ohne es nicht kann?
+Literaturverweise: Moerdijk, Johnstohne, Mulvey, Richman,
+Coquand/Lombardi/Roy, Kock (universal projective geometry), Pizzaseminar
 
-Was passiert wirklich? 1.) beliebig kleine offene Teilmengen; 2.) Halme
+BHK-Interpretation konstruktiver Logik
 
-alle Aussagen so formulierbar (abh. Typen)
-
-halmweise geometrisch
-
-über Matrizen reden
-
-1 = 0 ==> bottom
-
-schöne Illustration
 
 \begin{defn}Ein Ringelement~$f$ heißt genau dann \emph{pseudoregulär}, wenn,
 wann immer ein Produkt von~$f$ mit einem weiteren Ringelement~$g$ Null ist, $g$
