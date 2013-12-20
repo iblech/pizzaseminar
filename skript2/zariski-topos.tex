@@ -3,12 +3,10 @@
 \usepackage[utf8]{inputenc}
 
 \usepackage[ngerman]{babel}
-\addto\captionsngerman{\renewcommand\tablename{Tafel}}
 
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
-\usepackage{setspace}
-\usepackage{bussproofs}
 \usepackage{array}
+\usepackage{xstring}
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
@@ -28,95 +26,33 @@
 
 \usepackage{hyperref}
 
-\setlength\parskip{\medskipamount}
-\setlength\parindent{0pt}
-
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
-\newtheorem{axiom}[defn]{Axiom}
 \newtheorem{bsp}[defn]{Beispiel}
 
 \theoremstyle{plain}
 
 \newtheorem{prop}[defn]{Proposition}
-\newtheorem{motto}[defn]{Motto}
-\newtheorem{wunder}[defn]{Wunder}
-\newtheorem{ueberlegung}[defn]{Überlegung}
 \newtheorem{lemma}[defn]{Lemma}
-\newtheorem{kor}[defn]{Korollar}
-\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
 \newtheorem{satz}[defn]{Satz}
 
 \theoremstyle{remark}
 \newtheorem{bem}[defn]{Bemerkung}
-\newtheorem{aufg}[defn]{Aufgabe}
 
 \clubpenalty=10000
 \widowpenalty=10000
 \displaywidowpenalty=10000
 
-\newcommand{\xra}[1]{\xrightarrow{#1}}
-\newcommand{\lra}{\longrightarrow}
-\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
-\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
 
-\newcommand{\brak}[1]{\llbracket {#1} \rrbracket}
-
-\newcommand{\ZZ}{\mathbb{Z}}
-\newcommand{\QQ}{\mathbb{Q}}
-\newcommand{\RR}{\mathbb{R}}
-\newcommand{\CC}{\mathbb{C}}
 \newcommand{\NN}{\mathbb{N}}
-\newcommand{\PP}{\mathbb{P}}
+\newcommand{\ZZ}{\mathbb{Z}}
 \renewcommand{\aa}{\mathfrak{a}}
 \newcommand{\bb}{\mathfrak{b}}
 \newcommand{\pp}{\mathfrak{p}}
-\newcommand{\mm}{\mathfrak{m}}
-\newcommand{\I}{\mathcal{I}}
-\newcommand{\J}{\mathcal{J}}
-\newcommand{\C}{\mathcal{C}}
-\newcommand{\D}{\mathcal{D}}
-\newcommand{\E}{\mathcal{E}}
-\newcommand{\F}{\mathcal{F}}
-\newcommand{\G}{\mathcal{G}}
-\newcommand{\U}{\mathcal{U}}
-\renewcommand{\I}{\mathcal{I}}
-\renewcommand{\P}{\mathcal{P}}
 \renewcommand{\O}{\mathcal{O}}
-\newcommand{\Hom}{\mathrm{Hom}}
-\newcommand{\Ouv}{\mathrm{Ouv}}
-\newcommand{\res}{\mathrm{res}}
-\newcommand{\Rad}{\mathrm{Rad}}
-\newcommand{\Sh}{\mathrm{Sh}}
-\newcommand{\PSh}{\mathrm{PSh}}
-\newcommand{\Bohr}{\mathrm{Bohr}}
-\newcommand{\pt}{\mathrm{pt}}
-\newcommand{\ev}{\mathrm{ev}}
-\newcommand{\id}{\mathrm{id}}
-\newcommand{\Id}{\mathrm{Id}}
-\newcommand{\freist}{\underline{\ \ }}
-\newcommand{\ul}[1]{\underline{#1}}
-\newcommand{\csalgebra}{C\textsuperscript{*}\kern-.1ex-Algebra}
-\newcommand{\csalgebren}{C\textsuperscript{*}\kern-.1ex-Alge\-bren}
-\DeclareMathOperator{\colim}{colim}
-\DeclareMathOperator{\Ob}{Ob}
-\DeclareMathOperator{\ggT}{ggT}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\Quot}{Quot}
 \DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\interior}{int}
-\newcommand{\op}{\mathrm{op}}
-\newcommand{\Set}{\mathrm{Set}}
-\newcommand{\Grp}{\mathrm{Grp}}
-\newcommand{\Vect}[1]{{#1\text{-}\mathrm{Vect}}}
-\newcommand{\AbGrp}{\mathrm{AbGrp}}
-\newcommand{\Ring}{\mathrm{Ring}}
-\newcommand{\Cat}{\mathrm{Cat}}
-\newcommand{\Funct}{\mathrm{Funct}}
-\newcommand{\Eins}{\mathbf{1}}
-\newcommand{\Man}{\mathrm{Man}}
-\newcommand{\Top}{\mathrm{Top}}
-\newcommand{\seq}[1]{\mathrel{\vdash\!\!\!_{#1}}}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\?}{\,{:}\,}
 
@@ -127,17 +63,7 @@
 \renewcommand*\theenumi{\alph{enumi}}
 \renewcommand{\labelenumi}{\theenumi)}
 
-\newcommand\subsubsubsection[1]{\subsubsection*{#1}}
-\definecolor{grey}{rgb}{0.7,0.7,0.7}
-
 \setcounter{tocdepth}{2}
-
-\newenvironment{indentblock}{%
-  \list{}{\leftmargin\leftmargin}%
-  \item\relax
-}{%
-  \endlist
-}
 
 \newlength{\aufgabenskip}
 \setlength{\aufgabenskip}{1.5em}
@@ -146,6 +72,16 @@
   \addtocounter{aufgabennummer}{1}
   \textbf{Aufgabe \theaufgabennummer{}.} \emph{#1} \par
 }{\vspace{\aufgabenskip}}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+\newif\ifklein\kleinfalse
+\IfSubStr{\jobname}{\detokenize{klein}}{\kleintrue}{\kleinfalse}
 
 \begin{document}
 
@@ -157,7 +93,11 @@
 \thispagestyle{empty}
 \enlargethispage{3cm}
 \begin{center}
-  \includegraphics[scale=0.75]{zariski-ueberraschung}
+  \ifklein
+    \includegraphics[scale=3]{zariski-ueberraschung-klein.jpeg}
+  \else
+    \includegraphics[scale=0.75]{zariski-ueberraschung}
+  \fi
 \end{center}
 \vfill
 \newcommand{\Ll}{:\Longleftrightarrow}
@@ -933,7 +873,11 @@ Rang~$(m-n)$.
 \thispagestyle{empty}
 \vfill
 \begin{center}
-  \includegraphics[scale=0.65]{phantome}
+  \ifklein
+    \includegraphics[scale=2.6]{phantome-klein.jpeg}
+  \else
+    \includegraphics[scale=0.65]{phantome}
+  \fi
 \end{center}
 
 \end{document}
