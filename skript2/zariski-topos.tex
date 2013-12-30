@@ -479,7 +479,9 @@ Nullringe sind.
 
 \begin{prop}In der internen Welt des kleinen Zariski-Topos eines Rings gilt im
 Allgemeinen \emph{nicht}, dass jedes Element von~$\O$ invertierbar oder nicht
-invertierbar ist.\end{prop}
+invertierbar ist. Insbesondere gilt im kleinen Zariski-Topos das Prinzip vom ausgeschlossenen Dritten
+also \emph{nicht}.
+\end{prop}
 \begin{proof}Ein Gegenbeispiel liefert der Ring~$R := \ZZ$ mit dem Element~$f
 := 2$. Denn
 \[ R \models \speak{$f$ inv.} \vee \neg(\speak{$f$ inv.}) \]
@@ -666,7 +668,11 @@ Wenn man keine multiplikativ abgeschlossene Teilmenge besonders auszeichnen
 möchte, kann man sich analog auch folgende Frage stellen: Gibt es einen
 Ring~$R'$ zusammen mit einem Ringhomomorphismus~$R \to R'$, sodass jeder
 Ringhomomorphismus~$R \to T$ in einen \emph{lokalen Ring}~$T$ eindeutig über~$R
-\to R'$ faktorisiert?
+\to R'$ faktorisiert?\footnote{Der Homomorphismus~$R' \to T$ soll dabei ein
+\emph{lokaler} Ringhomomorphismus sein, d.\,h. er soll Invertierbarkeit
+nicht nur bewahren, sondern auch reflektieren: Immer, wenn das Bild eines
+Elements aus~$R'$ in~$T$ invertierbar ist, soll schon das Element selbst
+in~$R'$ invertierbar sein.}
 
 Im wörtlichen Sinn lautet die Antwort auf diese Frage leider \emph{nein}: Im
 gewöhnlichen mathematischen Universum gibt es keinen Ring~$R'$ mit dieser
