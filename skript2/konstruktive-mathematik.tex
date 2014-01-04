@@ -1074,6 +1074,23 @@ sind.\end{motto}
 \XXX{Das ausführen!}
 
 
+\subsubsection*{Einschub: Der Quantor für eindeutige Existenz}
+
+Der Quantor~$\exists!$ für eindeutige Existenz kommt in den Ableitungsregeln aus
+Tafeln~\ref{ableitungsregeln:int} und~\ref{ableitungsregeln:weitere} nicht vor.
+Das ist nicht weiter schlimm, da man diesen durch die anderen sprachlichen
+Mittel ausdrücken kann: Die Aussage~"`$\exists!y\?Y\_ \varphi$"' steht für
+\[ \exists y\?Y\_ \varphi \quad\wedge\quad
+  \forall y\?Y\_ \forall y'\?Y\_
+  \varphi \wedge \varphi[y'/y] \Rightarrow y = y'. \]
+
+\begin{aufg}Zeige, dass diese Formalisierung äquivalent ist zur ebenfalls
+naheliegenden Umschreibung
+\[ \exists y\?Y\_ (\varphi \wedge \forall y'\?Y\_ \varphi[y'/y] \Rightarrow y =
+y'). \]
+\end{aufg}
+
+
 \subsection{Peano-Arithmetik und Heyting-Arithmetik}
 
 \begin{defn}Das formale System \emph{Heyting-Arithmetik} ist gegeben durch
@@ -3543,8 +3560,6 @@ passenden Logarithmus gibt.
 % gut ist.
 
 % XXX: Formel vs. Aussage
-
-% Def. \exists!
 
 % Diagramm zur internen Algebra
 % Geister-Abbildung
