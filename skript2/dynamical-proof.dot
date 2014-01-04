@@ -1,0 +1,19 @@
+digraph main {
+  subgraph vor {
+    rank="same";
+    edge [ style = invis ];
+    "Z(ab^2)" -> "Z(1-a)" -> "Z(ba+b-a)";
+  }
+  edge [ style = solid ];
+  "Z(ab^2)" -> { "Z(a)" "Z(b^2)" };
+  { "Z(1-a)" "Z(a)" } -> "Z(1)" -> z1
+  z1 [ label="Z(b-a)" ];
+  z2 [ label="Z(b-a)" ];
+  z3 [ label="Z(b-a)" ];
+  "Z(b^2)" -> { b1 b2 };
+  { b1 "Z(ba+b-a)" } -> z2;
+  { b2 "Z(ba+b-a)" } -> z3;
+
+  b1 [ label="Z(b)" ];
+  b2 [ label="Z(b)" ];
+}

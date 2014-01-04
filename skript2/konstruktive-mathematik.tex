@@ -2135,6 +2135,51 @@ für~$n > 0$ ist das ebenfalls eine Standardaussage aus kommutativer Algebra
 \end{proof}
 
 
+\subsubsection*{Ausführliches Beispiel}
+
+Um die Wirkungsweise der Zeugenextraktion zu verstehen, wollen wir ein
+Beispiel diskutieren: Wir wollen durch Introspektion eines Beweises
+der für beliebige Primideale~$\pp$ und Ringelemente~$a,b$ gültigen Implikation
+\[ ab^2,\ 1-a,\ ba+b-a \in \pp \quad\Longrightarrow\quad b-a \in \pp \]
+auf maschinelle Art und Weise einen expliziten Zeugen der Implikation gewinnen.
+Wir untersuchen dazu folgenden Beweis, der der Einfachheit halber in
+informaler Sprache wiedergegeben ist, prinzipiell aber in dem benötigten logischen
+Fragment formuliert werden könnte:
+\begin{quote}
+Da~$ab^2 \in \pp$, gilt~$a \in \pp$ oder~$b^2 \in \pp$ und wir können eine
+Fallunterscheidung führen: Falls~$a \in \pp$,
+folgt~$1 = a + (1-a) \in \pp$ (da~$(1-a) \in \pp$). Dieser Fall kann also nicht eintreten, oder
+anders formuliert: Daraus folgt trivialerweise~$b-a = (b-a) \cdot 1 \in \pp$.
+
+Falls~$b^2 \in \pp$, folgt~$b \in \pp$ oder~$b \in \pp$ und wir können eine
+Fallunterscheidung führen: Falls~$b \in \pp$, folgt~$b-a = (ba+b-a) + (-a)b \in
+\pp$ (da~$(ba+b-a) \in \pp$). Der zweite Fall geht genau gleich.
+\end{quote}
+In Abbildung~\ref{dynamical} ist der Beweisverlauf grafisch dargestellt.
+Zu jedem einzelnen Beweisschritt können wir nun auf rein maschinelle Art und
+Weise Zeugen angeben und so einen Zeugen für die gesamte Behauptung erhalten.
+\vspace{-1em}
+\begin{align*}
+\intertext{Zeuge für~$a \in \pp \Longrightarrow (b-a) \in \pp$:}
+b - a &= (b-a) \cdot (a + (1-a)) =: x(a). \\
+\intertext{Zeuge für~$b \in \pp \Longrightarrow (b-a) \in \pp$:}
+b - a &= (ba+b-a) + (-a)b =: y(b). \\
+\intertext{Zeuge für~$b^2 \in \pp \Longrightarrow (b-a) \in \pp$:}
+(b - a)^2 &= y(b) \cdot y(b) = (ba+b-a)^2 + 2(ba+b-a)(-a)b + a^2b^2 \\
+&= (b-a-ab) \cdot (ba+b-a) + a^2b^2 =: z(b^2).
+\intertext{Zeuge für~$(b-a) \in \pp$:}
+(b-a)^3 &= (b-a) \cdot (b-a)^2 = x(a) \cdot z(b^2) = \cdots.
+\end{align*}
+Multiplizieren wir den Ausdruck~$x(a) \cdot z(z^2)$ aus, erhalten wir eine Darstellung
+von~$(b-a)^3$ als Summe von Vielfachen von~$ab^2$, $1-a$ und~$ba+b-a$. Diese
+Darstellung ist der gesuchte explizite Zeuge der Implikation.
+
+\begin{figure}
+  \centering
+  \includegraphics[scale=0.5]{dynamical-proof}
+  \caption{\label{dynamical}Grafische Darstellung des Beispielbeweises.}
+\end{figure}
+
 \subsubsection*{Erweiterungen}
 
 Satz~\ref{satz:genprime} hat gezeigt, dass man die klassische Vorgehensweise
