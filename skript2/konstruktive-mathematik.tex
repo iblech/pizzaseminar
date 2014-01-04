@@ -1822,7 +1822,7 @@ Das ist sogar einfacher als bei der Doppelnegationsübersetzung.\qedhere
 \end{enumerate}
 \end{proof}
 
-\begin{kor}Peano-Arithmetik ist für Aussagen der Form~$\forall (\cdots
+\begin{kor}\label{peanokons}Peano-Arithmetik ist für Aussagen der Form~$\forall (\cdots
 \Rightarrow \cdots)$, wobei die Teilaussagen den Beschränkungen
 aus~\ref{friedman:proof}b) unterliegen müssen, \emph{konservativ} über
 Heyting-Arithmetik: Aus jedem Beweis in Peano-Arithmetik lässt sich ein Beweis
@@ -1880,7 +1880,13 @@ auf~$\Pi^0_2$-Aussagen zu -- das sind solche der Form
 wobei die abschließende Teilaussage keine Quantoren mehr enthält. Zu diesen
 gehört die Aussage, dass eine gegebene Turingmaschine bei jeder
 beliebigen Eingabe schlussendlich terminiert ("`$\forall\,\text{Eingaben}\
-\exists\,\text{Stoppzeitpunkt}$"').
+\exists\,\text{Stoppzeitpunkt}$"'). Wenn man also beweisen möchte, dass eine
+Turingmaschine terminiert, kann man ruhigen Gewissens klassische Logik
+verwenden: Dabei verwendete Instanzen des ideellen Prinzips vom ausgeschlossenen Dritten
+lassen sich auf maschinelle Art und Weise eliminieren, sodass man automatisch
+auch einen konstruktiven Terminierungsbeweis erhält. Aus einem solchen kann man
+für jede Eingabe eine explizite Schranke für die Anzahl der bis zum Stopp
+benötigten Verarbeitungsschritte gewinnen.
 \end{bsp}
 
 
@@ -1896,17 +1902,28 @@ Garbentopos ein Gegenbeispiel). In Heyting-Arithmetik gilt aber zumindest
 Markovs \emph{Regel}:
 
 \begin{kor}[Markovs Regel]Sei~$\varphi$ eine Aussage, die den Beschränkungen
-aus~\ref{friedman:proof}b) unterliegt. Wenn intuitionistisch
+aus Satz~\ref{friedman:proof}b) unterliegt. Wenn intuitionistisch
 \[ \seq{\vec x} \neg\neg\exists y\?\NN{:}\ \varphi \]
 ableitbar ist, so ist auch
 \[ \seq{\vec x} \exists y\?\NN{:}\ \varphi \]
 intuitionistisch ableitbar.\end{kor}
+\begin{proof}Nach Teil~c) von Satz~\ref{friedman:proof} ist die
+Friedmanübersetzung der Voraussetzung~$\neg\neg\exists
+y\?\NN{:}\ \varphi$ intuitionistisch ableitbar. Wegen Teil~b) ist diese äquivalent zu
+\[ ((\exists y\?\NN{:}\ (\varphi \vee F)) \Rightarrow F) \Rightarrow F. \]
+Wählt man daher trickreich~$F :\equiv \exists y\?\NN{:}\ \varphi$, folgt die Behauptung.
+Alternativ kann man auch direkt das Konservativitätsresultat~\ref{peanokons}
+verwenden.
+\end{proof}
 
-% XXX: Beweis
+Erstaunlicherweise steckt also in jedem intuitionistischen Beweis der doppelt
+negierten und daher schwachen Aussage~$\neg\neg \exists y\?\NN{:}\ \varphi$
+wider Erwarten doch eine Konstruktionsvorschrift für ein~$y\?\NN$, das~$\varphi$
+erfüllt. Diese lässt sich rein maschinell aus dem Beweis extrahieren, indem man
+den Beweis, dass Markovs Regel zulässig ist, Schritt für Schritt durchgeht.
+
 % XXX: Signifikanz
-
-% XXX: Nochmal betonen, dass dadurch eine partielle Realisierung von Hilberts
-% Programm erfolgt ist.
+% XXX: Zusammenhang mit Oleg?
 
 
 \subsection{Beispiel aus der Algebra: dynamische Methoden}
