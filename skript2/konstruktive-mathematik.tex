@@ -311,7 +311,7 @@ Mathematikerin eine Aussage~$\varphi$ behauptet, meint sie, dass sie einen
 Den Basisfall bilden dabei die sog. \emph{atomaren Aussagen}, von denen wir
 intuitiv wissen, wie ein Beleg ihrer Gültigkeit aussehen sollte. Atomare Aussagen sind
 solche, die nicht vermöge der logischen Operatoren $\wedge, \vee,
-\Rightarrow$ und der Quantoren~$\forall, \exists$ aus weiteren Teilformeln
+\Rightarrow$ und der Quantoren~$\forall, \exists$ aus weiteren Teilaussagen
 zusammengesetzt sind. In der Zahlentheorie sind atomare Aussagen etwa von der
 Form
 \[ n = m, \]
@@ -822,7 +822,7 @@ Variable~$n$ quantifizieren, erhalten wir eine Aussage im \emph{leeren Kontext}:
 Ist~$\varphi$ eine Aussage im Kontext~$x_1,\ldots,x_n$. Sind dann
 Terme~$s_1,\ldots,s_n$ (in einem neuen Kontext~$y_1,\ldots,y_m$) gegeben, so
 kann man die~$x_i$ \emph{simultan durch die~$s_i$ ersetzen}. Als Ergebnis
-erhält man eine Formel im Kontext~$y_1,\ldots,y_m$, die
+erhält man eine Aussage im Kontext~$y_1,\ldots,y_m$, die
 man~"`$\varphi[s_1/x_1,\ldots,x_n/x_n]$"' oder kürzer~"`$\varphi[\vec s/\vec
 x]$"' schreibt.
 
@@ -831,6 +831,9 @@ die Aussage
 \[ \varphi :\equiv (\forall n\?\NN{:}\ n = m) \]
 im Kontext~$m : \NN$, dass
 \[ \varphi[n^2/m] \equiv (\forall \tilde n\?\NN{:}\ \tilde n = n^2). \]
+
+\begin{bem}Die übliche logische Bezeichnung für das, was wir \emph{Aussagen}
+nennen, ist \emph{Formel}.\end{bem}
 
 
 \subsection{Sequenzen}
@@ -1430,7 +1433,7 @@ klassischer Mathematiker eine Aussage~$\varphi$ behauptet, muss man als
 konstruktiv nur~$\varphi^\circ$ verstehen.
 
 Für die umgekehrte Richtung gibt es keine Übersetzung: Es gibt keine
-Formeltransformation~$\varphi \mapsto \varphi^\#$ mit den Eigenschaften
+Aussagentransformation~$\varphi \mapsto \varphi^\#$ mit den Eigenschaften
 \begin{enumerate}
 \item $\varphi \Longleftrightarrow \varphi^\#$ intuitionistisch und
 \item genau dann $\varphi \seq{\vec x} \psi$ intuitionistisch, wenn $\varphi^\#
@@ -1452,9 +1455,9 @@ Variablen und daher insbesondere keine Quantoren vorkommen. (Ihre klassische
 Variante kann man noch mit Wahrheitstafeln vollständig verstehen.)
 
 Jeder topologischer Raum~$X$ liefert ein Modell~$\O(X)$ für propositionale
-intuitionistische Logik: Wenn man zu jeder atomaren Aussage~$\varphi$ eine
+intuitionistische Logik: Wenn man jeder atomaren Aussage~$\varphi$ eine
 bestimmte offene Menge~$\brak{\varphi} \subseteq X$ zuordnet, kann man die
-Interpretation der restlichen Formeln gemäß folgender Definition festlegen.
+Interpretation der restlichen Aussagen gemäß folgender Definition festlegen.
 \begin{defn}[topologische Interpretation zusammengesetzter Aussagen]
 \begin{align*}
   \brak{\top} &:= X \\
@@ -3442,16 +3445,16 @@ offensichtlich. Der Doppelpunkt beim Allquantor soll andeuten, dass~$X$ nicht
 notwendigerweise eine Menge und~$x,x'$ nicht notwendigerweise Elemente einer
 Menge im wörtlichen (materiellen) Sinn sein müssen. Stattdessen sagt man,
 dass~$X$ ein \emph{Typ} und~$x,x'$ \emph{Werte} dieses Typs sind, und
-bezeichnet den Ausdruck~\eqref{injtype} als \emph{Formel im leeren Kontext}.
+bezeichnet den Ausdruck~\eqref{injtype} als \emph{Aussage im leeren Kontext}.
 (Freie, nicht durch Quantoren gebundene Variablen sammelt der sog. Kontext
-der Formel auf.)
+der Aussage auf.)
 
 Wenn die untersuchte Kategorie genügend gute Eigenschaften hat -- ein
 \emph{Topos} ist --, gibt es ein konkretes, algorithmisch gegebenes und auch in der Praxis einfach
 durch\-führ\-ba\-res Verfahren, um solche intern formulierten Aussagen in die externe
 mathematische Sprache zu übersetzen, die sog.
 \emph{Kripke-Joyal-Semantik}~\cite[Kap~VI.6]{moerdijkmaclane}.
-Wendet man dieses auf die Formel~\eqref{injtype} an, erhält man (nach einem
+Wendet man dieses auf die Aussage~\eqref{injtype} an, erhält man (nach einem
 Vereinfachungsschritt) genau die zuvor hergeleitete Bedingung~\eqref{injallg}
 mit verallgemeinerten Elementen.
 
@@ -3572,8 +3575,6 @@ passenden Logarithmus gibt.
 % Regel)
 % Logik-Geist
 % Mutter aller Monaden
-
-% XXX: Formel vs. Aussage
 
 % Diagramm zur internen Algebra
 % Geister-Abbildung
