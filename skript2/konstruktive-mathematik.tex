@@ -1853,11 +1853,12 @@ unterliegen, können wir ein weiteres Mal ausnutzen: Heyting-Arithmetik kann die
 Sequenz
 \[ ((\varphi \vee F \Rightarrow F) \Rightarrow F) \seq{x}
   ((\psi \vee F \Rightarrow F) \Rightarrow F) \]
-zeigen. \emph{Friedmans Trick} besteht nun darin, für~$F$ speziell~$\varphi$ zu
-wählen. Dann vereinfachen sich die Ausdrücke und wir erhalten die Ableitbarkeit
+zeigen. \emph{Friedmans Trick} besteht nun darin, für~$F$ speziell~$\psi$ zu
+wählen. Die rechte Seite vereinfacht sich dann zu~$\psi$, und die linke wird
+von~$\varphi$ impliziert.
+Wir erhalten also in Heyting-Arithmetik die Ableitbarkeit
 von $\varphi \seq{x} \psi$, also von
-\[ \top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi) \]
-in Heyting-Arithmetik.
+\[ \top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi). \qedhere \]
 \end{proof}
 
 Bemerkenswert ist, dass dieses Konservativitätsresultat nur eine Forderung
