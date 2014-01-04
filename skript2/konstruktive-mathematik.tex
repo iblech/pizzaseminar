@@ -2527,8 +2527,8 @@ versehen kann).
 
 Ein \emph{Unterobjektklassifizierer} ist ein spezielles Objekt~$\Omega$, sodass
 Unterobjekte eines Objekts~$X$ in 1:1-Korrespondenz zu Morphismen~$X \to
-\Omega$ stehen. In der Kategorie der Mengen ist~$\Omega = \P(\{\star\})$ ein solches (in
-klassischer Logik also~$\Omega = \{ 0, 1 \}$): Denn bekanntlich
+\Omega$ stehen. In der Kategorie der Mengen ist~$\Omega = \P(\{\star\})$ ein solches, in
+klassischer Logik also~$\Omega = \{ 0, 1 \}$: Denn bekanntlich
 können Teilmengen~$U$ einer Menge~$X$ ja eindeutig durch ihre klassifizierende
 Abbildung~$X \to \Omega,\ x \mapsto \{ \star \,|\, x \in U \}$ (also~$x \mapsto
 1$, falls~$x \in U$, und~$x \mapsto 0$, falls~$x \not\in U$) beschrieben
@@ -2562,7 +2562,7 @@ Unterobjektklassifizierer ist die Garbe~$U \mapsto \{ V \subseteq U \,|\,
 \text{$V$ offen} \}$.
 \end{bsp}
 
-\begin{bsp}Die Kategorien der Gruppen, Vektorräume und topologischen Räume sind
+\begin{bsp}Die Kategorien der Gruppen, der Vektorräume und der topologischen Räume sind
 keine Topoi.\end{bsp}
 
 
@@ -2579,7 +2579,8 @@ Etwa erscheint ein Objekt von~$\E$, das also vielleicht eine komplizierte Garbe
 von Mengen ist, aus Sicht der internen Sprache wie eine gewöhnliche
 Menge\footnote{Besser sollte man hier \emph{Typ} schreiben. Auf den
 Unterschied wollen wir hier nicht eingehen.}. Folgerichtig erscheint ein
-Morphismus von~$\E$, der tatsächlich vielleicht eine komplizierte unendliche
+Morphismus von~$\E$, der tatsächlich vielleicht ein Garbenmorphismus und daher
+eine komplizierte unendliche
 Familie von Abbildungen ist, aus Sicht der internen Sprache wie eine
 gewöhnliche Abbildung zwischen Mengen.
 
@@ -2623,6 +2624,40 @@ Sei~$X$ ein topologischer Raum (oder eine Örtlichkeit). Dann definieren wir rek
 für offene Teilmengen~$U \subseteq X$ und Aussagen~$\varphi$ gemäß
 der Regeln in Tafel~\ref{tafel:kripke-joyal} (der
 \emph{Kripke-Joyal-Semantik}).
+
+\begin{table}
+  \centering
+  \small
+  \setlength{\extrarowheight}{0.3em}
+  \newcommand{\Ll}{:\Longleftrightarrow}
+  \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
+    U \models f = g \? \F &\Ll& f|_U = g|_U \in \Gamma(U, \F) \\
+    U \models \top &\Ll& \text{$U = U$ (gilt stets)} \\
+    U \models \bot &\Ll& U = \emptyset \\
+    U \models \varphi \wedge \psi &\Ll&
+      \text{$U \models \varphi$ und $U \models \psi$} \\
+    U \models \varphi \vee \psi &\Ll&
+      \hcancel{\text{$U \models \varphi$ oder $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
+    && \text{es gibt eine Überdeckung $U = \bigcup_i U_i$ sodass für alle~$i$:} \\
+    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
+    U \models \varphi \Rightarrow \psi &\Ll&
+      \text{für alle offenen~$V \subseteq U$: } 
+    \text{$V \models \varphi$ impliziert $V \models \psi$} \\
+    U \models \forall f \? \F\_ \varphi(f) &\Ll&
+      \text{für alle Schnitte~$f \in \Gamma(V, \F), V \subseteq U$: $V \models
+      \varphi(f)$} \\
+    U \models \exists f \? \F\_ \varphi(f) &\Ll&
+      \hcancel{\text{es gibt einen Schnitt~$f \in \Gamma(U, \F)$ mit~$U \models
+      \varphi(f)$}}{0pt}{3pt}{0pt}{-2pt} \\
+    &&
+      \text{es gibt eine Überdeckung $U = \bigcup_i U_i$ sodass für alle~$i$:} \\
+    && \quad\quad \text{es gibt~$f_i \in \Gamma(U_i, \F)$ sodass
+    $U_i \models \varphi(f_i)$}
+  \end{array} \]
+  \vspace{-1.5em}
+  \caption{\label{tafel:kripke-joyal}Die Kripke-Joyal-Semantik eines
+  Garbentopos~$\Sh(X)$.}
+\end{table}
 
 \begin{bsp}Seien~$s,t \in \Gamma(X, \F)$ globale Schnitte einer Garbe~$\F$.
 Dann gilt~$U \models s = t$ genau dann, wenn~$s|_U = t|_U$, und~$U \models
@@ -2686,38 +2721,6 @@ Der Morphismus~$\alpha$ ist genau dann ein Epimorphismus von Garben, wenn
 $X \models \forall y\?\G\_ \exists x\?\F\_ \alpha(x) = y$.
 \end{enumerate}
 \end{aufg}
-
-\begin{table}
-  \centering
-  \small
-  \setlength{\extrarowheight}{0.3em}
-  \newcommand{\Ll}{:\Longleftrightarrow}
-  \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
-    U \models f = g \? \F &\Ll& f|_U = g|_U \in \Gamma(U, \F) \\
-    U \models \varphi \wedge \psi &\Ll&
-      \text{$U \models \varphi$ und $U \models \psi$} \\
-    U \models \varphi \vee \psi &\Ll&
-      \hcancel{\text{$U \models \varphi$ oder $U \models \psi$}}{0pt}{3pt}{0pt}{-2pt} \\
-    && \text{es gibt eine Überdeckung $U = \bigcup_i U_i$ sodass für alle~$i$:} \\
-    && \quad\quad \text{$U_i \models \varphi$ or $U_i \models \psi$} \\
-    U \models \varphi \Rightarrow \psi &\Ll&
-      \text{für alle offenen~$V \subseteq U$: } 
-    \text{$V \models \varphi$ impliziert $V \models \psi$} \\
-    U \models \forall f \? \F\_ \varphi(f) &\Ll&
-      \text{für alle Schnitte~$f \in \Gamma(V, \F), V \subseteq U$: $V \models
-      \varphi(f)$} \\
-    U \models \exists f \? \F\_ \varphi(f) &\Ll&
-      \hcancel{\text{es gibt einen Schnitt~$f \in \Gamma(U, \F)$ mit~$U \models
-      \varphi(f)$}}{0pt}{3pt}{0pt}{-2pt} \\
-    &&
-      \text{es gibt eine Überdeckung $U = \bigcup_i U_i$ sodass für alle~$i$:} \\
-    && \quad\quad \text{es gibt~$f_i \in \Gamma(U_i, \F)$ sodass
-    $U_i \models \varphi(f_i)$}
-  \end{array} \]
-  \vspace{-1.5em}
-  \caption{\label{tafel:kripke-joyal}Die Kripke-Joyal-Semantik eines
-  Garbentopos~$\Sh(X)$.}
-\end{table}
 
 
 \subsection{Der Bohr-Topos zu einer nichtkommutativen \csalgebra}
@@ -3537,8 +3540,6 @@ passenden Logarithmus gibt.
 
 % Erklären, dass man mit der Topossprache nichts machen kann, was man nicht
 % ohne sie könnte.
-
-% Kripke-Joyal: top und bottom fehlen.
 
 % Ausblick: Gödel richtig verstehen:
 % Lambek, Reflections on a categorical foundations of mathematics
