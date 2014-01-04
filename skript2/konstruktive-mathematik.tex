@@ -631,6 +631,22 @@ Bezeichne~$\im f$ die Bildmenge von~$f$. Dann gilt
 $f^{-1}[\im f] = f^{-1}[X]$
 und damit~$\im f = X$, also ist~$f$ surjektiv.\end{proof}
 
+Angst vor der leeren Menge zeigt sich manchmal auch in Beweisen von
+Mengeninklusionen~$X \subseteq Y$. Diese sehen gelegentlich so aus:
+\begin{quote}\emph{Falls~$X$ leer ist, ist die Behauptung klar. Sei andernfalls
+ein Element~$x \in X$ gegeben. Dann \ldots, also gilt~$x \in Y$.}\end{quote}
+Konstruktiv ist die Fallunterscheidung nicht zulässig -- das Prinzip, dass jede
+Menge leer oder nicht leer ist, ist äquivalent zum Prinzip vom ausgeschlossenen
+Dritten. Tatsächlich kann man solche Beweise stets stromlinienförmiger
+formulieren:
+\begin{quote}\emph{Sei~$x \in X$ gegeben. Dann \ldots, also gilt~$x \in
+Y$.}\end{quote}
+Sollte~$X$ tatsächlich leer sein, hat man hierbei eine leere Aussage getätigt.
+Die formale Rechtfertigung für dieses Vorgehen steckt in den Ableitungsregeln
+für den Allquantor, auf die wir in Abschnitt~\ref{section:schlussregeln}
+eingehen. Relevant ist auch eine Diskussion auf MathOverflow zum
+Thema~\cite{mathoverflow:emptyset}.
+
 \paragraph{Mentale Hygiene.} Arbeit in konstruktiver Logik ist gut für die
 mentale Hygiene: Man lernt, genauer auf die Formulierung von Aussagen zu
 achten, nicht unnötigerweise Verneinungen einzuführen und aufzupassen, an
@@ -768,6 +784,7 @@ Logik geeignet.
 
 \section{Die Schlussregeln intuitionistischer Logik}
 
+\label{section:schlussregeln}%
 In den folgenden Abschnitten wollen wir \emph{Meta-Mathematik} betreiben: In
 Abgrenzung von der sonst betriebenen Mathematik wollen wir nicht die üblichen
 mathematischen Objekte wie Mengen, Vektorräume, Mannigfaltigkeiten untersuchen,
@@ -3555,9 +3572,6 @@ passenden Logarithmus gibt.
 % Regel)
 % Logik-Geist
 % Mutter aller Monaden
-
-% X leer. Dann X subset Y zeigen. Klären, wieso das gute Vorgehen tatsächlich
-% gut ist.
 
 % XXX: Formel vs. Aussage
 
