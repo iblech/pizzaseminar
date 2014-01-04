@@ -2669,7 +2669,7 @@ willkürlich. Tatsächlich sind sie aber fein aufeinander abgestimmt, schon
 kleine Änderungen führen dazu, dass das gesamte System zusammenbricht. Nur so
 gilt folgende grundlegende Proposition:
 
-\begin{prop}
+\begin{satz}\label{soundness}%
 Die interne Sprache von~$\Sh(X)$ hat folgende Eigenschaften:
 \begin{enumerate}
 \item \emph{Lokalität:} Sei~$U = \bigcup_i U_i$ eine offene Überdeckung. Dann
@@ -2679,7 +2679,7 @@ gilt genau dann~$U \models \varphi$, wenn für alle~$i$ jeweils~$U_i \models
 intuitionistisch~$\varphi \seq{} \psi$ ableitbar ist, dann gilt auch~$U \models
 \psi$.
 \end{enumerate}
-\end{prop}
+\end{satz}
 
 Diese Proposition ist der Grund für die Nützlichkeit der internen Sprache: Wenn
 man eine garbentheoretische Implikation~$A \Rightarrow B$ beweisen möchte, kann man vielleicht
@@ -2728,6 +2728,23 @@ Fall. Garbentopoi zu interessanten topologischen Räumen liefern also einen
 völlig objektiven Grund, wieso es nützlich ist, sich mit konstruktiver Logik zu
 beschäftigen.
 \end{bem}
+
+\subsubsection*{Kann man mit der Topossprache Sätze beweisen, die man ohne sie
+nicht beweisen könnte?}
+
+Im Beweis von Satz~\ref{soundness} ist ein Verfahren versteckt, wie man aus
+jedem intern geführten Beweis einen Beweis der entsprechenden übersetzten
+Aussagen im gewöhnlichen extern Sinn gewinnen kann. Daher kann man mit der
+Topossprache sicherlich \emph{nicht} Sätze beweisen, die man ohne sie nicht
+beweisen könnte.
+
+Allerdings kann es sehr viel einfacher sein, in der internen Welt zu denken und
+zu arbeiten. Dieser Vorteil ist nicht zu unterschätzen: Wenn man sich etwa
+einmalig ein Wörterbuch zwischen externen Begriffen der algebraischen Geometrie
+und zugehörigen internen Begriffen geeigneter Topoi anlegt, kann man fortan
+viele Beweise von grundlegenden Aussagen kurz und konzeptionell
+führen, anstatt wie sonst mit affinen Überdeckungen, Übergang zu Halmen
+und ähnlichen Techniken hantieren zu müssen.
 
 
 \subsection{Der Bohr-Topos zu einer nichtkommutativen \csalgebra}
@@ -3544,9 +3561,6 @@ passenden Logarithmus gibt.
 % C(Kompaktifizierung)
 
 % Das Beispiel RH ==> Beh, neg-RH ==> Beh.
-
-% Erklären, dass man mit der Topossprache nichts machen kann, was man nicht
-% ohne sie könnte.
 
 % Ausblick: Gödel richtig verstehen:
 % Lambek, Reflections on a categorical foundations of mathematics
