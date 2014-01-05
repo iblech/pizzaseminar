@@ -1450,7 +1450,7 @@ Kollegen zu verstehen. Sie muss dazu geeignete \emph{Modelle} betrachten.
 \subsubsection*{Topologische Modelle für propositionale intuitionistische
 Logik}
 
-Mit \emph{propositionaler} Logik bezeichnet man das Fragmet, in dem keine
+Mit \emph{propositionaler} Logik bezeichnet man das Fragment, in dem keine
 Variablen und daher insbesondere keine Quantoren vorkommen. (Ihre klassische
 Variante kann man noch mit Wahrheitstafeln vollständig verstehen.)
 
@@ -1929,9 +1929,9 @@ den Beweis, dass Markovs Regel zulässig ist, Schritt für Schritt durchgeht.
 \subsection{Beispiel aus der Algebra: dynamische Methoden}
 
 In der kommutativen Algebra sind einige Techniken gebräuchlich, mit deren Hilfe
-man viele konkrete Aussagen beweisen kann, deren Zulässigkeit man aber nur
+man konkrete Aussagen beweisen kann, deren Zulässigkeit man aber nur
 in klassischer Logik und unter Verwendung starker Auswahlprinzipien beweisen
-kann. Drei Beispiele sind folgende:
+kann. Vier Beispiele sind folgende:
 
 \begin{itemize}
 \item Um zu zeigen, dass ein Element~$x$ eines Rings~$R$ nilpotent ist (dass
@@ -2036,8 +2036,8 @@ Ringelemente~$u_1,\ldots,u_n \in R$ mit
 
 Der Satz ist eine beeindruckende
 Demonstration von Motto~\ref{motto:inhaltvonbeweisen}, demnach in
-Beweisen von Aussagen viel mehr Inhalt steckt als die bloße Information
-über die Wahrheit der Behauptung. Bevor wir den Beweis führen (welcher
+Beweisen viel mehr Inhalt steckt als die bloße Information
+über die Wahrheit der Behauptung. Bevor wir den Beweis des Satzes führen (welcher
 erstaunlich einfach ist), wollen wir das Resultat noch genauer
 diskutieren.
 
@@ -2129,7 +2129,6 @@ Radikalideale nachbauen. Nun ist es leicht, die Behauptung zu zeigen:
 \end{proof}
 
 % XXX: Wieso heißt es "dynamische Methoden"?
-% XXX: Fehlt: Beispiel.
 
 Nur zur Illustration wollen wir auch noch einen Alternativbeweis des Satzes
 führen, welcher die speziellen Möglichkeiten klassischer Logik nutzt, daher
@@ -2312,8 +2311,8 @@ Multiplikationsoperation~$A \times A \to A$ und einer Involution~$(\freist)^* :
 A \to A$, sodass gewisse natürliche Axiome erfüllt sind.\end{defn}
 Prototypbeispiele für~\csalgebren{} sind~$\CC$ mit der komplexen Konjugation
 als Involution und~$L(H,H) = \{ f : H \to H \,|\, \text{$f$ linear und stetig}
-\}$ mit der Zuordnung~$f \mapsto f^\star = \text{(adjungierter Operator
-zu~$f$)}$ als Involution. Siehe~\cite{harpe:jones:cstar} für eine Einführung in
+\}$ mit der Zuordnung~$f \mapsto f^\star$ (adjungierter Operator
+zu~$f$) als Involution. Siehe~\cite{harpe:jones:cstar} für eine Einführung in
 die Theorie der \csalgebren.
 \begin{satz}[Gelfand-Dualität, so nur klassisch]
 Die Kategorie der kompakten Hausdorffräume ist dual äquivalent zur Kategorie
@@ -2407,7 +2406,7 @@ Teilbereichen sprechen.
 \begin{bsp}Folgende Örtlichkeiten sind nichttrivial und besitzen keine Punkte:
 die Örtlichkeit aller Surjektionen~$\NN \twoheadrightarrow \RR$, die
 Örtlichkeit aller zufälligen~$0/1$-Folgen, der örtlichkeitstheoretische Schnitt
-beliebig vieler dichter Unterörtlichkeiten einer Örtlichkeit.\end{bsp}
+beliebig vieler dichter Unterörtlichkeiten einer nichttrivialen Örtlichkeit.\end{bsp}
 
 Umgekehrt spiegelt auch die Örtlichkeit zu einem topologischen Raum diesen nur
 dann getreu wieder, wenn dieser \emph{nüchtern} war. Jeder Hausdorffraum ist
@@ -2572,7 +2571,8 @@ Unter-\csalgebra~$C \subseteq A$ linear ist.
 
 \begin{bem}In der Praxis ist der Unterschied zwischen Zuständen und den besser
 motivierten Quasi-Zuständen nicht so groß: Denn nach Gleasons Theorem ist jeder
-Quasi-Zustand auf~$A = L(H,H)$ mit~$\dim H \geq 3$ schon ein Zustand.\end{bem}
+gemischte Quasi-Zustand auf~$A = L(H,H)$ mit~$\dim H \geq 3$ schon ein
+gemischter Zustand.\end{bem}
 
 \begin{bem}\label{bem:keine-reinen-quasi-zustaende}%
 Es gibt einen Grund, wieso wir kein Beispiel eines reinen Quasi-Zustands
@@ -2869,7 +2869,7 @@ ihnen.\end{defn}
 Ein solcher Funktor~$F : \C(A) \to \Set$ ordnet auf konsistente Art und Weise
 jedem klassischen Kontext~$C \subseteq A$ eine Menge~$F(C)$ zu. Gewissermaßen
 setzt daher der Topos solcher Funktoren Bohrs Doktrin klassischer Konzepte um
--- in seinen eigenen Worten~\cite[Seite~209]{bohr} (Hervorhebung im
+-- in Bohrs eigenen Worten~\cite[Seite~209]{bohr} (Hervorhebung im
 Original)\footnote{"`\emph{Inwieweit auch
 die Phänomene die Grenzen klassischer physikalischer
 Erklärungen sprengen, die Darstellung aller Anhaltspunkte muss trotzdem
@@ -2891,7 +2891,8 @@ must be expressed in unambiguous language with suitable application of
 the terminology of classical physics.
 \end{quote}
 
-\begin{bem}Wer die Definition von Garben als Funktoren~$\Ouv(X)^\op \to \Set$
+\begin{bem}Wer die Definition von Garben auf topologischen Räumen~$X$ als
+Funktoren~$\Ouv(X)^\op \to \Set$
 kennt, findet die unterschiedliche Wahl der Varianz an dieser Stelle vielleicht
 überraschend. Tatsächlich aber ist diese zu erwarten: Offene Mengen werden umso
 interessanter, je kleiner sie werden, da sie dann genauere Information über die
@@ -2900,8 +2901,7 @@ dagegen umso interessanter, je größer sie werden, denn für Elemente wird
 es umso schwerer, miteinander zu kommutieren, je mehr sie werden. Man bedenke auch, dass
 beliebige Vereinigungen (aber nicht beliebige Schnitte) offener Mengen offen
 sind, und dass umgekehrt beliebige Schnitte (aber nicht beliebige
-Vereinigungen) kommutativer Unteralgebren kommutativ sind.\end{bem}
-% XXX: "Vereinigungen" im letzten Satz ist das falsche Wort.
+Summen) kommutativer Unteralgebren kommutativ sind.\end{bem}
 
 Die nichtkommutative \csalgebra~$A$ besitzt nun ein Abbild~$\ul{A}$ im
 Bohr-Topos. Diese \emph{interne} \csalgebra{} ist \emph{kommutativ}. In diesem
@@ -3063,13 +3063,14 @@ ist.\end{defn}
 bezüglich ihrer üblichen Additionen und Multiplikationen Ringe. Für~$n$ prim
 ist~$\ZZ/(n)$ sogar ein Körper. Die Menge~$\NN$ bildet bezüglich der üblichen
 Addition und Multiplikation noch keinen Ring, da bis auf die Null kein Element
-ein Negatives besitzt.\end{bsp}
+ein Negatives besitzt. (Die natürlichen Zahlen bilden etwas, das man \emph{Rig}
+nennt -- einen Ring ohne Negative.)\end{bsp}
 
 \begin{defn}Ein \emph{Ideal} eines Rings~$R$ ist eine Teilmenge~$\aa \subseteq R$, die
 \begin{itemize}
 \item die Null enthält: $0 \in \aa$,
 \item abgeschlossen unter Addition ist: $x + y \in \aa$ für alle~$x,y \in \aa$, und
-\item die \emph{Magneteigenschaft} erfüllt: $r x \in \aa$ für alle~$r \in R, x
+\item die \emph{Magneteigenschaft} hat: $r x \in \aa$ für alle~$r \in R, x
 \in \aa$.
 \end{itemize}
 \end{defn}
@@ -3139,9 +3140,9 @@ setzt es nur Schulkenntnisse voraus.
 
 \subsection{Die Ideale im Ring der ganzen Zahlen}
 
-Tafel~\ref{ideale:z} zeigt die Ideale des Rings~$\ZZ$.
+Tafel~\ref{ideale:z} zeigt die endlich erzeugten Ideale des Rings~$\ZZ$.
 Ergänzt man die aus Platzgründen ausgelassenen Ideale, ist das
-sogar eine vollständig Übersicht über \emph{alle} Ideale von~$\ZZ$ --
+sogar eine vollständige Übersicht über \emph{alle} Ideale von~$\ZZ$ --
 wenn man klassische Logik voraussetzt.
 
 \begin{table}
@@ -3153,9 +3154,9 @@ wenn man klassische Logik voraussetzt.
 
 \begin{aufg}Zeige, dass wenn alle Ideale von~$\ZZ$ von der Form~$(x)$ für
 eine ganze Zahl~$x$ sind, das Prinzip vom ausgeschlossenen Dritten gilt.
-\emph{Tipp:} Betrachte für eine beliebige Aussage~$\varphi$ das Ideal (wieso
-sind die Idealaxiome erfüllt?) $\{ x \in \ZZ
-\,|\, x = 0 \vee \varphi \} \subseteq \ZZ$.\end{aufg}
+\emph{Tipp:} Betrachte für eine beliebige Aussage~$\varphi$ das Ideal
+$\{ x \in \ZZ \,|\, x = 0 \vee \varphi \} \subseteq \ZZ$ (wieso
+sind die Idealaxiome erfüllt?).\end{aufg}
 
 
 \subsection{Primideale und Nilpotenz}
@@ -3260,8 +3261,7 @@ das~$\aa$ und~$\bb$ umfasst, ist
 \[ \sqrt{\aa + \bb} := \{ x \in R \,|\, \text{$x^n = u + v$ für ein~$n \geq 0,
 u \in \aa, v \in \bb$} \}. \]
 \item Das Infimum zweier Elemente~$\aa,\bb$, also das größte Radikalideal,
-das in~$\aa$ und~$\bb$ enthalten ist, ist
-\[ \aa \cap \bb. \]
+das in~$\aa$ und~$\bb$ enthalten ist, ist $\aa \cap \bb$.
 \end{enumerate}
 \end{lemma}
 \begin{proof}Nachrechnen.\end{proof}
@@ -3396,7 +3396,6 @@ alle offenen Teilmengen~$U \subseteq X$ und Schnitte~$s \in \Gamma(U,\G)$ eine
 mit~$\alpha_{U_i}(t_i) = s|_{U_i}$ existieren.
 \end{enumerate}
 \end{prop}
-% XXX: Ersten Teil mit Nonsens beweisen.
 
 Wenn man sich das erste Mal mit Garben beschäftigt, verwundert vielleicht die
 Charakterisierung von Epimorphismen: Vielleicht hätte man eher die
