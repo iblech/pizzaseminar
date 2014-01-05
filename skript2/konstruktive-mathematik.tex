@@ -242,8 +242,7 @@ Bedeutung haben).\end{bem}
 
 \begin{bem}In konstruktiver Mengenlehre muss man auf das Auswahlaxiom
 verzichten, denn in Gegenwart des restlichen Axiome impliziert dieses das
-Prinzip vom ausgeschlossenen Dritten.\end{bem}
-% XXX: Beweis einfügen
+Prinzip vom ausgeschlossenen Dritten: siehe Anhang~\ref{appendix:axc}.\end{bem}
 
 % XXX: e+pi, e-pi nicht beide rational.
 
@@ -3031,6 +3030,47 @@ besitzt aber trotzdem keine Punkte.
 % XXX: Vergleich Hilbertraumzugang
 
 \appendix
+\section{Das Auswahlaxiom impliziert das Prinzip vom ausgeschlossenen Dritten}
+
+\label{appendix:axc}%
+\begin{axiom}[Auswahlaxiom, kategoriell formuliert]Jede surjektive
+Abbildung~$f$ besitzt einen Schnitt~$g$, d.\,h. eine Abbildung in die
+umgekehrte Richtung mit~$g \circ f = \id$.\end{axiom}
+Ein solcher Schnitt ist automatisch injektiv.
+
+\begin{prop}[Satz von Diaconescu]Aus dem Auswahlaxiom folgt das Prinzip vom ausgeschlossenen
+Dritten.\end{prop}
+\begin{proof}Sei~$\varphi$ eine beliebige Aussage. Dann definieren wir die
+Teilmengen
+\begin{align*}
+  U &= \{ x \in X \,|\, x = 0 \vee \varphi \} \\
+  V &= \{ x \in X \,|\, x = 1 \vee \varphi \}
+\end{align*}
+von~$X := \{ 0, 1 \}$. Die Definition ist so gemacht, dass genau dann~$U = V$
+gilt, wenn~$\varphi$ gilt: Wenn~$U = V$, so liegt~$0$ in~$V$, also gilt~$0 = 1
+\vee \varphi$. Da~$0 \neq 1$, ist das äquivalent zu~$\varphi$. Wenn umgekehrt~$\varphi$
+gilt, so sind~$U$ und~$V$ beide gleich~$X$.
+
+Da die Abbildung
+\[ \begin{array}{@{}rrcl@{}}
+  f\ : & X &\longrightarrow& \{U,V\} \\
+  & 0 &\longmapsto& U \\
+  & 1 &\longmapsto& V
+\end{array} \]
+surjektiv ist, besitzt sie nach Voraussetzung
+einen Schnitt~$g : \{U,V\} \to \{0,1\}$. Da~$g$ injektiv ist, gilt
+\[ s(U) = s(V) \quad\Longleftrightarrow\quad U = V
+\quad\Longleftrightarrow\quad \varphi. \]
+Da~$s(U)$ und~$s(V)$ Elemente der diskreten Menge~$X$ sind, gilt~$s(U) = s(V)$
+oder~$s(U) \neq s(V)$, also~$\varphi$ oder~$\neg\varphi$.
+\end{proof}
+
+\begin{aufg}Zeige, dass die kategorielle Formulierung des Auswahlaxioms
+äquivalent zu folgender Formulierung ist: \emph{Jede Familie~$(X_i)_{i \in I}$
+von bewohnten Teilmengen einer Menge~$Y$ besitzt eine Auswahlfunktion, d.\,h.
+eine Abbildung~$f : I \to Y$ mit~$f(i) \in X_i$ für alle~$i \in I$.}\end{aufg}
+
+
 \section{Ideale in Ringen}
 \label{appendix:ideale}
 
