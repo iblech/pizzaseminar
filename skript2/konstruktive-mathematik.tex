@@ -721,8 +721,6 @@ gelten. Zu \emph{glatter infinitesimaler Analysis} gibt es von John Bell eine
 leicht verständliche Einführung~\cite{bell:invitation} und ein
 Buch~\cite{bell:primer}.
 
-% http://math.andrej.com/wp-content/uploads/2006/08/continuity_begets_continuity_bavaria_slides.pdf
-
 \begin{bem}Hier ein kurzer Einschub, wieso das erstgenannte Traumaxiom
 in einem konstruktiven Kontext zumindest nicht offensichtlich widersprüchlich
 ist. Man könnte denken, dass die Signumfunktion
@@ -1062,7 +1060,7 @@ Existenz- und Allquantor nötig?\end{aufg}
 \subsubsection*{Umfang der Ableitungsregeln}
 
 \begin{motto}\label{allesformalisierbar}\emph{Alle} Beweise gewöhnlicher Mathematik, die man
-gemeinhin als "`vollständig und präzise ausformuliert"', lassen sich als
+gemeinhin als "`vollständig und präzise ausformuliert"' bezeichnet, lassen sich als
 Ableitungen im Sinne der Definition formalisieren (ggf. unter Hinzunahme
 klassischer logischer Axiome, Mengentheorieaxiome oder Typtheorieaxiome).
 \end{motto}
@@ -1074,19 +1072,43 @@ Wer nicht so viel Zeit hat, dem sei verraten, dass
 Tafel~\ref{ableitungsregeln:int} kein Haufen ungeordneter Ableitungsregeln ist.
 Stattdessen sind die Axiome nach den sie betreffenden Junktoren bzw. Quantoren
 gruppiert: Sie legen für jedes sprachliche Konstrukt ist fest, wie man es
-\emph{einführt} (etwa: "`aus~$\varphi \wedge \psi$ folgt schlicht~$\varphi$"')
-und \emph{eliminiert} (etwa: "`kann man sowohl~$\varphi$ als auch~$\psi$
-ableiten, so auch~$\varphi \wedge \psi$"').
+\emph{einführt} (etwa: "`kann man sowohl~$\varphi$ als auch~$\psi$
+ableiten, so auch~$\varphi \wedge \psi$"')
+und \emph{eliminiert} (etwa: "`aus~$\varphi \wedge \psi$ folgt
+schlicht~$\varphi$"').
 
 \begin{bem}Neben den strukturellen Regeln sticht einzig das Prinzip vom
 ausgeschlossenen Dritten aus diesem System von Einführungs- und
 Eliminationsprinzipien heraus. Das ist ein rein formal-ästhetisches Argument
 gegen klassische Logik.\end{bem}
 
-\begin{bsp}Hier ein längeres Beispiel für eine Ableitung (ein Scan aus
-dem Elephant-Buch, Seite~832):
+\begin{bsp}Dass in jedem Kontext die Sequenz~$\varphi \wedge \psi \seq{\vec x}
+\psi \wedge \varphi$ ableitbar ist, zeigt folgende Ableitung:
+\vspace{-0.5em}
+\begin{prooftree}
+  \AxiomC{$\varphi \wedge \psi \seq{\vec x} \psi$}
+  \AxiomC{$\varphi \wedge \psi \seq{\vec x} \varphi$}
+  \BinaryInfC{$\varphi \wedge \psi \seq{\vec x} \psi \wedge \varphi$}
+\end{prooftree}
+Die beiden Sequenzen oberhalb des Strichs sind Instanzen des
+Eliminationsprinzips für die Konjunktion, die Begründung für den Schritt von
+oben nach unten ist das Einführungsprinzip.\end{bsp}
+
+\begin{bsp}Folgende Ableitung zeigt, dass~$\top \seq{\vec x} (\varphi
+\Rightarrow \varphi)$ ableitbar ist:
+\vspace{-0.5em}
+\begin{prooftree}
+  \AxiomC{$\top \wedge \varphi \seq{\vec x} \varphi$}
+  \UnaryInfC{$\top \seq{\vec x} (\varphi \Rightarrow \varphi)$}
+\end{prooftree}
+Hierbei wurde das Eliminationsprinzip für die Konjunktion und die Doppelregel
+für die Implikation angewendet.\end{bsp}
+
+\begin{bsp}Hier ein längeres Beispiel für eine Ableitung (ein Scan
+aus~\cite[Seite~832]{johnstone:elephant}):
 \begin{center}\includegraphics[scale=0.3]{prooftree-elephant.png}\end{center}
-Diese Ableitung beweist (eine Richtung des) \emph{Frobenius-Prinzips}.
+Diese Ableitung beweist (eine Richtung des) \emph{Frobenius-Prinzips}. Dabei
+kommt die Variable~$y$ nicht in~$\phi$ vor.
 \end{bsp}
 
 Nicht verschwiegen werden sollte folgende Ergänzung des formalistischen Kredos:
@@ -1109,8 +1131,8 @@ Mittel ausdrücken kann: Die Aussage~"`$\exists!y\?Y\_ \varphi$"' steht für
 
 \begin{aufg}Zeige, dass diese Formalisierung äquivalent ist zur ebenfalls
 naheliegenden Umschreibung
-\[ \exists y\?Y\_ (\varphi \wedge \forall y'\?Y\_ \varphi[y'/y] \Rightarrow y =
-y'). \]
+\[ \exists y\?Y\_ \bigl(\varphi \wedge (\forall y'\?Y\_ \varphi[y'/y] \Rightarrow y =
+y')\bigr). \]
 \end{aufg}
 
 
@@ -3711,6 +3733,10 @@ passenden Logarithmus gibt.
 % http://video.ias.edu/members/1213/0318-AndrejBauer
 
 % XXX: Stetigkeitsnachweise unnötig
+
+% konsistente Schreibung: Meta-Mathematik, Metatheorem etc.
+
+% Schauspiel!
 
 In einer hyphotetischen überarbeiteteten Version:
 
