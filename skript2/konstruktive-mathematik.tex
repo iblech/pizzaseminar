@@ -1684,11 +1684,10 @@ Die Curry-Howard-Korrespondenz hat einen ganz praktischen Nutzen: Aus
 intuitionistischen Beweisen kann man Computerprogramme extrahieren und
 umgekehrt. Beide Richtungen sind interessant: Etwa kann man offensichtlich ein
 Computerprogramm schreiben, das zu einer Eingabe~$n \? \NN$ eine Primzahl~$p
-\geq n$ produziert. Daher ist auch die entsprechende Aussage ableitbar:~$\forall
-n{:}\NN{:}\ \exists p \geq n{:}\ \text{$p$ prim}$.
+\geq n$ produziert. Daher ist auch die entsprechende Aussage intuitionistisch
+ableitbar:~$\forall n{:}\NN{:}\ \exists p \geq n{:}\ \text{$p$ prim}$.
 
 Die Umkehrung ist im Kontext formaler Methoden in der Informatik wichtig.
-\XXX{Ausführen!}
 
 
 \subsection{Genauere Formulierung}
@@ -1701,14 +1700,18 @@ Termkalkül sowie die
 Übersetzung von Aussagen zu Typen festlegen. Als Termkalkül kann man etwa den
 einfach getypten~$\lambda$-Kalkül verwenden.
 
-% XXX: Gute Quelle heraussuchen
-
 Als Korollar folgt aus der präziseren Formulierung das oben angegebene Motto:
 Genau dann gibt es eine Ableitung, wenn es einen entsprechenden Term gibt.
 
 Der Beweis ist übrigens trivial, wenn man die Behauptung nur präzise genug
 formuliert hat. Denn die Ableitungsregeln entsprechen~1:1 den
 Termkonstruktionsregeln.
+
+Für Details sei der Übersichtsartikel~\cite{wadler:curry-howard} von Philip
+Wadler (einem der Väter der Pro\-gram\-mier\-spra\-che Haskell) empfohlen. Wer die
+Curry-Howard-Korrespondenz wirklich verstehen möchte, kann das
+Vorlesungsskript~\cite{sorensen:urzyczyn:curryhoward} zurate ziehen. Es enthält
+auch eine Einführung in den~$\lambda$-Kalkül.
 
 
 \section{Hilberts Programm}
@@ -3779,3 +3782,5 @@ In einer hyphotetischen überarbeiteteten Version:
   rechtfertigen als klassische?
 
 - Kann man konstruktive Logik sinnvoll in Philosophie selbst anwenden?
+
+- Ausführen: Curry-Howard im Kontext formaler Methoden
