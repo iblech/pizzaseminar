@@ -1488,7 +1488,7 @@ Mit \emph{propositionaler} Logik bezeichnet man das Fragment, in dem keine
 Variablen und daher insbesondere keine Quantoren vorkommen. (Ihre klassische
 Variante kann man noch mit Wahrheitstafeln vollständig verstehen.)
 
-Jeder topologischer Raum~$X$ liefert ein Modell~$\O(X)$ für propositionale
+Jeder topologischer Raum~$X$ liefert ein Modell~$\Ouv(X)$ für propositionale
 intuitionistische Logik: Wenn man jeder atomaren Aussage~$\varphi$ eine
 bestimmte offene Menge~$\brak{\varphi} \subseteq X$ zuordnet, kann man die
 Interpretation der restlichen Aussagen gemäß folgender Definition festlegen.
@@ -1512,7 +1512,7 @@ Anschaulich kann man sich~$\brak{\varphi}$ als den Ort, wo~$\varphi$ erfüllt
 ist, vorstellen. Wenn~$\brak{\varphi} = \emptyset$ gilt, gilt~$\varphi$ also
 nirgendwo; wenn~$\brak{\varphi} = X$ gilt, gilt~$\varphi$ überall; wenn~$X$
 nicht gerade nur zwei offene Mengen besitzt, sind aber auch viele weitere
-Abstufungen möglich. In diesem Sinn ist~$\O(X)$ ein Modell mit mehr als zwei
+Abstufungen möglich. In diesem Sinn ist~$\Ouv(X)$ ein Modell mit mehr als zwei
 Wahrheitswerten.
 
 \begin{bsp}Sei~$X$ die Erdoberfläche. Dann kann man zwei atomare Aussagen~$A$
@@ -1567,6 +1567,12 @@ definieren. Da in klassischer Logik genau dann~$U \subseteq V^c \cup W$,
 wenn~$U \cap V \subseteq W$, ist diese Definition in klassischer Logik zu
 obiger äquivalent.\end{bem}
 
+\begin{bem}Die Menge~$\Ouv(X)$ der offenen Teilmengen von~$X$ hat die Struktur
+einer \emph{Heyting-Algebra}. Etwas allgemeiner kann man Modelle
+intuitionistischer propositionaler Logik in beliebigen Heyting-Algebren
+untersuchen (und nicht nur solchen, die von topologischen Räumen
+stammen).\end{bem}
+
 
 \subsubsection*{Topologische Interpretation des Prinzips vom ausgeschlossenen
 Dritten}
@@ -1577,19 +1583,30 @@ Menge
 (\brak{\varphi}^c), \]
 also die Vereinigung von~$\brak{\varphi}$ mit dem Inneren ihres Komplements. Es
 ist klar, dass diese Vereinigung in den meisten interessanten Fällen nicht
-gleich ganz~$X$ ist; das Prinzip vom ausgeschlossenen Dritten gilt also in den
+gleich ganz~$X$ ist -- es fehlt der Rand von~$\brak{\varphi}$; das Prinzip vom
+ausgeschlossenen Dritten gilt also in den
 wenigsten topologischen Modellen.
 
 % XXX: Anschauliche Interpretation
 
 
-\subsubsection*{Ausblick: Garbenmodelle für intuitionistische Prädikatenlogik}
-
-% XXX: van Dalen und Locales and toposes as spaces, Vickers, zitieren.
+\subsubsection*{Ausblick: Kategorielle Modelle für intuitionistische Prädikatenlogik}
 
 Ein Modell für intuitionistische Prädikatenlogik benötigt nicht nur
 Wahrheitswerte, sondern auch Objekte, aus denen die Variablenwerte gezogen
-werden können. \XXX{Hinführung auf Garbenmodelle}
+werden können: Grundlage für ein solches Modell ist also eine Kategorie, in der
+jeder Typ des untersuchten intuitionistischen Systems durch ein Objekt der
+Kategorie repräsentiert wird. Um die Junktoren~$\wedge$, $\vee$
+und~$\Rightarrow$ interpretieren zu können, muss für jedes Objekt~$A$ der
+Kategorie die Menge der Unterobjekte von~$A$ die Struktur einer Heyting-Algebra
+tragen. Den All- und den Existenzquantor interpretiert man als Rechts-
+bzw. Linksadjungierte zu induzierten Rückzugsabbildungen.
+
+Wichtige Beispiele für solche Kategorien sind \emph{Topoi}. In
+Abschnitt~\ref{sect:topoi} gehen wir genauer darauf ein, wie man in ihnen
+intuitionistische Logik interpretiert.
+Zur weiterführenden Lektüre eignen sich das
+Vorlesungsskript~\cite{streicher:ctcl} und der Artikel~\cite{vickers:loctop}.
 
 
 \section[Beziehung zur theoretischen Informatik: die
@@ -2623,6 +2640,7 @@ möglich.\end{bem}
 
 \subsection{Topoi als mathematische Alternativuniversen}
 
+\label{sect:topoi}%
 Topostheorie hat viele Facetten. Hier betonen wir nur eine, nämlich
 die Auffassung von Topoi als mathematische Alternativuniversen. Unter anderem
 hat Topostheorie aber auch eine geometrische Komponente: Topoi kann man als
