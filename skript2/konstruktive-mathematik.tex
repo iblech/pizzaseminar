@@ -590,6 +590,7 @@ Bücher~\cite{mines:richman:ruitenburg} und~\cite{bishop:bridges:bible}
 studieren. Das erste entwickelt einen konstruktiven Zugang zu kommutativer Algebra, das
 zweite einen zu Analysis.
 
+% XXX: nLab und Andrej Bauer
 
 \section{Nutzen konstruktiver Mathematik}
 
@@ -1289,14 +1290,15 @@ gesehen. Die Untersuchung aller weiteren Schlussregeln überlassen wir den Leser
 Heyting-Arithmetik.\end{kor}
 \begin{proof}Man kann leicht nachprüfen, dass die
 Doppelnegationsübersetzungen der Peano-Axiome wiederum Instanzen den
-Peano-Axiome sind und daher auch in Heyting-Arithmetik gelten. Daher kann man
+Peano-Axiome sind und daher auch in Heyting"=Arithmetik gelten. Daher kann man
 eine Ableitung von~$\bot$ in Peano-Arithmetik in eine Ableitung
 von~$\bot^\circ \equiv \bot$ in Heyting-Arithmetik überführen.\end{proof}
 
-Folgendes Lemma werden wir erst später, im Abschnitt über Friedmans Trick, benötigen:
+Folgendes Lemma werden wir erst später, in Abschnitt~\ref{sect:friedman} über
+Friedmans Trick, benötigen:
 \begin{lemma}\label{dnt:geom}Sei~$\varphi$ eine Aussage, in der nur~$\top$, $\bot$,
 $\wedge$, $\vee$ und $\exists$ (über
-bewohnte Typen), aber nicht~$\Rightarrow$ oder~$\forall$ vorkommen. Dann gilt
+bewohnte Typen), aber nicht~$\Rightarrow$ und~$\forall$ vorkommen. Dann gilt
 intuitionistisch: $\varphi^\circ \Longleftrightarrow \neg\neg\varphi$.
 \end{lemma}
 \begin{proof}Induktion über den Aussageaufbau.\end{proof}
@@ -1376,7 +1378,7 @@ Wir wollen sehen, wie man das klassische Prinzip~$\varphi \vee
 \end{dialogue}
 Wenn~$\varphi$ eine allgemeine Aussage ist, kann Alice nicht wissen,
 ob~$\varphi$ oder~$\neg\varphi$ gilt. Sie hat daher an dieser Stelle geblufft.
-Da sie eine behauptet -- nämlich~$(\varphi \Rightarrow \bot)$ --, ist nun Eve
+Da sie eine Implikation behauptet -- nämlich~$(\varphi \Rightarrow \bot)$ --, ist nun Eve
 wieder an der Reihe. Sie kann nur dann in ihrem Vorhaben, Alice zu widerlegen,
 fortfahren, wenn sie einen Beleg von~$\varphi$ präsentiert und dann Alice
 herausfordert, ihr Versprechen, daraufhin einen Beleg von~$\bot$ zu
@@ -1455,7 +1457,6 @@ hier ist Beleg von~$\bot$: $z$.
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
 LCM, Stein der Weisen, \ldots
 
-% XXX: Umgekehrte Übersetzung nicht möglich
 % XXX: Feinere Unterschiede
 
 
@@ -1826,6 +1827,7 @@ Später änderte Gordan übrigens seine Meinung:
 
 \subsection{Beispiel aus der Zahlentheorie: Friedmans Trick}
 
+\label{sect:friedman}%
 \begin{defn}Die \emph{Friedmanübersetzung}
 wird für eine feste Aussage~$F$ wie folgt rekursiv definiert:
 \begin{align*}
@@ -2250,8 +2252,8 @@ Darstellung ist der gesuchte explizite Zeuge der Implikation.
 
 Satz~\ref{satz:genprime} hat gezeigt, dass man die klassische Vorgehensweise
 \begin{quote}
-Um zu zeigen, dass ein Element~$x \in R$ nilpotent ist, zeige, dass es in allen
-Primidealen liegt.\end{quote}
+\emph{Um zu zeigen, dass ein Element~$x \in R$ nilpotent ist, zeige, dass es in allen
+Primidealen liegt.}\end{quote}
 konstruktiv rechtfertigen kann -- obwohl konstruktiv nicht bewiesen werden
 kann, dass der Schnitt aller Primideale nur die Menge der nilpotenten Elemente
 ist. Klassisch gibt es aber auch noch folgendes stärkeres Prinzip:
