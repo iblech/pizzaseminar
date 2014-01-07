@@ -2157,10 +2157,10 @@ dass für Ringelemente~$a_1,\ldots,a_n, b \in R$ genau dann in der internen
 Sprache die Implikation
 \[ \Spec A \models a_1,\ldots,a_n \in Z \Rightarrow b \in Z \]
 gilt, wenn~$b \in \sqrt{(a_1,\ldots,a_n)}$. Also ist das Ideal~$Z$ im Topos der
+% XXX: Stimmt nur im Fall n = 0...
 Garben auf~$\Spec R$ eine Verkörperung des generischen Primideals. Die
 Lokalisierung von~$\ul{R}$ an diesem Primideal ist übrigens die
 Strukturgarbe~$\O_{\Spec R}$.}
-% XXX: Den letzten Satz nochmal prüfen.
 \end{bem}
 
 \begin{bem}Die Beschränkungen in Satz~\ref{satz:genprime} an die Form des
@@ -2211,8 +2211,6 @@ Radikalideale nachbauen. Nun ist es leicht, die Behauptung zu zeigen:
     \text{für gewisse~$m \geq 0$, $u_1,\ldots,u_n \in R$.} \qedhere
 \end{align*}
 \end{proof}
-
-% XXX: Wieso heißt es "dynamische Methoden"?
 
 Nur zur Illustration wollen wir auch noch einen Alternativbeweis des Satzes
 führen, welcher die speziellen Möglichkeiten klassischer Logik nutzt, daher
@@ -2334,6 +2332,7 @@ extrahieren.
 \begin{proof}Wird nachgeliefert. Die Idee ist wieder, ein Modell anzugeben. Die
 Interpretation einer Aussage im Kontext~$x_1,\ldots,x_n$ soll dabei ein
 Radikalideal in~$R[x_1,\ldots,x_n]$ sein.\end{proof}
+% XXX
 
 
 \section{Ein topostheoretischer Zugang zu Quantenmechanik: der Bohr-Topos}
@@ -2495,8 +2494,7 @@ beliebig vieler dichter Unterörtlichkeiten einer nichttrivialen Örtlichkeit.\e
 
 Umgekehrt spiegelt auch die Örtlichkeit zu einem topologischen Raum diesen nur
 dann getreu wieder, wenn dieser \emph{nüchtern} war. Jeder Hausdorffraum ist
-nüchtern.
-% XXX: Stimmt das konstruktiv?
+nüchtern (in klassischer Logik).
 Stattet man aber etwa eine aus mehr als nur einem Element bestehende Menge 
 mit der indiskreten Topologie aus, erhält man einen
 topologischen Raum, der nicht nüchtern ist: Die Vielzahl seiner Punkte schlägt
@@ -2541,7 +2539,8 @@ Observablen \emph{Position} und \emph{Impuls}.\end{bsp}
 
 Auf der algebraischen Seite gehört zum Phasenraum~$\Sigma$ eine \csalgebra~$A
 := C(\Sigma, \CC)$; es ergibt sich dann folgendes Wörterbuch zwischen
-Formulierungen auf der geometrischen und der algebraischen Seite:
+Formulierungen auf der geometrischen und der algebraischen
+Seite~\cite{nlab:classmech}:
 
 \begin{itemize}
 \item \emph{Reine Zustände} sind Punkte~$x \in \Sigma$ oder, da~$\Sigma \cong \Spec
@@ -2550,7 +2549,7 @@ A$, äquivalent \csalgebren{}\-ho\-mo\-mor\-phis\-men $A \to \CC$.
 \item \emph{Gemischte Zustände} sind Wahrscheinlichkeitsmaße~$\mu$ auf~$\Sigma$ oder
 äquivalent lineare Abbildungen~$\rho : A \to \CC$, welche normiert
 (d.\,h.~$\rho(1) = 1$) und positiv sind (d.\,h.~$\rho(a^\star a) \geq 0$
-für alle~$a \in A$).
+für alle~$a \in A$). (Solche Abbildungen sind automatisch stetig.)
 
 Der Zusammenhang zwischen den beiden Sichtweisen wird durch
 \[ \rho(f) = \int_\Sigma f(x) \,d\mu(x) \]
@@ -2582,12 +2581,9 @@ Ist~$\rho = \freist(x)$ ein reiner Zustand, so ist~$\rho(a) = a(x)$ nicht nur
 der Erwartungswert, sondern der tatsächliche Wert von~$a$.
 \end{itemize}
 
-\XXX{Phasenräume sind doch eher symplektische Mannigfaltigkeiten oder
-Pois\-son-Man\-nig\-fal\-tig\-kei\-ten. Wieso ignoriert man die glatte
-Struktur? Wieso erlaubt man beliebige stetige Abbildungen?}
-
-\XXX{Wie heißt die mathematische Theorie, die tatsächlich so wie oben
-beschrieben vorgeht?}
+\begin{bem}In Anwendungen ist der Phasenraum sogar eine
+(Poisson"~)""Mannigfaltigkeit. Diese zusätzliche Struktur sollte man nicht
+ignorieren. Machen wir hier aber trotzdem.\end{bem}
 
 
 \subsubsection*{Quantenmechanik}
@@ -3028,7 +3024,7 @@ Definition.)
 Wir zeigen also
 \[ \Bohr(A) \models \forall a,b\?\ul{A}\_ a b = b a. \]
 Nach der Kripke-Joyal-Semantik in Koprägarbentopoi (in diesem Skript nicht
-angegeben) müssen wir dazu
+angegeben, aber etwa in~\cite[Seite~100f.]{streicher:ctcl} zu finden) müssen wir dazu
 \[ \forall C \in \C(A)\_ \forall a,b \in \ul{A}(C)\_ a b = b a \]
 nachweisen. Das ist trivial.\end{proof}
 
@@ -3123,6 +3119,7 @@ besitzt aber trotzdem keine Punkte.
 %Observablen zuzuordnen.
 
 % XXX: Vergleich Hilbertraumzugang
+
 
 \appendix
 \section{Das Auswahlaxiom impliziert das Prinzip vom ausgeschlossenen Dritten}
@@ -3808,6 +3805,8 @@ passenden Logarithmus gibt.
 % "demnach"
 
 % können wir Corfield zitieren?
+
+% Sind alle Quellen zitiert?
 
 In einer hyphotetischen überarbeiteteten Version:
 
