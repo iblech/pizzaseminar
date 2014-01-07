@@ -2950,7 +2950,15 @@ die Quere kommt.
 \begin{defn}Der \emph{Bohr-Topos} zur \csalgebra~$A$ ist die Koprägarbenkategorie
 \[ \Bohr(A) := [\C(A), \Set] \]
 aller Funktoren~$\C(A) \to \Set$ und natürlichen Transformationen zwischen
-ihnen.\end{defn}
+ihnen.\footnote{Äquivalent kann man den Bohr-Topos auch als den Garbentopos
+über~$A$, versehen mit der Alexandroff-Topologie, auffassen: Die offenen Mengen
+sind dabei die nach oben abgeschlossenen Teilmengen, und eine Basis der
+Topologie ist durch die Teilmengen der Form~${\uparrow}(C) := \{ C' \in \C(A)
+\,|\, C \subseteq C' \}$ für~$C \in \C(A)$ gegeben. Unter dieser Äquivalenz
+induziert eine Garbe~$F$ auf diesem
+Raum einen Funktor~$\C(A) \to \Set$ durch die Setzung~$C \mapsto
+F({\uparrow}(C))$.}
+\end{defn}
 
 Ein solcher Funktor~$F : \C(A) \to \Set$ ordnet auf konsistente Art und Weise
 jedem klassischen Kontext~$C \subseteq A$ eine Menge~$F(C)$ zu. Gewissermaßen
