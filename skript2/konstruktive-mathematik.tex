@@ -142,11 +142,14 @@
   \endlist
 }
 
+\newcommand{\Erzaehler}{\item[Erzähler]}
+\newcommand{\Koenigin}{\item[Königin]}
+\newcommand{\Philosoph}{\item[Philosoph]}
 \newcommand{\Alice}{\item[Alice]}
 \newcommand{\Eve}{\item[Eve]}
-\newenvironment{dialogue}{%
+\newenvironment{dialogue}[1]{%
   \begin{list}{}{%
-    \settowidth{\labelwidth}{\qquad\emph{Alice:}}
+    \settowidth{\labelwidth}{\qquad\emph{#1:}}
     \setlength{\labelsep}{0.3cm}
     \setlength{\leftmargin}{\labelwidth}
     \addtolength{\leftmargin}{\labelsep}
@@ -1383,7 +1386,7 @@ Wir stellen uns ein besonders kritisches Gegenüber vor, das unsere Behauptung
 bezweifelt. In einem Dialog versuchen wir dann, das Gegenüber zu überzeugen.
 Eine typische Stetigkeitsüberzeugung sieht etwa wie folgt aus:
 
-\begin{dialogue}
+\begin{dialogue}{Alice}
 \Eve Ich gebe dir~$x = \cdots$ und~$\varepsilon = \cdots$ vor.
 \Alice Gut, dann setze ich~$\delta = \cdots$.
 \Eve Dann ist hier ein~$\tilde x = \cdots$ zusammen mit einem Beleg von~$|x -
@@ -1437,7 +1440,7 @@ durchführen darf.
 
 Wir wollen sehen, wie man das klassische Prinzip~$\varphi \vee
 \neg\varphi$ mit Hilfe von Zeitsprüngen vertreten kann.
-\begin{dialogue}
+\begin{dialogue}{Alice}
 \Eve Zeige mir~$\varphi \vee \neg\varphi$!
 \Alice Gut! Es gilt~$\neg\varphi$.
 \end{dialogue}
@@ -1452,14 +1455,14 @@ präsentieren, einzulösen.
 Wenn es keinen Beleg von~$\varphi$ gibt, ist das Streitgespräch daher an dieser
 Stelle beendet, und Alice hat sogar die Wahrheit gesagt. Andernfalls geht es
 weiter:
-\begin{dialogue}
+\begin{dialogue}{Alice}
 \Eve Aber hier ist ein Beleg von~$\varphi$: $x$. Belege mir nun~$\bot$!
 \end{dialogue}
 Wenn Alice nicht die Inkonsistenz des untersuchten formalen Systems nachweisen
 kann, hat sie nun ein Problem: Ihre Lüge von Beginn straft sich, sie kann das
 Gespräch nicht fortsetzen. Sie muss daher in einem Logikwölkchen verschwinden
 und in der Zeit zurückspringen:
-\begin{dialogue}
+\begin{dialogue}{Alice}
 \Eve Zeige mir~$\varphi \vee \neg\varphi$!
 \Alice Gut! Es gilt~$\varphi$, hier ist ein Beleg: $x$.
 \end{dialogue}
@@ -1489,7 +1492,7 @@ für beliebige Aussagen~$\varphi$ sogar das Prinzip $\neg\neg(\varphi \vee
 und dieses geringfügig übersichtlicher ist, wollen wir tatsächlich dieses in Dialogform
 belegen.
 
-\begin{dialogue}
+\begin{dialogue}{Alice}
 \Eve Zeige mir~$\neg\neg(\varphi \vee \neg\varphi)$!
 Präsentiere mir also einen Beleg von~$\bot$, wobei du auf mich zurückkommen
 kannst, wenn du einen Beleg von~$\varphi \vee \neg\varphi$ hast; dann
@@ -1502,7 +1505,7 @@ Wie oben ist das Gespräch an dieser Stelle beendet, wenn Eve nicht einen Beleg
 von~$\varphi$ produzieren kann, mit dem sie Alice herausfordern könnte. Falls
 sie das doch schafft, geht es wie folgt weiter:
 
-\begin{dialogue}
+\begin{dialogue}{Alice}
 \Eve Ach wirklich? Hier ist ein Beleg von~$\varphi$: $x$. Zeige mir nun einen
 Beleg von~$\bot$!
 \Alice Dann komme ich auf deine Verpflichtung mir gegenüber ein zweites Mal
@@ -1514,6 +1517,11 @@ Pflicht erfüllt.
 hier ist Beleg von~$\bot$: $z$.
 \Alice Danke. Dann ist hier Beleg von~$\bot$, wie gefordert: $z$.
 \end{dialogue}
+
+
+\subsubsection*{Hintergrund aus der theoretischen Informatik}
+
+
 
 % XXX Fazit
 
