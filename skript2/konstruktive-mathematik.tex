@@ -558,9 +558,9 @@ Potenzmenge hat (potenziell!) viel mehr Struktur. Das ist Gegenstand einer
 Übungsaufgabe.
 
 
-\subsection{Die De Morganschen Gesetze}
+\subsection{Die De-Morganschen Gesetze}
 
-In klassischer Logik verwendet man oft die De Morganschen Gesetze, manchmal
+In klassischer Logik verwendet man oft die De-Morganschen Gesetze, manchmal
 sogar implizit, um verschachtelte Aussagen zu vereinfachen. In konstruktiver
 Mathematik lässt sich nur noch eines der beiden Gesetze in seiner vollen Form
 nachweisen. Den Beweis der folgenden Proposition führen wir mit Absicht recht
@@ -643,9 +643,14 @@ zu~$\neg\neg\varphi$.
 Wer auf den Geschmack gekommen ist, kann die
 Bücher~\cite{mines:richman:ruitenburg} und~\cite{bishop:bridges:bible}
 studieren. Das erste entwickelt einen konstruktiven Zugang zu kommutativer Algebra, das
-zweite einen zu Analysis.
+zweite einen zu Analysis. Außerdem ist das Blog~\cite{bauer:blog} von Andrej
+Bauer eine leicht verständliche Quelle interessanter Beispiele. Von ihm gibt es
+auch eine seheswerte Videoaufzeichnung eines Vortrags mit dem Titel \emph{Five
+Stages of Accepting Constructive Mathematics}~\cite{bauer:video}. Das
+nLab-Wiki~\cite{nlab}, das allgemein ein gutes Nachschlagewerk ist, wenn man an
+tieferen Hintergründen interessiert ist, diskutiert in vielen Artikeln auch die
+konstruktive Situation.
 
-% XXX: nLab und Andrej Bauer
 
 \section{Nutzen konstruktiver Mathematik}
 
@@ -770,7 +775,7 @@ mit~$\varepsilon^2 = 0$, aber~$\varepsilon \neq 0$.\end{quote}
 möglich: Denn in klassischer Logik sind diese Axiome offensichtlich schlichtweg
 falsch. Sie sind aber durchaus interessant: Sie können die Arbeit
 rechnerisch und konzeptionell vereinfachen (man muss nur einen Blick zu den
-Physikern werfen), und es gibt Metatheoreme, die garantieren, dass Folgerungen
+Physikern werfen), und es gibt Meta-Theoreme, die garantieren, dass Folgerungen
 aus diesen Axiomen, welche nur mit konstruktiven Schlussregeln getroffen wurden
 und eine bestimmte logische Form aufweisen, auch im üblichen klassischen Sinn
 gelten. Zu \emph{glatter infinitesimaler Analysis} gibt es von John Bell eine
@@ -832,11 +837,12 @@ den sog. \emph{Bohr-Topos}, aus dessen Sicht diese Algebra kommutativ ist; auf
 diese Weise vereinfacht sich manches. (Was genau, werden wir noch gemeinsam
 herausfinden.)
 \end{itemize}
-Siehe~\cite{leinster:topos} für eine informale Einführung in Topostheorie
-und~\cite{moerdijk:maclane:sheaves} für ein Lehrbuch, das auch die interne
-Sprache ausführlich diskutiert. Als Referenzen sind~\cite{johnstone:elephant}
-für Topostheorie und~\cite{lambek:scott:hocatlogic} speziell für kategorielle
-Logik geeignet.
+Der Kurzüberblick~\cite{baez:topos} und die informale
+Einführung~\cite{leinster:topos} bieten sich als nächste Anlaufstellen zu
+Topostheorie an.
+Das Lehrbuch~\cite{moerdijk:maclane:sheaves} diskutiert auch ausführlich die
+interne Sprache. Als Referenzen sind~\cite{johnstone:elephant} für Topostheorie
+und~\cite{lambek:scott:hocatlogic} speziell für kategorielle Logik geeignet.
 
 
 \section{Die Schlussregeln intuitionistischer Logik}
@@ -3391,7 +3397,7 @@ Dieser Beweis ist aus zwei Gründen inhärent klassisch: Zum einen, weil
 er ein echter Widerspruchsbeweis ist; zum anderen, weil das Lemma von Zorn
 verwendet wird (dieses ist zum Auswahlaxiom äquivalent). Man kann sogar zeigen,
 dass ein konstruktiver Beweis dieser Proposition nicht möglich ist. Daher
-ist folgendes Metatheorem absolut erstaunlich:
+ist folgendes Meta-Theorem absolut erstaunlich:
 
 \begin{wunder}Sei~$x \in R$ ein Element eines Rings. Sei ein \emph{klassischer
 Beweis} (einer gewissen Form) der Aussage~$x \in \pp$, wobei man von~$\pp$ nur
@@ -3478,7 +3484,6 @@ Teilmengen (bzw.  offenen Dinge) von~$X$, also ein Funktor~$\Ouv(X)^\op \to
 Transformation~$\F \to \G$.
 \end{enumerate}
 \end{defn}
-% XXX: stimmt "dünn"?
 
 Ist~$\F$ eine Prägarbe auf~$X$ und~$U \subseteq X$ eine offene
 Menge, so schreibt man auch~"`$\Gamma(U, \F)$"' für~$\F(U)$ und nennt die
@@ -3508,7 +3513,7 @@ Funktionen definieren -- man setzt $\Gamma(U, \C^\infty) := \{ U \xra{f} \RR
 \item Eine Prägarbe~$\F$ auf~$X$ heißt genau dann \emph{Garbe}, wenn
 folgendes Verklebeaxiom erfüllt ist: Ist~$U = \bigcup_i U_i \subseteq X$ eine
 offene Überdeckung einer offenen Teilmenge und ist~$(s_i)_{i \in I}$ eine
-Familie von Schnitten mit~$s_i \in \Gamma(U_i, \F)$, welche auf Überlapps
+Familie von Schnitten mit~$s_i \in \Gamma(U_i, \F)$, welche auf Überlappungen
 übereinstimmen, also
 $s_i|_{U_i \cap U_j} = s_j|_{U_i \cap U_j}$
 für alle Indizes~$i,j$ erfüllen, so soll es genau einen Schnitt~$s \in
@@ -3516,13 +3521,12 @@ für alle Indizes~$i,j$ erfüllen, so soll es genau einen Schnitt~$s \in
 \item Ein \emph{Morphismus von Garben} ist ein Morphismus der zugrundeliegenden
 Prägarben.
 \end{enumerate}\end{defn}
-% XXX: Wort "Überlapp"
 
 Die Kategorie der Garben auf~$X$, $\Sh(X)$, ist also eine volle Unterkategorie
 der Kategorie der Prägarben auf~$X$, $\PSh(X)$.
 
 \begin{bsp}Die Prägarben~$\C^0$ und~$\C^\infty$ (sofern definierbar) sind
-Garben: Man kann stetige bzw. glatte Funktionen, die auf Überlapps
+Garben: Man kann stetige bzw. glatte Funktionen, die auf Überlappungen
 übereinstimmen, miteinander \emph{verkleben}; die resultierende Funktion wird
 wieder stetig bzw. glatt sein.\end{bsp}
 
@@ -3568,14 +3572,29 @@ Garbentopos achtet von selbst darauf (siehe Abschnitt~\ref{internesprache}).
 
 \subsection{Monomorphismen und Epimorphismen von Garben}
 
-\begin{prop}Sei~$\alpha : \F \to \G$ ein Morphismus von Garben. Dann gilt:
+\begin{prop}Sei~$\alpha : \F \to \G$ ein Morphismus von Prägarben. Dann gilt:
 \begin{enumerate}
-\item Der Morphismus~$\alpha$ ist genau dann ein Monomorphismus in~$\Sh(X)$,
+\item Der Morphismus~$\alpha$ ist genau dann ein Monomorphismus in~$\PSh(X)$,
 wenn für alle offenen Teilmengen~$U \subseteq X$ die Komponente~$\alpha_U :
 \Gamma(U,\F) \to \Gamma(U,\G)$ eine injektive Abbildung ist, wenn also gilt:
 \[ \forall \text{$U \subseteq X$ offen}\_
   \forall s,t \in \Gamma(U,\F)\_
   \alpha_U(s) = \alpha_U(t) \Rightarrow s = t. \]
+\item Der Morphismus~$\alpha$ ist genau dann ein Epimorphismus in~$\PSh(X)$,
+wenn für alle offenen Teilmengen~$U \subseteq X$ die Komponente~$\alpha_U :
+\Gamma(U,\F) \to \Gamma(U,\G)$ eine surjektive Abbildung ist, wenn also gilt:
+\[ \forall \text{$U \subseteq X$ offen}\_
+  \forall s \in \Gamma(U,\G)\_
+  \exists t \in \Gamma(U,\F)\_
+  \alpha_U(t) = s. \]
+\end{enumerate}
+\end{prop}
+
+\begin{prop}Sei~$\alpha : \F \to \G$ ein Morphismus von Garben. Dann gilt:
+\begin{enumerate}
+\item Der Morphismus~$\alpha$ ist genau dann ein Monomorphismus in~$\Sh(X)$,
+wenn für alle offenen Teilmengen~$U \subseteq X$ die Komponente~$\alpha_U :
+\Gamma(U,\F) \to \Gamma(U,\G)$ eine injektive Abbildung ist.
 \item Der Morphismus~$\alpha$ ist genau dann ein Epimorphismus in~$\Sh(X)$,
 wenn jeder Schnitt von~$\G$ \emph{lokal} ein Urbild besitzt, d.\,h. wenn für
 alle offenen Teilmengen~$U \subseteq X$ und Schnitte~$s \in \Gamma(U,\G)$ eine
@@ -3585,7 +3604,7 @@ mit~$\alpha_{U_i}(t_i) = s|_{U_i}$ existieren.
 \end{prop}
 
 Wenn man sich das erste Mal mit Garben beschäftigt, verwundert vielleicht die
-Charakterisierung von Epimorphismen: Vielleicht hätte man eher die
+Charakterisierung von Epimorphismen in der Garbenkategorie: Vielleicht hätte man eher die
 Bedingung, dass alle Komponentenabbildungen~$\alpha_U$ surjektiv sind,
 erwartet. Diese stärkere Bedingung ist zwar ebenfalls hinreichend für Epimorphie,
 aber nur in der größeren Kategorie aller \emph{Prä}garben notwendig.
@@ -3601,13 +3620,16 @@ Funktionen. Dann ist der "`$\exp$"' genannte Garbenmorphismus
 \end{array} \]
 ein Epimorphismus (da man \emph{lokal} die Exponentialfunktion mittels eines
 geeigneten Zweigs des Logarithmus umkehren kann). Aber seine
-Komponentenabbildungen~$\exp_U$ sind nicht alle surjektiv.\end{bsp}
-% XXX: Genauer, welche sind es nicht?
-% XXX: Messen, inwieweit exp auf globalen Schnitten nicht surjektiv ist:
-% Chern-Klasse!
+Komponentenabbildungen~$\exp_U$ sind nicht alle surjektiv, etwa für solche
+Teilmengen~$U$, die einen Kreisring um den Ursprung umfassen.\end{bsp}
+
+\begin{bem}Mit \emph{Garbenkohomologie} kann man \emph{messen}, inwieweit ein
+Epimorphismus von Garben davon entfernt ist, auch ein Epimorphismus von
+Prägarben zu sein.
+\end{bem}
 
 \begin{bem}In den meisten Lehrbüchern sind \emph{Mono-} und \emph{Epimorphismus} speziell
-definierte Begriffe: Ein Morphismus~$\alpha : \F \to \G$ heißt dort genau dann
+definierte Begriffe: Ein Morphismus~$\alpha : \F \to \G$ von Garben heißt dort genau dann
 mono- bzw. epimorph, wenn die induzierten Abbildungen~$\alpha_x : \F_x \to
 \G_x$, $x \in X$, auf allen \emph{Halmen} injektiv bzw. surjektiv sind. Diese
 Definition ist äquivalent zur allgemeinen kategoriellen Definition und somit
@@ -3765,7 +3787,7 @@ für offene Teilmengen~$U \subseteq \CC$ gegeben. Wenn~$f$ Nullstellen besitzt,
 ist die Aussage $\exists g\?\F$ der internen Sprache nicht erfüllt: Diese
 bedeutet nämlich, dass es eine Überdeckung von~$\CC$ durch offene Mengen gibt,
 sodass es auf jeder dieser offenen Mengen~$U$ jeweils eine auf~$U$ definierte Lösung
-der Funktionalgleichung gibt (wobei diese Teillösungen auf Überlapps nicht
+der Funktionalgleichung gibt (wobei diese Teillösungen auf Überlappungen nicht
 unbedingt zusammenpassen müssen) -- das kann man kurz als das Motto \emph{Existenz in der
 internen Sprache bedeutet lokale Existenz} ausdrücken. Aber in jeder solchen Überdeckung würde
 mindestens eine offene Menge~$U$ eine Nullstelle von~$f$ enthalten, und auf
@@ -3853,15 +3875,11 @@ passenden Logarithmus gibt.
 
 % XXX: Stetigkeitsnachweise unnötig
 
-% konsistente Schreibung: Meta-Mathematik, Metatheorem etc.
-
-% Schauspiel!
-
 % "demnach"
 
 % können wir Corfield zitieren?
 
-% Sind alle Quellen zitiert?
+% Sind alle Quellen zitiert? Nein, coquand:classical zum Beispiel nicht.
 
 In einer hyphotetischen überarbeiteteten Version:
 
