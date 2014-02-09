@@ -1,0 +1,509 @@
+\documentclass[a4paper,english,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
+\usepackage{array}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{cor}[defn]{Corollary}
+% XXX: Schreibweise
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\aa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\pp}{\mathfrak{p}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\DeclareMathOperator{\Spec}{Spec}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\?}{\,{:}\,}
+
+\newcommand{\hilight}[2]{\begin{center}\framebox{#2}\par#1\end{center}}
+
+\newcommand{\speak}[1]{\ulcorner\text{#1}\urcorner}
+
+\setcounter{tocdepth}{2}
+
+\newlength{\aufgabenskip}
+\setlength{\aufgabenskip}{1.5em}
+\newcounter{aufgabennummer}
+\newenvironment{aufgabe}[1]{
+  \addtocounter{aufgabennummer}{1}
+  \textbf{Aufgabe \theaufgabennummer{}.} \emph{#1} \par
+}{\vspace{\aufgabenskip}}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\Hom}{\underline{\mathrm{Hom}}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\Rep}{\mathrm{Rep}}
+\newcommand{\Cob}{\mathrm{Cob}}
+\newcommand{\tr}{\mathrm{tr}}
+\newcommand{\rk}{\mathrm{rk}}
+\newcommand{\im}{\mathrm{im}}
+
+\begin{document}
+
+\title{Tensor categories}
+\author{Ingo Blechschmidt}
+\date{8th February 2014}
+\maketitle
+
+% XXX: Grund und Informalität
+
+\section{Basics}
+
+\begin{ex}The category~$\Mod_R$ of modules over a commutative ring~$R$ is the
+archetypical example of a tensor category.\end{ex}
+
+\begin{defn}A \emph{tensor category}~$(\C,\otimes)$ (i.\,e. a monoidal category with
+symmetric braiding) consists of
+\begin{itemize}
+\item a category~$\C$,
+\item a functor~${\otimes} : \C \times \C \to \C$ (the tensor operation),
+\item an object~$1 \in \C$ (the unit object),
+\item natural isomorphisms~$X \otimes (Y \otimes Z) \xra{\phi_{XYZ}} (X \otimes
+Y) \otimes Z$ (the associator),
+\item natural isomorphisms~$X \otimes Y \xra{\psi_{XY}} Y \otimes X$ (the
+braiding),
+\item natural isomorphisms~$1 \otimes X \xra{\lambda_X} X$ and~$X \otimes 1
+\xra{\rho_X} X$ (the unitors),
+\end{itemize}
+such that
+\begin{itemize}
+\item the braiding is symmetric: $\psi_{YX} \circ \psi_{XY} = \id_{X \otimes
+Y}$ and
+\item the following coherence conditions are satisfied:
+\[ XXX \]
+\end{itemize}
+\end{defn}
+
+The definitions mimics the definition of a monoid, only ``one level up''.
+Demanding that the tensor operation is associative and commutative on the nose
+(e.\,g. $X \otimes (Y \otimes Z) = (X \otimes Y) \otimes Z$) would be
+\emph{evil} in the technical sense, i.\,e. not invariant under equivalence of
+categories. The isomorphism classes of a tensor category form a commutative
+monoid.
+
+\begin{ex}In~$\Mod_R$, $\phi_{XYZ}$ is given by
+\[ x \otimes (y \otimes z) \longmapsto (x \otimes y) \otimes z. \]
+If~$-1 \neq 1 \in R$, introducing a sign here will cause the pentagon diagram
+to fail to commute by a sign.\end{ex}
+
+\begin{ex}Let~$\C$ be a category with finite products. Then~$(\C,\times)$ is a
+tensor category, with~$\phi, \psi, \lambda, \rho$ given by the universal
+property of the product. In particular,~$(\Set,\times)$ is a tensor
+category.\end{ex}
+
+\begin{ex}Let~$\C$ be a tensor category. Then~$\C^\op$ is in a natural way a
+tensor category, by using the inverses of the given natural
+isomorphisms.\end{ex}
+
+\begin{rem}In a general tensor category, there is no natural morphism~$X \to X
+\otimes X$.\end{rem}
+
+The coherence conditions in the definition are needed for the following reason:
+In the category of modules, we are used to dropping all parentheses when
+dealing with iterated tensor products. This is justified because between any
+two given groupings, e.\,g.
+\[ X \otimes ((Y \otimes Z) \otimes (T \otimes U)) \quad\text{and}\quad
+  ((X \otimes Y) \otimes (Z \otimes T)) \otimes U, \]
+we have a \emph{canonical} isomorphism. A classical theorem of Mac~Lane
+guarantees that the stated coherence conditions suffice to render any
+``reasonable'' diagram commutative:
+
+\begin{thm}[Mac Lane]Any (formal) diagram in a tensor category built
+by \[
+\otimes,\id,\phi,\psi,\lambda,\rho,\phi^{-1},\psi^{-1},\lambda^{-1},\rho^{-1}
+\]
+(in which both sides have the same permutation) commutes.\end{thm}
+
+The two caveats are the following: Firstly, in a given tensor category, there
+may hold certain \emph{identities} between objects for no general abstract
+reason. For example, for some totally unrelated objects~$X,Y,A,B$, it might
+hold that $X \otimes Y = A \otimes B$. Using those identities we can form
+diagrams which we do \emph{not} expect to commute. Mac~Lane's coherence theorem
+does not make any statement about those diagrams.
+
+To understand the restriction about permutations, consider the diagram
+\[ \psi_{XX} \stackrel{?}{=} \id_{X \otimes X}. \]
+We do not expect this diagram to be commutative; the permutations associated to
+both sides are not equal: $(1,2) \neq \id$.
+
+\begin{thm}[Joyal, Street]If the graphical depictions of given morphisms of a
+tensor category are ``the same'' (in~4D space), the morphisms are
+equal.\end{thm}
+
+\begin{ex}XXX\end{ex}
+
+\begin{thm}[Mac Lane]Any tensor category may be \emph{strictified}, i.\,e. is
+equivalent as a tensor category to a \emph{strict} tensor category: a category
+in which $\phi, \lambda, \rho$ (but not~$\psi$) are identities.\end{thm}
+
+
+\section{Structure in tensor categories}
+
+\begin{defn}An \emph{internal Hom} between objects $X, Y$ of a tensor
+category~$\C$ consists of
+\begin{itemize}
+\item an object~$\Hom(X,Y) \in \C$ and
+\item a morphism~$\Hom(X,Y) \otimes X \xra{\ev} Y$ (evaluation morphism)
+\end{itemize}
+such that this pair is terminal among such pairs, i.\,e. such that for any
+object~$T \in \C$ and a [fake] evaluation morphism~$T \otimes X
+\xra{\widetilde\ev} Y$ there exists an unique morphism~$f : T \to \Hom(X,Y)$
+such that the following diagram commutes:
+\[ \ev \circ (f \otimes \id_X) = \widetilde\ev. \]
+\end{defn}
+
+\begin{ex}In~$(\Set,\times)$, the internal Homs are given by the usual Hom
+sets. The evaluation morphism is given by~$(f,x) \mapsto f(x)$.\end{ex}
+
+\begin{ex}In~$\Mod_R$, the internal Homs are given by the Hom sets equipped
+with the usual module structure.\end{ex}
+
+\begin{rem}If an internal Hom~$\Hom(X,Y)$ exists for all objects~$Y \in \C$
+(and if appropriate choice principles are available), the internal Hom can be
+made into a functor~$\Hom(X,\freist) : \C \to \C$ which is right adjoint to
+taking tensor product with~$X$:
+\[ \freist \otimes X \dashv \Hom(X,\freist) \]
+\end{rem}
+
+\begin{rem}The relation with the usual Hom (which is only a set) is the
+following:
+\[ \hom(1, \Hom(X,Y)) \cong \hom(1 \otimes X, Y) \cong \hom(X,Y). \]
+\end{rem}
+
+\begin{rem}In~$(\Set,\amalg)$, internal Homs do not exist in general: This is
+because in general,~$\freist \amalg X$ does not preserve colimits and so cannot
+be a left adjoint.\end{rem}
+
+\begin{defn}\begin{enumerate}\item A \emph{dual} of an object~$X$ is an internal
+Hom~$X^\vee := \Hom(X,1)$. \item The \emph{dual} of a morphism~$f : X \to Y$ is
+the unique morphism~$f^t : Y^\vee \to X^\vee$ rendering the diagram
+commutative (if~$X^\vee$ and~$Y^\vee$ exist).\end{enumerate}\end{defn}
+
+\begin{ex}In~$\Mod_R$, $f^t : \theta \mapsto \theta \circ f$.\end{ex}
+
+\begin{prop}In any tensor category, the set~$\End(1) = \hom(1,1)$ is a
+commutative monoid with respect to composition of morphisms.\end{prop}
+\begin{proof}The results holds even if there would be no braiding:
+On~$\End(1)$, the tensor product induces a second binary operation. By the
+coherence conditions, this operation commutes with the operation given by
+composition, so by the famous Eckmann--Hilton theorem, both operations coincide
+and are commutative.\end{proof}
+% XXX: Schreibweise Eckmann-Hilton
+
+\begin{ex}In~$\Mod_R$, $\End(1) \cong R$.\end{ex}
+
+\begin{ex}In~$(\Set,\prod)$, $\End(1) = \{\id\}$.\end{ex}
+
+
+\section{Tensor functors}
+
+\begin{defn}A \emph{tensor functor}~$F : (\C,\otimes) \to (\C',\otimes')$
+consists of
+\begin{enumerate}
+\item a functor~$F : \C \to \C'$,
+\item natural isomorphisms~$FX \otimes' FY \xra{c_{XY}} F(X \otimes Y)$ and
+\item an isomorphism~$1' \xra{e} F1$
+\end{enumerate}
+such that the following coherence conditions are satisfied:
+\[ XXX \]
+\end{defn}
+
+\begin{ex}The forgetful functor~$\Rep_k(G) \to \Vect_k$ of the category
+of finite-dimensional~$k$-linear representations of a group (or group
+scheme)~$G$ is a tensor functor.\end{ex}
+
+\begin{ex}Extension of scalars defines a tensor functor~$\Mod_R \to
+\Mod_S$.\end{ex}
+
+\begin{ex}A quantum field theory determines a tensor functor~$\Cob_d \to
+\Vect_k$.\end{ex}
+
+\begin{defn}A \emph{morphism of tensor functors} $\eta : (F,c,e) \to
+(\tilde F,\tilde c,\tilde e)$ consists of a natural transformation~$\eta : F \to
+\tilde F$ which is compatible with the coherence isomorphisms:
+\[ XXX \]
+\end{defn}
+
+
+\section{Rigid tensor categories}
+
+\begin{defn}A tensor category~$\C$ is \emph{rigid} iff
+\begin{itemize}
+\item all internal Homs exist,
+\item the natural morphisms
+\[ \Hom(X_1,Y_1) \otimes \Hom(X_2,Y_2) \longrightarrow
+  \Hom(X_1 \otimes Y_1, X_2 \otimes Y_2) \]
+are isomorphisms and
+\item all objects~$X \in \C$ are \emph{reflexive} (i.\,e. the natural map~$X
+\to X^{\vee\vee}$ is an isomorphism).
+\end{itemize}
+\end{defn}
+
+\begin{ex}The category~$\Vect^\text{fd}_k$ of finite-dimensional is
+rigid.\end{ex}
+
+\begin{ex}More
+generally, the category~$\Mod^\text{fin.\,free}_R$ of finitely free~$R$-modules
+is rigid.\end{ex}
+
+\begin{ex}Changing toposes, the category of locally free~$\O_{\Spec R}$ modules
+is rigid. (This category is equivalent to category of finitely generated
+projective~$R$-modules, by the tilde construction.)\end{ex}
+
+\begin{ex}The category~$\Rep_k(G)$ is rigid.\end{ex}
+
+\begin{rem}Let~$\C$ be a rigid category. Then the functor~$\C \to \C^\op, X
+\mapsto X^\vee$ is an equivalence of tensor categories.\end{rem}
+
+In a rigid tensor category, we can define the notion of traces:
+\begin{defn}\begin{enumerate}
+\item The \emph{trace} of an endomorphism~$f : X \to X$ in a rigid tensor
+category is the following element of~$\End(1)$:
+\[ f \in \hom(X,X) \cong
+  \hom(1,\Hom(X,X)) \cong
+  \hom(1,X^\vee \otimes X) \to
+  \hom(1,1) \ni: \tr f. \]
+\item The \emph{rank} (or \emph{Euler characteristic}) of an object~$X$ is the
+trace of the identity morphism on~$X$.
+\end{enumerate}\end{defn}
+
+Trace and rank satisfy the relations you expect:
+\begin{lemma}\begin{enumerate}
+\item $\tr(f \otimes f') = \tr(f) \circ \tr(f'), \quad
+  \tr(f \circ g) = \tr(g \circ f).$
+\item $\rk(X \otimes X') = \rk(X) \circ \rk(X'), \quad
+  \rk(1) = \id_1.$
+\end{enumerate}\end{lemma}
+
+\begin{lemma}In a rigid tensor category, a pair~$(Y, Y \otimes X \xra{\ev} 1)$
+is a dual of~$X$ iff there exists a morphism $1 \xra{\varepsilon} X \otimes Y$
+such that the following triangle identities hold:
+\[ XXX \]
+\end{lemma}
+\begin{proof}Given a pair~$(T, T \otimes X \xra{\widetilde\ev} 1)$,
+construct~$f : T \to Y$ as follows:
+\[ XXX \]
+Then the relevant diagram commutes, since
+\[ XXX. \]
+Use the second triangle identity to show uniqueness.
+
+For the converse direction, construct~$\varepsilon$ by dualizing~$\ev$.
+\end{proof}
+
+\begin{rem}Rigidity is only necessary for the converse direction: A pair~$(Y, Y
+\otimes X \xra{\ev} 1)$ which satisfies the condition stated in lemma is always
+a dual---and in fact, because the condition is symmetric, the coevaluation
+morphism exhibits~$X$ as a dual of~$Y$. In particular, $X$ is
+reflexive.\end{rem}
+% XXX: always
+
+\begin{prop}Let~$F : \C \to \C'$ be a tensor functor, with~$\C$ rigid.
+Let~$X,Y \in \C$. Then an internal Hom~$\Hom(FX,FY)$ exists in~$\C'$ and the
+natural morphism
+\[ F(\Hom(X,Y)) \longrightarrow \Hom(FX,FY) \]
+is an isomorphism.\end{prop}
+\begin{proof}It is enough to show that in~$\C'$ a dual of~$FX$ exists and that
+the natural morphism
+\[ F(X^\vee) \longrightarrow (FX)^\vee \]
+is an isomorphism. This is obvious by the lemma, as the given condition is
+preserved by~$F$.\end{proof}
+
+\begin{cor}$\tr F(f) = F(\tr f), \quad \rk FX = F(\rk X)$.\end{cor}
+
+\begin{prop}In a rigid category, $\freist \otimes X$ is not only a left, but
+also a right adjoint:
+\[ \Hom(X,\freist) \dashv \freist \otimes X \dashv \Hom(X,\freist). \]
+\end{prop}
+\begin{cor}In a rigid category, the tensor operation is continuous and
+cocontinuous.\end{cor}
+
+
+\section{Abelian tensor categories}
+
+\begin{defn}An \emph{abelian tensor category} is a tensor
+category~$(\C,\otimes)$ such that~$\C$ is abelian and~$\otimes$ is
+bi-additive.\end{defn}
+
+\begin{rem}In an abelian category,~$\End(1)$ is a commutative ring.\end{rem}
+
+\begin{lemma}Let~$\C$ be an abelian tensor category. Let~$X \in \C$.
+\begin{enumerate}
+\item Assume that the unit~$1$ is a simple object and that~$\C$ is rigid. Then:
+\[ X \not\cong 0 \quad\Longrightarrow\quad
+  \text{$X^\vee \otimes X \to 1$ is epic.} \]
+\item Assume that~$1 \not\cong 0 \in \C$. Then:
+\[ X \not\cong 0 \quad\Longleftarrow\quad
+  \text{$X^\vee \otimes X \to 1$ is epic.} \]
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+\begin{enumerate}
+\item Because the unit is simple, the natural morphism~$X^\vee \otimes X \to 1$
+is either zero or epic. (This follows by considering the image of the
+morphism.) Under the correspondence
+\[ \hom(X^\vee \otimes X,1) \cong \hom(X,X^{\vee\vee}), \]
+the morphism corresponds to the natural morphism~$X \to X^{\vee\vee}$. If this
+was zero,~$X$ were zero as well.
+\item Assume~$X \cong 0$. Then we have an epic morphism~$0 \to 1$. By
+terminality of the zero object, this is an isomorphism.
+\end{enumerate}
+\end{proof}
+% XXX: Konjunktiv
+
+\begin{rem}The rigidity is necessary: In~$\Mod_\ZZ$, the object~$\ZZ/(2)$ is
+not isomorphic to the zero object, but the morphism~$(\ZZ/(2))^\vee \otimes
+\ZZ/(2) \to \ZZ$ has zero codomain.\end{rem}
+
+\begin{prop}Let~$\C$ be a rigid abelian tensor category with~$1 \in \C$ simple.
+Let~$\C'$ be an abelian tensor category with~$1 \not\cong 0$. Then any exact
+tensor functor~$F : \C \to \C'$ is faithful.\end{prop}
+\begin{proof}Let~$Ff = 0$. If~$f \neq 0$, then~$\im(f) \not\cong 0$. So by the
+lemma, the natural morphism~$\im(f)^\vee \otimes \im(f) \to 1$ is epic.
+Because~$F$ is exact and preserves duals, the natural morphism
+$\im(Ff)^\vee \otimes \im(Ff) \to 1$ is epic as well. Again by the lemma, it
+follows that~$\im(Ff) \not\cong 0$. This is a contradiction.\end{proof}
+
+\begin{rem}The simpleness of the unit is necessary: Let~$\C$ and~$\D$ be rigid abelian
+categories. Then the projection functor~$\C \times \D \to \C$
+is exact, but in general not faithful.\end{rem}
+
+\begin{cor}Let~$k$ be a field and~$R$ be a ring with~$1 \neq 0 \in R$.
+Let~$\varphi : k \to R$ be a ring homomorphism. Then~$\varphi$ is
+injective.\end{cor}
+\begin{proof}By the proposition, the functor~$F : \Vect_k^\text{fd} \to
+\Mod_R$ (extension of scalars) is faithful. Let~$\varphi(x) = 0$. Then the
+image of the map~$k \to k$, multiplication by~$x$, is zero in~$\Mod_R$. So by
+faithfullness, the map is already zero on~$k$, so~$x = 0$.\end{proof}
+
+\begin{prop}Let~$\C$ be a rigid abelian tensor category. Let~$U \hookrightarrow
+1$ be a subobject. Then the unit object decomposes as the direct sum
+\[ 1 \cong U \oplus U^\perp, \]
+where~$U^\perp = \ker(1 \to U^\vee)$.\end{prop}
+\begin{proof}\begin{enumerate}
+\item Consider the cokernel~$V$ of~$U \hookrightarrow 1$; we then have a short
+exact sequence
+\[ 0 \longrightarrow U \longrightarrow 1 \longrightarrow V \longrightarrow 0.
+\]
+\item By rigidity, tensoring is exact; so we obtain the diagram
+\[ XXX \]
+with exact rows. Because the morphism~$U \to V \otimes U \to V$ is zero,~$V
+\otimes U$ is zero; and by exactness of the bottom row, $U \otimes U$ is zero.
+\item For any subobject~$T \hookrightarrow X$ the following chain of
+equivalences holds:
+\[ T \otimes U \cong 0
+  \ \Longleftrightarrow\ 
+  \text{$T \otimes U \hookrightarrow T$ is zero}
+  \ \Longleftrightarrow\ 
+  \text{$T \twoheadrightarrow U^\vee \otimes T \to U^\vee \otimes X$ is zero}.
+  \]
+The first~``$\Leftarrow$'' is because~$T \otimes U \hookrightarrow T$ is a
+monomorphism (by exactness of tensoring with~$T$) and the second
+``$\Leftrightarrow$'' is by the isomorphisms
+\[ \Hom(T \otimes U, T) \cong U^\vee \otimes T^\vee \otimes T \cong
+  \Hom(T, U^\vee \otimes T). \]
+So the largest such subobject~$T \hookrightarrow X$ is given by
+\[ T = \ker(X \to U^\vee \otimes X) \cong U^\perp \otimes X. \]
+(The isomorphism is by exactness of tensoring with~$X$.)
+\item Applying this observation to~$X = V$, it follows that~$U^\perp \otimes V
+\cong V$.
+
+Applying it to~$X = U$, it follows that~$U^\perp \otimes U \cong 0$: Let~$T
+\hookrightarrow U$ with~$T \otimes U \cong 0$. By exactness of tensoring
+with~$T$, the sequence
+\[ 0 \longrightarrow T \otimes U \longrightarrow T \longrightarrow T \otimes V
+\longrightarrow 0 \]
+is exact. Since~$T \otimes U \cong 0$, we have
+\[ T \cong T \otimes V \hookrightarrow U \otimes V \cong 0. \]
+The ``$\hookrightarrow$'' is---again---by exactness of tensoring (with~$V$).
+
+\item By exactness of tensoring with~$U^\perp$, the sequence
+\[ 0 \longrightarrow U^\perp \otimes U \longrightarrow U^\perp \longrightarrow
+U^\perp \otimes V \longrightarrow 0 \]
+is exact. By the previous observation, this shows~$U^\perp \cong V$.
+
+\item By applying the five lemma to the diagram
+\[ XXX, \]
+it follows that~$1 \cong U \oplus U^\perp$. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{rem}Rigidity is necessary: In~$\Mod_\ZZ$, the unit object is not simple
+but admits to non-trivial decompositions.\end{rem}
+
+\begin{cor}In a rigid abelian category, the unit object is simple iff~$\End(1)$
+is a field.\end{cor}
+\begin{proof}For the ``only if'' direction, let~$f \in \End(1)$. As the unit
+object is simple, $f$ is either zero or an isomorpism (i.\,e. invertible in the
+ring~$\End(1)$). This follows by considering kernel and image of~$f$.
+
+For the ``if'' direction, let~$U \hookrightarrow 1$. By the lemma, there exists
+a projection operator~$P : 1 \to 1$ with~$\im(P) = U$. If~$P$ is zero
+in~$\End(1)$, $U = 0$; if~$P$ is invertible, $U = 1$ (as subojects
+of~$1$).\end{proof}
+
+
+\section{The Tannaka reconstruction theorem}
+
+\begin{thm}Let~$\C$ be a rigid abelian tensor category. Let~$k := \End(1)$ be a
+field. Let~$\omega : \C \to \Vect_k^\text{fd}$ be an exact faithful~$k$-linear
+tensor functor. Then:
+\begin{enumerate}
+\item The functor~$\underline{\mathrm{Aut}}^\otimes(\omega) : \mathrm{Alg}_k
+\to \Set$, given by
+\[ R \longmapsto \text{set of tensor automorphisms of~$(\freist \otimes_k R)
+\cdot \omega$}, \]
+is the functor of points of an affine group scheme~$G$.
+\item A certain functor~$\C \to \Rep_k(G)$ induced by~$\omega$ is an
+equivalence of tensor categories.
+\end{enumerate}
+\end{thm}
+
+\end{document}
