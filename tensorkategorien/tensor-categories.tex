@@ -33,8 +33,8 @@
 \widowpenalty=10000
 \displaywidowpenalty=10000
 
-\setlength\parskip{\medskipamount}
-\setlength\parindent{0pt}
+%\setlength\parskip{\medskipamount}
+%\setlength\parindent{0pt}
 
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -93,7 +93,25 @@
 \date{8th February 2014}
 \maketitle
 
-% XXX: Grund und Informalität
+\begin{center}\begin{minipage}{0.8\textwidth}
+Tensor categories are categories equipped with a tensor operation between
+objects and between morphisms. They arise in abstract category theory,
+representation theory, quantum field theory and certain other subjects and
+provide an abstract setting for studying the general notions of the dual of
+an object and the trace of a morphism. Thanks to a rich graphical calculus,
+working with commutative diagrams in tensor categories is very
+enjoyable.\medskip
+
+These are informal notes prepared for the February 2014 meeting of the \emph{Kleine
+Bayerische AG} at TU München. The notes summarize the first chapter of the
+article \emph{Tannakian Categories} (LNM 900, 1982;
+\href{http://www.jmilne.org/math/xnotes/tc.pdf}{2012}) by P.~Deligne and
+J.~S.~Milne.
+\end{minipage}\end{center}
+
+\tableofcontents
+
+% XXX: Datum richtig angeben
 
 \section{Basics}
 
@@ -126,8 +144,9 @@ The definitions mimics the definition of a monoid, only ``one level up''.
 Demanding that the tensor operation is associative and commutative on the nose
 (e.\,g. $X \otimes (Y \otimes Z) = (X \otimes Y) \otimes Z$) would be
 \emph{evil} in the technical sense, i.\,e. not invariant under equivalence of
-categories. The isomorphism classes of a tensor category form a commutative
-monoid.
+categories. This is the reason why we demand (natural) isomorphisms, i.\,e.
+natural transformations between easily inferred fuctors.
+The isomorphism classes of a tensor category form a commutative monoid.
 
 \begin{ex}In~$\Mod_R$, $\phi_{XYZ}$ is given by
 \[ x \otimes (y \otimes z) \longmapsto (x \otimes y) \otimes z. \]
@@ -148,11 +167,11 @@ isomorphisms.\end{ex}
 
 The coherence conditions in the definition are needed for the following reason:
 In the category of modules, we are used to dropping all parentheses when
-dealing with iterated tensor products. This is justified because between any
+dealing with iterated tensor products. This is justified only because between any
 two given groupings, e.\,g.
 \[ X \otimes ((Y \otimes Z) \otimes (T \otimes U)) \quad\text{and}\quad
   ((X \otimes Y) \otimes (Z \otimes T)) \otimes U, \]
-we have a \emph{canonical} isomorphism. A classical theorem of Mac~Lane
+we have \emph{exactly one} canonical isomorphism. A classical theorem of Mac~Lane
 guarantees that the stated coherence conditions suffice to render any
 ``reasonable'' diagram commutative:
 
@@ -177,12 +196,27 @@ both sides are not equal: $(1,2) \neq \id$.
 \begin{thm}[Joyal, Street]If the graphical depictions of given morphisms of a
 tensor category are ``the same'' (in~4D space), the morphisms are
 equal.\end{thm}
+Confer \emph{A survey of graphical languages for monoidal categories}
+by P.~Selinger for a precise formulation and pointers to the relevant literature.
+% XXX: Link
 
 \begin{ex}XXX\end{ex}
 
-\begin{thm}[Mac Lane]Any tensor category may be \emph{strictified}, i.\,e. is
+\begin{thm}[Mac Lane]Any tensor category can be \emph{strictified}, i.\,e. is
 equivalent as a tensor category to a \emph{strict} tensor category: a category
 in which $\phi, \lambda, \rho$ (but not~$\psi$) are identities.\end{thm}
+
+The strictification of a tensor category should \emph{not} be
+thought of as some kind of quotienting process, i.\,e. one does not obtain the
+strictification by identifying certain morphisms. Instead, the objects of the
+strictificatin are ``cliques'' of possible groupings.
+
+Also, skeleta of tensor categories are usually \emph{not} strict: For instance,
+consider a skeleton of the category of sets with its unique object~$N$
+isomorphic to set of natural numbers. Then the objects~$N \times (N \times N)$
+and~$(N \times N) \times N$ are equal. But the unique morphism $N \times (N \times
+N) \to (N \times N) \times N$ compatible with the projections is not equal to
+the identity.
 
 
 \section{Structure in tensor categories}
@@ -221,6 +255,7 @@ following:
 \begin{rem}In~$(\Set,\amalg)$, internal Homs do not exist in general: This is
 because in general,~$\freist \amalg X$ does not preserve colimits and so cannot
 be a left adjoint.\end{rem}
+% XXX: "general" präzisieren
 
 \begin{defn}\begin{enumerate}\item A \emph{dual} of an object~$X$ is an internal
 Hom~$X^\vee := \Hom(X,1)$. \item The \emph{dual} of a morphism~$f : X \to Y$ is
@@ -229,9 +264,13 @@ commutative (if~$X^\vee$ and~$Y^\vee$ exist).\end{enumerate}\end{defn}
 
 \begin{ex}In~$\Mod_R$, $f^t : \theta \mapsto \theta \circ f$.\end{ex}
 
+If all objects posses a dual, the rule~$X \mapsto X^\vee$ can be made into a
+functor~$C \to \C^\op$.
+% XXX: Schreibung possess
+
 \begin{prop}In any tensor category, the set~$\End(1) = \hom(1,1)$ is a
 commutative monoid with respect to composition of morphisms.\end{prop}
-\begin{proof}The results holds even if there would be no braiding:
+\begin{proof}The result holds even if there were no braiding:
 On~$\End(1)$, the tensor product induces a second binary operation. By the
 coherence conditions, this operation commutes with the operation given by
 composition, so by the famous Eckmann--Hilton theorem, both operations coincide
@@ -240,7 +279,7 @@ and are commutative.\end{proof}
 
 \begin{ex}In~$\Mod_R$, $\End(1) \cong R$.\end{ex}
 
-\begin{ex}In~$(\Set,\prod)$, $\End(1) = \{\id\}$.\end{ex}
+\begin{ex}In~$(\Set,\times)$, $\End(1) = \{\id\}$.\end{ex}
 
 
 \section{Tensor functors}
@@ -287,14 +326,14 @@ are isomorphisms and
 \end{itemize}
 \end{defn}
 
-\begin{ex}The category~$\Vect^\text{fd}_k$ of finite-dimensional is
+\begin{ex}The category~$\Vect^\mathrm{fd}_k$ of finite-dimensional is
 rigid.\end{ex}
 
 \begin{ex}More
-generally, the category~$\Mod^\text{fin.\,free}_R$ of finitely free~$R$-modules
+generally, the category~$\Mod^\mathrm{fin.\,free}_R$ of finitely free~$R$-modules
 is rigid.\end{ex}
 
-\begin{ex}Changing toposes, the category of locally free~$\O_{\Spec R}$ modules
+\begin{ex}Changing toposes, the category of locally free~$\O_{\Spec R}$-modules
 is rigid. (This category is equivalent to category of finitely generated
 projective~$R$-modules, by the tilde construction.)\end{ex}
 
@@ -393,7 +432,7 @@ morphism.) Under the correspondence
 the morphism corresponds to the natural morphism~$X \to X^{\vee\vee}$. If this
 was zero,~$X$ were zero as well.
 \item Assume~$X \cong 0$. Then we have an epic morphism~$0 \to 1$. By
-terminality of the zero object, this is an isomorphism.
+terminality of the zero object, this is an isomorphism.\qedhere
 \end{enumerate}
 \end{proof}
 % XXX: Konjunktiv
@@ -415,19 +454,23 @@ follows that~$\im(Ff) \not\cong 0$. This is a contradiction.\end{proof}
 categories. Then the projection functor~$\C \times \D \to \C$
 is exact, but in general not faithful.\end{rem}
 
+The following corollary shows that the proposition can be interpreted as a
+\emph{categorification} of a certain well-known lemma of commutative algebra:
+
 \begin{cor}Let~$k$ be a field and~$R$ be a ring with~$1 \neq 0 \in R$.
 Let~$\varphi : k \to R$ be a ring homomorphism. Then~$\varphi$ is
 injective.\end{cor}
-\begin{proof}By the proposition, the functor~$F : \Vect_k^\text{fd} \to
+\begin{proof}By the proposition, the functor~$F : \Vect_k^\mathrm{fd} \to
 \Mod_R$ (extension of scalars) is faithful. Let~$\varphi(x) = 0$. Then the
 image of the map~$k \to k$, multiplication by~$x$, is zero in~$\Mod_R$. So by
-faithfullness, the map is already zero on~$k$, so~$x = 0$.\end{proof}
+faithfulness, the map is already zero on~$k$, so~$x = 0$.\end{proof}
 
 \begin{prop}Let~$\C$ be a rigid abelian tensor category. Let~$U \hookrightarrow
-1$ be a subobject. Then the unit object decomposes as the direct sum
+1$ be a subobject. Then the unit object decomposes as a direct sum
 \[ 1 \cong U \oplus U^\perp, \]
 where~$U^\perp = \ker(1 \to U^\vee)$.\end{prop}
-\begin{proof}\begin{enumerate}
+\begin{proof}The argument is given in six steps. Rigidity mainly enters in that
+tensoring is exact instead of merely right-exact.\begin{enumerate}
 \item Consider the cokernel~$V$ of~$U \hookrightarrow 1$; we then have a short
 exact sequence
 \[ 0 \longrightarrow U \longrightarrow 1 \longrightarrow V \longrightarrow 0.
@@ -476,7 +519,7 @@ it follows that~$1 \cong U \oplus U^\perp$. \qedhere
 \end{proof}
 
 \begin{rem}Rigidity is necessary: In~$\Mod_\ZZ$, the unit object is not simple
-but admits to non-trivial decompositions.\end{rem}
+but admits no non-trivial decompositions.\end{rem}
 
 \begin{cor}In a rigid abelian category, the unit object is simple iff~$\End(1)$
 is a field.\end{cor}
@@ -493,13 +536,13 @@ of~$1$).\end{proof}
 \section{The Tannaka reconstruction theorem}
 
 \begin{thm}Let~$\C$ be a rigid abelian tensor category. Let~$k := \End(1)$ be a
-field. Let~$\omega : \C \to \Vect_k^\text{fd}$ be an exact faithful~$k$-linear
+field. Let~$\omega : \C \to \Vect_k^\mathrm{fd}$ be an exact faithful~$k$-linear
 tensor functor. Then:
 \begin{enumerate}
 \item The functor~$\underline{\mathrm{Aut}}^\otimes(\omega) : \mathrm{Alg}_k
 \to \Set$, given by
 \[ R \longmapsto \text{set of tensor automorphisms of~$(\freist \otimes_k R)
-\cdot \omega$}, \]
+\circ \omega$}, \]
 is the functor of points of an affine group scheme~$G$.
 \item A certain functor~$\C \to \Rep_k(G)$ induced by~$\omega$ is an
 equivalence of tensor categories.
