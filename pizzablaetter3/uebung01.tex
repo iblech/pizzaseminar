@@ -1,0 +1,128 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\RP}{\mathbb{R}\mathrm{P}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Spur}[1]{\operatorname{Spur}#1}
+\newcommand{\rank}[1]{\operatorname{rank}#1}
+\newcommand{\sgn}[1]{\operatorname{sgn}#1}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}[1]{\operatorname{GL}(#1)}
+\newcommand{\ORTH}[1]{\operatorname{O}(#1)}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\op}{\mathrm{op}}
+\DeclareMathOperator{\rk}{rk}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Bild}{im}
+\DeclareMathOperator{\Kern}{ker}
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\Zzwei}{\Z_2}
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+
+\pagestyle{empty}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=3cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 19. Februar 2014\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zu erzeugenden Funktionen} \\
+1. Übungsblatt
+\end{center}
+\vspace{2em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+\begin{list}{}{\labelwidth\wd\mybox \leftmargin\wd\mybox \itemsep 1.3em}
+\item[\textbf{Aufgabe 0:}] Spiele mit erzeugenden Funktionen auf dem Rechner! Erstelle dir zum Beispiel auf \url{sage.math.uni-augsburg.de} einen Account und probiere dann den folgenden Code aus:
+\begin{verbatim}
+X.<x> = PowerSeriesRing(QQ)
+print 1/(1-x-x^2)
+print  
+XY.<y> = PowerSeriesRing(X)
+print 1/(1-y-x*y)
+\end{verbatim} 
+
+\item[\textbf{Aufgabe 1:}] Sei $f_n$ die Anzahl der Teilmengen der Menge $\{1,\ldots,n\}$, welche keine zwei benachbarten Zahlen enthalten. Bestimme eine Rekursionsgleichung für die Folge $(f_n)$ und die (gewöhnliche) erzeugende Funktion.
+
+Verfeinere anschließend die Folge zur Doppelfolge durch Einführung eines neuen Parameters $k$, der die Mächtigkeit zählt: $b_{n,\,k}$ sei die Anzahl der $k$-Teilmengen der Menge $\{1,\ldots,n\}$, welche keine zwei benachbarten Zahlen enthalten. Suche auch hier Rekursionsgleichung und (doppelt gewöhnliche) erzeugende Funktion.
+\item[\textbf{Aufgabe 2:}] Sei $(f_n)_{n\geq 0}$ eine Folge, die durch die Rekursionsgleichung 
+\begin{align*}
+f_n &= a_1f_{n-1} + a_2f_{n-2} + a_3f_{n-3} + c, & n &\geq 3 \\
+f_n &= b_n , & n &= 0,1,2
+\end{align*}
+mit festen $a_1, a_2, a_3, b_0, b_1, b_2, c$ gegeben ist. Bestimme die gewöhnliche und exponentiell erzeugende Funktion der Folge.
+
+\item[\textbf{Aufgabe 3:}] Sei $s_{n,\,p} := \sum_{k=0}^n k^p$ die Verallgemeinerung des kleinen Gauß. Leite eine Rekursionsformel für die Doppelfolge $(s_{n,\,p})$ her (benutze binomische Formel) und bestimme die erzeugende Funktion 
+$$ S(x,t) = \sum_{n,p \geq 0} s_{n,\,p}\;x^n\frac{t^p}{p!}
+$$
+\end{list}
+
+\end{document}
