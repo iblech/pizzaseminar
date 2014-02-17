@@ -6,6 +6,7 @@
 
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
 \usepackage{array}
+\usepackage[all]{xy}
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
@@ -24,7 +25,6 @@
 \newtheorem{lemma}[defn]{Lemma}
 \newtheorem{thm}[defn]{Theorem}
 \newtheorem{cor}[defn]{Corollary}
-% XXX: Schreibweise
 
 \theoremstyle{remark}
 \newtheorem{rem}[defn]{Remark}
@@ -82,15 +82,15 @@
 \newcommand{\freist}{\underline{\ \ }}
 \newcommand{\Rep}{\mathrm{Rep}}
 \newcommand{\Cob}{\mathrm{Cob}}
-\newcommand{\tr}{\mathrm{tr}}
-\newcommand{\rk}{\mathrm{rk}}
-\newcommand{\im}{\mathrm{im}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\im}{\operatorname{im}}
 
 \begin{document}
 
 \title{Tensor categories}
 \author{Ingo Blechschmidt}
-\date{8th February 2014}
+\date{February 8, 2014}
 \maketitle
 
 \begin{center}\begin{minipage}{0.8\textwidth}
@@ -108,10 +108,10 @@ article \emph{Tannakian Categories} (LNM 900, 1982;
 \href{http://www.jmilne.org/math/xnotes/tc.pdf}{2012}) by P.~Deligne and
 J.~S.~Milne.
 \end{minipage}\end{center}
+\vspace{1em}
 
 \tableofcontents
-
-% XXX: Datum richtig angeben
+\newpage
 
 \section{Basics}
 
@@ -135,8 +135,21 @@ such that
 \begin{itemize}
 \item the braiding is symmetric: $\psi_{YX} \circ \psi_{XY} = \id_{X \otimes
 Y}$ and
-\item the following coherence conditions are satisfied:
-\[ XXX \]
+\item the following coherence conditions are satisfied: the pentagon axiom
+(displayed); the hexagon axiom (relating the associator with the braiding); and
+the triangle axiom (relating the associator with the unitors).
+\[ \xy
+(0,20)*{X \otimes (Y \otimes (Z \otimes T))}="1"; 
+(40,0)*{(X \otimes Y) \otimes (Z \otimes T)}="2"; 
+(27,-20)*{\quad ((X \otimes Y) \otimes Z) \otimes T}="3"; 
+(-27,-20)*{(X \otimes (Y \otimes Z)) \otimes T\!\!\!}="4"; 
+(-40,0)*{X \otimes ((Y \otimes Z) \otimes T}="5"; 
+{\ar^{\phi_{X,Y,Z \otimes T}} "1";"2"} 
+{\ar^{\phi_{X\otimes Y,Z,T}} "2";"3"} 
+{\ar_{\id_X \otimes \phi_{Y,Z,T}\quad} "1";"5"} 
+{\ar_{\phi_{X,Y\otimes Z,T}} "5";"4"} 
+{\ar_{\!\!\!\!\!\!\!\!\phi_{X,Y,Z} \otimes \id_T} "4";"3"} 
+\endxy \]
 \end{itemize}
 \end{defn}
 
@@ -146,7 +159,7 @@ Demanding that the tensor operation is associative and commutative on the nose
 \emph{evil} in the technical sense, i.\,e. not invariant under equivalence of
 categories. This is the reason why we demand (natural) isomorphisms, i.\,e.
 natural transformations between easily inferred fuctors.
-The isomorphism classes of a tensor category form a commutative monoid.
+The isomorphism classes of a tensor category form a (possibly large) commutative monoid.
 
 \begin{ex}In~$\Mod_R$, $\phi_{XYZ}$ is given by
 \[ x \otimes (y \otimes z) \longmapsto (x \otimes y) \otimes z. \]
@@ -189,18 +202,22 @@ diagrams which we do \emph{not} expect to commute. Mac~Lane's coherence theorem
 does not make any statement about those diagrams.
 
 To understand the restriction about permutations, consider the diagram
-\[ \psi_{XX} \stackrel{?}{=} \id_{X \otimes X}. \]
+\[ \xymatrix{
+  X \otimes X \ar@/^1pc/[r]^{\psi_{XX}} \ar@/_1pc/[r]_{\id_{X \otimes X}} & X \otimes X.
+} \]
 We do not expect this diagram to be commutative; the permutations associated to
 both sides are not equal: $(1,2) \neq \id$.
 
 \begin{thm}[Joyal, Street]If the graphical depictions of given morphisms of a
 tensor category are ``the same'' (in~4D space), the morphisms are
 equal.\end{thm}
-Confer \emph{A survey of graphical languages for monoidal categories}
-by P.~Selinger for a precise formulation and pointers to the relevant literature.
-% XXX: Link
+See \emph{A survey of graphical languages for monoidal categories}
+by P.~Selinger (LNP 813, \href{http://arxiv.org/abs/0908.3347}{arXiv:0908.3347})
+for a precise formulation and pointers to the relevant literature.
 
-\begin{ex}XXX\end{ex}
+\begin{ex}In four-dimensional space, a double braiding can be unknotted (while
+holding the endpoints fixed):
+\begin{center}\scalebox{0.5}{\input{braiding.pspdftex}}\end{center}\end{ex}
 
 \begin{thm}[Mac Lane]Any tensor category can be \emph{strictified}, i.\,e. is
 equivalent as a tensor category to a \emph{strict} tensor category: a category
@@ -209,7 +226,7 @@ in which $\phi, \lambda, \rho$ (but not~$\psi$) are identities.\end{thm}
 The strictification of a tensor category should \emph{not} be
 thought of as some kind of quotienting process, i.\,e. one does not obtain the
 strictification by identifying certain morphisms. Instead, the objects of the
-strictificatin are ``cliques'' of possible groupings.
+strictification are ``cliques'' of possible groupings.
 
 Also, skeleta of tensor categories are usually \emph{not} strict: For instance,
 consider a skeleton of the category of sets with its unique object~$N$
@@ -231,7 +248,10 @@ such that this pair is terminal among such pairs, i.\,e. such that for any
 object~$T \in \C$ and a [fake] evaluation morphism~$T \otimes X
 \xra{\widetilde\ev} Y$ there exists an unique morphism~$f : T \to \Hom(X,Y)$
 such that the following diagram commutes:
-\[ \ev \circ (f \otimes \id_X) = \widetilde\ev. \]
+\[ \xymatrix{
+  T \otimes X \ar[rrd]^{\widetilde\ev} \ar[d]_{f \otimes \id_X} \\
+  \Hom(X,Y) \otimes X \ar[rr]_{\quad\qquad\ev} && Y
+} \]
 \end{defn}
 
 \begin{ex}In~$(\Set,\times)$, the internal Homs are given by the usual Hom
@@ -242,9 +262,9 @@ with the usual module structure.\end{ex}
 
 \begin{rem}If an internal Hom~$\Hom(X,Y)$ exists for all objects~$Y \in \C$
 (and if appropriate choice principles are available), the internal Hom can be
-made into a functor~$\Hom(X,\freist) : \C \to \C$ which is right adjoint to
+made into a functor~$\Hom(X,\freist) : \C \to \C$. This functor is right adjoint to
 taking tensor product with~$X$:
-\[ \freist \otimes X \dashv \Hom(X,\freist) \]
+\[ \freist \otimes X \ \dashv\  \Hom(X,\freist) \]
 \end{rem}
 
 \begin{rem}The relation with the usual Hom (which is only a set) is the
@@ -252,30 +272,34 @@ following:
 \[ \hom(1, \Hom(X,Y)) \cong \hom(1 \otimes X, Y) \cong \hom(X,Y). \]
 \end{rem}
 
-\begin{rem}In~$(\Set,\amalg)$, internal Homs do not exist in general: This is
-because in general,~$\freist \amalg X$ does not preserve colimits and so cannot
+\begin{rem}In~$(\Set,\amalg)$, internal Homs do not exist in general. This is
+related to the fact that~$\freist \amalg X$ does not preserve colimits and so cannot
 be a left adjoint.\end{rem}
 % XXX: "general" präzisieren
 
 \begin{defn}\begin{enumerate}\item A \emph{dual} of an object~$X$ is an internal
 Hom~$X^\vee := \Hom(X,1)$. \item The \emph{dual} of a morphism~$f : X \to Y$ is
 the unique morphism~$f^t : Y^\vee \to X^\vee$ rendering the diagram
+\[ \xymatrixcolsep{5pc}\xymatrix{
+  Y^\vee \otimes X \ar[r]^{f^t \otimes \id_X} \ar[d]_{\id_{Y^\vee} \otimes f} &
+  X^\vee \otimes X \ar[d]^{\ev_X} \\
+  Y^\vee \otimes Y \ar[r]_{\ev_Y} & 1
+} \]
 commutative (if~$X^\vee$ and~$Y^\vee$ exist).\end{enumerate}\end{defn}
 
 \begin{ex}In~$\Mod_R$, $f^t : \theta \mapsto \theta \circ f$.\end{ex}
 
-If all objects posses a dual, the rule~$X \mapsto X^\vee$ can be made into a
+If all objects possess a dual (and appropriate choice principles are
+available), the rule~$X \mapsto X^\vee$ can be made into a
 functor~$C \to \C^\op$.
-% XXX: Schreibung possess
 
 \begin{prop}In any tensor category, the set~$\End(1) = \hom(1,1)$ is a
 commutative monoid with respect to composition of morphisms.\end{prop}
 \begin{proof}The result holds even if there were no braiding:
 On~$\End(1)$, the tensor product induces a second binary operation. By the
 coherence conditions, this operation commutes with the operation given by
-composition, so by the famous Eckmann--Hilton theorem, both operations coincide
+composition, so by the famous Eckmann--Hilton argument, both operations coincide
 and are commutative.\end{proof}
-% XXX: Schreibweise Eckmann-Hilton
 
 \begin{ex}In~$\Mod_R$, $\End(1) \cong R$.\end{ex}
 
@@ -291,8 +315,16 @@ consists of
 \item natural isomorphisms~$FX \otimes' FY \xra{c_{XY}} F(X \otimes Y)$ and
 \item an isomorphism~$1' \xra{e} F1$
 \end{enumerate}
-such that the following coherence conditions are satisfied:
-\[ XXX \]
+such that the following coherence condition
+\[ \xymatrixcolsep{2.5pc}\xymatrix{
+  FX \otimes' (FY \otimes' FZ) \ar[r]^{\id \otimes c} \ar[d]_{\phi'} &
+  FX \otimes' F(Y \otimes Z) \ar[r]^c & F(X \otimes (Y \otimes Z)) \ar[d]^{F\phi} \\
+  (FX \otimes' FY) \otimes' FZ \ar[r]_{c \otimes \id} &
+  F(X \otimes Y) \otimes' Z \ar[r]_c &
+  F((X \otimes Y) \otimes Z)
+} \]
+and similar ones relating~$c$ with the braidings and with the unitors are
+satisfied.
 \end{defn}
 
 \begin{ex}The forgetful functor~$\Rep_k(G) \to \Vect_k$ of the category
@@ -306,9 +338,16 @@ scheme)~$G$ is a tensor functor.\end{ex}
 \Vect_k$.\end{ex}
 
 \begin{defn}A \emph{morphism of tensor functors} $\eta : (F,c,e) \to
-(\tilde F,\tilde c,\tilde e)$ consists of a natural transformation~$\eta : F \to
-\tilde F$ which is compatible with the coherence isomorphisms:
-\[ XXX \]
+(\widetilde F,\tilde c,\tilde e)$ consists of a natural transformation~$\eta : F \to
+\widetilde F$ which is compatible with the coherence isomorphisms:
+\[ \xymatrixcolsep{2.5pc}\xymatrix{
+  FX \otimes' FY \ar[d]_{\eta_X \otimes \eta_Y} \ar[r]^c &
+  F(X \otimes Y) \ar[d]^{\eta_{(X \otimes Y)}} &&
+  1' \ar[r]^e \ar[d]_{\id_1} & F1 \ar[d]^{\eta_1} \\
+  \widetilde F X \otimes' \widetilde F Y \ar[r]_{\tilde c} &
+  \widetilde F(X \otimes Y) &&
+  1' \ar[r]_{\tilde e} & \widetilde F1
+} \]
 \end{defn}
 
 
@@ -339,6 +378,11 @@ projective~$R$-modules, by the tilde construction.)\end{ex}
 
 \begin{ex}The category~$\Rep_k(G)$ is rigid.\end{ex}
 
+\begin{rem}In a rigid tensor category, internal Homs can be calculated using the
+tensor product:
+\[ \Hom(X,Y) \cong X^\vee \otimes Y. \]
+\end{rem}
+
 \begin{rem}Let~$\C$ be a rigid category. Then the functor~$\C \to \C^\op, X
 \mapsto X^\vee$ is an equivalence of tensor categories.\end{rem}
 
@@ -365,14 +409,21 @@ Trace and rank satisfy the relations you expect:
 \begin{lemma}In a rigid tensor category, a pair~$(Y, Y \otimes X \xra{\ev} 1)$
 is a dual of~$X$ iff there exists a morphism $1 \xra{\varepsilon} X \otimes Y$
 such that the following triangle identities hold:
-\[ XXX \]
+\begin{center}
+\scalebox{0.7}{\input{dual-conditions.pspdftex}}
+\end{center}
+Suppressing coherence isomorphisms, these conditions can also be expressed as
+\[ (\id_X \otimes \ev) \circ (\varepsilon \otimes \id_X) = \id_X, \quad
+  (\ev \otimes \id_Y) \circ (\id_Y \otimes \varepsilon) = \id_Y. \]
 \end{lemma}
 \begin{proof}Given a pair~$(T, T \otimes X \xra{\widetilde\ev} 1)$,
 construct~$f : T \to Y$ as follows:
-\[ XXX \]
-Then the relevant diagram commutes, since
-\[ XXX. \]
-Use the second triangle identity to show uniqueness.
+\begin{center}
+\scalebox{0.7}{\input{dual-construction.pspdftex}}
+\end{center}
+Using the graphical calculus it's fun to check that with this definition of~$f$, the
+diagram in the definition of the internal Hom commutes (try it!). Use the
+second triangle identity to show uniqueness.
 
 For the converse direction, construct~$\varepsilon$ by dualizing~$\ev$.
 \end{proof}
@@ -382,7 +433,19 @@ For the converse direction, construct~$\varepsilon$ by dualizing~$\ev$.
 a dual---and in fact, because the condition is symmetric, the coevaluation
 morphism exhibits~$X$ as a dual of~$Y$. In particular, $X$ is
 reflexive.\end{rem}
-% XXX: always
+
+\begin{ex}Let~$M$ be a finitely free~$R$-module with basis~$(x_1,\ldots,x_n)$.
+Let~$(\vartheta_1,\ldots,\vartheta_n)$ be the associated dual basis of~$M^\vee$.
+Then~$\varepsilon$ is given by
+\[ \varepsilon : 1 \longrightarrow M \otimes M^\vee,\ 
+  1 \longmapsto \sum_i x_i \otimes \vartheta_i. \]
+The condition in the lemma expresses that for any~$x \in M$ and any~$\vartheta \in
+M^\vee$, it holds that
+\begin{align*}
+  x &= \sum_i \theta_i(x) \, x_i, \\
+  \vartheta &= \sum_i \vartheta(x_i) \, \vartheta_i.
+\end{align*}
+\end{ex}
 
 \begin{prop}Let~$F : \C \to \C'$ be a tensor functor, with~$\C$ rigid.
 Let~$X,Y \in \C$. Then an internal Hom~$\Hom(FX,FY)$ exists in~$\C'$ and the
@@ -399,10 +462,10 @@ preserved by~$F$.\end{proof}
 
 \begin{prop}In a rigid category, $\freist \otimes X$ is not only a left, but
 also a right adjoint:
-\[ \Hom(X,\freist) \dashv \freist \otimes X \dashv \Hom(X,\freist). \]
+\[ \Hom(X,\freist) \ \dashv\  \freist \otimes X \ \dashv\  \Hom(X,\freist). \]
 \end{prop}
 \begin{cor}In a rigid category, the tensor operation is continuous and
-cocontinuous.\end{cor}
+cocontinuous, i.\,e. commutes with arbitrary limits and colimits.\end{cor}
 
 
 \section{Abelian tensor categories}
@@ -411,7 +474,8 @@ cocontinuous.\end{cor}
 category~$(\C,\otimes)$ such that~$\C$ is abelian and~$\otimes$ is
 bi-additive.\end{defn}
 
-\begin{rem}In an abelian category,~$\End(1)$ is a commutative ring.\end{rem}
+\begin{rem}In an abelian category,~$\End(1)$ is a commutative ring with respect
+to addition and composition of morphisms.\end{rem}
 
 \begin{lemma}Let~$\C$ be an abelian tensor category. Let~$X \in \C$.
 \begin{enumerate}
@@ -430,12 +494,11 @@ is either zero or epic. (This follows by considering the image of the
 morphism.) Under the correspondence
 \[ \hom(X^\vee \otimes X,1) \cong \hom(X,X^{\vee\vee}), \]
 the morphism corresponds to the natural morphism~$X \to X^{\vee\vee}$. If this
-was zero,~$X$ were zero as well.
+was zero,~$X$ would be zero as well.
 \item Assume~$X \cong 0$. Then we have an epic morphism~$0 \to 1$. By
 terminality of the zero object, this is an isomorphism.\qedhere
 \end{enumerate}
 \end{proof}
-% XXX: Konjunktiv
 
 \begin{rem}The rigidity is necessary: In~$\Mod_\ZZ$, the object~$\ZZ/(2)$ is
 not isomorphic to the zero object, but the morphism~$(\ZZ/(2))^\vee \otimes
@@ -462,7 +525,7 @@ Let~$\varphi : k \to R$ be a ring homomorphism. Then~$\varphi$ is
 injective.\end{cor}
 \begin{proof}By the proposition, the functor~$F : \Vect_k^\mathrm{fd} \to
 \Mod_R$ (extension of scalars) is faithful. Let~$\varphi(x) = 0$. Then the
-image of the map~$k \to k$, multiplication by~$x$, is zero in~$\Mod_R$. So by
+image of the map~$k \to k$ given by multiplication with~$x$ is zero in~$\Mod_R$. So by
 faithfulness, the map is already zero on~$k$, so~$x = 0$.\end{proof}
 
 \begin{prop}Let~$\C$ be a rigid abelian tensor category. Let~$U \hookrightarrow
@@ -475,10 +538,14 @@ tensoring is exact instead of merely right-exact.\begin{enumerate}
 exact sequence
 \[ 0 \longrightarrow U \longrightarrow 1 \longrightarrow V \longrightarrow 0.
 \]
-\item By rigidity, tensoring is exact; so we obtain the diagram
-\[ XXX \]
+\item By rigidity, tensoring is exact; so we obtain the commutative diagram
+\[ \xymatrix{
+  0 \ar[r] & U \ar[r] & 1 \ar[r] & V \ar[r] & 0 \\
+  0 \ar[r] & U \otimes U \ar[r] \ar@{^{(}->}[u] & U \ar[r] \ar@{^{(}->}[u] & V \otimes U \ar[r]
+  \ar@{^{(}->}[u] & 0
+} \]
 with exact rows. Because the morphism~$U \to V \otimes U \to V$ is zero,~$V
-\otimes U$ is zero; and by exactness of the bottom row, $U \otimes U$ is zero.
+\otimes U$ is zero; and by exactness of the bottom row, $U \otimes U \cong U$.
 \item For any subobject~$T \hookrightarrow X$ the following chain of
 equivalences holds:
 \[ T \otimes U \cong 0
@@ -496,7 +563,7 @@ So the largest such subobject~$T \hookrightarrow X$ is given by
 \[ T = \ker(X \to U^\vee \otimes X) \cong U^\perp \otimes X. \]
 (The isomorphism is by exactness of tensoring with~$X$.)
 \item Applying this observation to~$X = V$, it follows that~$U^\perp \otimes V
-\cong V$.
+\cong V$, because even~$V \otimes U \cong 0$ holds.
 
 Applying it to~$X = U$, it follows that~$U^\perp \otimes U \cong 0$: Let~$T
 \hookrightarrow U$ with~$T \otimes U \cong 0$. By exactness of tensoring
@@ -510,16 +577,19 @@ The ``$\hookrightarrow$'' is---again---by exactness of tensoring (with~$V$).
 \item By exactness of tensoring with~$U^\perp$, the sequence
 \[ 0 \longrightarrow U^\perp \otimes U \longrightarrow U^\perp \longrightarrow
 U^\perp \otimes V \longrightarrow 0 \]
-is exact. By the previous observation, this shows~$U^\perp \cong V$.
+is exact. By the previous step, this shows~$U^\perp \cong V$.
 
 \item By applying the five lemma to the diagram
-\[ XXX, \]
+\[ \xymatrix{
+  0 \ar[r] & U \ar[r] \ar[d] & U \oplus U^\perp \ar[r] \ar[d] & U^\perp \ar[r] \ar[d] & 0 \\
+  0 \ar[r] & U \ar[r] & 1 \ar[r] & V \ar[r] & 0
+} \]
 it follows that~$1 \cong U \oplus U^\perp$. \qedhere
 \end{enumerate}
 \end{proof}
 
 \begin{rem}Rigidity is necessary: In~$\Mod_\ZZ$, the unit object is not simple
-but admits no non-trivial decompositions.\end{rem}
+but admits no non-trivial decompositions either.\end{rem}
 
 \begin{cor}In a rigid abelian category, the unit object is simple iff~$\End(1)$
 is a field.\end{cor}
