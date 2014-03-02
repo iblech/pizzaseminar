@@ -153,12 +153,12 @@ the triangle axiom (relating the associator with the unitors).
 \end{itemize}
 \end{defn}
 
-The definitions mimics the definition of a monoid, only ``one level up''.
+The definition mimics the definition of a monoid, only ``one level up''.
 Demanding that the tensor operation is associative and commutative on the nose
 (e.\,g. $X \otimes (Y \otimes Z) = (X \otimes Y) \otimes Z$) would be
-\emph{evil} in the technical sense, i.\,e. not invariant under equivalence of
+\emph{evil} in the technical sense, i.\,e. not preserved under equivalence of
 categories. This is the reason why we demand (natural) isomorphisms, i.\,e.
-natural transformations between easily inferred fuctors.
+natural transformations between easily inferred functors.
 The isomorphism classes of a tensor category form a (possibly large) commutative monoid.
 
 \begin{ex}In~$\Mod_R$, $\phi_{XYZ}$ is given by
@@ -175,8 +175,8 @@ category.\end{ex}
 tensor category, by using the inverses of the given natural
 isomorphisms.\end{ex}
 
-\begin{rem}In a general tensor category, there is no natural morphism~$X \to X
-\otimes X$.\end{rem}
+\begin{rem}Unlike in~$(\Set,\times)$, in a general tensor category, there is no
+natural morphism~$X \to X \otimes X$.\end{rem}
 
 The coherence conditions in the definition are needed for the following reason:
 In the category of modules, we are used to dropping all parentheses when
@@ -228,9 +228,9 @@ thought of as some kind of quotienting process, i.\,e. one does not obtain the
 strictification by identifying certain morphisms. Instead, the objects of the
 strictification are ``cliques'' of possible groupings.
 
-Also, skeleta of tensor categories are usually \emph{not} strict: For instance,
+Also, skeletons of tensor categories are usually \emph{not} strict: For instance,
 consider a skeleton of the category of sets with its unique object~$N$
-isomorphic to set of natural numbers. Then the objects~$N \times (N \times N)$
+isomorphic to the set of natural numbers. Then the objects~$N \times (N \times N)$
 and~$(N \times N) \times N$ are equal. But the unique morphism $N \times (N \times
 N) \to (N \times N) \times N$ compatible with the projections is not equal to
 the identity.
@@ -244,8 +244,8 @@ category~$\C$ consists of
 \item an object~$\Hom(X,Y) \in \C$ and
 \item a morphism~$\Hom(X,Y) \otimes X \xra{\ev} Y$ (evaluation morphism)
 \end{itemize}
-such that this pair is terminal among such pairs, i.\,e. such that for any
-object~$T \in \C$ and a [fake] evaluation morphism~$T \otimes X
+such that this pair is terminal among all such pairs, i.\,e. such that for any
+object~$T \in \C$ and any [fake] evaluation morphism~$T \otimes X
 \xra{\widetilde\ev} Y$ there exists an unique morphism~$f : T \to \Hom(X,Y)$
 such that the following diagram commutes:
 \[ \xymatrix{
@@ -273,7 +273,7 @@ following:
 \end{rem}
 
 \begin{rem}In~$(\Set,\amalg)$, internal Homs do not exist in general. This is
-related to the fact that~$\freist \amalg X$ does not preserve colimits and so cannot
+related to the fact that the functor~$\freist \amalg X$ does not preserve colimits and so cannot
 be a left adjoint.\end{rem}
 % XXX: "general" präzisieren
 
@@ -332,7 +332,7 @@ of finite-dimensional~$k$-linear representations of a group (or group
 scheme)~$G$ is a tensor functor.\end{ex}
 
 \begin{ex}Extension of scalars defines a tensor functor~$\Mod_R \to
-\Mod_S$.\end{ex}
+\Mod_S$; restriction of scalars does not.\end{ex}
 
 \begin{ex}A quantum field theory determines a tensor functor~$\Cob_d \to
 \Vect_k$.\end{ex}
@@ -360,8 +360,8 @@ scheme)~$G$ is a tensor functor.\end{ex}
 \[ \Hom(X_1,Y_1) \otimes \Hom(X_2,Y_2) \longrightarrow
   \Hom(X_1 \otimes Y_1, X_2 \otimes Y_2) \]
 are isomorphisms and
-\item all objects~$X \in \C$ are \emph{reflexive} (i.\,e. the natural map~$X
-\to X^{\vee\vee}$ is an isomorphism).
+\item all objects~$X \in \C$ are \emph{reflexive} (i.\,e. the natural maps~$X
+\to X^{\vee\vee}$ are isomorphisms).
 \end{itemize}
 \end{defn}
 
@@ -534,6 +534,7 @@ faithfulness, the map is already zero on~$k$, so~$x = 0$.\end{proof}
 where~$U^\perp = \ker(1 \to U^\vee)$.\end{prop}
 \begin{proof}The argument is given in six steps. Rigidity mainly enters in that
 tensoring is exact instead of merely right-exact.\begin{enumerate}
+% XXX: korrektes Englisch
 \item Consider the cokernel~$V$ of~$U \hookrightarrow 1$; we then have a short
 exact sequence
 \[ 0 \longrightarrow U \longrightarrow 1 \longrightarrow V \longrightarrow 0.
