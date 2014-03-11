@@ -1,0 +1,99 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+\newcommand{\diff}[2]{\frac{d#2 }{d #2 #1 }}
+\pagestyle{empty}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 12. März 2014\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zu erzeugenden Funktionen} \\
+3. Übungsblatt
+\end{center}
+\vspace{1.5em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+\begin{list}{}{\labelwidth0em \leftmargin0em \itemindent0.5em \itemsep 1.3em}
+\item[\textbf{Aufgabe 1:}] \emph{Symmetrische multivariate erzeugende Funktionen}
+\begin{enumerate} 
+\item \emph{Verallgemeinerung der Wegezählaufgabe von Jessi.} \newline
+Sei $w(n_1,\ldots,n_d)$ die Anzahl der Wege vom Nullpunkt zum Punkt $(n_1,\ldots,n_d)\in\mathbb{Z}^d$. Ein Weg ist dabei eine Folge von zulässigen Schritten, wobei ein zulässiger Schritt jede Koordinate entweder um 0 oder um 1 erhöht. Finde die erzeugende Funktion
+$$W(x_1,\ldots,x_d) = \sum_{n_1,\ldots,n_d} w(n_1,\ldots,n_d)\,x^{n_1}_1\ldots x^{n_d}_d .$$
+
+\item \emph{Erzeugende Funktion des Minimums.} Verifiziere:
+$$\sum_{n_1,\ldots,n_k\geq 1} \min\{n_1,\,n_2\ldots n_k\} t_1^{n_1}t_2^{n_2}\ldots t_k^{n_k} = 
+\frac{t_1t_2\ldots t_k}{(1-t_1)(1-t_2)\ldots(1-t_k)(1-t_1t_2\ldots t_k)} $$
+\end{enumerate}
+\item[\textbf{Aufgabe 2:}] \emph{Umrechnungen von Basen der symmetrischen Polynome.} Bezeichne $\mathbf{e}_n$ und $\mathbf{m}_n$ die elementar-- und die monomial symmetrischen Funktionen. Zeige, daß in der Basisdarstellung durch $\mathbf{m}_\lambda$ der Koeffizient von $\mathbf{m}_{(n,n)}$ in $(\mathbf{e}_1+\mathbf{e}_2)^k$ gleich $\binom{k}{n}\binom{k-n}{n}$ ist.
+
+\item[\textbf{Aufgabe 3:}] \emph{Formel von Molien für die äußere Algebra. } Sei $G$ eine endliche Gruppe, die auf einem $\mathbb{C}$--Vektorraum $V$ wirkt und damit eine Wirkung auf $\Lambda^mV$ induziert. Zeige:
+$$ \sum_{m\geq 0} \dim\left(\left(\Lambda^mV\right)^G\right)\,t^m \ = \ \frac{1}{|G|}\sum_{g\in G} \det(I+gt) $$
+\item[\textbf{Aufgabe 4:}] \emph{Symmetrisches Produkt der affinen Ebene.} Auf dem Polynomring in vier Variablen $\mathbb{R}[x_1,x_2,y_1,y_2]$ wirkt die symmetrische Gruppe in zwei Elementen durch Vertauschen der Indizes. Berechne die Hilbert--Poincaré--Reihe mithilfe der Formel von Molien.
+\item[\textbf{Aufgabe 5:}] \emph{Anwendungen des Pólyatheorems.} \begin{enumerate}
+\item Gegeben seien ein im Raum bewegliches Quadrat und ein Farbkasten mit $k$ Farben. Wie viele Möglichkeiten gibt es (bis auf Isomorphie), die Ecken des Quadrats zu färben?
+\item Wie viele Möglichkeiten sind es, wenn man das Quadrat durch ein regelmäßiges Tetraeder ersetzt?
+\item Wie viele Möglichkeiten sind es, wenn man verlangt, daß die Farbe Schwarz genau ein Mal verwendet werden muß?
+\end{enumerate}
+\end{list}
+
+\end{document}
