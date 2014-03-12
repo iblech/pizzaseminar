@@ -52,7 +52,7 @@
 
 \renewcommand*\theenumi{\alph{enumi}}
 \renewcommand{\labelenumi}{\theenumi)}
-\newcommand{\diff}[2]{\frac{d#2 }{d #1 #2}}
+\newcommand{\diff}[2]{\frac{d#2 }{d #1 #2 }}
 \pagestyle{empty}
 
 %\newarrow{Equals}=====
@@ -95,13 +95,13 @@ $\left(\lambda(x)\diff{x}{}\right)^n f(x)= \diff{w}{^n}\,f(x). $
 
 \item[\textbf{Aufgabe 4: }] Gegeben sind $n$ verschiedene Zahlen. Diese sollen in Dreiecke, Vierecke, Fünfecke usw.~aufgeteilt werden. Zwei Vielecke gelten dabei als gleich, wenn die (zyklische) Anordnung ihrer Zahlen übereinstimmt. Finde die exponentiell erzeugende Funktion der Anzahl solcher möglichen Aufteilungen.
 
-\item[\textbf{Aufgabe 5: }] Sei $(p_n)_{n\geq 0}$ eine Folge von Polynomen, gegeben durch: $p_n(x) = \sum_k\genfrac\{\}{0pt}{}{i}{j}x^k$. Zeige:
+\item[\textbf{Aufgabe 5: }] Sei $(p_n)_{n\geq 0}$ eine Folge von Polynomen, gegeben durch: $p_n(x) = \sum_k\genfrac\{\}{0pt}{}{n}{k}x^k$. Zeige:
 \begin{enumerate}
 \item Es gibt eine eindeutige Potenzreihe $f$, welche
 $ \sum_n p_n(x)\frac{u^n}{n!} \; =\; \exp(xf(u))
 $ erfüllt.
 \item Es gibt einen linearen Operator $D$, welcher $Dp_n(x) = np_{n-1}(x)$ erfüllt und außerdem mit der Operation $x\mapsto x+a$ verträglich ist.
-\item Sei $m\in\mathbb{N}$ und $Q$ ein Operator, für den $Qp_n = \delta_{mn}$ gilt. Dann gibt es eine eindeutige Potenzreihe $q$, die $q(\frac{d}{dx}) = Q$ erfüllt. Es ist $q$ die Umkehrfunktion zu $f$.
+\item Es gibt eine eindeutige Potenzreihe $q$, die $q(\frac{d}{dx}) = D$ erfüllt. Es ist $q$ die Umkehrfunktion zu $f$.
 \end{enumerate}
 \end{list}
 
