@@ -1,0 +1,110 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+\newcommand{\diff}[2]{\frac{d#2 }{d #2 #1 }}
+\pagestyle{empty}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ 26. März 2014\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zu erzeugenden Funktionen} \\
+4. Übungsblatt
+\end{center}
+\vspace{1.5em}
+
+\newbox{\mybox}
+\setbox\mybox=\hbox{\textbf{Aufgabe 1:}}
+
+\begin{list}{}{\labelwidth0em \leftmargin0em \itemindent0.5em \itemsep 1.3em}
+\item[\textbf{Aufgabe 1:}] \emph{Die negative Binomialverteilung}
+
+Berechne die wahrscheinlichkeitserzeugende Funktion der negativen
+Binomialverteilung.
+
+\item[\textbf{Aufgabe 2:}] \emph{Aussterbewahrscheinlichkeit bei geometrischer
+Verteilung}
+
+Sei bei einem Galton--Watson-Prozess die Zufallsgröße~$C$ der Anzahl Nachkommen
+geometrisch verteilt mit Trefferwahrscheinlichkeit~$p$. Berechne die
+Aussterbewahrscheinlichkeit.
+
+\emph{Hinweis:} Die wahrscheinlichkeitserzeugende Funktion von~$C$
+ist~$G_C(s) = \frac{ps}{1-qs}$.
+
+\item[\textbf{Aufgabe 3:}] \emph{Simulation von Galton--Watson-Prozessen}
+
+Entwerfe in der Programmiersprache deiner Wahl ein Programm zur Simulation von
+Galton--Watson-Prozessen. Verwende als Verteilung der
+Nachkommenszahl~$C$ deine Lieblingsverteilung.
+
+\item[\textbf{Aufgabe 4:}] \emph{Allgemeine Theorie zu Galton--Watson-Prozessen}
+
+Beweise die im Vortrag nur noch angegebene Proposition über
+Galton--Watson-Prozesse: Ist~$P(C = 0) > 0$, so ist die
+Aussterbewahrscheinlichkeit genau dann~$1$, wenn der Erwartungswert von~$C$
+kleiner oder gleich~$1$ ist.
+
+\emph{Tipp:} Unterscheide die Fälle~$G_C'(1) > 1$ und~$G_C'(1) \leq 1$.
+Skizziere in beiden Fällen die Funktion~$G_C$ auf~$[0,1]$. Verwende den Satz
+von Rolle, um anschauliche Intuition rigoros machen zu können.
+\end{list}
+
+\end{document}
