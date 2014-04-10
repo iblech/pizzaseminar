@@ -1,0 +1,92 @@
+\documentclass[a4paper,ngerman]{scrartcl}
+
+%\usepackage{ucs}
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,amscd,color,graphicx}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage[natbib=true,style=numeric]{biblatex}
+\usepackage[babel]{csquotes}
+\bibliography{lit}
+
+\usepackage[all]{xy}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{bsp}[defn]{Beispiel}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{ueberlegung}[defn]{Überlegung}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{kor}[defn]{Korollar}
+\newtheorem{hilfsaussage}[defn]{Hilfsaussage}
+\newtheorem{satz}[defn]{Satz}
+
+\theoremstyle{remark}
+\newtheorem{bem}[defn]{Bemerkung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+
+
+\newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\renewcommand*\theenumi{\alph{enumi}}
+\renewcommand{\labelenumi}{\theenumi)}
+\newcommand{\diff}[2]{\frac{d#2 }{d #2 #1 }}
+\pagestyle{empty}
+
+%\newarrow{Equals}=====
+
+\usepackage{geometry}
+\geometry{tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=3cm}
+
+\begin{document}
+
+\vspace*{-4em}
+\begin{flushright}Universität Augsburg \\ Tim Baumann \\ 2. April 2014\end{flushright}
+
+\begin{center}\Large \textbf{Pizzaseminar zum Vier-Farben-Satz} \\
+7. Übungsblatt
+\end{center}
+\vspace{1.5em}
+
+Der Vier-Farben-Satz lässt sich auf viele verschiedene äquivalente Art und
+Weisen formulieren. Eine völlig verblüffende Variante ist folgende:
+\begin{quote}
+Betrachte zwei beliebige Klammerungen des Kreuzprodukts einer
+endlichen Familie von Vektoren im~$\mathbb{R}^3$, wie zum Beispiel
+\[ L = a \times (b \times ((c \times d) \times e) \quad\text{und}\quad
+R = ((a \times b) \times c) \times (d \times e). \]
+Dann kann man den Variablen~$a,b,c,\ldots$ auf eine solche Art und Weise
+Werte aus~$\{ e_1, e_2, e_3 \}$ zuweisen, sodass~$L = R$ gilt und beide Seiten
+ungleich Null sind.
+\end{quote}
+
+Zeige, dass aus dem Vier-Farben-Satz diese Aussage über die Assoziativität des
+Kreuzprodukts folgt.
+
+\emph{Tipp:} Wie wir im Vortrag gesehen haben, ist der Vier-Farben-Satz
+äquivalent zu Aussage, dass jeder brückenlose, planare und kubische
+Graph eine 3-Kantenfärbung besitzt.
+
+\end{document}
