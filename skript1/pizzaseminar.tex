@@ -143,3 +143,13 @@
 \printbibliography
 
 \end{document}
+
+% Pushout and Pullback ``corners'' for xypic diagrams.
+% von http://arxiv.org/abs/1304.6871
+\newcommand{\pocorner}{\hbox to 8pt{{\vrule height8pt depth0pt width0.5pt}%
+    \vbox to 8pt{{\hrule height0.5pt width7.5pt depth0pt}\vfill}}}
+\newcommand{\poexcursion}{\save[]-<15pt,-15pt>*{\pocorner}\restore}
+\newcommand{\pbcorner}{\vbox to 0pt{\kern 4pt\hbox to 0pt{\kern 4pt%
+      \vbox{{\hrule height0.5pt width7.5pt depth0pt}}%
+      {\vrule height8pt depth0pt width0.5pt}\hss}\vss}}
+\newcommand{\pbexcursion}{\save[]+<5pt,-5pt>*{\pbcorner}\restore}
