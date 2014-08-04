@@ -159,11 +159,12 @@ Demanding that the tensor operation is associative and commutative on the nose
 \emph{evil} in the technical sense, i.\,e. not preserved under equivalence of
 categories. This is the reason why we demand (natural) isomorphisms, i.\,e.
 natural transformations between easily inferred functors.
-The isomorphism classes of a tensor category form a (possibly large) commutative monoid.
+
+The isomorphism classes of objects of a tensor category form a (possibly large) commutative monoid.
 
 \begin{ex}In~$\Mod_R$, $\phi_{XYZ}$ is given by
 \[ x \otimes (y \otimes z) \longmapsto (x \otimes y) \otimes z. \]
-If~$-1 \neq 1 \in R$, introducing a sign here will cause the pentagon diagram
+If~$-1 \neq 1 \in R$, introducing an artificial sign here will cause the pentagon diagram
 to fail to commute by a sign.\end{ex}
 
 \begin{ex}Let~$\C$ be a category with finite products. Then~$(\C,\times)$ is a
@@ -246,7 +247,7 @@ category~$\C$ consists of
 \end{itemize}
 such that this pair is terminal among all such pairs, i.\,e. such that for any
 object~$T \in \C$ and any [fake] evaluation morphism~$T \otimes X
-\xra{\widetilde\ev} Y$ there exists an unique morphism~$f : T \to \Hom(X,Y)$
+\xra{\widetilde\ev} Y$ there exists a unique morphism~$f : T \to \Hom(X,Y)$
 such that the following diagram commutes:
 \[ \xymatrix{
   T \otimes X \ar[rrd]^{\widetilde\ev} \ar[d]_{f \otimes \id_X} \\
@@ -442,7 +443,7 @@ Then~$\varepsilon$ is given by
 The condition in the lemma expresses that for any~$x \in M$ and any~$\vartheta \in
 M^\vee$, it holds that
 \begin{align*}
-  x &= \sum_i \theta_i(x) \, x_i, \\
+  x &= \sum_i \vartheta_i(x) \, x_i, \\
   \vartheta &= \sum_i \vartheta(x_i) \, \vartheta_i.
 \end{align*}
 \end{ex}
@@ -482,7 +483,7 @@ to addition and composition of morphisms.\end{rem}
 \item Assume that the unit~$1$ is a simple object and that~$\C$ is rigid. Then:
 \[ X \not\cong 0 \quad\Longrightarrow\quad
   \text{$X^\vee \otimes X \to 1$ is epic.} \]
-\item Assume that~$1 \not\cong 0 \in \C$. Then:
+\item Assume that~$1 \not\cong 0$ in~$\C$. Then:
 \[ X \not\cong 0 \quad\Longleftarrow\quad
   \text{$X^\vee \otimes X \to 1$ is epic.} \]
 \end{enumerate}
@@ -493,7 +494,7 @@ to addition and composition of morphisms.\end{rem}
 is either zero or epic. (This follows by considering the image of the
 morphism.) Under the correspondence
 \[ \hom(X^\vee \otimes X,1) \cong \hom(X,X^{\vee\vee}), \]
-the morphism corresponds to the natural morphism~$X \to X^{\vee\vee}$. If this
+the morphism corresponds to the natural isomorphism~$X \to X^{\vee\vee}$. If this
 was zero,~$X$ would be zero as well.
 \item Assume~$X \cong 0$. Then we have an epic morphism~$0 \to 1$. By
 terminality of the zero object, this is an isomorphism.\qedhere
