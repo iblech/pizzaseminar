@@ -9,6 +9,7 @@
 \usepackage{setspace}
 \usepackage{bussproofs}
 \usepackage{array}
+\usepackage{booktabs}
 \usepackage{comment}
 
 \usepackage[protrusion=true,expansion=true]{microtype}
@@ -128,7 +129,7 @@
 \newcommand{\XXX}[1]{\textcolor{red}{#1}}
 
 \renewcommand*\theenumi{\alph{enumi}}
-\renewcommand{\labelenumi}{\theenumi)}
+\renewcommand{\labelenumi}{(\theenumi)}
 
 \newcommand\subsubsubsection[1]{\subsubsection*{#1}}
 \definecolor{grey}{rgb}{0.7,0.7,0.7}
@@ -142,7 +143,6 @@
   \endlist
 }
 
-\newcommand{\Erzaehler}{\item[Erzähler]}
 \newcommand{\Koenigin}{\item[Königin]}
 \newcommand{\Philosoph}{\item[Philosoph]}
 \newcommand{\Alice}{\item[Alice]}
@@ -187,10 +187,9 @@
 \end{center}
 
 \begin{quote}
-\emph{Erzähler.}
-Vor langer, langer Zeit begab sich im fernen, fernen Möbiusland folgende
+\emph{Vor langer, langer Zeit begab sich im fernen, fernen Möbiusland folgende
 Geschichte. Eines Tages holte die Königin des Landes und aller Möbiusschleifen
-ihren Haus- und Hof-Philosophen zu sich.
+ihren Haus- und Hof-Philosophen zu sich.}
 
 \emph{Königin.}
 Philosoph! Ich habe folgenden Auftrag an dich: Beschaffe mir den Stein der
@@ -206,9 +205,8 @@ Das ist mir egal! Wir sehen uns morgen wieder. Erfüllst du deine Aufgabe nicht,
 sollst du gehängt werden. Oder wir hacken deinen Kopf ab und verwenden ihn als
 Cricket-Ball.
 
-\emph{Erzähler.}
-Nach einer schlaflosen Nacht voller Sorgen wurde der Philosoph erneut zur
-Königin berufen.
+\emph{Nach einer schlaflosen Nacht voller Sorgen wurde der Philosoph erneut zur
+Königin berufen.}
 
 \emph{Königin.}
 Nun! Was hast du mir zu berichten?
@@ -216,31 +214,38 @@ Nun! Was hast du mir zu berichten?
 \emph{Philosoph.}
 Ich habe es tatsächlich geschafft, herauszufinden, wie man den Stein verwenden
 könnte, um unbegrenzt Gold herzustellen. Aber nur ich kann dieses Verfahren
-durchführen, euer Hoheit.
+durchführen, \XXX{euer} Hoheit.
 
 \emph{Königin.}
 Nun gut, dann sei es so!
 
-\emph{Erzähler.}
-Und so vergingen die Jahre, in denen sich der Philosoph in Sicherheit wähnte
+\emph{Und so vergingen die Jahre, in denen sich der Philosoph in Sicherheit wähnte
 und die Angst vor Cricket-Schlägern langsam verlor. Die Königin suchte nun
 selbst nach dem Stein, aber solange sie ihn nicht fand, hatte der Philosoph
-nichts zu befürchten.
+nichts zu befürchten.}
 
-Doch eines Tages passierte das Unfassbare: Die Königin hatte den Stein
-gefunden! Und lies prompt den Philosophen zu sich rufen.
+\emph{Doch eines Tages passierte das Unfassbare: Die Königin hatte den Stein
+gefunden! Und lies prompt den Philosophen zu sich rufen.}
 
 \emph{Königin.}
 Philosoph, sieh! Ich habe den Stein der Weisen gefunden, hier! Nun erfülle du
 deinen Teil der Abmachung! [übergibt den Stein]
 
 \emph{Philosoph.}
-Danke. Ihr hattest von mir verlangt, Euch den Stein der Weisen zu beschaffen
+Danke. Ihr hattet von mir verlangt, Euch den Stein der Weisen zu beschaffen
 oder herauszufinden, wie man mit ihm unbegrenzt Gold herstellen kann. Hier habt
 Ihr den Stein der Weisen. [übergibt den Stein zurück]
 \end{quote}
 
 \tableofcontents
+
+\XXX{Liste der Vorträge und der Mottos}
+\XXX{Übungsaufgaben integrieren, dann nicht mehr auf die Übungsblätter
+verweisen}
+\XXX{Seitenränder}
+\XXX{Aufzählungszeichen}
+\XXX{konsistente Quantorschreibweise}
+\XXX{konsistente Schreibweise von 1:1-Korrespondenz}
 
 \section{Was ist konstruktive Mathematik?}
 
@@ -272,10 +277,11 @@ nämlich das \emph{Prinzip vom ausgeschlossenen Dritten}:
 \begin{axiom}[vom ausgeschlossenen Dritten, LEM]Für jede Aussage~$\varphi$ gilt: $\varphi \vee
 \neg\varphi$.\end{axiom}
 Unter konstruktiver Mathematik im engeren Sinn, genauer
-\emph{intuitionistischer Logik}, versteht man daher klassische Logik ohne LEM.
+\emph{intuitionistischer Logik}, versteht man daher klassische Logik ohne das
+Prinzip vom ausgeschlossenen Dritten.
 Das \emph{Prinzip der Doppelnegationselimination}, demnach man für jede
 Aussage~$\varphi$ voraussetzen darf, dass~$\neg\neg\varphi \Rightarrow \varphi$
-gilt, ist zu LEM äquivalent (Übungsaufgabe) und kann daher ebenfalls nicht
+gilt, ist zum Prinzip vom ausgeschlossenen Dritten äquivalent (Übungsaufgabe) und kann daher ebenfalls nicht
 verwendet werden.
 
 In konstruktiver Mathematik behauptet man \emph{nicht}, dass das
@@ -353,8 +359,8 @@ Primfaktorzerlegung lässt sich konstruktiv beweisen.)
 
 \subsection{Informale Bedeutung logischer Aussagen}
 
-\subsubsection*{\ldots über Belege (die
-Brouwer-Heyting-Kolmogorov-Interpretation)}
+\subsubsection*{\ldots{} über Belege (die
+Brouwer--Heyting--Kolmogorov-Interpretation)}
 
 Die Ablehnung des Prinzips vom ausgeschlossenen Dritten erscheint uns durch
 unsere klassische Ausbildung als völlig verrückt: \emph{Offensichtlich} ist
@@ -381,25 +387,26 @@ jeweils zu verstehen ist. (An manchen Stellen steht dort~"`$x : X$"' -- das hat
 einen Grund, aber momentan soll das einfach etwas seltsame Notation für~"`$x
 \in X$"' sein.) Etwa ist ein Beleg für eine Aussage der Form
 \[ \forall n \? \NN{:}\ \varphi(x) \Rightarrow \psi(x) \]
-eine Vorschrift, wie man für jede natürliche Zahl~$n : \NN$ aus Belegen
-für~$\varphi(x)$ Belege für~$\psi(x)$ erhalten kann. Dies soll tatsächlich nur
+eine Vorschrift, wie man für jede natürliche Zahl~$n : \NN$ aus einem Beleg
+für~$\varphi(x)$ einen Beleg für~$\psi(x)$ erhalten kann. Dies soll tatsächlich nur
 \emph{eine} Vorschrift sein (welche mit allen natürlichen Zahlen zurechtkommt),
-nicht für jede natürliche Zahl jeweils eine. Das ist mit \emph{gleichmäßig} in
+nicht für jede natürliche Zahl jeweils eine. Das ist mit dem Qualifikator \emph{gleichmäßig} in
 der Tabelle gemeint.
 
 \begin{table}
   \centering
   \small
-  \setlength{\extrarowheight}{0.3em}
-  \begin{tabular}{@{}r|p{5.9cm}|p{6.5cm}@{}}
+  \renewcommand{\arraystretch}{1.3}
+  \begin{tabular}{@{}rp{5.9cm}p{6.5cm}@{}}
+    \toprule
     & {klassische Logik} & {intuitionistische Logik}
-    \\\hline
+    \\\midrule
     Aussage $\varphi$ & Die Aussage $\varphi$ gilt. & Wir haben Beleg für $\varphi$. \\
     $\bot$ & Es stimmt Falschheit. & Wir haben Beleg für Falschheit. \\
     $\varphi \wedge \psi$ & $\varphi$ und $\psi$ stimmen. & Wir haben Beleg für~$\varphi$ und für~$\psi$. \\
     $\varphi \vee \psi$ & $\varphi$ oder $\psi$ stimmt. & Wir haben Beleg für~$\varphi$ oder für~$\psi$. \\
     $\varphi \Rightarrow \psi$ & Sollte~$\varphi$ stimmen, dann auch~$\psi$. &
-    Aus Belegen für~$\varphi$ können wir (gleichmäßig) Belege für~$\psi$ konstruieren. \\
+    Aus Belegen für~$\varphi$ können wir (gleich\-mä\-ßig) Belege für~$\psi$ konstruieren. \\
     $\neg\varphi$ &
       $\varphi$ stimmt nicht. &
       Es kann keinen Beleg für~$\varphi$ geben. \\
@@ -407,7 +414,8 @@ der Tabelle gemeint.
       Wir können (gleichmäßig) für alle~$x : X$ Belege für~$\varphi(x)$ konstruieren. \\
     $\exists x\?X{:}\ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x : X$, für das~$\varphi(x)$
     stimmt. & {\raggedright
-      Wir haben ein~$x : X$ zusammen mit Beleg für~$\varphi(x).$}
+      Wir haben ein~$x : X$ zusammen mit Beleg für~$\varphi(x).$} \\
+    \bottomrule
   \end{tabular}
   \caption{\label{bhk}Informale rekursive Definition des Belegbegriffs.}
 \end{table}
@@ -443,16 +451,23 @@ Aussage, dass diese Menge ein Element enthält.\end{bsp}
 Es war ein Video aufgetaucht, dass Kate Moss beim Konsumieren von Drogen zeigte,
 und zwar entweder solche von einem Typ~A oder solche von einem Typ~B. Welcher
 Typ aber tatsächlich vorlag, konnte nicht entschieden werden. Also gab es für
-keine der beiden Strafttaten einen Beleg, Kate Moss wurde daher nicht
+keine der beiden Straftaten einen Beleg, Kate Moss wurde daher nicht
 strafrechtlich verfolgt.
 \end{bsp}
 
+\begin{bem}Die Formulierung mit dem generischen \emph{Wir} in Tafel~\ref{bhk}
+ist etwas irreführend. Wie auch in klassischer Mathematik hängen
+intuitionistische Urteile nicht von \emph{uns} oder anderen Mathematikern ab.
+Aussagen, die bisher noch nicht konstruktiv bewiesen wurden, können
+durchaus einen (noch unbekannten) Beleg besitzen.
+\end{bem}
 
-\subsubsection*{\ldots über Berechenbarkeit}
 
-Es gibt noch eine zweite Interpretation, die beim Verständnis konstruktiver
-Mathematik sehr hilfreich ist:
-\begin{motto}Eine Aussage gilt konstruktiv genau dann, wenn es ein
+\subsubsection*{\ldots{} über Berechenbarkeit}
+
+Es gibt noch eine zweite Interpretation, die beim Verständnis der konstruktiven
+Sichtweise sehr hilfreich ist:
+\begin{motto}Eine Aussage gilt genau dann konstruktiv, wenn es ein
 Computerprogramm gibt, welches sie in endlicher Zeit bezeugt.\end{motto}
 Etwa ist mit dieser Interpretation klar, dass die formale Aussage
 \[ \forall n \in \NN{:}\ \exists p \geq n{:}\ \text{$p$ ist eine Primzahl}, \]
@@ -462,19 +477,19 @@ Zahl~$n$ als Eingabe erwartet und dann, etwa über die Sieb-Methode von
 Eratosthenes, eine Primzahl~$p \geq n$ produziert (zusammen mit einem Nachweis,
 dass~$p$ tatsächlich prim ist).
 
-\begin{bem}Das Motto kann man tatsächlich zu einem formalen Theorem
+Das Motto kann man tatsächlich zu einem formalen Theorem
 präzisieren, das ist Gegenstand der gefeierten
-Curry--Howard-Korrespondenz.\end{bem}
+Curry--Howard-Korrespondenz (Abschnitt~\ref{curry-howard}).
 
 
-\section{Beispiele}
+\subsection{Erste Beispiele}
 
-\subsection{Diskretheit der natürlichen Zahlen}
+\subsubsection*{Diskretheit der natürlichen Zahlen}
 
 Manche konkrete Instanzen des Prinzips vom ausgeschlossenen Dritten lassen sich
 konstruktiv nachweisen:
 
-\begin{prop}\label{natdiskret}Für beliebige natürlichen Zahlen~$x,y \in \NN$
+\begin{prop}\label{natdiskret}Für beliebige natürliche Zahlen~$x$ und~$y$
 gilt: $x = y \vee \neg(x = y)$.\end{prop}
 \begin{proof}Das ist konstruktiv \emph{nicht} klar, aber beweisbar durch eine
 Doppelinduktion.\end{proof}
@@ -495,20 +510,21 @@ eine Abweichung auftreten wird.
 
 Übrigens ist die Menge der algebraischen Zahlen durchaus diskret:
 Man kann ein
-Programm angeben, dass zwei algebraische Zahlen~$x,y$ zusammen mit \emph{Zeugen}
-ihrer Algebraizität, also Polynomgleichungen mit rationalen Koeffizienten
-und~$x$ bzw.~$y$ als Lösung, als Eingabe erwartet und dann entscheidet, ob~$x$
+Programm angeben, dass zwei algebraische Zahlen~$x$ und~$y$ zusammen mit \emph{Zeugen}
+ihrer Algebraizität (also Polynomgleichungen mit rationalen Koeffizienten
+und~$x$ bzw.~$y$ als Lösung) als Eingabe erwartet und dann entscheidet, ob~$x$
 und~$y$ gleich sind oder nicht. Der Beweis ist nicht trivial, aber auch nicht
-fürchterlich kompliziert; siehe etwa Proposition~1.6 in~\cite{nw:algebra}.
+fürchterlich kompliziert; siehe etwa~\cite[Prop.~1.6]{nw:algebra}
+oder~\cite[Kapitel~VI.1, Seite~140]{mines:richman:ruitenburg}.
 
 
-\subsection{Minima von Teilmengen der natürlichen Zahlen}
+\subsubsection*{Minima von Teilmengen der natürlichen Zahlen}
 
 In klassischer Logik gilt folgendes Minimumsprinzip:
 \begin{prop}[in klassischer Logik]Sei~$U \subseteq \NN$ eine bewohnte
 Teilmenge. Dann enthält~$U$ ein kleinstes Element.\end{prop}
 Dabei heißt eine Menge~$U$ \emph{bewohnt}, falls~$\exists u \in U$.
-In konstruktiver Mathematik kann man diese Aussage nicht zeigen -- wegen der
+In konstruktiver Mathematik kann man die Gültigkeit dieses Prinzips nicht nachweisen -- wegen der
 Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät kann man zwar auch nicht ihr Gegenteil
 nachweisen, aber man kann ein sog. \emph{brouwersches Gegenbeispiel}
 anführen:
@@ -516,7 +532,7 @@ anführen:
 Dann gilt das Prinzip vom ausgeschlossenen Dritten.\end{prop}
 \begin{proof}Sei~$\varphi$ eine beliebige Aussage. Wir müssen zeigen,
 dass~$\varphi$ oder~$\neg\varphi$ gilt. Dazu definieren wir die Teilmenge
-\[ U := \{ n \in \NN \,|\, n = 1 \vee \varphi \}. \]
+\[ U := \{ n \in \NN \,|\, (n = 1) \vee \varphi \}. \]
 Die Zugehörigkeitsbedingung ist etwas komisch, da die Aussage~$\varphi$ ja
 nicht von der frischen Variable~$n$ abhängt, aber völlig okay. Da~$U$
 sicherlich bewohnt ist (durch~$1 \in U$), besitzt~$U$ nach Voraussetzung ein
@@ -524,19 +540,19 @@ Minimum~$z \in U$.
 
 Wegen der diskutierten Diskretheit der natürlichen Zahlen gilt~$z = 0$ oder~$z
 \neq 0$. Im ersten Fall folgt~$\varphi$ (denn~$0 \in U$ ist gleichbedeutend
-mit~$0 = 1 \vee \varphi$, also mit~$\varphi$), im zweiten Fall folgt~$\neg\varphi$ (denn
+mit~$(0 = 1) \vee \varphi$, also mit~$\varphi$), im zweiten Fall folgt~$\neg\varphi$ (denn
 wenn~$\varphi$ gälte, wäre~$U = \NN$ und somit~$z = 0$ im Widerspruch zu~$z
 \neq 0$).\end{proof}
 
 Wir können das Minimumsprinzip retten, wenn wir eine klassisch triviale
 Zusatzbedingung stellen:
 \begin{defn}Eine Teilmenge~$U \subseteq X$ heißt genau dann
-\emph{herauslösbar}, wenn für alle~$x \in X$ gilt: $x \in U \vee \neg(x \in
+\emph{herauslösbar}, wenn für alle~$x \in X$ gilt: $(x \in U) \vee \neg(x \in
 U)$.\end{defn}
 \begin{prop}Sei~$U \subseteq \NN$ eine bewohnte und herauslösbare Teilmenge.
 Dann enthält~$U$ ein kleinstes Element.\end{prop}
 \begin{proof}Da~$U$ bewohnt ist, liegt eine Zahl~$n$ in~$U$. Da ferner~$U$
-diskret ist, gilt für jede Zahl~$0 \leq m \leq n$: $m \in U$ oder~$m \not\in
+herauslösbar ist, gilt für jede Zahl~$0 \leq m < n$: $m \in U$ oder~$m \not\in
 U$. Daher können wir diese Zahlen der Reihe nach durchgehen; die erste Zahl
 mit~$m \in U$ ist das gesuchte Minimum.
 \end{proof}
@@ -548,26 +564,43 @@ Algorithmus zur Findung des Minimums enthalten ist.
 abschwächen. Man kann nämlich mittels Induktion zeigen, dass jede
 bewohnte Teilmenge der natürlichen Zahlen \emph{nicht nicht} ein Minimum
 besitzt. Der algorithmische Inhalt eines Beweises dieser abgeschwächten Aussage
-ist sehr interessant und wir werden noch lernen, wie man ihn deuten kann.\end{bem}
+ist sehr interessant und wir werden noch lernen, wie man ihn deuten kann
+(Abschnitt~\ref{bez-klassische-logik}).\end{bem}
 
 
-\subsection{Potenzmengen}
+\subsubsection*{Potenzmengen}
 
 Klassisch ist die Potenzmenge der einelementigen Menge~$\{\star\}$ völlig
 langweilig: Sie enthält genau zwei Elemente, nämlich die leere Teilmenge
 und~$\{\star\}$ selbst. Konstruktiv lässt sich das nicht zeigen, die
-Potenzmenge hat (potenziell!) viel mehr Struktur. Das ist Gegenstand einer
-Übungsaufgabe.
+Potenzmenge hat (potenziell!) viel mehr Struktur: Ist~$\varphi$ eine beliebige
+Aussage, so ist
+\[ M_\varphi := \{ x \in \{\star\} \,|\, \varphi \}, \]
+wobei~$x$ eine nicht in~$\varphi$ vorkommende Variable sei, eine Teilmenge
+von~$\{\star\}$. Diese ist genau dann leer, wenn~$\varphi$ falsch ist; und
+genau dann gleich ganz~$\{\star\}$, wenn~$\varphi$ gilt. Ohne das Prinzip vom
+ausgeschlossenen Dritten gibt es aber keine allgemeine Rechtfertigung dafür,
+wieso der eine oder der andere Fall eintreten sollte.
+
+Für verschiedene Aussagen~$\varphi$ können die so konstruierten
+Teilmengen~$M_\varphi$ miteinander in Relation stehen. Etwa gilt:
+\[ \emptyset \quad\subseteq\quad M_{\varphi \wedge \psi}
+  \quad\subseteq\quad M_\varphi, M_\psi \quad\subseteq\quad
+  M_{\varphi \vee \psi} \quad\subseteq\quad
+  \{\star\}. \]
+In konkreten \emph{Modellen} intuitionistischer Logik können die Teilmengen
+von~$\{\star\}$ eine anschauliche Bedeutung haben (siehe
+Bemerkung~\ref{offene-mengen-als-wahrheitswerte}).
 
 
-\subsection{Die De-Morganschen Gesetze}
+\subsubsection*{Die De-Morganschen Gesetze}
 
 In klassischer Logik verwendet man oft die De-Morganschen Gesetze, manchmal
 sogar implizit, um verschachtelte Aussagen zu vereinfachen. In konstruktiver
 Mathematik lässt sich nur noch eines der beiden Gesetze in seiner vollen Form
 nachweisen. Den Beweis der folgenden Proposition führen wir mit Absicht recht
-ausführlich, damit man eine Imitationsgrundlage für die Bearbeitung des ersten
-Übungsblatts hat. Es wird das Wort "`Widerspruch"' vorkommen, aber wir haben ja
+ausführlich, damit wir eine Imitationsgrundlage für die Bearbeitung des ersten
+Übungsblatts haben. Es wird das Wort "`Widerspruch"' vorkommen, aber wir haben ja
 schon in Abschnitt~\ref{widerspruchvsnegation} diskutiert, dass das nicht
 automatisch unkonstruktiv ist.
 
@@ -589,7 +622,7 @@ nach Voraussetzung~$\neg(\varphi \vee \psi)$, folgt ein Widerspruch.
 
 "`$\Leftarrow$"': Wir müssen zeigen, dass~$\neg(\varphi \vee \psi)$. Dazu
 nehmen wir an, dass~$\varphi \vee \psi$ doch gilt, und streben einen Widerspruch an.
-Dann gibt es zwei Fälle:
+Wegen~$\varphi \vee \psi$ gibt es zwei Fälle:
 \begin{itemize}
 \item Falls~$\varphi$ gilt: Aus der Voraussetzung~$\neg\varphi \wedge \neg\psi$
 folgt insbesondere~$\neg\varphi$. Somit folgt ein Widerspruch.
@@ -617,7 +650,7 @@ vom ausgeschlossenen Dritten:
 
 \begin{prop}Folgende Prinzipien sind zueinander äquivalent:
 \begin{enumerate}
-\item[1.] LEM für negierte Aussagen: Für alle Aussagen~$\varphi$
+\item[1.] Prinzip vom ausgeschlossenen Dritten für negierte Aussagen: Für alle Aussagen~$\varphi$
 gilt~$\neg\varphi \vee \neg\neg\varphi$.
 \item[2.] Für alle Aussagen~$\varphi$ und $\psi$ gilt $\neg(\varphi \wedge \psi)
 \Longrightarrow \neg\varphi \vee \neg\psi$.
@@ -640,41 +673,44 @@ zu~$\neg\neg\varphi$.
 \end{proof}
 
 
-\subsection{Weitere Beispiele}
+\subsubsection*{Weitere Beispiele}
 
 Wer auf den Geschmack gekommen ist, kann die
 Bücher~\cite{mines:richman:ruitenburg} und~\cite{bishop:bridges:bible}
 studieren. Das erste entwickelt einen konstruktiven Zugang zu kommutativer Algebra, das
-zweite einen zu Analysis. Außerdem ist das Blog~\cite{bauer:blog} von Andrej
-Bauer eine leicht verständliche Quelle interessanter Beispiele. Von ihm gibt es
+zweite einen zu Analysis. Außerdem ist das Blog von Andrej
+Bauer~\cite{bauer:blog} eine leicht verständliche Quelle interessanter Beispiele. Von ihm gibt es
 auch eine seheswerte Videoaufzeichnung eines Vortrags mit dem Titel \emph{Five
 Stages of Accepting Constructive Mathematics}~\cite{bauer:video}. Das
 nLab-Wiki~\cite{nlab}, das allgemein ein gutes Nachschlagewerk ist, wenn man an
-tieferen Hintergründen interessiert ist, diskutiert in vielen Artikeln auch die
+tieferen Hintergründen und Zusammenhängen interessiert ist, diskutiert in vielen Artikeln auch die
 konstruktive Situation.
 
 
-\section{Nutzen konstruktiver Mathematik}
+\subsection{Nutzen konstruktiver Mathematik}
 
-\paragraph{Spaß.} Konstruktive Mathematik macht Spaß!
+\paragraph{Spaß.} Konstruktive Mathematik ist erfrischend anders und macht Spaß!
 
 \paragraph{Philosophie.}
 Konstruktive Logik ist philosophisch einfacher zu rechtfertigen als
 klassische Logik. Das hängt damit zusammen, dass konstruktiv der sonst nebulöse
 Begriff klassischer Wahrheit durch den konkreteren Begriff der Belegbarkeit
-ersetzt wird. Für Details siehe~\cite{dummett:basis}.
+ersetzt wird~\cite{dummett:basis}.
 
 \paragraph{Eleganzassistenz.}
 Konstruktive Mathematik kann einen dabei unterstützen, Aussagen, Beweise und
-ganze Theoriegebäude eleganter zu formulieren. Etwa hat man klassisch oft
+ganze Theoriegebäude eleganter zu formulieren. Etwa hat man manchmal
 \emph{Angst vor Spezialfällen} wie etwa der leeren Menge, einem
 nulldimensionalen Vektorraum oder einer leeren Mannigfaltigkeit. Aussagen
 formuliert dann nur für nichtleere Mengen, nichttriviale Vektorräume und so
 weiter, obwohl diese Einschränkungen tatsächlich aber oftmals gar nicht
-notwendig sind. In konstruktiver Mathematik wird man nun insofern darauf
+notwendig und unelegant sind.
+
+In konstruktiver Mathematik wird man nun insofern auf diese Problematik
 aufmerksam gemacht, als dass der Nachweis, dass diese Einschränkungen in
 bestimmten Fällen erfüllt sind, nicht mehr trivial ist, sondern Nachdenken
-erfordert.
+erfordert. Das möchte man natürlich vermeiden -- und so wird man darauf
+gestoßen, die unnötigen Fallunterscheidungen wegzulassen.
 
 Ein konkretes Beispiel liefert folgende Proposition, die oft als Übungsaufgabe in
 einer Anfängervorlesung gestellt wird:
@@ -684,7 +720,7 @@ einer Anfängervorlesung gestellt wird:
 wenn~$f^{-1}[\freist]$ injektiv ist.
 \end{prop}
 \begin{proof}[Beweis der Rückrichtung (umständlich, nur klassisch zulässig)]
-Angenommen, die Abbildung~$f$ ist nicht surjektiv. Dann gibt es Element~$y \in
+Angenommen, die Abbildung~$f$ ist nicht surjektiv. Dann gibt es ein Element~$y \in
 Y$, welches nicht im Bild von~$f$ liegt. Wenn wir die spezielle
 Teilmenge~$\{y\} \in \P(Y)$ betrachten, sehen wir
 \[ f^{-1}[\{y\}] = \emptyset = f^{-1}[\emptyset]. \]
@@ -692,8 +728,8 @@ Wegen der vorausgesetzten Injektivität folgt~$\{y\} = \emptyset$; das ist ein
 Widerspruch.\end{proof}
 \begin{proof}[Beweis der Rückrichtung (elegant, auch konstruktiv zulässig)]
 Bezeichne~$\im f$ die Bildmenge von~$f$. Dann gilt
-$f^{-1}[\im f] = f^{-1}[X]$
-und damit~$\im f = X$, also ist~$f$ surjektiv.\end{proof}
+$f^{-1}[\im f] = f^{-1}[Y]$
+und damit~$\im f = Y$, also ist~$f$ surjektiv.\end{proof}
 
 Angst vor der leeren Menge zeigt sich manchmal auch in Beweisen von
 Mengeninklusionen~$X \subseteq Y$. Diese sehen gelegentlich so aus:
@@ -711,6 +747,15 @@ für den Allquantor, auf die wir in Abschnitt~\ref{section:schlussregeln}
 eingehen. Relevant ist auch eine Diskussion auf MathOverflow zum
 Thema~\cite{mathoverflow:emptyset}.
 
+\begin{bem}Wer die leere Menge als Quelle oder Ziel von Abbildung ausschließt
+muss sich damit abfinden, dass die Kategorie der Mengen dann nicht mehr
+vollständig und kovollständig ist, denn es fehlen initiale Objekte und viele
+Differenzkerne. Ohne leere Mannigfaltigkeiten bilden reguläre Urbilder nicht
+immer Untermannigfaltigkeiten. Ohne triviale Vektorräume besitzen nicht alle
+linearen Abbildungen einen Kern. Von Richman gibt es einen sehr zugänglichen Artikel
+über die Nützlichkeit trivialer Ringe~\cite{richman:trivial-rings} und in der
+Informatik werden leere Graphen diskutiert~\cite{empty-graph}.\end{bem}
+
 \paragraph{Mentale Hygiene.} Arbeit in konstruktiver Logik ist gut für die
 mentale Hygiene: Man lernt, genauer auf die Formulierung von Aussagen zu
 achten, nicht unnötigerweise Verneinungen einzuführen und aufzupassen, an
@@ -721,9 +766,9 @@ vielleicht vermutet.
 \paragraph{Wertschätzung.} Klassische Mathematik kann man besser wertschätzen,
 wenn man verstanden hat, wie anders sich konstruktive Mathematik anfühlt.
 Die Frage, \emph{inwieweit genau} ein konstruktiver Beweis einer Aussage mehr
-Inhalt als ein klassischer Beweis hat, kann in Einzelfällen sehr diffizil und
+Inhalt als ein klassischer Beweis hat, kann in Einzelfällen diffizil und
 interessant sein. Wir werden zu diesem Thema noch einen mathematischen
-Zaubertrick kennenlernen.
+Zaubertrick kennenlernen (Abschnitt~\ref{hilberts-programm}).
 
 \paragraph{Feinere Unterschiede.} Konstruktiv kann man feinere Unterscheidungen
 treffen. Etwa kann man intuitionistisch den Bedeutungsunterschied zwischen
@@ -741,10 +786,14 @@ formalisieren.
 \begin{motto}Intuitionistische Logik ist schwächer, aber auch feiner als
 klassische Logik.\end{motto}
 
+Wer konstruktive Mathematik abtun möchte, da sein Lieblingstheorem nicht
+intuitionistisch ableitbar ist, kann noch Abschnitt~\ref{bez-klassische-logik}
+abwarten, in dem wir zeigen, dass sich klassische Logik in intuitionistische
+einbetten lässt.
 
 \paragraph{Programmextraktion.} Aus jedem konstruktiven Beweis einer Behauptung
 kann man maschinell, ohne manuelles Zutun, ein Computerprogramm extrahieren,
-welches die untersuchte Behauptung bezeugt (und bewiesenermaßen korrekt
+welches die bewiesene Behauptung bezeugt (und selbst bewiesenermaßen korrekt
 arbeitet). Etwa ist in jedem konstruktiven Beweis der Behauptung
 \begin{quote}Sei~$S$ eine endliche Menge von Primzahlen. Dann gibt es eine
 weitere Primzahl, welche nicht in~$S$ liegt.\end{quote}
@@ -763,10 +812,19 @@ tatsächlich angewendet, etwa im Rahmen des Coq-Systems~\cite{coq:manual}.
 
 Auch kann Programmextraktion didaktisch sinnvoll sein: Um etwa eine
 Existenzbehauptung zu verstehen, ist es bekanntermaßen oftmals hilfreich, sie in einem konkreten
-Beispielfall durchzudenken. Einen konstruktiven Beweis der Existenzbehauptung
+Beispielfall durchzudenken -- beispielsweise übungshalber ein primitives
+Element zu einer Körpererweiterung zu berechnen oder eine Ganzheitsbasis zu
+bestimmen. Einen konstruktiven Beweis der Existenzbehauptung
 kann man für diesen Zweck stets Schritt für Schritt durchgehen und so am Ende das gesuchte
-Objekt erhalten. Mit einem Beweis, der nur klassisch zulässig ist, ist das
-dagegen im Allgemeinen nicht möglich.
+Objekt erhalten.
+
+Mit einem Beweis, der nur klassisch zulässig ist, ist das
+dagegen im Allgemeinen nicht möglich. Um etwa eine konvergente Teilfolge einer
+beschränkten Folge reeller Zahlen zu konstruieren, muss man unendlich viele
+Folgeglieder überblicken können, da man Fragen der Form "`Liegen unendlich
+viele Folgeglieder in diesem oder jenem Bereich?"' beantworten muss.
+\XXX{besseres Beispiel für ein reines Existenztheorem verwenden!}
+
 
 \paragraph{Traummathematik.} Nur in einem konstruktiven Kontext ist die Arbeit
 mit sog. \emph{Traum\-axio\-men}, wie etwa
@@ -775,16 +833,17 @@ oder
 \begin{quote}Es gibt infinitesimale reelle Zahlen~$\varepsilon$
 mit~$\varepsilon^2 = 0$, aber~$\varepsilon \neq 0$.\end{quote}
 möglich: Denn in klassischer Logik sind diese Axiome offensichtlich schlichtweg
-falsch. Sie sind aber durchaus interessant: Sie können die Arbeit
+falsch. Sie sind aber durchaus interessant -- sie können die Arbeit
 rechnerisch und konzeptionell vereinfachen (man muss nur einen Blick zu den
 Physikern werfen), und es gibt Meta-Theoreme, die garantieren, dass Folgerungen
 aus diesen Axiomen, welche nur mit konstruktiven Schlussregeln getroffen wurden
 und eine bestimmte logische Form aufweisen, auch im üblichen klassischen Sinn
 gelten. Zu \emph{glatter infinitesimaler Analysis} gibt es von John Bell eine
 leicht verständliche Einführung~\cite{bell:invitation} und ein
-Buch~\cite{bell:primer}.
+Buch~\cite{bell:primer}. Es gibt auch einen Text, der für Schüler verständlich
+sein soll~\cite{mathezirkel:sdg}.
 
-\begin{bem}Hier ein kurzer Einschub, wieso das erstgenannte Traumaxiom
+\begin{bem}Hier ein kurzer Einschub, wieso das \XXX{erstgenannte} Traumaxiom
 in einem konstruktiven Kontext zumindest nicht offensichtlich widersprüchlich
 ist. Man könnte denken, dass die Signumfunktion
 \[ x \longmapsto \begin{cases}
@@ -800,12 +859,13 @@ Andrej Bauer diskutiert dieses Beispiel in seinem Blog
 ausführlicher~\cite{bauer:blog:stetigkeit}.
 \end{bem}
 
+
 \paragraph{Alternative Mathematik-Universen.} Wenn man ganz normal Mathematik
 betreibt, arbeitet man tatsächlich \emph{intern im Topos der Mengen}: Alle
 üblicherweise untersuchten mathematischen Objekte sind aus Mengen aufgebaut. Es gibt
 aber auch andere interessante Topoi; diese kommen mit einer \emph{internen
-Sprache}, welcher der üblichen formalen mathematischen Sprache sehr stark
-ähnelt, sodass man fast wie gewohnt in ihnen arbeiten kann -- mit der einzigen
+Sprache}, welche der üblichen formalen mathematischen Sprache stark
+ähnelt, sodass man fast wie gewohnt in diesen Topoi arbeiten kann -- mit der einzigen
 Einschränkung, dass diese interne Sprache fast immer nicht klassisch ist. Das
 liefert einen rein sachlichen Grund, konstruktive Mathematik zu betreiben.
 \begin{itemize}
@@ -831,13 +891,18 @@ Algebra, dass jeder endlich erzeugte Vektorraum \emph{nicht nicht} eine endliche
 Basis besitzt, folgt \emph{ohne weitere Arbeit} sofort folgende offensichtlich
 kompliziertere Aussage, wenn man nur das Faktum intern im Garbentopos eines reduzierten
 Schemas~$X$ interpretiert: Jeder~$\O_X$-Modul, der lokal von endlichem Typ ist,
-ist auf einer dichten Teilmenge sogar lokal frei.
+ist auf einer dichten Teilmenge sogar lokal
+frei~\cite{blechschmidt:internal-methods}.
+\item In der Ringtheorie vereinfacht sich etwa die Arbeit mit prüferschen
+Bereichen. Das sind Ringe, in denen Ideale nur lokal -- bezüglich Zerlegungen
+der Eins -- Hauptideale sein müssen. Im \emph{kleinen Zariski-Topos} zu einem
+solchen Ring erscheint dieser wie ein einfacherer
+Hauptidealbereich~\cite{pizzaseminar:zariski}.
 \item Zu quantenmechanischen Systemen kann man eine $C^*$-Algebra assoziieren.
 Wichtiges Merkmal ist, dass diese in allen interessanten Fällen
-\emph{nichtkommutativ} sein wird. Nun gibt es aber ein alternatives Universum,
-den sog. \emph{Bohr-Topos}, aus dessen Sicht diese Algebra kommutativ ist; auf
-diese Weise vereinfacht sich manches. (Was genau, werden wir noch gemeinsam
-herausfinden.)
+\emph{nichtkommutativ} ist. Nun gibt es aber ein alternatives Universum,
+den sog. \emph{Bohr-Topos}, aus dessen Sicht diese Algebra kommutativ erscheint; auf
+diese Weise vereinfacht sich manches (Abschnitt~\ref{qm-topos}).
 \end{itemize}
 Der Kurzüberblick~\cite{baez:topos} und die informale
 Einführung~\cite{leinster:topos} bieten sich als nächste Anlaufstellen zu
@@ -845,6 +910,13 @@ Topostheorie an.
 Das Lehrbuch~\cite{moerdijk:maclane:sheaves} diskutiert auch ausführlich die
 interne Sprache. Als Referenzen sind~\cite{johnstone:elephant} für Topostheorie
 und~\cite{lambek:scott:hocatlogic} speziell für kategorielle Logik geeignet.
+
+
+\paragraph{Hilfe!} \emph{Konstruktiv bricht mein Lieblingsteilgebiet der
+Mathematik zusammen!} Vermutlich ist dem in Wahrheit nicht so, zumindest nicht
+in einem Ausmaß, der die Aufregung rechtfertigen würde.  Wahrscheinlicher ist,
+dass die konstruktive Perspektive neue Aspekte deines Lieblingsgebiets
+beleuchtet.
 
 
 \section{Die Schlussregeln intuitionistischer Logik}
@@ -864,17 +936,17 @@ sondern \emph{Beweise}. Dazu müssen wir präzise festlegen, was unter einem
 \begin{defn}Ein \emph{Kontext} ist eine endliche Folge von
 Variablendeklarationen der Form
 \[ x_1 : A_1,\ \ldots,\ x_n : A_n. \]
-Dabei sind die~$A_i$ \emph{Typen} der untersuchten formalen Systems.\end{defn}
+Dabei sind die~$A_i$ \emph{Typen} des untersuchten formalen Systems.\end{defn}
 
 Wir werden Kontexte oft kürzer als~$\vec x : \vec A$ notieren. Etwa ist die
 Aussage
 \[ n = m \]
 eine Aussage im Kontext~$n : \NN, m : \NN$. Dagegen ist die Aussage
 \[ \forall m\?\NN{:}\ n = m \]
-lediglich eine Aussage im reduzierten Kontext~$n : \NN$: Die Variable~$m$ kommt
+eine Aussage im reduzierten Kontext~$n : \NN$: Die Variable~$m$ kommt
 nicht mehr \emph{frei}, sondern nur noch \emph{gebunden} vor. Wir vereinbaren,
-dass die kollisionsfreie Umbenennung gebundener Variablen die Aussage nicht
-verändert. Die anders geschriebene Aussage
+dass kollisionsfreie Umbenennung gebundener Variablen nicht als Veränderung
+einer Aussage zählen soll. Die anders geschriebene Aussage
 \[ \forall u\?\NN{:}\ n = u \]
 sehen wir also als dieselbe Aussage an.
 Wenn wir auch noch über die
@@ -884,11 +956,11 @@ Variable~$n$ quantifizieren, erhalten wir eine Aussage im \emph{leeren Kontext}:
 
 \subsubsection*{Substitution von Variablen}
 
-Ist~$\varphi$ eine Aussage im Kontext~$x_1,\ldots,x_n$. Sind dann
+Sei~$\varphi$ eine Aussage im Kontext~$x_1,\ldots,x_n$. Sind dann
 Terme~$s_1,\ldots,s_n$ (in einem neuen Kontext~$y_1,\ldots,y_m$) gegeben, so
 kann man die~$x_i$ \emph{simultan durch die~$s_i$ ersetzen}. Als Ergebnis
 erhält man eine Aussage im Kontext~$y_1,\ldots,y_m$, die
-man~"`$\varphi[s_1/x_1,\ldots,x_n/x_n]$"' oder kürzer~"`$\varphi[\vec s/\vec
+man~"`$\varphi[s_1/x_1,\ldots,s_n/x_n]$"' oder kürzer~"`$\varphi[\vec s/\vec
 x]$"' schreibt.
 
 Bei der Substitution muss man Variablenkollisionen verhindern. Etwa gilt für
@@ -897,8 +969,8 @@ die Aussage
 im Kontext~$m : \NN$, dass
 \[ \varphi[n^2/m] \equiv (\forall \tilde n\?\NN{:}\ \tilde n = n^2). \]
 
-\begin{bem}Die übliche logische Bezeichnung für das, was wir \emph{Aussagen}
-nennen, ist \emph{Formel}.\end{bem}
+\begin{bem}In der Logik-Literatur ist die übliche Bezeichnung für das, was wir \emph{Aussagen}
+nennen, \emph{Formel}.\end{bem}
 
 
 \subsection{Sequenzen}
@@ -928,14 +1000,14 @@ zeigen. Die Interpretation ist aber eine völlig andere:
 \item Die erste Sequenz besagt, dass unter der Globalvoraussetzung~$\varphi$
 die Aussage~$\psi$ ableitbar ist. Eine typische Übungsaufgabe nach diesem
 Muster sieht wie folgt aus:
-\begin{quote}Sei~$n$ eine Primzahl~$\geq 3$. Zeige, dass~$n + 1$ keine Primzahl
+\begin{quote}Sei~$n$ eine Primzahl~$\geq 3$. Zeige, dass~$n + 1$ nicht prim
 ist.\end{quote}
 \item Die zweite Sequenz besagt, dass unter keiner besonderen Voraussetzung
 (zur Verfügung stehen also nur die gegebenen Ableitungsregeln) die
 hypothetische Implikation~$\varphi \Rightarrow \psi$ folgt. Eine
 Beispielformulierung für diese Art ist folgende:
 \begin{quote}Zeige, dass wenn~$n$ eine Primzahl~$\geq 3$ ist, die Zahl~$n + 1$
-keine Primzahl ist.\end{quote}
+nicht prim ist.\end{quote}
 \end{itemize}
 Der Unterschied ist subtil, aber sprachlich durchaus vorhanden.
 
@@ -955,7 +1027,7 @@ ist ein Beispiel. Dann ist das Sequenzkonzept unverzichtbar.
 
 \subsection{Ableitungen}
 
-\begin{defn}Seien~$\varphi$ und~$\psi$ Aussagen in einem Kontext~$\vec x : \vec
+\begin{defn}\label{defn-ableitungen}Seien~$\varphi$ und~$\psi$ Aussagen in einem Kontext~$\vec x : \vec
 A$. Genau dann ist~$\psi$ aus der Voraussetzung~$\varphi$ \emph{ableitbar}, in
 Symbolen
 $\varphi \seq{\vec x} \psi$,
@@ -964,8 +1036,8 @@ in Tafel~\ref{ableitungsregeln:int} aufgeführten Ableitungsregeln verwendet.
 \end{defn}
 
 Aus dem Kontext muss hervorgehen, ob man eine Sequenz nur als solche
-diskutieren möchte oder ob man ihre Ableitbarkeit unterstellt. Außerdem muss
-man sich an die Notation der Ableitungsregeln gewöhnen, drei Beispiele seien im
+diskutiert oder ob man ihre Ableitbarkeit unterstellt. Außerdem muss
+man sich an die Notation der Ableitungsregeln gewöhnen. Drei Beispiele seien im
 Folgenden genauer erklärt.
 
 \begin{table}
@@ -1107,10 +1179,10 @@ Variable in~$\varphi$ ist, deutet an, dass die Regel sowohl wie üblich von oben
 nach unten, als auch von unten nach oben gelesen werden kann. Sie besagt, dass
 die beiden Urteile
 \begin{itemize}
-\item "`Im Kontext~$\vec x : \vec A, y : Y$ ist aus~$\varphi$ die
+\item "`Im Kontext~$\vec x : \vec A,\, y : Y$ ist aus~$\varphi$ die
 Aussage~$\psi$ ableitbar."'
 \item "`Im Kontext~$\vec x : \vec A$ ist aus~$\varphi$ die Allaussage~$\forall
-y\?Y{:}\, \psi$ ableitbar."'
+y\?Y\_ \psi$ ableitbar."'
 \end{itemize}
 äquivalent sind. Sie rechtfertigt daher das bekannte Standardvorgehen, um
 Allaussagen nachzuweisen: Man nimmt sich ein "`beliebiges, aber festes"'~$y :
@@ -1123,9 +1195,9 @@ Existenz- und Allquantor nötig?\end{aufg}
 
 \subsubsection*{Umfang der Ableitungsregeln}
 
-\begin{motto}\label{allesformalisierbar}\emph{Alle} Beweise gewöhnlicher Mathematik, die man
+\begin{motto}\label{allesformalisierbar}Alle Beweise gewöhnlicher Mathematik, die man
 gemeinhin als "`vollständig und präzise ausformuliert"' bezeichnet, lassen sich als
-Ableitungen im Sinne der Definition formalisieren (ggf. unter Hinzunahme
+Ableitungen im Sinne von Definition~\ref{defn-ableitungen} formalisieren (ggf. unter Hinzunahme
 klassischer logischer Axiome, Mengentheorieaxiome oder Typtheorieaxiome).
 \end{motto}
 
@@ -1172,7 +1244,7 @@ für die Implikation angewendet.\end{bsp}
 aus~\cite[Seite~832]{johnstone:elephant}):
 \begin{center}\includegraphics[scale=0.3]{prooftree-elephant.png}\end{center}
 Diese Ableitung beweist (eine Richtung des) \emph{Frobenius-Prinzips}. Dabei
-kommt die Variable~$y$ nicht in~$\phi$ vor.
+darf die Variable~$y$ nicht in~$\phi$ vorkommen.
 \end{bsp}
 
 Nicht verschwiegen werden sollte folgende Ergänzung des formalistischen Kredos:
@@ -1182,14 +1254,20 @@ sind.\end{motto}
 
 Zu solchen Gedanken gehören etwa die Überzeugung, jede Art finitistischer
 Über\-le\-gung könne in Peano-Arithmetik formalisiert werden; die
-Church-Turing-These, der zufolge jede "`algorithmisch berechenbare"' Funktion~$\NN
+Church--Turing-These, \XXX{der zufolge} jede "`algorithmisch berechenbare"' Funktion~$\NN
 \to \NN$ durch eine Turing-Maschine gegeben
-werden~\cite{plato:ct,goldin:wegner:myth,church70} könne; und manche allgemeinen
+werden könne~\cite{plato:ct,goldin:wegner:myth,church70}; und manche allgemeinen
 mathematischen Prinzipien. Außerdem ist seit Gödel allgemein bekannt, dass es
 Beispiele für Aussagen gibt, die zwar in einem formalen System formalisierbar und
 von einem höheren Standpunkt aus betrachtet wahr sind (gewissermaßen also einen
-informalen Beweis besitzen), im gegebenen System aber nicht bewiesen werden
+informalen Beweis besitzen), im gegebenen System aber nicht formal bewiesen werden
 können.
+
+In diesem Kontext ist auch die \emph{chaitinsche Haltekonstante}
+interessant, die die Wahrscheinlichkeit dafür angibt, dass ein zufällig
+gezogenes Programm einer festen Programmiersprache terminiert. Jedes formale
+System kann nur endlich viele Nachkommaziffern dieser (durchaus
+wohldefinierten) Zahl bestimmen~\ref{chaitin}.
 
 
 \subsubsection*{Einschub: Der Quantor für eindeutige Existenz}
@@ -1217,7 +1295,7 @@ y')\bigr). \]
 \item die Gleichheitsregeln (siehe Tafel~\ref{ableitungsregeln:weitere}),
 \item einem einzigen Typ~$\NN$,
 \item einer Termkonstante~$0 : \NN$,
-\item einem 1-adischen Termkonstruktor~$S$ (für successor): Ist~$n : \NN$ ein
+\item einem 1-adischen Termkonstruktor~$S$ (für \emph{successor}): Ist~$n : \NN$ ein
 Term vom Typ~$\NN$, so ist~$S(n) : \NN$ ebenfalls ein Term vom Typ~$\NN$,
 \item die Axiome \\
 \vspace{-0.5em}
@@ -1255,15 +1333,19 @@ Logik.\end{defn}
 ihm eine Ableitung der Sequenz~$\top \seq{} \bot$ (im leeren Kontext) gibt. Andernfalls heißt es
 \emph{konsistent}.\end{defn}
 
+\begin{aufg}Wieso ist es keine interessante Frage, ob es in nichtleeren
+Kontexten eine Ableitung von~$\top \seq{\vec x} \bot$ gibt?\end{aufg}
+
 
 \section{Beziehung zu klassischer Logik}
+\label{bez-klassische-logik}
 
 Auf den ersten Blick scheint intuitionistische Logik schlichtweg weniger
 mächtig als klassische Logik zu sein: Viele Aussagen sind klassisch, aber nicht
 intuitionistisch ableitbar. Das ist aber nur die halbe
 Wahrheit: Es gibt nämlich die \emph{Doppel\-ne\-ga\-tions\-über\-set\-zung},
 die Aussagen derart umformt, dass die
-Übersetzung genau dann konstruktiv gilt, wenn die ursprüngliche Aussage
+Übersetzung einer Aussage genau dann konstruktiv gilt, wenn die ursprüngliche Aussage
 klassisch gilt. In diesem Sinn lässt sich also klassische Logik in
 intuitionistische einbetten -- man hat also klassische Logik zur Verfügung,
 wenn man sie ausnahmsweise verwenden möchte.
@@ -1299,7 +1381,7 @@ einzige Unterschied zwischen klassischer und intuitionistischer Logik in der
 Interpretation der Disjunktion und der Existenzquantifikation: Diese sagen
 konstruktiv mehr aus als in klassischer Logik.\end{aufg}
 
-\begin{satz}\label{dnt:proof}Seien~$\varphi$, $\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
+\begin{satz}\label{dnt:proof}Seien~$\varphi$ und $\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
 \begin{enumerate}
 \item Klassisch gilt: $\varphi^\circ \Longleftrightarrow \varphi$.
 \item Intuitionistisch gilt: $\neg\neg\varphi^\circ \Longrightarrow
@@ -1312,7 +1394,10 @@ x} \psi^\circ$ intuitionistisch; und umgekehrt.
 \begin{enumerate}
 \item Klar, für jede Aussage~$\chi$ ist~$\neg\neg\chi \Leftrightarrow \chi$
 eine klassische Tautologie.
-\item Induktion über den Aussageaufbau, ausgelassen.
+\item In der Variante mit den grau gesetzten Doppelnegationen ist das klar,
+denn für jede Aussage~$\chi$ ist~$\neg\neg\neg\neg\chi \Rightarrow
+\neg\neg\chi$ eine intuitionistische Tautologie. (Es gilt sogar
+schon~$\neg\neg\neg\chi \Leftrightarrow \neg\chi$.)
 \item Die Rückrichtung ist wegen der Ab\-wärts\-kom\-pa\-ti\-bi\-li\-tät
 intuitionistischer Logik und Teilaussage~a) trivial.
 
@@ -1344,8 +1429,8 @@ ausgeschlossenen Dritten diskutieren:
   \UnaryInfC{$\top \seq{\vec x} \neg\neg(\varphi^\circ \vee \neg\varphi^\circ)$}
 \end{prooftree}
 Dass diese Regel intuitionistisch zulässig ist, haben wir in Übungsblatt~1
-gesehen. Die Untersuchung aller weiteren Schlussregeln überlassen wir den Leser
-(Übungsblatt~2).\qedhere
+gesehen. Die Untersuchung aller weiteren Schlussregeln sparen wir uns an dieser
+Stelle (aber siehe Übungsblatt~2).\qedhere
 \end{enumerate}
 \end{proof}
 
@@ -1357,19 +1442,26 @@ Peano-Axiome sind und daher auch in Heyting"=Arithmetik gelten. Daher kann man
 eine Ableitung von~$\bot$ in Peano-Arithmetik in eine Ableitung
 von~$\bot^\circ \equiv \bot$ in Heyting-Arithmetik überführen.\end{proof}
 
-Folgendes Lemma werden wir erst später, in Abschnitt~\ref{sect:friedman} über
-Friedmans Trick, benötigen:
+Unter gewissen Bedigungen an die Aussageform kann man die vielen durch die
+Übersetzung eingeführten Doppelnegationen zu einer einzigen "`nach vorne
+ziehen"'. Das ist Gegenstand von folgendem Lemma, das in
+Abschnitt~\ref{sect:friedman} über Friedmans Trick noch eine wesentliche Rolle
+spielen wird.
 \begin{lemma}\label{dnt:geom}Sei~$\varphi$ eine Aussage, in der nur~$\top$, $\bot$,
-$\wedge$, $\vee$ und $\exists$ (über
-bewohnte Typen), aber nicht~$\Rightarrow$ und~$\forall$ vorkommen. Dann gilt
+$\wedge$, $\vee$ und $\exists$, aber nicht~$\Rightarrow$ und~$\forall$ vorkommen. Dann gilt
 intuitionistisch: $\varphi^\circ \Longleftrightarrow \neg\neg\varphi$.
 \end{lemma}
-\begin{proof}Induktion über den Aussageaufbau.\end{proof}
+\begin{proof}Induktion über den Aussageaufbau. Exemplarisch sei der Fall für
+den Existenzquantor vorgeführt. Bei diesem ist zu zeigen, dass~$(\exists x\?X\_
+\varphi)^\circ$ äquivalent zu~$\neg\neg\exists x\?X\_ \varphi$ ist. Nach
+Definition der Übersetzung und der Induktionsvoraussetzung ist die erste
+Aussage äquivalent zu~$\neg\neg\exists x\?X\_ \neg\neg\varphi$. Die Behauptung
+folgt daher aus den intuitionistischen Tautologien~$\neg\exists \Leftrightarrow
+\forall\neg$ und~$\neg\neg\neg \Leftrightarrow \neg$.\end{proof}
 
 \begin{bem}Der Artikel~\cite{oconnor:exact} demonstriert, wie man das
 Zusammenspiel zwischen klassischer und intuitionistischer Logik im Rahmen
 exakter Numerik ausnutzen kann.\end{bem}
-
 
 
 \subsection{Interpretation der übersetzten Aussagen}
@@ -1412,7 +1504,7 @@ einem Beleg von~$\psi$ zu antworten.
 Alice einen Beleg von~$\neg\varphi \equiv (\varphi \Rightarrow \bot)$ verlangt,
 muss Alice in der Lage sein, aus einem präsentierten Beleg von~$\varphi$ einen
 Beleg von~$\bot$ zu produzieren. Wenn das betrachtete formale System konsistent
-ist, gibt es keinen solchen Beleg; Alice kann unter der Konsistenzannahme also
+ist, gibt es keinen solchen Beleg (zumindest nicht im leeren Kontext); Alice kann unter der Konsistenzannahme also
 nur dann~$\neg\varphi$ vertreten, wenn es keinen Beleg von~$\varphi$ gibt.
 \end{itemize}
 
@@ -1426,7 +1518,7 @@ Dialog~$\varphi$ belegen zu können.
 Dank der Doppelnegationsübersetzung können wir damit auch eine
 Dialoginterpretation klassischer Behauptungen angeben. Es stellt sich heraus,
 dass die folgende Metapher sehr tragfähig ist. Diese wollen wir dann erst an
-einem Beispiel veranschaulichen bevor wie sie begründen.
+einem Beispiel veranschaulichen, bevor wie sie rechtfertigen.
 
 \begin{motto}
 Eine Aussage~$\varphi$ klassisch zu behaupten (also~$\varphi^\circ$
@@ -1487,7 +1579,7 @@ Dialog zur
 Dop\-pel\-ne\-ga\-tions\-über\-set\-zung des Prinzips vom ausgeschlossenen
 Dritten, also zu $\neg\neg(\varphi^\circ \vee \neg\varphi^\circ)$, führen. Da wir
 für beliebige Aussagen~$\varphi$ sogar das Prinzip $\neg\neg(\varphi \vee
-\neg\varphi)$ nachweisen können, ausgeschrieben
+\neg\varphi)$ intuitionistisch gilt, ausgeschrieben
 \[ ((\varphi \vee \neg\varphi) \Rightarrow \bot) \Rightarrow \bot, \]
 und dieses geringfügig übersichtlicher ist, wollen wir tatsächlich dieses in Dialogform
 belegen.
@@ -1537,8 +1629,8 @@ LCM, Stein der Weisen, \ldots
 
 Mit der Doppelnegationsübersetzung kann eine konstruktive Mathematikerin auf
 eine sehr einfache Art und Weise einen klassischen Kollegen verstehen: Wenn ein
-klassischer Mathematiker eine Aussage~$\varphi$ behauptet, muss man als
-konstruktiv nur~$\varphi^\circ$ verstehen.
+klassischer Mathematiker eine Aussage~$\varphi$ behauptet, muss sie sich nur
+vorstellen,~$\varphi^\circ$ gehört zu haben.
 
 Für die umgekehrte Richtung gibt es keine Übersetzung: Es gibt keine
 Aussagentransformation~$\varphi \mapsto \varphi^\#$ mit den Eigenschaften
@@ -1566,7 +1658,8 @@ Jeder topologischer Raum~$X$ liefert ein Modell~$\Ouv(X)$ für propositionale
 intuitionistische Logik: Wenn man jeder atomaren Aussage~$\varphi$ eine
 bestimmte offene Menge~$\brak{\varphi} \subseteq X$ zuordnet, kann man die
 Interpretation der restlichen Aussagen gemäß folgender Definition festlegen.
-\begin{defn}[topologische Interpretation zusammengesetzter Aussagen]
+\begin{defn}[topologische Interpretation zusammengesetzter Aussagen]%
+\label{top-sem}%
 \begin{align*}
   \brak{\top} &:= X \\
   \brak{\bot} &:= \emptyset \\
@@ -1580,10 +1673,10 @@ Interpretation der restlichen Aussagen gemäß folgender Definition festlegen.
 Dabei bezeichnet~$U^c$ das Komplement von~$U$ in~$X$. Die Verwendung
 von~$(\brak{\varphi}^c \cup \brak{\psi})$ würde die Menge der offenen Mengen
 von~$X$ verlassen und ist daher schon aus diesem formalen Grund keine gute
-Idee; Abhilfe schafft das Nehmen des inneren Kerns.
+Idee; Abhilfe schafft der innere Kern.
 
 Anschaulich kann man sich~$\brak{\varphi}$ als den Ort, wo~$\varphi$ erfüllt
-ist, vorstellen. Wenn~$\brak{\varphi} = \emptyset$ gilt, gilt~$\varphi$ also
+ist, vorstellen. Wenn~$\brak{\varphi} = \emptyset$, gilt~$\varphi$ also
 nirgendwo; wenn~$\brak{\varphi} = X$ gilt, gilt~$\varphi$ überall; wenn~$X$
 nicht gerade nur zwei offene Mengen besitzt, sind aber auch viele weitere
 Abstufungen möglich. In diesem Sinn ist~$\Ouv(X)$ ein Modell mit mehr als zwei
@@ -1601,9 +1694,9 @@ $\brak{A \wedge B} = \brak{A} \wedge \brak{B}$, beschreibt also den Ort
 derjenigen Stellen auf der Erde, an denen es bei mehr als~$20$ Grad
 regnet.\end{bsp}
 
-Die folgende Definition zeigt, dass diese Definition die Regeln
+Die folgende Proposition zeigt, dass die Definition~\ref{top-sem} die Regeln
 intuitionistischen Schließens respektiert und daher sinnvoll ist:
-\begin{prop}Wenn~$\varphi \seq{} \psi$ intuitionistisch (im Fragment ohne
+\begin{prop}Wenn~$\varphi \seq{} \psi$ intuitionistisch ableitbar ist (im Fragment ohne
 Variablen), dann $\brak{\varphi} \subseteq \brak{\psi}$.\end{prop}
 \begin{proof}
 Wir müssen zeigen, dass die offenen Mengen von~$X$ den Schlussregeln
@@ -1623,8 +1716,8 @@ und~$\brak{\psi} \subseteq \brak{\chi}$, dann auch~$\brak{\varphi} \subseteq
   \UnaryInfC{$\brak{\varphi \wedge \psi} \subseteq \brak{\varphi}$}
 \end{prooftree}
 und ist ebenfalls erfüllt: Denn~$\brak{\varphi \wedge \psi} = \brak{\varphi}
-\cap \brak{\psi} \subseteq \brak{\varphi}$. Die restlichen Fälle überlassen wir
-dem Leser.\end{proof}
+\cap \brak{\psi} \subseteq \brak{\varphi}$. Die restlichen Fälle führen wir
+nicht aus.\end{proof}
 
 Eine andere Definition als die oben gegebene ist im Übrigen gar nicht möglich,
 wenn man möchte, dass diese Proposition gültig bleibt. Schnell kann man das wie
@@ -1632,7 +1725,7 @@ folgt einsehen: Die Schlussregeln beschreiben \emph{universelle Eigenschaften}
 für~$\top$, $\bot$, $\wedge$, $\vee$ und~$\Rightarrow$ und legen daher ihre
 Interpretationen schon eindeutig fest.
 
-\begin{bem}Wenn man auch in seiner Meta-Logik konstruktiv arbeiten möchte,
+\begin{bem}Wenn man auch in der Meta-Logik konstruktiv arbeiten möchte,
 sollte man besser
 \[ \brak{\varphi \Rightarrow \psi} :=
   \bigcup \{ U \,|\, \text{$U \subseteq X$ offen, $U \cap \brak{\varphi}
@@ -1668,9 +1761,9 @@ wenigsten topologischen Modellen.
 
 Ein Modell für intuitionistische Prädikatenlogik benötigt nicht nur
 Wahrheitswerte, sondern auch Objekte, aus denen die Variablenwerte gezogen
-werden können: Grundlage für ein solches Modell ist also eine Kategorie, in der
+werden können. Grundlage für ein solches Modell ist daher eine Kategorie, in der
 jeder Typ des untersuchten intuitionistischen Systems durch ein Objekt der
-Kategorie repräsentiert wird. Um die Junktoren~$\wedge$, $\vee$
+Kategorie repräsentiert werden kann. Um die Junktoren~$\wedge$, $\vee$
 und~$\Rightarrow$ interpretieren zu können, muss für jedes Objekt~$A$ der
 Kategorie die Menge der Unterobjekte von~$A$ die Struktur einer Heyting-Algebra
 tragen. Den All- und den Existenzquantor interpretiert man als Rechts-
@@ -1684,13 +1777,14 @@ Vorlesungsskript~\cite{streicher:ctcl} und der Artikel~\cite{vickers:loctop}.
 
 
 \section[Beziehung zur theoretischen Informatik: die
-Curry-Howard-Korrespondenz]{Beziehung zur theoretischen Informatik: \newline die
-Curry-Howard-Korrespondenz}
+Curry--Howard-Korrespondenz]{Beziehung zur theoretischen Informatik: \newline die
+Curry--Howard-Korrespondenz}
+\label{curry-howard}
 
 \XXX{wadler:curry-howard zitieren}
 
-Unter der Curry-Howard-Korrespondenz versteht man grob folgendes fundamentale
-Motto, das intuitionistische Logik und theoretische Information in Beziehung
+Unter der Curry--Howard-Korrespondenz versteht man grob folgendes fundamentale
+Motto, das intuitionistische Logik und theoretische Informatik in Beziehung
 setzt:
 
 \begin{motto}Eine Aussage~$\varphi$ ist genau dann intuitionistisch ableitbar,
@@ -1741,7 +1835,7 @@ Dabei bezeichnet~"`$B^A$"' den Typ der Funktionen von~$A$ nach~$B$.
 \subsubsection*{Beispiel 3}
 
 Konstruktiv gilt~$A \wedge B \Rightarrow A$, mit folgendem Beweis:
-\begin{quote}\emph{Sei~$p\?(A \wedge B)$. Dann steckt in~$p$ ein Zeuge
+\begin{quote}\emph{Sei~$r\?(A \wedge B)$. Dann steckt in~$r$ ein Zeuge
 von~$A$.}\end{quote}
 Das zugehörige Computerprogramm lautet wie folgt:
 \[ \begin{array}{@{}rcl@{}}
@@ -1750,10 +1844,29 @@ Das zugehörige Computerprogramm lautet wie folgt:
 \end{array} \]
 Hierfür ist der zu~$A \wedge B$ gehörige Typ~$A \times B$.
 
+\begin{table}
+  \centering
+  \small
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Logik & Typtheorie \\\midrule
+    $\top$ & Singletontyp: $()$ \\
+    $\bot$ & leerer Typ \\
+    $\varphi \wedge \psi$ & Produkttyp: $A \times B$, $(A,B)$ \\
+    $\varphi \vee \psi$ & Summentyp: $A + B$, $\mathsf{Either}$ $A$ $B$ \\
+    $\varphi \Rightarrow \psi$ & Funktionstyp: $B^A$, $(A \to B)$ \\
+    Doppelnegationsübersetzung & Continuation-Passing-Transform
+    \\
+    \bottomrule
+  \end{tabular}
+  \caption{\label{tafel:curry-howard}Einige Entsprechungen unter der
+  Curry--Howard-Korrespondenz.}
+\end{table}
+
 
 \subsection{Interpretation}
 
-Die Curry-Howard-Korrespondenz hat einen ganz praktischen Nutzen: Aus
+Die Curry--Howard-Korrespondenz hat einen ganz praktischen Nutzen: Aus
 intuitionistischen Beweisen kann man Computerprogramme extrahieren und
 umgekehrt. Beide Richtungen sind interessant: Etwa kann man offensichtlich ein
 Computerprogramm schreiben, das zu einer Eingabe~$n \? \NN$ eine Primzahl~$p
@@ -1782,12 +1895,13 @@ Termkonstruktionsregeln.
 
 Für Details sei der Übersichtsartikel~\cite{wadler:curry-howard} von Philip
 Wadler (einem der Väter der Pro\-gram\-mier\-spra\-che Haskell) empfohlen. Wer die
-Curry-Howard-Korrespondenz wirklich verstehen möchte, kann das
-Vorlesungsskript~\cite{sorensen:urzyczyn:curryhoward} zurate ziehen. Es enthält
-auch eine Einführung in den~$\lambda$-Kalkül.
+Curry--Howard-Korrespondenz wirklich verstehen möchte, kann das
+Vorlesungsskript~\cite{sorensen:urzyczyn:curryhoward} \XXX{zurate} ziehen. Es enthält
+auch eine Einführung in \XXX{den/überall}~$\lambda$-Kalkül.
 
 
 \section{Hilberts Programm}
+\label{hilberts-programm}
 
 \subsection[Die mathematische Welt um 1900]{Die mathematische Welt um 1900
 \qquad\small[unvollständig und fehlerhaft]}
@@ -1797,26 +1911,26 @@ kamen in der Mathematik neue, abstrakte Methoden auf. Dazu gehörte vor allem
 Cantors Mengenlehre, die mit ihrer Akzeptanz des \emph{aktual Unendlichen} ein
 Tabu brach: Es war zwar jeder mit dem Konzept \emph{potenzieller} Unendlichkeit
 vertraut, wie etwa der Vorstellung, dass die natürlichen Zahlen "`nie
-aufhören"', dass man "`immer weiter zählen kann"'. Aber manche hatten Angst
+aufhören"', dass man "`immer weiter zählen könnte"'. Aber manche hatten Angst
 davor, unendlich viele Objekte zu einer vollendeten Menge zusammenzufassen.
 
 Insbesondere wurde die Verwendung des Prinzips
 \[ \neg\forall x\?X{:}\, \neg\varphi(x) \quad\Longrightarrow\quad
   \exists x\?X{:}\, \varphi(x) \]
-kritisiert. Dies erscheint von unserem heutigen Standpunkt verwunderlich: Denn
+kritisiert. Diese Kritik erscheint von unserem heutigen Standpunkt verwunderlich, denn
 dieses Prinzip folgt ja sofort aus dem Prinzip vom ausgeschlossenen Dritten,
 welches man stets als evident annahm. Man muss aber zwischen verschieden
 mächtigen Instanzen des Prinzips unterscheiden. Etwa ist für natürliche
 Zahlen~$n$ die Aussage
 \[ n = 0 \quad\vee\quad n \neq 0 \]
-völlig unkritisch, sie ist sogar konstruktiv beweisbar. Die analoge Aussage für
+völlig unkritisch, sie ist ja sogar konstruktiv beweisbar (Proposition~\ref{natdiskret}). Die analoge Aussage für
 reelle Zahlen~$x$ ist zwar nicht konstruktiv haltbar, aber im 19.~Jahrhundert
 war noch nicht der Rahmen gegeben, um das einzusehen bzw. überhaupt die Frage
 nach formaler konstruktiver Ableitbarkeit zu stellen. Stattdessen wurde diese
 Aussage ebenfalls als einleuchtend empfunden und akzeptiert.
 
 Widerspruchsbeweise wurden also durchaus akzeptiert. (Die manchmal behauptete
-Aussage, klassische Logik sei erst im 20.~Jahrhundert aufgekommen, ist also
+Aussage, klassische Schlussweisen seien erst im 20.~Jahrhundert aufgekommen, ist also
 nicht richtig.) Angst bestand nur vor Anwendungen des Prinzips vom
 ausgeschlossenen Dritten in Kombination mit unendlich großen Mengen. So
 zerfielen die Mathematiker in zwei Lager: Solche, die neue abstrakte Methoden
@@ -1845,25 +1959,25 @@ konkreten Aussage, der abstrakte Methoden verwendet, einen Beweis erhalten
 kann, der nur finitistisch zulässige Schlussweisen verwendet.
 
 \begin{aufg}[Hilberts Programm]Zeige, dass man aus jedem Beweis einer konkreten
-Aussage, welcher beliebige ideelle Prinzipien (etwa das Prinzip vom ausgeschlossenen
-Dritten für beliebige Aussagen, das Auswahlaxiom oder maximale Ideale in der Algebra)
-verwendet, einen finitistisch zulässigen Beweis erhalten kann.\end{aufg}
+Aussage, welcher beliebige ideelle Prinzipien verwendet (etwa das Prinzip vom ausgeschlossenen
+Dritten für beliebige Aussagen, das Auswahlaxiom oder maximale Ideale in der Algebra),
+einen finitistisch zulässigen Beweis erhalten kann.\end{aufg}
 
 Dabei ist eine \emph{konkrete Aussage} eine solche, in deren Formulierung nur
 die natürlichen Zahlen, aber keine höheren Konzepte wie Mengen natürlicher
 Zahlen oder gar Mengen von Mengen vorkommen. Diese Beschränkung in Hilberts
-Programm ist sicherlich notwendig: Etwa kann man offensichtlich keine Aussage
-über Mengen ohne Verwendung von Mengen zu beweisen.
+Programm ist sicherlich notwendig: Etwa kann man offensichtlich keine interessante Aussage
+über Mengen ohne Verwendung von Mengen beweisen.
 
 \begin{bsp}Die Aussage, dass die Menge der Primzahlen nicht endlich ist, ist
 nicht konkret. Äquivalent ist aber die Aussage, dass zu jeder vorgegebenen
-Schranke eine Primzahl existiert, die größer als die Schranke ist; und diese
+Schranke eine Primzahl existiert, die größer als die Schranke ist; diese
 ist konkret.\end{bsp}
 
 In voller Allgemeinheit gilt Hilberts Programm seit 1931 als
 \emph{gescheitert}. Denn in diesem Jahr veröffentlichte Gödel sein
 Unvollständigkeitsresultat: Die Aussage \emph{Peano-Arithmetik ist konsistent}
-lässt sich als "`konkrete Aussage"' formulieren und leicht mit abstrakten
+lässt sich als konkrete Aussage formulieren und leicht mit abstrakten
 Methoden beweisen (in üblicher Mengenlehre liefert die unendliche Menge~$\NN$
 ein Modell), kann aber keinen finitistisch zulässigen Beweis besitzen, da es
 nach Gödels Unvollständigkeitssatz nicht einmal einen Beweis in der stärkeren
@@ -1872,11 +1986,9 @@ Peano-Arithmetik geben kann.
 Teilweise kann Hilberts Programm jedoch schon realisiert werden, unter anderem
 in Analysis und Algebra: Mittels \emph{proof mining} kann aus klassischen
 Beweisen mehr oder weniger systematisch noch konstruktiver Inhalt extrahiert
-werden. Je nach Situation kann \emph{konstruktiver Inhalt} etwa
-explizite Schranken für Konstanten,
-stetige (oder noch bessere) Abhängigkeit von Parametern,
-explizite Zeugen von Existenzbehauptungen oder
-Algorithmen
+werden. Dabei kann je nach Situation \emph{konstruktiver Inhalt} etwa
+explizite Schranken für Konstanten, stetige (oder noch bessere) Abhängigkeit
+von Parametern, explizite Zeugen von Existenzbehauptungen oder Algorithmen
 umfassen.
 
 \begin{motto}\label{motto:inhaltvonbeweisen}In einem \emph{Beweis} einer
@@ -1899,54 +2011,57 @@ Später änderte Gordan übrigens seine Meinung:
 \emph{Ich habe erkannt, dass auch Theologie nützlich sein kann.}
 \end{quote}
 
-\XXX{Bolzano zitieren}
+\begin{bem}Es ist lehrreich, Originalliteratur zu \XXX{heutzutage} im ersten
+Semester gelehrten Sätzen zu studieren. Etwa kann man in der Arbeit
+Bolzanos~\ref{bolzano} zu seinem Satz\XXX{genauer} Einblicke in die Haltung der
+damaligen Mathematiker zu Widerspruchsbeweisen und nichtkonstruktiven Methoden
+gewinnen. Bolzanos Beweis ist überaus verständlich geschrieben, wohl
+um die Rezeption seines allgemeinen Resultats zu erleichtern.\end{bem}
+
 
 \subsection{Beispiel aus der Zahlentheorie: Friedmans Trick}
 
 \label{sect:friedman}%
 \begin{defn}Die \emph{Friedmanübersetzung}
 wird für eine feste Aussage~$F$ wie folgt rekursiv definiert:
+\newcommand{\optF}{\textcolor{grey}{\phantom{}\vee F}}
 \begin{align*}
   \varphi^F &:\equiv \varphi \vee F \text{ für atomare Aussagen~$\varphi$} \\
   \top^F &:\equiv \top \\
   \bot^F &:\equiv F \\
-  (\varphi \wedge \psi)^F &:\equiv (\varphi^F \wedge \psi^F) \\
-  (\varphi \vee \psi)^F &:\equiv (\varphi^F \vee \psi^F) \\
-  (\varphi \Rightarrow \psi)^F &:\equiv (\varphi^F \Rightarrow \psi^F) \\
-  (\forall x\?X{:}\ \varphi)^F &:\equiv (\forall x\?X{:}\ \varphi^F) \\
-  (\exists x\?X{:}\ \varphi)^F &:\equiv (\exists x\?X{:}\ \varphi^F)
+  (\varphi \wedge \psi)^F &:\equiv (\varphi^F \wedge \psi^F) \optF \\
+  (\varphi \vee \psi)^F &:\equiv (\varphi^F \vee \psi^F) \optF \\
+  (\varphi \Rightarrow \psi)^F &:\equiv (\varphi^F \Rightarrow \psi^F) \optF \\
+  (\forall x\?X{:}\ \varphi)^F &:\equiv (\forall x\?X{:}\ \varphi^F) \optF \\
+  (\exists x\?X{:}\ \varphi)^F &:\equiv (\exists x\?X{:}\ \varphi^F) \vee F
 \end{align*}
-Wenn in~$F$ Variablen vorkommen, muss man ggf. manche Variablen umbenennen, um
+Wenn in~$F$ Variablen vorkommen, muss man gegebenenfalls manche Variablen umbenennen, um
 Variablenkollisionen zu vermeiden.
 \end{defn}
 
 \begin{bem}Da~$\neg\varphi :\equiv (\varphi \Rightarrow \bot)$,
 gilt~$(\neg\varphi)^F \equiv (\varphi^F \Rightarrow F)$.\end{bem}
 
+\begin{aufg}Beweise durch Induktion über den Aussageaufbau, dass man auf die grau
+gesetzten Disjunktionen verzichten kann.\end{aufg}
+
 \begin{satz}\label{friedman:proof}
 \begin{enumerate}
-\item Sei~$\varphi$ eine Aussage, in der Existenzquantoren nur über bewohnte
-Typen gehen. Dann gilt intuitionistisch: $F \Longrightarrow \varphi^F$.
+\item Sei~$\varphi$ eine Aussage. Dann gilt intuitionistisch: $F \Longrightarrow \varphi^F$.
 
 \item Sei~$\varphi$ eine Aussage, in der nur~$\top$, $\bot$,
-$\wedge$, $\vee$ und $\exists$ (über
-bewohnte Typen), aber nicht~$\Rightarrow$ oder~$\forall$ vorkommen.
+$\wedge$, $\vee$ und $\exists$, aber nicht~$\Rightarrow$ oder~$\forall$ vorkommen.
 Dann gilt intuitionistisch: $\varphi^F \Longleftrightarrow \varphi \vee F$.
 % Wenn sich die Nummerierung ändert, auch unten anpassen!
 
-\item Seien~$\varphi$ und~$\psi$ beliebige Aussagen in einem Kontext~$\vec x$,
-in der Existenzquantoren nur über bewohnte Typen gehen.
-Wenn~$\varphi \seq{\vec x} \psi$ intuitionistisch, dann gilt auch~$\varphi^F
+\item Seien~$\varphi$ und~$\psi$ beliebige Aussagen in einem Kontext~$\vec x$.
+Wenn~$\varphi \seq{\vec x} \psi$ intuitionistisch, dann auch~$\varphi^F
 \seq{\vec x} \psi^F$ intuitionistisch.
 \end{enumerate}
 \end{satz}
 \begin{proof}
 \begin{enumerate}
-\item Induktion über den Aussageaufbau. Exemplarisch zeigen wir den Fall
-\[ F \Longrightarrow (\exists x\?X{:}\ \varphi)^F. \]
-Gelte also~$F$. Da~$X$ bewohnt ist, gibt es ein~$x : X$. Nach
-Induktionsvoraussetzung gilt~$F \Rightarrow \varphi^F$.
-Somit folgt~$\varphi^F$, das war zu zeigen.
+\item Ist in der Variante mit den grauen Disjunktionen klar.
 \item Induktion über den Aussageaufbau.
 \item Induktion über den Aufbau intuitionistischer Ableitungen. Wie beim
 analogen Theorem über die Doppelnegationsübersetzung (Satz~\ref{dnt:proof})
@@ -1955,9 +2070,20 @@ Das ist sogar einfacher als bei der Doppelnegationsübersetzung.\qedhere
 \end{enumerate}
 \end{proof}
 
+\begin{bem}Im Fall, dass intuitionistisch ableitbar ist, dass~$X$ ein bewohnter
+Typ ist, kann man die Disjunktion auch im~$\exists$-Fall weglassen, es gilt
+dann also
+\[ (\exists x\?X\_ \varphi)^F \Longleftrightarrow (\exists x\?X\_ \varphi^F).
+\]
+In der Literatur wird die Friedmanübersetzung oft ohne die Disjunktionen
+angegeben (weder die unnötigen grau gesetzten noch die wesentliche bei~$\exists$), etwa
+in~\cite{coquand:classical}. Das ist nur dann sinnvoll, wenn man ausschließlich
+bewohnte Typen zulässt.
+\end{bem}
+
 \begin{kor}\label{peanokons}Peano-Arithmetik ist für Aussagen der Form~$\forall (\cdots
 \Rightarrow \cdots)$, wobei die Teilaussagen den Beschränkungen
-aus~\ref{friedman:proof}b) unterliegen müssen, \emph{konservativ} über
+aus Satz~\ref{friedman:proof}(b) unterliegen müssen, \emph{konservativ} über
 Heyting-Arithmetik: Aus jedem Beweis in Peano-Arithmetik lässt sich ein Beweis
 in Heyting-Arithmetik gewinnen.\end{kor}
 \begin{proof}Gelte~$\top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi)$ in
@@ -1986,26 +2112,25 @@ wählen. Die rechte Seite vereinfacht sich dann zu~$\psi$, und die linke wird
 von~$\varphi$ impliziert.
 Wir erhalten also in Heyting-Arithmetik die Ableitbarkeit
 von $\varphi \seq{x} \psi$, also von
-\[ \top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi). \qedhere \]
+$\top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi)$.
 \end{proof}
 
 Bemerkenswert ist, dass dieses Konservativitätsresultat nur eine Forderung
 an die Form der untersuchten Aussage stellt, nicht aber an die Form des gegebenen
 klassischen Beweises. Dieser kann Hilfsaussagen beliebiger Form verwenden.
-Somit kann man das Resultat als eine (äußerst limierte) partielle Realisierung
+Somit kann man das Resultat als eine (limierte) partielle Realisierung
 von Hilberts Programm ansehen: Denn es besagt, dass für Aussagen der
 beschriebenen Form das ideelle Prinzip des ausgeschlossenen Dritten eliminiert
 werden kann.
 
 \begin{bsp}Die Aussage der Zahlentheorie, dass es unendlich viele Primzahlen
 gibt, lässt sich in der Form
-\[ \forall n\?\NN{:}\ \exists p\?\NN{:}\ p \geq n \wedge \text{$p$ ist prim} \]
+\[ \forall n\?\NN{:}\ \exists p\?\NN{:}\ (p \geq n) \wedge (\text{$p$ ist prim}) \]
 schreiben. Zur Formalisierung der Primalitätsaussage benötigt man nur
 \emph{beschränkte Allquantifikation}, für welche die Konservativitätsaussage
-ebenfalls gilt. Also kann man aus jedem klassischen Beweis der Unendlichkeit
+ebenfalls gilt (Aufgabe~\ref{aufg-beschr-allquant}). Also kann man aus jedem klassischen Beweis der Unendlichkeit
 der Primzahlen einen konstruktiven extrahieren.
 \end{bsp}
-\XXX{Wie muss /p prim/ formuliert werden?}
 
 \begin{bsp}Das Konservativitätsresultat trifft insbesondere
 auf~$\Pi^0_2$-Aussagen zu -- das sind solche der Form
@@ -2024,8 +2149,20 @@ benötigten Verarbeitungsschritte gewinnen.
 
 \XXX{Kommentar zum Theorem von Barr}
 
-\XXX{Bemerkung, dass du abstrakter Info allein, dass eine Aussage geeigneter
-Form klassisch stimmt, noch keine konstruktive gültigkeit folgt.}
+\XXX{Bemerkung, dass aus abstrakter Info allein, dass eine Aussage geeigneter
+Form klassisch stimmt, noch keine konstruktive Gültigkeit folgt.}
+
+\begin{aufg}\label{aufg-beschr-allquant}Eine beschränkte Allquantifikation ist
+eine Aussage der Form~$\forall n\?\NN\_ (n \leq N \Rightarrow \varphi)$,
+wobei~$N$ ein Term sein muss, in dem~$n$ nicht vorkommt. Zeige,
+dass für solche Aussagen die Behauptungen in Lemma~\ref{dnt:geom} und
+Satz~\ref{friedman:proof}(b) ebenfalls korrekt sind.\end{aufg}
+
+\begin{bem}Doppelnegations- und Friedmanübersetzungen sind Spezialfälle einer
+allgemeinen Übersetzung für beliebige \emph{modale Operatoren}, der sog.
+\XXX{Name und Referenz}. Die
+Doppelnegationsübersetzung gehört zum Operator~$\varphi \mapsto
+\neg\neg\varphi$, die Friedmanübersetzung zu~$\varphi \mapsto (\varphi \vee F)$.\end{bem}
 
 
 \subsubsection*{Markovs Regel}
@@ -2132,7 +2269,8 @@ deswegen, da es zu jedem Polynom der Form~$f = \sum_{i=0}^n a_i X^i$ über einem
 beliebigen Ring~$R$, dessen Koeffizienten die Gleichungen~$a_i^{m_i} = 0$
 erfüllen, genau einen Ringhomomorphismus~$\varphi : S \to R$
 mit~$\varphi(f_\text{univ}) = f$ gibt. (Dieser schickt die Unbestimmte~$A_i$
-auf den konkreten Wert~$a_i$.) Nach der Proposition gibt es nun einen
+auf den konkreten Wert~$a_i$.) Jedes solche Polynom ist also Bild des
+universellen Polynoms. Nach der Proposition gibt es nun einen
 Exponenten~$m$ mit~$f_\text{univ}^m = 0$, der nur von~$n$ und den
 Exponenten~$m_i$, nicht aber von den Werten der~$a_i$ eines solchen
 Polynoms~$f$ abhängen kann. Es folgt~$f^m = \varphi(f_\text{univ})^m =
@@ -2157,7 +2295,7 @@ maximale Ideale, Bewertungen, \ldots) lässt sich eliminieren.\end{motto}
 Sei~$R$ ein Ring.
 
 \begin{defn}\label{defn:genprime}Die Axiome für das \emph{generische Primideal}
-sind folgende.
+sind folgende (lese "`$Z(x)$"' als "`$x \in \pp$"').
 \begin{enumerate}
 \item[1.] $\top \seq{} Z(0).$
 \item[2.] $Z(x) \wedge Z(y) \seq{} Z(x+y)$ für alle~$x,y \in R$.
@@ -2173,7 +2311,7 @@ welcher als sprachliche Mittel nur~$\top$, $\bot$, $\wedge$ und~$\vee$, nicht
 aber~$\Rightarrow$ oder die Quantoren, und als Schlussregeln neben den Axiomen
 aus Definition~\ref{defn:genprime} nur die
 strukturellen Regeln und die Regeln für Konjunktion und Disjunktion verwendet (siehe
-Tafel~\ref{ableitungsregeln:int}), kann man einen expliziten Zeugen der Aussage
+Tafel~\ref{ableitungsregeln:int} auf Seite~\pageref{ableitungsregeln:int}), kann man einen expliziten Zeugen der Aussage
 \[ b \in \sqrt{(a_1,\ldots,a_n)} \]
 extrahieren (siehe Definitionen~\ref{def:idealerz} und~\ref{def:radikal} für
 die Notation), also eine natürliche Zahl~$m \geq 0$ und
@@ -2201,9 +2339,9 @@ kann.\end{proof}
 
 Mit der Interpretation des Korollars und des Satzes muss man ein wenig
 vorsichtig sein. Die Aussage ist \emph{nicht}, dass aus der Zugehörigkeit
-von~$x$ zu allen Primidealen die Nilpotenz von~$x$ folgt. Diese stärkere
+von~$x$ zu allen Primidealen konstruktiv die Nilpotenz von~$x$ folgt. Diese stärkere
 Aussage kann man (bewiesenermaßen) nur in einem klassischen Rahmen zeigen.
-Stattdessen kann man lediglich aus einem entsprechend formalisierten
+Man kann lediglich aus einem entsprechend formalisierten
 \emph{Beweis}, dass~$x$ in allen Primidealen enthalten ist, die Nilpotenz
 von~$x$ folgern.
 
@@ -2231,8 +2369,8 @@ Mengen~$U$ definiert durch~$\Gamma(U,\ul{R}) := \{ f : U \to R \,|\, \text{$f$
 stetig} \}$, wobei man~$R$ mit der diskreten Topologie versieht. In diesem kann
 man das Ideal~$Z$, definiert durch~$\Gamma(U,Z) := \{ f \in
 \Gamma(U,\ul{R}) \,|\, \text{$f(\pp) \in \pp$ für alle~$\pp \in U$} \}$,
-betrachten. Mit den Regeln der Kripke-Joyal-Semantik kann man nun nachrechnen,
-dass für Ringelemente~$a_1,\ldots,a_n, b \in R$ genau dann in der internen
+betrachten. Mit den Regeln der Kripke--Joyal-Semantik kann man nun nachrechnen,
+dass für Ring\-elemen\-te~$a_1,\ldots,a_n, b \in R$ genau dann in der internen
 Sprache die Implikation
 \[ \Spec A \models a_1,\ldots,a_n \in Z \Rightarrow b \in Z \]
 gilt, wenn~$b \in \sqrt{(a_1,\ldots,a_n)}$. Also ist das Ideal~$Z$ im Topos der
@@ -2262,7 +2400,7 @@ hilfreich. Konkret definieren wir
   \brak{\top} &:= \sqrt{(0)} \\
   \brak{\bot} &:= (1) \\
   \brak{\varphi \wedge \psi} &:= \sup\{\brak{\varphi},\brak{\psi}\} = \sqrt{\brak{\varphi} + \brak{\psi}} \\
-  \brak{\varphi \cap \psi} &:= \inf\{\brak{\varphi},\brak{\psi}\} = \brak{\varphi} \cap \brak{\psi}
+  \brak{\varphi \vee \psi} &:= \inf\{\brak{\varphi},\brak{\psi}\} = \brak{\varphi} \cap \brak{\psi}
 \end{align*}
 und
 \[ \varphi \models \psi \quad:\Longleftrightarrow\quad
@@ -2275,7 +2413,7 @@ die geforderten Axiome erfüllt. Etwa gilt
   Z(xy) \models Z(x) \vee Z(y), &
     \quad\text{denn } \sqrt{(xy)} \supseteq \sqrt{(x)} \cap \sqrt{(y)},
 \end{align*}
-die restlichen Nachweise überlassen wir dem Leser. Jeden Beweis, der nur die
+die restlichen Nachweise sparen wir hier aus. Jeden Beweis, der nur die
 angegebenen Schlussregeln verwendet, kann man also in der Menge der
 Radikalideale nachbauen. Nun ist es leicht, die Behauptung zu zeigen:
 \begin{align*}
@@ -2303,7 +2441,7 @@ Implikation
 gilt. In klassischer Logik folgt daraus die Behauptung: Für~$n = 0$ ist das
 gerade die Aussage der nur klassisch gültigen Proposition~\ref{intersectprim};
 für~$n > 0$ ist das ebenfalls eine Standardaussage aus kommutativer Algebra
-(welche man durch Rückführung auf den Spezialfall beweist).
+(welche man mit Übergang zum Faktorring~$R/(a_1,\ldots,a_n)$ durch Rückführung auf den Spezialfall beweist).
 \end{proof}
 
 
@@ -2316,7 +2454,7 @@ der für beliebige Primideale~$\pp$ und Ringelemente~$a,b$ gültigen Implikation
 auf maschinelle Art und Weise einen expliziten Zeugen der Implikation gewinnen.
 Wir untersuchen dazu folgenden Beweis, der der Einfachheit halber in
 informaler Sprache wiedergegeben ist, prinzipiell aber in dem benötigten logischen
-Fragment formuliert werden könnte:
+Fragment formuliert werden könnte.
 \begin{quote}
 Da~$ab^2 \in \pp$, gilt~$a \in \pp$ oder~$b^2 \in \pp$ und wir können eine
 Fallunterscheidung führen: Falls~$a \in \pp$,
@@ -2342,7 +2480,7 @@ b - a &= (ba+b-a) + (-a)b =: y(b). \\
 \intertext{Zeuge für~$(b-a) \in \pp$:}
 (b-a)^3 &= (b-a) \cdot (b-a)^2 = x(a) \cdot z(b^2) = \cdots.
 \end{align*}
-Multiplizieren wir den Ausdruck~$x(a) \cdot z(z^2)$ aus, erhalten wir eine Darstellung
+Multiplizieren wir den Ausdruck~$x(a) \cdot z(b^2)$ aus, erhalten wir eine Darstellung
 von~$(b-a)^3$ als Summe von Vielfachen von~$ab^2$, $1-a$ und~$ba+b-a$. Diese
 Darstellung ist der gesuchte explizite Zeuge der Implikation.
 
@@ -2366,7 +2504,7 @@ ist. Klassisch gibt es aber auch noch folgendes stärkeres Prinzip:
 Sei~$x \in R$ ein Element eines Rings~$R$. Wenn~$x$ in jedem algebraisch
 abgeschlossenen Oberkörper von~$R$ Null ist, wenn also für jeden
 Ringhomomorphismus~$\varphi : R \to K$, wobei~$K$ ein algebraisch
-abgeschlossener Körper ist, das Element~$\varphi(x) \in K$ Null ist, dann
+abgeschlossener Körper ist, das Element~$\varphi(x) \in K\!$ Null ist, dann
 ist~$x$ nilpotent.\end{lemma}
 In diesem Abschnitt wollen wir zeigen, dass auch dieses Prinzip
 in einem konstruktiven Kontext verwendbar ist -- obwohl die Existenz
@@ -2398,9 +2536,11 @@ Quantoren, nicht aber~$\Rightarrow$, und als Schlussregeln
 \begin{enumerate}
 \item[1.] die Axiome aus Definition~\ref{defn:genprime} (jetzt in beliebigen
 Kontexten, nicht nur im leeren),
-\item[2.] $\top \seq{\vec x} Z(x) \vee \exists y{:}\, Z(1-xy)$,
+\item[2.] $\top \seq{\vec x} Z(s) \vee (\exists y{:}\, Z(1-sy))$ für alle
+Terme~$s$ im Kontext~$\vec x$ (also etwa Elemente von~$R$),
 \item[3.] $\top \seq{\vec x} \exists y{:}\, Z(y^n + a_{n-1}y^{n-1} + \cdots +
-a_1y + a_0)$, und
+a_1y + a_0)$ für alle~$n \geq 1$ und~$a_0,\ldots,a_{n-1}$ Terme im
+Kontext~$\vec x$ und
 \item[4.] die strukturellen Regeln, die Regeln für Konjunktion, Disjunktion,
 Allquantifikation und Existenzquantifikation
 \end{enumerate}
@@ -2408,23 +2548,39 @@ verwendet, kann man einen expliziten Zeugen der Aussage
 \[ b \in \sqrt{(a_1,\ldots,a_n)} \subseteq R \]
 extrahieren.
 \end{satz}
-\begin{proof}Wird nachgeliefert. Die Idee ist wieder, ein Modell anzugeben. Die
+Die anschauliche Bedeutung von~"`$Z(x)$"' ist nun, dass~$x$ im generischen
+algebraisch abgeschlossenen Oberkörper von~$R$ Null ist. Axiom~2 drückt aus,
+dass in diesem Oberkörper jedes Element Null oder invertierbar ist. Axiom~3
+besagt, dass jedes normierte und nichtkonstante Polynom über~$R$ eine
+Nullstelle im Oberkörper besitzt.
+\begin{proof}Die Idee ist wieder, ein Modell anzugeben. Die
 Interpretation einer Aussage im Kontext~$x_1,\ldots,x_n$ soll dabei ein
-Radikalideal in~$R[x_1,\ldots,x_n]$ sein.\end{proof}
-\XXX{XXX}
+Radikalideal im Polynomring~$R[x_1,\ldots,x_n]$ in~$n$ formalen Variablen sein.
+Neu zu definieren ist
+\begin{align*}
+  \brak{\exists y\_ \varphi}_{\vec x} &:= R[x_1,\ldots,x_n] \cap \brak{\varphi}_{\vec x,y}.
+\end{align*}
+Auf der rechten Seite ist dabei~$\brak{\varphi}$ ein Radikalideal
+in~$R[x_1,\ldots,x_n,y]$. Damit kann man alle nötigen Nachweise führen.
+Dazu ist die Identität~$\brak{\varphi}_{\vec x,y} =
+\sqrt{\brak{\varphi}_{\vec x} R[x_1,\ldots,x_n,y]}$ für Aussagen~$\varphi$ im Kontext~$\vec x$
+hilfreich, welche man mit Induktion beweisen kann.
+\end{proof}
+\XXX{Wie interpretiert man den Allquantor?}
 
 
 \section{Ein topostheoretischer Zugang zu Quantenmechanik: der Bohr-Topos}
+\label{qm-topos}
 
 Als Anwendung konstruktiver Mathematik wollen wir einen topostheoretischen
 Zugang zu (manchen Grundlagen von) Quantenmechanik vorstellen. Dieser geht auf
 eine wegweisende Arbeit von Jeremy Butterfield, John Hamilton und Chris Isham
 zurück~\cite{butterfield:hamilton:isham:1}, welche dann von weiteren
-mathematischen Physikern, unter anderem Andreas Döring, Chris Heunen und Nicolaas
-Landsman, und den konstruktiven Mathematikern Thierry Coquand und Bas Spitters
+mathematischen Physikern, unter anderen Andreas Döring, Chris Heunen und Nicolaas
+Landsman, sowie den konstruktiven Mathematikern Thierry Coquand und Bas Spitters
 aufgegriffen wurde. Unsere Darstellung ist im Wesentlichen eine Zusammenfassung
 der Artikel~\cite{topos:aqt} und~\cite{nlab:bohrtopos}. Ein genauerer Abriss
-der Geschichte findet sich in~\cite{nlab:bohrtopos} und den dort genannten
+der Entwicklung findet sich in~\cite{nlab:bohrtopos} und den dort genannten
 Referenzen.
 
 Die grundlegende Idee ist folgende:
@@ -2448,9 +2604,9 @@ Abschnitten grob umreißen.
 \subsection{Gelfand-Dualität zwischen topologischen Räumen und \csalgebren}
 
 Grundlegend für das Wechselspiel zwischen Geometrie und Algebra ist folgende
-Erkenntnis: Zu einem geometrischen Objekt~$X$ kann man die Menge der
-(reellwertigen, komplexwertigen, allgemeineren) Funktionen auf~$X$ betrachten.
-Diese Menge trägt algebraische Struktur (ist etwa ein Ring) und kann daher mit
+Erkenntnis: Einem geometrischen Objekt~$X$ kann man die Menge der
+(reellwertigen, komplexwertigen, allgemeineren) Funktionen auf~$X$ zuordnen.
+Diese Menge trägt algebraische Struktur (ist etwa durch punktweise Operationen ein Ring) und kann daher mit
 Mitteln der Algebra untersucht werden. Dabei besteht die Hoffnung, dadurch
 etwas über~$X$ zu lernen; in guten Fällen legt die Algebra von Funktionen
 das geometrische Objekt~$X$ sogar schon eindeutig fest.
@@ -2462,7 +2618,7 @@ Ringe:
 \[ \begin{array}{@{}rcl@{}}
   \textnormal{(Kat. der affinen Schemata)}^\op &\simeq& \textnormal{(Kat. der Ringe)} \\
   X &\mapsto& \Gamma(X, \O_X) = \textnormal{Ring der regulären Funktionen auf~$X$} \\
-  \textnormal{Spektrum von~$A$} = \Spec A &\mapsfrom& A
+  \textnormal{Spektrum von~$A$} &\mapsfrom& A
 \end{array} \]
 \end{prop}
 
@@ -2516,7 +2672,7 @@ eine Kategorie nichtkommutativer Räume verwenden.
 In der obigen Formulierung gilt die Gelfand-Dualität leider nur in einem
 klassischen Kontext. Da wir sie später in einem alternativen
 Mathematik-Universum (dem Bohr-Topos zu einer nichtkommutativen \csalgebra)
-nutzen wollen, in dem das Auswahlaxiom unabhängig von unseren philosophischen
+nutzen möchten, in dem das Auswahlaxiom unabhängig von unseren philosophischen
 Vorlieben schlichtweg \emph{nicht gilt}, ist das unzureichend. Im Zeitraum von
 etwa 20~Jahren wurde glücklicherweise auch folgende konstruktiv zulässige Variante
 entwickelt:
@@ -2542,7 +2698,7 @@ erfüllen sollen:
 \begin{defn}Eine \emph{Örtlichkeit}~$X$ besteht aus einem Verband~$\Ouv(X)$
 \emph{offener Dinge} (also einer Halbordnung zusammen mit Operationen~$\wedge$
 und~$\vee$, die geeignete Axiome erfüllen), in dem zusätzliche beliebige
-Suprema existieren und für diese folgendes Distributivitätsgesetz gilt:
+Suprema existieren und für diese folgendes Distributivgesetz gilt:
 \[ u \wedge \bigvee_i v_i = \bigvee_i (u \wedge v_i). \]
 \end{defn}
 
@@ -2568,7 +2724,7 @@ Teilbereichen sprechen.
 
 \begin{bsp}Folgende Örtlichkeiten sind nichttrivial und besitzen keine Punkte:
 die Örtlichkeit aller Surjektionen~$\NN \twoheadrightarrow \RR$, die
-Örtlichkeit aller zufälligen~$0/1$-Folgen, der örtlichkeitstheoretische Schnitt
+Örtlichkeit aller zufälligen~$0/1$-Folgen~\cite{random}, der örtlichkeitstheoretische Schnitt
 beliebig vieler dichter Unterörtlichkeiten einer nichttrivialen Örtlichkeit.\end{bsp}
 
 Umgekehrt spiegelt auch die Örtlichkeit zu einem topologischen Raum diesen nur
@@ -2588,9 +2744,9 @@ Auswahlaxiom oder andere klassische Prinzipien benötigt, eignen sich
 Örtlichkeiten also besser, wenn man solche nicht verwenden möchte oder (wie bei
 der Arbeit in anderen Topoi) nicht verwenden kann.
 
-Wir wollen mit einem Zitat von Alexander Grothendieck über
+Wir schließen mit einem Zitat von Alexander Grothendieck über
 Topoi~\cite{grothendieck:zitat}, das aber
-genauso gut auf Örtlichkeiten anwendbar ist, schließen:\footnote{%
+genauso gut auf Örtlichkeiten anwendbar ist:\footnote{%
 "`Diese \glq Wahrscheinlichkeitswolken\grq, welche die beruhigenden materiellen
 Partikel von früher ersetzen, erinnern mich irgendwie an die flüchtigen
 \glq offenen Umgebungen\grq{} der Topoi -- wie dahinschwindende Phantome, um
@@ -2602,6 +2758,8 @@ d’antan, me rappellent étrangement les élusifs “voisinages ouverts” qui
 peuplent les topos, tels des fantômes évanescents, pour entourer des “points”
 imaginaires, [\ldots].
 \end{quote}
+
+\XXX{Johnstone zitieren! Siehe Referenzen bei internal methods.}
 
 
 \subsection{Algebraische Sicht auf klassische Mechanik und Quantenmechanik}
@@ -2632,10 +2790,10 @@ für alle~$a \in A$). (Solche Abbildungen sind automatisch stetig.)
 
 Der Zusammenhang zwischen den beiden Sichtweisen wird durch
 \[ \rho(f) = \int_\Sigma f(x) \,d\mu(x) \]
-für alle~$f \in A$ gegeben: Ein Wahrscheinlichkeitsmaß~$\mu$ definiert über
+für alle~$f \in A$ vermittelt: Ein Wahrscheinlichkeitsmaß~$\mu$ definiert über
 diese Setzung eine normierte, positive und lineare Abbildung; dass umgekehrt
 jedes solche Funktional von dieser Form ist, garantiert der Darstellungssatz
-von Riesz-Markov-Kakutani.
+von Riesz--Markov--Kakutani \XXX{Referenz}.
 
 Unter dieser Korrespondenz entspricht ein reiner Zustand~$x \in \Sigma$ dem
 in~$x$ konzentrierten Dirac-Maß bzw. der Abbildung~$\rho$ mit~$\rho(f) =
@@ -2647,7 +2805,7 @@ f(x)$.
 Eine spezielle Observable ist die Eins von~$A$, also die Funktion, die konstant
 den Wert~$1 \in \RR$ annimmt.
 
-\item Der Erwartungswert einer Observablen~$a$ in einem Zustand~$\rho$
+\item Der Erwartungswert einer Observablen~$a$ in einem (gemischten) Zustand~$\rho$
 ist~$\rho(a)$. Ist~$\rho$ durch ein Wahrscheinlichkeitsmaß~$\mu$ gegeben,
 lässt sich dieser Ausdruck auch als~$\int_\Sigma a(x) \,d\mu(x)$ schreiben;
 diese Form ist vielleicht vertrauter.
@@ -2732,11 +2890,11 @@ Unter-\csalgebra~$C \subseteq A$ linear ist.
 \begin{bem}In der Praxis ist der Unterschied zwischen Zuständen und den besser
 motivierten Quasi-Zuständen nicht so groß: Denn nach Gleasons Theorem ist jeder
 gemischte Quasi-Zustand auf~$A = L(H,H)$ mit~$\dim H \geq 3$ schon ein
-gemischter Zustand.\end{bem}
+gemischter Zustand \XXX{Referenz}.\end{bem}
 
 \begin{bem}\label{bem:keine-reinen-quasi-zustaende}%
 Es gibt einen Grund, wieso wir kein Beispiel eines reinen Quasi-Zustands
-angeführt haben: Das Kochen-Specker-Theorem besagt, dass es zumindest im
+angeführt haben: Das Kochen--Specker-Theorem besagt, dass es zumindest im
 interessanten Fall~$A = L(H,H)$ mit~$\dim H \geq 3$ keinen solchen gibt. Das
 hat eine physikalische Interpretation: Ein reiner Quasi-Zustand würde allen
 Observablen konsistente Zahlenwerte als Messwerte zuweisen. So etwas ist nicht
@@ -2768,10 +2926,10 @@ kartesisch abgeschlossen ist und über einen Unterobjektklassifizierer verfügt.
 \end{defn}
 
 Notwendig und hinreichend für die Existenz endlicher Limiten ist die Existenz
-eines terminalen Objekts (eines Objekts~$1$, sodass für jedes Objekt~$X$ genau
+von einem terminalen Objekt (einem Objekt~$1$, sodass für jedes Objekt~$X$ genau
 ein Morphismus~$X \to 1$ existiert), von Produkten~$X \times Y$ für je zwei
 Objekte~$X$ und~$Y$ und von Differenzkernen für je zwei parallele Morphismen~$X
-\to Y$.
+\rightrightarrows Y$.
 
 \emph{Kartesisch abgeschlossen} bedeutet, dass es zu je zwei Objekten~$X$
 und~$Y$ nicht nur wie in jeder Kategorie eine Menge (oder Klasse)~$\Hom(X,Y)$
@@ -2811,7 +2969,7 @@ Mengen und Abbildungen.
 \end{bsp}
 
 \begin{bsp}Ist~$X$ ein topologischer Raum (oder eine Örtlichkeit), so ist die
-Kategorie der mengenwertigen Garben über~$X$ und der Garbenmorphismen ein
+Kategorie der mengenwertigen Garben auf~$X$ und der Garbenmorphismen ein
 Topos. Das terminale Objekt ist die konstante Garbe~$U \mapsto \{ \star \}$,
 das initiale die Garbe~$U \mapsto \{ \star \,|\, U = \emptyset \}$ und der
 Unterobjektklassifizierer ist die Garbe~$U \mapsto \{ V \subseteq U \,|\,
@@ -2854,10 +3012,11 @@ Garbentopos zu einem topologischen Raum.
 \begin{table}
   \centering
   \small
-  \setlength{\extrarowheight}{0.3em}
-  \begin{tabular}{@{}r|l@{}}
+  %\setlength{\extrarowheight}{0.3em}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
     externe Sicht & interne Sicht
-    \\\hline
+    \\\midrule
     Objekt von~$\E$ & gewöhnliche Menge \\
     Morphismus von~$\E$ & gewöhnliche Abbildung zwischen Mengen \\
     initiales Objekt von~$\E$ & leere Menge \\
@@ -2865,10 +3024,11 @@ Garbentopos zu einem topologischen Raum.
     Unterobjektklassifizierer von~$\E$ & Menge~$\P(\{\star\})$ der
     Wahrheitswerte \\
     Monomorphismus in~$\E$ & injektive Abbildung \\
-    Epimorphismus in~$\E$ & surjektive Abbildung
+    Epimorphismus in~$\E$ & surjektive Abbildung \\
+    \bottomrule
   \end{tabular}
   \caption{\label{tafel:externintern}Externe und interne Sicht auf Objekte und
-  Morphismen eines Topos~$\E$}
+  Morphismen eines Topos~$\E$.}
 \end{table}
 
 
@@ -2879,7 +3039,7 @@ Sei~$X$ ein topologischer Raum (oder eine Örtlichkeit). Dann definieren wir rek
 \[ U \models \varphi \quad \text{("`$\varphi$ gilt auf~$U$"')} \]
 für offene Teilmengen~$U \subseteq X$ und Aussagen~$\varphi$ gemäß
 der Regeln in Tafel~\ref{tafel:kripke-joyal} (der
-\emph{Kripke-Joyal-Semantik}).
+\emph{Kripke--Joyal-Semantik}).
 
 \begin{table}
   \centering
@@ -2911,7 +3071,7 @@ der Regeln in Tafel~\ref{tafel:kripke-joyal} (der
     $U_i \models \varphi(f_i)$}
   \end{array} \]
   \vspace{-1.5em}
-  \caption{\label{tafel:kripke-joyal}Die Kripke-Joyal-Semantik eines
+  \caption{\label{tafel:kripke-joyal}Die Kripke--Joyal-Semantik eines
   Garbentopos~$\Sh(X)$.}
 \end{table}
 
@@ -2920,10 +3080,10 @@ Dann gilt~$U \models s = t$ genau dann, wenn~$s|_U = t|_U$, und~$U \models
 \neg\neg(s = t)$ genau dann, wenn es eine dichte offene Teilmenge~$V \subseteq
 U$ mit~$s|_V = t|_V$ gibt.\end{bsp}
 
-Auf den ersten Blick erscheinen die Regeln der Kripke-Joyal-Semantik völlig
+Auf den ersten Blick erscheinen die Regeln der Kripke--Joyal-Semantik völlig
 willkürlich. Tatsächlich sind sie aber fein aufeinander abgestimmt, schon
 kleine Änderungen führen dazu, dass das gesamte System zusammenbricht. Nur so
-gilt folgende grundlegende Proposition:
+gilt folgende grundlegende Proposition.
 
 \begin{satz}\label{soundness}%
 Die interne Sprache von~$\Sh(X)$ hat folgende Eigenschaften:
@@ -2940,18 +3100,26 @@ intuitionistisch~$\varphi \seq{} \psi$ ableitbar ist, dann gilt auch~$U \models
 Diese Proposition ist der Grund für die Nützlichkeit der internen Sprache: Wenn
 man eine garbentheoretische Implikation~$A \Rightarrow B$ beweisen möchte, kann man vielleicht
 Voraussetzung und Behauptung als Interpretationen gewisser naiv-sprachlicher
-Aussagen~$\tilde A$ bzw.~$\tilde B$ mit der Kripke-Joyal-Semantik erkennen. Um
+Aussagen~$\tilde A$ bzw.~$\tilde B$ mit der Kripke--Joyal-Semantik erkennen. Um
 dann die Implikation zu beweisen, genügt es, in naiver Sprache einen
 konstruktiven Beweis von~$\tilde A \Rightarrow \tilde B$ zu führen.
 
 \begin{bsp}In einer Grundvorlesung zeigt man, dass die Verkettung surjektiver
 Abbildungen wieder surjektiv ist. Da der Beweis konstruktiv ist, folgt durch
 Interpretation im Garbentopos daraus sofort, dass die Verkettung von
-Epimorphismen von Garben wieder ein Epimorphismus ist. Der Beweis der Aussage, dass jede
-surjektive Abbildung~$f$ einen Schnitt~$g$ (eine Abbildung in die umgekehrte
-Richtung mit~$g \circ f = \id$) zulässt, erfordert dagegen das Auswahlaxiom und
+Epimorphismen von Garben wieder ein Epimorphismus ist. (Natürlich kann man
+diese Aussage auch direkt und viel allgemeiner, in jeder Kategorie,
+beweisen.)\end{bsp}
+
+\begin{bsp}
+Der Beweis der Aussage, dass jede
+surjektive Abbildung~$f$ einen Schnitt~$s$ (eine Abbildung in die umgekehrte
+Richtung mit~$f \circ s = \id$) zulässt, erfordert dagegen das Auswahlaxiom und
 lässt sich daher nicht in der internen Sprache interpretieren; tatsächlich
-haben Epimorphismen von Garben auch nur in den seltensten Fällen Rechtsinverse.\end{bsp}
+haben Epimorphismen von Garben auch nur in den seltensten Fällen
+Rechtsinverse.\footnote{Die Übersetzung ist eigentlich, dass Epimorphismen
+in einem geeigneten Sinn \emph{lokal} Rechtsinverse besitzen. Aber auch diese
+schwächere Aussage stimmt fast nie.}\end{bsp}
 
 \begin{bsp}Nur um Neugierde zu wecken hier ein komplexeres Beispiel:
 Konstruktiv kann man nicht zeigen, dass jeder endlich erzeugte Vektorraum über
@@ -2978,12 +3146,18 @@ $X \models \forall y\?\G\_ \exists x\?\F\_ \alpha(x) = y$.
 \end{enumerate}
 \end{aufg}
 
+\begin{bem}\label{offene-mengen-als-wahrheitswerte}Jede offene Menge~$U$
+stiftet einen Wahrheitswert von~$\Sh(X)$, also aus interner Sicht eine
+Teilmenge von~$\{\star\}$.
+\end{bem}
+
 \begin{bem}In dem Garbentopos eines ($\text{T}_1$-)Raums~$X$ gilt genau dann das Prinzip
 vom ausgeschlossenen Dritten, wenn~$X$ diskret ist. Das ist ein langweiliger
 Fall. Garbentopoi zu interessanten topologischen Räumen liefern also einen
 völlig sachlichen Grund, wieso es nützlich ist, sich mit konstruktiver Logik zu
 beschäftigen.
 \end{bem}
+
 
 \subsubsection*{Kann man mit der Topossprache Sätze beweisen, die man ohne sie
 nicht beweisen könnte?}
@@ -2999,7 +3173,7 @@ zu arbeiten. Dieser Vorteil ist nicht zu unterschätzen: Wenn man sich etwa
 einmalig ein Wörterbuch zwischen externen Begriffen der algebraischen Geometrie
 und zugehörigen internen Begriffen geeigneter Topoi anlegt, kann man fortan
 viele Beweise von grundlegenden Aussagen kurz und konzeptionell
-führen, anstatt wie sonst mit affinen Überdeckungen, Übergang zu Halmen
+führen, anstatt wie sonst mit affinen Überdeckungen, Übergängen zu Halmen
 und ähnlichen Techniken hantieren zu müssen.
 
 
@@ -3012,7 +3186,7 @@ Sei~$A$ die nichtkommutative \csalgebra{} eines quantenmechanischen Systems.
 Ein \emph{klassischer Kontext} von~$A$ ist eine kommutative Unter-\csalgebra~$C
 \subseteq A$.
 \item Die bezüglich der Inklusion geordnete Menge aller klassischen Kontexte
-von~$A$ sei~$\C(A)$.
+von~$A$ ist~$\C(A)$.
 \end{enumerate}
 \end{defn}
 
@@ -3026,7 +3200,7 @@ die Quere kommt.
 \[ \Bohr(A) := [\C(A), \Set] \]
 aller Funktoren~$\C(A) \to \Set$ und natürlichen Transformationen zwischen
 ihnen.\footnote{Äquivalent kann man den Bohr-Topos auch als den Garbentopos
-über~$A$, versehen mit der Alexandroff-Topologie, auffassen: Die offenen Mengen
+über dem Raum~$\C(A)$, versehen mit der Alexandroff-Topologie, auffassen: Die offenen Mengen
 sind dabei die nach oben abgeschlossenen Teilmengen, und eine Basis der
 Topologie ist durch die Teilmengen der Form~${\uparrow}(C) := \{ C' \in \C(A)
 \,|\, C \subseteq C' \}$ für~$C \in \C(A)$ gegeben. Unter dieser Äquivalenz
@@ -3110,7 +3284,7 @@ Definition.)
 
 Wir zeigen also
 \[ \Bohr(A) \models \forall a,b\?\ul{A}\_ a b = b a. \]
-Nach der Kripke-Joyal-Semantik in Koprägarbentopoi (in diesem Skript nicht
+Nach der Kripke--Joyal-Semantik in Koprägarbentopoi (in diesem Skript nicht
 angegeben, aber etwa in~\cite[Seite~100f.]{streicher:ctcl} zu finden) müssen wir dazu
 \[ \forall C \in \C(A)\_ \forall a,b \in \ul{A}(C)\_ a b = b a \]
 nachweisen. Das ist trivial.\end{proof}
@@ -3126,7 +3300,7 @@ Die Bohrifizierung~$\ul{A}$ wäre nicht interessant, wenn sich die Quasi-Zustän
 von~$A$ nicht irgendwie in~$\ul{A}$ wiederspiegeln würden. Tatsächlich gibt es
 folgendes schönes Resultat:
 
-\begin{prop}Die gemischten Quasi-Zustände von~$A$ stehen in Bijektion zu den
+\begin{prop}Die gemischten Quasi-Zustände von~$A$ stehen in Bijektion mit den
 gemischten Zuständen von~$\ul{A}$.\end{prop}
 \begin{proof}Mit dem internen Objekt komplexer Zahlen~$\ul{\CC}$ meinen wir die
 konstante Koprägarbe~$C \mapsto \CC$. Sei~$\rho : A \to \CC$ ein Quasi-Zustand
@@ -3137,7 +3311,7 @@ interner Sicht normiert, positiv und homogen ist. Dass er aus interner Sicht
 additiv ist, dass also
 \[ \Bohr(A) \models \forall a,b\?\ul{A}\_ \ul{\rho}(a+b) = \ul{\rho}(a) +
 \ul{\rho}(b) \]
-gilt, bedeutet tatsächlich
+gilt, bedeutet extern
 \[ \forall C \in \C(A)\_ \forall a,b\?\ul{A}(C)\_ \rho_C(a+b) = \rho_C(a) +
 \rho_C(b). \]
 Das ist gerade die Aussage, dass~$\rho$ auf kommutativen Unteralgebren additiv
@@ -3215,8 +3389,8 @@ Observablen zuzuordnen.}
 
 \label{appendix:axc}%
 \begin{axiom}[Auswahlaxiom, kategoriell formuliert]Jede surjektive
-Abbildung~$f$ besitzt einen Schnitt~$g$, d.\,h. eine Abbildung in die
-umgekehrte Richtung mit~$g \circ f = \id$.\end{axiom}
+Abbildung~$f$ besitzt einen Schnitt~$s$, d.\,h. eine Abbildung in die
+umgekehrte Richtung mit~$f \circ s = \id$.\end{axiom}
 Ein solcher Schnitt ist automatisch injektiv.
 
 \begin{prop}[Satz von Diaconescu]Aus dem Auswahlaxiom folgt das Prinzip vom ausgeschlossenen
@@ -3224,8 +3398,8 @@ Dritten.\end{prop}
 \begin{proof}Sei~$\varphi$ eine beliebige Aussage. Dann definieren wir die
 Teilmengen
 \begin{align*}
-  U &= \{ x \in X \,|\, x = 0 \vee \varphi \} \\
-  V &= \{ x \in X \,|\, x = 1 \vee \varphi \}
+  U &= \{ x \in X \,|\, (x = 0) \vee \varphi \} \\
+  V &= \{ x \in X \,|\, (x = 1) \vee \varphi \}
 \end{align*}
 von~$X := \{ 0, 1 \}$. Die Definition ist so gemacht, dass genau dann~$U = V$
 gilt, wenn~$\varphi$ gilt: Wenn~$U = V$, so liegt~$0$ in~$V$, also gilt~$0 = 1
@@ -3239,7 +3413,7 @@ Da die Abbildung
   & 1 &\longmapsto& V
 \end{array} \]
 surjektiv ist, besitzt sie nach Voraussetzung
-einen Schnitt~$g : \{U,V\} \to \{0,1\}$. Da~$g$ injektiv ist, gilt
+einen Schnitt~$s : \{U,V\} \to \{0,1\}$. Da~$s$ injektiv ist, gilt
 \[ s(U) = s(V) \quad\Longleftrightarrow\quad U = V
 \quad\Longleftrightarrow\quad \varphi. \]
 Da~$s(U)$ und~$s(V)$ Elemente der diskreten Menge~$X$ sind, gilt~$s(U) = s(V)$
@@ -3290,11 +3464,15 @@ nennt -- einen Ring ohne Negative.)\end{bsp}
 \begin{defn}Ein \emph{Ideal} eines Rings~$R$ ist eine Teilmenge~$\aa \subseteq R$, die
 \begin{itemize}
 \item die Null enthält: $0 \in \aa$,
-\item abgeschlossen unter Addition ist: $x + y \in \aa$ für alle~$x,y \in \aa$, und
-\item die \emph{Magneteigenschaft} hat: $r x \in \aa$ für alle~$r \in R, x
-\in \aa$.
+\item abgeschlossen unter (binärer) Addition ist: $x + y \in \aa$ für alle~$x,y \in \aa$, und
+\item die \emph{Magneteigenschaft} hat: $r x \in \aa$ für alle~$r \in
+\hcancel{$\aa$}{0pt}{0pt}{0pt}{0pt}R$ und~$x \in \aa$.
 \end{itemize}
 \end{defn}
+
+Die ersten beiden Axiome kann man natürlich zusammenfassen: Ein Ideal soll
+unter (beliebiger) Addition abgeschlossen sein. Die leere Summe ist das
+Nullelement.
 
 Die Axiome werden durch folgendes Beispiel motiviert:
 
@@ -3308,7 +3486,7 @@ von~$u$, so ist~$r x$ für ein beliebiges Element~$r \in R$ "`umso mehr"' ein
 Vielfaches von~$u$.
 \end{bsp}
 
-In Körpern~$K$ ist der Idealbegriff dagegen langweilig: Körper besitzen stets nur
+In Körpern~$K$ ist der Idealbegriff langweilig: Körper besitzen stets nur
 genau zwei Ideale, nämlich das sog. Nullideal~$(0) = \{ 0 \}$ und das sog.
 Einsideal~$(1) = K$.
 
@@ -3330,6 +3508,10 @@ liegt:
 \end{itemize}
 \end{defn}
 
+Auch diese beiden Axiome kann man zusammenfassen: Liegt ein Produkt aus beliebig
+vielen (auch Null vielen) Faktoren in~$\pp$, so soll schon einer der
+Faktoren in~$\pp$ liegen.
+
 \begin{bsp}Sei~$u \in \ZZ$. Dann ist das von~$u$ erzeugte Ideal~$(u) \subseteq
 \ZZ$ genau dann ein Primideal, wenn~$u$ Null ist oder wenn~$u$ oder~$-u$ eine
 Primzahl ist.\end{bsp}
@@ -3337,16 +3519,17 @@ Primzahl ist.\end{bsp}
 
 \subsection{Historische Motivation für Idealtheorie}
 
-Historisch gab es eine große Motivation, dieses Konzept einzuführen. Vom Ring
+Historisch gab es eine große Motivation, das Idealkonzept einzuführen. Vom Ring
 der ganzen Zahlen war natürlich bekannt, dass sich (bis auf die Null) jedes
-Element auf eindeutige Weise als Produkt von Primfaktoren schreiben lässt. Man
+Element auf eindeutige Weise als Produkt von Primfaktoren schreiben lässt (bis
+auf Assoziiertheit). Man
 fragte sich nun, ob gewisse für die Zahlentheorie relevante Ringe dieselbe
-Eigenschaft hatten: Das wäre zum einen recht "`nett"', zum anderen aber auch
+Eigenschaft hatten: Das wäre zum einen recht nett, zum anderen aber auch
 enorm nützlich: Denn man kannte schon einfache Beweise von Fermats letztem
 Satz, welche als einzige ungesicherte Zutat diese Eigenschaft voraussetzten.
 
 Leider stellte es sich heraus, dass diese Eigenschaft vielen der interessanten
-Ringe \emph{nicht} zu kam. Kronecker hatte nun die geniale Einsicht, von
+Ringe \emph{nicht} zu kommt. Kronecker hatte nun die geniale Einsicht, von
 Zahlen zu Idealen und von Primzahlen zu Primidealen zu verallgemeinern. Denn in
 diesen Ringen gilt zumindest noch, dass sich jedes \emph{Ideal} eindeutig als
 Produkt von Prim\emph{idealen} schreiben lässt. Mit dieser schwächeren Eigenschaft
@@ -3376,7 +3559,7 @@ wenn man klassische Logik voraussetzt.
 \begin{aufg}Zeige, dass wenn alle Ideale von~$\ZZ$ von der Form~$(x)$ für
 eine ganze Zahl~$x$ sind, das Prinzip vom ausgeschlossenen Dritten gilt.
 \emph{Tipp:} Betrachte für eine beliebige Aussage~$\varphi$ das Ideal
-$\{ x \in \ZZ \,|\, x = 0 \vee \varphi \} \subseteq \ZZ$ (wieso
+$\{ x \in \ZZ \,|\, (x = 0) \vee \varphi \} \subseteq \ZZ$ (wieso
 sind die Idealaxiome erfüllt?).\end{aufg}
 
 
@@ -3384,14 +3567,14 @@ sind die Idealaxiome erfüllt?).\end{aufg}
 
 \begin{defn}Ein Element~$x \in R$ eines Rings~$R$ heißt genau dann
 \emph{nilpotent}, wenn eine gewisse Potenz Null ist:
-\[ x^n = 0 \qquad\text{für ein~$n \geq 0$}. \]
+$x^n = 0$ für ein~$n \geq 0$.
 \end{defn}
 
-\begin{bsp}Im Ring~$\ZZ/(4)$ ist das Element~$[2]$ nilpotent.\end{bsp}
+\begin{bsp}Im Ring~$\ZZ/(4)$ ist die Äquivalenzklasse~$[2]$ nilpotent.\end{bsp}
 
 \begin{prop}Die nilpotenten Elemente eines Rings liegen in allen Primidealen
 des Rings.\end{prop}
-\begin{proof}Sei~$x$ mit~$x^n = 0$ ein nilpotentens Element. Sei~$\pp$ ein
+\begin{proof}Sei~$x$ mit~$x^n = 0$ ein nilpotentes Element. Sei~$\pp$ ein
 beliebiges Primideal. Dann ist also~$x^n$ in~$\pp$ enthalten. Wegen der
 Primalitätsbedingung ist daher auch~$x$ in~$\pp$ enthalten. Das war zu
 zeigen.\end{proof}
@@ -3417,7 +3600,11 @@ liegt die Vereinigung~$\bigcup_i \aa_i$ einer in~$\U$ liegenden Kette von
 Elementen aus~$\U$ wieder in~$\U$. Damit sind alle Voraussetzung des Lemmas von
 Zorn erfüllt, womit~$\U$ also ein maximales Element~$\mm$ enthält.
 
-Man kann nun nachrechnen, dass~$\mm$ ein Primideal ist. Da~$x \not\in \mm$
+Man kann nun nachrechnen, dass~$\mm$ ein Primideal ist.\footnote{Wäre~$\mm =
+(1)$, so wäre~$S = \emptyset$. Liegt ein Produkt~$ab$ in~$\mm$, so gilt~$a \in
+\mm$ oder~$a \not\in \mm$; im zweiten Fall folgt~$b \in \mm$, denn dann
+liegt~$\mm + (b)$ in~$\U$ (wieso?), womit die Maximalität von~$\mm$
+schon~$\mm + (b) = \mm$, also~$b \in \mm$, impliziert.} Da~$x \not\in \mm$
 (wegen~$x \in S$), ist das ein Widerspruch zur Voraussetzung.
 \end{proof}
 
@@ -3457,7 +3644,7 @@ allgemeineren Lemmas: Ist ein Ring~$S$ ein Integritätsbereich, so auch~$S[X]$.
 \item Ein Ideal~$\aa \subseteq R$ eines Rings~$R$ heißt genau dann
 \emph{Radikalideal}, wenn für alle~$x
 \in R$ und~$n \geq 0$ aus~$x^n \in \aa$ schon~$x \in \aa$ folgt.
-\item Sei~$\aa \subseteq R$ ein Ring. Dann heißt das Ideal
+\item Sei~$\aa \subseteq R$ ein Ideal. Dann heißt das Ideal
 \[ \sqrt{\aa} := \{ x \in R \,|\, \exists n \geq 0{:}\ x^n \in \aa \} \]
 das \emph{Radikal von~$\aa$}. Es ist stets ein Radikalideal, und zwar das
 kleinste, das~$\aa$ umfasst.
@@ -3504,7 +3691,7 @@ das in~$\aa$ und~$\bb$ enthalten ist, ist $\aa \cap \bb$.
 
 \begin{defn}\begin{enumerate}
 \item Eine \emph{Prägarbe} auf einem topologischen Raum~$X$ (oder einer
-Örtlichkeit) ist eine Prägarbe im kategoriellen Sinne auf der
+Örtlichkeit) ist eine Prägarbe im kategoriellen Sinn auf der
 als dünne Kategorie aufgefassten Halb\-ord\-nung~$\Ouv(X)$ der offenen
 Teilmengen (bzw.  offenen Dinge) von~$X$, also ein Funktor~$\Ouv(X)^\op \to
 \Set$.
@@ -3521,7 +3708,7 @@ schreibt man die induzierte Abbildung~$F(\text{"`$V \subseteq U$"'}) : \F(U)
 wichtigsten Beispielen für Prägarben her.
 
 Die Prototyp-Beispiele für Prägarben stammen nämlich von verschiedenen
-Funktionsbegriffen ab. Etwa gibt es auf jedem topologischen Raum~$X$ die
+Funktionsbegriffen. Etwa gibt es auf jedem topologischen Raum~$X$ die
 Prägarbe~$\C^0$ der stetigen Funktionen, definiert über
 \[ \begin{array}{@{}rcl@{}}
   \Ouv(X)^\op &\longrightarrow& \Set \\
@@ -3564,7 +3751,7 @@ wieder stetig bzw. glatt sein.\end{bsp}
 ist außer in pathologischen Fällen keine Garbe. Denn wenn zwei konstante
 Funktionen~$f_1 : U_1 \to \RR$ und~$f_2 : U_2 \to \RR$ auf zwei sich nicht
 überlappenden offenen Mengen definiert sind, ist die Kompatibilitätsbedingung
-leer, sie lassen sich jedoch im Allgemeinen nicht zu einer konstanten Funktion
+leer, sie lassen sich jedoch im Allgemeinen trotzdem nicht zu einer konstanten Funktion
 auf~$U_1 \cup U_2$ zusammensetzen: Das geht genau dann, wenn sie denselben
 konstanten Wert haben. Die analog definierte Prägarbe~$\C_{\text{lc}}$ der
 lokal konstanten Funktionen ist dagegen durchaus eine Garbe. (Eine Funktion heißt genau
@@ -3594,7 +3781,7 @@ kleineren offenen Teilmengen definiert sind.
 
 Sinnvolle Bedingungen an Garben oder Garbenmorphismen erhält man in der Regel
 also nur dann, wenn man alle offenen Mengen einbezieht, nicht nur~$X$ selbst.
-Die Kripke-Joyal-Semantik zur Interpretation der internen Sprache eines
+Die Kripke--Joyal-Semantik zur Interpretation der internen Sprache eines
 Garbentopos achtet von selbst darauf (siehe Abschnitt~\ref{internesprache}).
 
 
@@ -3649,14 +3836,14 @@ Funktionen. Dann ist der "`$\exp$"' genannte Garbenmorphismus
 ein Epimorphismus (da man \emph{lokal} die Exponentialfunktion mittels eines
 geeigneten Zweigs des Logarithmus umkehren kann). Aber seine
 Komponentenabbildungen~$\exp_U$ sind nicht alle surjektiv, etwa für solche
-Teilmengen~$U$, die einen Kreisring um den Ursprung umfassen.\end{bsp}
+Teilmengen~$U$ nicht, die einen Kreisring um den Ursprung umfassen.\end{bsp}
 
 \begin{bem}Mit \emph{Garbenkohomologie} kann man \emph{messen}, inwieweit ein
 Epimorphismus von Garben davon entfernt ist, auch ein Epimorphismus von
-Prägarben zu sein.
+Prägarben zu sein. \XXX{Messergebnis liegt in ...?}
 \end{bem}
 
-\begin{bem}In den meisten Lehrbüchern sind \emph{Mono-} und \emph{Epimorphismus} speziell
+\begin{bem}In den meisten Lehrbüchern über Garben sind \emph{Mono-} und \emph{Epimorphismus} speziell
 definierte Begriffe: Ein Morphismus~$\alpha : \F \to \G$ von Garben heißt dort genau dann
 mono- bzw. epimorph, wenn die induzierten Abbildungen~$\alpha_x : \F_x \to
 \G_x$, $x \in X$, auf allen \emph{Halmen} injektiv bzw. surjektiv sind. Diese
@@ -3794,7 +3981,7 @@ Wenn die untersuchte Kategorie genügend gute Eigenschaften hat -- ein
 \emph{Topos} ist --, gibt es ein konkretes, algorithmisch gegebenes und auch in der Praxis einfach
 durch\-führ\-ba\-res Verfahren, um solche intern formulierten Aussagen in die externe
 mathematische Sprache zu übersetzen, die sog.
-\emph{Kripke-Joyal-Semantik}~\cite[Kap~VI.6]{moerdijkmaclane}.
+\emph{Kripke--Joyal-Semantik}~\cite[Kap~VI.6]{moerdijkmaclane}.
 Wendet man dieses auf die Aussage~\eqref{injtype} an, erhält man (nach einem
 Vereinfachungsschritt) genau die zuvor hergeleitete Bedingung~\eqref{injallg}
 mit verallgemeinerten Elementen.
