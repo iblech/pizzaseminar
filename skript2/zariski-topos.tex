@@ -101,7 +101,7 @@
 \end{center}
 \vfill
 \newcommand{\Ll}{:\Longleftrightarrow}
-\hilight{Die Kripke-Joyal-Semantik des kleinen Zariski-Topos.}{%
+\hilight{Die Kripke--Joyal-Semantik des kleinen Zariski-Topos.}{%
   $\renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
     R \models x = y \? \O &\Ll&
       \text{Für die gegebenen Elemente $x, y \in R$ gilt $x = y$.} \\
@@ -199,7 +199,7 @@ Einsfunktion nirgendwo Null ist, können an keinem Punkt alle~$s_i$ zugleich
 verschwinden.
 
 
-\section{Die Kripke-Joyal-Semantik des kleinen Zariski-Topos}
+\section{Die Kripke--Joyal-Semantik des kleinen Zariski-Topos}
 
 Zu jedem kommutativen Ring~$R$ gehört ein alternatives Mathematik-Universum,
 der \emph{kleine Zariski-Topos zu~$R$}. Uns fehlen kategorientheoretische
@@ -397,7 +397,7 @@ erzeugte Ideal ist selbst schon ein Hauptideal.\end{bsp}
 \subsection{Verträglichkeit mit konstruktiver Logik}
 
 Bisher haben wir die interne Welt des kleinen Zariski-Topos allein dadurch
-erkundet, indem wir mit den Kripke-Joyal-Regeln die Rückübersetzung in unsere
+erkundet, indem wir mit den Kripke--Joyal-Regeln die Rückübersetzung in unsere
 gewohnte mathematische Sprache vorgenommen haben. Wenn das unsere einzige
 Interaktionsmöglichkeit mit der internen Welt wäre, wäre das ganze Thema nicht
 besonders spannend. Tatsächlich aber können wir in der internen Welt auch
@@ -427,7 +427,7 @@ Aufbau formal niedergeschriebener konstruktiver Beweise.
 Ring, die einen Rang besitzt, mittels Ähnlichkeitstransformationen auf eine
 Diagonalgestalt gebracht werden kann. Daraus folgt \emph{ohne weiteres Zutun}
 sofort, dass man jede Matrix (die einen Rang besitzt) über einem
-\emph{beliebigen} Ring lokal auf eine Diagonalgestalt bringen kann -- in dem Sinn, dass es
+\emph{beliebigen} Ring \emph{lokal} auf eine Diagonalgestalt bringen kann -- in dem Sinn, dass es
 eine Zerlegung der Eins gibt, sodass in den lokalisierten Ringen die Matrix
 jeweils ähnlich zu einer Diagonalmatrix ist: Denn nach Proposition~\ref{intern-lokal}
 ist der Ring~$\O$ der internen Welt ja stets lokal.\end{bsp}
@@ -506,11 +506,11 @@ den Polynomring~$\O[X]$ und den Matrizenringoid~$\amalg_{n,m} \O^{n \times
 m}$ sowie Objekte, die nicht zur Ringtheorie gehören, wie
 Analoga zu Potenzmengen.
 
-Es ist leicht, die Regeln der Kripke-Joyal-Semantik so zu erweitern, dass man
+Es ist leicht, die Regeln der Kripke--Joyal-Semantik so zu erweitern, dass man
 auch über diese weiteren Objekte nativ sprechen kann. In der vollen internen
 Sprache kann man sogar, wie im üblichen mathematischen Universum auch, aus
 gegebenen Objekten über Operationen wie Potenzmengenbildung, Ausschneidung von
-Teilmengen, Bildung von Faktormengen usw. neue konstruieren. Damit
+Teilmengen, Bildung von Faktormengen und so weiter neue konstruieren. Damit
 steht die interne Sprache der üblichen mathematischen Sprache in keiner
 Hinsicht nach -- bis auf die Einschränkung auf konstruktive Logik.
 
@@ -554,7 +554,7 @@ kann man also konstruktiv nicht rechtfertigen.
 Wohnung befinden muss (da wir ihn letzte Nacht verwendet haben, um die Tür
 aufzusperren), wir ihn momentan aber nicht finden, so können wir konstruktiv
 nur folgende doppelt negierte Aussage vertreten:
-\[ \neg\neg (\exists x{:}\ \text{der Schlüssel befindet sich an Position~$x$})
+\[ \neg\neg (\exists x\_ \text{der Schlüssel befindet sich an Position~$x$})
 \]
 \end{bsp}
 
@@ -567,7 +567,7 @@ strafrechtlich verfolgt.
 \end{bsp}
 
 Abschließend sei bemerkt, dass einige üble Gerüchte um konstruktive Logik im
-Umlauf sind, etwa, dass das Wort \emph{Widerspruch} pauschal verboten sei und
+Umlauf sind, etwa, dass das Wort \!\emph{Widerspruch} pauschal verboten sei und
 man daher nicht mal die Irrationalität von~$\sqrt{2}$ zeigen könne. Das
 Pizzaseminarskript räumt mit diesen Gerüchten auf.
 
@@ -575,7 +575,7 @@ Pizzaseminarskript räumt mit diesen Gerüchten auf.
 \subsection*{Eine besondere Klasse von Aussagen: geometrische Formeln}
 
 Aussagen der Form
-\[ \forall \cdots \forall{:}\ (\cdots) \Rightarrow (\cdots), \]
+\[ \forall \cdots \forall\_ (\cdots) \Rightarrow (\cdots), \]
 wobei in den eingeklammerten Teilaussagen die logischen Zeichen~$\forall$
 und~$\Rightarrow$ nicht vorkommen dürfen, heißen \emph{geometrische Formeln}.
 (Die Bezeichnung rührt von einem indirekten Zusammenhang mit der geometrischen
@@ -589,7 +589,7 @@ der Form~$R_\pp = (R \setminus \pp)^{-1}R$ für ein beliebiges Primideal~$\pp
 
 Etwa ist die Bedingung, (in einem schwachen Sinn) ein Integritätsbereich zu
 sein,
-\[ \forall x,y{:}\ xy = 0 \Rightarrow x = 0 \vee y = 0, \]
+\[ \forall x,y\_ xy = 0 \Rightarrow (x = 0) \vee (y = 0), \]
 eine geometrische Formel. Deswegen erfüllt der interne Ring~$\O$ sie genau
 dann, wenn alle Halme~$R_\pp$ sie erfüllen.
 
@@ -608,8 +608,8 @@ Zu einem topologischen Raum~$X$ gibt es die Kategorie der \emph{Garben
 auf~$X$}. Kategorien dieser Art bilden die Prototypbeispiele für interessante
 Topoi. Der kleine Zariski-Topos zu einem kommutativen Ring~$R$ ist auch von
 dieser Form: Er ist der Topos der Garben auf~$\Spec R$, dem zu~$R$ assoziierten
-geometrischen Raum. Der interne Ring~$\O$ entspricht dann der sog.
-Strukturgarbe, auf einer Basis offener Mengen explizit gegeben durch
+geometrischen Raum. Der interne Ring~$\O$ entspricht dann der
+\emph{Strukturgarbe}, auf einer Basis offener Mengen explizit gegeben durch
 \[ \Gamma(D(s), \O) = R[s^{-1}]. \]
 Die interne Sprache des Garbentopos zu einem topologischen ($\text{T}_1$-)Raum~$X$ ist genau
 dann klassisch, erfüllt also das Axiom vom ausgeschlossenen Dritten und das
@@ -696,7 +696,7 @@ beweisen könnte.
 
 Allerdings kann es sehr viel einfacher sein, in der internen Welt zu denken und
 zu arbeiten
-und erst am Ende die Übersetzung mit der Kripke-Joyal-Semantik durchzuführen.
+und erst am Ende die Übersetzung mit der Kripke--Joyal-Semantik durchzuführen.
 Etwa folgt aus der einfach zu beweisenden Aussage konstruktiver linearer
 Algebra
 \begin{indentblock}
