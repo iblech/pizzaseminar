@@ -1,0 +1,242 @@
+\documentclass[a4paper,english,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
+\usepackage{array}
+\usepackage[all]{xy}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{lmodern}
+\usepackage{tabto}
+
+\usepackage{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Example}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Theorem}
+\newtheorem{cor}[defn]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Remark}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+%\setlength\parskip{\medskipamount}
+%\setlength\parindent{0pt}
+
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\renewcommand{\aa}{\mathfrak{a}}
+\newcommand{\bb}{\mathfrak{b}}
+\newcommand{\pp}{\mathfrak{p}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\DeclareMathOperator{\Spec}{Spec}
+\renewcommand{\_}{\mathpunct{.}\,}
+\newcommand{\?}{\,{:}\,}
+
+\newcommand{\hilight}[2]{\begin{center}\framebox{#2}\par#1\end{center}}
+
+\newcommand{\speak}[1]{\ulcorner\text{#1}\urcorner}
+
+\setcounter{tocdepth}{2}
+
+\newlength{\aufgabenskip}
+\setlength{\aufgabenskip}{1.5em}
+\newcounter{aufgabennummer}
+\newenvironment{aufgabe}[1]{
+  \addtocounter{aufgabennummer}{1}
+  \textbf{Aufgabe \theaufgabennummer{}.} \emph{#1} \par
+}{\vspace{\aufgabenskip}}
+
+\newenvironment{indentblock}{%
+  \list{}{\leftmargin\leftmargin}%
+  \item\relax
+}{%
+  \endlist
+}
+
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\VB}{\mathrm{VB}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\QCoh}{\mathrm{QCoh}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Hom}{\underline{\mathrm{Hom}}}
+\renewcommand{\hom}{\mathrm{Hom}}
+\newcommand{\End}{\mathrm{End}}
+\newcommand{\ev}{\mathrm{ev}}
+\newcommand{\freist}{\underline{\ \ }}
+\newcommand{\Rep}{\mathrm{Rep}}
+\newcommand{\Cob}{\mathrm{Cob}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\rk}{\operatorname{rk}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\ul}[1]{\underline{#1}}
+
+\begin{document}
+
+\title{Fibered categories}
+\author{Ingo Blechschmidt}
+\date{October 11, 2014}
+\maketitle
+
+\begin{center}\begin{minipage}{0.8\textwidth}
+Fibered and indexed categories formalize the notion of objects and morphisms
+which can be pulled back along morphisms of a base category. One reason they
+are important is that stacks are fibered categories with certain extra
+properties.\medskip
+
+These are informal notes prepared for the October 2014 meeting of the \emph{Kleine
+Bayerische AG} at TU München. The notes summarize part of chapter~3 of
+Angelo Vistoli's \href{http://homepage.sns.it/vistoli/descent.pdf}{\emph{Notes
+on Grothendieck topologies, fibered categories and descent theory}}.
+\end{minipage}\end{center}
+\vspace{1em}
+
+\tableofcontents
+
+\section{Indexed categories}
+
+\begin{defn}Let~$\C$ be a category. A \emph{$\C$-indexed category} is a
+pseudofunctor~$F : \C^\op \to \Cat$.\end{defn}
+
+The notion of a \emph{pseudofunctor} is a slight weakening of the notion of an
+ordinary functor. It is best explained by looking at a example. By~$\Cat$ we
+mean the (2-)category of categories, functors, and natural transformations. We
+ignore all set-theoretical issues.
+
+\begin{ex}\label{ex:vb}Let~$\C$ be a category of spaces (topological spaces,
+manifolds, schemes, schemes over a fixed scheme, \ldots). Then there is
+a~$\C$-indexed category of vector bundles:
+\[ \begin{array}{@{}rcl@{}}
+  X &\longmapsto& \VB(X) = \text{category of vector bundles on~$X$} \\
+  (f : X \to Y) &\longmapsto&
+    (f^* : \VB(Y) \to \VB(X)) = \text{pullback along~$f$}
+\end{array} \]
+\end{ex}
+
+Pullback of vector bundles is not associative on the nose; for maps~$X \xra{f}
+Y \xra{g} Z$ it is not the case that~$(g \circ f)^* = f^* \circ g^*$ as
+functors~$\VB(Z) \to \VB(X)$. In fact, recall from general category theory that
+it does not make sense to compare functors on equality, since this involves
+comparing objects on equality. A pseudofunctor does not need to satisfy the
+functor axioms on the nose, it suffices that they are satisfied up to coherent
+natural isomorphisms. We give the precise definition below.
+
+\begin{ex}Let~$\C$ be a category of schemes. Then there is a~$\C$-indexed
+category of quasicoherent sheaves of modules, defined by~$X \mapsto \QCoh(X)$.
+\end{ex}
+
+\begin{ex}There is a~$\mathrm{Ring}$-indexed category of modules, given by~$R
+\mapsto \Mod(R)$ (the category of~$R$-modules) and the restriction of scalars
+functors.
+\end{ex}
+
+\begin{ex}Let~$\C$ be a category with pullbacks. There is a
+canonical~$\C$-indexed category, the \emph{self-indexing of~$\C$}:
+\[ \begin{array}{@{}rcl@{}}
+  X &\longmapsto& \C/X \\
+  (f : X \to Y) &\longmapsto&
+    (f^* : \C/Y \to \C/X)
+\end{array} \]
+As usual,~$\C/X$ is the slice category of morphisms to~$X$; its objects are
+morphisms~$T \to X$, where~$X \in \C$ is arbitrary, and its morphisms are
+commutative triangles. The functor~$f^*$ is defined by sending an object~$(T
+\to Y)$ to some chosen pullback~$(T \times_Y X \to X)$.\end{ex}
+
+\begin{rem}A morphism~$T \xra{\pi} X$ in the category of sets can be thought of as
+an~$X$-indexed family of sets, namely the fibers~$\pi^{-1}[\{x\}]$, where~$x$
+ranges over~$X$. By analogy, we visualize a morphism~$T \to X$ in an arbitrary
+category~$\C$ as an~$X$-indexed family of objects in~$\C$. Thus~$\C/X$ can be
+thought of as the category of~$X$-indexed families of objects in~$\C$, and the
+functors~$f^*$ \emph{reindex families}.
+\end{rem}
+
+\begin{ex}Any presheaf~$F : \C^\op \to \Set$ (that is, an ordinary functor)
+gives rise to a~$\C$-indexed category by postcomposing with the embedding~$\Set
+\to \Cat$, which associates to any set its induced discrete category. In
+particular, any object~$A \in \C$ gives rise to a \emph{representable}~$\C$-indexed
+category~$\ul{A}$ given by~$T \mapsto \Hom_\C(T,A)$.
+\end{ex}
+
+Stacks are special kinds of indexed categories, so indexed categories should
+be geometric in some sense. Where is it? Where are the topological spaces, the
+points? Let~$\C$ be a category of spaces and~$F$ a~$\C$-indexed category. We
+can infuse geometric content by imagining, for any space~$A \in \C$, the
+category~$F(A)$ to be \emph{the category of maps~$A \to F$}. So even though~$F$
+does not define topological structure directly, we can \emph{probe} it by test
+spaces. This is the general idea of Grothendieck's \emph{functor of points}
+philosophy (see XXXnLab).
+
+How good is this idea? We expect to be able to precompose morphisms~$f : A \to F$
+by morphisms~$g : B \to A$ in~$\C$ to obtain morphisms~$f \circ g : B \to F$.
+This is indeed possible --~$f \circ g$ can be realized as~$g^*(f)$.
+
+But the resulting notion fails in general to be local: If~$A = \bigcup_i U_i$
+is covered by open subsets, we expect to be able to define maps~$A \to F$ by
+glueing compatible maps~$U_i \to F$. This is not possible with an arbitrary
+indexed category -- the notion of a topology does not enter the definition in
+any way. A stack is a fibered category where this kind of pathology does not
+arise.
+
+\begin{ex}The \emph{points} of the fibered category~$\VB$ of vector bundles
+(example~\ref{ex:vb}) are by definition (and by analogy with the classical
+situation) the maps~$\pt \to \VB$. So for any natural number~$n$, there is a point
+of~$\VB$ (corresponding to a vector space of dimension~$n$). These points
+have lots of automorphisms, namely the invertible~$(n \times n)$-matrices.
+\end{ex}
+
+\begin{rem}In speaking of morphisms from a test space~$A$ to a fibered
+category~$F$ we commit a type error. This can be fixed by replacing~$A$ with
+its induced fibered category~$\ul{A}$. A~2-categorical Yoneda lemma then gives
+a canonical equivalence~$\Hom(\ul{A},F) \simeq F(A)$.
+\end{rem}
+
+We are now ready to appreciate a precise definition of a pseudofunctor.
+
+\begin{defn}Let~$\C$ be a category. A \emph{pseudofunctor}~$F : \C^\op \to
+\Cat$ consists of
+\begin{itemize}
+\item a category~$F(X)$ for each object~$X$ of~$\C$,
+\item a functor~$F(f) =: f^* : F(Y) \to F(X)$ for each morphism~$X \xra{f} Y$ in~$\C$,
+\item a natural isomorphism~$\eta_X : (\id_X)^* \Rightarrow \Id_{F(X)}$ for each
+object~$X$ in~$\C$, and
+\item a natural isomorphism~$\alpha_{f,g} : f^* \circ g^* \Rightarrow (g \circ
+f)^*$ for each diagram~$X \xra{f} Y \xra{g} Z$ in~$\C$
+\end{itemize}
+such that the following \emph{coherence conditions} hold:
+\begin{itemize}
+\item For any~$X \xra{f} Y$ in~$\C$, $\alpha_{\id_X,f} = \eta_X f^* : \id_X^* \circ f^*
+\Rightarrow f^*$.
+\item For any~$X \xra{f} Y$ in~$\C$, $\alpha_{f,\id_Y} = f^* \eta_Y : f^* \circ
+\id_Y^* \Rightarrow f^*$.
+\item For any $X \xra{f} Y \xra{g} Z \xra{h} W$ in~$\C$, the diagram commutes.
+
+XXX
+\end{itemize}
+\end{defn}
+
+The coherence conditions are needed for the following reason: XXX
+
+\end{document}
+
+Relevance in logic, topos theory, ...
