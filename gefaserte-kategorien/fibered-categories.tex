@@ -64,7 +64,7 @@
 \maketitle
 
 \begin{center}\begin{minipage}{0.8\textwidth}
-Fibered and indexed categories formalize the notion of objects and morphisms
+Fibered and indexed categories formalize objects and morphisms
 which can be pulled back along morphisms of a base category. One reason they
 are important is that stacks are fibered categories with certain extra
 properties.\medskip
@@ -162,19 +162,19 @@ But the resulting notion fails in general to be local: If~$A = \bigcup_i U_i$
 is covered by open subsets, we expect to be able to define maps~$A \to F$ by
 glueing compatible maps~$U_i \to F$. This is not possible with an arbitrary
 indexed category -- the notion of a topology does not enter the definition in
-any way. A stack is a fibered category where this kind of pathology does not
+any way. A stack is an indexed category where this kind of pathology does not
 arise.
 
-\begin{ex}The \emph{points} of the fibered category~$\VB$ of vector bundles
+\begin{ex}The \emph{points} of the indexed category~$\VB$ of vector bundles
 (example~\ref{ex:vb}) are by definition (and by analogy with the classical
 situation) the maps~$\pt \to \VB$. So for any natural number~$n$, there is a point
 of~$\VB$ (corresponding to a vector space of dimension~$n$). These points
 have lots of automorphisms, namely the invertible~$(n \times n)$-matrices.
 \end{ex}
 
-\begin{rem}In speaking of morphisms from a test space~$A$ to a fibered
+\begin{rem}In speaking of morphisms from a test space~$A$ to an indexed
 category~$F$ we commit a type error. This can be fixed by replacing~$A$ with
-its induced fibered category~$\ul{A}$. A~2-categorical Yoneda lemma then gives
+its induced indexed category~$\ul{A}$. A~2-categorical Yoneda lemma then gives
 a canonical equivalence~$\Hom(\ul{A},F) \simeq F(A)$.
 \end{rem}
 
@@ -197,8 +197,7 @@ such that the following \emph{coherence conditions} hold:
 \item For any~$X \xra{f} Y$ in~$\C$, $\alpha_{f,\id_Y} = f^* \eta_Y : f^* \circ
 \id_Y^* \Rightarrow f^*$.
 \item For any $X \xra{f} Y \xra{g} Z \xra{h} W$ in~$\C$, the diagram commutes.
-
-XXX
+\[ \text{XXX diagram} \]
 \end{itemize}
 \end{defn}
 
@@ -218,9 +217,10 @@ matter in which way we do this -- we always obtain the same canonical
 isomorphism.
 
 \begin{rem}Indexed categories are also important in categorical logic and topos
-theory. For instance, any geometric morphism~$\F \to \E$ of toposes induces
-an~$\E$-indexed category~$\FF$. From the point of view of the internal language
-of~$\E$, an~$\E$-indexed category looks like an ordinary category.
+theory. For instance, any geometric morphism~$\F \xra{f} \E$ of toposes induces
+an~$\E$-indexed category~$\FF$, given by~$X \mapsto \F/f^*X$. From the point of
+view of the internal language of~$\E$, an~$\E$-indexed category looks like an
+ordinary category. This is useful for doing \emph{relative category theory}.
 \end{rem}
 
 
@@ -348,7 +348,9 @@ that~$p(\phi) = f$.
 \section{An important example: quotient stacks}
 
 For this example, we fix a category~$\C$ of spaces. We will be so sketchy that
-it does not matter which category~$\C$ actually is.
+it does not matter which category~$\C$ actually is. The source for this section
+is the article \href{http://arxiv.org/abs/math/9911199}{\emph{Algebraic stacks}
+of Tomás Gómez}.
 
 Let~$G$ be a group acting on a space~$X$. Assume that the action is
 \emph{free}, i.\,e.\@ for any~$g \in G$ and any~$x \in X$, $g \cdot x = x$
@@ -357,7 +359,6 @@ X/G$; that this map is a~$G$-principal bundle; and that this map is the
 \emph{universal}~$G$-principal bundle equipped with a~$G$-equivariant map
 to~$X$: For any~$G$-principal bundle~$P \to Y$ equipped with a~$G$-equivariant
 map~$P \to X$, there is a unique map~$Y \to X/G$ such that the diagram
-diagram
 \[ \xymatrixcolsep{3pc}\xymatrixrowsep{3pc}\xymatrix{
   P \ar[r] \ar[d] & X \ar[d] \\
   Y \ar[r] & X/G
