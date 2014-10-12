@@ -33,45 +33,17 @@
 \widowpenalty=10000
 \displaywidowpenalty=10000
 
-%\setlength\parskip{\medskipamount}
-%\setlength\parindent{0pt}
-
+\newcommand{\CC}{\mathbb{C}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
-\renewcommand{\aa}{\mathfrak{a}}
-\newcommand{\bb}{\mathfrak{b}}
-\newcommand{\pp}{\mathfrak{p}}
-\renewcommand{\O}{\mathcal{O}}
+\newcommand{\FF}{\mathbb{F}}
 \newcommand{\C}{\mathcal{C}}
-\newcommand{\D}{\mathcal{D}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\xra}[1]{\xrightarrow{#1}}
-\DeclareMathOperator{\Spec}{Spec}
-\renewcommand{\_}{\mathpunct{.}\,}
-\newcommand{\?}{\,{:}\,}
-
-\newcommand{\hilight}[2]{\begin{center}\framebox{#2}\par#1\end{center}}
-
-\newcommand{\speak}[1]{\ulcorner\text{#1}\urcorner}
-
-\setcounter{tocdepth}{2}
-
-\newlength{\aufgabenskip}
-\setlength{\aufgabenskip}{1.5em}
-\newcounter{aufgabennummer}
-\newenvironment{aufgabe}[1]{
-  \addtocounter{aufgabennummer}{1}
-  \textbf{Aufgabe \theaufgabennummer{}.} \emph{#1} \par
-}{\vspace{\aufgabenskip}}
-
-\newenvironment{indentblock}{%
-  \list{}{\leftmargin\leftmargin}%
-  \item\relax
-}{%
-  \endlist
-}
-
 \newcommand{\Mod}{\mathrm{Mod}}
 \newcommand{\Set}{\mathrm{Set}}
 \newcommand{\Cat}{\mathrm{Cat}}
@@ -80,16 +52,8 @@
 \newcommand{\Id}{\mathrm{Id}}
 \newcommand{\QCoh}{\mathrm{QCoh}}
 \newcommand{\pt}{\mathrm{pt}}
-\newcommand{\Hom}{\underline{\mathrm{Hom}}}
-\renewcommand{\hom}{\mathrm{Hom}}
-\newcommand{\End}{\mathrm{End}}
-\newcommand{\ev}{\mathrm{ev}}
-\newcommand{\freist}{\underline{\ \ }}
-\newcommand{\Rep}{\mathrm{Rep}}
-\newcommand{\Cob}{\mathrm{Cob}}
-\newcommand{\tr}{\operatorname{tr}}
-\newcommand{\rk}{\operatorname{rk}}
-\newcommand{\im}{\operatorname{im}}
+\newcommand{\Ob}{\operatorname{Ob}}
+\newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\ul}[1]{\underline{#1}}
 
 \begin{document}
@@ -106,9 +70,10 @@ are important is that stacks are fibered categories with certain extra
 properties.\medskip
 
 These are informal notes prepared for the October 2014 meeting of the \emph{Kleine
-Bayerische AG} at TU München. The notes summarize part of chapter~3 of
-Angelo Vistoli's \href{http://homepage.sns.it/vistoli/descent.pdf}{\emph{Notes
-on Grothendieck topologies, fibered categories and descent theory}}.
+Bayerische AG} at the University of Regensburg. The notes summarize part of
+chapter~3 of Angelo Vistoli's
+\href{http://homepage.sns.it/vistoli/descent.pdf}{\emph{Notes on Grothendieck
+topologies, fibered categories and descent theory}}.
 \end{minipage}\end{center}
 \vspace{1em}
 
@@ -151,8 +116,8 @@ category of quasicoherent sheaves of modules, defined by~$X \mapsto \QCoh(X)$.
 functors.
 \end{ex}
 
-\begin{ex}Let~$\C$ be a category with pullbacks. There is a
-canonical~$\C$-indexed category, the \emph{self-indexing of~$\C$}:
+\begin{ex}\label{ex:self-indexing}Let~$\C$ be a category with pullbacks. There
+is a canonical~$\C$-indexed category~$\CC$, the \emph{self-indexing of~$\C$}:
 \[ \begin{array}{@{}rcl@{}}
   X &\longmapsto& \C/X \\
   (f : X \to Y) &\longmapsto&
@@ -171,7 +136,7 @@ thought of as the category of~$X$-indexed families of objects in~$\C$, and the
 functors~$f^*$ \emph{reindex families}.
 \end{rem}
 
-\begin{ex}Any presheaf~$F : \C^\op \to \Set$ (that is, an ordinary functor)
+\begin{ex}\label{ex:presheaf}Any presheaf~$F : \C^\op \to \Set$ (that is, an ordinary functor)
 gives rise to a~$\C$-indexed category by postcomposing with the embedding~$\Set
 \to \Cat$, which associates to any set its induced discrete category. In
 particular, any object~$A \in \C$ gives rise to a \emph{representable}~$\C$-indexed
@@ -185,11 +150,13 @@ can infuse geometric content by imagining, for any space~$A \in \C$, the
 category~$F(A)$ to be \emph{the category of maps~$A \to F$}. So even though~$F$
 does not define topological structure directly, we can \emph{probe} it by test
 spaces. This is the general idea of Grothendieck's \emph{functor of points}
-philosophy (see XXXnLab).
+philosophy (see
+\url{http://ncatlab.org/nlab/show/motivation+for+sheaves,+cohomology+and+higher+stacks}
+for a beautiful exposition).
 
 How good is this idea? We expect to be able to precompose morphisms~$f : A \to F$
 by morphisms~$g : B \to A$ in~$\C$ to obtain morphisms~$f \circ g : B \to F$.
-This is indeed possible --~$f \circ g$ can be realized as~$g^*(f)$.
+This is indeed possible:~$f \circ g$ can be realized as~$g^*(f)$.
 
 But the resulting notion fails in general to be local: If~$A = \bigcup_i U_i$
 is covered by open subsets, we expect to be able to define maps~$A \to F$ by
@@ -235,7 +202,209 @@ XXX
 \end{itemize}
 \end{defn}
 
-The coherence conditions are needed for the following reason: XXX
+The coherence conditions are needed for the following reason:
+When dealing with vector bundles or similar objects which can be pulled back,
+we are used to identify iterated pullbacks with pullbacks along compositions
+(``$f^* \circ g^* = (g \circ f)^*$'').
+This is justified only because between any
+two pullback expressions, e.\,g.\@
+\[ (f^* \circ (h \circ g)^* \circ p^* \circ q^*)(E) \quad\text{and}\quad
+  ((g \circ f)^* \circ (q \circ p \circ h)^*)(E), \]
+we have \emph{exactly one} agreed-upon canonical isomorphism (of course, there
+are lots of other non-canonical isomorphisms as well). In a general indexed
+category, we can construct these canonical isomorphisms out of the
+given~$\eta_X$ and~$\alpha_{f,g}$; the coherence conditions ensure that -- no
+matter in which way we do this -- we always obtain the same canonical
+isomorphism.
+
+\begin{rem}Indexed categories are also important in categorical logic and topos
+theory. For instance, any geometric morphism~$\F \to \E$ of toposes induces
+an~$\E$-indexed category~$\FF$. From the point of view of the internal language
+of~$\E$, an~$\E$-indexed category looks like an ordinary category.
+\end{rem}
+
+
+\section{Fibered categories}
+
+Recall that an~$I$-indexed family~$(X_i)_{i \in I}$ of sets can equivalently be
+given by
+\begin{itemize}
+\item a map~$I \to \Ob\Set$, $i \mapsto X_i$, or
+\item a map~$\coprod_{i \in I} X_i \xra{\pi} I$. (Recover~$X_i$ as the fiber
+of~$i$ under~$\pi$.)
+\end{itemize}
+Indexed categories are like the first approach, while fibered categories are
+like the second approach.
+
+\begin{defn}Let~$\C$ be a category. A \emph{category fibered over~$\C$} is a
+category~$\F$ together with a functor~$\F \xra{p} \C$ such that ``pullbacks
+exist'': For any morphism~$Y \xra{f} X$ in~$\C$ and any object~$E$ in the fiber
+category~$\F(X)$ (the subcategory of~$\F$ consisting of those objects which map
+to~$X$ and those morphisms which map to~$\id_X$ under~$p$), there should
+exist an object~$E'$ of~$\F(X)$ and a \emph{cartesian} morphism~$E' \xra{\phi}
+E$ with~$p(\phi) = f$.
+\[ \xymatrixcolsep{3pc}\xymatrixrowsep{3pc}\xymatrix{
+  E' \ar@{-}[d] \ar^\phi[r] & E \ar@{-}[d] \\
+  Y \ar[r]_f & X
+} \]
+\end{defn}
+
+The notion of a cartesian morphism is modeled after the universal property of
+usual pullbacks: A morphisms~$\phi : E' \to E$ with~$p(\phi) = f$ like in the
+definition is cartesian if and only if, for any morphism~$g : Z \to Y$, for any
+object~$E''$ in~$\F(Z)$, and any morphism~$\psi : E'' \to E$ such that~$p(\psi)
+= f \circ g$, there exists a unique morphism~$\alpha : E'' \to E'$ such
+that~$p(\alpha) = g$ and~$\phi \circ \alpha = \psi$.
+\[ \text{XXX diagram} \]
+
+\begin{rem}The definition of a fibered category as stated is \emph{evil} in the
+technical sense that it requires certain equalities between objects (namely,
+$p(E') = Y$). Since important examples of categories which ought to be fibered
+categories actually fulfill these evil equalities, this defect is tolerable in
+practice. But for some purposes, a non-evil variant is necessary; see for
+instance
+\url{http://ncatlab.org/nlab/show/Grothendieck+fibration#StreetFibration}.\end{rem}
+
+\begin{ex}The incarnation of example~\ref{ex:vb} as a fibered category is the
+category~$\VB$ of vector bundles on arbitrary base spaces. The projection
+functor~$\VB \to \C$ associates to any vector bundle its basespace.\end{ex}
+
+\begin{defn}An \emph{indexed functor}~$\F \to \G$ between fibered categories
+over~$\C$ is an ordinary functor~$\F \to \G$ which commutes with the projection
+functors to~$\C$ and which carries cartesian morphisms to cartesian
+morphisms.\end{defn}
+
+
+\section{Equivalence between indexed and fibered categories}
+
+\begin{prop}There is a pseudoequivalence between the 2-category of indexed
+categories, indexed functors, and indexed natural transformations; and the
+2-category of fibered categories, fibered functors, and fibered natural
+transformations.\end{prop}
+
+\paragraph{From fibered categories to indexed categories.}
+If suitable choice principles are available, any fibered category~$\F \to \C$
+defines a~$\C$-indexed category~$F : \C^\op \to \Cat$ by setting~$F(X) :=
+\F(X)$. For morphisms~$f : Y \to X$ in~$\C$, the pullback functors~$f^* : F(X)
+\to F(Y)$ are defined by associating to any object~$E$ a chosen pullback~$E'$
+like in the definition of a fibered category. The action of~$f^*$ on morphisms
+is given by the universal property of cartesian morphisms.
+
+One can check that this construction gives indeed rise to a pseudofunctor. In
+fact, the proof is very similar to the proof that the self-indexing~$X \mapsto
+\C/X$ is a pseudofunctor.
+
+\paragraph{From indexed categories to fibered categories.}
+In the opposite direction, any~$\C$-indexed category~$F : \C^\op \to \Cat$
+induces a fibered category~$\int F \to \C$ via the \emph{Grothendieck
+construction}. Mimicking the case of families of sets, the objects of~$\int F$
+are pairs~$(X \in \C, E \in F(X))$. A morphism~$(X,E) \to (Y,F)$ is a pair~$(f
+: X \to Y, \alpha : E \to f^*(F))$. The projection functor~$\int F \to \C$
+sends an object~$(X,E)$ to~$X$ and a morphism~$(f,\alpha)$ to~$f$.
+
+One can check that this category over~$\C$ is indeed a fibered category. The
+cartesian morphisms~$\phi : (Y,E') \to (X,E)$ required by the definition are
+the morphisms~$(f : Y \to X, \id : f^*(E) \to f^*(E)$.
+
+\begin{ex}Let~$\C$ be a category with pullbacks. Then~$\int \CC$ (see
+example~\ref{ex:self-indexing}) is equivalent to the \emph{category of morphisms
+in~$\C$}. This has arbitrary morphisms~$Y \to X$ as objects and commutative
+squares as morphisms. The equivalence is given by sending an object~$(X \in \C,
+(Y \xra{f} X))$ to~$f$.
+\end{ex}
+
+\begin{ex}Let~$\C$ be an arbitrary category and~$A$ a fixed object of~$\C$.
+Then~$\int \ul{A}$ (see example~\ref{ex:presheaf}) is
+equivalent to the slice category~$\C/A$, by sending an object~$(X \in \C, X
+\xra{f} A)$ to~$f$.
+\end{ex}
+
+
+\section{Special types of indexed and fibered categories}
+
+\begin{defn}A \emph{category fibered in groupoids (sets) [equivalence relations]}
+is a fibered category~$\F$ such that the fiber categories~$\F(X)$ are all
+groupoids (discrete categories) [categories equivalent to discrete
+categories].\end{defn}
+
+Equivalently, the associated pseudofunctor~$\C^\op \to \Cat$ factors
+over~$\mathrm{Grpd} \hookrightarrow \Cat$ ($\Set \hookrightarrow
+\Cat$) [$\mathrm{EqRel} \hookrightarrow \Cat$].
+
+\begin{prop}Let~$\F \xra{p} \C$ be a functor. This is \ldots
+\begin{itemize}
+\item a category fibered in groupoids if and only if any morphism
+in~$\F$ is cartesian and for any morphism~$Y \xra{f} X$ in~$\C$ and any
+object~$E$ in~$\F(X)$, there exists a morphism~$E' \xra{\phi} E$ in~$\F$ such
+that~$p(\phi) = f$.
+\item a category fibered in sets if and only if
+for any morphism~$Y \xra{f} X$ in~$\C$ and any
+object~$E$ in~$\F(X)$, there exists a unique morphism~$E' \xra{\phi} E$ in~$\F$ such
+that~$p(\phi) = f$.
+\end{itemize}
+\end{prop}
+
+
+\section{An important example: quotient stacks}
+
+For this example, we fix a category~$\C$ of spaces. We will be so sketchy that
+it does not matter which category~$\C$ actually is.
+
+Let~$G$ be a group acting on a space~$X$. Assume that the action is
+\emph{free}, i.\,e.\@ for any~$g \in G$ and any~$x \in X$, $g \cdot x = x$
+implies~$g = 1$. Then recall that there is a well-defined projection~$X \to
+X/G$; that this map is a~$G$-principal bundle; and that this map is the
+\emph{universal}~$G$-principal bundle equipped with a~$G$-equivariant map
+to~$X$: For any~$G$-principal bundle~$P \to Y$ equipped with a~$G$-equivariant
+map~$P \to X$, there is a unique map~$Y \to X/G$ such that the diagram
+diagram
+\[ \xymatrixcolsep{3pc}\xymatrixrowsep{3pc}\xymatrix{
+  P \ar[r] \ar[d] & X \ar[d] \\
+  Y \ar[r] & X/G
+} \]
+is a pullback diagram. Thus the space~$X/G$ has the pleasant property that
+maps~$Y \to X/G$ correspond to~$G$-principal bundles~$P \to Y$ equipped
+with~$G$-equivariant maps~$Y \to X$. (If such a bundle is given, construct~$Y
+\to X/G$ by selecting, for any~$y \in Y$, a preimage under~$P \to Y$, and
+applying~$P \to X \to X/G$ to this preimage. One can check that the resulting
+element in~$X/G$ is independent of the choice.)
+
+Unfortunately, if the action of~$G$ on~$X$ is not free,~$X/G$ fails to exist as
+an object of~$\C$ or fails to have this universal property. But there is always
+a quotient \emph{stack}~$[X/G]$ (at least an indexed category) with this
+property, tautologically defined by sending a test object~$Y$ of~$\C$ to the
+category of~$G$-principal bundles~$P \to Y$ equipped with~$G$-equivariant
+maps~$Y \to X$.
+
+Indeed, one can canonically define a map~$\ul{X} \to [X/G]$ and check that
+is the universal bundle.
+
+\begin{prop}The stack~$[X/G]$ is representable, i.\,e.\@ of the form~$\ul{A}$
+for some space~$A$ in~$\C$, if and only if the action of~$G$ on~$X$ is
+free.\end{prop}
+\begin{proof}[Proof (sketch)]
+For the ``only if'' direction, check that the morphism~$X \to A$ corresponding
+to the universal bundle~$\ul{X} \to \ul{A}$ is a~$G$-principal bundle
+isomorphic to~$X \to X/G$.
+\end{proof}
+
+\begin{ex}Let~$X = \pt$. Then the quotient stack~$[X/G]$ is commonly
+named~``$BG$''.\end{ex}
+
+\begin{rem}The category of points of~$[X/G]$, i.\,e.\@~$[X/G](\pt)$,
+is equivalent to the \emph{action groupoid} (\emph{weak quotient})~$X/\!/G$.
+This groupoid has as objects the elements of~$X$, and the set of morphisms~$x
+\to x'$ is the set of group elements~$g$ such that~$g \cdot x = x'$.
+The action groupoid is the ``right replacement'' for the ill-behaved space of
+orbits. A very accessible exposition is in \emph{Higher-Dimensional Algebra
+VII: Groupoidification} by John Baez, Alexander Hoffnung and Christopher
+Walker: \url{http://arxiv.org/abs/0908.4305}.
+\end{rem}
+
+\begin{rem}I believe that in some cases, the category of coherent sheaves
+on~$[X/G]$ can simply be described as the category of~$G$-equivariant sheaves
+on~$X$.
+\end{rem}
 
 \end{document}
 
