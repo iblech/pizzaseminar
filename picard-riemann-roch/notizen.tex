@@ -24,7 +24,7 @@
 \newtheorem{prop}[defn]{Proposition}
 \newtheorem{fact}[defn]{Fakt}
 \newtheorem{lemma}[defn]{Lemma}
-\newtheorem{thm}[defn]{Theorem}
+\newtheorem{thm}[defn]{Satz}
 \newtheorem{cor}[defn]{Korollar}
 
 \theoremstyle{remark}
@@ -383,7 +383,7 @@ modulo linearer Äquivalenz, versehen mit der Addition von Divisoren, ist die
 \emph{Divisorklassengruppe}~$\Div(X)$ von~$X$.
 \end{defn}
 
-\begin{prop}Die Zuordnung~$D \mapsto \O_X(D)$ definiert eine
+\begin{prop}\label{prop:div-pic}Die Zuordnung~$D \mapsto \O_X(D)$ definiert eine
 Eins-zu-Eins-Korres\-pon\-denz zwischen Divisoren auf~$X$ und Untergeradenbündeln
 von~$\K_X$. Ferner steigt sie zu einer Eins-zu-Eins-Korrespondenz zwischen
 den Divisoren auf~$X$ modulo linearer Äquivalenz und den Geradenbündeln
@@ -444,6 +444,43 @@ V(x_0)$, so ist ein Isomorphismus durch~$f \mapsto x_0^m f$ gegeben.
 
 XXX
 
+
+\section{Der Satz von Riemann--Roch für Kurven}
+
+\begin{fact}Der Grad eines Hauptdivisors auf einer \emph{kompakten} Kurve ist
+stets Null.\end{fact}
+
+\begin{defn}Der \emph{Grad} eines Geradenbündels~$\L$ auf einer kompakten Kurve
+ist der Grad eines Divisors~$D$ mit~$\L \cong \O_X(D)$.\end{defn}
+
+Dank Proposition~\ref{prop:div-pic} und des Faktums ist diese Setzung
+wohldefiniert. Anschaulich ist der Grad eines Geradenbündels die Anzahl der
+Null- und Polstellen, entsprechend gewichtet, die jeder nichttriviale rationale
+Schnitt von~$\L$ hat. Dass alle nichttrivialen rationalen Schnitte dasselbe
+Null- und Polstellenverhalten zeigen, ist charakteristisch für die
+\emph{Starrheit} algebraischer bzw.  holomorpher Geometrie.
+
+Im ersten Abschnitt wurde versprochen, dass die Euler-Charakteristik einer
+kohärenten Garbe nur von diskreten Invarianten der Garbe abhängt und daher
+leicht zu berechnen sei. Für den Fall von Geradenbündeln auf Kurven löst der
+Satz von Riemann--Roch dieses Versprechen ein:
+
+\begin{thm}[Satz von Riemann--Roch für Kurven]
+Sei~$X$ eine kompakte Kurve und~$\L$ ein Geradenbündel auf~$X$. Dann gilt
+$\chi(\L) = \chi(\O) + \deg\L$.
+\end{thm}
+
+\begin{proof}Wegen Proposition~\ref{prop:div-pic} genügt es, die Behauptung für
+Geradenbündel der Form~$\L = \O_X(D)$ nachzuweisen. Für den trivialen
+Divisor~$D = 0$ ist die Behauptung klar.
+
+Gelte für zwei Divisoren~$D$ und~$D'$ die Beziehung~$D = D' + [P]$, wobei~$P$
+ein Punkt auf~$X$ ist. XXX WIP
+\end{proof}
+
+\begin{rem}Den Grad eines Vektorbündels~$\L$ auf einer kompakten Kurve~$X$ kann
+man auch rein topologisch beschreiben. Ist~$c_1(\L) \in H^2(X, \ZZ)$, so
+gilt~$\deg\L = \int_X c_1(\L)$. (XXX Quelle)\end{rem}
 
 \end{document}
 
