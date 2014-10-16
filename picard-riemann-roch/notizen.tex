@@ -71,6 +71,7 @@
 \renewcommand{\div}{\operatorname{div}}
 \newcommand{\Div}{\mathrm{Div}}
 \newcommand{\ord}{\operatorname{ord}}
+\newcommand{\PD}{\operatorname{PD}}
 
 \begin{document}
 
@@ -224,6 +225,12 @@ V$ gilt~$(i_*\O_V)_x \cong \O_{V,x} \cong \O_{X,x}/\J_x$.
 die exakte Sequenz~$0 \to (z) \to \O_X \to i_*\O_\pt$. Dabei ist~$(z)$ die
 Idealgarbe aller~$\O_X$-Vielfachen der Koordinatenfunktion~$z$.\end{ex}
 
+\begin{ex}Zum Schnitt~$V \cap V' \stackrel{j}{\hookrightarrow} X$ zweier
+abgeschlossener Unterschema gehört die Idealgarbe~$\J + \J'$. Die vorgedrückte
+Strukturgarbe ergibt sich daher als~$j_*\O_{V \cap V'} = \O_X/(\J + \J') \cong
+\O_X/\J \otimes_{\O_X} \O_X/\J' \cong i_*\O_V \otimes_{\O_X}
+i'_*\O_{V'}$.\end{ex}
+
 
 \subsubsection*{Zurück und vor}
 
@@ -250,7 +257,7 @@ zugehörige Dualgarbe.
 
 Wenn~$V$ in~$X$ \emph{regulär eingebettet} ist -- das bedeutet, dass es lokal
 Funktionen~$f_1,\ldots,f_r$ gibt, welche die Idealgarbe~$\J$ erzeugen \emph{und
-eine reguläre Folge in~$\O_X$ bilden}\footnote{Eine Folge~$(f_1,\ldots,f_r)$
+eine reguläre Folge in~$\O_X$ bilden}\footnote{\label{fn:regulaere-folge}Eine Folge~$(f_1,\ldots,f_r)$
 von Elementen eines Rings~$A$ heißt genau dann \emph{regulär}, wenn~$f_1$
 in~$A$ regulär, $f_2$ in~$A/(f_1)$ regulär, \ldots, $f_r$
 in~$A/(f_1,\ldots,f_{r-1})$ regulär ist. Dabei heißt ein Ringelement~$f$
@@ -463,6 +470,9 @@ Null- und Polstellenverhalten zeigen, ist charakteristisch für die
 \begin{ex}Der Grad von Serres Twistinggarbe~$\O(m)$ auf~$\PP^n$
 ist~$m$.\end{ex}
 
+\begin{ex}Für alle Geradenbündel~$\L$ auf einer kompakten Kurve gilt
+$\deg\L^\vee = -\deg\L$.\end{ex}
+
 \begin{rem}Den Grad eines Vektorbündels~$\L$ auf einer kompakten Kurve~$X$ kann
 man auch rein topologisch beschreiben. Ist~$c_1(\L) \in H^2(X, \ZZ)$, so
 gilt~$\deg\L = \int_X c_1(\L)$. (XXX Quelle)\end{rem}
@@ -512,6 +522,153 @@ hat~$\O_P$ nur Kohomologie in Dimension~Null.
 Da jeder Divisor aus dem trivialen Divisor durch eine endliche Anzahl von
 Additionen und Subtraktionen von Punkten entsteht, ist der Beweis vollständig.
 \end{proof}
+
+
+\section{Die Schnittform auf der Picard-Gruppe}
+
+Sei~$X$ eine kompakte Fläche (projektive Varietät über~$\CC$ oder
+kompakte komplexe Mannigfaltigkeit der komplexen Dimension~2).
+
+\begin{defn}Seien~$C$ und~$C'$ Kurven auf~$X$ in allgemeiner Lage. Die
+\emph{Schnittmultiplizität} von~$C$ und~$C'$ bei einem Punkt~$x \in X$ ist
+\[ m_x(C,C') := \dim_\CC \O_{C \cap C',x} = \dim_\CC \O_{X,x}/(f,g), \]
+wenn~$f$ und~$g$ lokale Gleichungen (das heißt lokale Erzeuger der jeweiligen
+Idealgarben) für~$C$ bzw.~$C'$ sind.
+\end{defn}
+
+\emph{Allgemeine Lage} bedeutet: Um jeden Punkt gibt es eine offene Umgebung
+mit lokalen Gleichungen~$f$ und~$g$ auf dieser Umgebung, sodass~$(f,g)$ eine
+reguläre Folge in~$\O_X$ ist (siehe Fußnote~\ref{fn:regulaere-folge}). Diese
+Bedingung garantiert, dass der Schnitt~$C \cap C'$ Kodimension~2, also
+Dimension~0 hat und daher aus isolierten Punkten besteht.
+
+\begin{ex}Sei~$X = \CC^2$ (noch benötigen wir keine Kompaktheit). Sei~$C = V(y)$
+und~$C' = V(y-x^2)$. Trotz des tangentialen Anschmiegverhaltens beim Ursprung
+befinden sich~$C$ und~$C'$ in allgemeiner Lage. Die Schnittmultiplizität beim
+Ursprung ist
+\[ m_x(C,C') = \dim_\CC \CC\{x,y\}/(y,y-x^2) = \dim_\CC \CC[x]/(x^2) =
+2. \]\end{ex}
+
+\begin{rem}Wer glatte Schnitttheorie schon kennt, erwartet vielleicht geeignete
+Vorzeichen in der Definition der Schnittmultiplizität und hätte beim vorherigen
+Beispiel eher das Ergebnis~Null (zwei Nullstellen mit unterschiedlichen
+Vorzeichen) erwartet. Solche Vorzeichen gibt es in der algebraischen bzw.
+holomorphen Welt aber nicht.
+\end{rem}
+
+\begin{ex}Seien~$C$ und~$C'$ Kurven in allgemeiner Lage und~$x$ ein Punkt, der
+nicht im Schnitt liegt. Seien~$f$ bzw.~$g$ lokale Gleichungen. Dann gilt~$f(x)
+\neq 0$ oder~$g(x) \neq 0$, also ist~$f$ oder~$g$ in~$\O_{X,x}$ invertierbar.
+Somit ist~$m_x(C,C') = \dim_\CC \O_{X,x}/(f,g) = \dim_\CC \O_{X,x}/(1) =
+0$.\end{ex}
+
+\begin{ex}Seien~$C$ und~$C'$ Kurven in allgemeiner Lage und~$x$ ein Punkt des
+Schnitts. Seien~$f$ bzw.~$g$ lokale Gleichungen. Dann ist die
+Schnittmultiplizität genau dann Eins, wenn~$f$ und~$g$ das maximale Ideal
+von~$\O_{X,x}$ -- das Ideal derjenigen Funktionskeime, welche bei~$x$
+Null sind -- erzeugen.
+
+Sei konkret etwa~$X = \CC^1$ (noch benötigen wir keine
+Kompaktheit), $C = V(x)$ und~$C' = V(y)$. Dann ist die Schnittmultiplizität
+beim Ursprung Eins. Und in der Tat: Ist~$h$ ein Funktionskeim am
+Ursprung mit~$h(0) = 0$, so lässt sich~$h$ in der Form~$ax + by$ mit geeigneten
+weiteren Funktionskeimen~$a$ und~$b$ schreiben.
+
+Ist dagegen~$C = V(x)$ und~$C' = V(x - y^2)$, so ist die
+Schnittmultiplizität~$2$. Und tatsächlich lässt sich der beim Ursprung
+verschwindende Funktionskeim~$y$ \emph{nicht} als Linearkombination von~$x$
+und~$x-y^2$ ausdrücken.
+\end{ex}
+
+\begin{defn}Seien~$C$ und~$C'$ Kurven auf~$X$, nicht notwendigerweise in
+allgemeiner Lage. Dann ist ihre \emph{Schnittzahl} die Zahl
+\[ (C \cdot C') := \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_{C'}) :=
+  \sum_{n = 0}^\infty (-1)^n \, \chi(\mathcal{T}or^{\O_X}_n(\O_C,\O_{C'})) \in \ZZ. \]
+\end{defn}
+
+Dabei verwenden wir das \emph{abgeleitete Tensorprodukt} -- ein Komplex von
+Garben, dessen Kohomologie die Tor-Gruppengarben berechnet.
+Im Fall, dass~$C$ und~$C'$ in allgemeiner Lage sind, kann man zeigen, dass das
+gewöhnliche Tensorprodukt genügt, die höheren Tor-Terme also verschwinden. In
+diesem Fall gilt
+\[ (C \cdot C') = \chi(\O_C \otimes_{\O_X} \O_{C'}) = \chi(\O_{C \cap C'}) =
+  \sum_{x \in C \cap C'} \dim_\CC \O_{C \cap C',x} =
+  \sum_{x \in C \cap C'} m_x(C,C'). \]
+In diesem Fall ist die Schnittzahl also auch nichtnegativ. Im allgemeinen Fall
+muss das nicht unbedingt sein, dazu werden wir Beispiele sehen. Die Kompaktheit
+von~$X$ geht insofern ein, als dass wir die Euler-Charakteristik kohärenter
+Garben verwenden. Damit diese wohldefiniert ist, muss die Garbenkohomologie
+endlich-dimensional sein.
+
+\begin{defn}Für Geradenbündel~$\E$ und~$\F$ auf~$X$ ist die \emph{Schnittzahl}
+die Zahl
+\[ (\E \cdot \F) :=
+  \chi((\O_X - \E^\vee) \cdot (\O_X - \F^\vee)) :=
+  \chi(\O_X) - \chi(\E^\vee) - \chi(\F^\vee) + \chi(\E^\vee \otimes_{\O_X}
+  \F^\vee). \]
+\end{defn}
+Der mittlere Ausdruck ist dabei als formale Rechnung in der K-Theorie von~$X$
+zu verstehen.
+
+\begin{prop}\begin{enumerate}
+\item Seien~$C$ und~$C'$ Kurven auf~$X$. Dann ist~$(\O(C) \cdot \O(C')) = (C
+\cdot C')$.
+\item Sei~$C$ eine Kurve und~$\L$ ein Geradenbündel auf~$X$. Dann ist~$(\O(C)
+\cdot \L) = \deg(\L|_C)$.
+\item Die Schnittzahl definiert eine symmetrische und bilineare Abbildung
+$\Pic(X) \times \Pic(X) \to \ZZ$.
+\end{enumerate}\end{prop}
+
+\begin{proof}
+\begin{enumerate}
+\item Die erste Aussage folgt sofort mit den kurzen exakten Sequenzen zu den
+Unterschemata~$C$ und~$C'$.
+\item Aus der kurzen exakten Sequenz~$0 \to \O(-C) \to \O_X \to \O_C \to 0$
+ergibt sich durch Tensorieren mit~$\L^\vee$ die exakte Sequenz
+\[ 0 \lra \L^\vee \otimes \O(-C) \lra \L^\vee \lra \L^ \otimes \O_C. \]
+Dabei sollten wir eigentlich~$i_* \O_C$ schreiben und die Tensorprodukte mit
+dem Grundring~$\O_X$ dekorieren. Jedenfalls folgt
+\begin{align*}
+  (\O(C) \cdot \L)
+  &= \chi(\O) - \chi(\O(-C)) - \chi(\L^\vee) + \chi(\O(-C) \otimes \L^\vee) \\
+  &= \chi(\O_C) - \chi(\L^\vee \otimes \O_C) \\
+  &= \chi(\O_C) - \chi(\L^\vee|_C) \\
+  &= -\deg \L^\vee|_C \\
+  &= \deg \L|_C.
+\end{align*}
+Beim Schritt, wo der Grad ins Spiel kommt, haben wir den Satz von Riemann--Roch
+für die Kurve~$C$ verwendet. Im nächsten Schritt haben wir Dualisieren mit
+Rückzug auf~$C$ vertauscht -- das ist für lokal freie Modulgarben in Ordnung.
+\item Die Symmetrie ist offensichtlich. Zur Bilinearität XXX. \qedhere
+\end{enumerate}
+\end{proof}
+
+\begin{ex}XXX auf~$\PP^1 \times \PP^1$
+\end{ex}
+
+\begin{ex}XXX Selbstschnitt allgemein
+\end{ex}
+
+\begin{ex}XXX Aufblasung eines Punkts in der projektiven Ebene
+\end{ex}
+
+\begin{rem}Die Schnittzahl lässt sich auch rein topologisch, ohne Rückgriff auf
+die algebraische bzw. holomorphe Struktur, beschreiben. Dazu sei an ein Faktum
+über die erste Chernklasse erinnert: Ist~$i : C \hookrightarrow X$ die
+Einbettung einer Kurve, so gilt~$\int_X c_1(\O(C)) \cup \beta = \int_C
+i^*(\beta)$ für alle~$\beta \in H^2(X,\ZZ)$ (siehe Griffiths/Harris, Seite~141
+XXX). Daher folgt für Kurven~$C$ und~$C'$ auf~$X$
+\begin{align*}
+  (C \cdot C')_{\text{top.}}
+  &:= \int_X \PD(C) \cup \PD(C')
+  = \int_X c_1(\O(C)) \cup c_1(\O(C')) \\
+  &= \int_C i^*(c_1(\O(C')))
+  = \int_C c_1(i^*\O(C'))
+  = \int_C c_1(\O(C')|_C) \\
+  &= \deg \O(C')|_C
+  = (C \cdot C').
+\end{align*}
+\end{rem}
 
 \end{document}
 
