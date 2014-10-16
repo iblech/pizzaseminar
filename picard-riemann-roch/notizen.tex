@@ -1,8 +1,8 @@
-\documentclass[a4paper,english,12pt]{scrartcl}
+\documentclass[a4paper,ngerman,12pt]{scrartcl}
 
 \usepackage[utf8]{inputenc}
 
-\usepackage[english]{babel}
+\usepackage[ngerman]{babel}
 
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
 \usepackage{array}
@@ -36,11 +36,14 @@
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
 \newcommand{\FF}{\mathbb{F}}
+\newcommand{\PP}{\mathbb{P}}
 \newcommand{\C}{\mathcal{C}}
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
+\renewcommand{\O}{\mathcal{O}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\xra}[1]{\xrightarrow{#1}}
@@ -50,12 +53,141 @@
 \newcommand{\Vect}{\mathrm{Vect}}
 \newcommand{\VB}{\mathrm{VB}}
 \newcommand{\Id}{\mathrm{Id}}
-\newcommand{\QCoh}{\mathrm{QCoh}}
+\newcommand{\Coh}{\mathrm{Coh}}
+\newcommand{\GL}{\mathrm{GL}}
 \newcommand{\pt}{\mathrm{pt}}
 \newcommand{\Ob}{\operatorname{Ob}}
+\newcommand{\rank}{\operatorname{rank}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\placeholder}{\underline{\ \ }}
+\newcommand{\lra}{\longrightarrow}
 
 \begin{document}
+
+\title{Die Picard-Gruppe und \\ der Satz von Riemann--Roch}
+\author{Ingo Blechschmidt}
+\date{16. Oktober 2014}
+\maketitle
+
+\begin{center}\begin{minipage}{0.8\textwidth}
+Das sind informale Notizen zum ersten Kapitel von Arnaud Beauvilles Buch
+\emph{Complex Algebraic Surfaces}.
+\end{minipage}\end{center}
+\vspace{1em}
+
+\tableofcontents
+
+
+\section{Garbenkohomologie}
+
+Sei~$X$ ein Raum (Schema über~$\CC$ oder komplexe Mannigfaltigkeit). Dann
+untersucht man (algebraische bzw. holomorphe) Vektorbündel auf~$X$; äquivalent
+dazu ist die Kategorie der lokal freien~$\O_X$-Modulgarben.\footnote{Die
+Äquivalenz wird wie folgt vermittelt: Einem Vektorbündel~$E \to X$ ordnet man
+die Garbe seiner algebraischen bzw. holomorphen Schnitte zu. Da man Schnitte
+addieren und mit regulären bzw. holomorphen Funktionen multiplizieren kann,
+wird die erhaltene Garbe zu einer Garbe von~$\O_X$-Moduln. Die lokale
+Trivialität von~$E$ übersetzt sich in die lokale Freiheit der zugehörigen
+Garbe. Fasern des Vektorbündels entsprechen Fasern der Garbe (das sind die
+Halme, tensoriert mit dem Restklassenkörper an der jeweiligen Stelle).}
+Diese ist aber keine abelsche Kategorie und daher kein geeigneter Kontext, um
+Funktoren abzuleiten.
+
+Man behilft sich mit der größeren Kategorie~$\Coh(X)$ der
+\emph{kohärenten~$\O_X$-Modulgarben}. Das ist eine volle Unterkategorie der
+Kategorie aller~$\O_X$-Modulgarben, welche abelsch ist. Im Fall, dass~$X$ ein
+lokal noethersches Schema oder eine komplexe Mannigfaltigkeit ist, umfasst
+diese Kategorie die Kategorie der lokal freien Garben und ist die kleinste
+volle Unterkategorie mit dieser Eigenschaft. Kohärenz ist eine
+Endlichkeitseigenschaft, die im Allgemeinen stärker ist, als von endlichem Typ
+zu sein.\footnote{Eine~$\O_X$-Modulgarbe~$\E$ heißt genau dann \emph{kohärent},
+wenn sie von endlichem Typ ist und wenn für jede offene Teilmenge~$U \subseteq
+X$ der Kern eines jeden~$\O_X|_U$-linearen Morphismus~$(\O_X|_U)^n \to \E|_U$
+ebenfalls von endlichem Typ ist. Die Kohärenz von~$\O_X$ für den Fall einer
+komplexen Mannigfaltigkeit ist die Aussage des Kohärenzsatzes von Oka (XXX Quelle).} Die
+Faserdimension einer kohärenten Garbe kann -- anders als bei lokal freien
+Garben -- von Punkt zu Punkt variieren.
+
+Von zentraler Bedeutung ist der Funktor~$\Gamma(X,\placeholder) : \Coh(X) \to
+\Vect(\CC)$, welcher nur linksexakt, aber in allen interessanten Fällen nicht
+exakt ist und daher abgeleitet werden muss. Damit definiert man
+\emph{Garbenkohomologie}: Die~$n$-te Kohomologie einer kohärenten Garbe~$\E$
+ist $H^n(X, \E) := R^n \Gamma(X,\placeholder)(\E)$.\footnote{Das ist etwas
+gemogelt. Der Kategorie~$\Coh(X)$ mangelt es im Allgemeinen an genügend
+Injektiven, weswegen man zu größeren Kategorien übergeht.}
+
+Gewöhnliche (singuläre) Kohomologie erhält man aus dieser Definition zurück,
+wenn man für~$\E$ konstante Garben verwendet.\footnote{Eine Garbe heißt genau
+dann \emph{konstant}, wenn sie die Garbifizierung einer konstanten Prägarbe ist
+-- einer solchen, die jeder offenen Teilmenge des Raums dieselbe Menge~$A$
+zuordnet. Explizit ist die Menge der~$U$-Schnitte einer solchen konstanten Garbe
+die Menge der stetigen Funktionen~$U \to A$, wobei~$A$ mit der diskreten
+Topologie versehen wird. Konstante Garben sind nicht kohärent -- sie tragen
+nicht einmal eine~$\O_X$-Modulstruktur -- durch Übergang von~$\Coh(X)$ zur
+Kategorie aller Garben abelscher Gruppen kann man aber auch für solche Garben
+Kohomologie erklären.} Im klassischen Fall spielt die Wahl der Koeffizienten
+($\ZZ$, $\QQ$, \ldots) dank des universellen Koeffiziententheorems keine große
+Rolle; das ist bei Garbenkohomologie nicht so. Garbenkohomologie kann man sich
+\emph{nicht} über "`Zykel modulo Ränder"' anschaulich vorstellen, geometrische
+Vorstellung ist bedingt aber durch \emph{Čech-Methoden} gegeben (XXX Quelle).
+
+Garbenkohomologie hat drei für uns sehr wesentliche Eigenschaften:
+\begin{enumerate}
+\item Falls~$X$ eigentlich über dem Punkt bzw. kompakt ist, so sind
+die~$H^n(X,\E)$ \emph{endlich-dimensionale} Vektorräume\footnote{Dass das
+nicht immer so ist, zeigt schon das Beispiel~$H^0(\CC, \O_\CC)$, der
+unendlich-dimensionale Raum der holomorphen Funktionen auf~$\CC$.} und für~$i > \dim X$
+verschwindet die~$i$-ten Kohomologie. (XXX Quelle)
+\item Ist~$0 \to \E' \to \E \to \E'' \to 0$ eine kurze exakte Sequenz von
+kohärenten Garben, so erhält man eine lange exakte Sequenz in Kohomologie:
+\[ \cdots \lra H^n(X,\E') \lra H^n(X,\E) \lra H^n(X,\E'') \lra H^{n+1}(X,\E)
+\lra \cdots \]
+\item Die \emph{Eulercharakteristik} einer kohärenten Garbe~$\E$, definiert
+als die alternierende Summe~$\chi(\E) := \sum_{n=0}^\infty \dim_\CC H^n(X,\E)
+\in \ZZ$, ist additiv in kurzen exakten Sequenzen. Deshalb hängt~$\chi(\E)$ nur
+von der \emph{Klasse von~$\E$ in der K-Theorie ab}, also nur von
+\emph{diskreten Invarianten} von~$\E$.\footnote{Außerdem ist die
+Eulercharakteristik auf flachen Familien von kohärenten Garben konstant (XXX
+Quelle). Die K-Theorie von~$X$ ist die abelsche Gruppe
+formaler~$\ZZ$-Linearkombinationen von Isomorphieklassen von kohärenten Garben
+auf~$X$ modulo den Relationen~$\E = \E' + \E''$ für jede kurze exakte
+Sequenz~$0 \to \E' \to \E \to \E'' \to 0$.  Die K-Theorie von~$\CC$ ist
+isomorph zu~$\ZZ$ (mit Isomorphismus~$\E \mapsto \rank\E$), die von~$\PP^n$ ist
+isomorph zu~$\ZZ[X]/(X+1)^{n+1}$. (XXX Quelle)}
+\end{enumerate}
+
+Ein Grund, Garbenkohomologie statt klassischer Kohomologie zu studieren, ist
+schlichtweg der, dass höhere Kohomologie mit Werten in konstanten Garben auf
+irreduziblen Schemata stets trivial ist. Das liegt daran, dass auf irreduziblen
+topologischen Räumen konstante Garben stets welk (flabby) und daher azyklisch
+bezüglich des globale-Schnitte-Funktors ist.
+
+Ein weiterer Grund liegt darin, dass man oft an der Dimension des globalen
+Schnittraums einer kohärenten Garbe~$\E$ interessiert ist, also an~$\dim_\CC
+H^0(X,\E)$. Diese ist im Allgemeinen aber nicht leicht zu berechnen. Die
+Eulercharakteristik dagegen, in der diese Dimension als ein Summand auftritt,
+ist dank ihrer Stabilitätseigenschaften leichter zugänglich. Im Fall, dass~$\E$
+das zu einem Divisor~$D$ assoziierte Geradenbündel ist (siehe Abschnitt~2), ist
+die Frage nach der Dimension des globalen Schnittraums die sehr konkrete Frage
+nach der Dimension des Raums meromorpher Funktionen mit durch~$D$ vorgegebenem
+Null- und Polstellenverhalten.
+
+Historisch war auch die \emph{Leray-Spektralsequenz} eine große Motivation,
+Garbenkohomologie zu untersuchen. Diese liefert im Kontext einer stetigen
+Abbildung~$f : X \to Y$ eine Möglichkeit, aus Kenntnis der (gewöhnlichen)
+Kohomologie von~$Y$ und der Fasern~$f^{-1}[y]$ Rückschlüsse auf die Kohomologie
+von~$X$ zu ziehen; dabei kommt unweigerlich Garbenkohomologie vor.\footnote{Nur
+im Fall, dass~$f$ eine Faserung ist, kann man noch auf den Speziallfall der
+Leray--Serre-Spek\-tral\-sequenz ausweichen, bei der man nur Kohomologie mit Werten
+in lokalen Systemen benötigt.}
+
+Als letzter Grund sei angeführt, dass Garbenkohomologie geometrische Objekte
+klassiziferen kann. Etwa stehen die Elemente von~$H^1(X,\O_X^\times)$ auf
+kanonische Art und Weise mit den Geradenbündeln auf~$X$ (bis auf Isomorphie) in
+Eins-zu-Eins-Korrespondenz.\footnote{Geradenbündel kann man auch
+als~$\GL_1(\O_X)$-Hauptfaserbündel ansehen. Allgemeiner
+klassifiziert~$H^1(X,\GL_n(\O_X))$ Vektorbündel vom Rang~$n$
+und~$H^1(X,\G)$~$G$-Hauptfaserbündel.}
 
 \end{document}
