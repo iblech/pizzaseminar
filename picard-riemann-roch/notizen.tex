@@ -22,12 +22,14 @@
 \theoremstyle{plain}
 
 \newtheorem{prop}[defn]{Proposition}
+\newtheorem{fact}[defn]{Fakt}
 \newtheorem{lemma}[defn]{Lemma}
 \newtheorem{thm}[defn]{Theorem}
 \newtheorem{cor}[defn]{Korollar}
 
 \theoremstyle{remark}
 \newtheorem{rem}[defn]{Bemerkung}
+\newtheorem{warning}[defn]{Warnung}
 
 \clubpenalty=10000
 \widowpenalty=10000
@@ -44,6 +46,8 @@
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
 \newcommand{\J}{\mathcal{J}}
+\newcommand{\K}{\mathcal{K}}
+\renewcommand{\L}{\mathcal{L}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\op}{\mathrm{op}}
@@ -60,9 +64,13 @@
 \newcommand{\Ob}{\operatorname{Ob}}
 \newcommand{\rank}{\operatorname{rank}}
 \newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Pic}{\mathrm{Pic}}
 \newcommand{\ul}[1]{\underline{#1}}
 \newcommand{\placeholder}{\underline{\ \ }}
 \newcommand{\lra}{\longrightarrow}
+\renewcommand{\div}{\operatorname{div}}
+\newcommand{\Div}{\mathrm{Div}}
+\newcommand{\ord}{\operatorname{ord}}
 
 \begin{document}
 
@@ -256,4 +264,187 @@ vom Rang~$r$. (XXX Quelle)
 Im glatten Fall (XXX) gibt es die kurze exakte Sequenz
 \[ 0 \lra N_{V/X}^\vee \lra \Omega_X|_V \lra \Omega_V \lra 0. \]
 
+
+\section{Divisoren}
+
+Sei~$X$ ein noethersches, reguläres und ganzes Schema über~$\CC$ oder eine
+komplexe Mannigfaltigkeit. Es sei~$\K_X$ die Garbe der rationalen bzw.
+meromorphen Funktionen auf~$X$. Im Schemafall ist diese einfach die konstante
+Garbe mit Faser~$\O_{X,\xi}$.
+
+\begin{defn}\begin{enumerate}
+\item Ein \emph{(Weil-)Divisor} auf~$X$ ist eine
+formale~$\ZZ$-Linearkombination von irreduziblen\footnote{Das Achsenkreuz
+in~$\CC^2$ ist ein Beispiel für eine reduzible Hyperfläche.} Hyperflächen
+von~$X$.\footnote{Hyperflächen werden lokal durch eine reguläre Gleichung
+gegeben.}
+\item Der \emph{Grad} eines Divisors ist die Summe seiner Koeffizienten.
+\item Ein Divisor~$D$ heißt genau dann \emph{effektiv}, notiert~"`$D \geq 0$"',
+wenn seine Koeffizienten alle nichtnegativ sind.
+\item Ein Divisor~$D$ heißt genau dann \emph{Hauptdivisor}, wenn er von der
+Form~$\div(f)$ für einen globalen Schnitt~$f \in \K_X^\times(X)$ ist. Dabei
+ist~$\div(f)$ der \emph{Null- und Polstellendivisor} von~$f$, definiert
+als~$\sum_Y \ord_Y(f) \cdot [Y]$. Der Null- und Polstellendivisor der
+Nullfunktion ist nicht definiert.
+\item Divisoren~$D$ und~$D'$ heißen genau dann zueinander \emph{linear
+äquivalent}, geschrieben~"`$D \equiv D'$"', wenn die Differenz~$D - D'$ ein
+Hauptdivisor ist.
+\end{enumerate}
+\end{defn}
+
+\begin{ex}Der Null- und Polstellendivisor der rationalen Funktion~$(x-3)^2
+(x-4) / (x-5)^3$ auf~$\CC$ ist~$2 \cdot [3] + [4] - 3 \cdot [5]$.\end{ex}
+
+Hauptdivisor zu sein, ist auf~$\CC$ keine Einschränkung: Offensichtlich kann
+man zu jedem gegebenen Divisor eine rationale Funktion konstruieren, die genau
+das gewünschte Null- und Polstellenverhalten zeigt. Auf~$\PP^1$ dagen, der
+riemannschen Zahlenkugel, können nur Divisoren vom Grad~Null Hauptdivisoren
+sein. Denn rationale Funktionen auf~$\PP^1$ sind stets von der
+Form~$f(x,y)/g(x,y)$ für homogene Polynome~$f$ und~$g$ vom gleichen Grad
+und haben daher gleich viele Null- wie Polstellen.
+
+Ist~$s$ ein rationaler Schnitt eines Geradenbündels~$\L$ -- das heißt ein auf
+einer offenen dichten Teilmenge definierter Schnitt --, so lässt sich ebenfalls
+ein Null- und Polstellendivisor~$\div(s)$ definieren. Denn lokal gibt es einen
+Isomorphismus~$\varphi : \L \to \O_X$, und~$\div(\varphi(s))$ ist bereits
+erklärt. Andere Wahlen einer lokalen Trivialisierung ändern~$\varphi(s)$ nur um
+eine invertierbare Funktion ab und haben daher keine Auswirkung auf den Null-
+und Polstellendivisor, weswegen~$\div(s)$ global wohldefiniert ist.
+
+Rationale Funktionen sind dasselbe wie Schnitte des trivialen
+Geradenbündels~$\O_X$. Die beiden Definitionen für den Null- und
+Polstellendivisors einer rationalen Funktion stimmen miteinander überein.
+
+\begin{warning}Divisoren der Form~$\div(s)$, wobei~$s$ ein rationaler Schnitt
+eines Geradenbündels ist, sind trotz des gegenteiligen Anscheins im
+Allgemeinen \emph{nicht} Hauptdivisoren.\end{warning}
+
+Tatsächlich zeigt eine Konstruktion, zu der wir gleich kommen werden, dass
+\emph{jeder} Divisor der Null- und Polstellendivisor eines geeigneten Schnitts
+eines geeigneten Geradenbündels ist. Das ist in der algebraischen bzw.
+holomorphen Welt etwas besonderes (wieso?).
+
+
+\subsubsection*{Das assoziierte Bündel zu einem Divisor}
+
+\begin{defn}Sei~$D$ ein Divisor auf~$X$. Dann ist
+eine~$\O_X$-Modulgarbe~$\O_X(D)$ für offene Teilmengen~$U \subseteq X$ durch
+folgende Setzung definiert. Damit die Nullfunktion ein Schnitt von~$\O_X(D)$
+ist, gelte konventionsgemäß~$D + \div(0) \geq 0$.
+\[ \Gamma(U, \O_X(D)) := \{ f \in \K_X(U) \,|\, \text{$D + \div(f) \geq 0$
+auf~$U$} \} \]
+\end{defn}
+
+Positive Anteile in~$D$ erlauben also, dass Schnitte von~$\O_X(D)$ Polstellen
+besitzen dürfen; negative Anteile erzwingen Nullstellen. Da~$\O_X(D)$ als
+Geradenbündel eine kohärante Garbe ist, ist~$\Gamma(X,\O_X(D)) =
+H^0(X,\O_X(D))$ endlich-dimensional, und es ist eine interessante Frage, die
+Dimension dieses Raums zu bestimmen.
+
+\begin{ex}\label{ex:o-hauptdivisor}
+Ist~$D = \div(f_0)$ ein Hauptdivisor, so ist~$\O_X(D)$ vermöge des
+Morphismus~$\O_X(D) \to \O_X$, $f \mapsto f f_0$ global isomorph zu~$\O_X$.
+(Wieso liegt~$f f_0$ wirklich in~$\O_X$?)\end{ex}
+
+\begin{ex}Sei~$X = \PP^1$ mit den Koordinaten~$x$ und~$y$ und sei~$H = V(x)$.
+Dahh besitzt~$\O(H)$ den globalen Schnitt~$1$. Die Garbe~$\O(-H)$ hat nur den
+Nullschnitt als globalen Schnitt, denn es gibt keine nichttrivialen rationalen
+Funktionen auf~$\PP^1$, welche zwar eine Nullstelle besitzen müssen, aber keine
+Pole haben dürfen. Auf der standardoffenen Menge~$D(y)$ besitzt die Garbe~$\O(-H)$
+den Schnitt~$x/y$ (der Pol bei~$[1:0]$ zählt nicht, da~$[1:0] \not\in D(y)$),
+auf~$D(x)$ den Schnitt~$1$.
+\end{ex}
+
+Es ist nicht klar, dass die Modulgarbe~$\O_X(D)$ zu einem Divisor~$D$ lokal
+frei ist. Dazu benötigen wir folgendes Faktum:\footnote{Dieses drückt die
+Korrespondenz zwischen Weil- und Cartier-Divisoren aus und benötigt zwingend
+eine Form von Glattheit. XXX Quelle für Gegenbeispiele}
+
+\begin{fact}Sei~$D$ ein Divisor. Dann gibt es um jeden Punkt~$x \in X$ eine
+offene Umgebung~$U \subseteq X$ und eine rationale Funktion~$f_0 \in \K_X(U)$,
+sodass lokal auf~$U$ gilt:~$D = \div(f_0)$. (XXX Quelle)
+\end{fact}
+
+\begin{ex}Sei~$H = V(x)$ auf~$\PP^1$. Auf~$D(x)$ gilt~$[H] = \div(1) = 0$,
+auf~$D(y)$ gilt~$[H] = \div(x/y)$. Die lokalen Funktionen~$1$ und~$x/y$
+besitzen auf~$D(x)$ bzw.~$D(y)$ keine Polstellen; das ist bei effektiven
+Divisoren immer so. Ein anderes Beispiel liefert~$-H$: Auf~$D(x)$ gilt~$-[H] =
+\div(1)$, auf~$D(y)$ gilt~$-[H] = \div(y/x)$.\end{ex}
+
+Ist~$x \in X$ ein Punkt, so liefert das Faktum eine trivialisierende
+Umgebung~$U$ für~$\O_X(D)$: Auf~$U$ gilt~$D = \div(f_0)$, wie in
+Beispiel~\ref{ex:o-hauptdivisor} ist daher~$\O_X(D)|_U \to \O_X|_U$, $f \mapsto
+f f_0$ ein Isomorphismus.
+
+\begin{defn}Die Menge der Geradenbündeln
+auf~$X$ modulo Isomorphie, versehen mit dem Tensorprodukt als Gruppenstruktur,
+ist die \emph{Picard-Gruppe}~$\Pic(X)$ von~$X$. Die Menge der Divisoren auf~$X$
+modulo linearer Äquivalenz, versehen mit der Addition von Divisoren, ist die
+\emph{Divisorklassengruppe}~$\Div(X)$ von~$X$.
+\end{defn}
+
+\begin{prop}Die Zuordnung~$D \mapsto \O_X(D)$ definiert eine
+Eins-zu-Eins-Korres\-pon\-denz zwischen Divisoren auf~$X$ und Untergeradenbündeln
+von~$\K_X$. Ferner steigt sie zu einer Eins-zu-Eins-Korrespondenz zwischen
+den Divisoren auf~$X$ modulo linearer Äquivalenz und den Geradenbündeln
+auf~$X$ modulo Isomorphie ab.
+\end{prop}
+\begin{proof}Ist ein Geradenbündel zusammen mit einer Einbettung~$\L
+\hookrightarrow \K_X$ gegeben, so können wir einen Divisor~$D$ als Null- und
+Polstellendivisor desjenigen rationalen Schnitts von~$\L$ definieren, welcher
+zum Schnitt~$1 \in \K_X$ korrespondiert. Man kann zeigen, dass ein
+solcher stets existiert -- dabei geht die Voraussetzung ein, dass~$\L$ ein
+Geradenbündel ist.
+
+Da~$\O_X(D)$ für Hauptdivisoren~$D$ trivial ist
+(Beispiel~\ref{ex:o-hauptdivisor}), steigt die Korrespondenz ab. Man kann
+zeigen, dass unter unseren Voraussetzungen an~$X$ jedes Geradenbündel auf
+unkanonische Art und Weise eine Untergarbe von~$\K_X$ ist.
+\end{proof}
+
+\begin{lemma}Für Divisoren~$D$ und~$D'$ gilt~$\O_X(D + D') \cong \O_X(D)
+\otimes_{\O_X} \O_X(D')$ auf kanonische Art und Weise. Außerdem gilt~$\O_X(-D)
+\cong \O_X(D)^\vee$.\end{lemma}
+\begin{proof}Übungsaufgabe.
+\end{proof}
+
+
+\subsubsection*{Der Träger eines effektiven Divisors}
+
+Ist~$D$ ein effektiver Divisor, so ist~$\O_X(-D)$ auf kanonische Art
+und Weise eine Untergarbe von~$\O_X$.\footnote{Die Inklusion~$\O_X(-D) \to
+\O_X$ bleibt auf faserniveau~$\O_X(-D)|_x \to \O_X|_x$ nicht unbedingt für alle
+Punkte~$x$ injektiv. Man sollte sich hier also nicht ein Unterbündel eines
+Geradenbündels vorstellen.} Das gibt Anlass zur kurzen exakten Sequenz
+\[ 0 \lra \O_X(-D) \lra \O_X \lra i_*\O_V \lra 0, \]
+die ein abgeschlossenes Unterschema~$V := V(\O_X(-D))$ definiert -- die Vereinigung
+der in~$D$ vorkommenden Hyperflächen. Dieses (oder seine Reduktion) heißt
+\emph{Träger} von~$D$.
+
+\begin{ex}Die Idealgarbe zu einem
+einpunktigen Unterschema in~$\PP^1$ durch~$\O(-1)$ gegeben. Die Idealgarbe
+einer Hyperfläche, welche durch eine homogene Gleichung vom Grad~$d$
+ausgeschnitten wird, ist~$\O(-d)$.
+\end{ex}
+
+
+\subsubsection*{Divisoren auf~$\PP^1$}
+
+Sei~$H$ eine Hyperebene in~$\PP^n$.
+
+\begin{prop}Der Homomorphismus~$\ZZ \to \Div(\PP^n)$, $m \mapsto \O(mH)$ ist
+ein Isomorphismus.\end{prop}
+\begin{proof}Übungsaufgabe.\end{proof}
+
+Das Bündel~$\O(mH)$ ist isomorph zu Serres Twistinggarbe~$\O(m)$. Ist etwa~$H =
+V(x_0)$, so ist ein Isomorphismus durch~$f \mapsto x_0^m f$ gegeben.
+
+
+\subsubsection*{Divisoren auf~$\PP^1 \times \PP^1$}
+
+XXX
+
+
 \end{document}
+
+Einschränkung von Divisoren auf offene Teilmengen
