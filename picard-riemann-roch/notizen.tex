@@ -17,17 +17,17 @@
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
-\newtheorem{ex}[defn]{Example}
+\newtheorem{ex}[defn]{Beispiel}
 
 \theoremstyle{plain}
 
 \newtheorem{prop}[defn]{Proposition}
 \newtheorem{lemma}[defn]{Lemma}
 \newtheorem{thm}[defn]{Theorem}
-\newtheorem{cor}[defn]{Corollary}
+\newtheorem{cor}[defn]{Korollar}
 
 \theoremstyle{remark}
-\newtheorem{rem}[defn]{Remark}
+\newtheorem{rem}[defn]{Bemerkung}
 
 \clubpenalty=10000
 \widowpenalty=10000
@@ -43,6 +43,7 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
+\newcommand{\J}{\mathcal{J}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\op}{\mathrm{op}}
@@ -157,6 +158,9 @@ isomorph zu~$\ZZ$ (mit Isomorphismus~$\E \mapsto \rank\E$), die von~$\PP^n$ ist
 isomorph zu~$\ZZ[X]/(X+1)^{n+1}$. (XXX Quelle)}
 \end{enumerate}
 
+
+\subsubsection*{Wieso Garbenkohomologie?}
+
 Ein Grund, Garbenkohomologie statt klassischer Kohomologie zu studieren, ist
 schlichtweg der, dass höhere Kohomologie mit Werten in konstanten Garben auf
 irreduziblen Schemata stets trivial ist. Das liegt daran, dass auf irreduziblen
@@ -189,5 +193,67 @@ Eins-zu-Eins-Korrespondenz.\footnote{Geradenbündel kann man auch
 als~$\GL_1(\O_X)$-Hauptfaserbündel ansehen. Allgemeiner
 klassifiziert~$H^1(X,\GL_n(\O_X))$ Vektorbündel vom Rang~$n$
 und~$H^1(X,\G)$~$G$-Hauptfaserbündel.}
+
+
+\subsubsection*{Die kurze exakte Sequenz zu einem Unterschema}
+
+Im Folgenden werden wir wiederholt die kurze exakte Sequenz zu einem
+abgeschlossenen Unterschema~$V \stackrel{i}{\hookrightarrow} X$ bzw. einer
+abgeschlossenen Untermannigfaltigkeit benötigen. Diese ist die Sequenz
+\[ 0 \lra \J \lra O_X \lra i_*\O_V \lra 0. \]
+Dabei ist~$\J$ die \emph{Idealgarbe} zu~$V$, also die Garbe derjenigen
+Funktionen, welche auf~$V$ verschwinden. Das Komplement von~$V$ kann daraus als
+die offene Menge~$\{ x \in X \,|\, 1 \in \J_x \subseteq \O_{X,x} \}$
+wiedergewonnen werden -- das ist die Menge derjenigen Punkte, in denen
+mindestens eine definierende Gleichung von~$V$ nicht erfüllt ist.
+
+Die Garbe~$i_* \O_V$ ist der Pushforward der Strukturgarbe von~$V$, also der
+Garbe der regulären bzw. holomorphen Funktionen. Auf Punkten~$x \in X$, welche
+nicht in~$V$ liegen, ist ihr Halm trivial: $(i_*\O_V)_x = 0$. Für Punkte~$x \in
+V$ gilt~$(i_*\O_V)_x \cong \O_{V,x} \cong \O_{X,x}/\J_x$.
+
+\begin{ex}Zum abgeschlossenen Unterschema~$\{0\} \stackrel{i}{\hookrightarrow} \CC$ gehört
+die exakte Sequenz~$0 \to (z) \to \O_X \to i_*\O_\pt$. Dabei ist~$(z)$ die
+Idealgarbe aller~$\O_X$-Vielfachen der Koordinatenfunktion~$z$.\end{ex}
+
+
+\subsubsection*{Zurück und vor}
+
+Ist~$V \stackrel{i}{\hookrightarrow} X$ eine abgeschlossene Teilmenge, so
+definiert der Pushforward-Funktor~$i_*$ eine Äquivalenz zwischen der Kategorie
+der Garben auf~$V$ und der Kategorie derjenigen Garben auf~$X$, deren Träger
+in~$V$ liegt. Oft ist es hilfreich, auf einem einzigen Raum zu arbeiten; dann
+kann man sich also des Pushforward-Funktors bedienen.
+
+Für den Rückzug~$\E|_V := i^* \E$ einer kohärenten Garben~$\E$ auf~$X$ gilt die
+Rechenregel
+\[ i_* (\E|_V) \cong \E \otimes_{\O_X} i_*\O_V \cong \E \otimes_{\O_X} \O_X/\J,
+\]
+wenn~$\J$ die Idealgarbe von~$V$ ist. Ferner gilt für die Kohomologie
+\[ H^n(V, \F) \cong H^n(X, i_*\F). \]
+
+
+\subsubsection*{Normalgarbe und Konormalgarbe}
+
+Ist~$V \hookrightarrow X$ ein abgeschlossenes Unterschema, so ist~$N_{V/X}^\vee
+:= \J/\J^2$ die \emph{Konormalgarbe} von~$V$ in~$X$. Sie hat Träger in~$V$ und
+wird daher als Garbe auf~$V$ angesehen. Die \emph{Normalgarbe} ist die
+zugehörige Dualgarbe.
+
+Wenn~$V$ in~$X$ \emph{regulär eingebettet} ist -- das bedeutet, dass es lokal
+Funktionen~$f_1,\ldots,f_r$ gibt, welche die Idealgarbe~$\J$ erzeugen \emph{und
+eine reguläre Folge in~$\O_X$ bilden}\footnote{Eine Folge~$(f_1,\ldots,f_r)$
+von Elementen eines Rings~$A$ heißt genau dann \emph{regulär}, wenn~$f_1$
+in~$A$ regulär, $f_2$ in~$A/(f_1)$ regulär, \ldots, $f_r$
+in~$A/(f_1,\ldots,f_{r-1})$ regulär ist. Dabei heißt ein Ringelement~$f$
+\emph{regulär}, wenn Multiplikation mit~$f$ injektiv ist. Anschaulich ist eine
+reguläre Folge von Funktionen eine, in der keine der einzelnen Gleichungen
+redundant ist. Etwa ist die Folge~$z, z$ von Elementen von~$\O_\CC$ nicht
+regulär, und in der Tat hat das Verschwindungsschema~$V(z,z)$ dieser Funktionen
+auch nicht Kodimension~2.} -- so ist die Konormalgarbe lokal frei
+vom Rang~$r$. (XXX Quelle)
+
+Im glatten Fall (XXX) gibt es die kurze exakte Sequenz
+\[ 0 \lra N_{V/X}^\vee \lra \Omega_X|_V \lra \Omega_V \lra 0. \]
 
 \end{document}
