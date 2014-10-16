@@ -355,7 +355,7 @@ den Schnitt~$x/y$ (der Pol bei~$[1:0]$ zählt nicht, da~$[1:0] \not\in D(y)$),
 auf~$D(x)$ den Schnitt~$1$.
 \end{ex}
 
-Es ist nicht klar, dass die Modulgarbe~$\O_X(D)$ zu einem Divisor~$D$ lokal
+Es ist nicht offensichtlich, dass die Modulgarbe~$\O_X(D)$ zu einem Divisor~$D$ lokal
 frei ist. Dazu benötigen wir folgendes Faktum:\footnote{Dieses drückt die
 Korrespondenz zwischen Weil- und Cartier-Divisoren aus und benötigt zwingend
 eine Form von Glattheit. XXX Quelle für Gegenbeispiele}
@@ -376,7 +376,7 @@ Umgebung~$U$ für~$\O_X(D)$: Auf~$U$ gilt~$D = \div(f_0)$, wie in
 Beispiel~\ref{ex:o-hauptdivisor} ist daher~$\O_X(D)|_U \to \O_X|_U$, $f \mapsto
 f f_0$ ein Isomorphismus.
 
-\begin{defn}Die Menge der Geradenbündeln
+\begin{defn}Die Menge der Geradenbündel
 auf~$X$ modulo Isomorphie, versehen mit dem Tensorprodukt als Gruppenstruktur,
 ist die \emph{Picard-Gruppe}~$\Pic(X)$ von~$X$. Die Menge der Divisoren auf~$X$
 modulo linearer Äquivalenz, versehen mit der Addition von Divisoren, ist die
@@ -458,29 +458,60 @@ wohldefiniert. Anschaulich ist der Grad eines Geradenbündels die Anzahl der
 Null- und Polstellen, entsprechend gewichtet, die jeder nichttriviale rationale
 Schnitt von~$\L$ hat. Dass alle nichttrivialen rationalen Schnitte dasselbe
 Null- und Polstellenverhalten zeigen, ist charakteristisch für die
-\emph{Starrheit} algebraischer bzw.  holomorpher Geometrie.
+\emph{Starrheit} algebraischer bzw. holomorpher Geometrie.
+
+\begin{ex}Der Grad von Serres Twistinggarbe~$\O(m)$ auf~$\PP^n$
+ist~$m$.\end{ex}
+
+\begin{rem}Den Grad eines Vektorbündels~$\L$ auf einer kompakten Kurve~$X$ kann
+man auch rein topologisch beschreiben. Ist~$c_1(\L) \in H^2(X, \ZZ)$, so
+gilt~$\deg\L = \int_X c_1(\L)$. (XXX Quelle)\end{rem}
 
 Im ersten Abschnitt wurde versprochen, dass die Euler-Charakteristik einer
 kohärenten Garbe nur von diskreten Invarianten der Garbe abhängt und daher
 leicht zu berechnen sei. Für den Fall von Geradenbündeln auf Kurven löst der
 Satz von Riemann--Roch dieses Versprechen ein:
 
-\begin{thm}[Satz von Riemann--Roch für Kurven]
+\begin{thm}[Riemann--Roch für Kurven]
 Sei~$X$ eine kompakte Kurve und~$\L$ ein Geradenbündel auf~$X$. Dann gilt
 $\chi(\L) = \chi(\O) + \deg\L$.
 \end{thm}
 
+Ravi Vakil nennt diese Formulierung \emph{Baby-Variante} (XXX Quelle), da
+in~$\chi(\L)$ noch der schlecht zugängliche Summand~$\dim H^1(X,\L)$ vorkommt.
+Mit \emph{Serre-Dualität} kann man diesen noch umschreiben, sodass nur noch
+nullte Kohomologie vorkommt.
+
 \begin{proof}Wegen Proposition~\ref{prop:div-pic} genügt es, die Behauptung für
-Geradenbündel der Form~$\L = \O_X(D)$ nachzuweisen. Für den trivialen
-Divisor~$D = 0$ ist die Behauptung klar.
+Geradenbündel der Form~$\L = \O_X(D)$ nachzuweisen, also~$\deg D = \chi(\O(D))
+- \chi(\O_X)$ nachzurechnen. Für den trivialen Divisor~$D = 0$ ist das klar.
 
 Gelte für zwei Divisoren~$D$ und~$D'$ die Beziehung~$D = D' + [P]$, wobei~$P$
-ein Punkt auf~$X$ ist. XXX WIP
-\end{proof}
+ein Punkt auf~$X$ ist. Zum Unterschema~$P \subseteq X$ gibt es die kurze exakte
+Sequenz
+\[ 0 \lra \O(-P) \lra O \lra \O_P \lra 0. \]
+Dabei ist~$\O_P$ eine im Punkt~$P$ konzentrierte Wolkenkratzergarbe; dort hat
+sie den Halm~$\CC$. (Eigentlich sollten wir~$i_* \O_P$ schreiben, wobei~$i : P
+\hookrightarrow X$ die Einbettung ist.) Nach Tensorieren mit~$\O_X(D)$ erhalten
+wir die Sequenz
+\[ 0 \lra \O(D-P) \lra \O(D) \lra \O_P \lra 0, \]
+welche immer noch exakt ist, da Tensorieren mit lokal freien Garben Exaktheit
+erhält. Der rechte Term sollte eigentlich~$\O_P \otimes_{\O_X} \O_X(D)$ sein,
+aber da~$\O_P$ nur Träger auf~$P$ hat und~$\O_X(D)$ auf einer Umgebung von~$P$
+frei ist, gilt~$\O_P \otimes_{\O_X} \O_X(D) \cong \O_P \otimes_{\O_X} \O_X
+\cong \O_P$. Wegen der Additivität der Euler-Charakteristik folgt
+\begin{align*}
+  \deg D - \chi(\O(D)) + \chi(\O_X)
+  &= (\deg D' + 1) - \chi(\O(D')) - \chi(\O_P) + \chi(\O_X) \\
+  &= \deg D' - \chi(\O(D')) + \chi(\O_X),
+\end{align*}
+also gilt die Behauptung genau dann für~$D$, wenn sie für~$D'$ gilt. In der
+Rechnung haben wir~$\chi(\O_P) = 1$ verwendet -- als Wolkenkratzergarbe
+hat~$\O_P$ nur Kohomologie in Dimension~Null.
 
-\begin{rem}Den Grad eines Vektorbündels~$\L$ auf einer kompakten Kurve~$X$ kann
-man auch rein topologisch beschreiben. Ist~$c_1(\L) \in H^2(X, \ZZ)$, so
-gilt~$\deg\L = \int_X c_1(\L)$. (XXX Quelle)\end{rem}
+Da jeder Divisor aus dem trivialen Divisor durch eine endliche Anzahl von
+Additionen und Subtraktionen von Punkten entsteht, ist der Beweis vollständig.
+\end{proof}
 
 \end{document}
 
