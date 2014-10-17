@@ -45,6 +45,7 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
+\newcommand{\N}{\mathcal{N}}
 \newcommand{\J}{\mathcal{J}}
 \newcommand{\K}{\mathcal{K}}
 \renewcommand{\L}{\mathcal{L}}
@@ -250,7 +251,7 @@ wenn~$\J$ die Idealgarbe von~$V$ ist. Ferner gilt für die Kohomologie
 
 \subsubsection*{Normalgarbe und Konormalgarbe}
 
-Ist~$V \hookrightarrow X$ ein abgeschlossenes Unterschema, so ist~$N_{V/X}^\vee
+Ist~$V \hookrightarrow X$ ein abgeschlossenes Unterschema, so ist~$\N_{V/X}^\vee
 := \J/\J^2$ die \emph{Konormalgarbe} von~$V$ in~$X$. Sie hat Träger in~$V$ und
 wird daher als Garbe auf~$V$ angesehen. Die \emph{Normalgarbe} ist die
 zugehörige Dualgarbe.
@@ -269,7 +270,7 @@ auch nicht Kodimension~2.} -- so ist die Konormalgarbe lokal frei
 vom Rang~$r$. (XXX Quelle)
 
 Im glatten Fall (XXX) gibt es die kurze exakte Sequenz
-\[ 0 \lra N_{V/X}^\vee \lra \Omega_X|_V \lra \Omega_V \lra 0. \]
+\[ 0 \lra \N_{V/X}^\vee \lra \Omega_X|_V \lra \Omega_V \lra 0. \]
 
 
 \section{Divisoren}
@@ -463,9 +464,8 @@ ist der Grad eines Divisors~$D$ mit~$\L \cong \O_X(D)$.\end{defn}
 Dank Proposition~\ref{prop:div-pic} und des Faktums ist diese Setzung
 wohldefiniert. Anschaulich ist der Grad eines Geradenbündels die Anzahl der
 Null- und Polstellen, entsprechend gewichtet, die jeder nichttriviale rationale
-Schnitt von~$\L$ hat. Dass alle nichttrivialen rationalen Schnitte dasselbe
-Null- und Polstellenverhalten zeigen, ist charakteristisch für die
-\emph{Starrheit} algebraischer bzw. holomorpher Geometrie.
+Schnitt von~$\L$ hat. Es ist bemerkenswert, dass alle nichttrivialen rationalen
+Schnitte tatsächlich dasselbe Null- und Polstellenverhalten zeigen.
 
 \begin{ex}Der Grad von Serres Twistinggarbe~$\O(m)$ auf~$\PP^n$
 ist~$m$.\end{ex}
@@ -583,7 +583,7 @@ und~$x-y^2$ ausdrücken.
 \begin{defn}Seien~$C$ und~$C'$ Kurven auf~$X$, nicht notwendigerweise in
 allgemeiner Lage. Dann ist ihre \emph{Schnittzahl} die Zahl
 \[ (C \cdot C') := \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_{C'}) :=
-  \sum_{n = 0}^\infty (-1)^n \, \chi(\mathcal{T}or^{\O_X}_n(\O_C,\O_{C'})) \in \ZZ. \]
+  \sum_{n = 0}^\infty (-1)^n \, \chi(\mathcal{T}\!\mathrm{or}^{\O_X}_n(\O_C,\O_{C'})) \in \ZZ. \]
 \end{defn}
 
 Dabei verwenden wir das \emph{abgeleitete Tensorprodukt} -- ein Komplex von
@@ -608,7 +608,9 @@ die Zahl
   \F^\vee). \]
 \end{defn}
 Der mittlere Ausdruck ist dabei als formale Rechnung in der K-Theorie von~$X$
-zu verstehen.
+zu verstehen. Offensichtlich hängt die Schnittzahl nur von den
+Isomorphieklassen von~$\E$ und~$\F$ ab, weswegen sie zu einer
+\emph{Schnittform} auf der Picard-Gruppe absteigt.
 
 \begin{prop}\begin{enumerate}
 \item Seien~$C$ und~$C'$ Kurven auf~$X$. Dann ist~$(\O(C) \cdot \O(C')) = (C
@@ -618,6 +620,10 @@ zu verstehen.
 \item Die Schnittzahl definiert eine symmetrische und bilineare Abbildung
 $\Pic(X) \times \Pic(X) \to \ZZ$.
 \end{enumerate}\end{prop}
+
+Aus der ersten Teilaussage folgt insbesondere, dass die Schnittzahl nur von der
+linearen Äquivalenzklasse der beteiligten Kurven abhängt -- denn für~$C \equiv
+\widetilde C$ gilt~$\O(C) \cong \O(\widetilde C)$.
 
 \begin{proof}
 \begin{enumerate}
@@ -646,18 +652,108 @@ Rückzug auf~$C$ vertauscht -- das ist für lokal freie Modulgarben in Ordnung.
 \begin{ex}XXX auf~$\PP^1 \times \PP^1$
 \end{ex}
 
-\begin{ex}XXX Selbstschnitt allgemein
+
+\subsubsection*{Selbstschnitte}
+
+Das Extrembeispiel für Schnitte von Kurven, die nicht in allgemeiner Lage sind,
+sind \emph{Selbstschnitte}.
+
+\begin{ex}Sei~$H$ eine Hyperebene in~$\PP^2$, also eine Gerade. Um den
+Selbstschnitt~$(H \cdot H)$ zu bestimmen, betrachten wir eine weitere
+Gerade~$H'$, die~$H$ in genau einem Punkt schneidet. Da je zwei Hyperflächen
+desselben Grads auf~$\PP^2$ linear äquivalent sind, gilt~$(H \cdot H) = (H \cdot H') = 1$.
+Das folgt natürlich auch sofort mit dem Satz von Bézout.
 \end{ex}
 
-\begin{ex}XXX Aufblasung eines Punkts in der projektiven Ebene
+\begin{prop}Sei~$C$ in~$X$ regulär eingebettet. Sei~$\N_{C/X}^\vee \cong \O(-C)$ das
+Konormalenbündel und~$\O(C)$ das Normalenbündel. Dann ist
+\[ (C \cdot C) = \chi(\Lambda^\bullet_{\O_C}
+\N_{C/X}^\vee) = \chi(\O_C) - \chi(\O(-C)|_C) \stackrel{\mathrm{RR}}{=}
+  \deg \O(C)|_C. \]
+\end{prop}
+\begin{proof}Die Behauptung gilt sogar, wenn~$X$ keine Fläche ist, sondern
+höhere Dimension hat -- nur muss dann~$C$ von der halben Dimension sein und man
+kann nicht mehr~"`$\O(-C)$"' schreiben.
+
+Ist lokal~$f_1,\ldots,f_r$ eine reguläre Folge von
+Funktionen, welche die Idealgarbe~$\J$ von~$C$ erzeugen, so liefert der
+\emph{Koszul-Komplex} eine freie Auflösung von~$\O_C$. Im Spezialfall~$r = 1$
+hat dieser die Form
+\[ 0 \lra \O_X \stackrel{f_1} \lra \O_X \lra \O_C \lra 0, \]
+im Fall~$r = 2$ die Form
+\[ 0 \lra \O_X \stackrel{(\begin{smallmatrix}f_1&-f_2\end{smallmatrix})} \lra \O_X^2
+  \stackrel{\bigl(\begin{smallmatrix}f_1\\f_2\end{smallmatrix}\bigr)}{\lra} \O_X \lra \O_C \lra 0,
+  \]
+und allgemein ist er über äußere Potenzen von~$\O_X^r$ gegeben. Die Differentiale
+sind nach Wahl kanonischer Basen durch Matrizen gegeben, deren Einträge nur
+die Funktionen~$f_i$ (mit Vorfaktoren aus~$\{-1,0,1\}$) sind. Einen zur
+Berechnung des in der Definition von~$(C \cdot C)$ auftretenden abgeleiteten
+Tensorprodukts Komplex erhalten wir durch Tensorieren der Auflösung mit~$\O_C
+\cong \O_X/\J$. Dabei werden die Differentiale alle zu Null, und wir erhalten
+den Komplex~$\Lambda^\bullet_{\O_X} \O_X^r \otimes_{\O_X} \O_X/\J \cong
+\Lambda^\bullet_{\O_C}(\J/\J^2) = \Lambda^\bullet_{\O_C} \N_{C/X}^\vee$.
+Der resultierende Isomorphismus~$\mathcal{T}\!or^{\O_X}_n(\O_C,\O_C) \to \Lambda^n_{\O_C}
+\N_{C/X}^\vee$ hängt nicht von der Wahl der regulären Folge ab. Daher erhalten
+wir diesen Isomorphismus auch auf globaler Ebene.
+\end{proof}
+
+\begin{proof}[Kürzerer Beweis speziell für Kurven auf Flächen]
+Zur Auflösung von~$\O_C$ verwenden wir die kurze exakte Sequenz
+\[ 0 \lra \O(-C) \lra \O_X \lra \O_C \lra 0. \]
+Ein Komplex zur Berechnung des abgeleiteten Tensorprodukts ist daher
+\[ 0 \lra \O(-C) \otimes_{\O_X} \O_C \stackrel{0}{\lra} \O_X \otimes \O_C \lra 0. \]
+Das Differential ist Null (bedenke~$\O_C \cong \O_X/\O(-C)$). Daher ist der
+Selbstschnitt gleich
+\[ (C \cdot C) = \chi(\O_X \otimes \O_C) - \chi(\O(-C) \otimes_{\O_X} \O_C)
+  = \chi(\O_C) - \chi(\O(-C)|_C). \qedhere \]
+\end{proof}
+
+Der Selbstschnitt einer Kurve~$C$ kann \emph{negativ} sein. Das drückt aus, dass
+die Kurve nicht algebraisch bzw. holomorph zu einer linear äquivalenten
+Kurve~$C'$ bewegt werden kann, welche zu~$C$ allgemeine Lage hat -- denn der
+Schnitt zweier Kurven in allgemeiner Lage ist stets nichtnegativ. In der
+glatten Welt sind solche Bewegungen immer möglich, ein negativer Selbstschnitt
+liegt dann an negativen Indizes.
+
+In der glatten Welt kann man sich die Formel für den Selbstschnitt auch wie folgt anschaulich
+klarmachen. Um die Kurve~$C$ in~$X$ zu deformieren, können wir sie in
+Normalenrichtung bewegen: Ist~$s$ ein Schnitt des Normalenbündels, so bewegen
+wir in einer Tubenumgebung einen Punkt~$x$ der Kurve zu~$x + s(x)$. Die
+entstehende Kurve~$C'$ wird die Kurve~$C$ in genau den Stellen schneiden, an
+denen~$s$ Null ist. Die Anzahl dieser Nullstellen ist gerade der Grad des
+Normalenbündels. XXX Quelle
+
+\begin{ex}Sei~$X$ die Aufblasung der projektiven Ebene an einem Punkt und~$E$
+der exzeptionelle Divisor in~$X$. Dann ist~$E$ isomorph zu~$\PP(\N)$, der
+Projektivierung des Normalenbündels des Punkts in~$\PP^2$; und das Konormalenbündel
+von~$E$ in~$X$ ist unter dieser Korrespondenz Serres
+Twistingbündel~$\O(1)$.\footnote{Sei~$Y \hookrightarrow X$ ein abgeschlossenes
+Unterschema. Dann sind die Grundtatsachen über die Aufblasung~$X' \to X$
+und den exzeptionellen Divisor~$Y' \hookrightarrow X'$ (das ist das Urbild
+von~$Y$ unter~$X' \to X$) folgende. (1)~Der eingeschränkte Morphismus~$X'
+\setminus Y' \to X \setminus Y$ ist ein Isomorphismus. (2)~$Y' \to Y$ ist
+isomorph zu~$\PP(\N_{Y/X}) \to Y$. (3)~Die Einbettung $Y' \hookrightarrow X'$
+ist regulär von Kodimension~Eins mit Konormalgarbe~$\N_{Y'/X'}^\vee \cong
+\O_{\PP(\N_{Y/X})}(1)$. XXX Quelle (4)~Die Aufblasung~$X' \to X$ ist die universelle
+(finale) Art und Weise, das Unterschema~$Y$ zu einem Unterschema zu machen, das regulär
+von Kodimension~Eins ist (XXX Quelle stacks:0806).} Daher ist
+$(E \cdot E) = \deg \O(1)^\vee = \deg \O(-1) = -1$.
 \end{ex}
 
-\begin{rem}Die Schnittzahl lässt sich auch rein topologisch, ohne Rückgriff auf
+
+\subsubsection*{Topologische Beschreibung der Schnittzahl}
+
+Die Schnittzahl lässt sich auch rein topologisch, ohne Rückgriff auf
 die algebraische bzw. holomorphe Struktur, beschreiben. Dazu sei an ein Faktum
-über die erste Chernklasse erinnert: Ist~$i : C \hookrightarrow X$ die
+über die erste Chernklasse erinnert:
+
+\begin{fact}Ist~$i : C \hookrightarrow X$ die
 Einbettung einer Kurve, so gilt~$\int_X c_1(\O(C)) \cup \beta = \int_C
 i^*(\beta)$ für alle~$\beta \in H^2(X,\ZZ)$ (siehe Griffiths/Harris, Seite~141
-XXX). Daher folgt für Kurven~$C$ und~$C'$ auf~$X$
+XXX).
+\end{fact}
+
+Daher folgt für Kurven~$C$ und~$C'$ auf~$X$
 \begin{align*}
   (C \cdot C')_{\text{top.}}
   &:= \int_X \PD(C) \cup \PD(C')
@@ -668,7 +764,6 @@ XXX). Daher folgt für Kurven~$C$ und~$C'$ auf~$X$
   &\phantom{:}= \deg \O(C')|_C
   = (C \cdot C').
 \end{align*}
-\end{rem}
 
 
 \section{Der Satz von Riemann--Roch für Flächen}
@@ -689,3 +784,5 @@ XXX Werbung für Shafarevich und Manin
 \end{document}
 
 Einschränkung von Divisoren auf offene Teilmengen
+
+Warnung div(1)
