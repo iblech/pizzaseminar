@@ -8,6 +8,8 @@
 \usepackage{array}
 \usepackage[all]{xy}
 
+\usepackage{shadethm}
+
 \usepackage[protrusion=true,expansion=true]{microtype}
 
 \usepackage{lmodern}
@@ -15,17 +17,22 @@
 
 \usepackage{hyperref}
 
+\setlength{\shadeboxsep}{8pt}
+\setlength{\shadeleftshift}{-\shadeboxsep}
+\setlength{\shaderightshift}{-\shadeboxsep}
+
 \theoremstyle{definition}
-\newtheorem{defn}{Definition}[section]
+\newshadetheorem{defn}{Definition}[section]
+%\newtheorem{defn}{Definition}[section]
 \newtheorem{ex}[defn]{Beispiel}
 
 \theoremstyle{plain}
 
-\newtheorem{prop}[defn]{Proposition}
-\newtheorem{fact}[defn]{Fakt}
-\newtheorem{lemma}[defn]{Lemma}
-\newtheorem{thm}[defn]{Satz}
-\newtheorem{cor}[defn]{Korollar}
+\newshadetheorem{prop}[defn]{Proposition}
+\newshadetheorem{fact}[defn]{Fakt}
+\newshadetheorem{lemma}[defn]{Lemma}
+\newshadetheorem{thm}[defn]{Satz}
+\newshadetheorem{cor}[defn]{Korollar}
 
 \theoremstyle{remark}
 \newtheorem{rem}[defn]{Bemerkung}
@@ -85,8 +92,9 @@
 Das sind informale Notizen zum ersten Kapitel von Arnaud Beauvilles Buch
 \emph{Complex Algebraic Surfaces}.
 \end{minipage}\end{center}
-\vspace{1em}
 
+\vspace{-3em}
+\renewcommand\contentsname{}
 \tableofcontents
 
 
@@ -169,7 +177,7 @@ isomorph zu~$\ZZ[X]/(X+1)^{n+1}$. (XXX Quelle)}
 \end{enumerate}
 
 
-\subsubsection*{Wieso Garbenkohomologie?}
+\subsection*{Wieso Garbenkohomologie?}
 
 Ein Grund, Garbenkohomologie statt klassischer Kohomologie zu studieren, ist
 schlichtweg der, dass höhere Kohomologie mit Werten in konstanten Garben auf
@@ -205,7 +213,7 @@ klassifiziert~$H^1(X,\GL_n(\O_X))$ Vektorbündel vom Rang~$n$
 und~$H^1(X,\G)$~$G$-Hauptfaserbündel.}
 
 
-\subsubsection*{Die kurze exakte Sequenz zu einem Unterschema}
+\subsection*{Die kurze exakte Sequenz zu einem Unterschema}
 
 Im Folgenden werden wir wiederholt die kurze exakte Sequenz zu einem
 abgeschlossenen Unterschema~$V \stackrel{i}{\hookrightarrow} X$ bzw. einer
@@ -233,7 +241,7 @@ Strukturgarbe ergibt sich daher als~$j_*\O_{V \cap V'} = \O_X/(\J + \J') \cong
 i'_*\O_{V'}$.\end{ex}
 
 
-\subsubsection*{Zurück und vor}
+\subsection*{Zurück und vor}
 
 Ist~$V \stackrel{i}{\hookrightarrow} X$ eine abgeschlossene Teilmenge, so
 definiert der Pushforward-Funktor~$i_*$ eine Äquivalenz zwischen der Kategorie
@@ -249,7 +257,7 @@ wenn~$\J$ die Idealgarbe von~$V$ ist. Ferner gilt für die Kohomologie
 \[ H^n(V, \F) \cong H^n(X, i_*\F). \]
 
 
-\subsubsection*{Normalgarbe und Konormalgarbe}
+\subsection*{Normalgarbe und Konormalgarbe}
 
 Ist~$V \hookrightarrow X$ ein abgeschlossenes Unterschema, so ist~$\N_{V/X}^\vee
 := \J/\J^2$ die \emph{Konormalgarbe} von~$V$ in~$X$. Sie hat Träger in~$V$ und
@@ -282,10 +290,9 @@ Garbe mit Faser~$\O_{X,\xi}$.
 
 \begin{defn}\begin{enumerate}
 \item Ein \emph{(Weil-)Divisor} auf~$X$ ist eine
-formale~$\ZZ$-Linearkombination von irreduziblen\footnote{Das Achsenkreuz
-in~$\CC^2$ ist ein Beispiel für eine reduzible Hyperfläche.} Hyperflächen
-von~$X$.\footnote{Hyperflächen werden lokal durch eine reguläre Gleichung
-gegeben.}
+formale~$\ZZ$-Linearkombination von irreduziblen Hyperflächen von~$X$. (Das
+Achsenkreuz in~$\CC^2$ ist ein Beispiel für eine reduzible Hyperfläche.
+Hyperflächen werden lokal durch eine reguläre Gleichung gegeben.)
 \item Der \emph{Grad} eines Divisors ist die Summe seiner Koeffizienten.
 \item Ein Divisor~$D$ heißt genau dann \emph{effektiv}, notiert~"`$D \geq 0$"',
 wenn seine Koeffizienten alle nichtnegativ sind.
@@ -333,7 +340,7 @@ eines geeigneten Geradenbündels ist. Das ist in der algebraischen bzw.
 holomorphen Welt etwas besonderes (wieso?).
 
 
-\subsubsection*{Das assoziierte Bündel zu einem Divisor}
+\subsection*{Das assoziierte Bündel zu einem Divisor}
 
 \begin{defn}Sei~$D$ ein Divisor auf~$X$. Dann ist
 eine~$\O_X$-Modulgarbe~$\O_X(D)$ für offene Teilmengen~$U \subseteq X$ durch
@@ -417,7 +424,7 @@ unkanonische Art und Weise eine Untergarbe von~$\K_X$ ist.
 \end{proof}
 
 
-\subsubsection*{Der Träger eines effektiven Divisors}
+\subsection*{Der Träger eines effektiven Divisors}
 
 Ist~$D$ ein effektiver Divisor, so ist~$\O_X(-D)$ auf kanonische Art
 und Weise eine Untergarbe von~$\O_X$.\footnote{Die Inklusion~$\O_X(-D) \to
@@ -436,7 +443,7 @@ ausgeschnitten wird, ist~$\O(-d)$.
 \end{ex}
 
 
-\subsubsection*{Divisoren auf~$\PP^1$}
+\subsection*{Divisoren auf~$\PP^1$}
 
 Sei~$H$ eine Hyperebene in~$\PP^n$.
 
@@ -448,7 +455,7 @@ Das Bündel~$\O(mH)$ ist isomorph zu Serres Twistinggarbe~$\O(m)$. Ist etwa~$H =
 V(x_0)$, so ist ein Isomorphismus durch~$f \mapsto x_0^m f$ gegeben.
 
 
-\subsubsection*{Divisoren auf~$\PP^1 \times \PP^1$}
+\subsection*{Divisoren auf~$\PP^1 \times \PP^1$}
 
 XXX
 
@@ -653,7 +660,7 @@ Rückzug auf~$C$ vertauscht -- das ist für lokal freie Modulgarben in Ordnung.
 \end{ex}
 
 
-\subsubsection*{Selbstschnitte}
+\subsection*{Selbstschnitte}
 
 Das Extrembeispiel für Schnitte von Kurven, die nicht in allgemeiner Lage sind,
 sind \emph{Selbstschnitte}.
@@ -715,12 +722,12 @@ Schnitt zweier Kurven in allgemeiner Lage ist stets nichtnegativ. In der
 glatten Welt sind solche Bewegungen immer möglich, ein negativer Selbstschnitt
 liegt dann an negativen Indizes.
 
-In der glatten Welt kann man sich die Formel für den Selbstschnitt auch wie folgt anschaulich
-klarmachen. Um die Kurve~$C$ in~$X$ zu deformieren, können wir sie in
-Normalenrichtung bewegen: Ist~$s$ ein Schnitt des Normalenbündels, so bewegen
-wir in einer Tubenumgebung einen Punkt~$x$ der Kurve zu~$x + s(x)$. Die
-entstehende Kurve~$C'$ wird die Kurve~$C$ in genau den Stellen schneiden, an
-denen~$s$ Null ist. Die Anzahl dieser Nullstellen ist gerade der Grad des
+In der glatten Welt kann man sich die Formel für den Selbstschnitt auch wie
+folgt anschaulich klarmachen. Um die Kurve~$C$ in~$X$ zu deformieren, können
+wir sie in Normalenrichtung bewegen: Ist~$s$ ein Schnitt des Normalenbündels,
+so bewegen wir in einer Tubenumgebung einen Punkt~$x$ der Kurve zu~$x + s(x)$.
+Die entstehende Kurve~$C'$ wird die Kurve~$C$ in genau den Stellen schneiden,
+an denen~$s$ Null ist. Die Anzahl dieser Nullstellen ist gerade der Grad des
 Normalenbündels. XXX Quelle
 
 \begin{ex}Sei~$X$ die Aufblasung der projektiven Ebene an einem Punkt und~$E$
@@ -741,7 +748,7 @@ $(E \cdot E) = \deg \O(1)^\vee = \deg \O(-1) = -1$.
 \end{ex}
 
 
-\subsubsection*{Topologische Beschreibung der Schnittzahl}
+\subsection*{Topologische Beschreibung der Schnittzahl}
 
 Die Schnittzahl lässt sich auch rein topologisch, ohne Rückgriff auf
 die algebraische bzw. holomorphe Struktur, beschreiben. Dazu sei an ein Faktum
