@@ -154,9 +154,9 @@ Vorstellung ist bedingt aber durch \emph{Čech-Methoden} gegeben (XXX Quelle).
 Garbenkohomologie hat drei für uns sehr wesentliche Eigenschaften:
 \begin{enumerate}
 \item Falls~$X$ eigentlich über dem Punkt bzw. kompakt ist, so sind
-die~$H^n(X,\E)$ \emph{endlich-dimensionale} Vektorräume\footnote{Dass das
+die~$H^n(X,\E)$ \emph{endlichdimensionale} Vektorräume\footnote{Dass das
 nicht immer so ist, zeigt schon das Beispiel~$H^0(\CC, \O_\CC)$, der
-unendlich-dimensionale Raum der holomorphen Funktionen auf~$\CC$.} und für~$i > \dim X$
+unendlichdimensionale Raum der holomorphen Funktionen auf~$\CC$.} und für~$i > \dim X$
 verschwindet die~$i$-ten Kohomologie. (XXX Quelle)
 \item Ist~$0 \to \E' \to \E \to \E'' \to 0$ eine kurze exakte Sequenz von
 kohärenten Garben, so erhält man eine lange exakte Sequenz in Kohomologie:
@@ -353,7 +353,7 @@ auf~$U$} \} \]
 Positive Anteile in~$D$ erlauben also, dass Schnitte von~$\O_X(D)$ Polstellen
 besitzen dürfen; negative Anteile erzwingen Nullstellen. Da~$\O_X(D)$ als
 Geradenbündel eine kohärante Garbe ist, ist~$\Gamma(X,\O_X(D)) =
-H^0(X,\O_X(D))$ endlich-dimensional, und es ist eine interessante Frage, die
+H^0(X,\O_X(D))$ endlichdimensional, und es ist eine interessante Frage, die
 Dimension dieses Raums zu bestimmen.
 
 \begin{ex}\label{ex:o-hauptdivisor}
@@ -410,6 +410,12 @@ Polstellendivisor desjenigen rationalen Schnitts von~$\L$ definieren, welcher
 zum Schnitt~$1 \in \K_X$ korrespondiert. Man kann zeigen, dass ein
 solcher stets existiert -- dabei geht die Voraussetzung ein, dass~$\L$ ein
 Geradenbündel ist.
+
+\emph{Warnung.} Der Null- und Polstellendivisor der rationalen Einsfunktion ist
+natürlich stets trivial. Um den geht es hier aber nicht -- es geht um den
+Divisor zu einem bestimmten Schnitt \emph{des Geradenbündels~$\L$}. Dieser war
+über den Null- und Polstellendivisor einer zugehörigen rationalen Funktion
+\emph{unter einer lokalen Trivialisierung} definiert.
 
 Da~$\O_X(D)$ für Hauptdivisoren~$D$ trivial ist
 (Beispiel~\ref{ex:o-hauptdivisor}), steigt die Korrespondenz ab. Man kann
@@ -605,7 +611,7 @@ In diesem Fall ist die Schnittzahl also auch nichtnegativ. Im allgemeinen Fall
 muss das nicht unbedingt sein, dazu werden wir Beispiele sehen. Die Kompaktheit
 von~$X$ geht insofern ein, als dass wir die Euler-Charakteristik kohärenter
 Garben verwenden. Damit diese wohldefiniert ist, muss die Garbenkohomologie
-endlich-dimensional sein.
+endlichdimensional sein.
 
 \begin{defn}Für Geradenbündel~$\E$ und~$\F$ auf~$X$ ist die \emph{Schnittzahl}
 die Zahl
@@ -775,16 +781,52 @@ Daher folgt für Kurven~$C$ und~$C'$ auf~$X$
 
 \section{Der Satz von Riemann--Roch für Flächen}
 
-XXX:
+Sei~$X$ eine kompakte Fläche (projektive Varietät über~$\CC$ oder
+kompakte komplexe Mannigfaltigkeit der komplexen Dimension~2).
 
-\begin{itemize}
-\item Serre-Dualität
-\item Korollar über~$\chi$
-\item Riemann--Roch für Flächen
-\item Noethers Formel
-\item Genusformel
-\item Adjunktionsformel
-\end{itemize}
+\begin{fact}Sei~$\omega := \Lambda^2 \Omega^1_X$ das Bündel der
+Differentialformen im Topgrad. Dann ist~$H^2(X,\omega)$ eindimensional und
+für~$i = 0,1,2$ induziert das Cup-Produkt für jedes Geradenbündel~$\L$ eine
+nicht ausgeartete Bilinearform.
+\[ H^i(X,\L) \times H^{2-i}(X,\omega \otimes \L^\vee) \lra
+  H^2(X,\omega) \lra \CC \]
+\end{fact}
+
+XXX Bedeutung, Intuition, Poincaré-Dualität, \ldots
+
+\begin{cor}Für jedes Geradenbündel~$\L$ gilt~$\chi(\L) = \chi(\omega \otimes
+\L^\vee)$.\end{cor}
+
+\begin{thm}[Riemann--Roch für Flächen]
+Sei~$\L$ ein Geradenbündel auf~$X$. Dann gilt
+\[ \chi(\L) = \chi(\O_X) + \tfrac{1}{2} \cdot \bigl((L \cdot L) - (L \cdot \omega)\bigr). \]
+\end{thm}
+
+\begin{proof}Die Behauptung folgt durch Umstellen der Gleichung
+\begin{align*}
+  -(\L \cdot \L) + (\L \cdot \omega)
+  &= (\L^\vee \cdot \L) + (\L^\vee \cdot \omega^\vee) \\
+  &= (\L^\vee \cdot (\L \otimes \omega^\vee)) \\
+  &= \chi(\O_X) - \chi(\L) - \chi(\omega_X \otimes \L^\vee) + \chi(\omega_X) \\
+  &= \chi(\O_X) - \chi(\L) - \chi(\L) + \chi(\O_X) \\
+  &= 2 \cdot (\chi(\O_X) - \chi(\L)). \qedhere
+\end{align*}
+\end{proof}
+
+\begin{fact}[Noethers Formel]
+Es gilt~$\chi(\O_X) = \frac{1}{12} \cdot ((\omega \cdot \omega) +
+\chi_\mathrm{top}(X))$.
+\end{fact}
+
+XXX $K$ einführen
+
+\begin{cor}[Formel für das Geschlecht]
+Sei~$C$ eine irreduzible Kurve auf~$X$. Für ihr \emph{Geschlecht} $g(C) :=
+\dim_\CC H^1(C,\O_C)$ gilt
+\[ g(C) = 1 + \frac{1}{2} \cdot ((C \cdot C) + (C \cdot K)). \]
+\end{cor}
+
+XXX Adjunktionsformel
 
 XXX Werbung für Shafarevich und Manin
 
