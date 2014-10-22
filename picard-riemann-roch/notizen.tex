@@ -42,6 +42,7 @@
 \widowpenalty=10000
 \displaywidowpenalty=10000
 
+\renewcommand{\AA}{\mathbb{A}}
 \newcommand{\CC}{\mathbb{C}}
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\ZZ}{\mathbb{Z}}
@@ -101,8 +102,8 @@ Das sind informale Notizen zum ersten Kapitel von Arnaud Beauvilles Buch
 \section{Garbenkohomologie}
 
 Sei~$X$ ein Raum (Schema über~$\CC$ oder komplexe Mannigfaltigkeit). Dann
-untersucht man (algebraische bzw. holomorphe) Vektorbündel auf~$X$; äquivalent
-dazu ist die Kategorie der lokal freien~$\O_X$-Modulgarben.\footnote{Die
+untersucht man (algebraische bzw. holomorphe) Vektorbündel auf~$X$; zur
+Kategorie solcher ist die Kategorie der lokal freien~$\O_X$-Modulgarben äquivalent.\footnote{Die
 Äquivalenz wird wie folgt vermittelt: Einem Vektorbündel~$E \to X$ ordnet man
 die Garbe seiner algebraischen bzw. holomorphen Schnitte zu. Da man Schnitte
 addieren und mit regulären bzw. holomorphen Funktionen multiplizieren kann,
@@ -110,15 +111,15 @@ wird die erhaltene Garbe zu einer Garbe von~$\O_X$-Moduln. Die lokale
 Trivialität von~$E$ übersetzt sich in die lokale Freiheit der zugehörigen
 Garbe. Fasern des Vektorbündels entsprechen Fasern der Garbe (das sind die
 Halme, tensoriert mit dem Restklassenkörper an der jeweiligen Stelle).}
-Diese ist aber keine abelsche Kategorie und daher kein geeigneter Kontext, um
+Diese ist aber keine abelsche Kategorie und daher kein geeigneter Rahmen, um
 Funktoren abzuleiten.
 
 Man behilft sich mit der größeren Kategorie~$\Coh(X)$ der
-\emph{kohärenten~$\O_X$-Modulgarben}. Das ist eine volle Unterkategorie der
-Kategorie aller~$\O_X$-Modulgarben, welche abelsch ist. Im Fall, dass~$X$ ein
+\emph{kohärenten~$\O_X$-Modulgarben}. Die ist eine volle abelsche Unterkategorie der
+abelschen Kategorie aller~$\O_X$-Modulgarben. Im Fall, dass~$X$ ein
 lokal noethersches Schema oder eine komplexe Mannigfaltigkeit ist, umfasst
 diese Kategorie die Kategorie der lokal freien Garben und ist die kleinste
-volle Unterkategorie mit dieser Eigenschaft. Kohärenz ist eine
+volle abelsche Unterkategorie mit dieser Eigenschaft. Kohärenz ist eine
 Endlichkeitseigenschaft, die im Allgemeinen stärker ist, als von endlichem Typ
 zu sein.\footnote{Eine~$\O_X$-Modulgarbe~$\E$ heißt genau dann \emph{kohärent},
 wenn sie von endlichem Typ ist und wenn für jede offene Teilmenge~$U \subseteq
@@ -155,15 +156,16 @@ Garbenkohomologie hat drei für uns sehr wesentliche Eigenschaften:
 \begin{enumerate}
 \item Falls~$X$ eigentlich über dem Punkt bzw. kompakt ist, so sind
 die~$H^n(X,\E)$ \emph{endlichdimensionale} Vektorräume\footnote{Dass das
-nicht immer so ist, zeigt schon das Beispiel~$H^0(\CC, \O_\CC)$, der
-unendlichdimensionale Raum der holomorphen Funktionen auf~$\CC$.} und für~$i > \dim X$
+nicht immer so ist, zeigt schon das Beispiel~$H^0(\AA^1, \O_{\AA^1})$ der
+unendlichdimensionale Raum der holomorphen Funktionen auf~$\CC$. Hier und im
+Folgenden ist~$\AA^1$ der eindimensionale affine Raum über~$\CC$.} und für~$i > \dim X$
 verschwindet die~$i$-ten Kohomologie. (XXX Quelle)
 \item Ist~$0 \to \E' \to \E \to \E'' \to 0$ eine kurze exakte Sequenz von
 kohärenten Garben, so erhält man eine lange exakte Sequenz in Kohomologie:
-\[ \cdots \lra H^n(X,\E') \lra H^n(X,\E) \lra H^n(X,\E'') \lra H^{n+1}(X,\E)
+\[ \cdots \lra H^n(X,\E') \lra H^n(X,\E) \lra H^n(X,\E'') \lra H^{n+1}(X,\E')
 \lra \cdots \]
 \item Die \emph{Eulercharakteristik} einer kohärenten Garbe~$\E$, definiert
-als die alternierende Summe~$\chi(\E) := \sum_{n=0}^\infty \dim_\CC H^n(X,\E)
+als die alternierende Summe~$\chi(\E) := \sum_{n=0}^\infty (-1)^n\, \dim_\CC H^n(X,\E)
 \in \ZZ$, ist additiv in kurzen exakten Sequenzen. Deshalb hängt~$\chi(\E)$ nur
 von der \emph{Klasse von~$\E$ in der K-Theorie ab}, also nur von
 \emph{diskreten Invarianten} von~$\E$.\footnote{Außerdem ist die
@@ -171,7 +173,7 @@ Eulercharakteristik auf flachen Familien von kohärenten Garben konstant (XXX
 Quelle). Die K-Theorie von~$X$ ist die abelsche Gruppe
 formaler~$\ZZ$-Linearkombinationen von Isomorphieklassen von kohärenten Garben
 auf~$X$ modulo den Relationen~$\E = \E' + \E''$ für jede kurze exakte
-Sequenz~$0 \to \E' \to \E \to \E'' \to 0$.  Die K-Theorie von~$\CC$ ist
+Sequenz~$0 \to \E' \to \E \to \E'' \to 0$.  Die K-Theorie von~$\AA^1$ ist
 isomorph zu~$\ZZ$ (mit Isomorphismus~$\E \mapsto \rank\E$), die von~$\PP^n$ ist
 isomorph zu~$\ZZ[X]/(X+1)^{n+1}$. (XXX Quelle)}
 \end{enumerate}
@@ -183,10 +185,10 @@ Ein Grund, Garbenkohomologie statt klassischer Kohomologie zu studieren, ist
 schlichtweg der, dass höhere Kohomologie mit Werten in konstanten Garben auf
 irreduziblen Schemata stets trivial ist. Das liegt daran, dass auf irreduziblen
 topologischen Räumen konstante Garben stets welk (flabby) und daher azyklisch
-bezüglich des globale-Schnitte-Funktors ist.
+bezüglich des globale-Schnitte-Funktors sind.
 
 Ein weiterer Grund liegt darin, dass man oft an der Dimension des globalen
-Schnittraums einer kohärenten Garbe~$\E$ interessiert ist, also an~$\dim_\CC
+Schnitt\-raums einer kohärenten Garbe~$\E$ interessiert ist, also an~$\dim_\CC
 H^0(X,\E)$. Diese ist im Allgemeinen aber nicht leicht zu berechnen. Die
 Eulercharakteristik dagegen, in der diese Dimension als ein Summand auftritt,
 ist dank ihrer Stabilitätseigenschaften leichter zugänglich. Im Fall, dass~$\E$
@@ -198,11 +200,11 @@ Null- und Polstellenverhalten.
 Historisch war auch die \emph{Leray-Spektralsequenz} eine große Motivation,
 Garbenkohomologie zu untersuchen. Diese liefert im Kontext einer stetigen
 Abbildung~$f : X \to Y$ eine Möglichkeit, aus Kenntnis der (gewöhnlichen)
-Kohomologie von~$Y$ und der Fasern~$f^{-1}[y]$ Rückschlüsse auf die Kohomologie
+Kohomologie von~$Y$ und der Kohomologie der Fasern~$f^{-1}[y]$ Rückschlüsse auf die Kohomologie
 von~$X$ zu ziehen; dabei kommt unweigerlich Garbenkohomologie vor.\footnote{Nur
 im Fall, dass~$f$ eine Faserung ist, kann man noch auf den Speziallfall der
 Leray--Serre-Spek\-tral\-sequenz ausweichen, bei der man nur Kohomologie mit Werten
-in lokalen Systemen benötigt.}
+in lokalen Systemen benötigt. XXX Quelle}
 
 Als letzter Grund sei angeführt, dass Garbenkohomologie geometrische Objekte
 klassiziferen kann. Etwa stehen die Elemente von~$H^1(X,\O_X^\times)$ auf
@@ -230,9 +232,9 @@ Garbe der regulären bzw. holomorphen Funktionen. Auf Punkten~$x \in X$, welche
 nicht in~$V$ liegen, ist ihr Halm trivial: $(i_*\O_V)_x = 0$. Für Punkte~$x \in
 V$ gilt~$(i_*\O_V)_x \cong \O_{V,x} \cong \O_{X,x}/\J_x$.
 
-\begin{ex}Zum abgeschlossenen Unterschema~$\{0\} \stackrel{i}{\hookrightarrow} \CC$ gehört
-die exakte Sequenz~$0 \to (z) \to \O_X \to i_*\O_\pt$. Dabei ist~$(z)$ die
-Idealgarbe aller~$\O_X$-Vielfachen der Koordinatenfunktion~$z$.\end{ex}
+\begin{ex}Zum abgeschlossenen Unterschema~$\{0\} \stackrel{i}{\hookrightarrow} \AA^1$ gehört
+die exakte Sequenz~$0 \to (z) \to \O_{\AA^1} \to i_*\O_\pt$. Dabei ist~$(z)$ die
+Idealgarbe aller~$\O_{\AA^1}$-Vielfachen der Koordinatenfunktion~$z$.\end{ex}
 
 \begin{ex}Zum Schnitt~$V \cap V' \stackrel{j}{\hookrightarrow} X$ zweier
 abgeschlossener Unterschema gehört die Idealgarbe~$\J + \J'$. Die vorgedrückte
@@ -272,7 +274,7 @@ in~$A$ regulär, $f_2$ in~$A/(f_1)$ regulär, \ldots, $f_r$
 in~$A/(f_1,\ldots,f_{r-1})$ regulär ist. Dabei heißt ein Ringelement~$f$
 \emph{regulär}, wenn Multiplikation mit~$f$ injektiv ist. Anschaulich ist eine
 reguläre Folge von Funktionen eine, in der keine der einzelnen Gleichungen
-redundant ist. Etwa ist die Folge~$z, z$ von Elementen von~$\O_\CC$ nicht
+redundant ist. Etwa ist die Folge~$z, z$ von Elementen von~$\O_{\AA^1}$ nicht
 regulär, und in der Tat hat das Verschwindungsschema~$V(z,z)$ dieser Funktionen
 auch nicht Kodimension~2.} -- so ist die Konormalgarbe lokal frei
 vom Rang~$r$. (XXX Quelle)
@@ -291,7 +293,7 @@ Garbe mit Faser~$\O_{X,\xi}$.
 \begin{defn}\begin{enumerate}
 \item Ein \emph{(Weil-)Divisor} auf~$X$ ist eine
 formale~$\ZZ$-Linearkombination von irreduziblen Hyperflächen von~$X$. (Das
-Achsenkreuz in~$\CC^2$ ist ein Beispiel für eine reduzible Hyperfläche.
+Achsenkreuz in~$\AA^2$ ist ein Beispiel für eine reduzible Hyperfläche.
 Hyperflächen werden lokal durch eine reguläre Gleichung gegeben.)
 \item Der \emph{Grad} eines Divisors ist die Summe seiner Koeffizienten.
 \item Ein Divisor~$D$ heißt genau dann \emph{effektiv}, notiert~"`$D \geq 0$"',
@@ -308,11 +310,11 @@ Hauptdivisor ist.
 \end{defn}
 
 \begin{ex}Der Null- und Polstellendivisor der rationalen Funktion~$(x-3)^2
-(x-4) / (x-5)^3$ auf~$\CC$ ist~$2 \cdot [3] + [4] - 3 \cdot [5]$.\end{ex}
+(x-4) / (x-5)^3$ auf~$\AA^1$ ist~$2 \cdot [3] + [4] - 3 \cdot [5]$.\end{ex}
 
-Hauptdivisor zu sein, ist auf~$\CC$ keine Einschränkung: Offensichtlich kann
+Hauptdivisor zu sein, ist auf~$\AA^1$ keine Einschränkung: Offensichtlich kann
 man zu jedem gegebenen Divisor eine rationale Funktion konstruieren, die genau
-das gewünschte Null- und Polstellenverhalten zeigt. Auf~$\PP^1$ dagen, der
+das gewünschte Null- und Polstellenverhalten zeigt. Auf~$\PP^1$ dagegen, der
 riemannschen Zahlenkugel, können nur Divisoren vom Grad~Null Hauptdivisoren
 sein. Denn rationale Funktionen auf~$\PP^1$ sind stets von der
 Form~$f(x,y)/g(x,y)$ für homogene Polynome~$f$ und~$g$ vom gleichen Grad
@@ -326,16 +328,16 @@ erklärt. Andere Wahlen einer lokalen Trivialisierung ändern~$\varphi(s)$ nur u
 eine invertierbare Funktion ab und haben daher keine Auswirkung auf den Null-
 und Polstellendivisor, weswegen~$\div(s)$ global wohldefiniert ist.
 
-Rationale Funktionen sind dasselbe wie Schnitte des trivialen
+Rationale Funktionen sind dasselbe wie rationale Schnitte des trivialen
 Geradenbündels~$\O_X$. Die beiden Definitionen für den Null- und
-Polstellendivisors einer rationalen Funktion stimmen miteinander überein.
+Polstellendivisor einer rationalen Funktion stimmen miteinander überein.
 
 \begin{warning}Divisoren der Form~$\div(s)$, wobei~$s$ ein rationaler Schnitt
 eines Geradenbündels ist, sind trotz des gegenteiligen Anscheins im
 Allgemeinen \emph{nicht} Hauptdivisoren.\end{warning}
 
 Tatsächlich zeigt eine Konstruktion, zu der wir gleich kommen werden, dass
-\emph{jeder} Divisor der Null- und Polstellendivisor eines geeigneten Schnitts
+\emph{jeder} Divisor der Null- und Polstellendivisor eines geeigneten rationalen Schnitts
 eines geeigneten Geradenbündels ist. Das ist in der algebraischen bzw.
 holomorphen Welt etwas besonderes (wieso?).
 
@@ -362,7 +364,7 @@ Morphismus~$\O_X(D) \to \O_X$, $f \mapsto f f_0$ global isomorph zu~$\O_X$.
 (Wieso liegt~$f f_0$ wirklich in~$\O_X$?)\end{ex}
 
 \begin{ex}Sei~$X = \PP^1$ mit den Koordinaten~$x$ und~$y$ und sei~$H = V(x)$.
-Dahh besitzt~$\O(H)$ den globalen Schnitt~$1$. Die Garbe~$\O(-H)$ hat nur den
+Dann besitzt~$\O(H)$ den globalen Schnitt~$1$. Die Garbe~$\O(-H)$ hat nur den
 Nullschnitt als globalen Schnitt, denn es gibt keine nichttrivialen rationalen
 Funktionen auf~$\PP^1$, welche zwar eine Nullstelle besitzen müssen, aber keine
 Pole haben dürfen. Auf der standardoffenen Menge~$D(y)$ besitzt die Garbe~$\O(-H)$
@@ -413,7 +415,7 @@ Geradenbündel ist.
 
 \emph{Warnung.} Der Null- und Polstellendivisor der rationalen Einsfunktion ist
 natürlich stets trivial. Um den geht es hier aber nicht -- es geht um den
-Divisor zu einem bestimmten Schnitt \emph{des Geradenbündels~$\L$}. Dieser war
+Divisor zu einem bestimmten rationalen Schnitt \emph{des Geradenbündels~$\L$}. Dieser war
 über den Null- und Polstellendivisor einer zugehörigen rationalen Funktion
 \emph{unter einer lokalen Trivialisierung} definiert.
 
@@ -443,7 +445,7 @@ der in~$D$ vorkommenden Hyperflächen. Dieses (oder seine Reduktion) heißt
 \emph{Träger} von~$D$.
 
 \begin{ex}Die Idealgarbe zu einem
-einpunktigen Unterschema in~$\PP^1$ durch~$\O(-1)$ gegeben. Die Idealgarbe
+einpunktigen Unterschema in~$\PP^1$ ist durch Serres Twistingbündel~$\O(-1)$ gegeben. Die Idealgarbe
 einer Hyperfläche, welche durch eine homogene Gleichung vom Grad~$d$
 ausgeschnitten wird, ist~$\O(-d)$.
 \end{ex}
@@ -483,7 +485,7 @@ Schnitte tatsächlich dasselbe Null- und Polstellenverhalten zeigen.
 \begin{ex}Der Grad von Serres Twistinggarbe~$\O(m)$ auf~$\PP^n$
 ist~$m$.\end{ex}
 
-\begin{ex}Für alle Geradenbündel~$\L$ auf einer kompakten Kurve gilt
+\begin{ex}Für jedes Geradenbündel~$\L$ auf einer kompakten Kurve gilt
 $\deg\L^\vee = -\deg\L$.\end{ex}
 
 \begin{rem}Den Grad eines Vektorbündels~$\L$ auf einer kompakten Kurve~$X$ kann
@@ -491,7 +493,7 @@ man auch rein topologisch beschreiben. Ist~$c_1(\L) \in H^2(X, \ZZ)$, so
 gilt~$\deg\L = \int_X c_1(\L)$. (XXX Quelle)\end{rem}
 
 Im ersten Abschnitt wurde versprochen, dass die Euler-Charakteristik einer
-kohärenten Garbe nur von diskreten Invarianten der Garbe abhängt und daher
+kohärenten Garbe nur von diskreten Invarianten der Garbe abhänge und daher
 leicht zu berechnen sei. Für den Fall von Geradenbündeln auf Kurven löst der
 Satz von Riemann--Roch dieses Versprechen ein:
 
@@ -503,7 +505,9 @@ $\chi(\L) = \chi(\O) + \deg\L$.
 Ravi Vakil nennt diese Formulierung \emph{Baby-Variante} (XXX Quelle), da
 in~$\chi(\L)$ noch der schlecht zugängliche Summand~$\dim H^1(X,\L)$ vorkommt.
 Mit \emph{Serre-Dualität} kann man diesen noch umschreiben, sodass nur noch
-nullte Kohomologie vorkommt.
+nullte Kohomologie vorkommt. (XXX Genauer)
+
+XXX Geschlecht und~$\chi(\O)$
 
 \begin{proof}Wegen Proposition~\ref{prop:div-pic} genügt es, die Behauptung für
 Geradenbündel der Form~$\L = \O_X(D)$ nachzuweisen, also~$\deg D = \chi(\O(D))
@@ -528,8 +532,8 @@ frei ist, gilt~$\O_P \otimes_{\O_X} \O_X(D) \cong \O_P \otimes_{\O_X} \O_X
   &= (\deg D' + 1) - \chi(\O(D')) - \chi(\O_P) + \chi(\O_X) \\
   &= \deg D' - \chi(\O(D')) + \chi(\O_X),
 \end{align*}
-also gilt die Behauptung genau dann für~$D$, wenn sie für~$D'$ gilt. In der
-Rechnung haben wir~$\chi(\O_P) = 1$ verwendet -- als Wolkenkratzergarbe
+also gilt die Behauptung genau dann für~$D$, wenn sie für~$D'$ gilt. In die
+Rechnung ging~$\chi(\O_P) = 1$ ein -- als Wolkenkratzergarbe
 hat~$\O_P$ nur Kohomologie in Dimension~Null.
 
 Da jeder Divisor aus dem trivialen Divisor durch eine endliche Anzahl von
@@ -555,14 +559,14 @@ reguläre Folge in~$\O_X$ ist (siehe Fußnote~\ref{fn:regulaere-folge}). Diese
 Bedingung garantiert, dass der Schnitt~$C \cap C'$ Kodimension~2, also
 Dimension~0 hat und daher aus isolierten Punkten besteht.
 
-\begin{ex}Sei~$X = \CC^2$ (noch benötigen wir keine Kompaktheit). Sei~$C = V(y)$
+\begin{ex}Sei~$X = \AA^2$ (noch benötigen wir keine Kompaktheit). Sei~$C = V(y)$
 und~$C' = V(y-x^2)$. Trotz des tangentialen Anschmiegverhaltens beim Ursprung
 befinden sich~$C$ und~$C'$ in allgemeiner Lage. Die Schnittmultiplizität beim
 Ursprung ist
 \[ m_x(C,C') = \dim_\CC \CC\{x,y\}/(y,y-x^2) = \dim_\CC \CC[x]/(x^2) =
 2. \]\end{ex}
 
-\begin{rem}Wer glatte Schnitttheorie schon kennt, erwartet vielleicht geeignete
+\begin{rem}Wer \emph{glatte} Schnitttheorie schon kennt, erwartet vielleicht geeignete
 Vorzeichen in der Definition der Schnittmultiplizität und hätte beim vorherigen
 Beispiel eher das Ergebnis~Null (zwei Nullstellen mit unterschiedlichen
 Vorzeichen) erwartet. Solche Vorzeichen gibt es in der algebraischen bzw.
@@ -581,7 +585,7 @@ Schnittmultiplizität genau dann Eins, wenn~$f$ und~$g$ das maximale Ideal
 von~$\O_{X,x}$ -- das Ideal derjenigen Funktionskeime, welche bei~$x$
 Null sind -- erzeugen.
 
-Sei konkret etwa~$X = \CC^1$ (noch benötigen wir keine
+Sei konkret etwa~$X = \AA^2$ (noch benötigen wir keine
 Kompaktheit), $C = V(x)$ und~$C' = V(y)$. Dann ist die Schnittmultiplizität
 beim Ursprung Eins. Und in der Tat: Ist~$h$ ein Funktionskeim am
 Ursprung mit~$h(0) = 0$, so lässt sich~$h$ in der Form~$ax + by$ mit geeigneten
@@ -602,7 +606,7 @@ allgemeiner Lage. Dann ist ihre \emph{Schnittzahl} die Zahl
 Dabei verwenden wir das \emph{abgeleitete Tensorprodukt} -- ein Komplex von
 Garben, dessen Kohomologie die Tor-Gruppengarben berechnet.
 Im Fall, dass~$C$ und~$C'$ in allgemeiner Lage sind, kann man zeigen, dass das
-gewöhnliche Tensorprodukt genügt, die höheren Tor-Terme also verschwinden. In
+gewöhnliche Tensorprodukt genügt, die höheren Tor-Terme also verschwinden.\footnote{XXX Erklärung} In
 diesem Fall gilt
 \[ (C \cdot C') = \chi(\O_C \otimes_{\O_X} \O_{C'}) = \chi(\O_{C \cap C'}) =
   \sum_{x \in C \cap C'} \dim_\CC \O_{C \cap C',x} =
@@ -685,7 +689,7 @@ Konormalenbündel und~$\O(C)$ das Normalenbündel. Dann ist
   \deg \O(C)|_C. \]
 \end{prop}
 \begin{proof}Die Behauptung gilt sogar, wenn~$X$ keine Fläche ist, sondern
-höhere Dimension hat -- nur muss dann~$C$ von der halben Dimension sein und man
+höhere Dimension hat -- nur muss~$C$ dann von halber Dimension sein und man
 kann nicht mehr~"`$\O(-C)$"' schreiben.
 
 Ist lokal~$f_1,\ldots,f_r$ eine reguläre Folge von
@@ -698,7 +702,7 @@ im Fall~$r = 2$ die Form
   \stackrel{\bigl(\begin{smallmatrix}f_1\\f_2\end{smallmatrix}\bigr)}{\lra} \O_X \lra \O_C \lra 0,
   \]
 und allgemein ist er über äußere Potenzen von~$\O_X^r$ gegeben. Die Differentiale
-sind nach Wahl kanonischer Basen durch Matrizen gegeben, deren Einträge nur
+sind unter den Standardbasen durch Matrizen gegeben, deren Einträge nur
 die Funktionen~$f_i$ (mit Vorfaktoren aus~$\{-1,0,1\}$) sind. Einen zur
 Berechnung des in der Definition von~$(C \cdot C)$ auftretenden abgeleiteten
 Tensorprodukts Komplex erhalten wir durch Tensorieren der Auflösung mit~$\O_C
@@ -707,7 +711,7 @@ den Komplex~$\Lambda^\bullet_{\O_X} \O_X^r \otimes_{\O_X} \O_X/\J \cong
 \Lambda^\bullet_{\O_C}(\J/\J^2) = \Lambda^\bullet_{\O_C} \N_{C/X}^\vee$.
 Der resultierende Isomorphismus~$\mathcal{T}\!or^{\O_X}_n(\O_C,\O_C) \to \Lambda^n_{\O_C}
 \N_{C/X}^\vee$ hängt nicht von der Wahl der regulären Folge ab. Daher erhalten
-wir diesen Isomorphismus auch auf globaler Ebene.
+wir diesen Isomorphismus auch auf globaler Ebene. XXX Quelle
 \end{proof}
 
 \begin{proof}[Kürzerer Beweis speziell für Kurven auf Flächen]
@@ -721,7 +725,7 @@ Selbstschnitt gleich
   = \chi(\O_C) - \chi(\O(-C)|_C). \qedhere \]
 \end{proof}
 
-Der Selbstschnitt einer Kurve~$C$ kann \emph{negativ} sein. Das drückt aus, dass
+\emph{Der Selbstschnitt einer Kurve~$C$ kann negativ sein.} Das drückt aus, dass
 die Kurve nicht algebraisch bzw. holomorph zu einer linear äquivalenten
 Kurve~$C'$ bewegt werden kann, welche zu~$C$ allgemeine Lage hat -- denn der
 Schnitt zweier Kurven in allgemeiner Lage ist stets nichtnegativ. In der
@@ -766,7 +770,7 @@ i^*(\beta)$ für alle~$\beta \in H^2(X,\ZZ)$ (siehe Griffiths/Harris, Seite~141
 XXX).
 \end{fact}
 
-Daher folgt für Kurven~$C$ und~$C'$ auf~$X$
+Daher folgt für Kurven~$C$ und~$C'$ auf~$X$ (mit~$i : C \hookrightarrow X$)
 \begin{align*}
   (C \cdot C')_{\text{top.}}
   &:= \int_X \PD(C) \cup \PD(C')
@@ -789,7 +793,7 @@ Differentialformen im Topgrad. Dann ist~$H^2(X,\omega)$ eindimensional und
 für~$i = 0,1,2$ induziert das Cup-Produkt für jedes Geradenbündel~$\L$ eine
 nicht ausgeartete Bilinearform.
 \[ H^i(X,\L) \times H^{2-i}(X,\omega \otimes \L^\vee) \lra
-  H^2(X,\omega) \lra \CC \]
+  H^2(X,\omega) \stackrel{\cong}{\lra} \CC \]
 \end{fact}
 
 XXX Bedeutung, Intuition, Poincaré-Dualität, \ldots
