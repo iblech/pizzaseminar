@@ -17,7 +17,7 @@
 
 \usepackage{hyperref}
 
-\setlength{\shadeboxsep}{8pt}
+\setlength{\shadeboxsep}{6pt}
 \setlength{\shadeleftshift}{-\shadeboxsep}
 \setlength{\shaderightshift}{-\shadeboxsep}
 
@@ -294,7 +294,7 @@ Garbe mit Faser~$\O_{X,\xi}$.
 \item Ein \emph{(Weil-)Divisor} auf~$X$ ist eine
 formale~$\ZZ$-Linearkombination von irreduziblen Hyperflächen von~$X$. (Das
 Achsenkreuz in~$\AA^2$ ist ein Beispiel für eine reduzible Hyperfläche.
-Hyperflächen werden lokal durch eine reguläre Gleichung gegeben.)
+Hyperflächen werden lokal durch eine reguläre Gleichung ausgeschnitten.)
 \item Der \emph{Grad} eines Divisors ist die Summe seiner Koeffizienten.
 \item Ein Divisor~$D$ heißt genau dann \emph{effektiv}, notiert~"`$D \geq 0$"',
 wenn seine Koeffizienten alle nichtnegativ sind.
@@ -478,7 +478,7 @@ ist der Grad eines Divisors~$D$ mit~$\L \cong \O_X(D)$.\end{defn}
 
 Dank Proposition~\ref{prop:div-pic} und des Faktums ist diese Setzung
 wohldefiniert. Anschaulich ist der Grad eines Geradenbündels die Anzahl der
-Null- und Polstellen, entsprechend gewichtet, die jeder nichttriviale rationale
+Null- und Polstellen (entsprechend gewichtet), die jeder nichttriviale rationale
 Schnitt von~$\L$ hat. Es ist bemerkenswert, dass alle nichttrivialen rationalen
 Schnitte tatsächlich dasselbe Null- und Polstellenverhalten zeigen.
 
@@ -682,8 +682,8 @@ desselben Grads auf~$\PP^2$ linear äquivalent sind, gilt~$(H \cdot H) = (H \cdo
 Das folgt natürlich auch sofort mit dem Satz von Bézout.
 \end{ex}
 
-\begin{prop}Sei~$C$ in~$X$ regulär eingebettet. Sei~$\N_{C/X}^\vee \cong \O(-C)$ das
-Konormalenbündel und~$\O(C)$ das Normalenbündel. Dann ist
+\begin{prop}Sei~$C$ in~$X$ regulär eingebettet. Sei~$\N_{C/X}^\vee \cong \O(-C)|_C$ das
+Konormalenbündel und~$\O(C)|_C$ das Normalenbündel. Dann ist
 \[ (C \cdot C) = \chi(\Lambda^\bullet_{\O_C}
 \N_{C/X}^\vee) = \chi(\O_C) - \chi(\O(-C)|_C) \stackrel{\mathrm{RR}}{=}
   \deg \O(C)|_C. \]
@@ -800,10 +800,13 @@ XXX Bedeutung, Intuition, Poincaré-Dualität, \ldots
 
 \begin{cor}Für jedes Geradenbündel~$\L$ gilt~$\chi(\L) = \chi(\omega \otimes
 \L^\vee)$.\end{cor}
+\begin{proof}Es gilt~$\dim H^i(X,\L) = \dim H^{2-i}(X,\omega \otimes \L^\vee)$,
+und die Vorzeichen passen.
+\end{proof}
 
 \begin{thm}[Riemann--Roch für Flächen]
 Sei~$\L$ ein Geradenbündel auf~$X$. Dann gilt
-\[ \chi(\L) = \chi(\O_X) + \tfrac{1}{2} \cdot \bigl((L \cdot L) - (L \cdot \omega)\bigr). \]
+\[ \chi(\L) = \chi(\O_X) + \tfrac{1}{2} \cdot \bigl((\L \cdot \L) - (\L \cdot \omega)\bigr). \]
 \end{thm}
 
 \begin{proof}Die Behauptung folgt durch Umstellen der Gleichung
@@ -832,7 +835,7 @@ Sei~$C$ eine irreduzible Kurve auf~$X$. Für ihr \emph{Geschlecht} $g(C) :=
 
 XXX Adjunktionsformel
 
-XXX Werbung für Shafarevich und Manin
+XXX Werbung für Shafarevich und Manin; für Divisoren auch Huybrechts
 
 \end{document}
 
