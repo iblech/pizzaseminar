@@ -164,12 +164,12 @@ verschwindet die~$i$-ten Kohomologie. (XXX Quelle)
 kohärenten Garben, so erhält man eine lange exakte Sequenz in Kohomologie:
 \[ \cdots \lra H^n(X,\E') \lra H^n(X,\E) \lra H^n(X,\E'') \lra H^{n+1}(X,\E')
 \lra \cdots \]
-\item Die \emph{Eulercharakteristik} einer kohärenten Garbe~$\E$, definiert
+\item Die \emph{Euler-Charakteristik} einer kohärenten Garbe~$\E$, definiert
 als die alternierende Summe~$\chi(\E) := \sum_{n=0}^\infty (-1)^n\, \dim_\CC H^n(X,\E)
 \in \ZZ$, ist additiv in kurzen exakten Sequenzen. Deshalb hängt~$\chi(\E)$ nur
 von der \emph{Klasse von~$\E$ in der K-Theorie ab}, also nur von
 \emph{diskreten Invarianten} von~$\E$.\footnote{Außerdem ist die
-Eulercharakteristik auf flachen Familien von kohärenten Garben konstant (XXX
+Euler-Charakteristik auf flachen Familien von kohärenten Garben konstant (XXX
 Quelle). Die K-Theorie von~$X$ ist die abelsche Gruppe
 formaler~$\ZZ$-Linearkombinationen von Isomorphieklassen von kohärenten Garben
 auf~$X$ modulo den Relationen~$\E = \E' + \E''$ für jede kurze exakte
@@ -190,7 +190,7 @@ bezüglich des globale-Schnitte-Funktors sind.
 Ein weiterer Grund liegt darin, dass man oft an der Dimension des globalen
 Schnitt\-raums einer kohärenten Garbe~$\E$ interessiert ist, also an~$\dim_\CC
 H^0(X,\E)$. Diese ist im Allgemeinen aber nicht leicht zu berechnen. Die
-Eulercharakteristik dagegen, in der diese Dimension als ein Summand auftritt,
+Euler-Charakteristik dagegen, in der diese Dimension als ein Summand auftritt,
 ist dank ihrer Stabilitätseigenschaften leichter zugänglich. Im Fall, dass~$\E$
 das zu einem Divisor~$D$ assoziierte Geradenbündel ist (siehe Abschnitt~2), ist
 die Frage nach der Dimension des globalen Schnittraums die sehr konkrete Frage
@@ -262,7 +262,7 @@ wenn~$\J$ die Idealgarbe von~$V$ ist. Ferner gilt für die Kohomologie
 \subsection*{Normalgarbe und Konormalgarbe}
 
 Ist~$V \hookrightarrow X$ ein abgeschlossenes Unterschema, so ist~$\N_{V/X}^\vee
-:= \J/\J^2$ die \emph{Konormalgarbe} von~$V$ in~$X$. Sie hat Träger in~$V$ und
+:= \J/\J^2 \cong \J \otimes_{\O_X} \O_V \cong \J|_V$ die \emph{Konormalgarbe} von~$V$ in~$X$. Sie hat Träger in~$V$ und
 wird daher als Garbe auf~$V$ angesehen. Die \emph{Normalgarbe} ist die
 zugehörige Dualgarbe.
 
@@ -364,10 +364,10 @@ Morphismus~$\O_X(D) \to \O_X$, $f \mapsto f f_0$ global isomorph zu~$\O_X$.
 (Wieso liegt~$f f_0$ wirklich in~$\O_X$?)\end{ex}
 
 \begin{ex}Sei~$X = \PP^1$ mit den Koordinaten~$x$ und~$y$ und sei~$H = V(x)$.
-Dann besitzt~$\O(H)$ den globalen Schnitt~$1$. Die Garbe~$\O(-H)$ hat nur den
+Dann besitzt~$\O_X(H)$ den globalen Schnitt~$1$. Die Garbe~$\O_X(-H)$ hat nur den
 Nullschnitt als globalen Schnitt, denn es gibt keine nichttrivialen rationalen
 Funktionen auf~$\PP^1$, welche zwar eine Nullstelle besitzen müssen, aber keine
-Pole haben dürfen. Auf der standardoffenen Menge~$D(y)$ besitzt die Garbe~$\O(-H)$
+Pole haben dürfen. Auf der standardoffenen Menge~$D(y)$ besitzt die Garbe~$\O_X(-H)$
 den Schnitt~$x/y$ (der Pol bei~$[1:0]$ zählt nicht, da~$[1:0] \not\in D(y)$),
 auf~$D(x)$ den Schnitt~$1$.
 \end{ex}
@@ -437,29 +437,37 @@ unkanonische Art und Weise eine Untergarbe von~$\K_X$ ist.
 Ist~$D$ ein effektiver Divisor, so ist~$\O_X(-D)$ auf kanonische Art
 und Weise eine Untergarbe von~$\O_X$.\footnote{Die Inklusion~$\O_X(-D) \to
 \O_X$ bleibt auf faserniveau~$\O_X(-D)|_x \to \O_X|_x$ nicht unbedingt für alle
-Punkte~$x$ injektiv. Man sollte sich hier also nicht ein Unterbündel eines
-Geradenbündels vorstellen.} Das gibt Anlass zur kurzen exakten Sequenz
+Punkte~$x$ injektiv. Man sollte sich hier also nicht ein Unterbündel eines 
+Geradenbündels vorstellen. Tatsächlich ist die Inklusion für Punkte~$x \in V = V(\O_X(-D))$
+auf faserniveau die Nullabbildung: Denn eine Funktion aus~$\O_X(-D)$ muss ja längs~$V$
+verschwinden, die Äquivalenzklasse~$[f]$ einer solchen Funktion~$f$ wird also
+auf~$f(x) = 0$ geschickt. \emph{Punkte sind nicht flach!}}
+Das gibt Anlass zur kurzen exakten Sequenz
 \[ 0 \lra \O_X(-D) \lra \O_X \lra i_*\O_V \lra 0, \]
 die ein abgeschlossenes Unterschema~$V := V(\O_X(-D))$ definiert -- die Vereinigung
 der in~$D$ vorkommenden Hyperflächen. Dieses (oder seine Reduktion) heißt
 \emph{Träger} von~$D$.
 
-\begin{ex}Die Idealgarbe zu einem
-einpunktigen Unterschema in~$\PP^1$ ist durch Serres Twistingbündel~$\O(-1)$ gegeben. Die Idealgarbe
-einer Hyperfläche, welche durch eine homogene Gleichung vom Grad~$d$
-ausgeschnitten wird, ist~$\O(-d)$.
+\begin{ex}Die Idealgarbe zu einem einpunktigen Unterschema in~$\PP^1$ ist durch
+Serres Twistingbündel~$\O(-1)$ gegeben. Die Idealgarbe einer Hyperfläche,
+welche durch eine homogene Gleichung vom Grad~$d$ ausgeschnitten wird,
+ist~$\O(-d)$.
 \end{ex}
 
+Für den Spezialfall, dass~$D$ aus nur einer irreduziblen Kurve~$C$ mit
+einfacher Wertung besteht, zeigt diese Sequenz, dass die Konormalgarbe von~$C$
+in~$X$ durch~$\O_X(-C)|_C$ gegeben ist. Das ist auch anschaulich plausibel: XXX
 
-\subsection*{Divisoren auf~$\PP^1$}
+
+\subsection*{Divisoren auf~$\PP^n$}
 
 Sei~$H$ eine Hyperebene in~$\PP^n$.
 
-\begin{prop}Der Homomorphismus~$\ZZ \to \Div(\PP^n)$, $m \mapsto \O(mH)$ ist
+\begin{prop}Der Homomorphismus~$\ZZ \to \Div(\PP^n)$, $m \mapsto \O_{\PP^n}(mH)$ ist
 ein Isomorphismus.\end{prop}
 \begin{proof}Übungsaufgabe.\end{proof}
 
-Das Bündel~$\O(mH)$ ist isomorph zu Serres Twistinggarbe~$\O(m)$. Ist etwa~$H =
+Das Bündel~$\O_{\PP^n}(mH)$ ist isomorph zu Serres Twistinggarbe~$\O(m)$. Ist etwa~$H =
 V(x_0)$, so ist ein Isomorphismus durch~$f \mapsto x_0^m f$ gegeben.
 
 
@@ -482,7 +490,7 @@ Null- und Polstellen (entsprechend gewichtet), die jeder nichttriviale rationale
 Schnitt von~$\L$ hat. Es ist bemerkenswert, dass alle nichttrivialen rationalen
 Schnitte tatsächlich dasselbe Null- und Polstellenverhalten zeigen.
 
-\begin{ex}Der Grad von Serres Twistinggarbe~$\O(m)$ auf~$\PP^n$
+\begin{ex}Der Grad von Serres Twistinggarbe~$\O(m)$ auf~$\PP^1$
 ist~$m$.\end{ex}
 
 \begin{ex}Für jedes Geradenbündel~$\L$ auf einer kompakten Kurve gilt
@@ -499,38 +507,40 @@ Satz von Riemann--Roch dieses Versprechen ein:
 
 \begin{thm}[Riemann--Roch für Kurven]
 Sei~$X$ eine kompakte Kurve und~$\L$ ein Geradenbündel auf~$X$. Dann gilt
-$\chi(\L) = \chi(\O) + \deg\L$.
+$\chi(\L) = \chi(\O_X) + \deg\L$.
 \end{thm}
 
-Ravi Vakil nennt diese Formulierung \emph{Baby-Variante} (XXX Quelle), da
+Ravi Vakil bezeichnet diese Formulierung als \emph{Baby-Variante} von Riemann--Roch (XXX Quelle), da
 in~$\chi(\L)$ noch der schlecht zugängliche Summand~$\dim H^1(X,\L)$ vorkommt.
-Mit \emph{Serre-Dualität} kann man diesen noch umschreiben, sodass nur noch
-nullte Kohomologie vorkommt. (XXX Genauer)
+Mit \emph{Serre-Dualität} kann man diesen noch zu~$\dim H^0(X,\Omega^1_X
+\otimes \L^\vee)$ umschreiben, sodass nur noch
+nullte Kohomologie vorkommt:
+\[ h^0(\L) - h^0(\Omega^1_X \otimes \L^\vee) = 1-g(X) + \deg\L. \]
+Dabei haben wir auch die Euler-Charakteristik der Strukturgarbe durch das
+Geschlecht von~$X$ ausgedrückt.
 
-XXX Geschlecht und~$\chi(\O)$
-
-\begin{proof}Wegen Proposition~\ref{prop:div-pic} genügt es, die Behauptung für
-Geradenbündel der Form~$\L = \O_X(D)$ nachzuweisen, also~$\deg D = \chi(\O(D))
+\begin{proof}[Beweis des Satzes]Wegen Proposition~\ref{prop:div-pic} genügt es, die Behauptung für
+Geradenbündel der Form~$\L = \O_X(D)$ nachzuweisen, also~$\deg D = \chi(\O_X(D))
 - \chi(\O_X)$ nachzurechnen. Für den trivialen Divisor~$D = 0$ ist das klar.
 
 Gelte für zwei Divisoren~$D$ und~$D'$ die Beziehung~$D = D' + [P]$, wobei~$P$
 ein Punkt auf~$X$ ist. Zum Unterschema~$P \subseteq X$ gibt es die kurze exakte
 Sequenz
-\[ 0 \lra \O(-P) \lra O \lra \O_P \lra 0. \]
+\[ 0 \lra \O_X(-P) \lra O \lra \O_P \lra 0. \]
 Dabei ist~$\O_P$ eine im Punkt~$P$ konzentrierte Wolkenkratzergarbe; dort hat
 sie den Halm~$\CC$. (Eigentlich sollten wir~$i_* \O_P$ schreiben, wobei~$i : P
 \hookrightarrow X$ die Einbettung ist.) Nach Tensorieren mit~$\O_X(D)$ erhalten
 wir die Sequenz
-\[ 0 \lra \O(D-P) \lra \O(D) \lra \O_P \lra 0, \]
+\[ 0 \lra \O_X(D-P) \lra \O_X(D) \lra \O_P \lra 0, \]
 welche immer noch exakt ist, da Tensorieren mit lokal freien Garben Exaktheit
 erhält. Der rechte Term sollte eigentlich~$\O_P \otimes_{\O_X} \O_X(D)$ sein,
 aber da~$\O_P$ nur Träger auf~$P$ hat und~$\O_X(D)$ auf einer Umgebung von~$P$
 frei ist, gilt~$\O_P \otimes_{\O_X} \O_X(D) \cong \O_P \otimes_{\O_X} \O_X
 \cong \O_P$. Wegen der Additivität der Euler-Charakteristik folgt
 \begin{align*}
-  \deg D - \chi(\O(D)) + \chi(\O_X)
-  &= (\deg D' + 1) - \chi(\O(D')) - \chi(\O_P) + \chi(\O_X) \\
-  &= \deg D' - \chi(\O(D')) + \chi(\O_X),
+  \deg D - \chi(\O_X(D)) + \chi(\O_X)
+  &= (\deg D' + 1) - \chi(\O_X(D')) - \chi(\O_P) + \chi(\O_X) \\
+  &= \deg D' - \chi(\O_X(D')) + \chi(\O_X),
 \end{align*}
 also gilt die Behauptung genau dann für~$D$, wenn sie für~$D'$ gilt. In die
 Rechnung ging~$\chi(\O_P) = 1$ ein -- als Wolkenkratzergarbe
@@ -559,11 +569,13 @@ reguläre Folge in~$\O_X$ ist (siehe Fußnote~\ref{fn:regulaere-folge}). Diese
 Bedingung garantiert, dass der Schnitt~$C \cap C'$ Kodimension~2, also
 Dimension~0 hat und daher aus isolierten Punkten besteht.
 
+XXX Transversalität impliziert allgemeine Lage.
+
 \begin{ex}Sei~$X = \AA^2$ (noch benötigen wir keine Kompaktheit). Sei~$C = V(y)$
 und~$C' = V(y-x^2)$. Trotz des tangentialen Anschmiegverhaltens beim Ursprung
 befinden sich~$C$ und~$C'$ in allgemeiner Lage. Die Schnittmultiplizität beim
 Ursprung ist
-\[ m_x(C,C') = \dim_\CC \CC\{x,y\}/(y,y-x^2) = \dim_\CC \CC[x]/(x^2) =
+\[ m_0(C,C') = \dim_\CC \CC\{x,y\}/(y,y-x^2) = \dim_\CC \CC[x]/(x^2) =
 2. \]\end{ex}
 
 \begin{rem}Wer \emph{glatte} Schnitttheorie schon kennt, erwartet vielleicht geeignete
@@ -630,9 +642,9 @@ Isomorphieklassen von~$\E$ und~$\F$ ab, weswegen sie zu einer
 \emph{Schnittform} auf der Picard-Gruppe absteigt.
 
 \begin{prop}\begin{enumerate}
-\item Seien~$C$ und~$C'$ Kurven auf~$X$. Dann ist~$(\O(C) \cdot \O(C')) = (C
+\item Seien~$C$ und~$C'$ Kurven auf~$X$. Dann ist~$(\O_X(C) \cdot \O_X(C')) = (C
 \cdot C')$.
-\item Sei~$C$ eine Kurve und~$\L$ ein Geradenbündel auf~$X$. Dann ist~$(\O(C)
+\item Sei~$C$ eine Kurve und~$\L$ ein Geradenbündel auf~$X$. Dann ist~$(\O_X(C)
 \cdot \L) = \deg(\L|_C)$.
 \item Die Schnittzahl definiert eine symmetrische und bilineare Abbildung
 $\Pic(X) \times \Pic(X) \to \ZZ$.
@@ -640,20 +652,23 @@ $\Pic(X) \times \Pic(X) \to \ZZ$.
 
 Aus der ersten Teilaussage folgt insbesondere, dass die Schnittzahl nur von der
 linearen Äquivalenzklasse der beteiligten Kurven abhängt -- denn für~$C \equiv
-\widetilde C$ gilt~$\O(C) \cong \O(\widetilde C)$.
+\widetilde C$ gilt~$\O_X(C) \cong \O_X(\widetilde C)$. Es ist auch
+bemerkenswert, dass man die Schnittzahl ganz ohne Rückgriff auf Torsionsgarben
+nur mit Geradenbündeln beschreiben kann.
 
 \begin{proof}
 \begin{enumerate}
 \item Die erste Aussage folgt sofort mit den kurzen exakten Sequenzen zu den
-Unterschemata~$C$ und~$C'$.
-\item Aus der kurzen exakten Sequenz~$0 \to \O(-C) \to \O_X \to \O_C \to 0$
+Unterschemata~$C$ und~$C'$: In~$K$-Theorie gilt~$\O_C = \O_X - \O_X(-C)$ und
+analog für~$C'$.
+\item Aus der kurzen exakten Sequenz~$0 \to \O_X(-C) \to \O_X \to \O_C \to 0$
 ergibt sich durch Tensorieren mit~$\L^\vee$ die exakte Sequenz
-\[ 0 \lra \L^\vee \otimes \O(-C) \lra \L^\vee \lra \L^ \otimes \O_C. \]
+\[ 0 \lra \L^\vee \otimes \O_X(-C) \lra \L^\vee \lra \L^\vee \otimes \O_C \lra 0. \]
 Dabei sollten wir eigentlich~$i_* \O_C$ schreiben und die Tensorprodukte mit
 dem Grundring~$\O_X$ dekorieren. Jedenfalls folgt
 \begin{align*}
-  (\O(C) \cdot \L)
-  &= \chi(\O) - \chi(\O(-C)) - \chi(\L^\vee) + \chi(\O(-C) \otimes \L^\vee) \\
+  (\O_X(C) \cdot \L)
+  &= \chi(\O) - \chi(\O_X(-C)) - \chi(\L^\vee) + \chi(\O_X(-C) \otimes \L^\vee) \\
   &= \chi(\O_C) - \chi(\L^\vee \otimes \O_C) \\
   &= \chi(\O_C) - \chi(\L^\vee|_C) \\
   &= -\deg \L^\vee|_C \\
@@ -682,17 +697,35 @@ desselben Grads auf~$\PP^2$ linear äquivalent sind, gilt~$(H \cdot H) = (H \cdo
 Das folgt natürlich auch sofort mit dem Satz von Bézout.
 \end{ex}
 
-\begin{prop}Sei~$C$ in~$X$ regulär eingebettet. Sei~$\N_{C/X}^\vee \cong \O(-C)|_C$ das
-Konormalenbündel und~$\O(C)|_C$ das Normalenbündel. Dann ist
-\[ (C \cdot C) = \chi(\Lambda^\bullet_{\O_C}
-\N_{C/X}^\vee) = \chi(\O_C) - \chi(\O(-C)|_C) \stackrel{\mathrm{RR}}{=}
-  \deg \O(C)|_C. \]
+\begin{prop}Sei~$C$ eine Kurve in~$X$. Dann gilt
+\[ (C \cdot C) = \chi(\O_C) - \chi(\O_X(-C)|_C) \stackrel{\mathrm{RR}}{=}
+  \deg \O_X(C)|_C. \]
 \end{prop}
-\begin{proof}Die Behauptung gilt sogar, wenn~$X$ keine Fläche ist, sondern
-höhere Dimension hat -- nur muss~$C$ dann von halber Dimension sein und man
-kann nicht mehr~"`$\O(-C)$"' schreiben.
+\begin{proof}
+Zur Auflösung von~$\O_C$ verwenden wir die kurze exakte Sequenz
+\[ 0 \lra \O_X(-C) \lra \O_X \lra \O_C \lra 0. \]
+Ein Komplex zur Berechnung des abgeleiteten Tensorprodukts ist daher
+\[ 0 \lra \O_X(-C) \otimes_{\O_X} \O_C \stackrel{0}{\lra} \O_X \otimes \O_C \lra 0. \]
+Das Differential ist Null (bedenke~$\O_C \cong \O_X/\O_X(-C)$). Daher ist der
+Selbstschnitt gleich
+\[ (C \cdot C) = \chi(\O_X \otimes \O_C) - \chi(\O_X(-C) \otimes_{\O_X} \O_C)
+  = \chi(\O_C) - \chi(\O_X(-C)|_C). \qedhere \]
+\end{proof}
 
-Ist lokal~$f_1,\ldots,f_r$ eine reguläre Folge von
+Die Proposition wird anschaulicher, wenn man sie allgemeinert.
+
+\begin{prop}Sei~$X$ von Dimension~$2n$. Sei~$C$ in~$X$ regulär eingebettet und
+von Kodimension~$n$. Sei~$\N_{C/X}^\vee$ das
+Konormalenbündel. Dann ist
+\[ (C \cdot C) = \chi(\Lambda^\bullet_{\O_C} \N_{C/X}^\vee). \]
+\end{prop}
+
+Im Spezialfall, dass~$C$ eine Kurve auf einer Fläche~$X$ ist, ist das
+Konormalenbündel durch~$\O_X(-C)|_C$ gegeben und die einzigen nichttrivialen
+äußeren Potenzen sind~$\Lambda^0$ und~$\Lambda^1$. So erhält man aus der
+allgemeinen Proposition die spezielle zurück.
+
+\begin{proof}Ist lokal~$f_1,\ldots,f_r$ eine reguläre Folge von
 Funktionen, welche die Idealgarbe~$\J$ von~$C$ erzeugen, so liefert der
 \emph{Koszul-Komplex} eine freie Auflösung von~$\O_C$. Im Spezialfall~$r = 1$
 hat dieser die Form
@@ -708,21 +741,13 @@ Berechnung des in der Definition von~$(C \cdot C)$ auftretenden abgeleiteten
 Tensorprodukts Komplex erhalten wir durch Tensorieren der Auflösung mit~$\O_C
 \cong \O_X/\J$. Dabei werden die Differentiale alle zu Null, und wir erhalten
 den Komplex~$\Lambda^\bullet_{\O_X} \O_X^r \otimes_{\O_X} \O_X/\J \cong
-\Lambda^\bullet_{\O_C}(\J/\J^2) = \Lambda^\bullet_{\O_C} \N_{C/X}^\vee$.
+\Lambda^\bullet_{\O_X/\J} (\O_X/\J)^r \cong
+\Lambda^\bullet_{\O_C}(\J/\J^2) = \Lambda^\bullet_{\O_C}
+\N_{C/X}^\vee$.\footnote{Ein Isomorphismus~$(\O_X/\J)^r \to \J/\J^2$ ist
+durch~$([g_1],\ldots,[g_r]) \mapsto [\sum_i g_i f_i]$ gegeben.}
 Der resultierende Isomorphismus~$\mathcal{T}\!or^{\O_X}_n(\O_C,\O_C) \to \Lambda^n_{\O_C}
 \N_{C/X}^\vee$ hängt nicht von der Wahl der regulären Folge ab. Daher erhalten
 wir diesen Isomorphismus auch auf globaler Ebene. XXX Quelle
-\end{proof}
-
-\begin{proof}[Kürzerer Beweis speziell für Kurven auf Flächen]
-Zur Auflösung von~$\O_C$ verwenden wir die kurze exakte Sequenz
-\[ 0 \lra \O(-C) \lra \O_X \lra \O_C \lra 0. \]
-Ein Komplex zur Berechnung des abgeleiteten Tensorprodukts ist daher
-\[ 0 \lra \O(-C) \otimes_{\O_X} \O_C \stackrel{0}{\lra} \O_X \otimes \O_C \lra 0. \]
-Das Differential ist Null (bedenke~$\O_C \cong \O_X/\O(-C)$). Daher ist der
-Selbstschnitt gleich
-\[ (C \cdot C) = \chi(\O_X \otimes \O_C) - \chi(\O(-C) \otimes_{\O_X} \O_C)
-  = \chi(\O_C) - \chi(\O(-C)|_C). \qedhere \]
 \end{proof}
 
 \emph{Der Selbstschnitt einer Kurve~$C$ kann negativ sein.} Das drückt aus, dass
@@ -765,7 +790,7 @@ die algebraische bzw. holomorphe Struktur, beschreiben. Dazu sei an ein Faktum
 über die erste Chernklasse erinnert:
 
 \begin{fact}Ist~$i : C \hookrightarrow X$ die
-Einbettung einer Kurve, so gilt~$\int_X c_1(\O(C)) \cup \beta = \int_C
+Einbettung einer Kurve, so gilt~$\int_X c_1(\O_X(C)) \cup \beta = \int_C
 i^*(\beta)$ für alle~$\beta \in H^2(X,\ZZ)$ (siehe Griffiths/Harris, Seite~141
 XXX).
 \end{fact}
@@ -774,66 +799,108 @@ Daher folgt für Kurven~$C$ und~$C'$ auf~$X$ (mit~$i : C \hookrightarrow X$)
 \begin{align*}
   (C \cdot C')_{\text{top.}}
   &:= \int_X \PD(C) \cup \PD(C')
-  = \int_X c_1(\O(C)) \cup c_1(\O(C')) \\[0.5em]
-  &\phantom{:}= \int_C i^*(c_1(\O(C')))
-  = \int_C c_1(i^*\O(C'))
-  = \int_C c_1(\O(C')|_C) \\[0.5em]
-  &\phantom{:}= \deg \O(C')|_C
+  = \int_X c_1(\O_X(C)) \cup c_1(\O_X(C')) \\[0.5em]
+  &\phantom{:}= \int_C i^*(c_1(\O_X(C')))
+  = \int_C c_1(i^*\O_X(C'))
+  = \int_C c_1(\O_X(C')|_C) \\[0.5em]
+  &\phantom{:}= \deg \O_X(C')|_C
   = (C \cdot C').
 \end{align*}
 
 
 \section{Der Satz von Riemann--Roch für Flächen}
 
-Sei~$X$ eine kompakte Fläche (projektive Varietät über~$\CC$ oder
-kompakte komplexe Mannigfaltigkeit der komplexen Dimension~2).
+Sei~$X$ eine kompakte Fläche (projektive Varietät über~$\CC$ oder kompakte
+komplexe Mannigfaltigkeit der komplexen Dimension~2). Sei~$\omega_X :=
+\Lambda^2 \Omega^1_X$ das Bündel der Differentialformen im Topgrad. Ein
+Divisor~$K_X$ mit~$\O_X(K_X) \cong \omega_X$ (ein solcher ist bis auf lineare
+Äquivalenz eindeutig bestimmt) heißt auch \emph{kanonischer Divisor}.
 
-\begin{fact}Sei~$\omega := \Lambda^2 \Omega^1_X$ das Bündel der
-Differentialformen im Topgrad. Dann ist~$H^2(X,\omega)$ eindimensional und
+\begin{ex}Auf~$X = \PP^1$ mit Koordinaten~$x$ und~$y$ (noch ist die Dimension
+nicht wichtig) gilt~$\omega_X \cong \O(-2)$. Das kann man schnell einsehen,
+wenn man den Null- und Polstellendivisor eines beliebigen nichttrivialen
+rationalen Schnitts von~$\omega_X$ betrachtet: Ein solcher ist
+beispielsweise~$d(x/y)$. Wegen~$d(x/y) = (y\,dx-x\,dy)/y^2$ hat dieser eine
+doppelte Polstelle und keine Nullstellen.\end{ex}
+
+\begin{ex}Auf~$X = \PP^2$ mit Koordinaten~$x$,~$y$ und~$z$ gilt~$\omega_X \cong
+\O(-3)$. Ein rationaler Schnitt von~$\omega_X$ ist nämlich
+\[ d(x/z) \wedge d(y/z) =
+  \frac{z\,dx - x\,dz}{z^2} \wedge \frac{z\,dy - y\,dz}{z^2} =
+  \frac{z\,dx\,dy - y\,dx\,dz + x\,dy\,dz}{z^3}. \]\end{ex}
+
+\begin{fact}Es ist~$H^2(X,\omega_X)$ eindimensional und
 für~$i = 0,1,2$ induziert das Cup-Produkt für jedes Geradenbündel~$\L$ eine
 nicht ausgeartete Bilinearform.
-\[ H^i(X,\L) \times H^{2-i}(X,\omega \otimes \L^\vee) \lra
-  H^2(X,\omega) \stackrel{\cong}{\lra} \CC \]
+\[ H^i(X,\L) \times H^{2-i}(X,\omega_X \otimes \L^\vee) \lra
+  H^2(X,\omega_X) \stackrel{\cong}{\lra} \CC \]
 \end{fact}
 
 XXX Bedeutung, Intuition, Poincaré-Dualität, \ldots
 
-\begin{cor}Für jedes Geradenbündel~$\L$ gilt~$\chi(\L) = \chi(\omega \otimes
-\L^\vee)$.\end{cor}
-\begin{proof}Es gilt~$\dim H^i(X,\L) = \dim H^{2-i}(X,\omega \otimes \L^\vee)$,
+\begin{cor}Für jedes Geradenbündel~$\L$ gilt~$\chi(\L) = \chi(\omega_X \otimes
+\L^\vee)$. Insbesondere gilt~$\chi(\O_X) = \chi(\omega_X)$.\end{cor}
+\begin{proof}Es gilt~$\dim H^i(X,\L) = \dim H^{2-i}(X,\omega_X \otimes \L^\vee)$,
 und die Vorzeichen passen.
 \end{proof}
 
 \begin{thm}[Riemann--Roch für Flächen]
 Sei~$\L$ ein Geradenbündel auf~$X$. Dann gilt
-\[ \chi(\L) = \chi(\O_X) + \tfrac{1}{2} \cdot \bigl((\L \cdot \L) - (\L \cdot \omega)\bigr). \]
+\[ \chi(\L) = \chi(\O_X) + \tfrac{1}{2} \cdot \bigl((\L \cdot \L) - (\L \cdot \omega_X)\bigr). \]
 \end{thm}
 
 \begin{proof}Die Behauptung folgt durch Umstellen der Gleichung
 \begin{align*}
-  -(\L \cdot \L) + (\L \cdot \omega)
-  &= (\L^\vee \cdot \L) + (\L^\vee \cdot \omega^\vee) \\
-  &= (\L^\vee \cdot (\L \otimes \omega^\vee)) \\
+  -(\L \cdot \L) + (\L \cdot \omega_X)
+  &= (\L^\vee \cdot \L) + (\L^\vee \cdot \omega_X^\vee) \\
+  &= (\L^\vee \cdot (\L \otimes \omega_X^\vee)) \\
   &= \chi(\O_X) - \chi(\L) - \chi(\omega_X \otimes \L^\vee) + \chi(\omega_X) \\
   &= \chi(\O_X) - \chi(\L) - \chi(\L) + \chi(\O_X) \\
   &= 2 \cdot (\chi(\O_X) - \chi(\L)). \qedhere
 \end{align*}
 \end{proof}
 
+\begin{rem}Angewendet auf das zu einem Divisor assoziierte
+Geradenbündel~$\O_X(D)$ lautet der Satz von Riemann--Roch wie folgt:
+\[ h^0(\O_X(D)) - h^1(\O_X(D)) + h^0(\O_X(K-D)) =
+  1 - h^1(\O_X) + p_g + \tfrac{1}{2} \cdot D(D-K_X). \]
+Dabei ist~$p_g := h^0(\O_X(K_X)) = h^0(\omega_X)$ das \emph{geometrische
+Geschlecht} von~$X$. Ferner ist~$q := h^1(\O_X)$ auch als \emph{Irregularität}
+von~$X$ bekannt; aus Hodgetheorie folgt, dass~$2q = b_1 = \dim_\CC H^1(X,\CC)$.
+\end{rem}
+
 \begin{fact}[Noethers Formel]
-Es gilt~$\chi(\O_X) = \frac{1}{12} \cdot ((\omega \cdot \omega) +
+Es gilt~$\chi(\O_X) = \frac{1}{12} \cdot (K_X^2 +
 \chi_\mathrm{top}(X))$.
 \end{fact}
 
-XXX $K$ einführen
-
 \begin{cor}[Formel für das Geschlecht]
-Sei~$C$ eine irreduzible Kurve auf~$X$. Für ihr \emph{Geschlecht} $g(C) :=
+Sei~$C$ eine irreduzible Kurve auf~$X$. Für ihr Geschlecht $g(C) :=
 \dim_\CC H^1(C,\O_C)$ gilt
-\[ g(C) = 1 + \frac{1}{2} \cdot ((C \cdot C) + (C \cdot K)). \]
+\[ g(C) = 1 + \tfrac{1}{2} \cdot C(C+K_X). \]
 \end{cor}
+\begin{proof}\[ g(C) = h^1(\O_C) = 1 - \chi(\O_C) = 1 - (\chi(\O_X) -
+\chi(\O_X(-C))) = 1 + \tfrac{1}{2} \cdot C(C+K). \qedhere \]
+\end{proof}
 
-XXX Adjunktionsformel
+\begin{prop}[Adjunktionsformel]
+Sei~$C$ eine glatte Kurve auf~$X$. Dann gilt \[ \O_X(K_X+C)|_C \cong \omega_C. \]
+\end{prop}
+\begin{proof}Es gibt die kurze exakte Sequenz
+\[ 0 \lra \N_{C/X}^\vee \lra \Omega^1_X|_C \lra \Omega^1|_C \lra 0. \]
+Dabei ist das Konormalenbündel durch~$\O_X(-C)|_C$ gegeben. Durch Übergang zu
+den Determinantenbündeln -- was hier die Situation nicht verändert, da die drei
+auftretenden Bündel alle Geradebündel sind -- folgt~$\Omega^1_X|_C \cong
+\O_X(-C)|_C \otimes_{\O_C} \omega_C$ und somit~$\omega_C \cong \Omega^1_X|_C
+\otimes_{\O_C} \O_X(C)|_C \cong \O_X(K_X+C)|_C$.
+\end{proof}
+
+%\begin{rem}Die Formel für das Geschlecht folgt mit dem Satz von Riemann--Roch
+%auch aus der Adjunktionsformel:
+%\[ g(C) = h^1(\O_C) = h^0(\omega_C) = \chi(\omega_C) - 1 =
+%  \chi(\O_X(K_X+C)|_C) - 1 =
+%  \deg \O_X(K_X+C)|_C - 1. \]
+%\end{rem}
 
 XXX Werbung für Shafarevich und Manin; für Divisoren auch Huybrechts
 
