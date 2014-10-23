@@ -53,6 +53,7 @@
 \newcommand{\E}{\mathcal{E}}
 \newcommand{\F}{\mathcal{F}}
 \newcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\J}{\mathcal{J}}
 \newcommand{\K}{\mathcal{K}}
@@ -99,6 +100,20 @@ Das sind informale Notizen zum ersten Kapitel von Arnaud Beauvilles Buch
 \tableofcontents
 
 
+\section*{Literatur}
+
+\begin{itemize}
+\item Beauville, \emph{Complex Algebraic Surfaces}
+\item Griffiths, Harris, \emph{Principles of Algebraic Geometry}
+\item Hartshorne, \emph{Algebraic Geometry}
+\item Huybrechts, \emph{Complex Geometry}
+\item Manin, \emph{Lectures on the K-functor in Algebraic Geometry}
+\item Shafarevich (Ed.), \emph{Algebraic Geometry II}
+\item The Stacks Project Authors, \emph{Stacks Project}
+\item Vakil, \emph{Foundations of Algebraic Geometry}
+\end{itemize}
+
+
 \section{Garbenkohomologie}
 
 Sei~$X$ ein Raum (Schema über~$\CC$ oder komplexe Mannigfaltigkeit). Dann
@@ -125,7 +140,7 @@ zu sein.\footnote{Eine~$\O_X$-Modulgarbe~$\E$ heißt genau dann \emph{kohärent}
 wenn sie von endlichem Typ ist und wenn für jede offene Teilmenge~$U \subseteq
 X$ der Kern eines jeden~$\O_X|_U$-linearen Morphismus~$(\O_X|_U)^n \to \E|_U$
 ebenfalls von endlichem Typ ist. Die Kohärenz von~$\O_X$ für den Fall einer
-komplexen Mannigfaltigkeit ist die Aussage des Kohärenzsatzes von Oka (XXX Quelle).} Die
+komplexen Mannigfaltigkeit ist die Aussage des Kohärenzsatzes von Oka.} Die
 Faserdimension einer kohärenten Garbe kann -- anders als bei lokal freien
 Garben -- von Punkt zu Punkt variieren.
 
@@ -150,16 +165,17 @@ Kohomologie erklären.} Im klassischen Fall spielt die Wahl der Koeffizienten
 ($\ZZ$, $\QQ$, \ldots) dank des universellen Koeffiziententheorems keine große
 Rolle; das ist bei Garbenkohomologie nicht so. Garbenkohomologie kann man sich
 \emph{nicht} über "`Zykel modulo Ränder"' anschaulich vorstellen, geometrische
-Vorstellung ist bedingt aber durch \emph{Čech-Methoden} gegeben (XXX Quelle).
+Vorstellung ist bedingt aber durch \emph{Čech-Methoden} gegeben.
 
-Garbenkohomologie hat drei für uns sehr wesentliche Eigenschaften:
+Garbenkohomologie hat drei für uns sehr wesentliche Eigenschaften~[Vakil,
+Hartshorne]:
 \begin{enumerate}
 \item Falls~$X$ eigentlich über dem Punkt bzw. kompakt ist, so sind
 die~$H^n(X,\E)$ \emph{endlichdimensionale} Vektorräume\footnote{Dass das
 nicht immer so ist, zeigt schon das Beispiel~$H^0(\AA^1, \O_{\AA^1})$ der
 unendlichdimensionale Raum der holomorphen Funktionen auf~$\CC$. Hier und im
 Folgenden ist~$\AA^1$ der eindimensionale affine Raum über~$\CC$.} und für~$i > \dim X$
-verschwindet die~$i$-ten Kohomologie. (XXX Quelle)
+verschwindet die~$i$-ten Kohomologie.
 \item Ist~$0 \to \E' \to \E \to \E'' \to 0$ eine kurze exakte Sequenz von
 kohärenten Garben, so erhält man eine lange exakte Sequenz in Kohomologie:
 \[ \cdots \lra H^n(X,\E') \lra H^n(X,\E) \lra H^n(X,\E'') \lra H^{n+1}(X,\E')
@@ -169,13 +185,14 @@ als die alternierende Summe~$\chi(\E) := \sum_{n=0}^\infty (-1)^n\, \dim_\CC H^n
 \in \ZZ$, ist additiv in kurzen exakten Sequenzen. Deshalb hängt~$\chi(\E)$ nur
 von der \emph{Klasse von~$\E$ in der K-Theorie ab}, also nur von
 \emph{diskreten Invarianten} von~$\E$.\footnote{Außerdem ist die
-Euler-Charakteristik auf flachen Familien von kohärenten Garben konstant (XXX
-Quelle). Die K-Theorie von~$X$ ist die abelsche Gruppe
+Euler-Charakteristik auf flachen Familien von kohärenten Garben
+konstant~[Shafarevich, Abschn.~3.8 und~4.1].
+Die K-Theorie von~$X$ ist die abelsche Gruppe
 formaler~$\ZZ$-Linearkombinationen von Isomorphieklassen von kohärenten Garben
 auf~$X$ modulo den Relationen~$\E = \E' + \E''$ für jede kurze exakte
 Sequenz~$0 \to \E' \to \E \to \E'' \to 0$.  Die K-Theorie von~$\AA^1$ ist
 isomorph zu~$\ZZ$ (mit Isomorphismus~$\E \mapsto \rank\E$), die von~$\PP^n$ ist
-isomorph zu~$\ZZ[X]/(X+1)^{n+1}$. (XXX Quelle)}
+isomorph zu~$\ZZ[X]/(X+1)^{n+1}$ [Manin].}
 \end{enumerate}
 
 
@@ -204,7 +221,7 @@ Kohomologie von~$Y$ und der Kohomologie der Fasern~$f^{-1}[y]$ Rückschlüsse au
 von~$X$ zu ziehen; dabei kommt unweigerlich Garbenkohomologie vor.\footnote{Nur
 im Fall, dass~$f$ eine Faserung ist, kann man noch auf den Speziallfall der
 Leray--Serre-Spek\-tral\-sequenz ausweichen, bei der man nur Kohomologie mit Werten
-in lokalen Systemen benötigt. XXX Quelle}
+in lokalen Systemen benötigt [Shafarevich, Kap.~1].}
 
 Als letzter Grund sei angeführt, dass Garbenkohomologie geometrische Objekte
 klassiziferen kann. Etwa stehen die Elemente von~$H^1(X,\O_X^\times)$ auf
@@ -277,9 +294,9 @@ reguläre Folge von Funktionen eine, in der keine der einzelnen Gleichungen
 redundant ist. Etwa ist die Folge~$z, z$ von Elementen von~$\O_{\AA^1}$ nicht
 regulär, und in der Tat hat das Verschwindungsschema~$V(z,z)$ dieser Funktionen
 auch nicht Kodimension~2.} -- so ist die Konormalgarbe lokal frei
-vom Rang~$r$. (XXX Quelle)
+vom Rang~$r$ [Manin,~Prop.~3.4].
 
-Im glatten Fall (XXX) gibt es die kurze exakte Sequenz
+Im glatten Fall gibt es die kurze exakte Sequenz~[Vakil,~Thm.~21.3.8]
 \[ 0 \lra \N_{V/X}^\vee \lra \Omega_X|_V \lra \Omega_V \lra 0. \]
 
 
@@ -375,11 +392,13 @@ auf~$D(x)$ den Schnitt~$1$.
 Es ist nicht offensichtlich, dass die Modulgarbe~$\O_X(D)$ zu einem Divisor~$D$ lokal
 frei ist. Dazu benötigen wir folgendes Faktum:\footnote{Dieses drückt die
 Korrespondenz zwischen Weil- und Cartier-Divisoren aus und benötigt zwingend
-eine Form von Glattheit. XXX Quelle für Gegenbeispiele}
+eine Form von Glattheit. Siehe
+\url{http://math.stackexchange.com/questions/651292/what-fails-in-the-cartier-weil-divisor-correspondence-in-the-singular-case}
+für ein kurzes Beispiel.}
 
-\begin{fact}Sei~$D$ ein Divisor. Dann gibt es um jeden Punkt~$x \in X$ eine
+\begin{fact}[Huybrechts, Prop.~2.3.9]Sei~$D$ ein Divisor. Dann gibt es um jeden Punkt~$x \in X$ eine
 offene Umgebung~$U \subseteq X$ und eine rationale Funktion~$f_0 \in \K_X(U)$,
-sodass lokal auf~$U$ gilt:~$D = \div(f_0)$. (XXX Quelle)
+sodass lokal auf~$U$ gilt:~$D = \div(f_0)$.
 \end{fact}
 
 \begin{ex}Sei~$H = V(x)$ auf~$\PP^1$. Auf~$D(x)$ gilt~$[H] = \div(1) = 0$,
@@ -510,7 +529,7 @@ Sei~$X$ eine kompakte Kurve und~$\L$ ein Geradenbündel auf~$X$. Dann gilt
 $\chi(\L) = \chi(\O_X) + \deg\L$.
 \end{thm}
 
-Ravi Vakil bezeichnet diese Formulierung als \emph{Baby-Variante} von Riemann--Roch (XXX Quelle), da
+Ravi Vakil bezeichnet diese Formulierung als \emph{Baby-Variante} von Riemann--Roch, da
 in~$\chi(\L)$ noch der schlecht zugängliche Summand~$\dim H^1(X,\L)$ vorkommt.
 Mit \emph{Serre-Dualität} kann man diesen noch zu~$\dim H^0(X,\Omega^1_X
 \otimes \L^\vee)$ umschreiben, sodass nur noch
@@ -616,10 +635,28 @@ allgemeiner Lage. Dann ist ihre \emph{Schnittzahl} die Zahl
 \end{defn}
 
 Dabei verwenden wir das \emph{abgeleitete Tensorprodukt} -- ein Komplex von
-Garben, dessen Kohomologie die Tor-Gruppengarben berechnet.
+Garben, dessen Kohomologie die Tor-Gruppengarben berechnet. Dieser selbst ist als
+Komplex von Garben nicht wohldefiniert, aber seine Homologiegarben ("`Kern
+modulo Bild"') sind es schon; daher ist auch die Euler-Charakteristik
+wohldefiniert.\footnote{Die Euler-Charakteristik eines Komplexes~$\E^\bullet$
+ist~$\chi(\E^\bullet) := \sum_{n \in \ZZ} (-1)^n \,\chi(\E^n)$. Es ist eine
+nette Übungsaufgabe, die Identität~$\chi(\E^\bullet) = \sum_n (-1)^n
+\,\chi(\H^n(\E^\bullet))$ zu bestätigen. Diese bezeugt, dass die
+Euler-Charakteristik eines Komplexes nur von dessen Kohomologie abhängt.}
+
 Im Fall, dass~$C$ und~$C'$ in allgemeiner Lage sind, kann man zeigen, dass das
-gewöhnliche Tensorprodukt genügt, die höheren Tor-Terme also verschwinden.\footnote{XXX Erklärung} In
-diesem Fall gilt
+gewöhnliche Tensorprodukt genügt, die höheren Tor-Terme also
+verschwinden.\footnote{Zur Berechnung des abgeleiteten Tensorprodukts muss man
+einen der beiden Faktoren flach auflösen. Eine geeignete Auflösung von~$\O_C$
+ist~$0 \to \O_X(-C) \to \O_X \to \O_C \to 0$; das ist sogar eine lokal freie
+Auflösung. Wenn~$f$ eine lokale Gleichung für~$C$ ist und diese auch noch
+regulär ist, sodass~$\O_X(-C) = (f)$ isomorph zu~$\O_X$ ist, hat man also die
+Auflösung~$0 \to \O_X \stackrel{f}{\to} \O_X \to \O_C \to 0$. Das abgeleitete
+Tensorprodukt ist daher der Komplex~$0 \to \O_{C'} \stackrel{f}{\to} \O_{C'}
+\to 0$. Dessen Homologie in Grad~$-1$ ist Null, denn wegen der Voraussetzung
+der allgemeinen Lage ist~$f$ auch noch in~$\O_{C'}$ regulär. Die Homologie in
+Grad~$0$ ist~$\O_{C'}/(f) \cong \O_{C'} \otimes_{\O_X} \O_C$.}
+In diesem Fall gilt
 \[ (C \cdot C') = \chi(\O_C \otimes_{\O_X} \O_{C'}) = \chi(\O_{C \cap C'}) =
   \sum_{x \in C \cap C'} \dim_\CC \O_{C \cap C',x} =
   \sum_{x \in C \cap C'} m_x(C,C'). \]
@@ -677,12 +714,10 @@ dem Grundring~$\O_X$ dekorieren. Jedenfalls folgt
 Beim Schritt, wo der Grad ins Spiel kommt, haben wir den Satz von Riemann--Roch
 für die Kurve~$C$ verwendet. Im nächsten Schritt haben wir Dualisieren mit
 Rückzug auf~$C$ vertauscht -- das ist für lokal freie Modulgarben in Ordnung.
-\item Die Symmetrie ist offensichtlich. Zur Bilinearität XXX. \qedhere
+\item Die Symmetrie ist offensichtlich. Die Bilinearität ist nichttrivial und
+benötigt, neben etwas Rechnerei, ein Resultat von Serre~[Beauville, Seite~4]. \qedhere
 \end{enumerate}
 \end{proof}
-
-\begin{ex}XXX auf~$\PP^1 \times \PP^1$
-\end{ex}
 
 
 \subsection*{Selbstschnitte}
@@ -747,7 +782,7 @@ den Komplex~$\Lambda^\bullet_{\O_X} \O_X^r \otimes_{\O_X} \O_X/\J \cong
 durch~$([g_1],\ldots,[g_r]) \mapsto [\sum_i g_i f_i]$ gegeben.}
 Der resultierende Isomorphismus~$\mathcal{T}\!or^{\O_X}_n(\O_C,\O_C) \to \Lambda^n_{\O_C}
 \N_{C/X}^\vee$ hängt nicht von der Wahl der regulären Folge ab. Daher erhalten
-wir diesen Isomorphismus auch auf globaler Ebene. XXX Quelle
+wir diesen Isomorphismus auch auf globaler Ebene. [Manin, Thm.~3.5]
 \end{proof}
 
 \emph{Der Selbstschnitt einer Kurve~$C$ kann negativ sein.} Das drückt aus, dass
@@ -763,7 +798,9 @@ wir sie in Normalenrichtung bewegen: Ist~$s$ ein Schnitt des Normalenbündels,
 so bewegen wir in einer Tubenumgebung einen Punkt~$x$ der Kurve zu~$x + s(x)$.
 Die entstehende Kurve~$C'$ wird die Kurve~$C$ in genau den Stellen schneiden,
 an denen~$s$ Null ist. Die Anzahl dieser Nullstellen ist gerade der Grad des
-Normalenbündels. XXX Quelle
+Normalenbündels.\footnote{Siehe den Kommentar von Donu Arapura und die Antwort
+von Daniel Litt auf
+\url{http://mathoverflow.net/questions/111464/self-intersection-and-the-normal-bundle}.}
 
 \begin{ex}Sei~$X$ die Aufblasung der projektiven Ebene an einem Punkt und~$E$
 der exzeptionelle Divisor in~$X$. Dann ist~$E$ isomorph zu~$\PP(\N)$, der
@@ -776,9 +813,12 @@ von~$Y$ unter~$X' \to X$) folgende. (1)~Der eingeschränkte Morphismus~$X'
 \setminus Y' \to X \setminus Y$ ist ein Isomorphismus. (2)~$Y' \to Y$ ist
 isomorph zu~$\PP(\N_{Y/X}) \to Y$. (3)~Die Einbettung $Y' \hookrightarrow X'$
 ist regulär von Kodimension~Eins mit Konormalgarbe~$\N_{Y'/X'}^\vee \cong
-\O_{\PP(\N_{Y/X})}(1)$. XXX Quelle (4)~Die Aufblasung~$X' \to X$ ist die universelle
+\O_{\PP(\N_{Y/X})}(1)$. Diese drei Fakten werden etwa in~[Manin, Prop.~12.2]
+erläutert und bewiesen. Außerdem wichtig ist:
+(4)~Die Aufblasung~$X' \to X$ ist die universelle
 (finale) Art und Weise, das Unterschema~$Y$ zu einem Unterschema zu machen, das regulär
-von Kodimension~Eins ist (XXX Quelle stacks:0806).} Daher ist
+von Kodimension~Eins ist~[Stacks,
+\href{http://stacks.math.columbia.edu/tag/0806}{Tag~0806}].} Daher ist
 $(E \cdot E) = \deg \O(1)^\vee = \deg \O(-1) = -1$.
 \end{ex}
 
@@ -789,10 +829,9 @@ Die Schnittzahl lässt sich auch rein topologisch, ohne Rückgriff auf
 die algebraische bzw. holomorphe Struktur, beschreiben. Dazu sei an ein Faktum
 über die erste Chernklasse erinnert:
 
-\begin{fact}Ist~$i : C \hookrightarrow X$ die
+\begin{fact}[Griffiths/Harris, Seite~141]Ist~$i : C \hookrightarrow X$ die
 Einbettung einer Kurve, so gilt~$\int_X c_1(\O_X(C)) \cup \beta = \int_C
-i^*(\beta)$ für alle~$\beta \in H^2(X,\ZZ)$ (siehe Griffiths/Harris, Seite~141
-XXX).
+i^*(\beta)$ für alle~$\beta \in H^2(X,\ZZ)$.
 \end{fact}
 
 Daher folgt für Kurven~$C$ und~$C'$ auf~$X$ (mit~$i : C \hookrightarrow X$)
@@ -902,10 +941,6 @@ auftretenden Bündel alle Geradebündel sind -- folgt~$\Omega^1_X|_C \cong
 %  \deg \O_X(K_X+C)|_C - 1. \]
 %\end{rem}
 
-XXX Werbung für Shafarevich und Manin; für Divisoren auch Huybrechts
-
 \end{document}
 
 Einschränkung von Divisoren auf offene Teilmengen
-
-Warnung div(1)
