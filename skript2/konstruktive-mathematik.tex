@@ -160,11 +160,6 @@
     }
 }{\end{list}}
 
-%\newarrow{Equals}=====
-
-%\usepackage{geometry}
-%\geometry{tmargin=2cm,bmargin=4cm,lmargin=3cm,rmargin=3cm}
-
 \newcommand{\listedmotto}[2]{%
   \begin{motto}\label{#1}#2\end{motto}%
   \addcontentsline{lom}{section}{\textnormal{\textbf{Motto \ref{#1}.} #2}}%
@@ -248,7 +243,6 @@ Ihr den Stein der Weisen. \emph{[übergibt den Stein zurück]}
 
 \XXX{Übungsaufgaben integrieren, dann nicht mehr auf die Übungsblätter
 verweisen}
-\XXX{Seitenränder}
 \XXX{Aufzählungszeichen}
 
 \makeatletter
@@ -289,7 +283,7 @@ nämlich das \emph{Prinzip vom ausgeschlossenen Dritten}:
 Unter konstruktiver Mathematik im engeren Sinn, genauer
 \emph{intuitionistischer Logik}, versteht man daher klassische Logik ohne das
 Prinzip vom ausgeschlossenen Dritten.
-Das \emph{Prinzip der Doppelnegationselimination}, demnach man für jede
+Das \emph{Prinzip der Doppelnegationselimination}, dem zufolge man für jede
 Aussage~$\varphi$ voraussetzen darf, dass~$\neg\neg\varphi \Rightarrow \varphi$
 gilt, ist zum Prinzip vom ausgeschlossenen Dritten äquivalent (Übungsaufgabe) und kann daher ebenfalls nicht
 verwendet werden.
@@ -469,7 +463,10 @@ strafrechtlich verfolgt.
 ist etwas irreführend. Wie auch in klassischer Mathematik hängen
 intuitionistische Urteile nicht von \emph{uns} oder anderen Mathematikern ab.
 Aussagen, die bisher noch nicht konstruktiv bewiesen wurden, können
-durchaus einen (noch unbekannten) Beleg besitzen.
+durchaus einen (noch unbekannten) Beleg besitzen. Eine genauere Diskussion
+findet sich etwa in~\cite[Seite~42f.]{kohlenbach:applprooftheory}. Die
+Brouwer--Heyting--Kolmogorov-Interpretation kann im Rahmen der
+\emph{Realisierbarkeitstheorie} formalisiert werden~\cite{bauer:realizability}.
 \end{bem}
 
 
@@ -823,17 +820,17 @@ tatsächlich angewendet, etwa im Rahmen des Coq-Systems~\cite{coq:manual}.
 Auch kann Programmextraktion didaktisch sinnvoll sein: Um etwa eine
 Existenzbehauptung zu verstehen, ist es bekanntermaßen oftmals hilfreich, sie in einem konkreten
 Beispielfall durchzudenken -- beispielsweise übungshalber ein primitives
-Element zu einer Körpererweiterung zu berechnen oder eine Ganzheitsbasis zu
-bestimmen. Einen konstruktiven Beweis der Existenzbehauptung
+Element zu einer Körpererweiterung zu berechnen. Einen konstruktiven Beweis der Existenzbehauptung
 kann man für diesen Zweck stets Schritt für Schritt durchgehen und so am Ende das gesuchte
 Objekt erhalten.
 
 Mit einem Beweis, der nur klassisch zulässig ist, ist das
-dagegen im Allgemeinen nicht möglich. Um etwa eine konvergente Teilfolge einer
-beschränkten Folge reeller Zahlen zu konstruieren, muss man unendlich viele
-Folgeglieder überblicken können, da man Fragen der Form "`Liegen unendlich
-viele Folgeglieder in diesem oder jenem Bereich?"' beantworten muss.
-\XXX{besseres Beispiel für ein reines Existenztheorem verwenden!}
+dagegen im Allgemeinen nicht möglich. Etwa weist man im Verlauf des klassischen
+Beweises der Tatsache, dass Zahlkörper Ganzheitsbasen besitzen, nach, dass jede Basis bestehend
+aus ganzen Elementen, deren Diskriminante unter all solchen Basen minimal ist,
+eine Ganzheitsbasis ist. Wie man eine solche Basis mit minimaler Diskriminante
+finden kann, wird aber nicht erklärt.\footnote{Das Beispiel ist nicht perfekt,
+denn es gibt durchaus konstruktive Beweise dieses Resultats.}
 
 
 \paragraph{Traummathematik.} Nur in einem konstruktiven Kontext ist die Arbeit
@@ -1263,7 +1260,7 @@ sind.}
 
 Zu solchen Gedanken gehören etwa die Überzeugung, jede Art finitistischer
 Über\-le\-gung könne in Peano-Arithmetik formalisiert werden; die
-Church--Turing-These, \XXX{der zufolge} jede "`algorithmisch berechenbare"' Funktion~$\NN
+Church--Turing-These, der zufolge jede "`algorithmisch berechenbare"' Funktion~$\NN
 \to \NN$ durch eine Turing-Maschine gegeben
 werden könne~\cite{plato:ct,goldin:wegner:myth,church70}; und manche allgemeinen
 mathematischen Prinzipien. Außerdem ist seit Gödel allgemein bekannt, dass es
@@ -1342,8 +1339,20 @@ Logik.\end{defn}
 ihm eine Ableitung der Sequenz~$\top \seq{} \bot$ (im leeren Kontext) gibt. Andernfalls heißt es
 \emph{konsistent}.\end{defn}
 
-\begin{aufg}Wieso ist es keine interessante Frage, ob es in nichtleeren
+\begin{aufg}Wieso ist es für formale Systeme im Allgemeinen keine interessante Frage, ob es in nichtleeren
 Kontexten eine Ableitung von~$\top \seq{\vec x} \bot$ gibt?\end{aufg}
+
+\begin{bem}Intuitionistische formale Systeme haben oft besondere
+Meta-Eigen\-schaf\-ten. Etwa hat Heyting-Arithmetik die
+\emph{Disjunktionseigenschaft}: Gibt es in Heyting-Arithmetik eine
+Ableitung einer Disjunktion~$\varphi \vee \psi$, so gibt es schon eine Ableitung von~$\varphi$
+oder eine von~$\psi$. Klassische Systeme dagegen haben wegen des Gödelschen
+Unvollständigkeitssatzes diese Eigenschaft in
+der Regel nicht. Denn besitzt ein solches System eine
+Gödelaussage~$\varphi$, so zeigt das System trivialerweise~$\varphi
+\vee \neg\varphi$, aber nach Voraussetzung an~$\varphi$ gibt es weder eine
+Ableitung von~$\varphi$ noch eine von~$\neg\varphi$.
+\end{bem}
 
 
 \section{Beziehung zu klassischer Logik}
@@ -1627,8 +1636,6 @@ hier ist Beleg von~$\bot$: $z$.
 Doppelnegationsübersetzung, Continuation-Passing-Style Transformation,
 LCM, Stein der Weisen, \ldots
 
-\XXX{Feinere Unterschiede}
-
 
 \subsection{Die umgekehrte Richtung: Modelle für intuitionistische Logik}
 
@@ -1759,8 +1766,6 @@ gleich ganz~$X$ ist -- es fehlt der Rand von~$\brak{\varphi}$; das Prinzip vom
 ausgeschlossenen Dritten gilt also in den
 wenigsten topologischen Modellen.
 
-\XXX{Anschauliche Interpretation}
-
 
 \subsubsection*{Ausblick: Kategorielle Modelle für intuitionistische Prädikatenlogik}
 
@@ -1785,8 +1790,6 @@ Vorlesungsskript~\cite{streicher:ctcl} und der Artikel~\cite{vickers:loctop}.
 Curry--Howard-Korrespondenz]{Beziehung zur theoretischen Informatik: \newline die
 Curry--Howard-Korrespondenz}
 \label{curry-howard}
-
-\XXX{wadler:curry-howard zitieren}
 
 Unter der Curry--Howard-Korrespondenz versteht man grob folgendes fundamentale
 Motto, das intuitionistische Logik und theoretische Informatik in Beziehung
@@ -1895,14 +1898,14 @@ Als Korollar folgt aus der präziseren Formulierung das oben angegebene Motto:
 Genau dann gibt es eine Ableitung, wenn es einen entsprechenden Term gibt.
 
 Der Beweis ist übrigens trivial, wenn man die Behauptung nur präzise genug
-formuliert hat. Denn die Ableitungsregeln entsprechen~1:1 den
+formuliert hat. Denn die Ableitungsregeln entsprechen Eins-zu-Eins den
 Termkonstruktionsregeln.
 
 Für Details sei der Übersichtsartikel~\cite{wadler:curry-howard} von Philip
 Wadler (einem der Väter der Pro\-gram\-mier\-spra\-che Haskell) empfohlen. Wer die
 Curry--Howard-Korrespondenz wirklich verstehen möchte, kann das
-Vorlesungsskript~\cite{sorensen:urzyczyn:curryhoward} \XXX{zurate} ziehen. Es enthält
-auch eine Einführung in \XXX{den/überall}~$\lambda$-Kalkül.
+Vorlesungsskript~\cite{sorensen:urzyczyn:curryhoward} zurate ziehen. Es enthält
+auch eine Einführung in den~$\lambda$-Kalkül.
 
 
 \section{Hilberts Programm}
@@ -2016,9 +2019,9 @@ Später änderte Gordan übrigens seine Meinung:
 \emph{Ich habe erkannt, dass auch Theologie nützlich sein kann.}
 \end{quote}
 
-\begin{bem}Es ist lehrreich, Originalliteratur zu \XXX{heutzutage} im ersten
+\begin{bem}Es ist lehrreich, Originalliteratur zu heutzutage im ersten
 Semester gelehrten Sätzen zu studieren. Etwa kann man in der Arbeit
-Bolzanos~\ref{bolzano} zu seinem Satz\XXX{genauer} Einblicke in die Haltung der
+Bolzanos~\ref{bolzano} zum Zwischenwertsatz Einblicke in die Haltung der
 damaligen Mathematiker zu Widerspruchsbeweisen und nichtkonstruktiven Methoden
 gewinnen. Bolzanos Beweis ist überaus verständlich geschrieben, wohl
 um die Rezeption seines allgemeinen Resultats zu erleichtern.\end{bem}
@@ -2128,6 +2131,11 @@ von Hilberts Programm ansehen: Denn es besagt, dass für Aussagen der
 beschriebenen Form das ideelle Prinzip des ausgeschlossenen Dritten eliminiert
 werden kann.
 
+Ebenso bemerkenswert ist, dass für das Konservativitätsresultat
+\emph{klassische Wahrheit} der untersuchten Aussage nicht genügt. Vielmehr wird
+wirklich ein klassischer \emph{Beweis} der Aussage benötigt. Gödels
+Unvollständigkeitssatz zufolge ist das eine echt stärkere Forderung.
+
 \begin{bsp}Die Aussage der Zahlentheorie, dass es unendlich viele Primzahlen
 gibt, lässt sich in der Form
 \[ \forall n\?\NN\_ \exists p\?\NN\_ (p \geq n) \wedge (\text{$p$ ist prim}) \]
@@ -2152,10 +2160,14 @@ für jede Eingabe eine explizite Schranke für die Anzahl der bis zum Stopp
 benötigten Verarbeitungsschritte gewinnen.
 \end{bsp}
 
-\XXX{Kommentar zum Theorem von Barr}
-
-\XXX{Bemerkung, dass aus abstrakter Info allein, dass eine Aussage geeigneter
-Form klassisch stimmt, noch keine konstruktive Gültigkeit folgt.}
+\begin{bem}In der Topostheorie gibt es den \emph{Satz von Barr}, der in seiner
+schwachen Formulierung besagt, dass jeder Topos durch einen boolschen Topos
+überdeckt werden kann. Da Aussagen, die den Beschränkungen aus
+Satz~\ref{friedman:proof}(b) unterliegen, genau dann in einem Topos gelten, wenn sie
+in einem überdeckenden Topos gelten, ist der Satz von Barr eine
+topostheoretische Version von Friedmans Trick. Für seinen Beweis verwendet man
+auch Ideen der Friedmanübersetzung, allerdings nicht angewendet auf eine bestimmte
+Aussage~$F$, sondern auf eine \emph{generische} Aussage.\end{bem}
 
 \begin{aufg}\label{aufg-beschr-allquant}Eine beschränkte Allquantifikation ist
 eine Aussage der Form~$\forall n\?\NN\_ (n \leq N \Rightarrow \varphi)$,
@@ -2164,10 +2176,11 @@ dass für solche Aussagen die Behauptungen in Lemma~\ref{dnt:geom} und
 Satz~\ref{friedman:proof}(b) ebenfalls korrekt sind.\end{aufg}
 
 \begin{bem}Doppelnegations- und Friedmanübersetzungen sind Spezialfälle einer
-allgemeinen Übersetzung für beliebige \emph{modale Operatoren}, der sog.
-\XXX{Name und Referenz}. Die
-Doppelnegationsübersetzung gehört zum Operator~$\varphi \mapsto
-\neg\neg\varphi$, die Friedmanübersetzung zu~$\varphi \mapsto (\varphi \vee F)$.\end{bem}
+allgemeinen Übersetzung für beliebige \emph{modale
+Operatoren}~\cite{aczel:russell-prawitz,escardo:oliva:peirce-shift}.
+Die Doppelnegationsübersetzung gehört zum Operator~$\varphi \mapsto
+\neg\neg\varphi$, die Friedmanübersetzung zu~$\varphi \mapsto (\varphi \vee
+F)$.\end{bem}
 
 
 \subsubsection*{Markovs Regel}
@@ -2182,28 +2195,30 @@ Garbentopos ein Gegenbeispiel). In Heyting-Arithmetik gilt aber zumindest
 Markovs \emph{Regel}:
 
 \begin{kor}[Markovs Regel]Sei~$\varphi$ eine Aussage, die den Beschränkungen
-aus Satz~\ref{friedman:proof}b) unterliegt. Wenn intuitionistisch
-\[ \seq{\vec x} \neg\neg\exists y\?\NN\_ \varphi \]
+aus Satz~\ref{friedman:proof}(b) unterliegt. Wenn intuitionistisch
+$\seq{\vec x} \neg\neg(\exists y\?\NN\_ \varphi)$
 ableitbar ist, so ist auch
-\[ \seq{\vec x} \exists y\?\NN\_ \varphi \]
+$\seq{\vec x} (\exists y\?\NN\_ \varphi)$
 intuitionistisch ableitbar.\end{kor}
-\begin{proof}Nach Teil~c) von Satz~\ref{friedman:proof} ist die
+\begin{proof}Nach Teil~(c) von Satz~\ref{friedman:proof} ist die
 Friedmanübersetzung der Voraussetzung~$\neg\neg\exists
-y\?\NN\_ \varphi$ intuitionistisch ableitbar. Wegen Teil~b) ist diese äquivalent zu
+y\?\NN\_ \varphi$ intuitionistisch ableitbar. Wegen Teil~(b) ist diese äquivalent zu
 \[ ((\exists y\?\NN\_ (\varphi \vee F)) \Rightarrow F) \Rightarrow F. \]
-Wählt man daher trickreich~$F :\equiv \exists y\?\NN\_ \varphi$, folgt die Behauptung.
+Wählt man daher trickreich~$F :\equiv (\exists y\?\NN\_ \varphi)$, so folgt die Behauptung.
 Alternativ kann man auch direkt das Konservativitätsresultat~\ref{peanokons}
 verwenden.
 \end{proof}
 
 Erstaunlicherweise steckt also in jedem intuitionistischen Beweis der doppelt
-negierten und daher schwachen Aussage~$\neg\neg \exists y\?\NN\_ \varphi$
+negierten und daher eigentlich schwachen Aussage~$\neg\neg(\exists y\?\NN\_ \varphi)$
 wider Erwarten doch eine Konstruktionsvorschrift für ein~$y\?\NN$, das~$\varphi$
-erfüllt. Diese lässt sich rein maschinell aus dem Beweis extrahieren, indem man
+erfüllt. Diese lässt sich rein maschinell aus einem gegebenen Beweis extrahieren, indem man
 den Beweis, dass Markovs Regel zulässig ist, Schritt für Schritt durchgeht.
 
-\XXX{Signifikanz}
-\XXX{Zusammenhang mit Oleg?}
+Für ein abgerundetes Verständnis sollte man praktische Implementierungen von
+Markovs Regel studieren, etwa gibt es eine in Haskell von Oleg Kiselyov.
+Es lohnt sich, den begleitenden Artikel~\cite{kiselyov:lem} durchzulesen,
+der Code ist kurz und wundersam.
 
 
 \subsection{Beispiel aus der Algebra: dynamische Methoden}
@@ -2325,7 +2340,7 @@ Ringelemente~$u_1,\ldots,u_n \in R$ mit
 \end{satz}
 
 Der Satz ist eine beeindruckende
-Demonstration von Motto~\ref{motto:inhaltvonbeweisen}, demnach in
+Demonstration von Motto~\ref{motto:inhaltvonbeweisen}, dem zufolge in
 Beweisen viel mehr Inhalt steckt als die bloße Information
 über die Wahrheit der Behauptung. Bevor wir den Beweis des Satzes führen (welcher
 erstaunlich einfach ist), wollen wir das Resultat noch genauer
@@ -2379,7 +2394,7 @@ dass für Ring\-elemen\-te~$a_1,\ldots,a_n, b \in R$ genau dann in der internen
 Sprache die Implikation
 \[ \Spec A \models a_1,\ldots,a_n \in Z \Rightarrow b \in Z \]
 gilt, wenn~$b \in \sqrt{(a_1,\ldots,a_n)}$. Also ist das Ideal~$Z$ im Topos der
-% XXX: Stimmt nur im Fall n = 0...
+% Stimmt nur im Fall n = 0...
 Garben auf~$\Spec R$ eine Verkörperung des generischen Primideals. Die
 Lokalisierung von~$\ul{R}$ an diesem Primideal ist übrigens die
 Strukturgarbe~$\O_{\Spec R}$. \XXX{XXX}}
@@ -2536,8 +2551,8 @@ ist folgende:
 \begin{satz}
 Aus einem Beweis der Sequenz
 \[ Z(a_1) \wedge \cdots \wedge Z(a_n) \seq{} Z(b) \]
-welcher als sprachliche Mittel nur~$\top$, $\bot$, $\wedge$, $\vee$ sowie die
-Quantoren, nicht aber~$\Rightarrow$, und als Schlussregeln
+welcher als sprachliche Mittel nur~$\top$, $\bot$, $\wedge$, $\vee$
+sowie~$\exists$, nicht aber~$\Rightarrow$, und als Schlussregeln
 \begin{enumerate}
 \item[1.] die Axiome aus Definition~\ref{defn:genprime} (jetzt in beliebigen
 Kontexten, nicht nur im leeren),
@@ -2546,8 +2561,8 @@ Terme~$s$ im Kontext~$\vec x$ (also etwa Elemente von~$R$),
 \item[3.] $\top \seq{\vec x} \exists y\_ Z(y^n + a_{n-1}y^{n-1} + \cdots +
 a_1y + a_0)$ für alle~$n \geq 1$ und~$a_0,\ldots,a_{n-1}$ Terme im
 Kontext~$\vec x$ und
-\item[4.] die strukturellen Regeln, die Regeln für Konjunktion, Disjunktion,
-Allquantifikation und Existenzquantifikation
+\item[4.] die strukturellen Regeln, die Regeln für Konjunktion, Disjunktion
+und Existenzquantifikation
 \end{enumerate}
 verwendet, kann man einen expliziten Zeugen der Aussage
 \[ b \in \sqrt{(a_1,\ldots,a_n)} \subseteq R \]
@@ -2571,7 +2586,6 @@ Dazu ist die Identität~$\brak{\varphi}_{\vec x,y} =
 \sqrt{\brak{\varphi}_{\vec x} R[x_1,\ldots,x_n,y]}$ für Aussagen~$\varphi$ im Kontext~$\vec x$
 hilfreich, welche man mit Induktion beweisen kann.
 \end{proof}
-\XXX{Wie interpretiert man den Allquantor?}
 
 
 \section{Ein topostheoretischer Zugang zu Quantenmechanik: der Bohr-Topos}
@@ -2747,7 +2761,9 @@ dass durch den Wegfall von Punkten als grundlegendes Konzept diese auch
 seltener konstruiert werden müssen. Da man zur Angabe spezieller Punkte oft das
 Auswahlaxiom oder andere klassische Prinzipien benötigt, eignen sich
 Örtlichkeiten also besser, wenn man solche nicht verwenden möchte oder (wie bei
-der Arbeit in anderen Topoi) nicht verwenden kann.
+der Arbeit in anderen Topoi) nicht verwenden kann. Es gibt auch Vorteile, die
+nichts mit dem Auswahlaxiom oder Logik zu tun haben und rein topologischer
+Natur sind~\cite{johnstone:art,johnstone:point}.
 
 Wir schließen mit einem Zitat von Alexander Grothendieck über
 Topoi~\cite{grothendieck:zitat}, das aber
@@ -2763,8 +2779,6 @@ d’antan, me rappellent étrangement les élusifs “voisinages ouverts” qui
 peuplent les topos, tels des fantômes évanescents, pour entourer des “points”
 imaginaires, [\ldots].
 \end{quote}
-
-\XXX{Johnstone zitieren! Siehe Referenzen bei internal methods.}
 
 
 \subsection{Algebraische Sicht auf klassische Mechanik und Quantenmechanik}
@@ -2798,7 +2812,7 @@ Der Zusammenhang zwischen den beiden Sichtweisen wird durch
 für alle~$f \in A$ vermittelt: Ein Wahrscheinlichkeitsmaß~$\mu$ definiert über
 diese Setzung eine normierte, positive und lineare Abbildung; dass umgekehrt
 jedes solche Funktional von dieser Form ist, garantiert der Darstellungssatz
-von Riesz--Markov--Kakutani \XXX{Referenz}.
+von Riesz--Markov--Kakutani.
 
 Unter dieser Korrespondenz entspricht ein reiner Zustand~$x \in \Sigma$ dem
 in~$x$ konzentrierten Dirac-Maß bzw. der Abbildung~$\rho$ mit~$\rho(f) =
@@ -2895,7 +2909,7 @@ Unter-\csalgebra~$C \subseteq A$ linear ist.
 \begin{bem}In der Praxis ist der Unterschied zwischen Zuständen und den besser
 motivierten Quasi-Zuständen nicht so groß: Denn nach Gleasons Theorem ist jeder
 gemischte Quasi-Zustand auf~$A = L(H,H)$ mit~$\dim H \geq 3$ schon ein
-gemischter Zustand \XXX{Referenz}.\end{bem}
+gemischter Zustand~\cite{nlab:gleason}.\end{bem}
 
 \begin{bem}\label{bem:keine-reinen-quasi-zustaende}%
 Es gibt einen Grund, wieso wir kein Beispiel eines reinen Quasi-Zustands
@@ -2983,6 +2997,18 @@ Unterobjektklassifizierer ist die Garbe~$U \mapsto \{ V \subseteq U \,|\,
 
 \begin{bsp}Die Kategorien der Gruppen, der Vektorräume und der topologischen Räume sind
 keine Topoi.\end{bsp}
+
+\begin{bem}\emph{Sei~$G$ eine Gruppe.} Wenn man diese Phrase liest, stellt
+man sich keine bestimmte Gruppe vor. Man denkt sich auch nicht: \emph{Ich lese
+erst mal ohne eine Vorstellung weiter. Erst, wenn dieser Abschnitt irgendwann
+auf eine konkrete Gruppe angewendet wird, lese ich diese Passage mit der
+konkreten Gruppe im Hinterkopf erneut.} Stattdessen denkt man an die
+\emph{generische Gruppe}. Möchte man dieses Konzept formalisieren, so kann man
+den \emph{klassifizierenden Topos der Theorie der Gruppen} betrachten. In
+diesem gibt es eine bestimmte Gruppe, welche genau die Eigenschaften
+hat, welche alle Gruppen (in allen Topoi) haben. Im üblichen Universum, dem
+Topos der Mengen, lässt sich die generische Gruppe nicht auf diese Art und
+Weise verkörpern.\end{bem}
 
 
 \subsubsection*{Was ist die interne Sprache?}
@@ -3296,7 +3322,9 @@ nachweisen. Das ist trivial.\end{proof}
 
 Mit dem Bohr-Topos können wir also das formale Kunststück vollführen, die
 Familie aller kommutativen Unteralgebren von~$A$ als eine einzige kommutative
-Algebra anzusehen.
+Algebra anzusehen. Vielleicht sollte man sagen: Quantenmechanik im Bohr-Topos
+ist klassische Mechanik, implizit parametrisiert über alle klassischen
+Kontexte.
 
 
 \subsubsection*{Gemischte Quasi-Zustände}
@@ -3361,17 +3389,15 @@ injektiv.\end{prop}
 \begin{proof}Siehe~\cite[Prop.~15]{topos:aqt}. Mit~$\ul{\mathbb{IR}}$ ist eine
 spezielle Art eines Objekts reeller Zahlen gemeint.\end{proof}
 
-\XXX{Simons Bemerkung integrieren}
-
 
 \subsubsection*{Reine Quasi-Zustände}
 
 Analog zu den gemischten Zuständen stehen die reinen Quasi-Zustände in
-1:1-Kor\-res\-pon\-denz zu 
+Eins-zu-Eins-Kor\-res\-pon\-denz zu 
 den internen reinen Zuständen von~$\ul{A}$, bzw. wegen Gelfand-Dualität
 äquivalent zu internen Punkten von~$\ul{\Sigma}$ (stetigen
-Abbildungen~$\ul{\pt} \to \ul{\Sigma}$). Da wir in
-Bemerkung~\ref{bem:keine-reinen-quasi-zustaende} schon festgehalten haben, dass es im
+Abbildungen~$\ul{\pt} \to \ul{\Sigma}$). Da es, wir in
+Bemerkung~\ref{bem:keine-reinen-quasi-zustaende} schon festgehalten haben, im
 interessanten Fall~$A = L(H,H)$ mit~$\dim H \geq 3$ keine reinen Quasi-Zustände
 gibt, ist~$\ul{\Sigma}$ also eine exotische Örtlichkeit: Sie ist nichttrivial,
 besitzt aber trotzdem keine Punkte.
@@ -3845,7 +3871,12 @@ Teilmengen~$U$ nicht, die einen Kreisring um den Ursprung umfassen.\end{bsp}
 
 \begin{bem}Mit \emph{Garbenkohomologie} kann man \emph{messen}, inwieweit ein
 Epimorphismus von Garben davon entfernt ist, auch ein Epimorphismus von
-Prägarben zu sein. \XXX{Messergebnis liegt in ...?}
+Prägarben zu sein: Sei~$\alpha : \F \to \G$ ein Epimorphismus von Garben
+abelscher Gruppen. Dann liefert eine \emph{lange exakte Sequenz} einen
+Morphismus~$\partial : \Gamma(X,\G) \to H^1(X,\ker\alpha)$. Dieser ist genau dann Null,
+wenn~$\alpha$ sogar ein Epimorphismus von Prägarben abelscher Gruppen ist.
+Es gilt sogar die feinere Aussage, dass ein Schnitt~$s \in \Gamma(X,\G)$ genau
+dann ein Urbild unter~$\alpha_X$ besitzt, wenn~$\partial(s) = 0$.
 \end{bem}
 
 \begin{bem}In den meisten Lehrbüchern über Garben sind \emph{Mono-} und \emph{Epimorphismus} speziell
@@ -3860,212 +3891,7 @@ unmittelbar auf Örtlichkeiten übertragbar ist.\end{bem}
 \nocite{*}
 \printbibliography
 
-\begin{verbatim}
-% Quantornotation einheitlich machen
-
-% verschiedene Schulen
-
-% C(Kompaktifizierung)
-
-% Das Beispiel RH ==> Beh, neg-RH ==> Beh.
-
-% Ausblick: Gödel richtig verstehen:
-% Lambek, Reflections on a categorical foundations of mathematics
-
-% Artemov.pdf
-
-% Intuitionismus vs. russischer Konstruktivismus;
-% siehe http://staff.science.uva.nl/~ulle/teaching/lolaco/2013/slides/vdberg.pdf.
-% Das auch als Quelle aufnehmen!
-
-% Beispiel-Topos: Klassifizierender Topos zur Theorie der Gruppen oder so
-
-% Problem mit der BHK-Interpretation nennen
-
-% http://video.ias.edu/members/1213/0318-AndrejBauer
-
-% XXX: Stetigkeitsnachweise unnötig
-
-% "demnach"
-
-% können wir Corfield zitieren?
-
-% Sind alle Quellen zitiert? Nein, coquand:classical zum Beispiel nicht.
-
-Slogan: Quantenmechanik ist klassische Mechanik, parametrisiert über alle
-klassischen Kontexte.
-
-Referenzieren/verstehen: Simons Fragen und "The Born map for the topos qbit".
-
-In einer hyphotetischen überarbeiteteten Version:
-
-- Inwieweit genau ist konstruktive Logik philosophisch einfacher zu
-  rechtfertigen als klassische?
-
-- Kann man konstruktive Logik sinnvoll in Philosophie selbst anwenden?
-
-- Ausführen: Curry-Howard im Kontext formaler Methoden
-\end{verbatim}
-
 \end{document}
-
-
-\section{Elemente in Kategorien}
-
-\subsection{Globale und verallgemeinerte Elemente}
-
-Sei~$X \xra{f} Y$ eine Abbildung von Mengen. Bekanntlich heißt diese genau dann
-\emph{injektiv}, wenn
-\begin{equation}\label{inj}
-  \forall x,x' \in X\_\ f(x) = f(x') \ \Longrightarrow\  x = x'.
-\end{equation}
-Diese Bedingung lässt sich nicht nur in~$\Set$, sondern in jeder Kategorie
-interpretieren, deren Objekte Mengen mit Zusatzstruktur und deren Morphismen
-gewisse Abbildungen sind. Wenn man aber über solche Kategorien hinaus
-verallgemeinern möchte, muss man die Aussage in kategorieller Notation
-umschreiben; sie lautet dann:
-\begin{equation}\label{injcat}
-  \forall (1 \xra{x} X), (1 \xra{x'\!} X)\_\ f \circ x = f \circ x'
-  \ \Longrightarrow\  x = x'.
-\end{equation}
-Morphismen der Form~$1 \to X$ heißen \emph{globale Elemente} von~$X$.
-Bedingung~\eqref{injcat} lässt sich in allen Kategorien interpretieren, in denen es ein
-terminales Objekt~$1$ gibt, und ist in~$\Set$ äquivalent zur mengensprachlich
-formulierten Bedingung~\eqref{inj}. Das hat einen tieferen Grund: In~$\Set$ ist
-die einelementige Menge~$1 = \{ \star \}$ ein \emph{Erzeuger}, d.\,h. Objekte
-in~$\Set$ sind schon durch ihre globalen Elemente (bis auf Isomorphie) eindeutig bestimmt.
-
-In Kategorien, in denen das terminale Objekt aber kein Erzeuger ist, ist
-Bedingung~\eqref{injcat} dagegen nicht sehr aussagekräftig. Konkret der Fall
-ist das beispielsweise beim Topos~$\Sh(A)$ der Garben auf einem topologischen
-Raum~$A$. Globale Elemente einer Garbe~$\F$ stehen in natürlicher Bijektion mit
-globalen Schnitten~$x \in \F(A)$ (daher der Name), sodass
-Bedingung~\eqref{injcat} nur aussagt, dass die Garbenabbildung~$f$
-\emph{injektiv auf globalen Schnitten} ist. Da viele interessante Garben
-überhaupt keine oder nur wenige globale Schnitte besitzen, ist das in der Regel
-eine gehaltlose Aussage.
-
-Man löst das Problem dadurch, indem man nicht nur globale Elemente~$1 \to X$,
-sondern auch \emph{verallgemeinerte} Elemente~$I \to X$ betrachtet. Dabei
-muss~$I$ alle Objekte der untersuchten Kategorie~$\C$ durchlaufen; mit diesem
-Prinzip ist eine bessere Übersetzung der Injektivitätsbedingung die Aussage
-\begin{equation}\label{injallg}
-  \forall \text{Objekte $I$ in~$\C$}\_ \forall (I \xra{x} X), (I \xra{x'\!} X) \text{ in~$\C$}\_\ 
-  f \circ x = f \circ x' \ \Longrightarrow\ x = x',
-\end{equation}
-und diese fängt die Intuition hinter dem Injektivitätsbegriff auch in
-beliebigen Kategorien~$\C$ richtig ein: Ein Morphismus~$f$, der
-Bedingung~\eqref{injallg} erfüllt, heißt bekanntlich \emph{Monomorphismus}. Den
-tieferen Grund, wieso diese Idee funktioniert, drückt das
-\emph{Yonedalemma}~\cite{yoneda} aus, demnach ein Objekt (bis auf Isomorphie) schon
-eindeutig durch die Morphismen in das Objekt hinein bestimmt ist.
-% XXX: Letzten Satz verstehe ich nicht?
-
-
-\subsection{Die interne Sprache}
-
-In der Praxis ist es allerdings umständlich, immer an verallgemeinerte
-Elemente denken und diese in der Notation berücksichtigen zu müssen. Als
-Abhilfe dazu gibt es die \emph{interne Sprache} einer Kategorie
-(nach J.~Bénabou, A.~Joyal und W.~Mitchell, siehe~\cite[Kap.~1]{catlogprime}):
-In dieser
-kann man die Injektivitätsbedingung als
-\begin{equation}\label{injtype}
-  \forall x,x'\?X\_\ f(x) = f(x') \ \Longrightarrow\ x = x'
-\end{equation}
-formulieren, die Ähnlichkeit zur ursprünglichen Definition~\eqref{inj} ist
-offensichtlich. Der Doppelpunkt beim Allquantor soll andeuten, dass~$X$ nicht
-notwendigerweise eine Menge und~$x,x'$ nicht notwendigerweise Elemente einer
-Menge im wörtlichen (materiellen) Sinn sein müssen. Stattdessen sagt man,
-dass~$X$ ein \emph{Typ} und~$x,x'$ \emph{Werte} dieses Typs sind, und
-bezeichnet den Ausdruck~\eqref{injtype} als \emph{Aussage im leeren Kontext}.
-(Freie, nicht durch Quantoren gebundene Variablen sammelt der sog. Kontext
-der Aussage auf.)
-
-Wenn die untersuchte Kategorie genügend gute Eigenschaften hat -- ein
-\emph{Topos} ist --, gibt es ein konkretes, algorithmisch gegebenes und auch in der Praxis einfach
-durch\-führ\-ba\-res Verfahren, um solche intern formulierten Aussagen in die externe
-mathematische Sprache zu übersetzen, die sog.
-\emph{Kripke--Joyal-Semantik}~\cite[Kap~VI.6]{moerdijkmaclane}.
-Wendet man dieses auf die Aussage~\eqref{injtype} an, erhält man (nach einem
-Vereinfachungsschritt) genau die zuvor hergeleitete Bedingung~\eqref{injallg}
-mit verallgemeinerten Elementen.
-
-Die interne Sprache erlaubt nicht nur, Bedingungen einfach formulieren zu
-können, sondern auch logische Schlussfolgerungen anzustellen. Beispielsweise
-kann man, indem man den üblichen Beweis mit
-minimalen syntaktischen Änderungen abschreibt, intern zeigen, dass
-\[ \speak{$f$ ist injektiv} \wedge \speak{$f$ ist surjektiv}
-  \Longrightarrow \speak{$f$ besitzt eine Umkehrfunktion}. \]
-Die Häkchen sollen andeuten, dass die Teilaussagen nur umgangssprachlich vorliegen und
-daher vom Leser formalisiert werden müssen.
-Extern besagt diese Implikation, dass jeder Morphismus~$f$ eines Topos, der zugleich ein
-Mono- und Epimorphismus ist, schon einen Umkehrmorphismus besitzt, also ein
-Isomorphismus ist.
-
-
-\subsection{Beschränkung auf intuitionistische Logik}
-
-Damit die Übersetzungen intern bewiesener Schlussfolgerungen
-in beliebigen Topoi gültig sind, ist man beim Beweisen aber einer Reihe von
-Einschränkungen unterworfen: Man darf in Abgrenzung der gewohnten klassischen
-Logik nur die Schlussregeln
-\emph{intuitionistischer Logik}~\cite{dalen} verwenden, d.\,h. man muss auf das Prinzip vom
-ausgeschlossenen Dritten, demnach man für jede Aussage~$\phi$ voraussetzen
-darf, dass
-\[ \phi \vee \neg\phi \]
-gilt, verzichten; und ebenso kann man das Prinzip der
-Doppelnegationselimination ("`$\neg\neg\phi \Rightarrow \phi$"') und das
-Auswahlaxiom nicht verwenden. Infolgedessen sind Widerspruchsbeweise
-("`um~$\phi$ zu zeigen, zeige, dass~$\neg\phi$ falsch ist"') nicht
-zulässig.\footnote{Davon unbetroffen sind Beweise negierter Aussagen, d.\,h.
-Aussagen der Form~$\neg\psi$. Das übliche Vorgehen ("`Gelte $\psi$. Dann
-\ldots, also Widerspruch."') ist für solche zulässig, es handelt sich dabei
-nicht um Widerspruchsbeweise im eigentlichen Sinn. Klassisch kann man den
-Unterschied nicht erkennen, da man gewohnt ist, nach Belieben doppelte
-Verneinungen einzuführen oder zu streichen.} Zwei Beispiele sollen dieses
-Phänomen am Garbentopos~$\Sh(A)$ über einem topologischen Raum~$A$ verdeutlichen:
-\begin{enumerate}
-\item Dass eine Aussage~$\phi$ der internen Sprache von~$\Sh(A)$ gilt, kann man
-sich so vorstellen, dass sie auf jeder offenen Teilmenge~$U \subseteq A$
-erfüllt ist. Die doppelte Negation~$\neg\neg\phi$ bedeutet dagegen nur, dass
-jede nichtleere offene Teilmenge~$U \subseteq A$ eine weitere, kleinere nichtleere offene
-Teilmenge~$V \subseteq U$ enthält, auf der~$\phi$ gilt.
-
-Sei etwa~$A = \RR$ die reelle Zahlengerade und~$f$ eine stetige reellwertige Funktion
-auf~$\RR$. Dann bedeutet die interne Aussage
-\[ \speak{$f$ ist (bzgl. der Multiplikation) invertierbar}, \]
-dass~$f$ auf jeder offenen Teilmenge
-invertierbar ist, also dass~$f(a) \neq 0$ für alle~$a \in A$. Die doppelt
-negierte Aussage dagegen wird beispielsweise auch von Funktionen erfüllt, die
-isolierte Nullstellen besitzen, und allgemeiner von allen Funktionen, die auf
-keinem Intervall konstant null sind.
-% XXX: Also auf einer dichten Menge nicht null sind!
-
-\item Sei~$A = \CC$ die komplexe Zahlenebene und~$f$ eine auf ganz~$\CC$
-definierte holomorphe Funktion. Holomorphe Lösungen der Funktionalgleichung
-\[ \exp(g) = f \]
-organisieren sich auf natürliche Art und Weise in einer Garbe~$\F$ auf~$\CC$,
-explizit durch die Setzung
-\begin{equation}\label{holsheaf}
-  \F(U) = \{ U \xra{g} \CC \,|\, \text{$g$ holomorph und~$\exp(g) = f$ auf~$U$} \}
-\end{equation}
-für offene Teilmengen~$U \subseteq \CC$ gegeben. Wenn~$f$ Nullstellen besitzt,
-ist die Aussage $\exists g\?\F$ der internen Sprache nicht erfüllt: Diese
-bedeutet nämlich, dass es eine Überdeckung von~$\CC$ durch offene Mengen gibt,
-sodass es auf jeder dieser offenen Mengen~$U$ jeweils eine auf~$U$ definierte Lösung
-der Funktionalgleichung gibt (wobei diese Teillösungen auf Überlappungen nicht
-unbedingt zusammenpassen müssen) -- das kann man kurz als das Motto \emph{Existenz in der
-internen Sprache bedeutet lokale Existenz} ausdrücken. Aber in jeder solchen Überdeckung würde
-mindestens eine offene Menge~$U$ eine Nullstelle von~$f$ enthalten, und auf
-einer solchen Menge ist die Funktionalgleichung natürlich nicht erfüllbar.
-
-Es gilt aber die doppelt negierte Aussage~$\neg\neg(\exists g\?\F)$, denn zu
-jeder nichtleeren offenen Teilmenge~$U \subseteq \CC$ kann man eine genügend
-kleine weitere nichtleere offene Teilmenge~$V \subseteq U$ finden, die keine
-Nullstellen von~$f$ enthält (diese sind ja isoliert) und auf der es einen
-passenden Logarithmus gibt.
-\end{enumerate}
 
 % XXX: \seq{} erzeugt falschen horizontalen Freiraum.
 
@@ -4100,10 +3926,6 @@ passenden Logarithmus gibt.
 % Literatur:
 % * http://math.stanford.edu/~feferman/papers/highlights.pdf
 
-% Steve Russ. The Mathematical Works of Bernard Bolzano.
-% Google Docs Seite 276 und vorher.
-% http://books.google.de/books?id=zp7cLQn0x3gC&lpg=PA146&ots=riM_BDSt8G&dq=bolzano%20early%20analysis%20rb&hl=de&pg=PA276#v=onepage&q&f=false
-
 % Weglassen von Variablen geht nicht (und folgt auch nicht aus struktureller
 % Regel)
 % Logik-Geist
@@ -4116,13 +3938,8 @@ passenden Logarithmus gibt.
 % Weiteres Beispiel für Wissen im Grenzwert:
 % http://en.wikipedia.org/wiki/Chaitin's_constant!
 
-% Bornsche Regel
-
-% Jordan-Algebra
-% Bohr-Topos als *Garben*topos
-% Quantornotation einheitlich machen
-
 % verschiedene Schulen
+http://www.cambridge.org/us/academic/subjects/mathematics/logic-categories-and-sets/varieties-constructive-mathematics
 
 % C(Kompaktifizierung)
 
@@ -4137,35 +3954,12 @@ passenden Logarithmus gibt.
 % siehe http://staff.science.uva.nl/~ulle/teaching/lolaco/2013/slides/vdberg.pdf.
 % Das auch als Quelle aufnehmen!
 
-% Beispiel-Topos: Klassifizierender Topos zur Theorie der Gruppen oder so
-
-% Problem mit der BHK-Interpretation nennen
-
-% http://video.ias.edu/members/1213/0318-AndrejBauer
-
-% XXX: Stetigkeitsnachweise unnötig
-
-% "demnach"
-
-% können wir Corfield zitieren?
-
 % Sind alle Quellen zitiert? Nein, coquand:classical zum Beispiel nicht.
 
 % Unbedingt zitieren:
 % http://link.springer.com/article/10.1007%2Fs00283-009-9064-8#page-2
 % Prime Simplicity.
 % Ebenso: http://arxiv.org/pdf/1110.5456v1.pdf Irrationalität
-
-% Bemerkung von nLab:decidable_proposition einbauen:
-% In many foundations of constructive mathematics, the disjunction property?
-% holds (in the global context). That is, if p∨q can be proved, then either p
-% can be proved or q can be proved. By Gödel's incompleteness theorem, no
-% consistent foundation of classical arithmetic can have this property, but
-% some consistent foundations of intuitionistic arithmetic (such as Heyting
-% arithmetic?) do.
-
-Slogan: Quantenmechanik ist klassische Mechanik, parametrisiert über alle
-klassischen Kontexte.
 
 Referenzieren/verstehen: Simons Fragen und "The Born map for the topos qbit".
 
@@ -4196,3 +3990,5 @@ In einer hyphotetischen überarbeiteteten Version:
 - Kann man konstruktive Logik sinnvoll in Philosophie selbst anwenden?
 
 - Ausführen: Curry-Howard im Kontext formaler Methoden
+
+- Wie leitet man die Bornsche Regel im Bohr-Topos-Zugang her?
