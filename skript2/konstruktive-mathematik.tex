@@ -250,8 +250,6 @@ Ihr den Stein der Weisen. \emph{[übergibt den Stein zurück]}
 verweisen}
 \XXX{Seitenränder}
 \XXX{Aufzählungszeichen}
-\XXX{konsistente Quantorschreibweise}
-\XXX{konsistente Schreibweise von 1:1-Korrespondenz}
 
 \makeatletter
 \renewcommand{\contentsline}[4]{#2\par\vspace{0.5em}}
@@ -398,7 +396,7 @@ Für \emph{zusammengesetzte Aussagen} zeigt Tafel~\ref{bhk}, was unter Belegen
 jeweils zu verstehen ist. (An manchen Stellen steht dort~"`$x : X$"' -- das hat
 einen Grund, aber momentan soll das einfach etwas seltsame Notation für~"`$x
 \in X$"' sein.) Etwa ist ein Beleg für eine Aussage der Form
-\[ \forall n \? \NN{:}\ \varphi(x) \Rightarrow \psi(x) \]
+\[ \forall n \? \NN\_ \varphi(x) \Rightarrow \psi(x) \]
 eine Vorschrift, wie man für jede natürliche Zahl~$n : \NN$ aus einem Beleg
 für~$\varphi(x)$ einen Beleg für~$\psi(x)$ erhalten kann. Dies soll tatsächlich nur
 \emph{eine} Vorschrift sein (welche mit allen natürlichen Zahlen zurechtkommt),
@@ -422,9 +420,9 @@ der Tabelle gemeint.
     $\neg\varphi$ &
       $\varphi$ stimmt nicht. &
       Es kann keinen Beleg für~$\varphi$ geben. \\
-    $\forall x\?X{:}\ \varphi(x)$ & Für alle $x : X$ stimmt jeweils~$\varphi(x).$ &
+    $\forall x\?X\_ \varphi(x)$ & Für alle $x : X$ stimmt jeweils~$\varphi(x).$ &
       Wir können (gleichmäßig) für alle~$x : X$ Belege für~$\varphi(x)$ konstruieren. \\
-    $\exists x\?X{:}\ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x : X$, für das~$\varphi(x)$
+    $\exists x\?X\_ \varphi(x)$ & \raggedright Es gibt mindestens ein~$x : X$, für das~$\varphi(x)$
     stimmt. & {\raggedright
       Wir haben ein~$x : X$ zusammen mit Beleg für~$\varphi(x).$} \\
     \bottomrule
@@ -449,7 +447,7 @@ Beleg für~$\varphi$ haben; gewissermaßen ist eine solche Aussage~$\varphi$ nur
 Wohnung befinden muss (da wir ihn letzte Nacht verwendet haben, um die Tür
 aufzusperren), wir ihn momentan aber nicht finden, so können wir konstruktiv
 nur folgende doppelt negierte Aussage vertreten:
-\[ \neg\neg (\exists x{:}\ \text{der Schlüssel befindet sich an Position~$x$})
+\[ \neg\neg (\exists x\_ \text{der Schlüssel befindet sich an Position~$x$})
 \]
 \end{bsp}
 
@@ -482,7 +480,7 @@ Sichtweise sehr hilfreich ist:
 \listedmotto{konstruktiv-gdw-computer}{Eine Aussage gilt genau dann konstruktiv, wenn es ein
 Computerprogramm gibt, welches sie in endlicher Zeit bezeugt.}
 Etwa ist mit dieser Interpretation klar, dass die formale Aussage
-\[ \forall n \in \NN{:}\ \exists p \geq n{:}\ \text{$p$ ist eine Primzahl}, \]
+\[ \forall n \in \NN\_ \exists p \geq n\_ \text{$p$ ist eine Primzahl}, \]
 eine Formulierung der Unendlichkeit der Primzahlen, auch konstruktiv
 stimmt: Denn man kann leicht ein Computerprogramm angeben, das eine natürliche
 Zahl~$n$ als Eingabe erwartet und dann, etwa über die Sieb-Methode von
@@ -790,7 +788,7 @@ treffen. Etwa kann man intuitionistisch den Bedeutungsunterschied zwischen
 nicht, wo.}
 \end{itemize}
 abbilden: Die erste Aussage übersetzt sich als
-\[ (\exists x{:}\ \text{der Schlüssel befindet sich an Position~$x$}), \]
+\[ (\exists x\_ \text{der Schlüssel befindet sich an Position~$x$}), \]
 die zweite als deren doppelte Verneinung. Klassisch sind diese beiden
 Übersetzungen dagegen äquivalent, klassisch kann man den Unterschied also nicht
 formalisieren.
@@ -954,16 +952,16 @@ Wir werden Kontexte oft kürzer als~$\vec x : \vec A$ notieren. Etwa ist die
 Aussage
 \[ n = m \]
 eine Aussage im Kontext~$n : \NN, m : \NN$. Dagegen ist die Aussage
-\[ \forall m\?\NN{:}\ n = m \]
+\[ \forall m\?\NN\_ n = m \]
 eine Aussage im reduzierten Kontext~$n : \NN$: Die Variable~$m$ kommt
 nicht mehr \emph{frei}, sondern nur noch \emph{gebunden} vor. Wir vereinbaren,
 dass kollisionsfreie Umbenennung gebundener Variablen nicht als Veränderung
 einer Aussage zählen soll. Die anders geschriebene Aussage
-\[ \forall u\?\NN{:}\ n = u \]
+\[ \forall u\?\NN\_ n = u \]
 sehen wir also als dieselbe Aussage an.
 Wenn wir auch noch über die
 Variable~$n$ quantifizieren, erhalten wir eine Aussage im \emph{leeren Kontext}:
-\[ \forall n\?\NN{:}\ \forall u\?\NN{:}\ n = u. \]
+\[ \forall n\?\NN\_ \forall u\?\NN\_ n = u. \]
 
 
 \subsubsection*{Substitution von Variablen}
@@ -977,9 +975,9 @@ x]$"' schreibt.
 
 Bei der Substitution muss man Variablenkollisionen verhindern. Etwa gilt für
 die Aussage
-\[ \varphi :\equiv (\forall n\?\NN{:}\ n = m) \]
+\[ \varphi :\equiv (\forall n\?\NN\_ n = m) \]
 im Kontext~$m : \NN$, dass
-\[ \varphi[n^2/m] \equiv (\forall \tilde n\?\NN{:}\ \tilde n = n^2). \]
+\[ \varphi[n^2/m] \equiv (\forall \tilde n\?\NN\_ \tilde n = n^2). \]
 
 \begin{bem}In der Logik-Literatur ist die übliche Bezeichnung für das, was wir \emph{Aussagen}
 nennen, \emph{Formel}.\end{bem}
@@ -1327,7 +1325,7 @@ und das Induktionsprinzip
 \phantom{a}\hfill
 \AxiomC{$\varphi \seq{\vec x} \psi[0/m]$}
 \AxiomC{$\varphi \seq{\vec x, m} \psi \Rightarrow \psi[S(m)/m]$}
-\BinaryInfC{$\varphi \seq{\vec x} \forall m\?\NN{:}\ \psi$}
+\BinaryInfC{$\varphi \seq{\vec x} \forall m\?\NN\_ \psi$}
 \DisplayProof
 \hfill\phantom{a}
 
@@ -1378,8 +1376,8 @@ Gödel und anderen) wird rekursiv wie folgt definiert:
   (\varphi \wedge \psi)^\circ &:\equiv \optnegneg(\varphi^\circ \wedge \psi^\circ) \\
   (\varphi \vee \psi)^\circ &:\equiv \neg\neg(\varphi^\circ \vee \psi^\circ) \\
   (\varphi \Rightarrow \psi)^\circ &:\equiv \optnegneg(\varphi^\circ \Rightarrow \psi^\circ) \\
-  (\forall x\?X{:}\ \varphi)^\circ &:\equiv \optnegneg\forall x\?X{:}\ \varphi^\circ \\
-  (\exists x\?X{:}\ \varphi)^\circ &:\equiv \neg\neg\exists x\?X{:}\ \varphi^\circ
+  (\forall x\?X\_ \varphi)^\circ &:\equiv \optnegneg\forall x\?X\_ \varphi^\circ \\
+  (\exists x\?X\_ \varphi)^\circ &:\equiv \neg\neg\exists x\?X\_ \varphi^\circ
 \end{align*}
 \end{defn}
 
@@ -1878,14 +1876,14 @@ intuitionistischen Beweisen kann man Computerprogramme extrahieren und
 umgekehrt. Beide Richtungen sind interessant: Etwa kann man offensichtlich ein
 Computerprogramm schreiben, das zu einer Eingabe~$n \? \NN$ eine Primzahl~$p
 \geq n$ produziert. Daher ist auch die entsprechende Aussage intuitionistisch
-ableitbar:~$\forall n{:}\NN{:}\ \exists p \geq n{:}\ \text{$p$ prim}$.
+ableitbar:~$\forall n{:}\NN\_ \exists p \geq n\_ \text{$p$ prim}$.
 
 Die Umkehrung ist im Kontext formaler Methoden in der Informatik wichtig.
 
 
 \subsection{Genauere Formulierung}
 
-Eine genauere Formulierung ist folgende: Es gibt eine 1:1--Korrespondenz
+Eine genauere Formulierung ist folgende: Es gibt eine Eins-zu-Eins-Korrespondenz
 zwischen \emph{Ableitungen} einer Aussage~$\varphi$ einerseits und
 \emph{Termen} vom Typ~$\varphi$ andererseits. Für eine völlig präzise
 Formulierung muss man nur noch das gewählte Ableitungssystem und den gewählten
@@ -1922,8 +1920,8 @@ aufhören"', dass man "`immer weiter zählen könnte"'. Aber manche hatten Angst
 davor, unendlich viele Objekte zu einer vollendeten Menge zusammenzufassen.
 
 Insbesondere wurde die Verwendung des Prinzips
-\[ \neg\forall x\?X{:}\, \neg\varphi(x) \quad\Longrightarrow\quad
-  \exists x\?X{:}\, \varphi(x) \]
+\[ \neg\forall x\?X\_ \neg\varphi(x) \quad\Longrightarrow\quad
+  \exists x\?X\_ \varphi(x) \]
 kritisiert. Diese Kritik erscheint von unserem heutigen Standpunkt verwunderlich, denn
 dieses Prinzip folgt ja sofort aus dem Prinzip vom ausgeschlossenen Dritten,
 welches man stets als evident annahm. Man muss aber zwischen verschieden
@@ -2039,8 +2037,8 @@ wird für eine feste Aussage~$F$ wie folgt rekursiv definiert:
   (\varphi \wedge \psi)^F &:\equiv (\varphi^F \wedge \psi^F) \optF \\
   (\varphi \vee \psi)^F &:\equiv (\varphi^F \vee \psi^F) \optF \\
   (\varphi \Rightarrow \psi)^F &:\equiv (\varphi^F \Rightarrow \psi^F) \optF \\
-  (\forall x\?X{:}\ \varphi)^F &:\equiv (\forall x\?X{:}\ \varphi^F) \optF \\
-  (\exists x\?X{:}\ \varphi)^F &:\equiv (\exists x\?X{:}\ \varphi^F) \vee F
+  (\forall x\?X\_ \varphi)^F &:\equiv (\forall x\?X\_ \varphi^F) \optF \\
+  (\exists x\?X\_ \varphi)^F &:\equiv (\exists x\?X\_ \varphi^F) \vee F
 \end{align*}
 Wenn in~$F$ Variablen vorkommen, muss man gegebenenfalls manche Variablen umbenennen, um
 Variablenkollisionen zu vermeiden.
@@ -2093,7 +2091,7 @@ bewohnte Typen zulässt.
 aus Satz~\ref{friedman:proof}(b) unterliegen müssen, \emph{konservativ} über
 Heyting-Arithmetik: Aus jedem Beweis in Peano-Arithmetik lässt sich ein Beweis
 in Heyting-Arithmetik gewinnen.\end{kor}
-\begin{proof}Gelte~$\top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi)$ in
+\begin{proof}Gelte~$\top \seq{} (\forall x\?X\_ \varphi \Rightarrow \psi)$ in
 Peano-Arithmetik. Dann gilt auch
 \[ \varphi \seq{x} \psi \]
 in Peano-Arithmetik; so schaffen wir den Allquantor und die Implikation weg.
@@ -2119,7 +2117,7 @@ wählen. Die rechte Seite vereinfacht sich dann zu~$\psi$, und die linke wird
 von~$\varphi$ impliziert.
 Wir erhalten also in Heyting-Arithmetik die Ableitbarkeit
 von $\varphi \seq{x} \psi$, also von
-$\top \seq{} (\forall x\?X{:}\ \varphi \Rightarrow \psi)$.
+$\top \seq{} (\forall x\?X\_ \varphi \Rightarrow \psi)$.
 \end{proof}
 
 Bemerkenswert ist, dass dieses Konservativitätsresultat nur eine Forderung
@@ -2132,7 +2130,7 @@ werden kann.
 
 \begin{bsp}Die Aussage der Zahlentheorie, dass es unendlich viele Primzahlen
 gibt, lässt sich in der Form
-\[ \forall n\?\NN{:}\ \exists p\?\NN{:}\ (p \geq n) \wedge (\text{$p$ ist prim}) \]
+\[ \forall n\?\NN\_ \exists p\?\NN\_ (p \geq n) \wedge (\text{$p$ ist prim}) \]
 schreiben. Zur Formalisierung der Primalitätsaussage benötigt man nur
 \emph{beschränkte Allquantifikation}, für welche die Konservativitätsaussage
 ebenfalls gilt (Aufgabe~\ref{aufg-beschr-allquant}). Also kann man aus jedem klassischen Beweis der Unendlichkeit
@@ -2176,8 +2174,8 @@ Doppelnegationsübersetzung gehört zum Operator~$\varphi \mapsto
 
 In klassischer Logik gilt \emph{Markovs Prinzip}: Für jede Aussage~$\varphi$
 (in der unter anderem die Variable~$x$ vorkommt) gilt
-\[ \neg\neg \exists x{:}\ \varphi \quad\Longrightarrow\quad
-  \exists x{:}\ \varphi. \]
+\[ \neg\neg \exists x\_ \varphi \quad\Longrightarrow\quad
+  \exists x\_ \varphi. \]
 Dieses Prinzip folgt sofort aus dem Prinzip vom ausgeschlossenen Dritten.
 Konstruktiv lässt sich dieses Prinzip nicht zeigen (etwa liefert fast jeder
 Garbentopos ein Gegenbeispiel). In Heyting-Arithmetik gilt aber zumindest
@@ -2185,21 +2183,21 @@ Markovs \emph{Regel}:
 
 \begin{kor}[Markovs Regel]Sei~$\varphi$ eine Aussage, die den Beschränkungen
 aus Satz~\ref{friedman:proof}b) unterliegt. Wenn intuitionistisch
-\[ \seq{\vec x} \neg\neg\exists y\?\NN{:}\ \varphi \]
+\[ \seq{\vec x} \neg\neg\exists y\?\NN\_ \varphi \]
 ableitbar ist, so ist auch
-\[ \seq{\vec x} \exists y\?\NN{:}\ \varphi \]
+\[ \seq{\vec x} \exists y\?\NN\_ \varphi \]
 intuitionistisch ableitbar.\end{kor}
 \begin{proof}Nach Teil~c) von Satz~\ref{friedman:proof} ist die
 Friedmanübersetzung der Voraussetzung~$\neg\neg\exists
-y\?\NN{:}\ \varphi$ intuitionistisch ableitbar. Wegen Teil~b) ist diese äquivalent zu
-\[ ((\exists y\?\NN{:}\ (\varphi \vee F)) \Rightarrow F) \Rightarrow F. \]
-Wählt man daher trickreich~$F :\equiv \exists y\?\NN{:}\ \varphi$, folgt die Behauptung.
+y\?\NN\_ \varphi$ intuitionistisch ableitbar. Wegen Teil~b) ist diese äquivalent zu
+\[ ((\exists y\?\NN\_ (\varphi \vee F)) \Rightarrow F) \Rightarrow F. \]
+Wählt man daher trickreich~$F :\equiv \exists y\?\NN\_ \varphi$, folgt die Behauptung.
 Alternativ kann man auch direkt das Konservativitätsresultat~\ref{peanokons}
 verwenden.
 \end{proof}
 
 Erstaunlicherweise steckt also in jedem intuitionistischen Beweis der doppelt
-negierten und daher schwachen Aussage~$\neg\neg \exists y\?\NN{:}\ \varphi$
+negierten und daher schwachen Aussage~$\neg\neg \exists y\?\NN\_ \varphi$
 wider Erwarten doch eine Konstruktionsvorschrift für ein~$y\?\NN$, das~$\varphi$
 erfüllt. Diese lässt sich rein maschinell aus dem Beweis extrahieren, indem man
 den Beweis, dass Markovs Regel zulässig ist, Schritt für Schritt durchgeht.
@@ -2543,9 +2541,9 @@ Quantoren, nicht aber~$\Rightarrow$, und als Schlussregeln
 \begin{enumerate}
 \item[1.] die Axiome aus Definition~\ref{defn:genprime} (jetzt in beliebigen
 Kontexten, nicht nur im leeren),
-\item[2.] $\top \seq{\vec x} Z(s) \vee (\exists y{:}\, Z(1-sy))$ für alle
+\item[2.] $\top \seq{\vec x} Z(s) \vee (\exists y\_ Z(1-sy))$ für alle
 Terme~$s$ im Kontext~$\vec x$ (also etwa Elemente von~$R$),
-\item[3.] $\top \seq{\vec x} \exists y{:}\, Z(y^n + a_{n-1}y^{n-1} + \cdots +
+\item[3.] $\top \seq{\vec x} \exists y\_ Z(y^n + a_{n-1}y^{n-1} + \cdots +
 a_1y + a_0)$ für alle~$n \geq 1$ und~$a_0,\ldots,a_{n-1}$ Terme im
 Kontext~$\vec x$ und
 \item[4.] die strukturellen Regeln, die Regeln für Konjunktion, Disjunktion,
@@ -2947,7 +2945,7 @@ topologischen Räume der Fall (da man die Hom-Mengen mit einer Topologie
 versehen kann).
 
 Ein \emph{Unterobjektklassifizierer} ist ein spezielles Objekt~$\Omega$, sodass
-Unterobjekte eines Objekts~$X$ in 1:1-Korrespondenz zu Morphismen~$X \to
+Unterobjekte eines Objekts~$X$ in Eins-zu-Eins-Korrespondenz zu Morphismen~$X \to
 \Omega$ stehen. In der Kategorie der Mengen ist~$\Omega = \P(\{\star\})$ ein solches, in
 klassischer Logik also~$\Omega = \{ 0, 1 \}$: Denn bekanntlich
 können Teilmengen~$U$ einer Menge~$X$ ja eindeutig durch ihre klassifizierende
@@ -3652,7 +3650,7 @@ allgemeineren Lemmas: Ist ein Ring~$S$ ein Integritätsbereich, so auch~$S[X]$.
 \emph{Radikalideal}, wenn für alle~$x
 \in R$ und~$n \geq 0$ aus~$x^n \in \aa$ schon~$x \in \aa$ folgt.
 \item Sei~$\aa \subseteq R$ ein Ideal. Dann heißt das Ideal
-\[ \sqrt{\aa} := \{ x \in R \,|\, \exists n \geq 0{:}\ x^n \in \aa \} \]
+\[ \sqrt{\aa} := \{ x \in R \,|\, \exists n \geq 0\_ x^n \in \aa \} \]
 das \emph{Radikal von~$\aa$}. Es ist stets ein Radikalideal, und zwar das
 kleinste, das~$\aa$ umfasst.
 \end{enumerate}\end{defn}
