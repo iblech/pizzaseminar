@@ -165,6 +165,11 @@
 %\usepackage{geometry}
 %\geometry{tmargin=2cm,bmargin=4cm,lmargin=3cm,rmargin=3cm}
 
+\newcommand{\listedmotto}[2]{%
+  \begin{motto}\label{#1}#2\end{motto}%
+  \addcontentsline{lom}{section}{\textnormal{\textbf{Motto \ref{#1}.} #2}}%
+}
+
 \begin{document}
 
 \selectlanguage{ngerman}
@@ -241,7 +246,6 @@ Ihr den Stein der Weisen. \emph{[übergibt den Stein zurück]}
 
 \tableofcontents
 
-\XXX{Liste der Vorträge und der Mottos}
 \XXX{Übungsaufgaben integrieren, dann nicht mehr auf die Übungsblätter
 verweisen}
 \XXX{Seitenränder}
@@ -249,9 +253,15 @@ verweisen}
 \XXX{konsistente Quantorschreibweise}
 \XXX{konsistente Schreibweise von 1:1-Korrespondenz}
 
+\makeatletter
+\renewcommand{\contentsline}[4]{#2\par\vspace{0.5em}}
+\tocbasic@listhead{Liste der Mottos}
+\@starttoc{lom}
+\makeatother
+
 \section{Was ist konstruktive Mathematik?}
 
-\begin{prop}Es gibt irrationale Zahlen~$x,y$, sodass~$x^y$ rational ist.
+\begin{prop}Es gibt irrationale Zahlen~$x$ und~$y$, sodass~$x^y$ rational ist.
 \end{prop}
 \begin{proof}[Beweis 1] Die Zahl~$\sqrt{2}^{\sqrt{2}}$ ist rational oder nicht
 rational. Setze im ersten Fall~$x := \sqrt{2}$, $y := \sqrt{2}$. Setze im
@@ -469,8 +479,8 @@ durchaus einen (noch unbekannten) Beleg besitzen.
 
 Es gibt noch eine zweite Interpretation, die beim Verständnis der konstruktiven
 Sichtweise sehr hilfreich ist:
-\begin{motto}Eine Aussage gilt genau dann konstruktiv, wenn es ein
-Computerprogramm gibt, welches sie in endlicher Zeit bezeugt.\end{motto}
+\listedmotto{konstruktiv-gdw-computer}{Eine Aussage gilt genau dann konstruktiv, wenn es ein
+Computerprogramm gibt, welches sie in endlicher Zeit bezeugt.}
 Etwa ist mit dieser Interpretation klar, dass die formale Aussage
 \[ \forall n \in \NN{:}\ \exists p \geq n{:}\ \text{$p$ ist eine Primzahl}, \]
 eine Formulierung der Unendlichkeit der Primzahlen, auch konstruktiv
@@ -785,12 +795,12 @@ die zweite als deren doppelte Verneinung. Klassisch sind diese beiden
 Übersetzungen dagegen äquivalent, klassisch kann man den Unterschied also nicht
 formalisieren.
 
-\begin{motto}Intuitionistische Logik ist schwächer, aber auch feiner als
-klassische Logik.\end{motto}
+\listedmotto{int-schw-feiner}{Intuitionistische Logik ist schwächer, aber auch feiner als
+klassische Logik.}
 
-Wer konstruktive Mathematik abtun möchte, da sein Lieblingstheorem nicht
+Wer konstruktive Mathematik abtun möchte, da ein Lieblingstheorem nicht
 intuitionistisch ableitbar ist, kann noch Abschnitt~\ref{bez-klassische-logik}
-abwarten, in dem wir zeigen, dass sich klassische Logik in intuitionistische
+abwarten, in dem wir verstehen, dass sich klassische Logik in intuitionistische
 einbetten lässt.
 
 \paragraph{Programmextraktion.} Aus jedem konstruktiven Beweis einer Behauptung
@@ -845,7 +855,7 @@ leicht verständliche Einführung~\cite{bell:invitation} und ein
 Buch~\cite{bell:primer}. Es gibt auch einen Text, der für Schüler verständlich
 sein soll~\cite{mathezirkel:sdg}.
 
-\begin{bem}Hier ein kurzer Einschub, wieso das \XXX{erstgenannte} Traumaxiom
+\begin{bem}Hier ein kurzer Einschub, wieso das erstgenannte Traumaxiom
 in einem konstruktiven Kontext zumindest nicht offensichtlich widersprüchlich
 ist. Man könnte denken, dass die Signumfunktion
 \[ x \longmapsto \begin{cases}
@@ -1197,11 +1207,10 @@ Existenz- und Allquantor nötig?\end{aufg}
 
 \subsubsection*{Umfang der Ableitungsregeln}
 
-\begin{motto}\label{allesformalisierbar}Alle Beweise gewöhnlicher Mathematik, die man
+\listedmotto{allesformalisierbar}{Alle Beweise gewöhnlicher Mathematik, die man
 gemeinhin als "`vollständig und präzise ausformuliert"' bezeichnet, lassen sich als
 Ableitungen im Sinne von Definition~\ref{defn-ableitungen} formalisieren (ggf. unter Hinzunahme
-klassischer logischer Axiome, Mengentheorieaxiome oder Typtheorieaxiome).
-\end{motto}
+klassischer logischer Axiome, Mengentheorieaxiome oder Typtheorieaxiome).}
 
 \begin{aufg}Überzeuge dich von dieser Behauptung. \emph{Tipp:} Formalisiere so
 viele Beweise deiner Wahl, bis du keine Lust mehr hast.\end{aufg}
@@ -1250,9 +1259,9 @@ darf die Variable~$y$ nicht in~$\phi$ vorkommen.
 \end{bsp}
 
 Nicht verschwiegen werden sollte folgende Ergänzung des formalistischen Kredos:
-\begin{motto}Das optimistische Motto~\ref{allesformalisierbar} stimmt nur in
+\listedmotto{allesformalisierbar-zu-optimistisch}{Das optimistische Motto~\ref{allesformalisierbar} stimmt nur in
 erster Näherung. Es gibt mathematische Gedanken, die nicht formalisierbar
-sind.\end{motto}
+sind.}
 
 Zu solchen Gedanken gehören etwa die Überzeugung, jede Art finitistischer
 Über\-le\-gung könne in Peano-Arithmetik formalisiert werden; die
@@ -1512,22 +1521,18 @@ nur dann~$\neg\varphi$ vertreten, wenn es keinen Beleg von~$\varphi$ gibt.
 
 Als Motto können wir festhalten:
 
-\begin{motto}
-Eine Aussage~$\varphi$ intuitionistisch zu behaupten, bedeutet, in jedem
-Dialog~$\varphi$ belegen zu können.
-\end{motto}
+\listedmotto{int-dialog}{Eine Aussage~$\varphi$ intuitionistisch zu behaupten, bedeutet, in jedem
+Dialog~$\varphi$ belegen zu können.}
 
 Dank der Doppelnegationsübersetzung können wir damit auch eine
 Dialoginterpretation klassischer Behauptungen angeben. Es stellt sich heraus,
 dass die folgende Metapher sehr tragfähig ist. Diese wollen wir dann erst an
 einem Beispiel veranschaulichen, bevor wie sie rechtfertigen.
 
-\begin{motto}
-Eine Aussage~$\varphi$ klassisch zu behaupten (also~$\varphi^\circ$
+\listedmotto{klass-dialog}{Eine Aussage~$\varphi$ klassisch zu behaupten (also~$\varphi^\circ$
 intuitionistisch zu behaupten), bedeutet, in jedem Dialog~$\varphi$ belegen zu
 können, wobei man aber beliebig oft Zeitsprünge in die Vergangenheit
-durchführen darf.
-\end{motto}
+durchführen darf.}
 
 
 \subsubsection*{Beispiel: das Prinzip vom ausgeschlossenen Dritten}
@@ -1789,8 +1794,8 @@ Unter der Curry--Howard-Korrespondenz versteht man grob folgendes fundamentale
 Motto, das intuitionistische Logik und theoretische Informatik in Beziehung
 setzt:
 
-\begin{motto}Eine Aussage~$\varphi$ ist genau dann intuitionistisch ableitbar,
-wenn es ein Computerprogramm vom Typ~$\varphi$ gibt.\end{motto}
+\listedmotto{motto-ch}{Eine Aussage~$\varphi$ ist genau dann intuitionistisch ableitbar,
+wenn es ein Computerprogramm vom Typ~$\varphi$ gibt.}
 
 Hierbei wird~$\varphi$ einerseits als Aussage, andererseits als Typ
 interpretiert. Beispiele sollen diesen Doppelgebrauch deutlich machen.
@@ -1993,9 +1998,9 @@ explizite Schranken für Konstanten, stetige (oder noch bessere) Abhängigkeit
 von Parametern, explizite Zeugen von Existenzbehauptungen oder Algorithmen
 umfassen.
 
-\begin{motto}\label{motto:inhaltvonbeweisen}In einem \emph{Beweis} einer
+\listedmotto{motto:inhaltvonbeweisen}{In einem \emph{Beweis} einer
 Aussage steckt viel mehr Inhalt als die bloße Information, dass die Aussage
-wahr ist.\end{motto}
+wahr ist.}
 
 Dieses Motto ist keine tiefe Einsicht: \emph{Natürlich} steckt in
 einem Beweis einer Aussage viel mehr Inhalt als in einer bloßen
@@ -2288,8 +2293,8 @@ Stattdessen verwendet er nur die \emph{allgemeinen Primidealaxiome}. Gewisserma�
 zeigt er also nicht nur, dass die Koeffizienten in allen Primidealen enthalten
 sind, sondern dass sie in \emph{dem generischen Primideal} enthalten sind.
 
-\begin{motto}Die \emph{generische} Verwendung ideeller Konzepte (Primideale,
-maximale Ideale, Bewertungen, \ldots) lässt sich eliminieren.\end{motto}
+\listedmotto{gen-verwendung}{Die \emph{generische} Verwendung ideeller Konzepte (Primideale,
+maximale Ideale, Bewertungen, \ldots) lässt sich eliminieren.}
 
 
 \subsubsection*{Axiomatisierung des generischen Primideals}
@@ -2962,9 +2967,9 @@ welche exakt und extensiv ist und über einen Unterobjektklassifizierer verfügt
 
 Für unsere Zwecke genügen ein Motto und Beispiele für Topoi.
 
-\begin{motto}Ein Topos ist eine Kategorie, die dadurch, dass sie ähnliche
+\listedmotto{topos-was-ist}{Ein Topos ist eine Kategorie, die dadurch, dass sie ähnliche
 kategorielle Eigenschaften wie die Kategorie der Mengen hat, über eine
-\emph{interne Sprache} verfügt.\end{motto}
+\emph{interne Sprache} verfügt.}
 
 \begin{bsp}Archetypisches Beispiel für einen Topos ist die Kategorie~$\Set$ der
 Mengen und Abbildungen.
@@ -3344,9 +3349,9 @@ Folglich lassen sich Quasi-Zustände von~$A$ geometrisch als interne
 Wahrscheinlichkeitsmaße auf~$\ul{\Sigma}$ deuten -- ganz so, wie es bei
 klassischen Systemen auch im üblichen mathematischen Universum möglich ist.
 
-\begin{motto}Nichtkommutative \csalgebren~$A$ besitzen zwar keine zugehörige
-Örtlichkeit im üblichen mathematischen Universum, wohl aber im speziell auf sie
-zugeschnittenen Topos~$\Bohr(A)$.\end{motto}
+\listedmotto{bohr-motto}{Nichtkommutative \csalgebren~$A$ besitzen zwar keine zugehörige
+Ört\-lich\-keit im üblichen mathematischen Universum, wohl aber im speziell auf sie
+zugeschnittenen Topos~$\Bohr(A)$.}
 
 
 \subsubsection*{Observable}
