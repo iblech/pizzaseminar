@@ -360,6 +360,12 @@ Widerspruch. (Der verwendete Satz über die Eindeutigkeit der
 Primfaktorzerlegung lässt sich konstruktiv beweisen.)
 \end{proof}
 
+\begin{bem}Konstruktiv stärker als die Aussage, dass eine Zahl~$x$ \emph{nicht
+rational} ist, ist, dass für jede rationale Zahl~$q$ der Betrag~$|x-q|$ positiv
+(das heißt per Definition, größer als eine positive rationale Zahl) ist. Auch
+diese Aussage besitzt einen konstruktiven Beweis, siehe etwa Fußnote~15
+von~\cite{katz:meaning}.\end{bem}
+
 
 \subsection{Informale Bedeutung logischer Aussagen}
 
@@ -685,13 +691,24 @@ zu~$\neg\neg\varphi$.
 Wer auf den Geschmack gekommen ist, kann die
 Bücher~\cite{mines:richman:ruitenburg} und~\cite{bishop:bridges:bible}
 studieren. Das erste entwickelt einen konstruktiven Zugang zu kommutativer Algebra, das
-zweite einen zu Analysis. Außerdem ist das Blog von Andrej
+zweite einen zu Analysis. Eine konstruktive Theorie von Euklids Geometrie
+stellt ein vor kurzem erschienener Artikel vor~\cite{beeson:tarski}.
+
+Allgemein ist das Blog von Andrej
 Bauer~\cite{bauer:blog} eine leicht verständliche Quelle interessanter Beispiele. Von ihm gibt es
 auch eine seheswerte Videoaufzeichnung eines Vortrags mit dem Titel \emph{Five
 Stages of Accepting Constructive Mathematics}~\cite{bauer:video}. Das
 nLab-Wiki~\cite{nlab}, das allgemein ein gutes Nachschlagewerk ist, wenn man an
 tieferen Hintergründen und Zusammenhängen interessiert ist, diskutiert in vielen Artikeln auch die
 konstruktive Situation.
+
+Es gibt verschiedene \emph{Schulen} konstruktiver Mathematik. Diese
+unterscheiden sich in ihrer Philosophie und in den logischen Schlussregeln, die
+sie erlauben. In diesem Skript diskutieren wir intuitionistische Logik, deren
+Schlussregeln von all diesen Schulen (und auch in klassischer Mathematik)
+akzeptiert werden. Wer sich für die Unterschiede interessiert, sei auf ein Buch
+von Bridges und Richman verwiesen~\cite{bridges:richman:varieties}. Interessant
+ist in diesem Zusammenhang auch der \emph{Grundlagenstreit}~\cite{dalen:frogs}.
 
 
 \subsection{Nutzen konstruktiver Mathematik}
@@ -803,7 +820,14 @@ kann man maschinell, ohne manuelles Zutun, ein Computerprogramm extrahieren,
 welches die bewiesene Behauptung bezeugt (und selbst bewiesenermaßen korrekt
 arbeitet). Etwa ist in jedem konstruktiven Beweis der Behauptung
 \begin{quote}Sei~$S$ eine endliche Menge von Primzahlen. Dann gibt es eine
-weitere Primzahl, welche nicht in~$S$ liegt.\end{quote}
+weitere Primzahl, welche nicht in~$S$ liegt.\footnote{Auch konstruktiv folgt
+aus dieser Behauptung, dass die Menge der Primzahlen \emph{nicht endlich} und
+sogar dass sie \emph{abzählbar unendlich} ist. Diese beiden Aussagen sind aber
+weniger konkret, und ihre Beweise verwirren gelegentlich Erstsemester: Im
+Allgemeinen ist~$N := p_1 \cdots p_n + 1$ für Primzahlen~$p_i$ nämlich keine weitere
+Primzahl -- nur die Primfaktoren von~$N$ werden neue Primzahlen
+sein~\cite{hardy:woodgold:prime-simplicity}.}
+\end{quote}
 ein Algorithmus versteckt, welcher zu endlich vielen gegebenen Primzahlen
 ganz konkret eine weitere Primzahl berechnet. Unterschiedliche Beweise können
 dabei in unterschiedlich effizienten Algorithmen resultieren.
@@ -1477,9 +1501,9 @@ Aussage äquivalent zu~$\neg\neg\exists x\?X\_ \neg\neg\varphi$. Die Behauptung
 folgt daher aus den intuitionistischen Tautologien~$\neg\exists \Leftrightarrow
 \forall\neg$ und~$\neg\neg\neg \Leftrightarrow \neg$.\end{proof}
 
-\begin{bem}Der Artikel~\cite{oconnor:exact} demonstriert, wie man das
+\begin{bem}Arbeiten von O'Connor demonstrieren, wie man das
 Zusammenspiel zwischen klassischer und intuitionistischer Logik im Rahmen
-exakter Numerik ausnutzen kann.\end{bem}
+exakter Numerik ausnutzen kann~\cite{oconnor:exact,oconnor:thesis,oconnor:class}.\end{bem}
 
 
 \subsection{Interpretation der übersetzten Aussagen}
@@ -1901,7 +1925,7 @@ Der Beweis ist übrigens trivial, wenn man die Behauptung nur präzise genug
 formuliert hat. Denn die Ableitungsregeln entsprechen Eins-zu-Eins den
 Termkonstruktionsregeln.
 
-Für Details sei der Übersichtsartikel~\cite{wadler:curry-howard} von Philip
+Für Details seien die Übersichtsartikel~\cite{wadler:curry-howard1,wadler:curry-howard2} von Philip
 Wadler (einem der Väter der Pro\-gram\-mier\-spra\-che Haskell) empfohlen. Wer die
 Curry--Howard-Korrespondenz wirklich verstehen möchte, kann das
 Vorlesungsskript~\cite{sorensen:urzyczyn:curryhoward} zurate ziehen. Es enthält
@@ -1989,7 +2013,7 @@ lässt sich als konkrete Aussage formulieren und leicht mit abstrakten
 Methoden beweisen (in üblicher Mengenlehre liefert die unendliche Menge~$\NN$
 ein Modell), kann aber keinen finitistisch zulässigen Beweis besitzen, da es
 nach Gödels Unvollständigkeitssatz nicht einmal einen Beweis in der stärkeren
-Peano-Arithmetik geben kann.
+Peano-Arithmetik geben kann~\cite{smith:tears,gusfield:goldilocks}.
 
 Teilweise kann Hilberts Programm jedoch schon realisiert werden, unter anderem
 in Analysis und Algebra: Mittels \emph{proof mining} kann aus klassischen
@@ -2248,6 +2272,9 @@ Mit sog. \emph{dynamischen Methoden} kann man aus Beweisen, die diese
 Prinzipien verwenden, noch konstruktiven Inhalt retten.
 Siehe~\cite{clr:dynamicalmethod,cl:logical} für relevante Originalartikel
 und~\cite{coquand:sitesur,lombardi:hilbertworks} für Vortragsfolien zum Thema.
+Ein vor kurzem erschienener Artikel diskutiert, wie man die ideelle Annahme,
+dass ein Grundkörper algebraisch abgeschlossen ist, eliminieren
+kann~\cite{mannaa:coquand:alg-closure}.
 
 
 \subsubsection*{Standardbeispiel: Nilpotente Polynome}
@@ -3938,9 +3965,6 @@ unmittelbar auf Örtlichkeiten übertragbar ist.\end{bem}
 % Weiteres Beispiel für Wissen im Grenzwert:
 % http://en.wikipedia.org/wiki/Chaitin's_constant!
 
-% verschiedene Schulen
-http://www.cambridge.org/us/academic/subjects/mathematics/logic-categories-and-sets/varieties-constructive-mathematics
-
 % C(Kompaktifizierung)
 
 % Das Beispiel RH ==> Beh, neg-RH ==> Beh.
@@ -3956,31 +3980,13 @@ http://www.cambridge.org/us/academic/subjects/mathematics/logic-categories-and-s
 
 % Sind alle Quellen zitiert? Nein, coquand:classical zum Beispiel nicht.
 
-% Unbedingt zitieren:
-% http://link.springer.com/article/10.1007%2Fs00283-009-9064-8#page-2
-% Prime Simplicity.
-% Ebenso: http://arxiv.org/pdf/1110.5456v1.pdf Irrationalität
-
 Referenzieren/verstehen: Simons Fragen und "The Born map for the topos qbit".
 
 Zitieren:
-http://homepages.inf.ed.ac.uk/wadler/papers/propositions-as-types/propositions-as-types.pdf
-http://www.andrew.cmu.edu/user/awodey/preprints/FoS4.phil.pdf
-http://dspace.library.uu.nl/handle/1874/220498 (The war of frogs and mice)
-http://www.math.canterbury.ac.nz/php/groups/cm/faq/
-http://philpapers.org/rec/BRIVOC
-Bridges, Richman: Varieties of Constructive Mathematics
-A Short Introduction to Intuitionistic Logic, Grigori Mints
 The Hilbert-Brouwer controversy resolved?
-http://r6.ca/Thesis/
-http://arxiv.org/pdf/0806.3209.pdf
-http://arxiv.org/pdf/1008.1213v2.pdf
 Foundational Theories of Classical and Constructive Mathematics Jacobi and Kummer’s ideal numbers, Franz Lemmermeyer
 Friedman, Classically and intuitionistically provably recursive functions
-aczel:russel-prawitz, escardo:oliva:peirce-shift
-http://arxiv.org/abs/1404.4549
-http://arxiv.org/abs/1409.5944
-http://arxiv.org/abs/1407.4399
+HoTT
 
 In einer hyphotetischen überarbeiteteten Version:
 
