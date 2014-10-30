@@ -124,7 +124,7 @@ is a canonical~$\C$-indexed category~$\CC$, the \emph{self-indexing of~$\C$}:
     (f^* : \C/Y \to \C/X)
 \end{array} \]
 As usual,~$\C/X$ is the slice category of morphisms to~$X$; its objects are
-morphisms~$T \to X$, where~$X \in \C$ is arbitrary, and its morphisms are
+morphisms~$T \to X$, where~$T \in \C$ is arbitrary, and its morphisms are
 commutative triangles. The functor~$f^*$ is defined by sending an object~$(T
 \to Y)$ to some chosen pullback~$(T \times_Y X \to X)$.\end{ex}
 
@@ -144,8 +144,10 @@ category~$\ul{A}$ given by~$T \mapsto \Hom_\C(T,A)$.
 \end{ex}
 
 Stacks are special kinds of indexed categories, so indexed categories should
-be geometric in some sense. Where is it? Where are the topological spaces, the
-points? Let~$\C$ be a category of spaces and~$F$ a~$\C$-indexed category. We
+be geometric in some sense. Where is the geometry? Where are the topological spaces, the
+points?
+
+Let~$\C$ be a category of spaces and~$F$ a~$\C$-indexed category. We
 can infuse geometric content by imagining, for any space~$A \in \C$, the
 category~$F(A)$ to be \emph{the category of maps~$A \to F$}. So even though~$F$
 does not define topological structure directly, we can \emph{probe} it by test
@@ -162,7 +164,7 @@ But the resulting notion fails in general to be local: If~$A = \bigcup_i U_i$
 is covered by open subsets, we expect to be able to define maps~$A \to F$ by
 glueing compatible maps~$U_i \to F$. This is not possible with an arbitrary
 indexed category -- the notion of a topology does not enter the definition in
-any way. A stack is an indexed category where this kind of pathology does not
+any way. A \emph{stack} is an indexed category where this kind of pathology does not
 arise.
 
 \begin{ex}The \emph{points} of the indexed category~$\VB$ of vector bundles
@@ -220,7 +222,7 @@ isomorphism.
 theory. For instance, any geometric morphism~$\F \xra{f} \E$ of toposes induces
 an~$\E$-indexed category~$\FF$, given by~$X \mapsto \F/f^*X$. From the point of
 view of the internal language of~$\E$, an~$\E$-indexed category looks like an
-ordinary category. This is useful for doing \emph{relative category theory}.
+ordinary (large, but locally small) category. This is useful for doing \emph{relative category theory}.
 \end{rem}
 
 
@@ -249,8 +251,8 @@ E$ with~$p(\phi) = f$.
 } \]
 \end{defn}
 
-The notion of a cartesian morphism is modeled after the universal property of
-usual pullbacks: A morphisms~$\phi : E' \to E$ with~$p(\phi) = f$ like in the
+The notion of a cartesian morphism is modeled on the universal property of
+usual pullbacks: A morphisms~$\phi : E' \to E$ with~$p(\phi) = f$ as in the
 definition is cartesian if and only if, for any morphism~$g : Z \to Y$, for any
 object~$E''$ in~$\F(Z)$, and any morphism~$\psi : E'' \to E$ such that~$p(\psi)
 = f \circ g$, there exists a unique morphism~$\alpha : E'' \to E'$ such
@@ -267,7 +269,7 @@ instance
 
 \begin{ex}The incarnation of example~\ref{ex:vb} as a fibered category is the
 category~$\VB$ of vector bundles on arbitrary base spaces. The projection
-functor~$\VB \to \C$ associates to any vector bundle its basespace.\end{ex}
+functor~$\VB \to \C$ associates to any vector bundle its base space.\end{ex}
 
 \begin{defn}An \emph{indexed functor}~$\F \to \G$ between fibered categories
 over~$\C$ is an ordinary functor~$\F \to \G$ which commutes with the projection
@@ -287,7 +289,7 @@ If suitable choice principles are available, any fibered category~$\F \to \C$
 defines a~$\C$-indexed category~$F : \C^\op \to \Cat$ by setting~$F(X) :=
 \F(X)$. For morphisms~$f : Y \to X$ in~$\C$, the pullback functors~$f^* : F(X)
 \to F(Y)$ are defined by associating to any object~$E$ a chosen pullback~$E'$
-like in the definition of a fibered category. The action of~$f^*$ on morphisms
+as in the definition of a fibered category. The action of~$f^*$ on morphisms
 is given by the universal property of cartesian morphisms.
 
 One can check that this construction gives indeed rise to a pseudofunctor. In
@@ -299,16 +301,16 @@ In the opposite direction, any~$\C$-indexed category~$F : \C^\op \to \Cat$
 induces a fibered category~$\int F \to \C$ via the \emph{Grothendieck
 construction}. Mimicking the case of families of sets, the objects of~$\int F$
 are pairs~$(X \in \C, E \in F(X))$. A morphism~$(X,E) \to (Y,F)$ is a pair~$(f
-: X \to Y, \alpha : E \to f^*(F))$. The projection functor~$\int F \to \C$
+: X \to Y,\ \alpha : E \to f^*(F))$. The projection functor~$\int F \to \C$
 sends an object~$(X,E)$ to~$X$ and a morphism~$(f,\alpha)$ to~$f$.
 
 One can check that this category over~$\C$ is indeed a fibered category. The
 cartesian morphisms~$\phi : (Y,E') \to (X,E)$ required by the definition are
-the morphisms~$(f : Y \to X, \id : f^*(E) \to f^*(E)$.
+the morphisms~$(f : Y \to X,\ \id : f^*(E) \to f^*(E))$.
 
 \begin{ex}Let~$\C$ be a category with pullbacks. Then~$\int \CC$ (see
 example~\ref{ex:self-indexing}) is equivalent to the \emph{category of morphisms
-in~$\C$}. This has arbitrary morphisms~$Y \to X$ as objects and commutative
+in~$\C$}. This category has arbitrary morphisms~$Y \to X$ as objects and commutative
 squares as morphisms. The equivalence is given by sending an object~$(X \in \C,
 (Y \xra{f} X))$ to~$f$.
 \end{ex}
@@ -331,7 +333,7 @@ Equivalently, the associated pseudofunctor~$\C^\op \to \Cat$ factors
 over~$\mathrm{Grpd} \hookrightarrow \Cat$ ($\Set \hookrightarrow
 \Cat$) [$\mathrm{EqRel} \hookrightarrow \Cat$].
 
-\begin{prop}Let~$\F \xra{p} \C$ be a functor. This is \ldots
+\begin{prop}A functor~$\F \xra{p} \C$ is \ldots
 \begin{itemize}
 \item a category fibered in groupoids if and only if any morphism
 in~$\F$ is cartesian and for any morphism~$Y \xra{f} X$ in~$\C$ and any
