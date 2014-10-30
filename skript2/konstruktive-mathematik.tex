@@ -34,8 +34,8 @@
 
 \usepackage{hyperref}
 
-\setlength\parskip{\medskipamount}
-\setlength\parindent{0pt}
+%\setlength\parskip{\medskipamount}
+%\setlength\parindent{0pt}
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
@@ -92,7 +92,6 @@
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\Ouv}{\mathrm{Ouv}}
 \newcommand{\res}{\mathrm{res}}
-\newcommand{\Rad}{\mathrm{Rad}}
 \newcommand{\Sh}{\mathrm{Sh}}
 \newcommand{\PSh}{\mathrm{PSh}}
 \newcommand{\Bohr}{\mathrm{Bohr}}
@@ -162,7 +161,7 @@
 
 \newcommand{\listedmotto}[2]{%
   \begin{motto}\label{#1}#2\end{motto}%
-  \addcontentsline{lom}{section}{\textnormal{\textbf{Motto \ref{#1}.} #2}}%
+  \addcontentsline{lom}{section}{\noindent\textnormal{\textbf{Motto \ref{#1}.} #2}}%
 }
 
 \begin{document}
@@ -250,6 +249,8 @@ verweisen}
 \tocbasic@listhead{Liste der Mottos}
 \@starttoc{lom}
 \makeatother
+
+\newpage
 
 \section{Was ist konstruktive Mathematik?}
 
@@ -347,8 +348,8 @@ Hier ein konkretes Beispiel aus der Zahlentheorie, um den Unterschied zu
 demonstrieren:
 \begin{prop}Die Zahl~$\sqrt{2}$ ist nicht rational.\end{prop}
 \begin{proof}[Beweis (nur klassisch zulässig)]
-Angenommen, die Behauptung ist falsch, d.\,h. die Zahl~$\sqrt{2}$ ist nicht
-nicht rational. Dann ist~$\sqrt{2}$ also rational. Somit gibt es ganze
+Angenommen, die Behauptung ist falsch, das heißt die Zahl~$\sqrt{2}$ ist \emph{nicht
+nicht} rational. Dann ist~$\sqrt{2}$ also rational. Somit gibt es ganze
 Zahlen~$p$ und~$q$ mit~$\sqrt{2} = p / q$. Daraus folgt die Beziehung~$2q^2 =
 p^2$, die einen Widerspruch zum Satz über die Eindeutigkeit der
 Primfaktorzerlegung darstellt: Auf der linken Seite kommt der Primfaktor~$2$
@@ -1356,7 +1357,7 @@ die erwarteten Regeln für Addition und Multiplikation.
 \end{defn}
 
 \begin{defn}Das formale System \emph{Peano-Arithmetik} ist genau wie
-Heyting-Arithmetik gegeben, nur mit klassischer statt intuitionistischer
+Heyting-Arith\-me\-tik gegeben, nur mit klassischer statt intuitionistischer
 Logik.\end{defn}
 
 \begin{defn}Ein formales System heißt genau dann \emph{inkonsistent}, wenn es in
@@ -2225,8 +2226,8 @@ ableitbar ist, so ist auch
 $\seq{\vec x} (\exists y\?\NN\_ \varphi)$
 intuitionistisch ableitbar.\end{kor}
 \begin{proof}Nach Teil~(c) von Satz~\ref{friedman:proof} ist die
-Friedmanübersetzung der Voraussetzung~$\neg\neg\exists
-y\?\NN\_ \varphi$ intuitionistisch ableitbar. Wegen Teil~(b) ist diese äquivalent zu
+Friedmanübersetzung der Voraussetzung $\neg\neg(\exists
+y\?\NN\_ \varphi)$ intuitionistisch ableitbar. Wegen Teil~(b) ist diese äquivalent zu
 \[ ((\exists y\?\NN\_ (\varphi \vee F)) \Rightarrow F) \Rightarrow F. \]
 Wählt man daher trickreich~$F :\equiv (\exists y\?\NN\_ \varphi)$, so folgt die Behauptung.
 Alternativ kann man auch direkt das Konservativitätsresultat~\ref{peanokons}
@@ -2405,8 +2406,8 @@ Primideal hat. Das ist nicht zu erwarten -- jedes konkrete Primideal kann nicht
 die Vorstellung des generischen Primideals fassen -- und in der Tat im
 Allgemeinen auch nicht der Fall. Denn wenn ein Primideal~$\pp$ für alle~$x \in
 R$ die Äquivalenz
-\[ x \in \pp \quad\Longleftrightarrow\quad \top \seq{} Z(x) \]
-erfüllt, gilt schon~$\pp = \sqrt{(0)} = (\text{Ideal aller nilpotenten
+$x \in \pp \Leftrightarrow \top \seq{} Z(x)$
+gilt, gilt schon~$\pp = \sqrt{(0)} = (\text{Ideal aller nilpotenten
 Elemente})$. Also ist jeder Nullteiler in~$R$ nilpotent. Das ist aber eine
 besondere Eigenschaft, die nur wenige Ringe haben. (Etwa ist in~$\ZZ \times
 \ZZ$ das Element~$(1,0)$ ein Nullteiler, aber nicht nilpotent. In der
@@ -2653,7 +2654,8 @@ mathematische Alternativuniversen. Diese Zutaten wollen wir in den folgenden
 Abschnitten grob umreißen.
 
 
-\subsection{Gelfand-Dualität zwischen topologischen Räumen und \csalgebren}
+\subsection{\texorpdfstring{Gelfand-Dualität zwischen topologischen Räumen und
+\csalgebren}{Gelfand-Dualität zwischen topologischen Räumen und C*-Algebren}}
 
 Grundlegend für das Wechselspiel zwischen Geometrie und Algebra ist folgende
 Erkenntnis: Einem geometrischen Objekt~$X$ kann man die Menge der
@@ -3241,7 +3243,8 @@ führen, anstatt wie sonst mit affinen Überdeckungen, Übergängen zu Halmen
 und ähnlichen Techniken hantieren zu müssen.
 
 
-\subsection{Der Bohr-Topos zu einer nichtkommutativen \csalgebra}
+\subsection{\texorpdfstring{Der Bohr-Topos zu einer nichtkommutativen
+\csalgebra}{Der Bohr-Topos zu einer nichtkommutativen C*-Algebra}}
 
 Sei~$A$ die nichtkommutative \csalgebra{} eines quantenmechanischen Systems.
 
@@ -3722,7 +3725,7 @@ Linksadjungierten zum Vergissfunktor der Kategorie der Radikalideale von~$R$ in
 die Kategorie aller Ideale von~$R$.\end{bem}
 
 \begin{lemma}\label{lemma:rad}%
-Für die bezüglich der Inklusionsbeziehung partiell geordnete Menge~$\Rad(R)$
+Für die bezüglich der Inklusionsbeziehung partiell geordnete Menge
 der Radikalideale eines Rings~$R$ gilt:
 \begin{enumerate}
 \item Das kleinste Element ist~$\sqrt{(0)}$, das Ideal aller nilpotenten
