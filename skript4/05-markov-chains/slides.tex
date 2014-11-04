@@ -1,0 +1,173 @@
+\documentclass[12pt,utf8,notheorems,compress]{beamer}
+
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amssymb}
+%\usepackage[framed,amsmath,thmmarks,hyperref]{ntheorem}
+
+%\usepackage[small,nohug]{diagrams}
+%\diagramstyle[labelstyle=\scriptstyle]
+
+%\usepackage[protrusion=true,expansion=false]{microtype}
+
+%\usepackage{lmodern}
+\usepackage{tabto}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage[all]{xy}
+
+%\usepackage[natbib=true,style=numeric]{biblatex}
+%\usepackage[babel]{csquotes}
+%\bibliography{lit}
+
+%\usepackage{hyperref}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+%\theoremseparator{:}
+\theoremstyle{plain}  %nonumberplain
+%\newtheorem{beh}{Behauptung}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Korollar}
+\newtheorem{theorem}{Satz}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+%\newtheorem{kor}{Korollar}
+%\newtheorem{satz}{Satz}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{hilfsaussage}{Hilfsaussage}
+%\theorembodyfont{\normalfont}
+\newtheorem{axiom}{Axiom}
+%\newtheorem{defnprop}{Definition/Proposition}
+%\newtheorem{bem}{Bemerkung}
+%\newtheorem{bsp}{Beispiel}
+%\theoremsymbol{\ensuremath{\openbox}}
+%\newtheorem{proof}{Beweis}
+%\newtheorem{defn}{Definition}
+
+\newcommand{\lra}{\longrightarrow}
+\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
+
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\C}{\mathcal{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
+\newcommand{\GL}[1]{\operatorname{GL}(#1)}
+\newcommand{\freist}{\_{}\_{}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Grp}{\mathrm{Grp}}
+\newcommand{\Vect}{\mathrm{Vect}}
+
+\def\longleadsto{\mathrel{-}\joinrel\leadsto}
+\DeclareMathOperator{\ggT}{ggT}
+\DeclareMathOperator{\Ob}{Ob}
+\newcommand{\op}{\mathrm{op}}
+
+\title{Markov chains and MCMC methods}
+\author[Kleine Bayessche AG]{%
+  %\includegraphics[scale=0.4]{relationen.png}
+  What are Markov chains? How can they be used as models? How can they be used
+  to draw samples from distributions? How can they be used to evaluate
+  integrals over high-dimensional domains? How can they be used to build IRC
+  chat bots?
+  }
+%Ingo Blechschmidt \\ mit Illustrationen von Carina Willbold}
+%\institute{Pizzaseminar in Mathematik}
+\date{7. November 2014}
+
+%\usetheme{Warsaw}  %Warsaw, Berkeley?
+\usetheme{Warsaw}
+\useoutertheme{split}
+\usecolortheme{seahorse}
+\usefonttheme{serif}
+\usepackage{kurier}
+\useinnertheme{rectangles}
+%\usepackage{bookman}
+%\setbeamercovered{transparent}
+
+\setbeamertemplate{navigation symbols}{}
+%\setbeamertemplate{footline}{}
+%\setbeamertemplate{headline}{}
+
+%\beamertemplateboldcenterframetitle
+%\setbeamerfont{frametitle}{size={\Large}}
+
+\newcommand*\oldmacro{}%
+\let\oldmacro\insertshorttitle%
+\renewcommand*\insertshorttitle{%
+  \oldmacro\hfill\insertframenumber\,/\,\inserttotalframenumber\hfill}
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]}{\end{list}}
+
+\newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{#1}}}
+
+\begin{document}
+
+\setbeameroption{show notes}
+\setbeamertemplate{note page}[plain]
+
+\frame{\titlepage}
+%\frame[t]{\frametitle{Gliederung}\begin{minipage}{\textwidth}\begin{small}\tableofcontents\end{small}\end{minipage}}
+\frame[t]{\frametitle{Outline}\tableofcontents}
+
+\section{Live demo: an IRC chat bot}
+
+\frame{
+  \begin{center}
+    \huge
+    Live demo: an IRC chat bot
+  \end{center}
+}
+
+
+\section{What is a Markov chain?}
+
+\frame[t]{\frametitle{What is a Markov chain?}
+  \begin{itemize}
+    \item A Markov chain is a system which undergoes transitions from one state
+    to another according to probabilities~$P(X' = j \,|\, X = i) =: p_{ij}$.
+    \item More abstractly, a Markov chain on a state space~$S$ is a map~$S \to
+    D(S)$, where~$D(S)$ is the set of probability measures on~$S$.
+    \item Categorically, a Markov chain is a coalgebra for the functor~$D :
+    \Set \to \Set$.
+  \end{itemize}
+}
+
+\note{
+  The following systems can be modeled by Markov chains:
+  \begin{itemize}
+  \item the position of a peg in the game of snakes and ladders
+  \item the position of a random walk
+  \item the weather, if we oversimplify a lot
+  \end{itemize}
+
+  The following cannot:
+
+  \begin{itemize}
+  \item the state of a game of blackjack
+  \end{itemize}
+}
+
+\frame[t]{\frametitle{Basic theory on Markov chains}
+  \begin{itemize}
+    \item Transition matrix is a stochastic matrix
+    \item Main theorem
+    \item XXX
+  \end{itemize}
+}
+
+\end{document}
