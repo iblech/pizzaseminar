@@ -8,11 +8,13 @@ import Control.Monad.Random
 import Data.Maybe
 import Data.List
 import System.Environment
+import Data.Binary
+import Data.Text.Binary
 
 tokenize :: T.Text -> [[T.Text]]
 tokenize =
     map (++ [T.empty]) . filter (not . null) . map (filter (not . T.null) .
-    T.split (`elem` " ,")) . T.split (`elem` ".;:")
+    T.split (`elem` " ")) . T.split (`elem` ".;:")
 
 blocks :: Int -> [a] -> [[a]]
 blocks n xs
@@ -29,6 +31,13 @@ parse2 n txt = (chain' xs, chain' xs')
     where
     xs  = map (blocks n) . tokenize $ txt
     xs' = map reverse . map (blocks n) . map ((T.pack "") :) . tokenize $ txt
+
+parse3 :: Int -> T.Text -> (M.Map [T.Text] [[T.Text]], M.Map [T.Text] [[T.Text]], M.Map T.Text [[T.Text]])
+parse3 n txt = (v, w, z)
+    where
+    (v,w) = parse2 n txt
+    z = M.fromListWith (++) . map (\x -> (head x, [x])) $ M.keys v
+    -- FIXME: The resulting map z is incomplete.
 
 chain :: (Ord a) => [a] -> M.Map a [a]
 chain = M.fromListWith (++) . map (\(x,y) -> (x,[y])) . pairs
@@ -51,7 +60,7 @@ draw2 v w x = go1 x []
     go1 k acc = do
         let ks = M.lookup k w
         if isNothing ks || null (fromJust ks)
-            then go2 (k:acc)
+            then go2 acc
             else do
                 k' <- getRandomElem (fromJust ks)
                 go1 k' (k:acc)
@@ -68,10 +77,27 @@ draw2' v w = do
     draw2 v w k
 
 drawText :: (MonadRandom m) => M.Map [T.Text] [[T.Text]] -> m T.Text
-drawText = liftM (T.concat . intersperse (T.pack " ") . map head) . draw
+drawText = liftM prettyifyText . draw
+
+prettyifyText = T.concat . intersperse (T.pack " ") . heads
+    where heads xs = map head (init xs) ++ init (last xs)
 
 drawText2 :: (MonadRandom m) => M.Map [T.Text] [[T.Text]] -> M.Map [T.Text] [[T.Text]] -> m T.Text
-drawText2 v w = liftM (T.concat . intersperse (T.pack " ") . map head) $ draw2' v w
+drawText2 v w = liftM prettyifyText $ draw2' v w
+
+drawText3
+    :: (MonadRandom m)
+    => M.Map [T.Text] [[T.Text]]
+    -> M.Map [T.Text] [[T.Text]]
+    -> M.Map T.Text [[T.Text]]
+    -> T.Text
+    -> m (Maybe T.Text)
+drawText3 v w z a =
+    case M.lookup a z of
+        Just ks -> do
+            k <- getRandomElem ks
+            liftM (Just . prettyifyText) $ draw2 v w k
+        Nothing -> return Nothing
 
 getRandomKey :: (MonadRandom m) => M.Map a b -> m a
 getRandomKey xs = liftM (fst . flip M.elemAt xs) $ getRandomR (0, M.size xs - 1)
@@ -85,10 +111,19 @@ pairs (x:[]) = []
 pairs (x:y:xs) = (x,y) : pairs (y:xs)
 
 main = do
-    [n] <- getArgs
-    txt <- T.IO.getContents
-    let (v,w) = parse2 (read n) txt
-    join $ liftM (mapM_ (\x -> T.IO.putStrLn x >> putStrLn "===")) $ evalRandIO $ replicateM 1000 $ drawText2 v w
+    args <- getArgs
+    case args of
+        [n, txt, dat] -> prepareCorpus (read n) txt dat
+        [dat] -> do
+            (v,w,z) <- decodeFile dat
+            putStrLn "Ready."
+            forever $ do
+                a <- getLine
+                x <- evalRandIO $ if null a
+                    then drawText2 v w
+                    else liftM (fromMaybe $ T.pack "...") $ drawText3 v w z (T.pack a)
+                T.IO.putStr x
+                putStrLn ".\n=====\n"
 
-repeatM :: (Monad m) => m a -> m [a]
-repeatM m = let n = m >>= \x -> liftM (x:) n in n
+prepareCorpus :: Int -> FilePath -> FilePath -> IO ()
+prepareCorpus n txt dat = encodeFile dat =<< liftM (parse3 n) (T.IO.readFile txt)
