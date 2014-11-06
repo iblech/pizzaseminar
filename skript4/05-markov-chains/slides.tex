@@ -1,4 +1,5 @@
 \documentclass[12pt,utf8,notheorems,compress]{beamer}
+\usepackage{etex}
 
 \usepackage[english]{babel}
 
@@ -71,10 +72,6 @@
 \title{Markov chains and MCMC methods}
 \author[Kleine Bayessche AG]{%
   %\includegraphics[scale=0.4]{relationen.png}
-  What are Markov chains? How can they be used as models? How can they be used
-  to draw samples from distributions? How can they be used to evaluate
-  integrals over high-dimensional domains? How can they be used to build IRC
-  chat bots?
   }
 %Ingo Blechschmidt \\ mit Illustrationen von Carina Willbold}
 %\institute{Pizzaseminar in Mathematik}
@@ -124,7 +121,7 @@
 %\frame[t]{\frametitle{Gliederung}\begin{minipage}{\textwidth}\begin{small}\tableofcontents\end{small}\end{minipage}}
 \frame[t]{\frametitle{Outline}\tableofcontents}
 
-\section{Live demo: an IRC chat bot}
+\section[Chat bot]{Live demo: an IRC chat bot}
 
 \frame{
   \begin{center}
@@ -134,14 +131,16 @@
 }
 
 
-\section{What is a Markov chain?}
+\section[Basics]{Basics on Markov chains}
 
 \frame[t]{\frametitle{What is a Markov chain?}
   \begin{itemize}
     \item A Markov chain is a system which undergoes transitions from one state
     to another according to probabilities~$P(X' = j \,|\, X = i) =: p_{ij}$.
+    \vfill
     \item More abstractly, a Markov chain on a state space~$S$ is a map~$S \to
     D(S)$, where~$D(S)$ is the set of probability measures on~$S$.
+    \vfill
     \item Categorically, a Markov chain is a coalgebra for the functor~$D :
     \Set \to \Set$.
   \end{itemize}
@@ -169,5 +168,109 @@
     \item XXX
   \end{itemize}
 }
+
+\section[Sampling]{Sampling from distributions}
+\frame[t]{\frametitle{How can we sample from distributions?}
+  Given a density~$f$, want independent samples~$x_1,x_2,\ldots$
+  \bigskip
+
+  \only<1-2>{\begin{itemize}
+  \item<1-2> If the inverse of the cumulative distribution function~$F$ is available:
+  \bigskip
+
+        \begin{enumerate}
+        \item Sample~$u \sim U(0,1)$.
+        \item Output~$x := F^{-1}(u)$.
+        \end{enumerate}
+
+  \bigskip
+  \item<2> Unfortunately, calculating~$F^{-1}$ is expensive for general
+  densities~$f$.\end{itemize}}
+
+  \begin{itemize}
+  \item<3,4> If some other sampleable density~$g$ with $f \leq M g$ is
+  available, can use \hil{rejection sampling}:
+  \bigskip
+
+  \begin{enumerate}
+  \item Sample~$x \sim g$.
+  \item Sample~$u \sim U(0,1)$.
+  \item If~$u < \frac{1}{M} f(x)/g(x)$, output~$x$; else, retry.
+  \end{enumerate}
+
+  \bigskip
+  \item<4> Works even if~$f$ is only known up to a constant factor.
+  \item<4> Acceptance probability is~$1/M$, this might be small.
+  \end{itemize}
+}
+
+\note{
+  \fontsize{8pt}{9.6}\selectfont
+  \begin{itemize}
+    \item Proof that the easy sampling algorithm is correct:
+          \[ P(F^{-1}(U) \leq x) = P(U \leq F(x)) = F(x). \]
+
+    \item Acceptance probability in rejection sampling:
+          \begin{align*}
+            P(U < \tfrac{1}{M} f(Q)/g(Q)) &=
+             E(\tfrac{1}{M} f(Q)/g(Q)) \\&=
+             \tfrac{1}{M} \cdot \int f(x)/g(x) \cdot g(x) \,dx =
+             \tfrac{1}{M}.
+          \end{align*}
+    \item Proof of correctness:
+          \begin{align*}
+            P(G \leq x \,\wedge\, U < \tfrac{1}{M} f(G)/g(G))
+            &= \int P(G \leq x \,\wedge\, U < \tfrac{1}{M} f(G)/g(G) \ |\ G = t) g(t)\,dt \\
+            &= \int \boldsymbol{1}_{t \leq x} \cdot P(U < \tfrac{1}{M} f(t)/g(t)) \cdot g(t) \,dt \\
+            &= \int \boldsymbol{1}_{t \leq x} \cdot \tfrac{1}{M} f(t)/g(t) \cdot g(t) \,dt \\
+            &= \tfrac{1}{M} F(x), \\[1em]
+            \text{so}\quad P(G \leq x \ |\ U < \tfrac{1}{M} f(G)/g(G)) &= F(x).
+          \end{align*}
+  \end{itemize}
+}
+
+\frame[t]{\frametitle{Markov chain Monte Carlo methods}
+  Given a density~$f$, want independent samples~$x_1,x_2,\ldots$
+
+  \begin{enumerate}
+    \item Construct a Markov chain with limiting distribution~$f$.
+    \item Draw samples from the chain.
+    \item Discard first samples (burn-in period).
+    \item From the remaining samples, retain only every~$N$'th.
+  \end{enumerate}
+
+  Works very well in practice.
+}
+
+\frame[t]{\frametitle{Metropolis--Hastings algorithm}
+  Given a density~$f$, want independent samples~$x_1,x_2,\ldots$
+
+  Let~$g(y,x)$ be such that for any~$x$, $g(\cdot,x)$ is sampleable.
+  Set~$B(x,y) := \frac{f(y) g(x,y)}{f(x) g(y,x)}$ and~$A(x,y) := \min\{1,\,A(x,y)\}$.
+
+  \begin{enumerate}
+    \item Initialize~$x$.
+    \item Sample~$u \sim U(0,1)$.
+    \item Sample~$y \sim g(\cdot,x)$.
+    \item If~$u < A(x,y)$, set~$x := y$.
+    \item Output~$x$ and go back to step~2.
+  \end{enumerate}
+
+  Works even if~$f$ and~$g$ are only known up to constant factors.
+}
+
+\note{
+  \begin{itemize}
+    \item Transition matrix (really, kernel):
+    \[ T(x,y) = \hat g(y,x) A(x,y) + \delta(x,y) \int (1-A(x,z)) \hat g(z,x) \,dz. \]
+
+    \item Balance condition (for~$x \neq y$):
+    \[ f(x) T(x,y) = \min\{ f(x) \hat g(y,x),\, f(y) \hat g(x,y) \} =
+      f(y) T(y,x). \]
+  \end{itemize}
+}
+
+\section[Integrals]{Evaluating integrals over high-dimensional domains}
+\frame[t]{}
 
 \end{document}
