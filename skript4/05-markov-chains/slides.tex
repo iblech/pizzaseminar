@@ -3,78 +3,20 @@
 
 \usepackage[english]{babel}
 
-\usepackage{amsmath,amssymb}
-%\usepackage[framed,amsmath,thmmarks,hyperref]{ntheorem}
+\usepackage{amsmath,amssymb,tabto}
 
-%\usepackage[small,nohug]{diagrams}
-%\diagramstyle[labelstyle=\scriptstyle]
-
-%\usepackage[protrusion=true,expansion=false]{microtype}
-
-%\usepackage{lmodern}
-\usepackage{tabto}
-\usepackage{tikz}
-\usepackage{array}
-\usepackage[all]{xy}
-
-%\usepackage[natbib=true,style=numeric]{biblatex}
-%\usepackage[babel]{csquotes}
-%\bibliography{lit}
-
-%\usepackage{hyperref}
+\usepackage[protrusion=true,expansion=false]{microtype}
 
 \setlength\parskip{\medskipamount}
 \setlength\parindent{0pt}
 
-%\theoremseparator{:}
-\theoremstyle{plain}  %nonumberplain
-%\newtheorem{beh}{Behauptung}
-\newtheorem{proposition}{Proposition}
-\newtheorem{corollary}{Korollar}
-\newtheorem{theorem}{Satz}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}
-%\newtheorem{kor}{Korollar}
-%\newtheorem{satz}{Satz}
-%\newtheorem{lemma}{Lemma}
-%\newtheorem{hilfsaussage}{Hilfsaussage}
-%\theorembodyfont{\normalfont}
-\newtheorem{axiom}{Axiom}
-%\newtheorem{defnprop}{Definition/Proposition}
-%\newtheorem{bem}{Bemerkung}
-%\newtheorem{bsp}{Beispiel}
-%\theoremsymbol{\ensuremath{\openbox}}
-%\newtheorem{proof}{Beweis}
-%\newtheorem{defn}{Definition}
-
-\newcommand{\lra}{\longrightarrow}
-\newcommand{\lhra}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
-\newcommand{\thlra}{\relbar\joinrel\twoheadrightarrow}
-
-\newcommand{\Z}{\mathbb{Z}}
-\renewcommand{\C}{\mathcal{C}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\Hom}{\mathrm{Hom}}
-\newcommand{\id}{\mathrm{id}}
-\newcommand{\Aut}[1]{\operatorname{Aut}(#1)}
-\newcommand{\GL}[1]{\operatorname{GL}(#1)}
-\newcommand{\freist}{\_{}\_{}}
+\newcommand{\RR}{\mathbb{R}}
 \newcommand{\Set}{\mathrm{Set}}
-\newcommand{\Grp}{\mathrm{Grp}}
-\newcommand{\Vect}{\mathrm{Vect}}
-
-\def\longleadsto{\mathrel{-}\joinrel\leadsto}
-\DeclareMathOperator{\ggT}{ggT}
-\DeclareMathOperator{\Ob}{Ob}
-\newcommand{\op}{\mathrm{op}}
 
 \title{Markov chains and MCMC methods}
 \author[Kleine Bayessche AG]{%
-  %\includegraphics[scale=0.4]{relationen.png}
+  \includegraphics[scale=0.3]{markov.png}
   }
-%Ingo Blechschmidt \\ mit Illustrationen von Carina Willbold}
-%\institute{Pizzaseminar in Mathematik}
 \date{7. November 2014}
 
 %\usetheme{Warsaw}  %Warsaw, Berkeley?
@@ -121,22 +63,12 @@
 %\frame[t]{\frametitle{Gliederung}\begin{minipage}{\textwidth}\begin{small}\tableofcontents\end{small}\end{minipage}}
 \frame[t]{\frametitle{Outline}\tableofcontents}
 
-\section[Chat bot]{Live demo: an IRC chat bot}
-
-\frame{
-  \begin{center}
-    \huge
-    Live demo: an IRC chat bot
-  \end{center}
-}
-
-
 \section[Basics]{Basics on Markov chains}
 
 \frame[t]{\frametitle{What is a Markov chain?}
   \begin{itemize}
     \item A Markov chain is a system which undergoes transitions from one state
-    to another according to probabilities~$P(X' = j \,|\, X = i) =: p_{ij}$.
+    to another according to probabilities~$P(X' = j \,|\, X = i) =: T_{ij}$.
     \vfill
     \item More abstractly, a Markov chain on a state space~$S$ is a map~$S \to
     D(S)$, where~$D(S)$ is the set of probability measures on~$S$.
@@ -149,9 +81,10 @@
 \note{
   The following systems can be modeled by Markov chains:
   \begin{itemize}
-  \item the position of a peg in the game of snakes and ladders
-  \item the position of a random walk
+  \item the peg in the game of snakes and ladders
+  \item a random walk
   \item the weather, if we oversimplify a lot
+  \item randomly surfing on the web
   \end{itemize}
 
   The following cannot:
@@ -163,11 +96,30 @@
 
 \frame[t]{\frametitle{Basic theory on Markov chains}
   \begin{itemize}
-    \item Transition matrix is a stochastic matrix
-    \item Main theorem
-    \item XXX
+    \item The transition matrix is a \hil{stochastic matrix}:
+    \[ T_{ij} \geq 1, \qquad \textstyle\sum\limits_j T_{ij} = 1. \]
+    \item If~$p \in \RR^S$ is a distribution of the initial state, \\
+    then $p^\mathrm{T} \cdot T^N \in \RR^S$ is the distribution of the~$N$'th
+    state.
+    \item If the Markov chain is \hil{irreducible} and \hil{aperiodic},
+    $p^\mathrm{T} \cdot T^N$ approaches a unique \hil{limiting
+    distribution~$p^\infty$}
+    independent of~$p$ as~$N \to \infty$.
+    \item A sufficient condition for~$p^\infty = q$ is the \hil{detailled balance
+    condition}
+    \[ q_i T_{ij} = q_j T_{ji}. \]
   \end{itemize}
 }
+
+
+\section[Chat bot]{Live demo: an IRC chat bot}
+\frame{
+  \begin{center}
+    \huge
+    Live demo: an IRC chat bot
+  \end{center}
+}
+
 
 \section[Sampling]{Sampling from distributions}
 \frame[t]{\frametitle{How can we sample from distributions?}
@@ -175,33 +127,33 @@
   \bigskip
 
   \only<1-2>{\begin{itemize}
-  \item<1-2> If the inverse of the cumulative distribution function~$F$ is available:
+  \item If the inverse of the cumulative distribution function~$F$ is available:
   \bigskip
 
         \begin{enumerate}
-        \item Sample~$u \sim U(0,1)$.
+        \item Sample~$u \sim U(0,1)$. \\[0.5em]
         \item Output~$x := F^{-1}(u)$.
         \end{enumerate}
 
   \bigskip
-  \item<2> Unfortunately, calculating~$F^{-1}$ is expensive for general
-  densities~$f$.\end{itemize}}
+  \item<2> Unfortunately, calculating~$F^{-1}$ is expensive in general.
+  \end{itemize}}
 
-  \begin{itemize}
-  \item<3,4> If some other sampleable density~$g$ with $f \leq M g$ is
-  available, can use \hil{rejection sampling}:
+  \only<3-4>{\begin{itemize}
+  \item If some other sampleable density~$g$ with $f \leq M g$ is
+  available, where~$M \geq 1$ is a constant, we can use \hil{rejection sampling}:
   \bigskip
 
   \begin{enumerate}
-  \item Sample~$x \sim g$.
-  \item Sample~$u \sim U(0,1)$.
+  \item Sample~$x \sim g$. \\[0.5em]
+  \item Sample~$u \sim U(0,1)$. \\[0.5em]
   \item If~$u < \frac{1}{M} f(x)/g(x)$, output~$x$; else, retry.
   \end{enumerate}
 
   \bigskip
   \item<4> Works even if~$f$ is only known up to a constant factor.
   \item<4> Acceptance probability is~$1/M$, this might be small.
-  \end{itemize}
+  \end{itemize}}
 }
 
 \note{
@@ -212,12 +164,12 @@
 
     \item Acceptance probability in rejection sampling:
           \begin{align*}
-            P(U < \tfrac{1}{M} f(Q)/g(Q)) &=
-             E(\tfrac{1}{M} f(Q)/g(Q)) \\&=
+            P(U < \tfrac{1}{M} f(G)/g(G)) &=
+             E(\tfrac{1}{M} f(G)/g(G)) \\&=
              \tfrac{1}{M} \cdot \int f(x)/g(x) \cdot g(x) \,dx =
              \tfrac{1}{M}.
           \end{align*}
-    \item Proof of correctness:
+    \item Proof of correctness of rejection sampling:
           \begin{align*}
             P(G \leq x \,\wedge\, U < \tfrac{1}{M} f(G)/g(G))
             &= \int P(G \leq x \,\wedge\, U < \tfrac{1}{M} f(G)/g(G) \ |\ G = t) g(t)\,dt \\
@@ -233,7 +185,7 @@
   Given a density~$f$, want independent samples~$x_1,x_2,\ldots$
 
   \begin{enumerate}
-    \item Construct a Markov chain with limiting distribution~$f$.
+    \item Construct a Markov chain with limiting density~$f$.
     \item Draw samples from the chain.
     \item Discard first samples (burn-in period).
     \item From the remaining samples, retain only every~$N$'th.
@@ -246,13 +198,13 @@
   Given a density~$f$, want independent samples~$x_1,x_2,\ldots$
 
   Let~$g(y,x)$ be such that for any~$x$, $g(\cdot,x)$ is sampleable.
-  Set~$B(x,y) := \frac{f(y) g(x,y)}{f(x) g(y,x)}$ and~$A(x,y) := \min\{1,\,A(x,y)\}$.
+  Set~$B(x,y) := \frac{f(y) g(x,y)}{f(x) g(y,x)}$ and~$A(x,y) := \min\{1,\,B(x,y)\}$.
 
   \begin{enumerate}
-    \item Initialize~$x$.
-    \item Sample~$u \sim U(0,1)$.
-    \item Sample~$y \sim g(\cdot,x)$.
-    \item If~$u < A(x,y)$, set~$x := y$.
+    \item Initialize~$x$. \\[0.5em]
+    \item Sample~$u \sim U(0,1)$. \\[0.5em]
+    \item Sample~$y \sim g(\cdot,x)$. \\[0.5em]
+    \item If~$u < A(x,y)$, set~$x := y$; else, keep~$x$ unchanged. \\[0.5em]
     \item Output~$x$ and go back to step~2.
   \end{enumerate}
 
@@ -270,7 +222,55 @@
   \end{itemize}
 }
 
+
 \section[Integrals]{Evaluating integrals over high-dimensional domains}
-\frame[t]{}
+\frame[t]{\frametitle{Evaluating integrals}
+  How can we evaluate integrals
+  \[ \int a(x) \, f(x) \,dx, \]
+  where~$f$ is a density on a high-dimensional domain?
+
+  \begin{itemize}
+    \item $\int_a^b$: \tabto{1.045cm}standard numerical quadrature
+    \item $\int_{-\infty}^\infty$: \tabto{1.045cm}numerical quadrature after coordinate
+    transform
+    \item $\int_{\RR^n}$: \tabto{1.045cm}iterated numerical quadrature
+  \end{itemize}
+
+  \pause
+  These techniques sample the domain uniformly and require many
+  evaluations of the integrand.
+}
+
+\note{
+  \begin{itemize}
+    \item Evaluation of such integrals is, of course, important in Bayesian
+    learning and elsewhere.
+    \item Note that adaptive numerical quadrature rules do exist.
+  \end{itemize}
+}
+
+\frame[t]{\frametitle{The Monte Carlo approach}
+  Draw indep.\@ samples~$x_1,\ldots,x_N$ from~$f$ and approximate
+  \[ f \approx \frac{1}{N} \sum_{i=1}^N \delta_{x_i}, \qquad
+  I := \int a(x) \, f(x) \,dx \approx
+    \frac{1}{N} \sum_{i=1}^N f(x_i) =: I_N. \]
+
+  \begin{itemize}
+    \item $E(I_N) = I$. \\[0.5em]
+    \item $\operatorname{Var}(I_N) = \operatorname{Var}_f(a) / N$.
+    \item $I_N \longrightarrow I$ almost surely (strong law of large numbers). \\[0.5em]
+  \end{itemize}
+}
+
+
+\section{Further study}
+\frame[t]{\frametitle{Further study}
+  \begin{itemize}
+    \item Survey the extensive literature on Markov chains.
+    \item Write a semantically driven chat bot.
+    \item In the view of quantum mechanics as a generalization of probability
+    theory, what is the meaning of MCMC algorithms?
+  \end{itemize}
+}
 
 \end{document}
