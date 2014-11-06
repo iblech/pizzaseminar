@@ -1,4 +1,5 @@
 module Main where
+-- FIXME: Doesn't work for n = 1.
 
 import qualified Data.Text as T
 import qualified Data.Text.IO as T.IO
