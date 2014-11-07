@@ -56,6 +56,9 @@
 
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{#1}}}
 
+\newcommand{\img}[2]{\begin{center}\includegraphics[scale=#1]{#2}\end{center}}
+\newcommand{\imageslide}[2]{\frame{\img{#1}{#2}}}
+
 \begin{document}
 
 \setbeameroption{show notes}
@@ -67,14 +70,17 @@
 
 \section[Basics]{Basics on Markov chains}
 
+\imageslide{1}{snakes-and-ladders}
+\imageslide{0.3}{the-internet}
+
 \frame[t]{\frametitle{What is a Markov chain?}
   \begin{itemize}
     \item A Markov chain is a system which undergoes transitions from one state
     to another according to probabilities~$P(X' = j \,|\, X = i) =: T_{ij}$.
-    \vfill
+    \bigskip
     \item More abstractly, a Markov chain on a state space~$S$ is a map~$S \to
     D(S)$, where~$D(S)$ is the set of probability measures on~$S$.
-    \vfill
+    \bigskip
     \item Categorically, a Markov chain is a coalgebra for the functor~$D :
     \Set \to \Set$.
   \end{itemize}
@@ -92,7 +98,7 @@
   The following cannot:
 
   \begin{itemize}
-  \item the state of a game of blackjack
+  \item a game of blackjack
   \end{itemize}
 }
 
@@ -113,6 +119,21 @@
   \end{itemize}
 }
 
+\note{
+  \begin{itemize}
+    \item A Markov chain is \emph{irreducible} iff any state can transition into
+    any state in a finite number of steps.
+    \item A Markov chain is \emph{aperiodic} iff any state can transition into
+    itself in a single step.
+    \item If~$T_{ij} > 0$ for all $i$ and $j$, the chain is irreducible and
+    aperiodic.
+    \item Think of the chain describing exports of goods by countries:
+    $q_i$ is the wealth of country~$i$ (as a fraction of the global wealth).
+    $T_{ij}$ is the percentage of this wealth which gets exported to
+    country~$j$. The detailled balance condition then says that exports equal
+    imports between all countires.
+  \end{itemize}
+}
 
 \section[Chat bot]{Live demo: an IRC chat bot}
 \frame{
@@ -245,7 +266,7 @@
   \begin{itemize}
     \item $\int_a^b$: \tabto{1.045cm}standard numerical quadrature
     \item $\int_{-\infty}^\infty$: \tabto{1.045cm}numerical quadrature after coordinate
-    transform
+    change
     \item $\int_{\RR^n}$: \tabto{1.045cm}iterated numerical quadrature
   \end{itemize}
 
@@ -279,6 +300,16 @@
   These made Bayesian ideas useful in practice.
 }
 
+
+\appendix
+\section{Image sources}
+\frame[t]{\frametitle{Image sources}
+  \begin{itemize}
+    \item Title illustration: Carina Willbold
+    \item \url{http://shetall.files.wordpress.com/2013/11/snakes_and_ladders1.jpg}
+    \item \url{https://www.facebook.com/4funsociety/photos/a.176890522366207.59715.176890359032890/594923673896221/}
+  \end{itemize}
+}
 
 %\section{Further study}
 %\frame[t]{\frametitle{Further study}
