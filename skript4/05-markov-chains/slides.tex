@@ -21,13 +21,15 @@
 
 %\usetheme{Warsaw}  %Warsaw, Berkeley?
 \usetheme{Warsaw}
-\useoutertheme{split}
+\useoutertheme[subsection=false]{miniframes}
 \usecolortheme{seahorse}
 \usefonttheme{serif}
 \usepackage{kurier}
 \useinnertheme{rectangles}
 %\usepackage{bookman}
 %\setbeamercovered{transparent}
+
+\setbeamertemplate{frametitle}[default][colsep=-4bp,rounded=false,shadow=false,center]
 
 \setbeamertemplate{navigation symbols}{}
 %\setbeamertemplate{footline}{}
@@ -198,13 +200,13 @@
   Given a density~$f$, want independent samples~$x_1,x_2,\ldots$
 
   Let~$g(y,x)$ be such that for any~$x$, $g(\cdot,x)$ is sampleable.
-  Set~$B(x,y) := \frac{f(y) g(x,y)}{f(x) g(y,x)}$ and~$A(x,y) := \min\{1,\,B(x,y)\}$.
+  Set~$B(x,y) := \frac{f(y) g(x,y)}{f(x) g(y,x)}$.
 
   \begin{enumerate}
     \item Initialize~$x$. \\[0.5em]
     \item Sample~$u \sim U(0,1)$. \\[0.5em]
     \item Sample~$y \sim g(\cdot,x)$. \\[0.5em]
-    \item If~$u < A(x,y)$, set~$x := y$; else, keep~$x$ unchanged. \\[0.5em]
+    \item If~$u < B(x,y)$, set~$x := y$; else, keep~$x$ unchanged. \\[0.5em]
     \item Output~$x$ and go back to step~2.
   \end{enumerate}
 
@@ -213,6 +215,17 @@
 
 \note{
   \begin{itemize}
+    \item The Metropolis algorithm was first published in an 1953 paper \emph{Equation of
+    State Calculations by Fast Computing Machines} by Metropolis, Rosenbluth,
+    Augusta Teller, and Edward Teller. Hastings' addition was in 1970.
+
+    \item Special case: $g(x,y) = g(y,x)$, then~$B(x,y) = f(y)/f(x)$; this is
+    the original Metropolis algorithm.
+
+    \item Example: $g(\cdot,x) = N(x,\sigma^2)$.
+
+    \item Set~$A(x,y) := \min\{1,\,B(x,y)\}$.
+
     \item Transition matrix (really, kernel):
     \[ T(x,y) = \hat g(y,x) A(x,y) + \delta(x,y) \int (1-A(x,z)) \hat g(z,x) \,dz. \]
 
@@ -260,18 +273,22 @@
     \item $\operatorname{Var}(I_N) = \operatorname{Var}_f(a) / N$.
     \item $I_N \longrightarrow I$ almost surely (strong law of large numbers). \\[0.5em]
   \end{itemize}
+  \bigskip
+
+  To sample~$f$, use Markov chain techniques; obtain \hil{MCMC methods}.
+  These made Bayesian ideas useful in practice.
 }
 
 
-\section{Further study}
-\frame[t]{\frametitle{Further study}
-  \begin{itemize}
-    \item Survey the extensive literature on Markov chains.
-    \item Write a semantically driven chat bot.
-    \item In the view of quantum mechanics as a generalization of probability
-    theory, what is the meaning of MCMC algorithms?
-  \end{itemize}
-}
+%\section{Further study}
+%\frame[t]{\frametitle{Further study}
+%  \begin{itemize}
+%    \item Survey the extensive literature on Markov chains.
+%    \item Write a semantically driven chat bot.
+%    \item In the view of quantum mechanics as a generalization of probability
+%    theory, what is the meaning of MCMC algorithms?
+%  \end{itemize}
+%}
 
 \end{document}
 
