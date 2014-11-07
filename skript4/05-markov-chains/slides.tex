@@ -1,9 +1,10 @@
 \documentclass[12pt,utf8,notheorems,compress]{beamer}
-\usepackage{etex}
 
 \usepackage[english]{babel}
 
-\usepackage{amsmath,amssymb,tabto}
+\usepackage{ragged2e}
+\usepackage{multicol}
+\usepackage{tabto}
 
 \usepackage[protrusion=true,expansion=false]{microtype}
 
@@ -14,9 +15,9 @@
 \newcommand{\Set}{\mathrm{Set}}
 
 \title{Markov chains and MCMC methods}
-\author[Kleine Bayessche AG]{%
-  \includegraphics[scale=0.3]{markov.png}
-  }
+\author[Kleine Bayessche
+AG]{\vspace{-1em}\\\includegraphics[scale=0.3]{markov.png} \\[0.5em] Ingo
+Blechschmidt}
 \date{7. November 2014}
 
 %\usetheme{Warsaw}  %Warsaw, Berkeley?
@@ -38,26 +39,24 @@
 %\beamertemplateboldcenterframetitle
 %\setbeamerfont{frametitle}{size={\Large}}
 
+\newcommand{\backupstart}{
+  \newcounter{framenumberpreappendix}
+  \setcounter{framenumberpreappendix}{\value{framenumber}}
+}
+\newcommand{\backupend}{
+  \addtocounter{framenumberpreappendix}{-\value{framenumber}}
+  \addtocounter{framenumber}{\value{framenumberpreappendix}} 
+}
+
 \newcommand*\oldmacro{}%
 \let\oldmacro\insertshorttitle%
 \renewcommand*\insertshorttitle{%
   \oldmacro\hfill\insertframenumber\,/\,\inserttotalframenumber\hfill}
 
-\newenvironment{changemargin}[2]{%
-  \begin{list}{}{%
-    \setlength{\topsep}{0pt}%
-    \setlength{\leftmargin}{#1}%
-    \setlength{\rightmargin}{#2}%
-    \setlength{\listparindent}{\parindent}%
-    \setlength{\itemindent}{\parindent}%
-    \setlength{\parsep}{\parskip}%
-  }%
-  \item[]}{\end{list}}
-
 \newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{#1}}}
 
 \newcommand{\img}[2]{\begin{center}\includegraphics[scale=#1]{#2}\end{center}}
-\newcommand{\imageslide}[2]{\frame{\img{#1}{#2}}}
+\newcommand{\imageslide}[3]{\frame{\frametitle{#1}\img{#2}{#3}}}
 
 \begin{document}
 
@@ -70,8 +69,8 @@
 
 \section[Basics]{Basics on Markov chains}
 
-\imageslide{1}{snakes-and-ladders}
-\imageslide{0.3}{the-internet}
+\imageslide{Snakes and Ladders}{0.9}{snakes-and-ladders}
+\imageslide{The Internet}{0.3}{the-internet}
 
 \frame[t]{\frametitle{What is a Markov chain?}
   \begin{itemize}
@@ -113,7 +112,7 @@
     $p^\mathrm{T} \cdot T^N$ approaches a unique \hil{limiting
     distribution~$p^\infty$}
     independent of~$p$ as~$N \to \infty$.
-    \item A sufficient condition for~$p^\infty = q$ is the \hil{detailled balance
+    \item A sufficient condition for~$p^\infty = q$ is the \hil{detailed balance
     condition}
     \[ q_i T_{ij} = q_j T_{ji}. \]
   \end{itemize}
@@ -130,7 +129,7 @@
     \item Think of the chain describing exports of goods by countries:
     $q_i$ is the wealth of country~$i$ (as a fraction of the global wealth).
     $T_{ij}$ is the percentage of this wealth which gets exported to
-    country~$j$. The detailled balance condition then says that exports equal
+    country~$j$. The detailed balance condition then says that exports equal
     imports between all countires.
   \end{itemize}
 }
@@ -141,6 +140,47 @@
     \huge
     Live demo: an IRC chat bot
   \end{center}
+}
+
+\note{
+  \fontsize{8pt}{9.6}\selectfont
+  \setlength{\columnsep}{2em}
+  \begin{multicols}{2}
+  \justifying
+
+  A metric space $X$ in which every variety of algebras has its own
+  symphony orchestra, the Ballarat Symphony Orchestra which was formed in 1803 upon
+  the combining of three short-lived cantons of the Helvetic Republic.
+
+  Although no legal codes from ancient Egypt survive, court documents show that
+  Egyptian law was based on Milne's poem of the same mass number (isobars) free
+  to beta decay toward the lowest-mass nuclide.
+
+  Aldosterone is largely responsible for numerous earthquakes, including the
+  1756 Düren Earthquake and the 1992 Roermond earthquake, which was the first
+  to observe that shadows were full of colour.
+
+  One passage in scripture supporting the idea of forming positions on such
+  metaphysical questions simply does not occur in Unix or Linux where "charmap"
+  is preferred, usually in the form of the Croydon Gateway site and the Cherry
+  Orchard Road Towers.
+
+  While the Church exhorts civil authorities to seek peace, not war, and to
+  exercise discretion and mercy in imposing punishment on criminals, it may
+  still specialize in the output of DNS administration query tools (such as
+  dig) to indicate "that the responding name server is an authority for the
+  West diminished as he became increasingly isolated and critical of
+  capitalism, which he detailed in his essays such as "Why Socialism?".
+
+  In 1988 Daisy made a cameo appearance in the series) in which Kimberly
+  suffers from the effects of the antibiotics, growth hormones, and other
+  chemicals commonly used in math libraries, where functions tend to be low.
+
+  Another historic and continuing controversy is the discrimination between the
+  death of Gregory the Great, a book greatly popular in the PC market based on
+  the consequences of one's actions, and to the right, depending on the type of
+  manifold.
+  \end{multicols}
 }
 
 
@@ -182,7 +222,7 @@
 \note{
   \fontsize{8pt}{9.6}\selectfont
   \begin{itemize}
-    \item Proof that the easy sampling algorithm is correct:
+    \item Proof that the easy sampling algorithm is correct (draw a picture!):
           \[ P(F^{-1}(U) \leq x) = P(U \leq F(x)) = F(x). \]
 
     \item Acceptance probability in rejection sampling:
@@ -204,6 +244,20 @@
   \end{itemize}
 }
 
+\note{
+  The intuitive reason why rejection sampling works is the following.
+
+  To sample from~$f$, we have to pick any point in~$\{ (x,y) \,|\, y \leq f(x)
+  \}$ at random and look at the point's $x$~coordinate.
+
+  We do this by first picking any point in~$\{ (x,y) \,|\, y \leq Mg(x) \}$ --
+  this we can do, since we assume that~$g$ is efficiently sampleable.
+  XXX
+
+
+  XXX $M$ big, problems
+}
+
 \frame[t]{\frametitle{Markov chain Monte Carlo methods}
   Given a density~$f$, want independent samples~$x_1,x_2,\ldots$
 
@@ -215,6 +269,8 @@
   \end{enumerate}
 
   Works very well in practice.
+
+  XXX note slide
 }
 
 \frame[t]{\frametitle{Metropolis--Hastings algorithm}
@@ -301,7 +357,25 @@
 }
 
 
+\backupstart
 \appendix
+\section{Resources}
+\frame[t]{\frametitle{Resources}
+  \begin{itemize}
+    \item Lecture notes on Markov chains:
+
+    {\tiny
+    \mbox{\url{http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter11.pdf}}
+    \url{http://www.statslab.cam.ac.uk/~rrw1/markov/M.pdf}
+    \url{http://pages.uoregon.edu/dlevin/MARKOV/markovmixing.pdf}\par}
+
+    \item Survey on MCMC methods:
+
+    \tiny
+    \url{http://www.cs.princeton.edu/courses/archive/spr06/cos598C/papers/AndrieuFreitasDoucetJordan2003.pdf}
+  \end{itemize}
+}
+
 \section{Image sources}
 \frame[t]{\frametitle{Image sources}
   \begin{itemize}
@@ -320,6 +394,7 @@
 %    theory, what is the meaning of MCMC algorithms?
 %  \end{itemize}
 %}
+\backupend
 
 \end{document}
 
