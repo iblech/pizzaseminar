@@ -95,16 +95,20 @@ Blechschmidt}
   \end{itemize}
 
   The following cannot:
-
   \begin{itemize}
   \item a game of blackjack
   \end{itemize}
+
+  \justifying
+  The state space of a Markov chain can be discrete or continuous. In the
+  latter case, we use a transition kernel instead of a transition matrix.
+  \par
 }
 
 \frame[t]{\frametitle{Basic theory on Markov chains}
   \begin{itemize}
     \item The transition matrix is a \hil{stochastic matrix}:
-    \[ T_{ij} \geq 1, \qquad \textstyle\sum\limits_j T_{ij} = 1. \]
+    \[ T_{ij} \geq 0, \qquad \textstyle\sum\limits_j T_{ij} = 1. \]
     \item If~$p \in \RR^S$ is a distribution of the initial state, \\
     then $p^\mathrm{T} \cdot T^N \in \RR^S$ is the distribution of the~$N$'th
     state.
@@ -120,17 +124,17 @@ Blechschmidt}
 
 \note{
   \begin{itemize}
-    \item A Markov chain is \emph{irreducible} iff any state can transition into
+    \item\justifying A Markov chain is \emph{irreducible} iff any state can transition into
     any state in a finite number of steps.
-    \item A Markov chain is \emph{aperiodic} iff any state can transition into
+    \item\justifying A Markov chain is \emph{aperiodic} iff any state can transition into
     itself in a single step.
-    \item If~$T_{ij} > 0$ for all $i$ and $j$, the chain is irreducible and
+    \item\justifying If~$T_{ij} > 0$ for all $i$ and $j$, the chain is irreducible and
     aperiodic.
-    \item Think of the chain describing exports of goods by countries:
-    $q_i$ is the wealth of country~$i$ (as a fraction of the global wealth).
+    \item\justifying Think of the chain describing exports of goods by countries:
+    $q_i$ is the wealth of country~$i$ (as a fraction of global wealth).
     $T_{ij}$ is the percentage of this wealth which gets exported to
     country~$j$. The detailed balance condition then says that exports equal
-    imports between all countires.
+    imports between all countries.
   \end{itemize}
 }
 
@@ -245,17 +249,26 @@ Blechschmidt}
 }
 
 \note{
+  \begin{itemize}
+  \item \justifying
   The intuitive reason why rejection sampling works is the following.
 
-  To sample from~$f$, we have to pick any point in~$\{ (x,y) \,|\, y \leq f(x)
+  To sample from~$f$, we have to pick any point in~$A := \{ (x,y) \,|\, y \leq f(x)
   \}$ at random and look at the point's $x$~coordinate.
 
-  We do this by first picking any point in~$\{ (x,y) \,|\, y \leq Mg(x) \}$ --
-  this we can do, since we assume that~$g$ is efficiently sampleable.
-  XXX
+  We do this by first picking any point in~$B := \{ (x,y) \,|\, y \leq Mg(x) \}$,
+  by sampling a value~$x \sim g$ and~$y \sim U(0,Mg(x))$. (In the algorithm, we
+  sample~$u \sim U(0,1)$; set~$y := Mg(x) \cdot u$.) We then check
+  whether~$(x,y) \in A$, i.\,e.\@ whether~$y \leq f(x)$, i.\,e.\@ whether~$u
+  \leq \frac{1}{M} f(x)/g(x)$.
 
+  \item If we know little about~$f$, we cannot tailor~$g$ to the specific
+  situation at hand and have to use a large~$M$. In this case, the acceptance
+  probability~$1/M$ is low, so rejection sampling is not very efficient.
 
-  XXX $M$ big, problems
+  \item On the other hand, if we are able to choose~$M$ small, rejection
+  sampling is a good choice.
+  \end{itemize}
 }
 
 \frame[t]{\frametitle{Markov chain Monte Carlo methods}
@@ -269,8 +282,18 @@ Blechschmidt}
   \end{enumerate}
 
   Works very well in practice.
+}
 
-  XXX note slide
+\note{
+  \begin{itemize}
+    \item\justifying By the theory on Markov chains, it is obvious that
+    evolving the chain will eventually result in samples which are distributed
+    according to~$f$. However, they will certainly \emph{not} be independent
+    samples. To decrease correlation, we retain only every~$N$'th sample.
+
+    \item\justifying A Markov chain is said to \emph{mix well}, if small values of~$N$ are
+    possible.
+  \end{itemize}
 }
 
 \frame[t]{\frametitle{Metropolis--Hastings algorithm}
@@ -292,21 +315,32 @@ Blechschmidt}
 
 \note{
   \begin{itemize}
-    \item The Metropolis algorithm was first published in an 1953 paper \emph{Equation of
-    State Calculations by Fast Computing Machines} by Metropolis, Rosenbluth,
-    Augusta Teller, and Edward Teller. Hastings' addition was in 1970.
+    \item\justifying The Metropolis algorithm was first published in an 1953
+    paper \emph{Equation of State Calculations by Fast Computing Machines} by
+    Metropolis, Rosenbluth, Augusta Teller, and Edward Teller. Hastings'
+    addition was in 1970.
 
-    \item Special case: $g(x,y) = g(y,x)$, then~$B(x,y) = f(y)/f(x)$; this is
+    \item\justifying Special case: $g(x,y) = g(y,x)$, then~$B(x,y) = f(y)/f(x)$; this is
     the original Metropolis algorithm.
 
     \item Example: $g(\cdot,x) = N(x,\sigma^2)$.
 
+    \item To obtain practically useful methods even for "`bad"' densities~$f$,
+    one has to choose~$g$ properly. See for instance
+    \url{http://jtobin.ca/flat-mcmc/}.
+  \end{itemize}
+}
+
+\note{
+  \begin{itemize}
     \item Set~$A(x,y) := \min\{1,\,B(x,y)\}$.
 
     \item Transition matrix (really, kernel):
-    \[ T(x,y) = \hat g(y,x) A(x,y) + \delta(x,y) \int (1-A(x,z)) \hat g(z,x) \,dz. \]
+    \[ T(x,y) = \hat g(y,x) A(x,y) + \delta(x-y) \int (1-A(x,z)) \hat g(z,x) \,dz. \]
+    Here,~$\hat g(\cdot,x)$ denotes the normalization of~$g(\cdot,x)$
+    and~$\delta$ denotes the Dirac distribution.
 
-    \item Balance condition (for~$x \neq y$):
+    \item Detailed balance condition (for~$x \neq y$):
     \[ f(x) T(x,y) = \min\{ f(x) \hat g(y,x),\, f(y) \hat g(x,y) \} =
       f(y) T(y,x). \]
   \end{itemize}
@@ -333,8 +367,8 @@ Blechschmidt}
 
 \note{
   \begin{itemize}
-    \item Evaluation of such integrals is, of course, important in Bayesian
-    learning and elsewhere.
+    \item\justifying Evaluation of such integrals is, of course, important in
+    Bayes\-ian learning and elsewhere.
     \item Note that adaptive numerical quadrature rules do exist.
   \end{itemize}
 }
@@ -356,12 +390,26 @@ Blechschmidt}
   These made Bayesian ideas useful in practice.
 }
 
+\note{
+  \begin{center}
+    \includegraphics[scale=0.35]{mcmc-convergence}
+  \end{center}
+
+  \justifying
+  The plot shows the convergence speed to the true integral value ($0$) with
+  naive MCMC sampling (using a normal proposal distribution). For details, see
+  the Haskell code.
+  \par
+}
 
 \backupstart
 \appendix
 \section{Resources}
 \frame[t]{\frametitle{Resources}
   \begin{itemize}
+    \item Wikipedia gives a good first overview:
+
+    {\tiny\url{http://en.wikipedia.org/wiki/Markov_chain}\par}
     \item Lecture notes on Markov chains:
 
     {\tiny
@@ -380,22 +428,13 @@ Blechschmidt}
 \frame[t]{\frametitle{Image sources}
   \begin{itemize}
     \item Title illustration: Carina Willbold
-    \item \url{http://shetall.files.wordpress.com/2013/11/snakes_and_ladders1.jpg}
-    \item \url{https://www.facebook.com/4funsociety/photos/a.176890522366207.59715.176890359032890/594923673896221/}
+    \item
+    {\tiny\url{http://shetall.files.wordpress.com/2013/11/snakes_and_ladders1.jpg}\par}
+    \item
+    {\tiny\url{https://www.facebook.com/4funsociety/photos/a.176890522366207.59715.176890359032890/594923673896221/}\par}
   \end{itemize}
 }
 
-%\section{Further study}
-%\frame[t]{\frametitle{Further study}
-%  \begin{itemize}
-%    \item Survey the extensive literature on Markov chains.
-%    \item Write a semantically driven chat bot.
-%    \item In the view of quantum mechanics as a generalization of probability
-%    theory, what is the meaning of MCMC algorithms?
-%  \end{itemize}
-%}
 \backupend
 
 \end{document}
-
-http://jtobin.ca/flat-mcmc/
