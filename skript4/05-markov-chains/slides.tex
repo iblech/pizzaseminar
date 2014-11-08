@@ -15,29 +15,19 @@
 \newcommand{\Set}{\mathrm{Set}}
 
 \title{Markov chains and MCMC methods}
-\author[Kleine Bayessche
-AG]{\vspace{-1em}\\\includegraphics[scale=0.3]{markov.png} \\[0.5em] Ingo
-Blechschmidt}
-\date{7. November 2014}
+\author[Kleine Bayessche AG]{\vspace{-1em}\\\includegraphics[scale=0.3]{markov.png} \\[0.5em] Ingo Blechschmidt \\[-0.3em] {\scriptsize November 7th, 2014}}
+\date{November 7th, 2014}
 
-%\usetheme{Warsaw}  %Warsaw, Berkeley?
 \usetheme{Warsaw}
 \useoutertheme[subsection=false]{miniframes}
 \usecolortheme{seahorse}
 \usefonttheme{serif}
 \usepackage{kurier}
 \useinnertheme{rectangles}
-%\usepackage{bookman}
-%\setbeamercovered{transparent}
 
 \setbeamertemplate{frametitle}[default][colsep=-4bp,rounded=false,shadow=false,center]
 
 \setbeamertemplate{navigation symbols}{}
-%\setbeamertemplate{footline}{}
-%\setbeamertemplate{headline}{}
-
-%\beamertemplateboldcenterframetitle
-%\setbeamerfont{frametitle}{size={\Large}}
 
 \newcommand{\backupstart}{
   \newcounter{framenumberpreappendix}
@@ -58,13 +48,13 @@ Blechschmidt}
 \newcommand{\img}[2]{\begin{center}\includegraphics[scale=#1]{#2}\end{center}}
 \newcommand{\imageslide}[3]{\frame{\frametitle{#1}\img{#2}{#3}}}
 
-\begin{document}
-
 \setbeameroption{show notes}
 \setbeamertemplate{note page}[plain]
 
+\begin{document}
+
 \frame{\titlepage}
-%\frame[t]{\frametitle{Gliederung}\begin{minipage}{\textwidth}\begin{small}\tableofcontents\end{small}\end{minipage}}
+
 \frame[t]{\frametitle{Outline}\tableofcontents}
 
 \section[Basics]{Basics on Markov chains}
@@ -137,6 +127,7 @@ Blechschmidt}
     imports between all countries.
   \end{itemize}
 }
+
 
 \section[Chat bot]{Live demo: an IRC chat bot}
 \frame{
@@ -291,7 +282,7 @@ Blechschmidt}
     according to~$f$. However, they will certainly \emph{not} be independent
     samples. To decrease correlation, we retain only every~$N$'th sample.
 
-    \item\justifying A Markov chain is said to \emph{mix well}, if small values of~$N$ are
+    \item\justifying A Markov chain is said to \emph{mix well} if small values of~$N$ are
     possible.
   \end{itemize}
 }
@@ -402,6 +393,7 @@ Blechschmidt}
   \par
 }
 
+
 \backupstart
 \appendix
 \section{Resources}
@@ -423,6 +415,7 @@ Blechschmidt}
     \url{http://www.cs.princeton.edu/courses/archive/spr06/cos598C/papers/AndrieuFreitasDoucetJordan2003.pdf}
   \end{itemize}
 }
+
 
 \section{Image sources}
 \frame[t]{\frametitle{Image sources}
