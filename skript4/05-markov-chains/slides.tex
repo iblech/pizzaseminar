@@ -316,10 +316,25 @@
 
     \item Example: $g(\cdot,x) = N(x,\sigma^2)$.
 
-    \item To obtain practically useful methods even for "`bad"' densities~$f$,
-    one has to choose~$g$ properly. See for instance
+    \item To obtain practically useful methods even for ``bad'' densities~$f$,
+    one has to choose the proposal density~$g$ properly. See for instance
     \url{http://jtobin.ca/flat-mcmc/}.
   \end{itemize}
+}
+
+\note{
+  \begin{center}
+    \includegraphics[scale=0.13]{metropolis-hastings}
+  \end{center}
+
+  \justifying
+  The plot shows the effects of different proposal distributions (normal with
+  different variances). Notice that occasionally, the next sample equals the
+  previous one.
+
+  {\scriptsize Figure stolen from
+  \url{http://www.cs.princeton.edu/courses/archive/spr06/cos598C/papers/AndrieuFreitasDoucetJordan2003.pdf},
+  page 18.\par}
 }
 
 \note{
