@@ -314,6 +314,11 @@
     \item\justifying Special case: $g(x,y) = g(y,x)$, then~$B(x,y) = f(y)/f(x)$; this is
     the original Metropolis algorithm.
 
+    In this case, the algorithm has the following interpretation: If the
+    density at the proposal~$y$ is greater than at the old value~$x$
+    (so~$B(x,y) > 1$), we move to~$y$. So we try to optimize for the density
+    value. But, occasionally, we also accept proposals which lower the density.
+
     \item Example: $g(\cdot,x) = N(x,\sigma^2)$.
 
     \item To obtain practically useful methods even for ``bad'' densities~$f$,
