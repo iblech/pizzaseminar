@@ -203,13 +203,13 @@ Seien~$x_1,\ldots,x_n$ (kurz~$\vec x$) sowie~$y$ Variablen.
 Sei~$\varphi$ eine logische Formel in den Variablen~$\vec x$ sowie~$y$ und
 sei~$\psi$ eine logische Formel in~$\vec x$. Genau dann
 kann man
-\[ \text{im Kontext der Variablen~$\vec x$ aus $\exists y{:}\ \varphi$ die
+\[ \text{im Kontext der Variablen~$\vec x$ aus $(\exists y{:}\ \varphi)$ die
 Aussage~$\psi$ folgern,} \]
 wenn man
 \[ \text{im Kontext der Variablen~$\vec x, y$ aus $\varphi$ die Aussage~$\psi$
 folgern kann.} \]
 \end{indentblock}
-Mit anderen Worten: Wenn man die Aussage~$\exists y{:}\ \varphi$ als
+Mit anderen Worten: Wenn man die Aussage~$(\exists y{:}\ \varphi)$ als
 Voraussetzung gegeben hat und aus ihr die Aussage~$\psi$ folgern möchte, dann
 kann man die Existenz eines Werts~$y$, der die Eigenschaft~$\varphi$ hat,
 voraussetzen und unter diesem Kontext die Aussage~$\psi$ folgern. Umgekehrt
@@ -223,9 +223,8 @@ einem geeigneten Sinn als Rückzug längs eines Projektionsmorphismus~$X_1 \time
 Typen der Variablen~$x_i$ und~$Y$ der Typ von~$y$ ist. So lässt sich die
 Schlussregel für den Existenzquantor also auch als Ausdruck einer
 Adjunktionsbeziehung verstehen:
-\[ \Hom_{\vec x}(\exists y{:}\, \varphi,\ \psi) \cong
+\[ \Hom_{\vec x}((\exists y{:}\, \varphi),\ \psi) \cong
   \Hom_{\vec x, y}(\varphi,\ \psi). \]
-
 
 \begin{aufg}Formuliere die fundamentale Schlussregel für den
 Allquantor.\end{aufg}
