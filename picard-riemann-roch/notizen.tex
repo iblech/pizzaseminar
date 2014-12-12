@@ -145,7 +145,7 @@ Faserdimension einer kohärenten Garbe kann -- anders als bei lokal freien
 Garben -- von Punkt zu Punkt variieren.
 
 Von zentraler Bedeutung ist der Funktor~$\Gamma(X,\placeholder) : \Coh(X) \to
-\Vect(\CC)$, welcher nur linksexakt, aber in allen interessanten Fällen nicht
+\Vect(\CC)$, welcher linksexakt, aber in allen interessanten Fällen nicht
 exakt ist und daher abgeleitet werden muss. Damit definiert man
 \emph{Garbenkohomologie}: Die~$n$-te Kohomologie einer kohärenten Garbe~$\E$
 ist $H^n(X, \E) := R^n \Gamma(X,\placeholder)(\E)$.\footnote{Das ist etwas
@@ -175,7 +175,7 @@ die~$H^n(X,\E)$ \emph{endlichdimensionale} Vektorräume\footnote{Dass das
 nicht immer so ist, zeigt schon das Beispiel~$H^0(\AA^1, \O_{\AA^1})$ der
 unendlichdimensionale Raum der holomorphen Funktionen auf~$\CC$. Hier und im
 Folgenden ist~$\AA^1$ der eindimensionale affine Raum über~$\CC$.} und für~$i > \dim X$
-verschwindet die~$i$-ten Kohomologie.
+verschwindet die~$i$-te Kohomologie.
 \item Ist~$0 \to \E' \to \E \to \E'' \to 0$ eine kurze exakte Sequenz von
 kohärenten Garben, so erhält man eine lange exakte Sequenz in Kohomologie:
 \[ \cdots \lra H^n(X,\E') \lra H^n(X,\E) \lra H^n(X,\E'') \lra H^{n+1}(X,\E')
@@ -224,12 +224,12 @@ Leray--Serre-Spek\-tral\-sequenz ausweichen, bei der man nur Kohomologie mit Wer
 in lokalen Systemen benötigt [Shafarevich, Kap.~1].}
 
 Als letzter Grund sei angeführt, dass Garbenkohomologie geometrische Objekte
-klassiziferen kann. Etwa stehen die Elemente von~$H^1(X,\O_X^\times)$ auf
+klassifizieren kann. Etwa stehen die Elemente von~$H^1(X,\O_X^\times)$ auf
 kanonische Art und Weise mit den Geradenbündeln auf~$X$ (bis auf Isomorphie) in
 Eins-zu-Eins-Korrespondenz.\footnote{Geradenbündel kann man auch
 als~$\GL_1(\O_X)$-Hauptfaserbündel ansehen. Allgemeiner
 klassifiziert~$H^1(X,\GL_n(\O_X))$ Vektorbündel vom Rang~$n$
-und~$H^1(X,\G)$~$G$-Hauptfaserbündel.}
+und~$H^1(X,\G)$~$\G$-Hauptfaserbündel.}
 
 
 \subsection*{Die kurze exakte Sequenz zu einem Unterschema}
@@ -290,7 +290,7 @@ von Elementen eines Rings~$A$ heißt genau dann \emph{regulär}, wenn~$f_1$
 in~$A$ regulär, $f_2$ in~$A/(f_1)$ regulär, \ldots, $f_r$
 in~$A/(f_1,\ldots,f_{r-1})$ regulär ist. Dabei heißt ein Ringelement~$f$
 \emph{regulär}, wenn Multiplikation mit~$f$ injektiv ist. Anschaulich ist eine
-reguläre Folge von Funktionen eine, in der keine der einzelnen Gleichungen
+reguläre Folge von Funktionen eine, in der keine der einzelnen Gleichungen~"`$f_i = 0$"'
 redundant ist. Etwa ist die Folge~$z, z$ von Elementen von~$\O_{\AA^1}$ nicht
 regulär, und in der Tat hat das Verschwindungsschema~$V(z,z)$ dieser Funktionen
 auch nicht Kodimension~2.} -- so ist die Konormalgarbe lokal frei
@@ -346,7 +346,7 @@ eine invertierbare Funktion ab und haben daher keine Auswirkung auf den Null-
 und Polstellendivisor, weswegen~$\div(s)$ global wohldefiniert ist.
 
 Rationale Funktionen sind dasselbe wie rationale Schnitte des trivialen
-Geradenbündels~$\O_X$. Die beiden Definitionen für den Null- und
+Bündels~$\O_X$. Die beiden Definitionen für den Null- und
 Polstellendivisor einer rationalen Funktion stimmen miteinander überein.
 
 \begin{warning}Divisoren der Form~$\div(s)$, wobei~$s$ ein rationaler Schnitt
@@ -383,8 +383,8 @@ Morphismus~$\O_X(D) \to \O_X$, $f \mapsto f f_0$ global isomorph zu~$\O_X$.
 \begin{ex}Sei~$X = \PP^1$ mit den Koordinaten~$x$ und~$y$ und sei~$H = V(x)$.
 Dann besitzt~$\O_X(H)$ den globalen Schnitt~$1$. Die Garbe~$\O_X(-H)$ hat nur den
 Nullschnitt als globalen Schnitt, denn es gibt keine nichttrivialen rationalen
-Funktionen auf~$\PP^1$, welche zwar eine Nullstelle besitzen müssen, aber keine
-Pole haben dürfen. Auf der standardoffenen Menge~$D(y)$ besitzt die Garbe~$\O_X(-H)$
+Funktionen auf~$\PP^1$, welche eine Nullstelle, aber keine
+Polstellen haben. Auf der standardoffenen Menge~$D(y)$ besitzt die Garbe~$\O_X(-H)$
 den Schnitt~$x/y$ (der Pol bei~$[1:0]$ zählt nicht, da~$[1:0] \not\in D(y)$),
 auf~$D(x)$ den Schnitt~$1$.
 \end{ex}
@@ -921,7 +921,7 @@ Es gilt~$\chi(\O_X) = \frac{1}{12} \cdot (K_X^2 +
 \chi_\mathrm{top}(X))$.
 \end{fact}
 
-\begin{cor}[Formel für das Geschlecht]
+\begin{cor}[Geschlechtsformel]
 Sei~$C$ eine irreduzible Kurve auf~$X$. Für ihr Geschlecht $g(C) :=
 \dim_\CC H^1(C,\O_C)$ gilt
 \[ g(C) = 1 + \tfrac{1}{2} \cdot C(C+K_X). \]
