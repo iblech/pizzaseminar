@@ -4,7 +4,7 @@
 
 \usepackage{ragged2e}
 \usepackage{multicol}
-\usepackage{tabto}
+\usepackage{mathtools}
 
 \usepackage[protrusion=true,expansion=false]{microtype}
 
@@ -15,13 +15,14 @@
 \newcommand{\Set}{\mathrm{Set}}
 
 \title{Principal component analysis}
-\author[Kleine Bayessche AG]{\vspace{-1em}\\\includegraphics[scale=0.3]{markov.png} \\[0.5em] Ingo Blechschmidt \\[-0.3em] {\scriptsize December 17th, 2014}}
+\author[Kleine Bayessche AG]{Ingo Blechschmidt \\[-0.3em] {\scriptsize December 17th, 2014}}
 \date{December 17th, 2014}
 
 \usetheme{Warsaw}
 \usecolortheme{seahorse}
-\usefonttheme{serif}
-\usepackage{mathpazo}
+%\usefonttheme{serif}
+%\usepackage{mathpazo}
+\usepackage{kurier}
 \useinnertheme{rectangles}
 \setbeamercolor{structure}{fg=purple}
 
@@ -51,6 +52,11 @@
 \newcommand{\img}[2]{\begin{center}\includegraphics[scale=#1]{#2}\end{center}}
 \newcommand{\imageslide}[3]{\frame{\frametitle{#1}\img{#2}{#3}}}
 
+\newcommand{\T}[1]{\boldsymbol{#1}}
+\newcommand{\defeq}{\vcentcolon=}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\rank}{rank}
+
 \setbeameroption{show notes}
 \setbeamertemplate{note page}[plain]
 
@@ -59,6 +65,129 @@
 \frame{\titlepage}
 
 \frame[t]{\frametitle{Outline}\tableofcontents}
+
+\section{Theory}
+
+\subsection[SVD]{Singular value decomposition}
+
+\frame[t]{\frametitle{Singular value decomposition}
+  Let~$A \in \RR^{n \times m}$. Then there exist
+  \begin{itemize}
+    \item numbers~$\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_m \geq 0$,
+    \item an orthonormal basis~$\T{v}_1,\ldots,\T{v}_m$ of~$\RR^m$, and
+    \item an orthonormal basis~$\T{w}_1,\ldots,\T{w}_n$ of~$\RR^n$,
+  \end{itemize}
+  such that
+  \begin{align*}
+    A \T{v}_i &= \sigma_i \T{w}_i, \quad i = 1,\ldots,m. \\
+  \intertext{In matrix language:}
+    A &= W \Sigma V^t, \\
+    \text{where}\quad
+    V &= (\T{v}_1|\ldots|\T{v}_m) \in \RR^{m \times m}\text{ orthogonal}, \\
+    W &= (\T{w}_1|\ldots|\T{w}_n) \in \RR^{n \times n}\text{ orthogonal}, \\
+    \Sigma &= \mathrm{diag}(\sigma_1,\ldots,\sigma_m) \in \RR^{n \times m}.
+  \end{align*}
+}
+
+\note{
+  \begin{itemize}
+    \justifying
+    \item The singular value decomposition (SVD) exists for any real matrix,
+    even rectangular ones.
+    \item The singular values~$\sigma_i$ are unique.
+    \item The basis vectors are not unique.
+    \item If~$A$ is orthogonally diagonalizable with eigenvalues~$\lambda_i$
+    (for instance, if~$A$ is symmetric), then~$\sigma_i = |\lambda_i|$.
+    \item $\|A\|_\text{Frobenius} = \sqrt{\sum_{ij} A_{ij}^2} =
+    \sqrt{\trace(A^tA)} = \sqrt{\sum_i \sigma_i^2}$.
+    \item There exists a generalization to complex matrices. In this case, the
+    matrix~$A$ can be decomposed as~$W \Sigma V^\star$, where~$V^\star$ is the
+    complex conjugate of~$V^t$, and~$W$ and~$V$ are unitary matrices.
+    \item The singular value decomposition can also be formulated in a
+    basis-free manner as a result about linear maps between finite-dimensional
+    Hilbert spaces.
+  \end{itemize}
+}
+
+\note{
+  Existence proof (sketch):
+  \begin{enumerate}
+    \justifying
+    \item Consider the eigenvalue decomposition of the symmetric and
+    positive-semidefinite matrix~$A^t A$: We have an orthonormal
+    basis~$\T{v}_i$ of eigenvectors corresponding to eigenvalues~$\lambda_i$.
+    \item Set~$\sigma_i \defeq \sqrt{\lambda_i}$.
+    \item Set~$\T{w}_i \defeq \frac{1}{\sigma_i} A \T{v}_i$ (for those~$i$
+    with~$\lambda_i \neq 0$).
+    \item Then~$A \T{v}_i = \sigma_i \T{w}_i$ holds trivially.
+    \item The~$\T{w}_i$ are orthonormal: $(\T{w}_i,\T{w}_j) = \frac{1}{\sigma_i
+    \sigma_j} (A^t A \T{v}_i, \T{v}_j) = \frac{\lambda_i \delta_{ij}}{\sigma_i
+    \sigma_j}$.
+    \item If necessary, extend the~$\T{w}_i$ to an orthonormal basis.
+  \end{enumerate}
+
+  \justifying
+  This proof gives rise to an algorithm for calculating the SVD, but
+  unless~$A^t A$ is small, it has undesirable numerical properties. Since the
+  1960ies, there exists a stable iterative algorithm by Golub and van Loan.
+  \par
+}
+
+
+\subsection{Pseudoinverses}
+
+\frame[t]{\frametitle{The pseudoinverse of a matrix}
+  Let~$A \in \RR^{n \times n}$ and~$\T{b} \in \RR^n$. Then the solutions to the
+  optimization problem
+  \[ \|A\T{x} - \T{b}\|_2 \longrightarrow \text{min} \]
+  under~$\T{x} \in \RR^m$ are given by
+  \begin{align*}
+    \T{x} &= A^+ \T{b} + V \begin{pmatrix}0\\\star\end{pmatrix}, \\
+  \intertext{where $A = W \Sigma V^t$ is the SVD and}
+    A^+ &= V \Sigma^+ W^t, \\
+    \Sigma^+ &= \mathrm{diag}(\sigma_1^{-1},\ldots,\sigma_m^{-1}).
+  \end{align*}
+}
+
+\note{
+  \begin{itemize}
+    \justifying
+    \item In the formula for~$\Sigma^+$, set~$0^{-1} \defeq 0$.
+    \item The pseudoinverse can be used for interpolation:
+    Let data points $(x_i,y_i) \in \mathbb{R}^2$, $1 \leq i \leq N$, be given.
+    Want to find a polynomial $p(z) = \sum_{k=0}^n \alpha_i z^i$, $n \ll N$,
+    such that
+    \[ \sum_{i=1}^N |p(x_i) - y_i|^2 \longrightarrow \text{min.} \]
+    In matrix language, this problem is written
+    \[ \|A \T{u} - \T{y}\|_2 \longrightarrow \text{min} \]
+    where $\T{u} = (\alpha_0,\ldots,\alpha_N)^T \in \mathbb{R}^{n + 1}$ and
+    \[ A = \begin{pmatrix}
+      1 & x_1 & x_1^2 & \cdots & x_1^n \\
+      1 & x_2 & x_2^2 & \cdots & x_2^n \\
+      \vdots & \vdots & \vdots & \ddots & \vdots \\
+      1 & x_N & x_N^2 & \cdots & x_N^n
+    \end{pmatrix} \in \mathbb{R}^{N \times (n+1)}, \quad
+    \T{y} = \begin{pmatrix}y_1 \\ y_2 \\ \vdots \\ y_N\end{pmatrix} \in \mathbb{R}^{N}. \]
+  \end{itemize}
+}
+
+
+\subsection{Low-rank approximation}
+
+\frame[t]{\frametitle{Low-rank approximation}
+  Let~$A = W \Sigma V^t \in \RR^{n \times m}$ and~$1 \leq r \leq n,m$. Then a
+  solution to the optimization problem
+  \[ \|A - M\|_\text{Frobenius} \longrightarrow \text{min} \]
+  under all matrices~$M$ with~$\rank{M} \leq r$ is given by
+  \begin{align*}
+    M &= W \Sigma_r V^t, \\
+    \text{where}\quad
+    \Sigma_r &= \mathrm{diag}(\sigma_1,\ldots,\sigma_r,0,\ldots,0).
+  \end{align*}
+
+  The approximation error is
+  \[ \|A - W \Sigma_r V^t\|_\text{F} = \sqrt{\sigma_{r+1}^2 + \cdots + \sigma_m^2}. \]
+}
 
 \end{document}
 
