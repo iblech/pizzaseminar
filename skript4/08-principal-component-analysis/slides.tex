@@ -1,4 +1,4 @@
-\documentclass[12pt,utf8,notheorems,compress]{beamer}
+\documentclass[12pt,utf8,notheorems,compress,t]{beamer}
 
 \usepackage[english]{babel}
 
@@ -15,7 +15,8 @@
 \newcommand{\Set}{\mathrm{Set}}
 
 \title{Principal component analysis}
-\author[Kleine Bayessche AG]{Ingo Blechschmidt \\[-0.3em] {\scriptsize December 17th, 2014}}
+\newcommand{\bannerimage}{image-samples/00/small-reduced-001}
+\author[Kleine Bayessche AG]{\vspace{-0.5em}\\\includegraphics[scale=0.8]{\bannerimage} \\[1.0em] Ingo Blechschmidt \\[-0.3em] {\scriptsize December 17th, 2014}}
 \date{December 17th, 2014}
 
 \usetheme{Warsaw}
@@ -62,15 +63,39 @@
 
 \begin{document}
 
+\newcommand{\titleanim}{
+  \frame{\titlepage\transduration{1}\transfade[duration=5]}
+  \addtocounter{framenumber}{-1}
+}
+
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-001}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-002}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-003}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-004}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-005}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-006}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-007}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-008}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-009}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-010}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-009}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-008}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-007}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-006}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-005}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-004}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-003}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-002}\titleanim
+\renewcommand{\bannerimage}{image-samples/00/small-reduced-001}\titleanim
 \frame{\titlepage}
 
-\frame[t]{\frametitle{Outline}\tableofcontents}
+\frame{\frametitle{Outline}\tableofcontents}
 
 \section{Theory}
 
 \subsection[SVD]{Singular value decomposition}
 
-\frame[t]{\frametitle{Singular value decomposition}
+\frame{\frametitle{Singular value decomposition}
   Let~$A \in \RR^{n \times m}$. Then there exist
   \begin{itemize}
     \item numbers~$\sigma_1 \geq \sigma_2 \geq \cdots \geq \sigma_m \geq 0$,
@@ -137,7 +162,7 @@
 
 \subsection{Pseudoinverses}
 
-\frame[t]{\frametitle{The pseudoinverse of a matrix}
+\frame{\frametitle{The pseudoinverse of a matrix}
   Let~$A \in \RR^{n \times n}$ and~$\T{b} \in \RR^n$. Then the solutions to the
   optimization problem
   \[ \|A\T{x} - \T{b}\|_2 \longrightarrow \text{min} \]
@@ -175,7 +200,7 @@
 
 \subsection{Low-rank approximation}
 
-\frame[t]{\frametitle{Low-rank approximation}
+\frame{\frametitle{Low-rank approximation}
   Let~$A = W \Sigma V^t \in \RR^{n \times m}$ and~$1 \leq r \leq n,m$. Then a
   solution to the optimization problem
   \[ \|A - M\|_\text{Frobenius} \longrightarrow \text{min} \]
@@ -195,7 +220,7 @@
 
 \subsection{Image compression}
 
-\frame[t]{\frametitle{Image compression}
+\frame{\frametitle{Image compression}
   \begin{itemize}
     \item Think of images as matrices.
     \item Substitute a matrix~$W \Sigma V^t$ by $W \Sigma_r V^t$ with $r$
@@ -210,10 +235,16 @@
 }
 
 
+\subsection[POD]{Proper Orthogonal Decomposition}
+
+\frame{\frametitle{Proper Orthogonal Decomposition}
+  abc
+}
+
 \subsection{Eigenfaces}
 
-\frame[t]{\frametitle{Eigenfaces}
-  \begin{columns}[T]
+\frame{\frametitle{Eigenfaces}
+  \begin{columns}[t]
     \begin{column}{0.6\textwidth}
       \begin{itemize}
         \item Record sample faces $\T{x}_1,\ldots,\T{x}_N \in \RR^{\text{width}
