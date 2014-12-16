@@ -128,7 +128,8 @@
 
   \justifying
   This proof gives rise to an algorithm for calculating the SVD, but
-  unless~$A^t A$ is small, it has undesirable numerical properties. Since the
+  unless~$A^t A$ is small, it has undesirable numerical properties.
+  (But note that one can also use~$A A^t$!) Since the
   1960ies, there exists a stable iterative algorithm by Golub and van Loan.
   \par
 }
@@ -189,6 +190,67 @@
   \[ \|A - W \Sigma_r V^t\|_\text{F} = \sqrt{\sigma_{r+1}^2 + \cdots + \sigma_m^2}. \]
 }
 
+
+\section{Applications}
+
+\subsection{Image compression}
+
+\frame[t]{\frametitle{Image compression}
+  \begin{itemize}
+    \item Think of images as matrices.
+    \item Substitute a matrix~$W \Sigma V^t$ by $W \Sigma_r V^t$ with $r$
+    small.
+    \item To reconstruct $W \Sigma_r V^t$, only need to know
+    \begin{itemize}
+      \item the $r$ singular values $\sigma_1,\ldots,\sigma_r$,
+      \item the first $r$ columns of $W$, and
+      \item the top $r$ rows of $V^t$.
+    \end{itemize}
+  \end{itemize}
+}
+
+
+\subsection{Eigenfaces}
+
+\frame[t]{\frametitle{Eigenfaces}
+  \begin{columns}[T]
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+        \item Record sample faces $\T{x}_1,\ldots,\T{x}_N \in \RR^{\text{width}
+        \cdot \text{height}}$.
+        \item Calculate a POD basis of \emph{eigenfaces}.
+        \item Recognize faces by looking at the coefficients of the most
+        important eigenfaces
+      \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{eigenfaces-1} \\
+      \scriptsize
+      Eigenfaces resemble faces.\par
+    \end{column}
+  \end{columns}
+
+}
+
+\imageslide{More eigenfaces}{0.5}{eigenfaces-2}
+
+\note{
+  \begin{itemize}
+    \justifying
+    \item A naive approach is very sensitive to lighting, scale and
+    translation.
+    \item But extensions are possible, for instance considering the eyes, the
+    nose, and the mouth separately; this leads to eigeneyes, eigennoses, and
+    eigenmouths.
+    \item Image credit: \\
+    \url{http://upload.wikimedia.org/wikipedia/commons/6/67/Eigenfaces.png} \\
+    \url{http://www.cenparmi.concordia.ca/~jdong/eigenface.gif}
+    \item Live demo: \\ \url{http://cognitrn.psych.indiana.edu/nsfgrant/FaceMachine/faceMachine.html}
+    \item Examples: \\ \url{http://www.cs.princeton.edu/~cdecoro/eigenfaces/}
+  \end{itemize}
+}
+
 \end{document}
 
 Theory
@@ -209,3 +271,11 @@ Misc
 * nonlinear generalization
 * scale sensitivity
 * kernel trick?
+
+http://upload.wikimedia.org/wikipedia/commons/3/3a/Lena_Meyer-Landrut_at_PC_after_2010_Eurovision_2.jpg
+http://i.ytimg.com/vi/0YwrcZVM1MA/0.jpg
+http://www.clausewitz.com/images/MandelbrotSetSM.gif
+http://mathecamp.speicherleck.de/imgs/20140820_IMG_9512.jpg
+http://rs2img.memecdn.com/i-dont-always-smile-but-when-i-do_o_344193.jpg
+http://i.kinja-img.com/gawker-media/image/upload/s--BCSA3MoB--/18nyts1owfo9rjpg.jpg
+http://static.giantbomb.com/uploads/original/1/17172/1419618-unicorn2.jpg
