@@ -3,8 +3,6 @@
 # Programm von Tim Baumann, aus dem Pizzaseminar zwischen SS2013 und WS2013/2014.
 # Bitte in eine interaktive Webseite verwandeln!
 
-from __future__ import print_function
-
 import numpy, numpy.linalg, math, sys, Image
 
 def rect_diag(xs, rows, cols):

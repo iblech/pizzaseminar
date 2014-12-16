@@ -28,7 +28,7 @@
 \setbeamercolor{structure}{fg=purple}
 
 \setbeamertemplate{title page}[default][colsep=-1bp,rounded=false,shadow=false,bg=white]
-\setbeamertemplate{frametitle}[default][colsep=-2bp,rounded=false,shadow=false,center]
+\setbeamertemplate{frametitle}[default][colsep=-1bp,rounded=false,shadow=false,center]
 
 %\setbeamertemplate{headline}{}
 
@@ -48,7 +48,7 @@
 \renewcommand*\insertshorttitle{%
   \oldmacro\hfill\insertframenumber\,/\,\inserttotalframenumber\hfill}
 
-\newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{#1}}}
+\newcommand{\hil}[1]{{\usebeamercolor[fg]{item}{\textbf{#1}}}}
 
 \newcommand{\img}[2]{\begin{center}\includegraphics[scale=#1]{#2}\end{center}}
 \newcommand{\imageslide}[3]{\frame{\frametitle{#1}\img{#2}{#3}}}
@@ -127,7 +127,7 @@
     \sqrt{\trace(A^tA)} = \sqrt{\sum_i \sigma_i^2}$.
     \item There exists a generalization to complex matrices. In this case, the
     matrix~$A$ can be decomposed as~$W \Sigma V^\star$, where~$V^\star$ is the
-    complex conjugate of~$V^t$, and~$W$ and~$V$ are unitary matrices.
+    complex conjugate of~$V^t$ and~$W$ and~$V$ are unitary matrices.
     \item The singular value decomposition can also be formulated in a
     basis-free manner as a result about linear maps between finite-dimensional
     Hilbert spaces.
@@ -215,6 +215,13 @@
   \[ \|A - W \Sigma_r V^t\|_\text{F} = \sqrt{\sigma_{r+1}^2 + \cdots + \sigma_m^2}. \]
 }
 
+\note{
+  \begin{itemize}
+    \item This is the Eckart--Young(--Mirsky) theorem.
+    \item Beware of false and incomplete proofs in the literature!
+  \end{itemize}
+}
+
 
 \section{Applications}
 
@@ -235,23 +242,101 @@
 }
 
 
-\subsection[POD]{Proper Orthogonal Decomposition}
+\subsection[POD]{Proper orthogonal decomposition}
 
-\frame{\frametitle{Proper Orthogonal Decomposition}
-  abc
+\frame{\frametitle{Proper orthogonal decomposition}
+  Given data points~$\T{x}_i \in \RR^N$, want to find a low-dimensional
+  linear subspace which \hil{approximately contains} the~$\T{x}_i$.
+
+  Minimize
+  \[ J(U) \defeq \sum_i \|\T{x}_i - P_U(\T{x}_i)\|^2 \]
+  under all~$r$-dimensional subspaces~$U \subseteq \RR^N$, $r \ll N$,
+  where~$P_U : \RR^N \to \RR^N$ is the orthogonal projection onto~$U$.
+  \pause
+
+  More concrete formulation: Minimize
+  \[ J(\T{u}_1,\ldots,\T{u}_r) \defeq
+    \sum_i \Bigl\|\T{x}_i - \sum_{j=1}^r \langle\T{x}_i,\T{u}_j\rangle
+    \T{u}_j\Bigr\|^2, \]
+  where~$\T{u}_1,\ldots,\T{u}_r \in \RR^N$, $\langle\T{u}_j,\T{u}_k\rangle =
+  \delta_{jk}$.
 }
+
+\note{
+  Collect the data points~$\T{x}_i$ as columns of a matrix
+  \[ X = (\T{x}_1 | \cdots | \T{x}_\ell) \in \RR^{N \times \ell} \]
+  and consider its singular value decomposition
+  \[ X = W \Sigma V^t. \]
+  Then a solution to the minimization problem is given by the first~$r$ columns
+  of~$W$, with approximation error
+  \[ J = \sum_i \|\T{x}_i\|^2 - \sum_{j=1}^r \sigma_j^2. \]
+}
+
+\note{
+  \begin{itemize}
+    \justifying
+    \item Proper orthogonal decomposition (POD) cannot be used to find
+    low-dimensional \emph{submanifolds} which approximately contain given data
+    points.
+    \item Also, POD does not work well with \emph{affine} subspaces. But in
+    this case, the fix is easy: Simply shift the data points so that their mean
+    is zero.
+    \item POD is a general method for \emph{dimension reduction} and can be
+    used as a kind of ``preconditioner'' for many other algorithms: Simply
+    substitute the given points~$\T{x}_i$ by their projections~$P_U(\T{x}_i)$.
+    \item The optimal subspace~$U$ is, in general, not unique. The POD basis is
+    never unique, since~$J$ is invariant under the action of~$O(r)$.
+  \end{itemize}
+}
+
+
+\subsection[PCA]{Principal component analysis}
+
+\frame{\frametitle{Principal component analysis}
+  Given observations~$x_i^{(k)}$ of random variables~$X^{(k)}$, want
+  to find \hil{linearly uncorrelated} principal components.
+
+  Write $X = (\T{x}_1 | \cdots | \T{x}_\ell) \in \RR^{N \times \ell}$.
+  Calculate $X = W \Sigma V^t$.
+  Then the principal components are the variables
+  \[ Y^{(j)} = \sum_k W_{kj} X^{(k)}. \]
+
+  Most of the variance is captured by $Y^{(1)}$; second to most is captured by
+  $Y^{(2)}$; and so on.
+}
+
+\note{
+  \begin{itemize}
+    \justifying
+    \item For instance, in a study about circles, the variables \emph{radius},
+    \emph{diameter}, and \emph{circumference} are linearly correlated.
+    \item Principal component analysis (PCA) would automatically pick one of
+    these attributes as a principal component.
+    \item We have to normalize the data to have zero empirical mean first. Then
+    $XX^t$ is the empirical covariance matrix.
+    \item Note that, in the given sample, the $Y^{(j)}$ are indeed
+    uncorrelated:
+    \begin{align*}
+      E(Y^{(j)} XX^t Y^{(k)}) &= (W \T{e}_j)^t XX^t (W \T{e}_k) \\
+      &= \T{e}_j^t W^t W \Sigma V^t V \Sigma^t W^t W \T{e}_k \\
+      &= \Sigma \Sigma^t.
+    \end{align*}
+    \item Beware that PCA cannot resolve nonlinear correlation.
+  \end{itemize}
+}
+
 
 \subsection{Eigenfaces}
 
 \frame{\frametitle{Eigenfaces}
-  \begin{columns}[t]
+  \begin{columns}[T]
     \begin{column}{0.6\textwidth}
       \begin{itemize}
         \item Record sample faces $\T{x}_1,\ldots,\T{x}_N \in \RR^{\text{width}
         \cdot \text{height}}$.
-        \item Calculate a POD basis of \emph{eigenfaces}.
+        \item Calculate a POD basis of \hil{eigenfaces}.
         \item Recognize faces by looking at the coefficients of the most
-        important eigenfaces
+        important eigenfaces.
       \end{itemize}
     \end{column}
     \begin{column}{0.4\textwidth}
@@ -261,7 +346,6 @@
       Eigenfaces resemble faces.\par
     \end{column}
   \end{columns}
-
 }
 
 \imageslide{More eigenfaces}{0.5}{eigenfaces-2}
@@ -281,6 +365,23 @@
     \item Examples: \\ \url{http://www.cs.princeton.edu/~cdecoro/eigenfaces/}
   \end{itemize}
 }
+
+
+\subsection{Digit recognition}
+
+\frame{\frametitle{Digit recognition}
+  \centering
+  \includegraphics[width=\textwidth]{pca-digit-recognition}
+  \par
+}
+
+\backupstart
+\frame[plain]{
+  \centering
+  \includegraphics[height=1.05\textheight]{i-dont-always-do-model-reduction}
+  \par
+}
+\backupend
 
 \end{document}
 
@@ -303,6 +404,8 @@ Misc
 * scale sensitivity
 * kernel trick?
 
+http://fc09.deviantart.net/fs70/f/2011/247/7/5/arkadia_ir_by_liquid82-d48uf64.jpg
+
 http://upload.wikimedia.org/wikipedia/commons/3/3a/Lena_Meyer-Landrut_at_PC_after_2010_Eurovision_2.jpg
 http://i.ytimg.com/vi/0YwrcZVM1MA/0.jpg
 http://www.clausewitz.com/images/MandelbrotSetSM.gif
@@ -310,3 +413,4 @@ http://mathecamp.speicherleck.de/imgs/20140820_IMG_9512.jpg
 http://rs2img.memecdn.com/i-dont-always-smile-but-when-i-do_o_344193.jpg
 http://i.kinja-img.com/gawker-media/image/upload/s--BCSA3MoB--/18nyts1owfo9rjpg.jpg
 http://static.giantbomb.com/uploads/original/1/17172/1419618-unicorn2.jpg
+http://www.quickmeme.com/img/05/05e3cb3965c832e1061996f4dd3069dd69a9873937d694ea042e45232955753b.jpg
