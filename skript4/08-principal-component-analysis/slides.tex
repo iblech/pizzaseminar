@@ -219,14 +219,14 @@
 \subsection{Pseudoinverses}
 
 \frame{\frametitle{The pseudoinverse of a matrix}
-  Let~$A \in \RR^{n \times n}$ and~$\T{b} \in \RR^n$. Then the solutions to the
+  Let~$A \in \RR^{n \times m}$ and~$\T{b} \in \RR^n$. Then the solutions to the
   optimization problem
   \[ \|A\T{x} - \T{b}\|_2 \longrightarrow \text{min} \]
   under~$\T{x} \in \RR^m$ are given by
   \begin{align*}
     \T{x} &= A^+ \T{b} + V \begin{pmatrix}0\\\star\end{pmatrix}, \\
   \intertext{where $A = W \Sigma V^t$ is the SVD and}
-    A^+ &= V \Sigma^+ W^t, \\
+    A^+ &= W \Sigma^+ V^t, \\
     \Sigma^+ &= \mathrm{diag}(\sigma_1^{-1},\ldots,\sigma_m^{-1}).
   \end{align*}
 }
@@ -235,7 +235,8 @@
   \begin{itemize}
     \justifying
     \item In the formula for~$\Sigma^+$, set~$0^{-1} \defeq 0$.
-    \item The pseudoinverse can be used for interpolation:
+    \item If~$A$ happens to be invertible, then~$A^+ = A^{-1}$.
+    \item The pseudoinverse can be used for polynomial approximation:
     Let data points $(x_i,y_i) \in \mathbb{R}^2$, $1 \leq i \leq N$, be given.
     Want to find a polynomial $p(z) = \sum_{k=0}^n \alpha_i z^i$, $n \ll N$,
     such that
@@ -462,7 +463,9 @@
 
 \note{
   \begin{itemize}
-    \item This naive approach does not work very well.
+    \justifying
+    \item This naive approach does not work very well, but refined techniques
+    are discussed in the literature.
   \end{itemize}
 }
 
