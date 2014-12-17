@@ -142,7 +142,7 @@
 \frame{\titlepage}
 
 \frame{\frametitle{Outline}
-  \floatbox{-200}{70}{\includegraphics[width=0.4\textwidth]{s}}
+  \floatbox{-200}{70}{\includegraphics[width=0.4\textwidth]{svd}}
   \vspace{-1em}
   \tableofcontents
 }
@@ -302,6 +302,19 @@
   \end{itemize}
 }
 
+\note{
+  \begin{itemize}
+    \justifying
+    \item Image compression by singular value decomposition is mostly of
+    academic interest only.
+    \item This might be for the following reasons: other compression algorithms
+    have more efficient implementations; other algorithms taylor to the
+    specific properties of human vision; the basis vectors of other approaches
+    (for instance, DCT) are similar to the most important singular basis
+    vectors of a sufficiently large corpus of images.
+  \end{itemize}
+}
+
 
 \subsection[POD]{Proper orthogonal decomposition}
 
@@ -338,7 +351,7 @@
     \justifying
     \item Proper orthogonal decomposition (POD) cannot be used to find
     low-dimensional \emph{submanifolds} which approximately contain given data
-    points.
+    points. But check out \emph{kernel principal component analysis}.
     \item Also, POD does not work well with \emph{affine} subspaces. But in
     this case, the fix is easy: Simply shift the data points so that their mean
     is zero.
@@ -383,6 +396,8 @@
       &= \Sigma \Sigma^t.
     \end{align*}
     \item Beware that PCA cannot resolve nonlinear correlation.
+    \item Also note that PCA is sensitive to outliers and not
+    scaling-independent.
   \end{itemize}
 }
 
@@ -431,10 +446,20 @@
 \subsection{Digit recognition}
 
 \frame{\frametitle{Digit recognition}
+  Apply POD for dimension reduction, then use some similarity measure or
+  clustering technique. Results:
+
   \centering
-  \includegraphics[width=\textwidth]{pca-digit-recognition}
+  \includegraphics[width=0.95\textwidth]{pca-digit-recognition}
   \par
 }
+
+\note{
+  \begin{itemize}
+    \item This naive approach does not work very well.
+  \end{itemize}
+}
+
 
 \backupstart
 \frame[plain]{
