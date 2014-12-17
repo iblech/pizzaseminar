@@ -55,3 +55,10 @@ for row in range(3):
     ax[row,col].matshow(dupl(coeffs[:10, inds[:30]]))
 
 plt.show()
+
+f, ax = plt.subplots(3,4)
+for row in range(3):
+  for col in range(4):
+    ax[row,col].matshow(w[:,4*row+col].reshape(28,28))
+
+plt.show()
