@@ -26,12 +26,13 @@ bluesvd  = numpy.linalg.svd(blue)
 
 (_, redsigma, _)   = redsvd
 (_, greensigma, _) = greensvd
-(_, bluesigma, _)    = bluesvd
+(_, bluesigma, _)  = bluesvd
 
 svs_file = open('./svs.txt', 'w+')
 
 for i in xrange(0, len(redsigma)):
     print("%i %f %f %f" % (i, redsigma[i], greensigma[i], bluesigma[i]), file=svs_file)
+    # Python 2: print >>svs_file, "%i %f %f %f" % (i, redsigma[i], greensigma[i], bluesigma[i])
 
 def process_mat(svd, svs_to_keep):
     (u, sigma, vherm) = svd
