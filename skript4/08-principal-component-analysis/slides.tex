@@ -307,6 +307,10 @@
 \note{
   \begin{itemize}
     \justifying
+    \item See \url{http://speicherleck.de/iblech/stuff/pca-images.pdf} for
+    sample compressions and
+    \url{http://pizzaseminar.speicherleck.de/skript4/08-principal-component-analysis/svd-image.py}
+    for the Python code producing theses images.
     \item Image compression by singular value decomposition is mostly of
     academic interest only.
     \item This might be for the following reasons: other compression algorithms
@@ -342,6 +346,29 @@
 }
 
 \note{
+  \begin{itemize}
+    \justifying
+    \item In the first formulation, the optimization domain is the
+    \emph{Grassmannian} of~$r$-dimensional subspaces in~$\RR^N$. It is a
+    compact topological space (in fact a manifold of dimension~$r \cdot
+    (N-r)$). Since~$J(U)$ depends continuously on~$U$, the optimization problem
+    is guaranteed to have a solution.
+    \item The solution is in general not unique, not even locally. For
+    instance, consider the four data points~$(\pm 1, \pm 1)$ in~$\RR^2$. Then
+    any line~$U$ through the origin solves the optimization problem, with
+    functional value~$J(U) = 4$.
+    \item In the more concrete formulation, we look for an orthonormal basis
+    of a suitable subspace. In this case, the optimization domain is a compact
+    subset of~$\RR^{N \times r}$.
+    \item Since a given subspace possesses infinitely many orthonormal bases
+    (at least for $r \geq 2$), solutions to this refined problem are never
+    unique, not even locally.
+    \item Note that this is a non-convex optimization problem. Therefore common
+    numerical techniques do not apply.
+  \end{itemize}
+}
+
+\note{
   Collect the data points~$\T{x}_i$ as columns of a matrix
   \[ X = (\T{x}_1 | \cdots | \T{x}_\ell) \in \RR^{N \times \ell} \]
   and consider its singular value decomposition
@@ -363,8 +390,6 @@
     \item POD is a general method for \emph{dimension reduction} and can be
     used as a kind of ``preconditioner'' for many other algorithms: Simply
     substitute the given points~$\T{x}_i$ by their projections~$P_U(\T{x}_i)$.
-    \item The optimal subspace~$U$ is, in general, not unique. The POD basis is
-    never unique, since~$J$ is invariant under the action of~$O(r)$.
   \end{itemize}
 }
 
@@ -459,6 +484,26 @@
   \par
 }
 
+\note{
+  \begin{itemize}
+    \justifying
+    \item These images were produced by a Python program.
+    The actual numerical code is
+    very short (a few lines). Of course, the MNIST data set was used.
+
+    {\tiny
+    \url{http://pizzaseminar.speicherleck.de/skript4/08-principal-component-analysis/digit-recognition.py}\par}
+    \item The nine images show the values of the first ten POD coefficients of
+    the first 30 samples of the digits~$1$ to~$9$. Each column corresponds to a
+    different sample. The first four POD coefficients are drawn using more
+    vertical space, so that visual weight aligns with importance.
+    \item One can clearly see that the POD coefficients differ for the
+    different digits.
+    \item Also, one can see that the difference is not so great for similar
+    digits like~$5$ and~$8$ or~$7$ and~$9$.
+  \end{itemize}
+}
+
 \frame{\frametitle{Eigendigits}
   \centering
   \includegraphics[width=0.95\textwidth]{eigendigits}
@@ -468,9 +513,19 @@
 \note{
   \begin{itemize}
     \justifying
-    \item This naive approach does not work very well, but refined techniques
-    are discussed in the literature.
-    % XXX: Explain pictures.
+    \item These images show the first 12 POD basis vectors. The first basis
+    vector is a kind of ``prototypical digit''. The other basis vectors give
+    subsequent ``higher-order terms''.
+  \end{itemize}
+
+  \begin{itemize}
+    \justifying
+    \item Because I didn't implement a similarity measure or clustering
+    technique, I couldn't calculate the percentage of correctly classified
+    digits. However, presumably the success rate would not be too high: Like
+    the eigenfaces approach, this naive implementation is sensitive to the
+    specific position of the digits in the bounding box. Refined techniques are
+    discussed in the literature.
   \end{itemize}
 }
 
