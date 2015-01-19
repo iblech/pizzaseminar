@@ -11,6 +11,26 @@ def rect_diag(xs, rows, cols):
         mat[i,i] = xs[i]
     return mat
 
+# https://research.facebook.com/blog/294071574113354/fast-randomized-svd/
+# Randomisierter Algorithmus
+def quicksvd(mat):
+    # momentan aber deaktiviert
+    return numpy.linalg.svd(mat)
+
+    maxRank = 40
+    omega = numpy.random.normal(0,1, maxRank*mat.shape[1]).reshape(mat.shape[1], maxRank)
+    y     = numpy.dot(mat, omega)
+    q, r  = numpy.linalg.qr(y)
+    b     = numpy.dot(q.T, mat)
+    u, sigma, vherm = numpy.linalg.svd(b)
+    padCols   = max(0, mat.shape[0] - maxRank)
+    padSigmas = max(0, min(mat.shape[0], mat.shape[1]) - sigma.size)
+    return (
+        numpy.concatenate((numpy.dot(q, u), numpy.zeros((q.shape[0], padCols))), axis=1),
+        numpy.append(sigma, numpy.zeros(padSigmas)),
+        vherm
+    )
+
 im    = Image.open(sys.argv[1])
 (w,h) = im.size
 
@@ -20,9 +40,9 @@ red    = numpy.array(map(lambda c: c[0], pixels)).reshape(w,h)
 green  = numpy.array(map(lambda c: c[1], pixels)).reshape(w,h)
 blue   = numpy.array(map(lambda c: c[2], pixels)).reshape(w,h)
 
-redsvd   = numpy.linalg.svd(red)
-greensvd = numpy.linalg.svd(green)
-bluesvd  = numpy.linalg.svd(blue)
+redsvd   = quicksvd(red)
+greensvd = quicksvd(green)
+bluesvd  = quicksvd(blue)
 
 (_, redsigma, _)   = redsvd
 (_, greensigma, _) = greensvd
@@ -31,8 +51,8 @@ bluesvd  = numpy.linalg.svd(blue)
 svs_file = open('./svs.txt', 'w+')
 
 for i in xrange(0, len(redsigma)):
-    print("%i %f %f %f" % (i, redsigma[i], greensigma[i], bluesigma[i]), file=svs_file)
-    # Python 2: print >>svs_file, "%i %f %f %f" % (i, redsigma[i], greensigma[i], bluesigma[i])
+    # print("%i %f %f %f" % (i, redsigma[i], greensigma[i], bluesigma[i]), file=svs_file)
+    print >>svs_file, "%i %f %f %f" % (i, redsigma[i], greensigma[i], bluesigma[i])
 
 def process_mat(svd, svs_to_keep):
     (u, sigma, vherm) = svd
