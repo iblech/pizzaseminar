@@ -5,6 +5,7 @@
 \usepackage[ngerman,french,english]{babel}
 \addto\captionsngerman{\renewcommand\tablename{Tafel}}
 
+\usepackage{mathtools}
 \usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
 \usepackage{setspace}
 \usepackage{bussproofs}
@@ -126,6 +127,9 @@
 \newcommand{\?}{\,{:}\,}
 
 \newcommand{\XXX}[1]{\textcolor{red}{#1}}
+
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defequiv}{\vcentcolon\equiv}
 
 \renewcommand*\theenumi{\alph{enumi}}
 \renewcommand{\labelenumi}{(\theenumi)}
@@ -257,10 +261,10 @@ verweisen}
 \begin{prop}Es gibt irrationale Zahlen~$x$ und~$y$, sodass~$x^y$ rational ist.
 \end{prop}
 \begin{proof}[Beweis 1] Die Zahl~$\sqrt{2}^{\sqrt{2}}$ ist rational oder nicht
-rational. Setze im ersten Fall~$x := \sqrt{2}$, $y := \sqrt{2}$. Setze im
-zweiten Fall~$x := \sqrt{2}^{\sqrt{2}}$, $y := \sqrt{2}$.
+rational. Setze im ersten Fall~$x \defeq \sqrt{2}$, $y \defeq \sqrt{2}$. Setze im
+zweiten Fall~$x \defeq \sqrt{2}^{\sqrt{2}}$, $y \defeq \sqrt{2}$.
 \end{proof}
-\begin{proof}[Beweis 2] Setze~$x := \sqrt{2}$ und~$y := \log_{\sqrt{2}} 3$.
+\begin{proof}[Beweis 2] Setze~$x \defeq \sqrt{2}$ und~$y \defeq \log_{\sqrt{2}} 3$.
 Dann
 ist die Potenz~$x^y = 3$ sicher rational. Die Irrationalität von~$y$ lässt sich
 sogar einfacher als die von~$\sqrt{2}$ beweisen:
@@ -340,7 +344,7 @@ Argumente der zweiten Form sind dagegen konstruktiv völlig einwandfrei: Sie
 sind Beweise negierter Aussagen und nicht Widerspruchsbeweise im eigentlichen
 Sinn. Die Zulässigkeit erklärt sich direkt nach Definition:
 Die Negation wird (übrigens auch in klassischer Logik) als
-\[ \neg\psi :\equiv (\psi \Rightarrow \bot) \]
+\[ \neg\psi \defequiv (\psi \Rightarrow \bot) \]
 festgelegt. Dabei steht~"`$\bot$"' für \emph{Falschheit}, eine kanonische falsche
 Aussage. Wer mag, kann~$1 = 0$ oder~$\lightning$ denken.
 
@@ -546,7 +550,7 @@ anführen:
 Dann gilt das Prinzip vom ausgeschlossenen Dritten.\end{prop}
 \begin{proof}Sei~$\varphi$ eine beliebige Aussage. Wir müssen zeigen,
 dass~$\varphi$ oder~$\neg\varphi$ gilt. Dazu definieren wir die Teilmenge
-\[ U := \{ n \in \NN \,|\, (n = 1) \vee \varphi \}. \]
+\[ U \defeq \{ n \in \NN \,|\, (n = 1) \vee \varphi \}. \]
 Die Zugehörigkeitsbedingung ist etwas komisch, da die Aussage~$\varphi$ ja
 nicht von der frischen Variable~$n$ abhängt, aber völlig okay. Da~$U$
 sicherlich bewohnt ist (durch~$1 \in U$), besitzt~$U$ nach Voraussetzung ein
@@ -589,7 +593,7 @@ langweilig: Sie enthält genau zwei Elemente, nämlich die leere Teilmenge
 und~$\{\star\}$ selbst. Konstruktiv lässt sich das nicht zeigen, die
 Potenzmenge hat (potenziell!) viel mehr Struktur: Ist~$\varphi$ eine beliebige
 Aussage, so ist
-\[ M_\varphi := \{ x \in \{\star\} \,|\, \varphi \}, \]
+\[ M_\varphi \defeq \{ x \in \{\star\} \,|\, \varphi \}, \]
 wobei~$x$ eine nicht in~$\varphi$ vorkommende Variable sei, eine Teilmenge
 von~$\{\star\}$. Diese ist genau dann leer, wenn~$\varphi$ falsch ist; und
 genau dann gleich ganz~$\{\star\}$, wenn~$\varphi$ gilt. Ohne das Prinzip vom
@@ -825,7 +829,7 @@ weitere Primzahl, welche nicht in~$S$ liegt.\footnote{Auch konstruktiv folgt
 aus dieser Behauptung, dass die Menge der Primzahlen \emph{nicht endlich} und
 sogar dass sie \emph{abzählbar unendlich} ist. Diese beiden Aussagen sind aber
 weniger konkret, und ihre Beweise verwirren gelegentlich Erstsemester: Im
-Allgemeinen ist~$N := p_1 \cdots p_n + 1$ für Primzahlen~$p_i$ nämlich keine weitere
+Allgemeinen ist~$N \defeq p_1 \cdots p_n + 1$ für Primzahlen~$p_i$ nämlich keine weitere
 Primzahl -- nur die Primfaktoren von~$N$ werden neue Primzahlen
 sein~\cite{hardy:woodgold:prime-simplicity}.}
 \end{quote}
@@ -997,7 +1001,7 @@ x]$"' schreibt.
 
 Bei der Substitution muss man Variablenkollisionen verhindern. Etwa gilt für
 die Aussage
-\[ \varphi :\equiv (\forall n\?\NN\_ n = m) \]
+\[ \varphi \defequiv (\forall n\?\NN\_ n = m) \]
 im Kontext~$m : \NN$, dass
 \[ \varphi[n^2/m] \equiv (\forall \tilde n\?\NN\_ \tilde n = n^2). \]
 
@@ -1404,18 +1408,18 @@ Mathematiker zu verstehen. Darauf gehen wir am Ende dieses Abschnitts ein.
 Gödel und anderen) wird rekursiv wie folgt definiert:
 \newcommand{\optnegneg}{\textcolor{grey}{\neg\neg}}
 \begin{align*}
-  \varphi^\circ &:\equiv \neg\neg \varphi \text{ für atomare Aussagen~$\varphi$} \\
-  \top^\circ &:\equiv \top \\
-  \bot^\circ &:\equiv \bot \\
-  (\varphi \wedge \psi)^\circ &:\equiv \optnegneg(\varphi^\circ \wedge \psi^\circ) \\
-  (\varphi \vee \psi)^\circ &:\equiv \neg\neg(\varphi^\circ \vee \psi^\circ) \\
-  (\varphi \Rightarrow \psi)^\circ &:\equiv \optnegneg(\varphi^\circ \Rightarrow \psi^\circ) \\
-  (\forall x\?X\_ \varphi)^\circ &:\equiv \optnegneg\forall x\?X\_ \varphi^\circ \\
-  (\exists x\?X\_ \varphi)^\circ &:\equiv \neg\neg\exists x\?X\_ \varphi^\circ
+  \varphi^\circ &\defequiv \neg\neg \varphi \text{ für atomare Aussagen~$\varphi$} \\
+  \top^\circ &\defequiv \top \\
+  \bot^\circ &\defequiv \bot \\
+  (\varphi \wedge \psi)^\circ &\defequiv \optnegneg(\varphi^\circ \wedge \psi^\circ) \\
+  (\varphi \vee \psi)^\circ &\defequiv \neg\neg(\varphi^\circ \vee \psi^\circ) \\
+  (\varphi \Rightarrow \psi)^\circ &\defequiv \optnegneg(\varphi^\circ \Rightarrow \psi^\circ) \\
+  (\forall x\?X\_ \varphi)^\circ &\defequiv \optnegneg\forall x\?X\_ \varphi^\circ \\
+  (\exists x\?X\_ \varphi)^\circ &\defequiv \neg\neg\exists x\?X\_ \varphi^\circ
 \end{align*}
 \end{defn}
 
-\begin{bem}Da~$\neg\varphi :\equiv (\varphi \Rightarrow \bot)$,
+\begin{bem}Da~$\neg\varphi \defequiv (\varphi \Rightarrow \bot)$,
 gilt~$(\neg\varphi)^\circ \equiv \neg(\varphi^\circ)$.\end{bem}
 
 \begin{aufg}Beweise durch Induktion über den Aussageaufbau, dass man auf die grau
@@ -1698,11 +1702,11 @@ Interpretation der restlichen Aussagen gemäß folgender Definition festlegen.
 \begin{defn}[topologische Interpretation zusammengesetzter Aussagen]%
 \label{top-sem}%
 \begin{align*}
-  \brak{\top} &:= X \\
-  \brak{\bot} &:= \emptyset \\
-  \brak{\varphi \wedge \psi} &:= \brak{\varphi} \cap \brak{\psi} \\
-  \brak{\varphi \vee \psi} &:= \brak{\varphi} \cup \brak{\psi} \\
-  \brak{\varphi \Rightarrow \psi} &:=
+  \brak{\top} &\defeq X \\
+  \brak{\bot} &\defeq \emptyset \\
+  \brak{\varphi \wedge \psi} &\defeq \brak{\varphi} \cap \brak{\psi} \\
+  \brak{\varphi \vee \psi} &\defeq \brak{\varphi} \cup \brak{\psi} \\
+  \brak{\varphi \Rightarrow \psi} &\defeq
     \hcancel{$\brak{\varphi}^c \cup \brak{\psi}$}{0pt}{3pt}{0pt}{-2pt} =
     \interior(\brak{\varphi}^c \cup \brak{\psi})
 \end{align*}
@@ -1722,8 +1726,8 @@ Wahrheitswerten.
 \begin{bsp}Sei~$X$ die Erdoberfläche. Dann kann man zwei atomare Aussagen~$A$
 und~$B$ mit den Interpretationen
 \begin{align*}
-  \brak{A} &:= \{ x \in X \,|\, \text{an der Stelle~$x$ regnet es} \} \\
-  \brak{B} &:= \{ x \in X \,|\, \text{an der Stelle~$x$ hat es mehr
+  \brak{A} &\defeq \{ x \in X \,|\, \text{an der Stelle~$x$ regnet es} \} \\
+  \brak{B} &\defeq \{ x \in X \,|\, \text{an der Stelle~$x$ hat es mehr
   als~$20$ Grad} \}
 \end{align*}
 definieren. Die Aussage~$A \wedge B$ hat dann die Interpretation
@@ -1764,7 +1768,7 @@ Interpretationen schon eindeutig fest.
 
 \begin{bem}Wenn man auch in der Meta-Logik konstruktiv arbeiten möchte,
 sollte man besser
-\[ \brak{\varphi \Rightarrow \psi} :=
+\[ \brak{\varphi \Rightarrow \psi} \defeq
   \bigcup \{ U \,|\, \text{$U \subseteq X$ offen, $U \cap \brak{\varphi}
   \subseteq \brak{\psi}$} \} \]
 definieren. Da in klassischer Logik genau dann~$U \subseteq V^c \cup W$,
@@ -2059,20 +2063,20 @@ um die Rezeption seines allgemeinen Resultats zu erleichtern.\end{bem}
 wird für eine feste Aussage~$F$ wie folgt rekursiv definiert:
 \newcommand{\optF}{\textcolor{grey}{\phantom{}\vee F}}
 \begin{align*}
-  \varphi^F &:\equiv \varphi \vee F \text{ für atomare Aussagen~$\varphi$} \\
-  \top^F &:\equiv \top \\
-  \bot^F &:\equiv F \\
-  (\varphi \wedge \psi)^F &:\equiv (\varphi^F \wedge \psi^F) \optF \\
-  (\varphi \vee \psi)^F &:\equiv (\varphi^F \vee \psi^F) \optF \\
-  (\varphi \Rightarrow \psi)^F &:\equiv (\varphi^F \Rightarrow \psi^F) \optF \\
-  (\forall x\?X\_ \varphi)^F &:\equiv (\forall x\?X\_ \varphi^F) \optF \\
-  (\exists x\?X\_ \varphi)^F &:\equiv (\exists x\?X\_ \varphi^F) \vee F
+  \varphi^F &\defequiv \varphi \vee F \text{ für atomare Aussagen~$\varphi$} \\
+  \top^F &\defequiv \top \\
+  \bot^F &\defequiv F \\
+  (\varphi \wedge \psi)^F &\defequiv (\varphi^F \wedge \psi^F) \optF \\
+  (\varphi \vee \psi)^F &\defequiv (\varphi^F \vee \psi^F) \optF \\
+  (\varphi \Rightarrow \psi)^F &\defequiv (\varphi^F \Rightarrow \psi^F) \optF \\
+  (\forall x\?X\_ \varphi)^F &\defequiv (\forall x\?X\_ \varphi^F) \optF \\
+  (\exists x\?X\_ \varphi)^F &\defequiv (\exists x\?X\_ \varphi^F) \vee F
 \end{align*}
 Wenn in~$F$ Variablen vorkommen, muss man gegebenenfalls manche Variablen umbenennen, um
 Variablenkollisionen zu vermeiden.
 \end{defn}
 
-\begin{bem}Da~$\neg\varphi :\equiv (\varphi \Rightarrow \bot)$,
+\begin{bem}Da~$\neg\varphi \defequiv (\varphi \Rightarrow \bot)$,
 gilt~$(\neg\varphi)^F \equiv (\varphi^F \Rightarrow F)$.\end{bem}
 
 \begin{aufg}Beweise durch Induktion über den Aussageaufbau, dass man auf die grau
@@ -2229,7 +2233,7 @@ intuitionistisch ableitbar.\end{kor}
 Friedmanübersetzung der Voraussetzung $\neg\neg(\exists
 y\?\NN\_ \varphi)$ intuitionistisch ableitbar. Wegen Teil~(b) ist diese äquivalent zu
 \[ ((\exists y\?\NN\_ (\varphi \vee F)) \Rightarrow F) \Rightarrow F. \]
-Wählt man daher trickreich~$F :\equiv (\exists y\?\NN\_ \varphi)$, so folgt die Behauptung.
+Wählt man daher trickreich~$F \defequiv (\exists y\?\NN\_ \varphi)$, so folgt die Behauptung.
 Alternativ kann man auch direkt das Konservativitätsresultat~\ref{peanokons}
 verwenden.
 \end{proof}
@@ -2310,9 +2314,9 @@ Auch ist die Abhängigkeit der~$m_i$ von den Daten nicht klar: Gibt es eine
 universelle Schranke, die für jeden Ring und jedes Polynom gültig wäre? Oder
 kann der Nilpotenzindex bei schlimmen Ringen oder Polynomen beliebig hoch
 werden?\footnote{Zumindest diese Sorge kann man mit furchtloser Anwendung von
-etwas Ringtheorie zerstreuen: Über dem speziellen Ring~$S :=
+etwas Ringtheorie zerstreuen: Über dem speziellen Ring~$S \defeq
 \ZZ[A_0,\ldots,A_n]/(A_0^{m_0},\ldots,A_n^{m_n})$ gibt es das \emph{universelle
-Polynom} $f_\text{univ} := \sum_{i=0}^n A_i X^i$. \emph{Universell} heißt es
+Polynom} $f_\text{univ} \defeq \sum_{i=0}^n A_i X^i$. \emph{Universell} heißt es
 deswegen, da es zu jedem Polynom der Form~$f = \sum_{i=0}^n a_i X^i$ über einem
 beliebigen Ring~$R$, dessen Koeffizienten die Gleichungen~$a_i^{m_i} = 0$
 erfüllen, genau einen Ringhomomorphismus~$\varphi : S \to R$
@@ -2418,9 +2422,9 @@ Eigenschaft hat, wenn sein Spektrum als topologischer Raum irreduzibel ist.)
 Wenn man das generische Primideal unbedingt durch ein tatsächliches Ideal
 realisieren möchte, muss man bereit sein, den Topos zu wechseln.\footnote{In dem
 Topos der Garben auf~$\Spec R$ gibt es den Ring~$\ul{R}$, auf offenen
-Mengen~$U$ definiert durch~$\Gamma(U,\ul{R}) := \{ f : U \to R \,|\, \text{$f$
+Mengen~$U$ definiert durch~$\Gamma(U,\ul{R}) \defeq \{ f : U \to R \,|\, \text{$f$
 stetig} \}$, wobei man~$R$ mit der diskreten Topologie versieht. In diesem kann
-man das Ideal~$Z$, definiert durch~$\Gamma(U,Z) := \{ f \in
+man das Ideal~$Z$, definiert durch~$\Gamma(U,Z) \defeq \{ f \in
 \Gamma(U,\ul{R}) \,|\, \text{$f(\pp) \in \pp$ für alle~$\pp \in U$} \}$,
 betrachten. Mit den Regeln der Kripke--Joyal-Semantik kann man nun nachrechnen,
 dass für Ring\-elemen\-te~$a_1,\ldots,a_n, b \in R$ genau dann in der internen
@@ -2449,14 +2453,14 @@ Ableitungsrelation~$\seq{}$ als umgekehrte Idealinklusion.
 Lemma~\ref{lemma:rad} ist für das Verständnis der folgenden Übersetzungstabelle
 hilfreich. Konkret definieren wir
 \begin{align*}
-  \brak{Z(x)} &:= \sqrt{(x)} \\
-  \brak{\top} &:= \sqrt{(0)} \\
-  \brak{\bot} &:= (1) \\
-  \brak{\varphi \wedge \psi} &:= \sup\{\brak{\varphi},\brak{\psi}\} = \sqrt{\brak{\varphi} + \brak{\psi}} \\
-  \brak{\varphi \vee \psi} &:= \inf\{\brak{\varphi},\brak{\psi}\} = \brak{\varphi} \cap \brak{\psi}
+  \brak{Z(x)} &\defeq \sqrt{(x)} \\
+  \brak{\top} &\defeq \sqrt{(0)} \\
+  \brak{\bot} &\defeq (1) \\
+  \brak{\varphi \wedge \psi} &\defeq \sup\{\brak{\varphi},\brak{\psi}\} = \sqrt{\brak{\varphi} + \brak{\psi}} \\
+  \brak{\varphi \vee \psi} &\defeq \inf\{\brak{\varphi},\brak{\psi}\} = \brak{\varphi} \cap \brak{\psi}
 \end{align*}
 und
-\[ \varphi \models \psi \quad:\Longleftrightarrow\quad
+\[ \varphi \models \psi \quad\vcentcolon\Longleftrightarrow\quad
   \brak{\varphi} \supseteq \brak{\psi}. \]
 Dann kann man nachrechnen, dass diese semantisch definierte Relation~$\models$
 die geforderten Axiome erfüllt. Etwa gilt
@@ -2611,7 +2615,7 @@ Interpretation einer Aussage im Kontext~$x_1,\ldots,x_n$ soll dabei ein
 Radikalideal im Polynomring~$R[x_1,\ldots,x_n]$ in~$n$ formalen Variablen sein.
 Neu zu definieren ist
 \begin{align*}
-  \brak{\exists y\_ \varphi}_{\vec x} &:= R[x_1,\ldots,x_n] \cap \brak{\varphi}_{\vec x,y}.
+  \brak{\exists y\_ \varphi}_{\vec x} &\defeq R[x_1,\ldots,x_n] \cap \brak{\varphi}_{\vec x,y}.
 \end{align*}
 Auf der rechten Seite ist dabei~$\brak{\varphi}$ ein Radikalideal
 in~$R[x_1,\ldots,x_n,y]$. Damit kann man alle nötigen Nachweise führen.
@@ -2829,7 +2833,7 @@ eindeutig festgelegt. Die beiden Projektionen~$\Sigma \to \RR^3$ sind die
 Observablen \emph{Position} und \emph{Impuls}.\end{bsp}
 
 Auf der algebraischen Seite gehört zum Phasenraum~$\Sigma$ eine \csalgebra~$A
-:= C(\Sigma, \CC)$; es ergibt sich dann folgendes Wörterbuch zwischen
+\defeq C(\Sigma, \CC)$; es ergibt sich dann folgendes Wörterbuch zwischen
 Formulierungen auf der geometrischen und der algebraischen
 Seite~\cite{nlab:classmech}:
 
@@ -2884,7 +2888,7 @@ traditionellen Sinn beschrieben werden. Es bleibt aber die Möglichkeit, sie
 durch nichtkommutative~\csalgebren{} zu beschreiben.
 
 \begin{bsp}Wird ein System durch einen Hilbertraum~$H$ beschrieben, so ist~$A
-:= L(H,H) = \{ f : H \to H \,|\, \text{$f$ linear und stetig} \}$ die
+\defeq L(H,H) = \{ f : H \to H \,|\, \text{$f$ linear und stetig} \}$ die
 zugehörige~\csalgebra.\end{bsp}
 
 Grundlegende Konzepte können also nicht mehr geometrisch über einen Phasenraum
@@ -3111,7 +3115,7 @@ der Regeln in Tafel~\ref{tafel:kripke-joyal} (der
   \centering
   \small
   \setlength{\extrarowheight}{0.3em}
-  \newcommand{\Ll}{:\Longleftrightarrow}
+  \newcommand{\Ll}{\vcentcolon\Longleftrightarrow}
   \[ \renewcommand{\arraystretch}{1.3}\begin{array}{@{}lcl@{}}
     U \models f = g \? \F &\Ll& f|_U = g|_U \in \Gamma(U, \F) \\
     U \models \top &\Ll& \text{$U = U$ (gilt stets)} \\
@@ -3264,12 +3268,12 @@ konsistenten Satz von Messwerten -- ohne, dass Heisenbergs Unschärferelation in
 die Quere kommt.
 
 \begin{defn}Der \emph{Bohr-Topos} zur \csalgebra~$A$ ist die Koprägarbenkategorie
-\[ \Bohr(A) := [\C(A), \Set] \]
+\[ \Bohr(A) \defeq [\C(A), \Set] \]
 aller Funktoren~$\C(A) \to \Set$ und natürlichen Transformationen zwischen
 ihnen.\footnote{Äquivalent kann man den Bohr-Topos auch als den Garbentopos
 über dem Raum~$\C(A)$, versehen mit der Alexandroff-Topologie, auffassen: Die offenen Mengen
 sind dabei die nach oben abgeschlossenen Teilmengen, und eine Basis der
-Topologie ist durch die Teilmengen der Form~${\uparrow}(C) := \{ C' \in \C(A)
+Topologie ist durch die Teilmengen der Form~${\uparrow}(C) \defeq \{ C' \in \C(A)
 \,|\, C \subseteq C' \}$ für~$C \in \C(A)$ gegeben. Unter dieser Äquivalenz
 induziert eine Garbe~$F$ auf diesem
 Raum einen Funktor~$\C(A) \to \Set$ durch die Setzung~$C \mapsto
@@ -3389,7 +3393,7 @@ ist.
 Sei umgekehrt ein Morphismus~$\eta : \ul{A} \to \ul{\CC}$ gegeben, der aus
 Sicht der internen Sprache normiert, positiv und linear ist. Dann können wir
 eine Abbildung~$\rho : A \to \CC$ durch die Setzung
-\[ \rho(a) := \eta_C(a), \quad\text{wobei~$C \in \C(A)$ beliebig mit~$a \in
+\[ \rho(a) \defeq \eta_C(a), \quad\text{wobei~$C \in \C(A)$ beliebig mit~$a \in
 C$}, \]
 definieren. Denn für jedes~$a \in A$ existiert eine solche kommutative Unteralgebra (man kann
 etwa die von~$a$ erzeugte nehmen), und die Wahl von~$C$ spielt wegen der
@@ -3404,7 +3408,7 @@ Es ist klar, dass diese Zuordnungen zueinander invers sind.\end{proof}
 
 Da die interne \csalgebra~$\ul{A}$ kommutativ ist, ist auf diese wieder -- wie
 in der Situation klassischer Mechanik -- Gelfand-Dualität anwendbar. Die
-\emph{interne Örtlichkeit}~$\ul{\Sigma} := \Spec \ul{A}$ des Bohr-Topos ist
+\emph{interne Örtlichkeit}~$\ul{\Sigma} \defeq \Spec \ul{A}$ des Bohr-Topos ist
 also eine Art Phasenraum für das gegebene quantenmechanische System.
 
 Folglich lassen sich Quasi-Zustände von~$A$ geometrisch als interne
@@ -3468,7 +3472,7 @@ Teilmengen
   U &= \{ x \in X \,|\, (x = 0) \vee \varphi \} \\
   V &= \{ x \in X \,|\, (x = 1) \vee \varphi \}
 \end{align*}
-von~$X := \{ 0, 1 \}$. Die Definition ist so gemacht, dass genau dann~$U = V$
+von~$X \defeq \{ 0, 1 \}$. Die Definition ist so gemacht, dass genau dann~$U = V$
 gilt, wenn~$\varphi$ gilt: Wenn~$U = V$, so liegt~$0$ in~$V$, also gilt~$(0 = 1)
 \vee \varphi$. Da~$0 \neq 1$, ist das äquivalent zu~$\varphi$. Wenn umgekehrt~$\varphi$
 gilt, so sind~$U$ und~$V$ beide gleich~$X$.
@@ -3545,7 +3549,7 @@ Die Axiome werden durch folgendes Beispiel motiviert:
 
 \begin{bsp}Sei~$R$ ein Ring (zum Beispiel~$R = \ZZ$) und~$u \in R$ ein Element
 (zum Beispiel deine Lieblingszahl). Dann ist die Menge
-\[ (u) := \{ r u \,|\, r \in R \} \subseteq R \]
+\[ (u) \defeq \{ r u \,|\, r \in R \} \subseteq R \]
 aller Vielfachen von~$u$ ein Ideal, das sog. \emph{von~$u$ erzeugte Ideal}.
 Denn die Null ist ein Vielfaches von~$u$ (das Null-fache), die Summe zweier
 Vielfachen von~$u$ ist ein Vielfaches von~$u$, und ist~$x$ ein Vielfaches
@@ -3559,7 +3563,7 @@ Einsideal~$(1) = K$.
 
 \begin{defn}\label{def:idealerz}Seien~$x_1,\ldots,x_n$ Elemente eines
 Rings~$R$. Dann heißt das Ideal
-\[ (x_1,\ldots,x_n) := \{ r_1 x_1 + \cdots + r_n x_n \,|\, r_1,\ldots,r_n \in R
+\[ (x_1,\ldots,x_n) \defeq \{ r_1 x_1 + \cdots + r_n x_n \,|\, r_1,\ldots,r_n \in R
 \} \subseteq R \]
 das \emph{von~$x_1,\ldots,x_n$ erzeugte Ideal}.\end{defn}
 
@@ -3657,10 +3661,10 @@ die nilpotenten Elemente.\end{prop}
 Wir wollen zeigen, dass~$x$ nilpotent ist; dazu führen wir einen
 Widerspruchsbeweis, nehmen also an, dass~$x$ nicht nilpotent ist. Dann enthält
 die Menge
-\[ S := \{ x^n \,|\, n \geq 0 \} \subseteq R \]
+\[ S \defeq \{ x^n \,|\, n \geq 0 \} \subseteq R \]
 also nicht die Null. Wir betrachten nun das bezüglich der
 Teilmengeninklusionsrelation partiell geordnete Mengensystem
-\[ \U := \{ \aa \subseteq R \,|\, \text{$\aa$ ist ein Ideal mit~$\aa \cap S =
+\[ \U \defeq \{ \aa \subseteq R \,|\, \text{$\aa$ ist ein Ideal mit~$\aa \cap S =
 \emptyset$} \}. \]
 Dieses ist bewohnt: Das Nullideal liegt wegen~$0 \not\in S$ in~$\U$. Außerdem
 liegt die Vereinigung~$\bigcup_i \aa_i$ einer in~$\U$ liegenden Kette von
@@ -3712,7 +3716,7 @@ allgemeineren Lemmas: Ist ein Ring~$S$ ein Integritätsbereich, so auch~$S[X]$.
 \emph{Radikalideal}, wenn für alle~$x
 \in R$ und~$n \geq 0$ aus~$x^n \in \aa$ schon~$x \in \aa$ folgt.
 \item Sei~$\aa \subseteq R$ ein Ideal. Dann heißt das Ideal
-\[ \sqrt{\aa} := \{ x \in R \,|\, \exists n \geq 0\_ x^n \in \aa \} \]
+\[ \sqrt{\aa} \defeq \{ x \in R \,|\, \exists n \geq 0\_ x^n \in \aa \} \]
 das \emph{Radikal von~$\aa$}. Es ist stets ein Radikalideal, und zwar das
 kleinste, das~$\aa$ umfasst.
 \end{enumerate}\end{defn}
@@ -3733,7 +3737,7 @@ Elemente.
 \item Das größte Element ist~$(1)$, das Einsideal.
 \item Das Supremum zweier Elemente~$\aa,\bb$, also das kleinste Radikalideal,
 das~$\aa$ und~$\bb$ umfasst, ist
-\[ \sqrt{\aa + \bb} := \{ x \in R \,|\, \text{$x^n = u + v$ für ein~$n \geq 0,
+\[ \sqrt{\aa + \bb} \defeq \{ x \in R \,|\, \text{$x^n = u + v$ für ein~$n \geq 0,
 u \in \aa, v \in \bb$} \}. \]
 \item Das Infimum zweier Elemente~$\aa,\bb$, also das größte Radikalideal,
 das in~$\aa$ und~$\bb$ enthalten ist, ist $\aa \cap \bb$.
@@ -3785,7 +3789,7 @@ Prägarbe~$\C^0$ der stetigen Funktionen, definiert über
 mit~$\res^U_V : \C^0(U) \to \C^0(V), f \mapsto f|_V$ der
 Einschränkungsabbildung.  Trägt~$X$ sogar die Struktur einer glatten
 Mannigfaltigkeit, kann man analog auch die Garbe~$\C^\infty$ der glatten
-Funktionen definieren -- man setzt $\Gamma(U, \C^\infty) := \{ U \xra{f} \RR
+Funktionen definieren -- man setzt $\Gamma(U, \C^\infty) \defeq \{ U \xra{f} \RR
 \,|\, \text{$f$ glatt} \}$.
 
 
