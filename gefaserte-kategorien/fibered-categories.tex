@@ -4,7 +4,7 @@
 
 \usepackage[english]{babel}
 
-\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,mathtools}
 \usepackage{array}
 \usepackage[all]{xy}
 
@@ -55,6 +55,8 @@
 \newcommand{\Ob}{\operatorname{Ob}}
 \newcommand{\Hom}{\mathrm{Hom}}
 \newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defequiv}{\vcentcolon\equiv}
 
 \begin{document}
 
@@ -70,7 +72,7 @@ are important is that stacks are fibered categories with certain extra
 properties.\medskip
 
 These are informal notes prepared for the October 2014 meeting of the \emph{Kleine
-Bayerische AG} at the University of Regensburg. The notes summarize part of
+Bayerische AG} at the University of Regensburg. The notes summarize parts of
 chapter~3 of Angelo Vistoli's
 \href{http://homepage.sns.it/vistoli/descent.pdf}{\emph{Notes on Grothendieck
 topologies, fibered categories and descent theory}}.
@@ -168,7 +170,7 @@ any way. A \emph{stack} is an indexed category where this kind of pathology does
 arise.
 
 \begin{ex}The \emph{points} of the indexed category~$\VB$ of vector bundles
-(example~\ref{ex:vb}) are by definition (and by analogy with the classical
+(Example~\ref{ex:vb}) are by definition (and by analogy with the classical
 situation) the maps~$\pt \to \VB$. So for any natural number~$n$, there is a point
 of~$\VB$ (corresponding to a vector space of dimension~$n$). These points
 have lots of automorphisms, namely the invertible~$(n \times n)$-matrices.
@@ -186,7 +188,7 @@ We are now ready to appreciate a precise definition of a pseudofunctor.
 \Cat$ consists of
 \begin{itemize}
 \item a category~$F(X)$ for each object~$X$ of~$\C$,
-\item a functor~$F(f) =: f^* : F(Y) \to F(X)$ for each morphism~$X \xra{f} Y$ in~$\C$,
+\item a functor~$F(f) =\vcentcolon f^* : F(Y) \to F(X)$ for each morphism~$X \xra{f} Y$ in~$\C$,
 \item a natural isomorphism~$\eta_X : (\id_X)^* \Rightarrow \Id_{F(X)}$ for each
 object~$X$ in~$\C$, and
 \item a natural isomorphism~$\alpha_{f,g} : f^* \circ g^* \Rightarrow (g \circ
@@ -213,7 +215,7 @@ two pullback expressions, e.\,g.\@
   ((g \circ f)^* \circ (q \circ p \circ h)^*)(E), \]
 we have \emph{exactly one} agreed-upon canonical isomorphism (of course, there
 are lots of other non-canonical isomorphisms as well). In a general indexed
-category, we can construct these canonical isomorphisms out of the
+category, we can construct these canonical isomorphisms using the
 given~$\eta_X$ and~$\alpha_{f,g}$; the coherence conditions ensure that -- no
 matter in which way we do this -- we always obtain the same canonical
 isomorphism.
@@ -233,7 +235,7 @@ given by
 \begin{itemize}
 \item a map~$I \to \Ob\Set$, $i \mapsto X_i$, or
 \item a map~$\coprod_{i \in I} X_i \xra{\pi} I$. (Recover~$X_i$ as the fiber
-of~$i$ under~$\pi$.)
+of~$\pi$ over~$i$.)
 \end{itemize}
 Indexed categories are like the first approach, while fibered categories are
 like the second approach.
@@ -243,7 +245,7 @@ category~$\F$ together with a functor~$\F \xra{p} \C$ such that ``pullbacks
 exist'': For any morphism~$Y \xra{f} X$ in~$\C$ and any object~$E$ in the fiber
 category~$\F(X)$ (the subcategory of~$\F$ consisting of those objects which map
 to~$X$ and those morphisms which map to~$\id_X$ under~$p$), there should
-exist an object~$E'$ of~$\F(X)$ and a \emph{cartesian} morphism~$E' \xra{\phi}
+exist an object~$E'$ of~$\F(X)$ and a \emph{cartesian morphism}~$E' \xra{\phi}
 E$ with~$p(\phi) = f$.
 \[ \xymatrixcolsep{3pc}\xymatrixrowsep{3pc}\xymatrix{
   E' \ar@{-}[d] \ar^\phi[r] & E \ar@{-}[d] \\
@@ -252,7 +254,7 @@ E$ with~$p(\phi) = f$.
 \end{defn}
 
 The notion of a cartesian morphism is modeled on the universal property of
-usual pullbacks: A morphisms~$\phi : E' \to E$ with~$p(\phi) = f$ as in the
+usual pullbacks: A morphism~$\phi : E' \to E$ with~$p(\phi) = f$ as in the
 definition is cartesian if and only if, for any morphism~$g : Z \to Y$, for any
 object~$E''$ in~$\F(Z)$, and any morphism~$\psi : E'' \to E$ such that~$p(\psi)
 = f \circ g$, there exists a unique morphism~$\alpha : E'' \to E'$ such
@@ -260,14 +262,14 @@ that~$p(\alpha) = g$ and~$\phi \circ \alpha = \psi$.
 \[ \text{XXX diagram} \]
 
 \begin{rem}The definition of a fibered category as stated is \emph{evil} in the
-technical sense that it requires certain equalities between objects (namely,
+technical sense that it requires certain equalities between objects to hold (namely,
 $p(E') = Y$). Since important examples of categories which ought to be fibered
 categories actually fulfill these evil equalities, this defect is tolerable in
 practice. But for some purposes, a non-evil variant is necessary; see for
 instance
 \url{http://ncatlab.org/nlab/show/Grothendieck+fibration#StreetFibration}.\end{rem}
 
-\begin{ex}The incarnation of example~\ref{ex:vb} as a fibered category is the
+\begin{ex}The incarnation of Example~\ref{ex:vb} as a fibered category is the
 category~$\VB$ of vector bundles on arbitrary base spaces. The projection
 functor~$\VB \to \C$ associates to any vector bundle its base space.\end{ex}
 
@@ -286,13 +288,13 @@ transformations.\end{prop}
 
 \paragraph{From fibered categories to indexed categories.}
 If suitable choice principles are available, any fibered category~$\F \to \C$
-defines a~$\C$-indexed category~$F : \C^\op \to \Cat$ by setting~$F(X) :=
+defines a~$\C$-indexed category~$F : \C^\op \to \Cat$ by setting~$F(X) \defeq
 \F(X)$. For morphisms~$f : Y \to X$ in~$\C$, the pullback functors~$f^* : F(X)
 \to F(Y)$ are defined by associating to any object~$E$ a chosen pullback~$E'$
 as in the definition of a fibered category. The action of~$f^*$ on morphisms
 is given by the universal property of cartesian morphisms.
 
-One can check that this construction gives indeed rise to a pseudofunctor. In
+One can check that this construction indeed gives rise to a pseudofunctor. In
 fact, the proof is very similar to the proof that the self-indexing~$X \mapsto
 \C/X$ is a pseudofunctor.
 
@@ -309,14 +311,14 @@ cartesian morphisms~$\phi : (Y,E') \to (X,E)$ required by the definition are
 the morphisms~$(f : Y \to X,\ \id : f^*(E) \to f^*(E))$.
 
 \begin{ex}Let~$\C$ be a category with pullbacks. Then~$\int \CC$ (see
-example~\ref{ex:self-indexing}) is equivalent to the \emph{category of morphisms
+Example~\ref{ex:self-indexing}) is equivalent to the \emph{category of morphisms
 in~$\C$}. This category has arbitrary morphisms~$Y \to X$ as objects and commutative
 squares as morphisms. The equivalence is given by sending an object~$(X \in \C,
 (Y \xra{f} X))$ to~$f$.
 \end{ex}
 
 \begin{ex}Let~$\C$ be an arbitrary category and~$A$ a fixed object of~$\C$.
-Then~$\int \ul{A}$ (see example~\ref{ex:presheaf}) is
+Then~$\int \ul{A}$ (see Example~\ref{ex:presheaf}) is
 equivalent to the slice category~$\C/A$, by sending an object~$(X \in \C, X
 \xra{f} A)$ to~$f$.
 \end{ex}
@@ -380,7 +382,7 @@ category of~$G$-principal bundles~$P \to Y$ equipped with~$G$-equivariant
 maps~$Y \to X$.
 
 Indeed, one can canonically define a map~$\ul{X} \to [X/G]$ and check that
-is the universal bundle.
+it is the universal bundle.
 
 \begin{prop}The stack~$[X/G]$ is representable, i.\,e.\@ of the form~$\ul{A}$
 for some space~$A$ in~$\C$, if and only if the action of~$G$ on~$X$ is
@@ -404,11 +406,16 @@ VII: Groupoidification} by John Baez, Alexander Hoffnung and Christopher
 Walker: \url{http://arxiv.org/abs/0908.4305}.
 \end{rem}
 
-\begin{rem}I believe that in some cases, the category of coherent sheaves
+\begin{rem}In some cases, the category of coherent sheaves
 on~$[X/G]$ can simply be described as the category of~$G$-equivariant sheaves
-on~$X$.
+on~$X$ (sheaves equipped with a specified~$G$-linearization). If~$S$ is a
+smooth projective surface over~$\CC$, the celebrated
+Bridgeland--King--Reid--Haiman equivalence states that the bounded derived category
+of coherent sheaves on~$S^{[n]}$ (the Hilbert scheme of~$n$ points on~$S$) and
+the bounded derived category of~$\mathfrak{S}_n$-equivariant sheaves on~$S^n$
+are equivalent. This statement can thus be interpreted as saying that the
+Hilbert scheme~$S^{[n]}$ and the quotient stack~$[S^n/\mathfrak{S}_n]$ are
+\emph{derived equivalent}.
 \end{rem}
 
 \end{document}
-
-Relevance in logic, topos theory, ...
