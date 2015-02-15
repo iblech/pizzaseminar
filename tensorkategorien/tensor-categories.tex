@@ -4,7 +4,8 @@
 
 \usepackage[english]{babel}
 
-\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,mathtools,color,graphicx}
+\usepackage{xspace}
 \usepackage{array}
 \usepackage[all]{xy}
 
@@ -50,6 +51,7 @@
 \DeclareMathOperator{\Spec}{Spec}
 \renewcommand{\_}{\mathpunct{.}\,}
 \newcommand{\?}{\,{:}\,}
+\newcommand{\defeq}{\vcentcolon=}
 
 \newcommand{\hilight}[2]{\begin{center}\framebox{#2}\par#1\end{center}}
 
@@ -85,6 +87,7 @@
 \newcommand{\tr}{\operatorname{tr}}
 \newcommand{\rk}{\operatorname{rk}}
 \newcommand{\im}{\operatorname{im}}
+\newcommand{\ie}{i.\,e.\@\xspace}
 
 \begin{document}
 
@@ -118,7 +121,7 @@ J.~S.~Milne.
 \begin{ex}The category~$\Mod_R$ of modules over a commutative ring~$R$ is the
 archetypical example of a tensor category.\end{ex}
 
-\begin{defn}A \emph{tensor category}~$(\C,\otimes)$ (i.\,e. a monoidal category with
+\begin{defn}A \emph{tensor category}~$(\C,\otimes)$ (\ie a monoidal category with
 symmetric braiding) consists of
 \begin{itemize}
 \item a category~$\C$,
@@ -155,9 +158,9 @@ the triangle axiom (relating the associator with the unitors).
 
 The definition mimics the definition of a monoid, only ``one level up''.
 Demanding that the tensor operation is associative and commutative on the nose
-(e.\,g. $X \otimes (Y \otimes Z) = (X \otimes Y) \otimes Z$) would be
-\emph{evil} in the technical sense, i.\,e. not preserved under equivalence of
-categories. This is the reason why we demand (natural) isomorphisms, i.\,e.
+(e.\,g.\@ $X \otimes (Y \otimes Z) = (X \otimes Y) \otimes Z$) would be
+\emph{evil} in the technical sense, \ie not preserved under equivalence of
+categories. This is the reason why we demand (natural) isomorphisms, \ie
 natural transformations between easily inferred functors.
 
 The isomorphism classes of objects of a tensor category form a (possibly large) commutative monoid.
@@ -182,7 +185,7 @@ natural morphism~$X \to X \otimes X$.\end{rem}
 The coherence conditions in the definition are needed for the following reason:
 In the category of modules, we are used to dropping all parentheses when
 dealing with iterated tensor products. This is justified only because between any
-two given groupings, e.\,g.
+two given groupings, e.\,g.\@
 \[ X \otimes ((Y \otimes Z) \otimes (T \otimes U)) \quad\text{and}\quad
   ((X \otimes Y) \otimes (Z \otimes T)) \otimes U, \]
 we have \emph{exactly one} canonical isomorphism. A classical theorem of Mac~Lane
@@ -220,12 +223,12 @@ for a precise formulation and pointers to the relevant literature.
 holding the endpoints fixed):
 \begin{center}\scalebox{0.5}{\input{braiding.pspdftex}}\end{center}\end{ex}
 
-\begin{thm}[Mac Lane]Any tensor category can be \emph{strictified}, i.\,e. is
+\begin{thm}[Mac Lane]Any tensor category can be \emph{strictified}, \ie is
 equivalent as a tensor category to a \emph{strict} tensor category: a category
 in which $\phi, \lambda, \rho$ (but not~$\psi$) are identities.\end{thm}
 
 The strictification of a tensor category should \emph{not} be
-thought of as some kind of quotienting process, i.\,e. one does not obtain the
+thought of as some kind of quotienting process, \ie one does not obtain the
 strictification by identifying certain morphisms. Instead, the objects of the
 strictification are ``cliques'' of possible groupings.
 
@@ -245,7 +248,7 @@ category~$\C$ consists of
 \item an object~$\Hom(X,Y) \in \C$ and
 \item a morphism~$\Hom(X,Y) \otimes X \xra{\ev} Y$ (evaluation morphism)
 \end{itemize}
-such that this pair is terminal among all such pairs, i.\,e. such that for any
+such that this pair is terminal among all such pairs, \ie such that for any
 object~$T \in \C$ and any [fake] evaluation morphism~$T \otimes X
 \xra{\widetilde\ev} Y$ there exists a unique morphism~$f : T \to \Hom(X,Y)$
 such that the following diagram commutes:
@@ -279,7 +282,7 @@ be a left adjoint.\end{rem}
 % XXX: "general" präzisieren
 
 \begin{defn}\begin{enumerate}\item A \emph{dual} of an object~$X$ is an internal
-Hom~$X^\vee := \Hom(X,1)$. \item The \emph{dual} of a morphism~$f : X \to Y$ is
+Hom~$X^\vee \defeq \Hom(X,1)$. \item The \emph{dual} of a morphism~$f : X \to Y$ is
 the unique morphism~$f^t : Y^\vee \to X^\vee$ rendering the diagram
 \[ \xymatrixcolsep{5pc}\xymatrix{
   Y^\vee \otimes X \ar[r]^{f^t \otimes \id_X} \ar[d]_{\id_{Y^\vee} \otimes f} &
@@ -292,7 +295,7 @@ commutative (if~$X^\vee$ and~$Y^\vee$ exist).\end{enumerate}\end{defn}
 
 If all objects possess a dual (and appropriate choice principles are
 available), the rule~$X \mapsto X^\vee$ can be made into a
-functor~$C \to \C^\op$.
+functor~$\C \to \C^\op$.
 
 \begin{prop}In any tensor category, the set~$\End(1) = \hom(1,1)$ is a
 commutative monoid with respect to composition of morphisms.\end{prop}
@@ -329,7 +332,7 @@ satisfied.
 \end{defn}
 
 \begin{ex}The forgetful functor~$\Rep_k(G) \to \Vect_k$ of the category
-of finite-dimensional~$k$-linear representations of a group (or group
+of finite-di\-men\-sio\-nal~$k$-linear representations of a group (or group
 scheme)~$G$ is a tensor functor.\end{ex}
 
 \begin{ex}Extension of scalars defines a tensor functor~$\Mod_R \to
@@ -361,7 +364,7 @@ scheme)~$G$ is a tensor functor.\end{ex}
 \[ \Hom(X_1,Y_1) \otimes \Hom(X_2,Y_2) \longrightarrow
   \Hom(X_1 \otimes Y_1, X_2 \otimes Y_2) \]
 are isomorphisms and
-\item all objects~$X \in \C$ are \emph{reflexive} (i.\,e. the natural maps~$X
+\item all objects~$X \in \C$ are \emph{reflexive} (\ie the natural maps~$X
 \to X^{\vee\vee}$ are isomorphisms).
 \end{itemize}
 \end{defn}
@@ -373,18 +376,17 @@ rigid.\end{ex}
 generally, the category~$\Mod^\mathrm{fin.\,free}_R$ of finitely free~$R$-modules
 is rigid.\end{ex}
 
-\begin{ex}Changing toposes, the category of locally free~$\O_{\Spec R}$-modules
+\begin{ex}Switching toposes, the category of locally free~$\O_{\Spec R}$-modules
 is rigid. (This category is equivalent to category of finitely generated
 projective~$R$-modules, by the tilde construction.)\end{ex}
 
 \begin{ex}The category~$\Rep_k(G)$ is rigid.\end{ex}
 
 \begin{rem}In a rigid tensor category, internal Homs can be calculated using the
-tensor product:
-\[ \Hom(X,Y) \cong X^\vee \otimes Y. \]
+tensor product: $\Hom(X,Y) \cong X^\vee \otimes Y$.
 \end{rem}
 
-\begin{rem}Let~$\C$ be a rigid category. Then the functor~$\C \to \C^\op, X
+\begin{rem}Let~$\C$ be a rigid category. Then the functor~$\C \to \C^\op,\,X
 \mapsto X^\vee$ is an equivalence of tensor categories.\end{rem}
 
 In a rigid tensor category, we can define the notion of traces:
@@ -394,7 +396,7 @@ category is the following element of~$\End(1)$:
 \[ f \in \hom(X,X) \cong
   \hom(1,\Hom(X,X)) \cong
   \hom(1,X^\vee \otimes X) \to
-  \hom(1,1) \ni: \tr f. \]
+  \hom(1,1) \ni\vcentcolon \tr f. \]
 \item The \emph{rank} (or \emph{Euler characteristic}) of an object~$X$ is the
 trace of the identity morphism on~$X$.
 \end{enumerate}\end{defn}
@@ -438,14 +440,13 @@ reflexive.\end{rem}
 \begin{ex}Let~$M$ be a finitely free~$R$-module with basis~$(x_1,\ldots,x_n)$.
 Let~$(\vartheta_1,\ldots,\vartheta_n)$ be the associated dual basis of~$M^\vee$.
 Then~$\varepsilon$ is given by
-\[ \varepsilon : 1 \longrightarrow M \otimes M^\vee,\ 
+\[ \varepsilon : R \longrightarrow M \otimes M^\vee,\ 
   1 \longmapsto \sum_i x_i \otimes \vartheta_i. \]
 The condition in the lemma expresses that for any~$x \in M$ and any~$\vartheta \in
 M^\vee$, it holds that
-\begin{align*}
-  x &= \sum_i \vartheta_i(x) \, x_i, \\
-  \vartheta &= \sum_i \vartheta(x_i) \, \vartheta_i.
-\end{align*}
+\[
+  x = \sum_i \vartheta_i(x) \, x_i \quad\text{and}\quad
+  \vartheta = \sum_i \vartheta(x_i) \, \vartheta_i. \]
 \end{ex}
 
 \begin{prop}Let~$F : \C \to \C'$ be a tensor functor, with~$\C$ rigid.
@@ -466,7 +467,9 @@ also a right adjoint:
 \[ \Hom(X,\freist) \ \dashv\  \freist \otimes X \ \dashv\  \Hom(X,\freist). \]
 \end{prop}
 \begin{cor}In a rigid category, the tensor operation is continuous and
-cocontinuous, i.\,e. commutes with arbitrary limits and colimits.\end{cor}
+cocontinuous, \ie commutes with arbitrary limits and colimits.\end{cor}
+\begin{proof}This is a general fact of functors which are both left and right
+adjoints.\end{proof}
 
 
 \section{Abelian tensor categories}
@@ -540,13 +543,13 @@ tensoring is exact instead of merely right-exact.\begin{enumerate}
 exact sequence
 \[ 0 \longrightarrow U \longrightarrow 1 \longrightarrow V \longrightarrow 0.
 \]
-\item By rigidity, tensoring is exact; so we obtain the commutative diagram
+\item By rigidity, tensoring with~$U$ is exact; so we obtain the commutative diagram
 \[ \xymatrix{
   0 \ar[r] & U \ar[r] & 1 \ar[r] & V \ar[r] & 0 \\
   0 \ar[r] & U \otimes U \ar[r] \ar@{^{(}->}[u] & U \ar[r] \ar@{^{(}->}[u] & V \otimes U \ar[r]
   \ar@{^{(}->}[u] & 0
 } \]
-with exact rows. Because the morphism~$U \to V \otimes U \to V$ is zero,~$V
+with exact rows. Because the morphism~$U \twoheadrightarrow V \otimes U \hookrightarrow V$ is zero,~$V
 \otimes U$ is zero; and by exactness of the bottom row, $U \otimes U \cong U$.
 \item For any subobject~$T \hookrightarrow X$ the following chain of
 equivalences holds:
@@ -596,7 +599,7 @@ but admits no non-trivial decompositions either.\end{rem}
 \begin{cor}In a rigid abelian category, the unit object is simple iff~$\End(1)$
 is a field.\end{cor}
 \begin{proof}For the ``only if'' direction, let~$f \in \End(1)$. As the unit
-object is simple, $f$ is either zero or an isomorpism (i.\,e. invertible in the
+object is simple, $f$ is either zero or an isomorphism (\ie invertible in the
 ring~$\End(1)$). This follows by considering kernel and image of~$f$.
 
 For the ``if'' direction, let~$U \hookrightarrow 1$. By the lemma, there exists
@@ -607,7 +610,7 @@ of~$1$).\end{proof}
 
 \section{The Tannaka reconstruction theorem}
 
-\begin{thm}Let~$\C$ be a rigid abelian tensor category. Let~$k := \End(1)$ be a
+\begin{thm}Let~$\C$ be a rigid abelian tensor category. Let~$k \defeq \End(1)$ be a
 field. Let~$\omega : \C \to \Vect_k^\mathrm{fd}$ be an exact faithful~$k$-linear
 tensor functor. Then:
 \begin{enumerate}
