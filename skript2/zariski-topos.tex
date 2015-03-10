@@ -700,7 +700,7 @@ und erst am Ende die Übersetzung mit der Kripke--Joyal-Semantik durchzuführen.
 Etwa folgt aus der einfach zu beweisenden Aussage konstruktiver linearer
 Algebra
 \begin{indentblock}
-\emph{Jeder endlich erzeugte Vektorraum über einem Körper besitzt nicht nicht
+\emph{Jeder endlich erzeugte Vektorraum über einem Körper besitzt \emph{nicht nicht}
 eine endliche Basis.}
 \end{indentblock}
 durch Interpretation in einem geeigneten Topos sofort folgende offensichtlich
@@ -818,7 +818,7 @@ stets eines das andere teilt.
 \begin{enumerate}
 \item Zeige, dass von je endlich vielen Elementen von~$R$ stets
 eines ein Teiler aller anderen ist.
-\item Zeige, dass jede Matrix über~$R$ ähnlich zu einer
+\item Zeige, dass jede Matrix über~$R$ äquivalent zu einer
 (rechteckigen) Diagonalmatrix ist.
 %\item Zeige, dass der Kern einer Matrix über~$R$ als~$R$-Modul endlich erzeugt ist.
 %(Da man konstruktiv von einem Diagonaleintrag nicht entscheiden kann, ob er
@@ -862,7 +862,7 @@ dass~$\O$ ein Bewertungsbereich ist.
 als lineare Abbildung~$R^m \to R^n$ surjektiv ist, sodass es also zu jedem~$y
 \in R^n$ ein~$x \in R^m$ mit~$Mx = y$ gibt.
 
-Zeige, dass~$M$ ähnlich zu einer (rechteckigen) Diagonalmatrix mit genau~$n$
+Zeige, dass~$M$ äquivalent zu einer (rechteckigen) Diagonalmatrix mit genau~$n$
 Einsern auf der Hauptdiagonale ist. Folgere, dass der Kern von~$M$ eine Basis
 aus~$(m - n)$ Vektoren besitzt. (Man sagt auch: Der Kern von~$M$ ist \emph{frei
 vom Rang~$(m-n)$}.)
@@ -873,6 +873,21 @@ ihre Gültigkeit folgt:
 Der Kern einer~$(n \times m)$-Matrix über einem beliebigen kommutativen
 Ring, die als lineare Abbildung surjektiv ist, ist \emph{lokal frei} vom
 Rang~$(m-n)$.
+\end{enumerate}
+\end{aufgabe}
+
+\begin{aufgabe}{Idempotente Matrizen}
+\begin{enumerate}
+\item Sei~$P \in R^{n \times n}$ eine idempotente Matrix über einem lokalen
+Ring~$R$, gelte also~$P^2 = P$. Zeige, dass~$P$ äquivalent zu einer
+Diagonalmatrix mit Einträgen~$1$ und~$0$ ist.
+
+\emph{Tipp:} Betrachte die Ideale der~$i$-Minoren von~$P$. Diese sind
+idempotent und (zum Beispiel nach dem Lemma von Nakayama) daher jeweils das
+Null- oder Einsideal.
+
+\item Sei~$P \in R^{n \times n}$ eine idempotente Matrix über einem beliebigen
+kommutativen Ring~$R$. Zeige, dass der Kokern von~$P$ lokal frei ist.
 \end{enumerate}
 \end{aufgabe}
 
