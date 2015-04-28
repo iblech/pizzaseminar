@@ -674,8 +674,12 @@ auch ein Limes~$\lim_{(i,j)} F(i,j)$... genaue Aussage bei nLab nachlesen!
 
 Allerdings vertauschen im Allgemeinen Limiten nicht mit Kolimiten und
 umgekehrt. In einem wichtigen Spezialfall stimmt es aber doch:
-\begin{prop}\emph{Filtrierte} Kolimiten vertauschen mit Limiten (nach Set!
-genaue Aussage nachlesen).
+\begin{prop}\emph{Filtrierte} Kolimiten vertauschen mit endlichen Limiten (nach
+Set). Genauer: Sei~$F : \C \times \D \to \Set$ ein Funktor. Dann gibt es eine
+kanonische Abbildung
+\[ \colim\limits_{c \in \C}\lim\limits_{d \in \D} F(c,d) \lra
+  \lim\limits_{d \in \D} \colim\limits_{c \in \C} F(c,d). \]
+Wenn~$\C$ filtriert ist, so ist diese Abbildung ein Isomorphismus.
 \end{prop}
 
 
