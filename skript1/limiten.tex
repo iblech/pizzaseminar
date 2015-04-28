@@ -94,7 +94,7 @@ angeht.\end{motto}
 Das ist so verstehen: Immer, wenn man einen Morphismus aus einem
 Objekt~$\widetilde K$ "`in das Diagramm hinein"' gegeben hat (d.\,h. einen Kegel des Diagramms
 gegeben hat), induziert die universelle Eigenschaft einen Morphismus
-aus~$\widetilde K$ in den Limes.  Umgekehrt kann man aus jedem solchen
+aus~$\widetilde K$ in den Limes. Umgekehrt kann man aus jedem solchen
 Morphismus durch Nachschaltung der Projektionen einen Kegel erhalten.
 Dieses Motto werden wir sogar formal beweisen können: siehe
 Proposition~\ref{homstetig}.
@@ -406,7 +406,7 @@ Sei~$x$ ein Punkt eines topologischen Raums~$X$. Dann organisieren sich
 die offenen Mengen von~$X$, die~$x$ enthalten, vermöge der umgekehrten
 Inklusionsbeziehung zu einer gerichteten Menge, und induzieren daher eine
 filtrierte Kategorie. In der Garbentheorie verwendet man Kolimiten über
-Diagramme dieser Form, um den sog. \emph{Halm} einer Garbe an der Stelle~$x$ zu
+Diagramme dieser Form, um den sog. \emph{Halm} einer Garbe an dem Punkt~$x$ zu
 definieren.
 
 
@@ -654,12 +654,37 @@ Sei~$A$ ein Objekt einer lokal kleinen Kategorie~$\C$; dann haben wir in
 Definition~\ref{defhomfunktor} den kovarianten Hom-Funktor
 \[ \Hom_\C(A, \freist) : \C \longrightarrow \Set,\ X \longmapsto \Hom_\C(A,X) \]
 eingeführt. Dieser Funktor ist stets stetig:
-\begin{prop}Der kovariante Hom-Funktor~$\Hom_\C(A,\freist)$ ist stetig, d.\,h.
+\begin{prop}\label{homstetig}Der kovariante Hom-Funktor~$\Hom_\C(A,\freist)$ ist stetig, d.\,h.
 für alle kleinen Diagramme~$F : \I \to \C$ mit existierendem Limes ist die
 kanonische Abbildung
-\[ \lim_i \Hom_\C(A, F(i)) \stackrel{\cong}{\longrightarrow} \Hom_\C(A, \lim_i F(i)) \]
-ist bijektiv. Stimmt die Reihenfolge?
+\[ \Hom_\C(A, \lim_i F(i)) \stackrel{\cong}{\longrightarrow} \lim_i \Hom_\C(A, F(i)) \]
+ist bijektiv.
 \end{prop}
+\begin{proof}
+Die Abbildung schickt einen Morphismus~$A \to \lim_i F(i)$ auf
+das~$I$-indizierte System der Kompositionen~$A \to \lim_i F(i) \to F(i)$. Die
+Bijektivität dieser Abbildung bedeutet, dass es zu jedem kompatiblen
+System~$(\widetilde \pi_i : A \to F(i))_{i \in I}$ genau einen Morphismus~$\psi : A \to
+\lim_i F(i)$ mit~$\pi_i \circ \psi = \widetilde \pi_i$ für alle~$i \in
+I$ gibt. Das ist gerade die universelle Eigenschaft des Limes.
+\end{proof}
+Wir haben also sogar etwas mehr gezeigt: Ein~$F$-Kegel~$(L
+\stackrel{\pi_i}{\to} F(i))_{i \in \I}$ ist genau dann ein Limes von~$F$, wenn
+für alle Objekte~$A \in \C$ die kanonische Abbildung aus der Proposition
+bijektiv ist. Noch abstrakter formuliert: Die
+Hom-Funktoren~$\Hom_\C(A,\freist)$ bewahren nicht nur Limiten; gemeinsam (über
+alle~$A \in \C$) \emph{reflektieren} sie sie auch.
+
+Für Kolimiten gibt es eine analoge Aussage.
+\begin{prop}\label{homkostetig}Der kontravariante
+Hom-Funktor~$\Hom_\C(\freist,A)$ ist, aufgefasst als Funktor~$\C^\op \to
+\Set$, stetig, d.\,h. für alle kleinen Diagramme~$F : \I \to \C$ mit
+existierendem Kolimes ist die kanonische Abbildung
+\[ \Hom_\C(\colim_i F(i), A) \stackrel{\cong}{\longrightarrow} \lim_i \Hom_\C(F(i), A) \]
+ist bijektiv.
+\end{prop}
+Man beachte, dass auf der rechten Seite trotzdem der Limes, nicht der Kolimes
+steht.
 
 
 \subsection{Vertauschung von (Ko-)Limiten}
@@ -669,7 +694,7 @@ Limiten vertauschen stets mit Limiten, und dual vertauschen Kolimiten stets mit 
 Sei~$F : \I \times \J \to \C$ ein Diagramm in~$\C$. Sei für jedes Objekt~$i \in
 \Ob\I$ jeweils ein Limes~$L_i := \lim_j F(i, \freist)$ gegeben, und sei ferner
 ein Limes~$L := \lim_i L_i$ gegeben. Dann ist~$L$ in kanonischer Art und Weise
-auch ein Limes~$\lim_{(i,j)} F(i,j)$... genaue Aussage bei nLab nachlesen!
+auch ein Limes~$\lim_{(i,j)} F(i,j)$.
 \end{prop}
 
 Allerdings vertauschen im Allgemeinen Limiten nicht mit Kolimiten und
