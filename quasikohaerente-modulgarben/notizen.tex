@@ -1,0 +1,272 @@
+\documentclass[a4paper,ngerman,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,mathtools}
+\usepackage{array}
+\usepackage[all]{xy}
+
+\usepackage{shadethm}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+
+\usepackage{hyperref}
+
+\setlength{\shadeboxsep}{6pt}
+\setlength{\shadeleftshift}{-\shadeboxsep}
+\setlength{\shaderightshift}{-\shadeboxsep}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+%\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Beispiel}
+\newtheorem{motto}[defn]{Motto}
+
+\theoremstyle{plain}
+
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{fact}[defn]{Fakt}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Satz}
+\newtheorem{cor}[defn]{Korollar}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Bemerkung}
+\newtheorem{warning}[defn]{Warnung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\K}{\mathcal{K}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\VB}{\mathrm{VB}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\Coh}{\mathrm{Coh}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Ob}{\operatorname{Ob}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\placeholder}{\underline{\ \ }}
+\newcommand{\lra}{\longrightarrow}
+\renewcommand{\div}{\operatorname{div}}
+\newcommand{\Div}{\mathrm{Div}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\PD}{\operatorname{PD}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+
+\begin{document}
+
+\title{Quasikohärente Modulgarben}
+\author{Ingo Blechschmidt}
+\date{28. Mai 2015}
+\maketitle
+
+\section{Grundlagen}
+
+\begin{motto}Nur die quasikohärenten Modulgarben auf einem Schema haben
+geometrische Bedeutung. Die anderen sind Artefakt der Kodierung über lokal
+geringte Räume.\end{motto}
+
+\begin{defn}Sei~$X$ ein Schema und~$\E$ eine~$\O_X$-Modulgarbe. Genau dann
+heißt~$\E$ \emph{quasikohärent}, wenn es lokal exakte Sequenzen der Form
+\[ \O_X^{\oplus I} \lra \O_X^{\oplus J} \lra \E \lra 0 \]
+gibt. Dabei können~$I$ und~$J$ beliebige Mengen sein.
+\end{defn}
+
+\begin{prop}Sei~$X$ ein Schema und~$\E$ eine~$\O_X$-Modulgarbe. Dann sind
+äquivalent:
+\begin{enumerate}
+\item Die Modulgarbe $\E$ ist quasikohärent.
+\item Es gibt eine Überdeckung von~$X$ durch offene affine Teilmengen~$U$ sodass
+für jede Überdeckungsmenge~$U = \Spec A$ die Einschränkung~$\E|_U$ isomorph zu
+einer Modulgarbe der Form~$M^\sim$ für einen~$A$-Modul~$M$ ist.
+\item Für alle offenen affinen Teilmengen~$U = \Spec A$ ist~$\E|_U$ isomorph zu einer
+Modulgarbe der Form~$M^\sim$ für einen~$A$-Modul~$M$.
+\item Für alle offenen affinen Teilmengen~$U = \Spec A$ und Funktionen~$f \in
+A$ ist die kanonische Abbildung~$\E(U)[f^{-1}] \to \E(D(f))$ ein Isomorphismus
+von~$A[f^{-1}]$-Moduln.
+\end{enumerate}
+\end{prop}
+
+\begin{rem}Eine Modulgarbe~$\E$ auf einem Schema~$X$ ist genau dann
+quasikohärent, wenn aus Sicht der internen Sprache des Topos~$\Sh(X)$ für
+alle~$f : \O_X$ der lokalisierte Modul~$\E[f^{-1}]$ eine Garbe bezüglich der
+Modalität~$\Box$ mit~$\Box\varphi \defeqv (\text{$f$ inv.} \Rightarrow
+\varphi)$ ist.\end{rem}
+
+\begin{ex}Die Kategorie der quasikohärenten Modulgarben auf einem affinen
+Schema~$\Spec A$ ist äquivalent zur Kategorie der~$A$-Moduln. Die Äquivalenz
+wird vermittelt durch den Funktor~$\E \mapsto \E(\Spec A)$ mit
+Pseudoinversem~$M \mapsto M^\sim$.\end{ex}
+
+\begin{ex}Die Kategorie der quasikohärenten Modulgarben auf einem projektiven
+Schema~$\Proj A$ ist äquivalent zum Quotient der Kategorie der
+$\ZZ$-graduierten~$A$-Moduln modulo der Serreschen Unterkategorie derjenigen
+graduierten Moduln, welche ab einem gewissen Grad verschwinden. Die Äquivalenz
+wird durch eine projektive Variante der Tilde-Konstruktion vermittelt.\end{ex}
+
+\begin{ex}Der Rückzug quasikohärenter Modulgarben ist stets wieder
+quasikohärent. Der Pushforward einer quasikohärenten Modulgarbe längs einem
+quasikompakten und quasiseparierten Morphismen ist wieder
+quasikohärent.\end{ex}
+
+\begin{prop}Sei~$f : \Spec A \to \Spec B$ ein Morphismus affiner Schemata.
+Betrachte~$A$ vermöge~$f^\sharp$ als~$B$-Algebra.
+\begin{enumerate}
+\item Sei~$M$ ein~$A$-Modul. Dann gilt~$f_*(M^\sim) \cong (M_B)^\sim$.
+\item Sei~$N$ ein~$B$-Modul. Dann gilt~$f^*(N^\sim) \cong (N \otimes_B
+A)^\sim$.
+\end{enumerate}
+\end{prop}
+
+\begin{rem}Aus der Kategorie der quasikohärenten Modulgarben auf einem
+Schema~$X$ zusammen mit ihrer abelschen Struktur kann man das Schema
+rekonstruieren; das besagt der Rekonstruktionssatz von Gabriel--Rosenberg. Für
+affine Schemata folgt das aus der für Ringe~$A$ gültigen Isomorphiekette
+\[ A \cong \mathrm{End}(\mathrm{Id}_{\mathrm{Mod}(A)})
+  \cong \mathrm{End}(\mathrm{Id}_{\mathrm{QCoh}(\Spec A)}). \]
+Allgemein heißt für eine abelsche Kategorie~$\C$ die Menge der Endomorphismen
+des Identitätsfunktors auf~$\C$ auch \emph{Zentrum von~$\C$}. Mit der Addition
+und Verkettung von natürlichen Transformationen wird diese zu einem
+kommutativen Ring.
+\end{rem}
+
+\begin{rem}Die Kategorie~$\mathrm{QCoh}(X)$ der quasikohärenten Modulgarben ist
+eine koreflektive Unterkategorie der Kategorie~$\mathrm{Mod}(\O_X)$
+aller Modulgarben, das heißt die Inklusion~$\mathrm{QCoh}(X) \hookrightarrow
+\mathrm{Mod}(\O_X)$ besitzt einen Linksadjungierten, den so genannten
+\emph{Kohärator}. Als Konsequenz kann man zeigen, dass~$\mathrm{QCoh}(X)$ wie
+auch~$\mathrm{Mod}(\O_X)$ eine Grothendieck-Kategorie ist. Kolimiten berechnet
+man in~$\mathrm{QCoh}(X)$ genau wie in~$\mathrm{Mod}(\O_X)$. Limiten
+in~$\mathrm{QCoh}(X)$ berechnet man, indem man sie zunächst
+in~$\mathrm{Mod}(\O_X)$ bestimmt und dann den Kohärator anwendet. Für
+endliche Limiten kann man auf den Kohärator verzichten.\footnote{Seien~$M_i$
+Moduln über~$A$. Das Produkt der~$M_i^\sim$ in der Kategorie aller Modulgarben
+auf~$\Spec A$ ist dann eine Garbe mit~$D(f) \mapsto \prod_i M_i[f^{-1}]$.
+Dagegen ist das Produkt der~$M_i^\sim$ in der Kategorie der quasikohärenten
+Modulgarben eine Garbe mit~$D(f) \mapsto (\prod_i M_i)[f^{-1}]$. Es gibt zwar
+einen kanonischen Morphismus~$(\prod_i M_i)[f^{-1}] \to \prod_i M_i[f^{-1}]$;
+im Allgemeinen ist dieser jedoch weder injektiv noch surjektiv.}\end{rem}
+
+%\begin{rem}Im Allgemeinen sind Kategorien von quasikohärenten Modulgarben nicht
+%äquivalent zu Kategorien von Moduln über gewöhnlichen Ringen. Zum Beispiel ist
+%die Kategorie der (nicht nur quasikohärenten, sondern sogar) kohärenten
+%Modulgarben auf einer vollständigen Varietät über einem algebraisch
+%abgeschlossenen Körper stets eine Krull--Schmidt-Kategorie.
+%\end{rem}
+
+
+\section{Tiefere kategorielle Interpretation}
+
+Sei~$\E$ eine quasikohärente Modulgarbe auf einem Schema~$X$. Dann erhalten wir
+für jeden Morphismus~$f : \Spec A \to X$ durch Betrachtung des Rückzugs~$f^*\E$
+einen~$A$-Modul, den wir~"`$\E(A)$"' bezeichnen möchten. In der Notation
+unterdrücken wir also den Morphismus~$f$ und notieren nur seine Quelle.
+Ist~$p : \Spec B \to \Spec A$ ein weiterer Morphismus, so gibt es eine
+kanonische Abbildung~$\E(A) \to \E(B)$. Insgesamt wird definiert daher die
+Zuordnung~$(\Spec A \to X) \mapsto \E(A)$ eine \emph{Prägarbe} auf der
+Kategorie~$\mathrm{Aff}/X$ der affinen Schemata über~$X$.
+
+Die Familie dieser Moduln~$\E(A)$ hat zwei Besonderheiten:
+\begin{enumerate}
+\item Seien Morphismen~$f : \Spec A \to X$ und~$p : \Spec B \to \Spec A$ gegeben. Dann
+gibt es einen kanonischen Isomorphismus
+\[ \E(A) \otimes_A B \stackrel{\cong}{\lra} \E(B), \]
+denn~$p^* f^* \E$ ist kanonisch isomorph zu~$(f \circ p)^*\E$.
+Diese Isomorphismen erfüllen ihrerseits eine Kohärenzbedingung.
+
+\item Sei~$f : \Spec A \to X$ ein Morphismus und sei~$\Spec A$ überdeckt durch
+offene affine Unterschemata~$\Spec A[f_i^{-1}]$. Dann ist das Diagramm
+\[ \E(A) \to \prod_i \E(A[f_i^{-1}]) \rightrightarrows \prod_{i,j}
+\E(A[f_i^{-1},f_j^{-1}]) \]
+ein Differenzkerndiagramm. Man sagt auch, die Zuordnung~$(\Spec A \to X)
+\mapsto \E(A)$ sei eine \emph{Zariski-Garbe}.
+\end{enumerate}
+
+Man kann sich überlegen, dass für eine Prägarbe auf~$\mathrm{Aff}/X$
+Eigenschaft~2 schon aus Eigenschaft~1 folgt. Denn das fragliche Diagramm ist
+dann isomorph zu
+\[ \E(A) \to \prod_i \E(A)[f_i^{-1}] \rightrightarrows \prod_{i,j}
+\E(A)[f_i^{-1},f_j^{-1}], \]
+und es ist eine elementare Beobachtung aus der linearen Algebra über Ringen,
+dass dieses ein Differenzkerndiagramm ist.
+
+Als Zwischenfazit halten wir fest: Eine quasikohärente Modulgarbe~$\E$
+definiert ein kohärentes System von Moduln~$(\E(A))_{\Spec A \to X}$, also ein
+System, das Eigenschaft~1 hat. Umgekehrt kann man sich überlegen, dass jedes
+solche System auch eine quasikohärente Modulgarbe festlegt.
+
+Die Kategorie der quasikohärenten Modulgarben auf~$X$ ist also äquivalent zur
+Kategorie der kohärenten~$\mathrm{Aff}/X$-indizierten Systeme von Moduln. Das kann
+einen an die Konstruktion von Limiten in der Kategorie der Mengen erhalten!
+Tatsächlich gilt
+\[ \mathrm{QCoh}(X) = \lim\nolimits_{\Spec A \to X} \mathrm{Mod}(A). \]
+Der Limes auf der rechten Seite muss in einem 2-kategoriellen Sinn verstanden
+werden; ein Objekt dieser Kategorie besteht aus
+\begin{enumerate}
+\item einer Familie von Moduln: für jeden Morphismus~$f : \Spec A \to X$
+einen~$A$-Modul~$M_A$, und
+\item Isomorphismen: für jeden Morphismus~$f : \Spec A \to X$ und jeden
+Morphismus~$p : \Spec B \to \Spec A$ einen Isomorphismus~$M_A \otimes_A B \to
+M_B$,
+\end{enumerate}
+sodass diese bezüglich weiterer Morphismen~$\Spec C \to \Spec B$ ein
+Kohärenzaxiom erfüllen.
+
+Die rechte Seite kann man als Instanz der \emph{Limesformel für
+Rechts-Kan-Erweiterungen} erkennen. Damit können wir also auch schreiben:
+\[ \mathrm{QCoh} = \mathrm{Ran}_\mathrm{inkl}(\mathrm{Mod}), \]
+der Funktor~$\mathrm{QCoh}$, der einem Schema seine Kategorie quasikohärenter
+Modulgarben zuordnet, ist also die Rechts-Kan-Erweiterung des
+Funktors~$\mathrm{Mod} : \mathrm{Ring} \to \mathrm{Cat}$ (welcher einem
+Ring~$A$ die Kategorie der~$A$-Moduln zuordnet) längs der
+Inklusion~$\mathrm{inkl} : \mathrm{Aff}^\op \to \mathrm{Sch}^\op$;
+bedenke~$\mathrm{Aff}^\op = \mathrm{Ring}$.
+
+Beide der Ausdrücke für~$\mathrm{QCoh}(X)$ lassen sich auf Objekte~$X$
+verallgemeinern, die nicht Schemata im engeren Sinn sind: zum Beispiel Garben
+auf~$\mathrm{Ring}^\op$, welche nicht unbedingt lokal affin sind, oder sogar
+Prägarben auf~$\mathrm{Ring}^\op$. Die Limesformel ist auch eine zentrale Idee
+zur Definition der Kategorie der quasikohärenten Modulgarben auf einem Stack.
+
+Wer mag, kann die Formel auch noch zu
+\[ \mathrm{QCoh}(X) = \int_A \Hom(\Spec A, X) \cdot \mathrm{Mod}(A) \]
+umschreiben. Damit endet dieser Ausflug in die 2-kategorielle Interpretation
+quasikohärenter Modulgarben.
+
+\end{document}
