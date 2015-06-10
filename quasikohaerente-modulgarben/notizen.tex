@@ -29,6 +29,7 @@
 
 \theoremstyle{plain}
 
+\newtheorem{defnprop}[defn]{Definition/Proposition}
 \newtheorem{prop}[defn]{Proposition}
 \newtheorem{fact}[defn]{Fakt}
 \newtheorem{lemma}[defn]{Lemma}
@@ -62,6 +63,8 @@
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\id}{\mathrm{id}}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\mmm}{\mathfrak{m}}
 \newcommand{\xra}[1]{\xrightarrow{#1}}
 \newcommand{\Mod}{\mathrm{Mod}}
 \newcommand{\Set}{\mathrm{Set}}
@@ -86,6 +89,7 @@
 \newcommand{\Sh}{\operatorname{Sh}}
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Sym}{Sym}
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defeqv}{\vcentcolon\equiv}
 
@@ -96,7 +100,145 @@
 \date{28. Mai 2015}
 \maketitle
 
-\section{Grundlagen}
+\section{Definitionen}
+
+\begin{defn}Eine~($\O_X$-)Modulgarbe auf einem geringten Raum~$(X,\O_X)$ besteht
+aus \ldots{} sodass \ldots\end{defn}
+
+\begin{defn}Eine Modulgarbe~$\E$ heißt genau dann \emph{lokal endlich frei},
+wenn \ldots{} Sie heißt genau dann \emph{von endlichem Typ}, wenn
+\ldots\end{defn}
+
+\begin{rem}Die Kategorie~$\mathrm{Mod}(\O_X)$ der~$\O_X$-Modulgarben ist
+abelsch, vollständig und kovollständig und sogar eine
+Grothendieck-Kategorie.\end{rem}
+
+\begin{rem}Aus Sicht der internen Sprache des Topos~$\Sh(X)$ ist
+eine~$\O_X$-Modulgarbe nichts anderes als ein gewöhnlicher Modul über dem
+gewöhnlichen Ring~$\O_X$. Sie ist genau dann lokal endlich frei, wenn sie aus
+interner Sicht endlich frei ist. Sie ist genau dann von endlichem Typ, wenn sie
+aus interner Sicht endlich erzeugt ist.\end{rem}
+
+
+\section{Beispiele}
+
+\begin{defnprop}Sei~$M$ ein~$A$-Modul. Dann gibt es auf~$\Spec A$ eine
+Modulgarbe~$M^\sim$ mit
+\begin{enumerate}
+\item $M^\sim(D(f)) \cong M[f^{-1}]$ für alle~$f \in A$ und
+\item $(M^\sim)_\ppp \cong M_\ppp = M[(A\setminus\ppp)^{-1}]$ für alle~$\ppp
+\in \Spec A$.
+\end{enumerate}
+\end{defnprop}
+
+\begin{rem}Im Topos~$\Sh(\Spec A)$ gibt es den \emph{generischen Filter}~$\F$,
+die Untergarbe der konstanten Garbe~$\ul{A}$ mit~$\F(U) \defeq \{ f : U \to A
+\,|\, \text{$f(\ppp) \not\in \ppp$ für alle~$\ppp \in U$} \}$. Aus interner
+Sicht ist dann~$M^\sim$ einfach die Lokalisierung~$\ul{M}[\F^{-1}]$.\end{rem}
+
+\begin{ex}$A^\sim \cong \O_{\Spec A}$.\end{ex}
+
+\begin{ex}Die Garbe~$(k[x,y]/(x-2,y-3))^\sim$ auf~$\Spec k[x,y]$ ist im
+Punkt~$(x-2,y-3)$ konzentriert, d.\,h. die Menge derjenigen Punkte, an denen
+der Halm dieser Garbe nicht Null ist, enthält nur diesen einen Punkt. Daher
+heißt eine solche Garbe auch \emph{Wolkenkratzergarbe}.\end{ex}
+
+\begin{prop}Sei~$M$ ein~$A$-Modul. Genau dann ist~$M^\sim$ lokal endlich frei,
+wenn~$M$ endlich erzeugt und projektiv ist.\end{prop}
+
+\begin{ex}Seien~$M$ und~$N$ quadratische~$(n \times n)$-Matrizen über einem
+Körper~$k$. Eine notwendige Bedingung dafür, dass~$M$ und~$N$ zueinander
+ähnlich sind, ist, dass ihr Spektrum übereinstimmt. Bekanntlich ist diese
+Bedingung aber nicht hinreichend.
+
+Eine Charakterisierung von Ähnlichkeit ist
+mit~$k[X]$-Moduln möglich: Genau dann sind~$M$ und~$N$ zueinander ähnlich, wenn
+die~$k[X]$-Moduln~$k^n_M$ und~$k^n_N$ zueinander isomorph sind. (Als
+abelsche Gruppe ist~$k^n_M = k^n$. Die Skalarmultiplikation ist definiert
+als~$f \cdot v \defeq f(M)v$.) Das ist genau dann der Fall, wenn die
+induzierten Modulgarben~$(k^n_M)^\sim$ und~$(k^n_N)^\sim$ auf~$\AA^1_k = \Spec
+k[X]$ isomorph sind. Man kann sich nun überlegen, dass diese Garben Träger im
+Spektrum haben.
+
+Fazit: Wir können die Modulgarbe~$(k^n_M)^\sim$ als Verfeinerung der noch zu
+groben Invariante des Spektrums deuten. Sie kodiert genau den Ähnlichkeitstyp
+von~$M$.\end{ex}
+
+\begin{defn}Die \emph{Faser} einer Modulgarbe~$\E$ über einem Punkt~$x$ ist
+der~$k(x)$-Vektorraum
+\[ \E|_x \defeq \E_x \otimes_{\O_{X,x}} k(x) \cong \E_x/\mmm_x \E_x. \]
+\end{defn}
+
+Ist~$s \in \E(U)$ ein lokaler Schnitt einer Modulgarbe, so ist für jeden
+Punkt~$x \in U$ die Restklasse von~$s$ in~$\E|_x$ ein Element eines (von~$x$
+abhängigen) Vektorraums. In diesem Sinn kann man Schnitte von Modulgarben als
+\emph{verallgemeinerte Funktionen} betrachten. Diese sind wichtig, da es
+interessanten Schemata oftmals an globalen gewöhnlichen Funktionen -- globalen
+Schnitten von~$\O_X$ -- mangelt.
+
+\begin{ex}Sei~$W$ ein endlich-dimensionaler~$k$-Vektorraum und~$X = \PP(W) =
+\Proj \Sym W^\vee$ seine Projektivierung. Die~$k$-rationalen Punkte dieses
+Schemas sind gerade die eindimensionalen Unterräume von~$W$. Auf~$X$ gibt es
+die wichtigen Modulgarben~$\O(1)$ und~$\O(-1)$. Für die Fasern dieser Garben an
+einem Punkt~$\ell \subseteq W$ gilt
+\[ \O(1)|_\ell \cong \ell^\vee \qquad\text{und}\qquad \O(-1)|_\ell \cong \ell. \]
+Die Garbe~$\O(-1)$ heißt daher auch \emph{tautologisches Bündel}.
+
+In Skizzen kann man die beiden Garben nicht unterscheiden -- wenn man~$X$ als
+Kreis zeichnet ($\dim W = 2$), so sehen beide wie das Möbiusbündel aus. Als
+Garben sind sie aber nicht isomorph; das tautologische Bündel hat nur den
+Nullschnitt als globalen Schnitt, während~$\O(1)(X)$ kanonisch isomorph
+zu~$W^\vee$ ist.
+
+Allgemeiner gibt es für alle~$m \in \ZZ$ jeweils eine besondere
+Modulgarbe~$\O(m)$; für die globalen Schnitte gilt~$\O(m)(X) \cong \Sym^m
+W^\vee$.\end{ex}
+
+\begin{ex}Sei~$D$ ein Cartier-Divisor auf einem Schema~$X$. Dann ist die
+Untermodulgarbe
+\[ \O_X(D) \defeq \{ f : \K_X \,|\, \mathrm{div}(f) + D \geq 0 \} \]
+der Garbe der rationalen Funktionen lokal frei vom Rang~1. Die Signifikanz
+dieser Garben erklärt sich dadurch, dass in vielen Situationen jede Modulgarbe,
+die lokal frei vom Rang~1 ist, von dieser Form ist; und dass man sie verwenden
+kann, um Schnitttheorie zu betreiben: Ist~$X$ eine Fläche, so ist die
+Schnittzahl zweier Divisoren~$D$ und~$D'$ gleich
+\[ (D \cdot D') \defeq \chi(\O_X) - \chi(\O_X(-D)) - \chi(\O_X(-D')) + \chi(\O_X(-D-D')). \]
+Dabei berechnet~$\chi$ die \emph{Euler-Charakteristik} einer (kohärenten)
+Garbe.
+\end{ex}
+
+\begin{ex}Sei~$\E$ eine lokal freie Modulgarbe vom Rang~$n$. Solche Garben
+heißen auch \emph{Vektorbündel}. In der Tat kann man aus einer solchen Garbe
+ein Vektorbündel im eigentlichen Sinn konstruieren, nämlich den
+Morphismus~$\ul{\Spec}_X \Sym \E^\vee \to X$.\end{ex}
+
+\begin{ex}Wie kann man einen Morphismus~$X \to \PP^n$ angeben? Naiv erwartet
+man, dass eine Setzung der Form~$x \mapsto [s_0(x) : \cdots : s_n(x)]$ Erfolg
+haben sollten, solange die~$s_i$ nirgends gemeinsam verschwinden. Aber was
+können die~$s_i$ sein? Sich hier auf globale Funktionen zu beschränken wäre
+sehr restriktiv -- auf vielen interessanten Schemata gibt es nur wenige globale
+Funktionen. Tatsächlich genügt es, wenn die~$s_i$ globale Schnitte eines
+Geradenbündels auf~$X$ sind, also einer lokal freien Modulgarbe vom Rang~1.\end{ex}
+
+\begin{rem}Das vorherige Beispiel kann man zu einer universellen Eigenschaft
+des projektiven Raums verbessern: Für lokal geringte Räume~$X$ stehen die
+Morphismen~$X \to \PP^n$ in kanonischer Eins-zu-Eins-Korrespondenz mit
+Geradenbündeln~$\L$ auf~$X$ zusammen mit~$n + 1$ globalen Schnitten, welche
+nirgends gemeinsam verschwinden, bis auf Isomorphie. Kurz:
+\[ \Hom(X, \PP^n) \cong \{ (\L,\,\O_X^{n+1} \twoheadrightarrow \L) \}/{\cong}. \]
+\end{rem}
+
+\begin{ex}Sei~$X$ ein Schema über~$S$. Dann gibt es auf~$X$ die
+Modulgarbe~$\Omega^1_{X/S}$ der relativen Kählerdifferentialformen.\end{ex}
+
+\begin{ex}Sei~$V(\J) \hookrightarrow X$ ein abgeschlossenes Unterschema. Dann
+hat die Garbe~$\J/\J^2$ nur Träger in~$V(\J)$, kann also auch als Garbe
+auf~$V(\J)$ angesehen werden. Als solche heißt sie \emph{Konormalgarbe}
+von~$V(\J)$ in~$X$. Wenn~$\J$ lokal von regulären Sequenzen der Länge~$r$
+erzeugt wird, ist sie lokal frei vom Rang~$r$.\end{ex}
+
+
+\section{Quasikohärente Modulgarben}
 
 \begin{motto}Nur die quasikohärenten Modulgarben auf einem Schema haben
 geometrische Bedeutung. Die anderen sind Artefakt der Kodierung über lokal
@@ -105,7 +247,7 @@ geringte Räume.\end{motto}
 \begin{defn}Sei~$X$ ein Schema und~$\E$ eine~$\O_X$-Modulgarbe. Genau dann
 heißt~$\E$ \emph{quasikohärent}, wenn es lokal exakte Sequenzen der Form
 \[ \O_X^{\oplus I} \lra \O_X^{\oplus J} \lra \E \lra 0 \]
-gibt. Dabei können~$I$ und~$J$ beliebige Mengen sein.
+gibt. Dabei können~$I$ und~$J$ beliebige, auch unendlich große, Mengen sein.
 \end{defn}
 
 \begin{prop}Sei~$X$ ein Schema und~$\E$ eine~$\O_X$-Modulgarbe. Dann sind
