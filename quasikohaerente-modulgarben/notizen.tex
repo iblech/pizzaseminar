@@ -90,6 +90,7 @@
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\Proj}{Proj}
 \DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\colim}{colim}
 \newcommand{\defeq}{\vcentcolon=}
 \newcommand{\defeqv}{\vcentcolon\equiv}
 
@@ -236,6 +237,29 @@ hat die Garbe~$\J/\J^2$ nur Träger in~$V(\J)$, kann also auch als Garbe
 auf~$V(\J)$ angesehen werden. Als solche heißt sie \emph{Konormalgarbe}
 von~$V(\J)$ in~$X$. Wenn~$\J$ lokal von regulären Sequenzen der Länge~$r$
 erzeugt wird, ist sie lokal frei vom Rang~$r$.\end{ex}
+
+
+\section{Operationen mit Modulgarben}
+
+\begin{defn}Seien~$\E$ und~$\F$ Modulgarben auf einem geringten Raum~$(X,\O_X)$. Dann
+sind~$\E \oplus \F$ und~$\E \otimes_{\O_X} \F$ definiert als \ldots\end{defn}
+
+\begin{rem}Aus der internen Sicht des Topos~$\Sh(X)$ sind direkte Summe und
+Tensorprodukt von Modulgarben einfach durch die gewöhnliche direkte Summe und
+das gewöhnliche Tensorprodukt von gewöhnlichen Moduln gegeben.\end{rem}
+
+\begin{defn}Sei~$f : X \to Y$ ein Morphismus von geringten Räumen. Ist~$\E$
+eine Modulgarbe auf~$Y$, so ist ihr \emph{Rückzug} die Modulgarbe~$f^*\E \defeq
+f^{-1}\E \otimes_{f^{-1}\O_Y} \O_X$ auf~$X$. Ist~$\F$ eine Modulgarbe auf~$X$,
+so ist ihr \emph{Pushforward} die Modulgarbe~$f_*\F$ auf~$Y$.\end{defn}
+
+\begin{rem}$f^* \dashv f_*$.\end{rem}
+
+\begin{rem}Für die Halme des Rückzugs gibt es die einfache Formel~$(f^*\E)_x
+\cong \E_{f(x)} \otimes_{\O_{Y,f(x)}} \O_{X,x}$. Für die Halme des Pushforwards
+gibt es die Formel~$(f_*\F)_y \cong \colim_{f^{-1}[y] \subseteq U} \F(U)$,
+welche für (im topologischen Sinn) abgeschlossene stetige Abbildungen~$f$
+gültig ist.\end{rem}
 
 
 \section{Quasikohärente Modulgarben}
@@ -428,7 +452,7 @@ zur Definition der Kategorie der quasikohärenten Modulgarben auf einem Stack.
 Wer mag, kann die Formel auch noch zu
 \[ \mathrm{QCoh}(X) = \int_A \mathrm{Mod}(A)^{\Hom(\Spec A, X)} =
   \int_A [\ul{X}(A), \mathrm{Mod}(A)] \]
-umschreiben. Damit endet dieser Ausflug in die 2-kategorielle Interpretation
+umschreiben. Damit endet unser Ausflug in die 2-kategorielle Interpretation
 quasikohärenter Modulgarben.
 
 \end{document}
