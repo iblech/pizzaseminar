@@ -131,11 +131,10 @@
 
 \begin{document}
 
-\setbeameroption{hide notes}
+\setbeameroption{show notes}
 \setbeamertemplate{note page}[plain]
 
 \frame{\titlepage}
-%\frame[t]{\frametitle{Gliederung}\begin{minipage}{\textwidth}\begin{small}\tableofcontents\end{small}\end{minipage}}
 \frame[t]{\frametitle{Gliederung}\tableofcontents}
 
 \section[Motivation]{Motivation: Beispiele für kategorielles Verständnis}
@@ -178,6 +177,22 @@
     \node [xshift=-1cm,yshift=-7.5cm] at (current page.north east)
       {\includegraphics[scale=0.4]{produkt.png}};
   \end{tikzpicture}
+}
+
+\note{
+  \begin{itemize}
+    \item Die Mengen~$X \times (Y \times Z)$ und~$(X \times Y) \times Z$ sind
+    nicht im Wortlaut gleich. Sie sind aber \emph{isomorph}: Es gibt eine
+    Abbildung~$f$ von links nach rechts, und diese Abbildung besitzt eine
+    Umkehrabbildung~$g$ von rechts nach links, sodass~$g \circ f$ und~$f \circ
+    g$ jeweils die Identitätsabbildungen sind.
+    \item In Haskell-Notation lassen sich~$f$ und~$g$ wie folgt angeben:
+
+    \texttt{f :: (X,(Y,Z)) -> ((X,Y),Z)} \\
+    \texttt{f (x,(y,z)) = ((x,y),z)} \\\ \\
+    \texttt{g :: ((X,Y),Z) -> (X,(Y,Z)) } \\
+    \texttt{g ((x,y),z) = (x,(y,z))}
+  \end{itemize}
 }
 
 \subsection{Isomorphismen}
@@ -243,6 +258,17 @@
   \end{tikzpicture}
 }
 
+\note{
+  \begin{itemize}
+    \item Jedes allgemeine kategorielle Resultat über ein Konzept liefert
+    automatisch auch ein Resultat für das zugehörige duale Konzept.
+    \item Wenn man etwa einmal nachgewiesen hat, dass Produkte stets bis auf
+    Isomorphie assoziativ sind -- das heißt
+    \[ X \times (Y \times Z) \cong (X \times Y) \times Z, \]
+    so folgt automatisch die duale Aussage für Koprodukte:
+    \[ X \amalg (Y \amalg Z) \cong (X \amalg Y) \amalg Z. \]
+  \end{itemize}
+}
 
 \section{Grundlagen}
 
@@ -359,6 +385,8 @@
 
     In $\R{-}\Vect$: \tabto{2.15cm} $\R^0$ initial und terminal.}
 }
+
+\end{document}
 
 \subsection[Monos und Epis]{Mono- und Epimorphismen}
 \frame[t]{\frametitle{Mono- und Epimorphismen}
