@@ -4,4 +4,10 @@
 * Etwas genauer: die dualen Zahlen
 * Haskell- und Python-Code
 * Wieso funktioniert AD? Theorem für Polynome und allgemeines Theorem
-* Ausblick: mehrere Variablen, Rückwärtsmodus, SDG
+* Nähe in C^0-Norm ==/==> Nähe in C^1-Norm
+* Krasser Trick: Imag(f(x+ih)/h), siehe [1]
+* Ausblick: mehrere Variablen, Rückwärtsmodus (siehe [2], Rückpropagation =
+  Rückwärtsmodus der Auswertungsfunktion), SDG
+
+[1] ttps://adl.stanford.edu/hyperdual/Fike_AIAA-2011-886.pdf
+[2] https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/
