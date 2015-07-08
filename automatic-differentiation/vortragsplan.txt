@@ -1,0 +1,7 @@
+* Diagramm (f, f', Code für f, Code für f')
+* Plots, die Probleme von ND illustrieren
+* Spaßrechnung: (x+eps)^2, (x+eps)^3, 1/(x+eps)
+* Etwas genauer: die dualen Zahlen
+* Haskell- und Python-Code
+* Wieso funktioniert AD? Theorem für Polynome und allgemeines Theorem
+* Ausblick: mehrere Variablen, Rückwärtsmodus, SDG
