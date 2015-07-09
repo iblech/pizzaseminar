@@ -7,14 +7,14 @@ data D a = D a a
 instance (Num a) => Num (D a) where
     D x a + D y b = D (x + y) (a + b)
     D x a * D y b = D (x * y) (x*b + a*y)
-    abs (D x a) = D (abs x) (a * signum x)
+    abs    (D x a) = D (abs x)    (a * signum x)
     signum (D x a) = D (signum x) 0
-    fromInteger = fromConstant . fromInteger
     negate (D x a) = D (negate x) (negate a)
+    fromInteger = fromConstant . fromInteger
 
 instance (Fractional a) => Fractional (D a) where
-    fromRational = fromConstant . fromRational
     recip (D x a) = D (recip x) (-a / x^2)
+    fromRational = fromConstant . fromRational
 
 instance (Floating a) => Floating (D a) where
     sin (D x a) = D (sin x) (a * cos x)
