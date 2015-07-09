@@ -9,5 +9,9 @@
 * Ausblick: mehrere Variablen, Rückwärtsmodus (siehe [2], Rückpropagation =
   Rückwärtsmodus der Auswertungsfunktion), SDG
 
+Ein schönes Übersichtsartikel:
+Bischof, Bücker. Computing Derivatives of Computer Programs.
+https://juser.fz-juelich.de/record/44658/files/Band_3_Winterschule.pdf, S. 315--327.
+
 [1] ttps://adl.stanford.edu/hyperdual/Fike_AIAA-2011-886.pdf
 [2] https://justindomke.wordpress.com/2009/02/17/automatic-differentiation-the-most-criminally-underused-tool-in-the-potential-machine-learning-toolbox/
