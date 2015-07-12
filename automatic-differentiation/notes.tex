@@ -1,0 +1,66 @@
+\documentclass[a4paper,ngerman,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,mathtools}
+\usepackage{array}
+\usepackage[all]{xy}
+
+\usepackage{shadethm}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage[T1]{fontenc}
+\usepackage{libertine}
+
+\usepackage{hyperref}
+
+\setlength{\shadeboxsep}{6pt}
+\setlength{\shadeleftshift}{-\shadeboxsep}
+\setlength{\shaderightshift}{-\shadeboxsep}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+%\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Beispiel}
+\newtheorem{motto}[defn]{Motto}
+
+\theoremstyle{plain}
+
+\newtheorem{defnprop}[defn]{Definition/Proposition}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{fact}[defn]{Fakt}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Satz}
+\newtheorem{cor}[defn]{Korollar}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Bemerkung}
+\newtheorem{warning}[defn]{Warnung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\newcommand{\RR}{\mathbb{R}}
+
+\begin{document}
+
+\title{Automatic Differentiation}
+\author{Ingo Blechschmidt}
+\date{July 9th, 2015}
+\maketitle
+
+\section{What automatic differentiation achives}
+
+\section{The basic idea of automatic differentiation}
+
+\section{Explanation}
+
+\section{Caveats and outlook}
+
+% "poor man's automatic differentiation: Imag(f(x+ih)/h)"
+
+\end{document}
