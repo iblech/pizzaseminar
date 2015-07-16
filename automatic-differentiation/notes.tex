@@ -55,9 +55,81 @@
 
 \section{What automatic differentiation achives}
 
+Given code which implements a function~$x \mapsto f(x)$, automatic
+differentation gives us code which implements its derivative~$x \mapsto
+f'(x)$. The code obtained this way is exactly the same as if we'd worked out
+the derivative on paper.
+
+The input code to automatic differentiation may contain arbitrary control
+structures such as \emph{if} conditionals or \emph{while} loops. Therefore it
+is applicable to a wide range of problems:
+
+\begin{itemize}
+\item The basic use case is to find out the derivative of a function.
+\item Assume that we're using Newton's method to solve a parameter-dependent
+equation~$f(x,\theta) = 0$ for~$x$. We might be interested in how the
+solution~$x(\theta)$ depends on~$\theta$. This is trivial with automatic
+differentiation, we just feed it our Newton code.
+\item Assume that we're solving some parameter-dependent ordinary differential
+equation. We are interested in the dependence of the solution (at the final
+time, say) on the parameter. For this, we just hand our differential equation
+solving code to automatic differentiation.
+\end{itemize}
+
+Automatic differentiation is totally unlike to \emph{numerical
+differentiation}. With numerical differentiation, we approximate~$f'(x)$ by
+some difference quotient like
+\[ \frac{f(x + h) - f(x)}{h} \qquad\text{or}\qquad
+  \frac{f(x + h) - f(x - h)}{2h}. \]
+This approach faces severe problems: If~$h$ is large, the quotient won't be a
+good approximation to the true derivative. Instead, it will give the slope of
+some unrelated secant. If~$h$ is small, the approximation will be good in
+theory. But practically, with floating-point arithmetic, a huge loss of
+precision may occur, since we are subtracting two nearly equal numbers.
+
+Automatic differentiation is also unlike to \emph{symbolic differentiation},
+which operates on the level of \emph{terms}. Symbolic differentiation is useful
+if our goal is to obtain \emph{formulas} for various quantities, but it isn't
+particularly suited for efficient evaluation to floating-point numbers.
+
+
 \section{The basic idea of automatic differentiation}
 
-\section{Explanation}
+To grasp the basic idea of automatic differentiation, assume that there exists
+a magical number~$\varepsilon$ such that~$\varepsilon^2 = 0$. This
+number~$\varepsilon$ should not itself be zero, as else we couldn't extract any
+meaningful information from calculations with~$\varepsilon$.
+
+The set of real numbers doesn't contain such a number. Nevertheless, watch:
+\begin{align*}
+  (x+\varepsilon)^2 &= x^2 + 2x\varepsilon + \varepsilon^2 = x^2 + 2x\varepsilon \\
+  (x+\varepsilon)^3 &= x^2 + 3x^2\varepsilon + 3x\varepsilon^2 + \varepsilon^3 = x^3 + 3x^2\varepsilon \\
+  \frac{1}{x+\varepsilon} &= \frac{x-\varepsilon}{(x+\varepsilon) \cdot
+  (x-\varepsilon)} = \frac{x-\varepsilon}{x^2} = \frac{1}{x} - \frac{1}{x^2}
+  \varepsilon
+\end{align*}
+
+So it appears that plugging in~$x + \varepsilon$ into a function~$f$ yields
+\emph{the derivative~$f'(x)$ along with the function value~$f(x)$}, as the
+coefficient of the magical number~$\varepsilon$.
+
+We exploit this observation with automatic differentiation. To calculate the
+derivative~$f'(x)$, given code for~$f(x)$, we feed the code with~$x +
+\varepsilon$ and then extract the coefficient of~$\varepsilon$ from the result.
+Of course, the given code didn't expect to be called with
+magical~$\varepsilon$'s instead of ordinary floating-point numbers. But in a
+language with operator overloading, there's no way for the code to prevent such
+unusual evaluations.
+
+
+\section{A closer look: the dual numbers}
+
+% Definition
+% Haskell and Python code
+
+
+\section{Why automatic differentiation works}
+
 
 \section{Caveats and outlook}
 
