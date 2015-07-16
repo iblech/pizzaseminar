@@ -45,6 +45,8 @@
 \displaywidowpenalty=10000
 
 \newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\defeq}{\vcentcolon=}
 
 \begin{document}
 
@@ -119,10 +121,34 @@ derivative~$f'(x)$, given code for~$f(x)$, we feed the code with~$x +
 Of course, the given code didn't expect to be called with
 magical~$\varepsilon$'s instead of ordinary floating-point numbers. But in a
 language with operator overloading, there's no way for the code to prevent such
-unusual evaluations.
+unusual evaluations. We discuss this in more detail below.
 
 
 \section{A closer look: the dual numbers}
+
+Recall how we construct the complex numbers~$\CC$ from the real numbers~$\RR$.
+We define~$\CC \defeq \RR \times \RR$ and set
+\begin{align*}
+  (x,a) + (y,b) &\defeq (x+y, a+b), \\
+  (x,a) \cdot (y,b) &\defeq (xy - ab, xb+ay).
+\end{align*}
+These formulas don't appear from nowhere. Instead, setting~$i \defeq (0,1)$,
+they are precisely the formulas needed such that the identity~$i^2 = -1$
+holds. Writing~$(x,a) = x + ai$, we call~$x$ the \emph{real part} and~$a$ the
+\emph{imaginary part}.
+
+In a similar way, we can construct the \emph{dual
+numbers}~$\RR[\varepsilon]/(\varepsilon^2)$. We
+set~$\RR[\varepsilon]/(\varepsilon^2) \defeq \RR \times \RR$ and set
+\begin{align*}
+  (x,a) + (y,b) &\defeq (x+y, a+b), \\
+  (x,a) \cdot (y,b) &\defeq (xy, xb+ay).
+\end{align*}
+Again, these formulas can be motivated. We write~$\varepsilon \defeq (0,1)$
+and~$x + a \varepsilon \defeq (x,a)$. Then these rules can be obtained by
+formally expanding~$(x + a \varepsilon) + (y + b \varepsilon)$ respectively~$(x
++ a \varepsilon) \cdot (y + b \varepsilon)$ and imposing the
+relation~$\varepsilon^2 = 0$.
 
 % Definition
 % Haskell and Python code
