@@ -61,8 +61,11 @@
 \newcommand{\GL}[1]{\operatorname{GL}(#1)}
 \newcommand{\freist}{\_{}\_{}}
 \newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Hask}{\mathrm{Hask}}
 \newcommand{\Grp}{\mathrm{Grp}}
 \newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\fst}{\mathrm{fst}}
+\newcommand{\snd}{\mathrm{snd}}
 
 \def\longleadsto{\mathrel{-}\joinrel\leadsto}
 \DeclareMathOperator{\ggT}{ggT}
@@ -368,7 +371,7 @@
   \end{center}
 }
 
-\subsection[Initiale u. terminale Obj.]{Initiale und terminale Objekte}
+\subsection[Init. u. term. Obj.]{Initiale und terminale Objekte}
 \frame[t]{\frametitle{Initiale und terminale Objekte}
   \textbf{Definition:} Ein Objekt~$X$ einer Kategorie~$\C$ heißt genau dann
   \begin{itemize}
@@ -383,12 +386,10 @@
   \only<2>{%
     In $\Set$: \tabto{2.15cm} $\emptyset$ initial, $\{\star\}$ terminal.
 
-    In $\R{-}\Vect$: \tabto{2.15cm} $\R^0$ initial und terminal.}
+    In $\Hask$: \tabto{2.15cm} \texttt{Void} initial, \texttt{()} terminal.}
 }
 
-\end{document}
-
-\subsection[Monos und Epis]{Mono- und Epimorphismen}
+\subsection[Monos u. Epis]{Mono- und Epimorphismen}
 \frame[t]{\frametitle{Mono- und Epimorphismen}
   \textbf{Definition:}
   Ein Morphismus $f:X \to Y$ einer Kategorie~$\C$ heißt genau dann
@@ -401,7 +402,7 @@
     \[ p \circ f = q \circ f \quad\Longrightarrow\quad p = q. \]
   \end{itemize}
 
-  \textbf{Beobachtung} in $\Set$, $\Grp$ und $\R{-}\Vect$:
+  \textbf{Beobachtung} in $\Set$:
   \begin{align*}
     \text{$f$ Mono} &\Longleftrightarrow \text{$f$ injektiv.} \\
     \text{$f$ Epi} &\Longleftrightarrow \text{$f$ surjektiv.}
@@ -430,6 +431,29 @@
   \end{center}
 }
 
+\subsection[Produkte]{Produkte in Kategorien}
+\frame[t,shrink]{\frametitle{Produkte in Kategorien}%
+  \textbf{Definition:} Ein \emph{Produkt} zweier Objekte~$X$
+  und~$Y$ in einer Kategorie ist ein
+  \begin{itemize}
+    \item Objekt~$P$
+    \item zusammen mit Morphismen~$\fst : P \to X$, $\snd : P \to Y$
+  \end{itemize}
+  sodass
+  \begin{itemize}
+    \item für jedes Objekt~$Q$
+    \item und Morphismen~$\fst' : Q \to X$,~$\snd' : Q \to Y$
+  \end{itemize}
+  genau ein Morphismus~$f : Q \to P$ existiert, sodass das Diagramm
+  kommutiert.
+  \[ \xymatrix{
+    & Q \ar@/_/[ldd]_{\fst'} \ar@/^/[rdd]^{\snd'} \ar@{-->}[d]^f \\
+    & P \ar[ld]^\fst \ar[rd]_\snd \\
+    X && Y
+  } \]
+  \vspace{-2em}
+}
+
 \section{Anwendungen}
 \frame[t]{\frametitle{Anwendungen}%
   \begin{itemize}
@@ -440,7 +464,7 @@
     \hil{Allgemeiner abstrakter Nonsens.}
 
     \item Konzeptionelle Vereinheitlichung: Viele Konstruktionen in der
-    Mathematik sind Spezialfälle von allgemeinen kategoriellen: \\
+    Mathematik und Informatik sind Spezialfälle von allgemeinen kategoriellen: \\
     \hil{Limiten, Kolimiten, adjungierte Funktoren}
 
     \item Forschungsprogramm der Kategorifizierung,
