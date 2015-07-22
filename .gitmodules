@@ -1,0 +1,3 @@
+[submodule "automatic-differentiation/minted"]
+	path = automatic-differentiation/minted
+	url = https://github.com/gpoore/minted.git

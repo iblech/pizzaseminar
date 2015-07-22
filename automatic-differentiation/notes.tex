@@ -12,6 +12,9 @@
 
 \usepackage[protrusion=true,expansion=true]{microtype}
 
+\usepackage{minted}
+\setminted{linenos}
+
 \usepackage[T1]{fontenc}
 \usepackage{libertine}
 
@@ -46,6 +49,7 @@
 
 \newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\mathbb{C}}
+\newcommand{\DD}{\mathbb{R}[\varepsilon]/(\varepsilon^2)}
 \newcommand{\defeq}{\vcentcolon=}
 
 \begin{document}
@@ -138,8 +142,8 @@ holds. Writing~$(x,a) = x + ai$, we call~$x$ the \emph{real part} and~$a$ the
 \emph{imaginary part}.
 
 In a similar way, we can construct the \emph{dual
-numbers}~$\RR[\varepsilon]/(\varepsilon^2)$. We
-set~$\RR[\varepsilon]/(\varepsilon^2) \defeq \RR \times \RR$ and set
+numbers}~$\DD$. We
+define~$\DD \defeq \RR \times \RR$ and set
 \begin{align*}
   (x,a) + (y,b) &\defeq (x+y, a+b), \\
   (x,a) \cdot (y,b) &\defeq (xy, xb+ay).
@@ -150,15 +154,184 @@ formally expanding~$(x + a \varepsilon) + (y + b \varepsilon)$ respectively~$(x
 + a \varepsilon) \cdot (y + b \varepsilon)$ and imposing the
 relation~$\varepsilon^2 = 0$.
 
-% Definition
-% Haskell and Python code
+It's easy to implement a data type of dual numbers in languages such as Haskell
+or Python.
+
+\begin{minted}{haskell}
+-- Haskell
+data D a = D a a deriving (Show,Eq)
+
+instance (Num a) => Num (D a) where
+    D x a + D y b  = D (x + y)         (a + b)
+    D x a * D y b  = D (x * y)         (x * b + a * y)
+    negate (D x a) = D (negate x)      (negate a)
+    fromInteger n  = D (fromInteger n) 0
+\end{minted}
+
+If \mintinline{haskell}{f} is a function \mintinline{haskell}{(Num a) => a ->
+a}, then evaluating \mintinline{haskell}{f (D x 1)} will yield
+\mintinline{haskell}{D (f x) (f' x)}. A live example in the interactive Haskell
+shell looks like this:
+
+\begin{verbatim}> let f x = x^2
+> f (D 5 1)
+D 25 10
+\end{verbatim}
+
+We can also define a higher-order function which takes a function and returns
+its derivative:
+
+\begin{verbatim}> let diff f x = b where D y b = f (D x 1)
+> diff f 5
+10
+\end{verbatim}
+
+\begin{minted}{python}
+# Python
+class Dual(object):
+    def __init__(self, x, a):
+        self.x = x
+        self.a = a
+
+    def __add__(self, other):
+        return Dual(self.x + other.x, self.a + other.a)
+
+    def __mul__(self, other):
+        return Dual(self.x * other.x,
+                     other.x * self.a + self.x * other.a)
+\end{minted}
+
+\begin{verbatim}>>> def f(x): return x*x
+>>> f(Dual(5,1)).x
+25
+>>> f(Dual(5,1)).a
+10
+\end{verbatim}
 
 
 \section{Why automatic differentiation works}
 
+Taylor expansion gives a slick proof that automatic differentiation works for
+polynomials. Recall that if~$f$ is a polynomial, we have the identity
+\[ f(x+h) = f(x) + f'(x) h + \frac{1}{2!} f''(x) h^2 + \frac{1}{3!} f'''(x) h^3
++ \cdots. \]
+The sum on the right only looks like an infinite sum. In fact, it terminates
+with the term containing~$h^{\deg(f)}$ being the last one. This identity is
+purely algebraic; no convergence considerations are necessary. Therefore it's
+plausible, and in fact easy to prove, that this form of Taylor expansion holds
+over any kind of numbers -- the real numbers, the complex numbers, and the dual
+numbers. Plugging in~$h \defeq \varepsilon$, we obtain
+\[ f(x+\varepsilon) = f(x) + f'(x) \varepsilon, \]
+with all further terms dropping out because~$\varepsilon^2 = \varepsilon^3 =
+\cdots = 0$. This is the reason why automatic differentiation works on
+polynomials.
+
+For the general case we prove the following theorem: If a function~$f$ is built
+from other functions using addition, multiplication, and composition, and if
+automatic differentiation works for the constituent functions, then it also
+works for~$f$.
+
+To this end, define the \emph{lift} of a differentiable function~$f : \RR \to
+\RR$ to be the function
+\[ \overline{f} : \DD \to \DD,\ x+a\varepsilon \mapsto f(x) + f'(x)a\varepsilon. \]
+A precise statement of the theorem is then: Let~$f : \RR \to \RR$ and~$g : \RR
+\to \RR$ be differentiable functions. Then
+\[ \overline{f + g} = \overline{f} + \overline{g}, \quad
+  \overline{f \cdot g} = \overline{f} \cdot \overline{g}, \quad
+  \overline{f \circ g} = \overline{f} \circ \overline{g}. \]
+For fun, we verify the case for multiplication and composition:
+\begin{align*}
+  (\overline{f} \cdot \overline{g})(x+a\varepsilon)
+  &= \overline{f}(x+a\varepsilon) \cdot \overline{g}(x+a\varepsilon) \\
+  &= (f(x) + f'(x)a\varepsilon) \cdot (g(x) + g'(x)a\varepsilon)c \\
+  &= f(x) g(x) + (f(x)g'(x) + f'(x)g(x))a\varepsilon \\
+  &= \overline{f \cdot g}(x+a\varepsilon) \\
+  \\
+  (\overline{f} \circ \overline{g})(x+a\varepsilon)
+  &= \overline{f}(\overline{g}(x+a\varepsilon)) \\
+  &= \overline{f}(g(x)+g'(x)a\varepsilon) \\
+  &= f(g(x)) + f'(g(x))g'(x)a\varepsilon \\
+  &= \overline{f \circ g}(x+a\varepsilon)
+\end{align*}
+
+In numerical practice, code for evaluating a function may well be huge and
+complex. However, it is composed of elementary functions (like sine and cosine)
+and addition, multiplication, and composition. If the library for automatic
+differentiation correctly implements the elementary functions, any composite
+function will be correctly derived as well.
+
 
 \section{Caveats and outlook}
 
-% "poor man's automatic differentiation: Imag(f(x+ih)/h)"
+\paragraph{Higher order} Automatic differentiation can be easily extended to
+calculate higher derivatives as well. For instance, employing a magical
+number~$\varepsilon$ such that~$\varepsilon^3 = 0$, we have for polynomials
+\[ f(x+\varepsilon) = f(x) + f'(x)\varepsilon +
+\frac{1}{2!}f''(x)\varepsilon^2. \]
+We could also simply use nested dual numbers.
+
+\paragraph{Higher dimensions} Automatic differentiation can also be extended to
+multiple dependent or independent variables. The procedure described here is
+called \emph{forward-mode automatic differentiation}, which is efficient for
+functions~$\RR \to \RR^n$. There is also a variant called \emph{backward-mode
+automatic differentiation}, which is efficient for functions~$\RR^n \to \RR$.
+For instance, using backward-mode automatic differentiation on code for
+evaluating a neural network automatically gives code for the standard
+backpropagation algorithm.
+
+\paragraph{Poor man's automatic differentiation} Stuck with a language without
+operator overloading? And you don't feel like using one of the time-tested
+code-transformation packages, for instance for Fortran? Then check whether the
+following variant of automatic differentiation is good enough for you. Its idea
+is to employ the standard imaginary unit~$i$ instead of~$\varepsilon$ as
+magical number: Approximate~$f'(x)$ by
+\[ f'(x) \approx \operatorname{Im} \frac{f(x+hi)}{h} \]
+with~$h$ small. Since Taylor expansion yields
+\[ f(x+hi) = f(x) + f'(x)hi - \frac{1}{2!}f''(x)h^2 - \frac{1}{3!}f'''(x)h^3i +
+\cdots, \]
+the imaginary part of~$f(x+hi)/h$ is
+\[ f'(x) - \frac{1}{3!} f'''(x) h^2, \]
+which might be a good approximation to~$f'(x)$ if~$h$ is sufficiently small.
+
+\begin{verbatim}> import Data.Complex
+> sin (0 :+ 0.001) / 0.001
+0.0 :+ 1.0000001666666751
+\end{verbatim}
+
+\paragraph{Points of non-differentiability} Consider the absolute value
+function with its point of non-differentiability. How should~$|x +
+a\varepsilon|$ be defined? Of course, for positive~$x$ it should be~$x +
+a\varepsilon$ and for negative~$x$ it should be~$-x - a\varepsilon$. Believing
+in the fiction that \ldots
+
+\paragraph{Consistency error} Applied to code which would (in the absence of
+rounding errors) exactly compute a function~$f$, automatic differentiation will
+result in code which exactly computes its derivative~$f'$ (again in the absence
+of rounding errors). However, sometimes our code only calculates an
+approximation of the correct value -- even if there were no rounding errors.
+For instance, this is the case with solving ordinary differential equations
+with Euler's method or some more sophisticated method.
+
+Automatic differentiation will then produce code which gives the exact
+derivative of our approximated value, but not of the correct theoretical value.
+As a concrete example, consider the function~$f$ given by the blue curve in the
+following plot.
+\begin{center}\includegraphics{consistency-error}\end{center}
+Assume that our code for evaluating~$f$ actually evaluates the function given
+by the red curve. If we are only interested in the function values, we might be
+content with this approximation. However, automatic differentiation would yield
+the derivative of the red curve, which is far off from the derivative of~$f$.
+
+Fortunately, this kind of pathology doesn't seem to occur often in real world
+problems. Give it a try!
+
+\paragraph{Synthetic differential geometry} Do you want to employ infinitesimal
+numbers like~$\varepsilon$ not only in your numerical algorithms, but also in
+your theoretical mathematicial research? Do you want to freely
+use~$\varepsilon$'s as the physicists do? There is a way to do that, while at
+the same time staying mathematically rigorous. Check out an expository
+blog post by Andrej Bauer:
+
+\begin{center}\small\url{http://math.andrej.com/2008/08/13/intuitionistic-mathematics-for-physics/comment-page-1/}\end{center}
 
 \end{document}
