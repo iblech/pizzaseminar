@@ -82,7 +82,7 @@ time, say) on the parameter. For this, we just hand our differential equation
 solving code to automatic differentiation.
 \end{itemize}
 
-Automatic differentiation is totally unlike to \emph{numerical
+Automatic differentiation is totally unlike \emph{numerical
 differentiation}. With numerical differentiation, we approximate~$f'(x)$ by
 some difference quotient like
 \[ \frac{f(x + h) - f(x)}{h} \qquad\text{or}\qquad
@@ -93,7 +93,7 @@ some unrelated secant. If~$h$ is small, the approximation will be good in
 theory. But practically, with floating-point arithmetic, a huge loss of
 precision may occur, since we are subtracting two nearly equal numbers.
 
-Automatic differentiation is also unlike to \emph{symbolic differentiation},
+Automatic differentiation is also unlike \emph{symbolic differentiation},
 which operates on the level of \emph{terms}. Symbolic differentiation is useful
 if our goal is to obtain \emph{formulas} for various quantities, but it isn't
 particularly suited for efficient evaluation to floating-point numbers.
@@ -108,8 +108,8 @@ meaningful information from calculations with~$\varepsilon$.
 
 The set of real numbers doesn't contain such a number. Nevertheless, watch:
 \begin{align*}
-  (x+\varepsilon)^2 &= x^2 + 2x\varepsilon + \varepsilon^2 = x^2 + 2x\varepsilon \\
-  (x+\varepsilon)^3 &= x^2 + 3x^2\varepsilon + 3x\varepsilon^2 + \varepsilon^3 = x^3 + 3x^2\varepsilon \\
+  (x+\varepsilon)^2 &= x^2 + 2x\varepsilon + \varepsilon^2 = x^2 + 2x\varepsilon \\[0.6em]
+  (x+\varepsilon)^3 &= x^2 + 3x^2\varepsilon + 3x\varepsilon^2 + \varepsilon^3 = x^3 + 3x^2\varepsilon \\[0.6em]
   \frac{1}{x+\varepsilon} &= \frac{x-\varepsilon}{(x+\varepsilon) \cdot
   (x-\varepsilon)} = \frac{x-\varepsilon}{x^2} = \frac{1}{x} - \frac{1}{x^2}
   \varepsilon
