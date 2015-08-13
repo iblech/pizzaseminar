@@ -275,13 +275,14 @@ multiple dependent or independent variables. The procedure described here is
 called \emph{forward-mode automatic differentiation}, which is efficient for
 functions~$\RR \to \RR^n$. There is also a variant called \emph{backward-mode
 automatic differentiation}, which is efficient for functions~$\RR^n \to \RR$.
-For instance, using backward-mode automatic differentiation on code for
-evaluating a neural network automatically gives code for the standard
+
+\emph{Fun fact:} Using backward-mode automatic differentiation on code for
+evaluating a neural network (``feedforward'') automatically gives code for the standard
 backpropagation algorithm.
 
 \paragraph{Poor man's automatic differentiation} Stuck with a language without
 operator overloading? And you don't feel like using one of the time-tested
-code-transformation packages, for instance for Fortran? Then check whether the
+code-transformation packages, which are available even for Fortran? Then check whether the
 following variant of automatic differentiation is good enough for you. Its idea
 is to employ the standard imaginary unit~$i$ instead of~$\varepsilon$ as
 magical number: Approximate~$f'(x)$ by
@@ -294,15 +295,33 @@ the imaginary part of~$f(x+hi)/h$ is
 which might be a good approximation to~$f'(x)$ if~$h$ is sufficiently small.
 
 \begin{verbatim}> import Data.Complex
-> sin (0 :+ 0.001) / 0.001
+> sin (0 :+ 0.001) / 0.001  -- the correct derivative is 1.0
 0.0 :+ 1.0000001666666751
 \end{verbatim}
 
 \paragraph{Points of non-differentiability} Consider the absolute value
 function with its point of non-differentiability. How should~$|x +
 a\varepsilon|$ be defined? Of course, for positive~$x$ it should be~$x +
-a\varepsilon$ and for negative~$x$ it should be~$-x - a\varepsilon$. Believing
-in the fiction that \ldots
+a\varepsilon$ and for negative~$x$ it should be~$-x - a\varepsilon$. But for~$x
+= 0$ there is no sensible definition of~$|x + a\varepsilon|$. An implementation
+either has to throw an error in this case or return a fictional value such
+as~$0$ or~\texttt{NaN}.
+
+The problem is exacerbated by terms like~$\sqrt{x^4}$. This term is infinitely
+differentiable, even in the point~$x = 0$. However, the chain rule cannot be
+used evaluate the derivative. Automatic differentiation as a kind of glorified
+chain rule will therefore not work correctly either. Without a symbolic
+approach it's not possible to automatically simplify the expression
+as~$\sqrt{x^4} = x^2$; also, this kind of simplification will not work with
+more complex expressions such as~$\sqrt{x^4 + y^4}$.
+
+Luckily, this problem doesn't seem to surface often. One explanation is that
+non-dif\-fe\-ren\-tia\-bi\-li\-ty often occurs at isolated points. Precisely hitting those
+points with floating-point operations is hard. Secondly, many numerical
+algorithms don't use non-differentiable functions such as absolute value and
+square root in problematic places -- for instance, Newton's method for solving
+nonlinear equations and all the familiar methods for solving ordinary differential
+equations don't.
 
 \paragraph{Consistency error} Applied to code which would (in the absence of
 rounding errors) exactly compute a function~$f$, automatic differentiation will
@@ -321,6 +340,8 @@ Assume that our code for evaluating~$f$ actually evaluates the function given
 by the red curve. If we are only interested in the function values, we might be
 content with this approximation. However, automatic differentiation would yield
 the derivative of the red curve, which is far off from the derivative of~$f$.
+One could describe such a situation as ``discretize first, then
+derive'' instead of ``derive first, then discretize''.
 
 Fortunately, this kind of pathology doesn't seem to occur often in real world
 problems. Give it a try!
