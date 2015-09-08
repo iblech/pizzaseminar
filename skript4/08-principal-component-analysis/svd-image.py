@@ -57,6 +57,10 @@ for i in xrange(0, len(redsigma)):
 def process_mat(svd, svs_to_keep):
     (u, sigma, vherm) = svd
 
+    # Falls Rundung gewünscht ist:
+    #u     = numpy.floor(u     * 65536) / 65536.0
+    #vherm = numpy.floor(vherm * 65536) / 65536.0
+
     #print "# Groesster/kleinster Singulaerwert: %.2f, %.2f" % (sigma[0], sigma[-1])
     #print "# Anzahl Sing.werte: %d" % len(sigma)
     #for k in range(0, len(sigma)):
