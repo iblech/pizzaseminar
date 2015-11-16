@@ -4,7 +4,7 @@
 
 \usepackage[ngerman]{babel}
 
-\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,mathtools}
 \usepackage{array}
 \usepackage[all]{xy}
 
@@ -82,6 +82,7 @@
 \newcommand{\Div}{\mathrm{Div}}
 \newcommand{\ord}{\operatorname{ord}}
 \newcommand{\PD}{\operatorname{PD}}
+\newcommand{\defeq}{\vcentcolon=}
 
 \begin{document}
 
@@ -150,7 +151,7 @@ Von zentraler Bedeutung ist der Funktor~$\Gamma(X,\placeholder) : \Coh(X) \to
 \Vect(\CC)$, welcher linksexakt, aber in allen interessanten Fällen nicht
 exakt ist und daher abgeleitet werden muss. Damit definiert man
 \emph{Garbenkohomologie}: Die~$n$-te Kohomologie einer kohärenten Garbe~$\E$
-ist $H^n(X, \E) := R^n \Gamma(X,\placeholder)(\E)$.\footnote{Das ist etwas
+ist $H^n(X, \E) \defeq R^n \Gamma(X,\placeholder)(\E)$.\footnote{Das ist etwas
 gemogelt. Der Kategorie~$\Coh(X)$ mangelt es im Allgemeinen an genügend
 Injektiven, weswegen man zu größeren Kategorien übergeht.}
 
@@ -183,7 +184,7 @@ kohärenten Garben, so erhält man eine lange exakte Sequenz in Kohomologie:
 \[ \cdots \lra H^n(X,\E') \lra H^n(X,\E) \lra H^n(X,\E'') \lra H^{n+1}(X,\E')
 \lra \cdots \]
 \item Die \emph{Euler-Charakteristik} einer kohärenten Garbe~$\E$, definiert
-als die alternierende Summe~$\chi(\E) := \sum_{n=0}^\infty (-1)^n\, \dim_\CC H^n(X,\E)
+als die alternierende Summe~$\chi(\E) \defeq \sum_{n=0}^\infty (-1)^n\, \dim_\CC H^n(X,\E)
 \in \ZZ$, ist additiv in kurzen exakten Sequenzen. Deshalb hängt~$\chi(\E)$ nur
 von der \emph{Klasse von~$\E$ in der K-Theorie ab}, also nur von
 \emph{diskreten Invarianten} von~$\E$.\footnote{Außerdem ist die
@@ -270,7 +271,7 @@ der Garben auf~$V$ und der Kategorie derjenigen Garben auf~$X$, deren Träger
 in~$V$ liegt. Oft ist es hilfreich, auf einem einzigen Raum zu arbeiten; dann
 kann man sich also des Pushforward-Funktors bedienen.
 
-Für den Rückzug~$\E|_V := i^* \E$ einer kohärenten Garbe~$\E$ auf~$X$ gilt die
+Für den Rückzug~$\E|_V \defeq i^* \E$ einer kohärenten Garbe~$\E$ auf~$X$ gilt die
 Rechenregel
 \[ i_* (\E|_V) \cong \E \otimes_{\O_X} i_*\O_V \cong \E \otimes_{\O_X} \O_X/\J,
 \]
@@ -282,7 +283,7 @@ Garben~$\F$ auf~$V$ die Identität
 \subsection*{Normalgarbe und Konormalgarbe}
 
 Ist~$V \hookrightarrow X$ ein abgeschlossenes Unterschema, so ist~$\N_{V/X}^\vee
-:= \J/\J^2 \cong \J \otimes_{\O_X} \O_V \cong \J|_V$ die \emph{Konormalgarbe} von~$V$ in~$X$. Sie hat Träger in~$V$ und
+\defeq \J/\J^2 \cong \J \otimes_{\O_X} \O_V \cong \J|_V$ die \emph{Konormalgarbe} von~$V$ in~$X$. Sie hat Träger in~$V$ und
 wird daher als Garbe auf~$V$ angesehen. Die \emph{Normalgarbe} ist die
 zugehörige Dualgarbe.
 
@@ -368,7 +369,7 @@ holomorphen Welt etwas besonderes (wieso?).
 eine~$\O_X$-Modulgarbe~$\O_X(D)$ für offene Teilmengen~$U \subseteq X$ durch
 folgende Setzung definiert. Damit die Nullfunktion ein Schnitt von~$\O_X(D)$
 ist, gelte konventionsgemäß~$D + \div(0) \geq 0$.
-\[ \Gamma(U, \O_X(D)) := \{ f \in \K_X(U) \,|\, \text{$D + \div(f) \geq 0$
+\[ \Gamma(U, \O_X(D)) \defeq \{ f \in \K_X(U) \,|\, \text{$D + \div(f) \geq 0$
 auf~$U$} \} \]
 \end{defn}
 
@@ -474,7 +475,7 @@ verschwinden, die Äquivalenzklasse~$[f]$ einer solchen Funktion~$f$ wird also
 auf~$f(x) = 0$ geschickt. \emph{Punkte sind nicht flach!}}
 Das gibt Anlass zur kurzen exakten Sequenz
 \[ 0 \lra \O_X(-D) \lra \O_X \lra i_*\O_V \lra 0, \]
-die ein abgeschlossenes Unterschema~$V := V(\O_X(-D))$ definiert -- die Vereinigung
+die ein abgeschlossenes Unterschema~$V \defeq V(\O_X(-D))$ definiert -- die Vereinigung
 der in~$D$ vorkommenden Hyperflächen. Dieses (oder seine Reduktion) heißt
 \emph{Träger} von~$D$.
 
@@ -556,9 +557,9 @@ Geradenbündel der Form~$\L = \O_X(D)$ nachzuweisen, also~$\deg D = \chi(\O_X(D)
 Gelte für zwei Divisoren~$D$ und~$D'$ die Beziehung~$D = D' + [P]$, wobei~$P$
 ein Punkt auf~$X$ ist. Zum Unterschema~$P \subseteq X$ gibt es die kurze exakte
 Sequenz
-\[ 0 \lra \O_X(-P) \lra O \lra \O_P \lra 0. \]
+\[ 0 \lra \O_X(-P) \lra \O \lra \O_P \lra 0. \]
 Dabei ist~$\O_P$ eine im Punkt~$P$ konzentrierte Wolkenkratzergarbe; dort hat
-sie den Halm~$\CC$. (Eigentlich sollten wir~$i_* \O_P$ schreiben, wobei~$i : P
+sie den Halm~$\CC$. (Eigentlich sollten wir~$i_* \O_P$ schreiben, wobei~$i : \{P\}
 \hookrightarrow X$ die Einbettung ist.) Nach Tensorieren mit~$\O_X(D)$ erhalten
 wir die Sequenz
 \[ 0 \lra \O_X(D-P) \lra \O_X(D) \lra \O_P \lra 0, \]
@@ -588,7 +589,7 @@ kompakte komplexe Mannigfaltigkeit der komplexen Dimension~2).
 
 \begin{defn}Seien~$C$ und~$C'$ Kurven auf~$X$ in allgemeiner Lage. Die
 \emph{Schnittmultiplizität} von~$C$ und~$C'$ bei einem Punkt~$x \in X$ ist
-\[ m_x(C,C') := \dim_\CC \O_{C \cap C',x} = \dim_\CC \O_{X,x}/(f,g), \]
+\[ m_x(C,C') \defeq \dim_\CC \O_{C \cap C',x} = \dim_\CC \O_{X,x}/(f,g), \]
 wenn~$f$ und~$g$ lokale Gleichungen (das heißt lokale Erzeuger der jeweiligen
 Idealgarben) für~$C$ bzw.~$C'$ sind.
 \end{defn}
@@ -641,7 +642,7 @@ und~$x-y^2$ ausdrücken.
 
 \begin{defn}Seien~$C$ und~$C'$ Kurven auf~$X$, nicht notwendigerweise in
 allgemeiner Lage. Dann ist ihre \emph{Schnittzahl} die Zahl
-\[ (C \cdot C') := \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_{C'}) :=
+\[ (C \cdot C') \defeq \chi(\O_C \otimes_{\O_X}^{\mathbb{L}} \O_{C'}) \defeq
   \sum_{n = 0}^\infty (-1)^n \, \chi(\mathcal{T}\!\mathrm{or}^{\O_X}_n(\O_C,\O_{C'})) \in \ZZ. \]
 \end{defn}
 
@@ -650,7 +651,7 @@ Garben, dessen Kohomologie die Tor-Gruppengarben berechnet. Dieser selbst ist al
 Komplex von Garben nicht wohldefiniert, aber seine Homologiegarben ("`Kern
 modulo Bild"') sind es schon; daher ist auch die Euler-Charakteristik
 wohldefiniert.\footnote{Die Euler-Charakteristik eines Komplexes~$\E^\bullet$
-ist~$\chi(\E^\bullet) := \sum_{n \in \ZZ} (-1)^n \,\chi(\E^n)$. Es ist eine
+ist~$\chi(\E^\bullet) \defeq \sum_{n \in \ZZ} (-1)^n \,\chi(\E^n)$. Es ist eine
 nette Übungsaufgabe, die Identität~$\chi(\E^\bullet) = \sum_n (-1)^n
 \,\chi(\H^n(\E^\bullet))$ zu bestätigen. Diese bezeugt, dass die
 Euler-Charakteristik eines Komplexes nur von dessen Kohomologie abhängt.}
@@ -679,8 +680,8 @@ endlichdimensional sein.
 
 \begin{defn}Für Geradenbündel~$\E$ und~$\F$ auf~$X$ ist die \emph{Schnittzahl}
 die Zahl
-\[ (\E \cdot \F) :=
-  \chi((\O_X - \E^\vee) \cdot (\O_X - \F^\vee)) :=
+\[ (\E \cdot \F) \defeq
+  \chi((\O_X - \E^\vee) \cdot (\O_X - \F^\vee)) \defeq
   \chi(\O_X) - \chi(\E^\vee) - \chi(\F^\vee) + \chi(\E^\vee \otimes_{\O_X}
   \F^\vee). \]
 \end{defn}
@@ -850,7 +851,7 @@ i^*(\beta)$ für alle~$\beta \in H^2(X,\ZZ)$.
 Daher folgt für Kurven~$C$ und~$C'$ auf~$X$ (mit~$i : C \hookrightarrow X$)
 \begin{align*}
   (C \cdot C')_{\text{top.}}
-  &:= \int_X \PD(C) \cup \PD(C')
+  &\defeq \int_X \PD(C) \cup \PD(C')
   = \int_X c_1(\O_X(C)) \cup c_1(\O_X(C')) \\[0.5em]
   &\phantom{:}= \int_C i^*(c_1(\O_X(C')))
   = \int_C c_1(i^*\O_X(C'))
@@ -863,7 +864,7 @@ Daher folgt für Kurven~$C$ und~$C'$ auf~$X$ (mit~$i : C \hookrightarrow X$)
 \section{Der Satz von Riemann--Roch für Flächen}
 
 Sei~$X$ eine kompakte Fläche (projektive Varietät über~$\CC$ oder kompakte
-komplexe Mannigfaltigkeit der komplexen Dimension~2). Sei~$\omega_X :=
+komplexe Mannigfaltigkeit der komplexen Dimension~2). Sei~$\omega_X \defeq
 \Lambda^2 \Omega^1_X$ das Bündel der Differentialformen im Topgrad. Ein
 Divisor~$K_X$ mit~$\O_X(K_X) \cong \omega_X$ (ein solcher ist bis auf lineare
 Äquivalenz eindeutig bestimmt) heißt auch \emph{kanonischer Divisor}.
@@ -916,8 +917,8 @@ Sei~$\L$ ein Geradenbündel auf~$X$. Dann gilt
 Geradenbündel~$\O_X(D)$ lautet der Satz von Riemann--Roch wie folgt:
 \[ h^0(\O_X(D)) - h^1(\O_X(D)) + h^0(\O_X(K-D)) =
   1 - h^1(\O_X) + p_g + \tfrac{1}{2} \cdot D(D-K_X). \]
-Dabei ist~$p_g := h^0(\O_X(K_X)) = h^0(\omega_X)$ das \emph{geometrische
-Geschlecht} von~$X$. Ferner ist~$q := h^1(\O_X)$ auch als \emph{Irregularität}
+Dabei ist~$p_g \defeq h^0(\O_X(K_X)) = h^0(\omega_X)$ das \emph{geometrische
+Geschlecht} von~$X$. Ferner ist~$q \defeq h^1(\O_X)$ auch als \emph{Irregularität}
 von~$X$ bekannt; aus Hodgetheorie folgt, dass~$2q = b_1 = \dim_\CC H^1(X,\CC)$.
 \end{rem}
 
@@ -927,7 +928,7 @@ Es gilt~$\chi(\O_X) = \frac{1}{12} \cdot (K_X^2 +
 \end{fact}
 
 \begin{cor}[Geschlechtsformel]
-Sei~$C$ eine irreduzible Kurve auf~$X$. Für ihr Geschlecht $g(C) :=
+Sei~$C$ eine irreduzible Kurve auf~$X$. Für ihr Geschlecht $g(C) \defeq
 \dim_\CC H^1(C,\O_C)$ gilt
 \[ g(C) = 1 + \tfrac{1}{2} \cdot C(C+K_X). \]
 \end{cor}
