@@ -423,10 +423,10 @@
     \begin{align*}
       E(Y^{(j)} XX^t Y^{(k)}) &= (W \T{e}_j)^t XX^t (W \T{e}_k) \\
       &= \T{e}_j^t W^t W \Sigma V^t V \Sigma^t W^t W \T{e}_k \\
-      &= \Sigma \Sigma^t.
+      &= \T{e}_j^t \Sigma \Sigma^t \T{e}_k.
     \end{align*}
     \item Beware that PCA cannot resolve nonlinear correlation.
-    \item Also note that PCA is sensitive to outliers and not
+    \item Also note that PCA is sensitive to outliers and is not
     scaling-independent.
   \end{itemize}
 }
