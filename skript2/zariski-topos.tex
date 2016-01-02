@@ -4,7 +4,7 @@
 
 \usepackage[ngerman]{babel}
 
-\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx}
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,mathtools}
 \usepackage{array}
 \usepackage{xstring}
 
@@ -59,6 +59,8 @@
 \newcommand{\hilight}[2]{\begin{center}\framebox{#2}\par#1\end{center}}
 
 \newcommand{\speak}[1]{\ulcorner\text{#1}\urcorner}
+
+\newcommand{\defeq}{\vcentcolon=}
 
 \renewcommand*\theenumi{\alph{enumi}}
 \renewcommand{\labelenumi}{\theenumi)}
@@ -157,7 +159,7 @@ die einzigen vorkommenden logischen Symbole sind. Dabei steht~"`$\bot$"' für
 eine ausgezeichnete falsche und~"`$\top$"' für eine ausgezeichnete wahre Aussage.
 Negation ist ebenfalls wichtig, muss aber nicht als primitiv
 angenommen werden, da man sie über die Beziehung
-\[ \neg\phi \quad:\equiv\quad (\phi \Rightarrow \bot) \]
+\[ \neg\phi \quad\vcentcolon\equiv\quad (\phi \Rightarrow \bot) \]
 durch~$\Rightarrow$ und~$\bot$ ausdrücken kann: Zu behaupten, dass~$\phi$ nicht
 stimmt, ist gleichbedeutend damit, zu behaupten, dass aus der Annahme
 von~$\phi$ ein Widerspruch folgt.
@@ -167,7 +169,7 @@ Elementsymbol, sondern dem in der Typtheorie üblichen Doppelpunkt:
 Gelegentlich werden wir die Abhängigkeit von~$\phi(x)$ von~$x$ in der Notation
 unterdrücken und kurz nur~"`$\phi$"' schreiben. Ferner verwenden wir den
 Quantor der eindeutigen Existenz, formal definiert als
-\[ \exists! x\?X\_ \phi(x) \quad:\equiv\quad
+\[ \exists! x\?X\_ \phi(x) \quad\vcentcolon\equiv\quad
   \bigl(\exists x\?X\_ \phi(x)\bigr) \ \wedge\ \bigl(\forall x\?X\_ \forall x'\?X\_
   (\phi(x) \wedge \phi(x') \Rightarrow x = x')\bigr). \]
 %Da wir (gezwungenermaßen) in einem konstruktiven Kontext arbeiten werden,
@@ -190,7 +192,7 @@ Den Ort, wo diese Funktion nicht verschwindet, wollen wir mit~"`$D(s)$"'
 bezeichnen. Dieser Ort ist stets eine offene Menge.
 
 \begin{bsp}Den Ring~$K[X,Y]$ stellen wir uns geometrisch als~$K^2$ vor. Zum
-Element~$s := 2X+3Y$ gehört dann die Funktion~$(x,y) \mapsto 2x+3y$. Die
+Element~$s \defeq 2X+3Y$ gehört dann die Funktion~$(x,y) \mapsto 2x+3y$. Die
 Menge~$D(s)$ ist das Komplement einer schrägen Gerade in~$K^2$.\end{bsp}
 
 In diesem Bild können wir uns eine Zerlegung~$1 = \sum_i s_i \in R$ der Eins
@@ -301,7 +303,7 @@ Wir zeigen, dass
 \[ R \models \forall x,y\?\O\_\ \speak{$x+y$ inv.}\ \Longrightarrow\ 
   \speak{$x$ inv.} \,\vee\, \speak{$y$ inv.}. \]
 Die Häkchen sollen andeuten, dass der entsprechende Teil nur umgangssprachlich
-vorliegt und daher vom Leser formalisiert werden muss. Unter Verwendung von
+vorliegt und daher von der Leserin formalisiert werden muss. Unter Verwendung von
 Proposition~\ref{interne-invertierbarkeit} (angewendet auf~$R'$
 statt~$R$) weisen uns die
 Übersetzungsregeln also an, folgende Behauptung zu zeigen:
@@ -471,7 +473,7 @@ Sollte~$f$ in~$R[s^{-1}]$ invertierbar sein, so gilt~$1 = 0$ in~$R[s^{-1}]$
 (das ist gleichbedeutend damit, dass~$s$ nilpotent ist).
 \end{indentblock}
 \end{indentblock}
-Durch die Spezialisierung~$s := f$ erhalten wir daher sofort die Hinrichtung.
+Durch die Spezialisierung~$s \defeq f$ erhalten wir daher sofort die Hinrichtung.
 Wenn umgekehrt~$f$ nilpotent ist, enthalten die lokalisierten Ringe~$R[s^{-1}]$
 ein invertierbares und trotzdem nilpotentes Element. Das geht nur, wenn sie
 Nullringe sind.
@@ -482,8 +484,8 @@ Allgemeinen \emph{nicht}, dass jedes Element von~$\O$ invertierbar oder nicht
 invertierbar ist. Insbesondere gilt im kleinen Zariski-Topos das Prinzip vom ausgeschlossenen Dritten
 also \emph{nicht}.
 \end{prop}
-\begin{proof}Ein Gegenbeispiel liefert der Ring~$R := \ZZ$ mit dem Element~$f
-:= 2$. Denn
+\begin{proof}Ein Gegenbeispiel liefert der Ring~$R \defeq \ZZ$ mit dem Element~$f
+\defeq 2$. Denn
 \[ R \models \speak{$f$ inv.} \vee \neg(\speak{$f$ inv.}) \]
 bedeutet, dass es eine Zerlegung~$1 = s_1 + \cdots + s_n$ der Eins
 von~$\ZZ$ gibt, sodass in den lokalisierten Ringen~$\ZZ[s_i^{-1}]$ die Zahl~$2$
@@ -562,14 +564,14 @@ nur folgende doppelt negierte Aussage vertreten:
 Es war ein Video aufgetaucht, dass Kate Moss beim Konsumieren von Drogen zeigte,
 und zwar entweder solche von einem Typ~A oder solche von einem Typ~B. Welcher
 Typ aber tatsächlich vorlag, konnte nicht entschieden werden. Daher gab es für
-keine der beiden Straftaten einen Beleg, Kate Moss wurde daher nicht
+keine der beiden Straftaten einen Beleg, Kate Moss wurde nicht
 strafrechtlich verfolgt.
 \end{bsp}
 
 Abschließend sei bemerkt, dass einige üble Gerüchte um konstruktive Logik im
 Umlauf sind, etwa, dass das Wort \!\emph{Widerspruch} pauschal verboten sei und
 man daher nicht mal die Irrationalität von~$\sqrt{2}$ zeigen könne. Das
-Pizzaseminarskript räumt mit diesen Gerüchten auf.
+\href{http://pizzaseminar.speicherleck.de/skript2/konstruktive-mathematik.pdf}{Pizzaseminarskript} räumt mit diesen Gerüchten auf.
 
 
 \subsection*{Eine besondere Klasse von Aussagen: geometrische Formeln}
@@ -652,7 +654,8 @@ Rückzug wahr.
 
 Sei~$R$ ein kommutativer Ring mit einer multiplikativ abgeschlossenen
 Teilmenge~$S$. Dann kann man sich fragen, ob es einen Ring~$R'$ zusammen mit einem
-Ringhomomorphismus~$R \to R'$ gibt, sodass jeder Ringhomomorphismus~$R \to T$
+Ringhomomorphismus~$R \to R'$, der die Elemente aus~$S$ auf Einheiten
+abbildet, gibt, sodass jeder Ringhomomorphismus~$R \to T$
 in einen weiteren Ring~$T$, welcher die Elemente aus~$S$ auf
 invertierbare Elemente schickt, eindeutig über~$R \to R'$ \emph{faktorisiert}.
 Das bedeutet, dass in dieser Situation genau ein Ringhomomorphismus~$R' \to
@@ -666,7 +669,7 @@ Ring~$R'$ gibt es, nämlich~$R' = S^{-1}R$.
 
 Wenn man keine multiplikativ abgeschlossene Teilmenge besonders auszeichnen
 möchte, kann man sich analog auch folgende Frage stellen: Gibt es einen
-Ring~$R'$ zusammen mit einem Ringhomomorphismus~$R \to R'$, sodass jeder
+lokalen Ring~$R'$ zusammen mit einem Ringhomomorphismus~$R \to R'$, sodass jeder
 Ringhomomorphismus~$R \to T$ in einen \emph{lokalen Ring}~$T$ eindeutig über~$R
 \to R'$ faktorisiert?\footnote{Der Homomorphismus~$R' \to T$ soll dabei ein
 \emph{lokaler} Ringhomomorphismus sein, d.\,h. er soll Invertierbarkeit
@@ -676,7 +679,8 @@ in~$R'$ invertierbar sein.}
 
 Im wörtlichen Sinn lautet die Antwort auf diese Frage leider \emph{nein}: Im
 gewöhnlichen mathematischen Universum gibt es keinen Ring~$R'$ mit dieser
-Eigenschaft. Wenn man aber bereit ist, die Lösung
+Eigenschaft.\footnote{Etwas präziser: Es gibt einen solchen Ring genau dann,
+wenn~$R$ genau ein Primideal enthält. Übungsaufgabe!} Wenn man aber bereit ist, die Lösung
 dieses Optimierungsproblems auch in einem anderen Topos zu suchen, so fällt die
 Antwort wieder positiv aus: Der gesuchte Ring~$R'$ ist der interne Ring~$\O$
 des kleinen Zariski-Topos zu~$R$.
@@ -706,7 +710,7 @@ eine endliche Basis.}
 durch Interpretation in einem geeigneten Topos sofort folgende offensichtlich
 komplizierte Aussage aus der algebraischen Geometrie:
 \begin{indentblock}
-\emph{Jede~$\O_X$-Modulgarbe auf einem reduzierten Schema~$X$, die lokal von
+\emph{Jede~$\O_X$-Modulgarbe auf einem reduzierten Schema~$X$, die von
 endlichem Typ ist, ist auf einer dichten offenen Teilmenge sogar lokal frei von
 endlichem Rang.}
 \end{indentblock}
