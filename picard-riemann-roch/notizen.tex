@@ -175,8 +175,8 @@ Hartshorne]:
 \begin{enumerate}
 \item Falls~$X$ eigentlich über dem Punkt bzw. kompakt ist, so sind
 die~$H^n(X,\E)$ \emph{endlichdimensionale} Vektorräume\footnote{Dass das
-nicht immer so ist, zeigt schon das Beispiel~$H^0(\AA^1, \O_{\AA^1})$ der
-unendlichdimensionale Raum der holomorphen Funktionen auf~$\CC$. Hier und im
+nicht immer so ist, zeigt schon das Beispiel~$H^0(\AA^1, \O_{\AA^1})$. Dieser
+Vektorraum ist der unendlichdimensionale Raum der holomorphen Funktionen auf~$\CC$. Hier und im
 Folgenden ist~$\AA^1$ der eindimensionale affine Raum über~$\CC$.} und für~$i > \dim X$
 verschwindet die~$i$-te Kohomologie.
 \item Ist~$0 \to \E' \to \E \to \E'' \to 0$ eine kurze exakte Sequenz von
@@ -253,11 +253,11 @@ nicht in~$V$ liegen, ist ihr Halm trivial: $(i_*\O_V)_x = 0$. Für Punkte~$x \in
 V$ gilt~$(i_*\O_V)_x \cong \O_{V,x} \cong \O_{X,x}/\J_x$.
 
 \begin{ex}Zum abgeschlossenen Unterschema~$\{0\} \stackrel{i}{\hookrightarrow} \AA^1$ gehört
-die exakte Sequenz~$0 \to (z) \to \O_{\AA^1} \to i_*\O_\pt$. Dabei ist~$(z)$ die
+die exakte Sequenz~$0 \to (z) \to \O_{\AA^1} \to i_*\O_\pt \to 0$. Dabei ist~$(z)$ die
 Idealgarbe aller~$\O_{\AA^1}$-Vielfachen der Koordinatenfunktion~$z$.\end{ex}
 
 \begin{ex}Zum Schnitt~$V \cap V' \stackrel{j}{\hookrightarrow} X$ zweier
-abgeschlossener Unterschema gehört die Idealgarbe~$\J + \J'$. Die vorgedrückte
+abgeschlossener Unterschemata gehört die Idealgarbe~$\J + \J'$. Die vorgedrückte
 Strukturgarbe ergibt sich daher als~$j_*\O_{V \cap V'} = \O_X/(\J + \J') \cong
 \O_X/\J \otimes_{\O_X} \O_X/\J' \cong i_*\O_V \otimes_{\O_X}
 i'_*\O_{V'}$.\end{ex}
@@ -384,7 +384,7 @@ Ist~$D = \div(f_0)$ ein Hauptdivisor, so ist~$\O_X(D)$ vermöge des
 Morphismus~$\O_X(D) \to \O_X$, $f \mapsto f f_0$ global isomorph zu~$\O_X$.
 (Wieso liegt~$f f_0$ wirklich in~$\O_X$?)\end{ex}
 
-\begin{ex}Sei~$X = \PP^1$ mit den Koordinaten~$x$ und~$y$ und sei~$H = V(x)$.
+\begin{ex}Sei~$X = \PP^1$ mit den homogenen Koordinaten~$x$ und~$y$ und sei~$H = V(x)$.
 Dann besitzt~$\O_X(H)$ den globalen Schnitt~$1$. Die Garbe~$\O_X(-H)$ hat nur den
 Nullschnitt als globalen Schnitt, denn es gibt keine nichttrivialen rationalen
 Funktionen auf~$\PP^1$, welche eine Nullstelle, aber keine
@@ -394,7 +394,7 @@ auf~$D(x)$ den Schnitt~$1$.
 \end{ex}
 
 Es ist nicht offensichtlich, dass die Modulgarbe~$\O_X(D)$ zu einem Divisor~$D$ lokal
-frei ist. Dazu benötigen wir folgendes Faktum:\footnote{Dieses drückt die
+frei ist. Dazu benötigen wir folgendes Faktum:\footnote{Dieses Faktum drückt die
 Korrespondenz zwischen Weil- und Cartier-Divisoren aus und benötigt zwingend
 eine Form von Glattheit. Siehe
 \url{http://math.stackexchange.com/questions/651292/what-fails-in-the-cartier-weil-divisor-correspondence-in-the-singular-case}
@@ -417,7 +417,7 @@ Beispiel~\ref{ex:o-hauptdivisor} ist daher~$\O_X(D)|_U \to \O_X|_U$, $f \mapsto
 f f_0$ ein Isomorphismus.
 
 \begin{defn}Die Menge der Geradenbündel
-auf~$X$ modulo Isomorphie, versehen mit dem Tensorprodukt als Gruppenstruktur,
+auf~$X$ modulo Isomorphie, versehen mit dem Tensorprodukt als Gruppenverknüpfung,
 ist die \emph{Picard-Gruppe}~$\Pic(X)$ von~$X$. Die Menge der Divisoren auf~$X$
 modulo linearer Äquivalenz, versehen mit der Addition von Divisoren, ist die
 \emph{Divisorklassengruppe}~$\Div(X)$ von~$X$.
@@ -440,7 +440,8 @@ Geradenbündel ist.
 natürlich stets trivial. Um den geht es hier aber nicht -- es geht um den
 Divisor zu einem bestimmten rationalen Schnitt \emph{des Geradenbündels~$\L$}. Dieser war
 über den Null- und Polstellendivisor einer zugehörigen rationalen Funktion
-\emph{unter einer lokalen Trivialisierung} definiert.
+\emph{unter einer lokalen Trivialisierung} definiert und ist nicht stets
+trivial.
 
 Da~$\O_X(D)$ für Hauptdivisoren~$D$ trivial ist
 (Beispiel~\ref{ex:o-hauptdivisor}), steigt die Korrespondenz ab. Man kann
@@ -467,10 +468,10 @@ Schnitte von~$\K_X^\times$, sondern sogar von~$\O_X^\times$ -- wieso?).
 
 Ist~$D$ ein effektiver Divisor, so ist~$\O_X(-D)$ auf kanonische Art
 und Weise eine Untergarbe von~$\O_X$.\footnote{Die Inklusion~$\O_X(-D) \to
-\O_X$ bleibt auf faserniveau~$\O_X(-D)|_x \to \O_X|_x$ nicht unbedingt für alle
+\O_X$ bleibt auf Faserniveau~$\O_X(-D)|_x \to \O_X|_x$ nicht unbedingt für alle
 Punkte~$x$ injektiv. Man sollte sich hier also nicht ein Unterbündel eines 
 Geradenbündels vorstellen. Tatsächlich ist die Inklusion für Punkte~$x \in V = V(\O_X(-D))$
-auf faserniveau die Nullabbildung: Denn eine Funktion aus~$\O_X(-D)$ muss ja längs~$V$
+auf Faserniveau die Nullabbildung: Denn eine Funktion aus~$\O_X(-D)$ muss ja längs~$V$
 verschwinden, die Äquivalenzklasse~$[f]$ einer solchen Funktion~$f$ wird also
 auf~$f(x) = 0$ geschickt. \emph{Punkte sind nicht flach!}}
 Das gibt Anlass zur kurzen exakten Sequenz
