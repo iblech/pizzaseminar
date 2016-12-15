@@ -1,0 +1,220 @@
+\documentclass[a4paper,ngerman,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,mathtools}
+\usepackage{array}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+%\newtheorem{defn}{Definition}[section]
+\newtheorem{ex}[defn]{Beispiel}
+\newtheorem{motto}[defn]{Motto}
+
+\theoremstyle{plain}
+
+\newtheorem{defnprop}[defn]{Definition/Proposition}
+\newtheorem{prop}[defn]{Proposition}
+\newtheorem{fact}[defn]{Fakt}
+\newtheorem{lemma}[defn]{Lemma}
+\newtheorem{thm}[defn]{Satz}
+\newtheorem{cor}[defn]{Korollar}
+
+\theoremstyle{remark}
+\newtheorem{rem}[defn]{Bemerkung}
+\newtheorem{warning}[defn]{Warnung}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\K}{\mathcal{K}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\VB}{\mathrm{VB}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\Coh}{\mathrm{Coh}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Ob}{\operatorname{Ob}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\placeholder}{\underline{\ \ }}
+\newcommand{\lra}{\longrightarrow}
+\renewcommand{\div}{\operatorname{div}}
+\newcommand{\Div}{\mathrm{Div}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\PD}{\operatorname{PD}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\colim}{colim}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+
+\newcommand{\Gr}{\mathrm{Gr}}
+
+\let\raggedsection\centering
+
+\begin{document}
+
+\title{Ein synthetischer Zugang zur Grassmannschen}
+\author{}
+%\maketitle
+
+\section*{Ein synthetischer Zugang zur Grassmannschen}
+
+Wir möchten zeigen, dass für lokal freie Garben~$\mathcal{V}$ endlichen Rangs
+über einem beliebigen Basisschema~$S$ die Grassmannsche~$\Gr(\mathcal{V},r)$
+der lokal freien Quotienten von~$\mathcal{V}$ vom Rang~$r$ (definiert als
+Funktor wie in Carens Vortrag) durch ein~$S$-Schema von endlichem Typ
+darstellbar ist.
+
+Dazu arbeiten wir intern im großen Zariski-Topos von~$S$. Dort sehen
+dann~$\O_S$ wie ein gewöhnlicher Ring, die Modulgarbe~$\mathcal{V}$ wie ein
+gewöhnlicher freier Modul und der Punktfunktor der Grassmannschen wie eine
+gewöhnlichen Menge aus; wir dürfen synthetisch arbeiten und müssen zu keinem
+Zeitpunkt topologische Struktur beachten, konstruieren oder mitschleppen. Das
+Spektrum einer Algebra wird zur Menge ihrer rationalen Punkte. Der Preis für
+diese Vorteile ist, dass wir konstruktiv arbeiten müssen.
+
+Sei also~$V$ ein freier~$k$-Modul vom Rang~$n$. Wir werden von~$k$
+nur voraussetzen, dass er ein lokaler Ring ist (obwohl er in der Anwendung
+sogar ein Körper ist).
+
+\begin{defn}Die \emph{Grassmannsche der Quotienten vom Rang~$r$ von~$V$} ist
+die Menge
+\[ \Gr(V,r) \defeq \{ \text{$U \subseteq V$ Untermodul} \,|\, \text{$V/U$ frei
+vom Rang~$r$} \}. \]
+\end{defn}
+
+Ferner definieren wir für jeden freien Untermodul~$W \subseteq V$ vom Rang~$r$
+die Teilmenge
+\[ G_W \defeq \{ U \in \Gr(V,r) \,|\, \text{$W \to V \to V/U$ ist bijektiv} \}. \]
+Diese Menge besitzt noch eine konkretere Beschreibung, denn sie steht in
+kanonischer Bijektion zur Menge
+\[ G_W' \defeq \{ \pi : V \to W \,|\, \pi \circ \iota = \id \} \]
+aller Zerfällungen der Inklusion~$\iota : W \hookrightarrow V$: Ein Element~$U
+\in G_W$ können wir auf die Surjektion~$V \twoheadrightarrow V/U
+\xrightarrow{({\cong})^{-1}} W$ schicken. Umgekehrt können wir eine
+Zerfällung~$\pi$ auf~$U \defeq \ker(\pi)$ schicken.
+
+\begin{prop}Die Vereinigung der~$G_W$ ist ganz~$\Gr(V,r)$.\end{prop}
+
+\begin{proof}Sei~$U \in \Gr(V,r)$ beliebig. Dann gibt es eine
+Basis~$([v_1],\ldots,[v_r])$ von~$V/U$. Die Familie~$(v_1,\ldots,v_r)$ ist
+in~$V$ linear unabhängig, daher ist der Untermodul~$W \defeq
+\operatorname{span}(v_1,\ldots,v_r) \subseteq V$ frei vom Rang~$r$. Die
+kanonische lineare Abbildung~$W \hookrightarrow V \twoheadrightarrow V/U$ bildet die
+Basis~$(v_i)_i$ auf die Basis~$([v_i])_i$ ab und ist daher bijektiv. Somit
+liegt~$U$ in~$G_W$.\end{proof}
+
+\begin{prop}Die~$G_W$ sind (quasikompakt-)offene Teilmengen von~$\Gr(V,r)$, in
+folgendem Sinn: Für jedes Element~$U$ aus~$\Gr(V,r)$ gibt es
+Zahlen~$f_1,\ldots,f_n$ aus~$k$ sodass~$U$ genau dann in~$G_W$ liegt, wenn
+eine dieser Zahlen invertierbar ist.
+\end{prop}
+
+\begin{proof}Sei~$U \in \Gr(V,r)$ beliebig. Genau dann liegt~$U$ in~$G_W$, wenn
+die kanonische lineare Abbildung~$W \hookrightarrow V \twoheadrightarrow V/U$
+bijektiv ist. Da~$W$ und~$V/U$ beide frei vom Rang~$r$ sind, ist diese
+Abbildung durch eine~$(r \times r)$-Matrix~$M$ über~$k$ gegeben und daher genau
+dann bijektiv, wenn die Determinante dieser Zahl invertierbar ist. Wir können
+also~$n \defeq 1$ und~$f_1 \defeq \det(M)$ setzen.
+\end{proof}
+
+\begin{prop}Die $G_W$ sind affin in dem Sinn, dass es eine~$k$-Algebra~$A$ gibt,
+sodass~$G_W$ in Bijektion zu den~$k$-Algebrenhomomorphismen~$A \to k$
+steht:
+\[ G_W \cong \Hom_k(A, k) =\vcentcolon \Spec(A). \]
+Im Beweis werden wir sehen, dass wir~$A$ sogar als endlich präsentiert wählen
+können.\end{prop}
+
+\begin{proof}Die Menge aller linearen Abbildungen~$V \to W$ ist das Spektrum
+von~$R \defeq \Sym(\Hom_k(V,W)^\vee)$, denn
+\begin{align*}
+  \Spec(R) &=
+  \Hom_{\mathrm{Alg}(k)}(\Sym(\Hom_{\mathrm{Mod}(k)}(V,W)^\vee), k) \\
+  &\cong \Hom_{\mathrm{Mod}(k)}(\Hom_{\mathrm{Mod}(k)}(V,W)^\vee, k) \\
+  &=\Hom_{\mathrm{Mod}(k)}(V,W)^{\vee\vee} \\
+  &\cong \Hom_{\mathrm{Mod}(k)}(V,W).
+\end{align*}
+Im letzten Schritt geht ein, dass nicht nur~$W$, sondern auch~$V$ freie Moduln
+endlichen Rangs sind. Es ist das erste Mal, dass wir diese Voraussetzung
+für~$V$ benötigen.
+
+Die Menge~$G_W'$ ist eine abgeschlossene Teilmenge dieses Spektrums, nämlich
+der Ort, wo die generische lineare Abbildung~$V \to W$ eine Zerfällung der
+Inklusion~$\iota : W \hookrightarrow V$ ist. Weg mag, kann Basen von~$V$
+und~$W$ wählen: Dann ist~$\Sym(\Hom_k(V,W)^\vee)$ isomorph
+zu~$k[M_{11},\ldots,M_{rn}]$ und~$G_W'$ zu
+\[ \Spec(k[M_{11},\ldots,M_{rn}]/(MN-I)). \]
+Dabei ist~$I$ die~$(r \times r)$-Einheitsmatrix, $M$ die generische Matrix~$M =
+(M_{ij})_{ij}$ und~$N$ die Darstellungsmatrix von~$\iota$ bezüglich der
+gewählten Basen. Mit~$(MN-I)$ ist das von den Einträgen von~$MN-I$ erzeugte
+Ideal gemeint.
+\end{proof}
+
+\begin{cor}Die Grassmannsche~$\Gr(V,r)$ ist ein Schema von endlichem
+Typ.\end{cor}
+
+\begin{proof}Die Grassmannsche~$\Gr(V,r)$ besitzt eine offene
+Überdeckung durch die affinen Schemata~$G_W$ und ist daher ein Schema.
+
+Wenn wir einen Isomorphismus~$V \cong k^n$ wählen, sehen wir, dass
+schon~$\binom{n}{r}$ viele dieser affinen Schemata genügen: nämlich diese,
+wo~$W$ einer der Standarduntermoduln von~$k^n$ ist (erzeugt durch
+Einheitsvektoren).
+
+Denn ist~$U \in \Gr(k^n,r)$, so bildet die Surjektion~$V \to V/U$ die Basis von
+mindestens einem dieser Standarduntermoduln auf eine Basis ab und ist daher
+bijektiv. (Aus einer surjektiven~$(r \times n)$-Matrix über einem lokalen Ring
+kann man stets~$r$ Spalten auswählen, die eine linear unabhängige Familie
+bilden.)
+\end{proof}
+
+\begin{prop}Für den Tangentialraum an~$U \in \Gr(V,r)$ gilt:
+$T_U \Gr(V,r) \cong \Hom(U, V/U)$.\end{prop}
+
+\begin{proof}Die Menge der Tangentialvektoren an~$U$ kann kanonisch mit den
+Abbildungen~$\gamma : \Delta \to \Gr(V,r)$ mit~$\gamma(0) = U$ identifiziert
+werden. Dabei ist~$\Delta \defeq \{ \varepsilon \in k \,|\, \varepsilon^2 = 0 \}$.
+Eine solche Abbildung liftet stets zu einer Abbildung von~$\Delta$ in die Menge
+der linear unabhängigen Familien der Länge~$r$ in~$V$. Der Rest sei als
+Übungsaufgabe überlassen. Willkommen in der wunderbaren Welt synthetischer
+Geometrie.
+\end{proof}
+
+\end{document}
