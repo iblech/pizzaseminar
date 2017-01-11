@@ -1,0 +1,68 @@
+\documentclass[a4paper,ngerman,landscape]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[ngerman]{babel}
+\usepackage{hyperref}
+
+\usepackage{graphicx}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{libertine}
+\usepackage{tabto}
+
+\setlength\parskip{\medskipamount}
+\setlength\parindent{0pt}
+
+\usepackage{geometry}
+\geometry{tmargin=0.1cm,bmargin=1.0cm,lmargin=2.5cm,rmargin=2.5cm}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\newcommand{\blurb}[1]{\begin{center}
+  \huge
+  \vspace*{0.0em}
+  Neujahrsvorlesung im Pizzaseminar \\
+  Freitag, 20. Januar 2017, 14:00 Uhr, 1005/L1 \\
+  \Huge
+  \textbf{Ingo Blechschmidt und Matthias Hutzler: \\ Die kuriose Welt der
+  vierdimensionalen Geometrie}
+  \vfill
+  \vspace{0.3em}
+  \includegraphics[height=0.5\textheight]{#1}
+  \vfill
+
+  \Large
+  \begin{minipage}{0.92\textwidth}
+    \renewcommand{\baselinestretch}{1.3}
+
+    \setlength\parskip{\medskipamount}
+    \vspace{0.3em}
+    Der Vortrag setzt keinerlei Vorkenntnisse voraus. Bringt eure Geschwister
+    mit! Alle Interessierten sind herzlich eingeladen. Es gibt Kekse. Außerdem:
+    Interaktive Demos, Animationen und einen schlechten Witz
+    \textbullet{} Anschauliche Vorstellung mittels der
+    Flachlandanalogie
+    \textbullet{} Knoten und andere Verwirrungen im Vierdimensionalen
+    \textbullet{} Möbiusband? Viel zu Mainstream. Wir werden uns die Kleinsche Flasche
+    genauer ansehen!
+    \textbullet{} Seltsame Volumenphänomene
+    \textbullet{} Ein vierdimensionales Fraktal, das das bekannte Mandelbrotfraktal und
+    alle Juliamengen vereinigt
+    \textbullet{} Wieso die allgemeine Relativitätstheorie nicht in nur drei Dimensionen
+    funktionieren kann
+    \textbullet{} Platonische Körper im Vierdimensionalen
+    \textbullet{} Wie man einen vierdimensionalen Würfel bastelt
+    \vspace{0.3em}
+    \hfill\small \textsf{https:/$\!$/pizzaseminar.speicherleck.de/}
+  \end{minipage}
+\end{center}}
+
+\blurb{great-grand-120-cell}
+\blurb{120-cell}
+\blurb{flatlandthefilm}
+
+\end{document}
