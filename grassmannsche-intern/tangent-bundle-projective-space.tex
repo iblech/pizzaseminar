@@ -1,0 +1,193 @@
+\documentclass[a4paper,ngerman,12pt]{scrartcl}
+
+\usepackage[utf8]{inputenc}
+
+\usepackage[english]{babel}
+
+\usepackage{amsmath,amsthm,amssymb,stmaryrd,color,graphicx,mathtools}
+\usepackage{array}
+
+\usepackage[protrusion=true,expansion=true]{microtype}
+
+\usepackage{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{ex}[defn]{Example}
+\theoremstyle{plain}
+\newtheorem{thm}[defn]{Theorem}
+
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+
+\renewcommand{\AA}{\mathbb{A}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\C}{\mathcal{C}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\G}{\mathcal{G}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\J}{\mathcal{J}}
+\newcommand{\K}{\mathcal{K}}
+\renewcommand{\L}{\mathcal{L}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\op}{\mathrm{op}}
+\newcommand{\ppp}{\mathfrak{p}}
+\newcommand{\mmm}{\mathfrak{m}}
+\newcommand{\xra}[1]{\xrightarrow{#1}}
+\newcommand{\Mod}{\mathrm{Mod}}
+\newcommand{\Set}{\mathrm{Set}}
+\newcommand{\Cat}{\mathrm{Cat}}
+\newcommand{\Vect}{\mathrm{Vect}}
+\newcommand{\VB}{\mathrm{VB}}
+\newcommand{\Id}{\mathrm{Id}}
+\newcommand{\Coh}{\mathrm{Coh}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\pt}{\mathrm{pt}}
+\newcommand{\Ob}{\operatorname{Ob}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Hom}{\mathrm{Hom}}
+\newcommand{\Pic}{\mathrm{Pic}}
+\newcommand{\ul}[1]{\underline{#1}}
+\newcommand{\placeholder}{\underline{\ \ }}
+\newcommand{\lra}{\longrightarrow}
+\renewcommand{\div}{\operatorname{div}}
+\newcommand{\Div}{\mathrm{Div}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\PD}{\operatorname{PD}}
+\newcommand{\Sh}{\operatorname{Sh}}
+\DeclareMathOperator{\Span}{span}
+\newcommand{\defeq}{\vcentcolon=}
+\newcommand{\defeqv}{\vcentcolon\equiv}
+
+\newcommand{\Gr}{\mathrm{Gr}}
+
+\let\raggedsection\centering
+
+\begin{document}
+
+\title{The tangent bundle of the projective space}
+\author{}
+%\maketitle
+
+\section*{The tangent bundle of the projective space}
+
+The aim of this short note is to calculate the tangent bundle of the projective
+space in the setting of synthetic differential geometry.
+
+\begin{center}
+  \setlength{\fboxrule}{1pt}
+  \setlength{\fboxsep}{8pt}
+  \fbox{\parbox{0.7\textwidth}{
+    \textbf{Axiom of microaffinity.} For any function~$f : \Delta \to \RR$,
+    where~$\Delta = \{ \varepsilon \in \RR \,|\, \varepsilon^2 = 0 \}$, there
+    exists a unique pair~$(a,b)$ of real numbers such that
+    \[ f(\varepsilon) = a + b \varepsilon \]
+    for all~$\varepsilon \in \Delta$.
+  }}
+\end{center}
+
+\begin{ex}For all~$\varepsilon \in \Delta$, the number~$1 + \varepsilon$ is
+invertible with inverse given by
+\[ \frac{1}{1 + \varepsilon} = \frac{1 - \varepsilon}{(1 + \varepsilon) (1 -
+\varepsilon)} = \frac{1 - \varepsilon}{1 - \varepsilon^2} = 1 - \varepsilon. \]
+\end{ex}
+
+\begin{defn}The \emph{derivative}~$f'(x)$ of a set-theoretical function~$f :
+\RR \to \RR$ at a point~$x$ is the unique number~$b$ such that
+\[ f(x + \varepsilon) = f(x) + b \varepsilon \]
+for all~$\varepsilon \in \Delta$.\end{defn}
+
+\begin{ex}Let~$f(x) = x^3$. Then~$f'(x) = 3x^2$, since
+\[ f(x + \varepsilon) = (x + \varepsilon)^3 =
+  x^3 + 3x^2\varepsilon + 3x\varepsilon^2 + \varepsilon^3 =
+  x^3 + 3x^2\varepsilon \]
+for all~$\varepsilon \in \Delta$.\end{ex}
+
+\begin{defn}The \emph{projective space}~$\PP V$ associated to a vector
+space~$V$ is the set
+\[ \PP V = \{ \ell \subseteq V \,|\, \text{$\ell$ is a one-dimensional subspace
+of~$V$} \}. \]\end{defn}
+
+\begin{defn}The \emph{tangent bundle}~$TX$ of a set~$X$ is the set
+\[ TX = X^\Delta = \{ \gamma : \Delta \to X \} \]
+of all set-theoretical maps~$\Delta \to X$.\end{defn}
+\enlargethispage{4em}\thispagestyle{empty}
+
+\begin{thm}Let~$V$ be a vector space. Then there is a canonical isomorphism
+(bijection)
+\[ T(\PP V) \cong \coprod_{\ell \in \PP V} \Hom_\RR(\ell,V/\ell). \]
+\end{thm}
+
+The symbol~``$\coprod$'' for the disjoint union might seem dubious on first
+sight: Aren't the fibers of the tangent bundle supposed to have some cohesion
+and fit continuously together? In synthetic differential geometry, all sets
+have automatically a continuous/geometric flavour. The cohesion present in the
+index set over which the disjoint union is taken over, the set~$\PP V$, induces
+a kind of cohesion in the disjoint union.
+
+A simpler example is given by the tangent bundle of~$\RR^n$: This admits the
+description
+\[ T\RR^n \cong \coprod_{x \in \RR^n} \RR^n \cong \RR^n \times \RR^n. \]
+The description using the disjoint union might feel weird while the description
+using the cartesian product seems right, but there is in fact a canonical
+bijection between these sets, sending an element~$\langle x,v \rangle \in
+\coprod_{x \in \RR^n} \RR^n$ to~$(x,v) \in \RR^n \times \RR^n$.
+
+The point of synthetic differential geometry is, however, that one doesn't need
+to make this idea of ``cohesion'' explicit (unlike in the standard approach,
+where one defines topological spaces and manifolds to capture it). The sets
+themselves already exhibit the smooth behaviour we're interested in.
+
+\begin{proof}[Proof of Theorem~6]Let~$\gamma : \Delta \to \PP V$ be a tangent
+vector with base point~$\ell \defeq \gamma(0) \in \PP V$. There's a
+lift~$\overline{\gamma} : \Delta \to V$ such that~$\gamma(\varepsilon) =
+\Span(\overline{\gamma}(\varepsilon))$ for all~$\varepsilon \in \Delta$.
+We define a linear map~$\alpha : \ell \to V/\ell$ by setting
+\[ x \longmapsto \alpha(x) = [x/\overline{\gamma}(0) \cdot
+\overline{\gamma}'(0)]. \]
+The expression ``$x/\overline{\gamma}(0)$'' should be read as follows: The
+vector~$x$, being an element of~$\ell$, is some multiple~$\lambda$
+of~$\overline{\gamma}(0)$. The expression ``$x/\overline{\gamma}(0)$'' denotes
+this unique number~$\lambda$. It can be checked that the vector~$\alpha(x) \in
+V/\ell$ does not depend on the choice of the lifting~$\overline{\gamma}$. The
+element~$\langle\ell, \alpha\rangle$ is therefore a well-defined element
+of~$\coprod_{\ell \in \PP V} \Hom_\RR(\ell,V/\ell)$.
+
+Conversely, let an element~$\langle\ell, \alpha\rangle \in \coprod_{\ell \in
+\PP V} \Hom_\RR(\ell,V/\ell)$ be given. We choose vectors~$x_0 \in V$ and~$z \in V$ such
+that~$\ell = \Span(x_0)$ and~$\alpha(x_0) = [z]$ and define~$\gamma : \Delta
+\to \PP V$ by setting
+\[ \varepsilon \longmapsto \gamma(\varepsilon) = \Span(x_0 + \varepsilon z). \]
+The definition of~$\gamma(\varepsilon)$ is invariant under scaling of~$x_0$ and
+also under changing~$z$ to some other vector~$z + \lambda x_0$ in its
+equivalence class:
+\begin{align*}
+  \Span(x_0 + \varepsilon (z + \lambda x_0))
+  &= \Span((1 + \varepsilon \lambda) x_0 + \varepsilon z) \\
+  &= \Span(x_0 + \varepsilon / (1 + \varepsilon \lambda) z) \\
+  &= \Span(x_0 + \varepsilon z),
+\end{align*}
+since~$\varepsilon / (1 + \varepsilon \lambda) = \varepsilon (1 - \varepsilon
+\lambda) = \varepsilon$. Therefore~$\gamma$ is a well-defined element of~$T(\PP
+V)$ which only depends on~$\langle\ell, \alpha\rangle$ and not on the arbitrary
+choices of~$x_0$ and~$z$.
+
+One can check that the two described constructions are mutually inverse.
+\end{proof}
+
+At no point in the proof one has to check that certain maps are continuous or
+smooth. The proof can be easily adapted to verify that the tangent bundle of
+the Grassmannian of~$r$-dimensional subspaces admits the description
+\[ T(\mathrm{Gr}_r V) \cong \coprod_{U \in \mathrm{Gr}_r V} \Hom_\RR(U, V/U). \]
+
+\end{document}
