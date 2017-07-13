@@ -116,8 +116,11 @@
   \begin{itemize}
     \item\justifying A Markov chain is \emph{irreducible} iff any state can transition into
     any state in a finite number of steps.
-    \item\justifying A Markov chain is \emph{aperiodic} iff any state can transition into
-    itself in a single step.
+    \item\justifying A Markov chain is \emph{$k$-periodic} for a natural
+    number~$k \geq 1$ iff every state can only transition into itself in
+    multiples of~$k$ steps. A Markov chain is \emph{aperiodic} iff every state
+    is~$1$-periodic. Sufficient for this is that every state can transition
+    into itself.
     \item\justifying If~$T_{ij} > 0$ for all $i$ and $j$, the chain is irreducible and
     aperiodic.
     \item\justifying Think of the chain describing exports of goods by countries:
