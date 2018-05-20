@@ -2320,21 +2320,22 @@ Lemma~\ref{produktprim} verwenden. Allerdings ist der Beweis in dieser Form
 Koeffizienten, also der minimal möglichen Exponenten~$m_i$ mit~$a_i^{m_i} = 0$.
 Auch ist die Abhängigkeit der~$m_i$ von den Daten nicht klar: Gibt es eine
 universelle Schranke, die für jeden Ring und jedes Polynom gültig wäre? Oder
-kann der Nilpotenzindex bei schlimmen Ringen oder Polynomen beliebig hoch
+können die Nilpotenzindizes bei schlimmen Ringen oder Polynomen beliebig hoch
 werden?\footnote{Zumindest diese Sorge kann man mit furchtloser Anwendung von
 etwas Ringtheorie zerstreuen: Über dem speziellen Ring~$S \defeq
-\ZZ[A_0,\ldots,A_n]/(A_0^{m_0},\ldots,A_n^{m_n})$ gibt es das \emph{universelle
+\ZZ[A_0,\ldots,A_n]/(\ldots)$, wobei bei~"`$\ldots$"' die einzelnen
+Koeffizienten des Polynoms~$(\sum_{i=0}^n A_i X^i)^m$ stehen sollen, gibt es das \emph{universelle
 Polynom} $f_\text{univ} \defeq \sum_{i=0}^n A_i X^i$. \emph{Universell} heißt es
 deswegen, da es zu jedem Polynom der Form~$f = \sum_{i=0}^n a_i X^i$ über einem
-beliebigen Ring~$R$, dessen Koeffizienten die Gleichungen~$a_i^{m_i} = 0$
-erfüllen, genau einen Ringhomomorphismus~$\varphi : S \to R$
+beliebigen Ring~$R$, das der Gleichung~$f^m = 0$ genügt,
+genau einen Ringhomomorphismus~$\varphi : S \to R$
 mit~$\varphi(f_\text{univ}) = f$ gibt. (Dieser schickt die Unbestimmte~$A_i$
 auf den konkreten Wert~$a_i$.) Jedes solche Polynom ist also Bild des
-universellen Polynoms. Nach der Proposition gibt es nun einen
-Exponenten~$m$ mit~$f_\text{univ}^m = 0$, der nur von~$n$ und den
-Exponenten~$m_i$, nicht aber von den Werten der~$a_i$ eines solchen
-Polynoms~$f$ abhängen kann. Es folgt~$f^m = \varphi(f_\text{univ})^m =
-\varphi(f_\text{univ}^m) = \varphi(0) = 0$.}
+universellen Polynoms. Nach der Proposition gibt es nun
+Exponenten~$m_0,\ldots,m_n$ mit~$A_i^{m_i} = 0$, die nur von~$n$ und~$m$,
+nicht aber von den Werten der~$a_i$ eines solchen
+Polynoms~$f$ abhängen können. Es folgt~$a_i^{m_i} = \varphi(A_i)^{m_i} =
+\varphi(A_i^{m_i}) = \varphi(0) = 0$.}
 
 Diese Fragen könnte man durch eine manuelle Untersuchung, etwa mit
 verschachtelten Induktionsbeweisen, klären. Es gibt aber auch ein
